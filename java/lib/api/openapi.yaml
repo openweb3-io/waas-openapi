@@ -1,0 +1,1924 @@
+openapi: 3.0.0
+info:
+  contact: {}
+  description: This is a custody wallet service openapi server.
+  title: WaaS OpenAPI Documentation
+  version: "1.0"
+servers:
+- url: /
+paths:
+  /api/v1/addresses:
+    get:
+      description: List of all available addresses.
+      operationId: v1.addresses.list
+      parameters:
+      - description: The chain ids.
+        explode: false
+        in: query
+        name: chain_ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: The cursor to use for pagination.
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: 'The number of records to return default: 20'
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: Unique system generated identifier of the wallet
+        explode: false
+        in: query
+        name: wallet_ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorPage-Address'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: List all addresses
+      tags:
+      - addresses
+      x-accepts: application/json
+  /api/v1/chains:
+    get:
+      description: List of all available chains.
+      operationId: v1.chains.list
+      parameters:
+      - explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorPage-openweb3_io_waas_app_waas-openapi-server_api_dtos_Chain'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: List all chains
+      tags:
+      - chains
+      x-accepts: application/json
+  /api/v1/chains/{id}:
+    get:
+      description: Retrieve chain information.
+      operationId: v1.chains.retrieve
+      parameters:
+      - description: Chain ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/openweb3_io_waas_app_waas-openapi-server_api_dtos.Chain'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Retrieve chain
+      tags:
+      - chains
+      x-accepts: application/json
+  /api/v1/endpoints:
+    get:
+      description: List webhook endpoints
+      operationId: v1.webhooks.list
+      parameters:
+      - explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorPage-Endpoint'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: List webhook endpoints
+      tags:
+      - webhook endpoints
+      x-accepts: application/json
+  /api/v1/tokens:
+    get:
+      description: Create a tokens.
+      operationId: v1.tokens.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTokenRequest'
+        description: Request Body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Create token
+      tags:
+      - tokens
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/v1/tokens/{id}:
+    get:
+      description: Get token info by ID
+      operationId: v1.tokens.retrieve
+      parameters:
+      - description: Token ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Get Token
+      tags:
+      - tokens
+      x-accepts: application/json
+  /api/v1/transactions:
+    get:
+      description: List transactions
+      operationId: v1.transactions.list
+      parameters:
+      - description: The assetId involved in the transaction.
+        explode: false
+        in: query
+        name: asset_ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: The blockchain network on which the transaction takes place.
+        explode: false
+        in: query
+        name: chain_ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: A cursor value for pagination purposes.
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The transaction hash, which uniquely identifies a transaction
+          on the blockchain.
+        explode: true
+        in: query
+        name: hash
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: 'The number of records to return default: 20'
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      - description: The status of the transaction.
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The tokenId involved in the transaction.
+        explode: false
+        in: query
+        name: token_ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Unique system generated identifier of the wallet
+        explode: false
+        in: query
+        name: wallet_ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page-Transaction'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: List transactions
+      tags:
+      - transactions
+      x-accepts: application/json
+  /api/v1/transactions/transfer:
+    post:
+      description: Create a transfer transaction
+      operationId: v1.transactions.transfer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTransferRequest'
+        description: Request Body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTransferResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Transfer token
+      tags:
+      - transactions
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/v1/transactions/{transactionId}:
+    get:
+      description: Get a transaction by ID
+      operationId: v1.transactions.retrieve
+      parameters:
+      - description: Transaction ID
+        explode: false
+        in: path
+        name: transactionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Get transaction
+      tags:
+      - transactions
+      x-accepts: application/json
+  /api/v1/wallets:
+    get:
+      description: List all wallets
+      operationId: v1.wallets.list
+      parameters:
+      - explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorPage-Wallet'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: List wallets
+      tags:
+      - wallets
+      x-accepts: application/json
+    post:
+      description: Create a Wallet
+      operationId: v1.wallets.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWalletRequest'
+        description: Request body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wallet'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Create wallet
+      tags:
+      - wallets
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/v1/wallets/{walletId}:
+    get:
+      description: Get a wallet by ID
+      operationId: v1.wallets.retrieve
+      parameters:
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wallet'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Get wallet
+      tags:
+      - wallets
+      x-accepts: application/json
+    patch:
+      description: Update a Wallet
+      operationId: v1.wallets.update
+      parameters:
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWalletRequest'
+        description: Request body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wallet'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Update wallet
+      tags:
+      - wallets
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/v1/wallets/{walletId}/addresses:
+    post:
+      description: Get wallet's deposit address
+      operationId: v1.wallets.createAddress
+      parameters:
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAddressRequest'
+        description: Request Body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Get deposit address
+      tags:
+      - addresses
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/v1/wallets/{walletId}/addresses/{address}:
+    get:
+      description: Get wallet's deposit address
+      operationId: v1.wallets.getDepositAddress
+      parameters:
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Address
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The token id used in the transaction (e.g., TON, USDT_ETH, etc.).
+        explode: true
+        in: query
+        name: token_id
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Get deposit address
+      tags:
+      - addresses
+      x-accepts: application/json
+  /api/v1/wallets/{walletId}/deposit_addresses:
+    get:
+      description: List wallet's deposit addresses
+      operationId: v1.wallets.listDepositAddresses
+      parameters:
+      - description: Wallet ID
+        explode: false
+        in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: chain ids
+        explode: false
+        in: query
+        name: chain_ids
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Cursor
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Limit, default is 20
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorPage-Address'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: List deposit addresses
+      tags:
+      - addresses
+      x-accepts: application/json
+  /api/v1/webhooks//endpoints/{endpointId}:
+    delete:
+      description: Delete specific webhook endpoint
+      operationId: v1.webhooks.delete
+      parameters:
+      - description: Endpoint ID
+        explode: false
+        in: path
+        name: endpointId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Delete webhook endpoint
+      tags:
+      - webhook endpoints
+      x-accepts: application/json
+  /api/v1/webhooks/endpoints:
+    post:
+      description: Create a webhook endpoint
+      operationId: v1.webhooks.create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEndpoint'
+        description: Request body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Create webhook endpoint
+      tags:
+      - webhook endpoints
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/v1/webhooks/endpoints/{endpointId}:
+    get:
+      description: Get specific webhook endpoint
+      operationId: v1.webhooks.retrieve
+      parameters:
+      - description: Endpoint ID
+        explode: false
+        in: path
+        name: endpointId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Get webhook endpoint
+      tags:
+      - webhook endpoints
+      x-accepts: application/json
+    patch:
+      description: Update specific webhook endpoint
+      operationId: v1.webhooks.update
+      parameters:
+      - description: Endpoint ID
+        explode: false
+        in: path
+        name: endpointId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEndpoint'
+        description: Request body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Endpoint'
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Update webhook endpoint
+      tags:
+      - webhook endpoints
+      x-contentType: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    Address:
+      example:
+        path: path
+        chain: chain
+        address: address
+        chain_id: chain_id
+        updated_at: updated_at
+        created_at: created_at
+        memo: memo
+      properties:
+        address:
+          description: The blockchain address.
+          type: string
+        chain:
+          description: The chain name
+          type: string
+        chain_id:
+          description: The chain id.
+          type: string
+        created_at:
+          description: The creation time
+          type: string
+        memo:
+          description: The memo.
+          type: string
+        path:
+          description: The derivation path.
+          type: string
+        updated_at:
+          description: The update time
+          type: string
+      required:
+      - address
+      type: object
+    BigInt:
+      type: object
+    CreateAddressRequest:
+      example:
+        walletId: walletId
+        chainId: chainId
+      properties:
+        chainId:
+          type: string
+        walletId:
+          type: string
+      type: object
+    CreateEndpoint:
+      example:
+        headers:
+          key: headers
+        uid: uid
+        metadata:
+          key: ""
+        description: description
+        disabled: true
+        eventTypes:
+        - eventTypes
+        - eventTypes
+        url: url
+      properties:
+        description:
+          description: The description of the endpoint
+          type: string
+        disabled:
+          description: The disabled of the endpoint
+          type: boolean
+        eventTypes:
+          description: The event types of the endpoint
+          items:
+            type: string
+          type: array
+        headers:
+          additionalProperties:
+            type: string
+          description: The headers of the endpoint
+          type: object
+        metadata:
+          additionalProperties: {}
+          description: The metadata of the endpoint
+          type: object
+        uid:
+          description: The uid of the endpoint
+          type: string
+        url:
+          description: The url of the endpoint
+          type: string
+      required:
+      - eventTypes
+      - headers
+      - metadata
+      - url
+      type: object
+    CreateTokenRequest:
+      example:
+        uid: uid
+        name: name
+      properties:
+        name:
+          type: string
+        uid:
+          type: string
+      type: object
+    CreateTransferRequest:
+      example:
+        amount: amount
+        tokenId: tokenId
+        destination: destination
+        source: source
+      properties:
+        amount:
+          description: The amount to be transferred
+          type: string
+        destination:
+          description: The ID of the wallet to which the transfer will be made
+          type: string
+        source:
+          description: The ID of the wallet from which the transfer will be made
+          type: string
+        tokenId:
+          description: The tokenId to be transferred
+          type: string
+      required:
+      - amount
+      - destination
+      - source
+      - tokenId
+      type: object
+    CreateTransferResponse:
+      example:
+        transaction_id: transaction_id
+        status: status
+      properties:
+        status:
+          type: string
+        transaction_id:
+          type: string
+      required:
+      - transaction_id
+      type: object
+    CreateWalletRequest:
+      example:
+        uid: uid
+        name: name
+      properties:
+        name:
+          description: Wallet name
+          type: string
+        uid:
+          description: Custom ID
+          type: string
+      required:
+      - name
+      type: object
+    CursorPage-Address:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        has_next: true
+        items:
+        - path: path
+          chain: chain
+          address: address
+          chain_id: chain_id
+          updated_at: updated_at
+          created_at: created_at
+          memo: memo
+        - path: path
+          chain: chain
+          address: address
+          chain_id: chain_id
+          updated_at: updated_at
+          created_at: created_at
+          memo: memo
+      properties:
+        has_next:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/Address'
+          type: array
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+      required:
+      - has_next
+      - items
+      type: object
+    CursorPage-Endpoint:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        has_next: true
+        items:
+        - filter: filter
+          createdAt: createdAt
+          headers:
+            key: headers
+          uid: uid
+          metadata:
+            key: ""
+          description: description
+          disabled: true
+          id: id
+          eventTypes:
+          - eventTypes
+          - eventTypes
+          url: url
+        - filter: filter
+          createdAt: createdAt
+          headers:
+            key: headers
+          uid: uid
+          metadata:
+            key: ""
+          description: description
+          disabled: true
+          id: id
+          eventTypes:
+          - eventTypes
+          - eventTypes
+          url: url
+      properties:
+        has_next:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/Endpoint'
+          type: array
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+      required:
+      - has_next
+      - items
+      type: object
+    CursorPage-Token:
+      properties:
+        has_next:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/Token'
+          type: array
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+      required:
+      - has_next
+      - items
+      type: object
+    CursorPage-Wallet:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        has_next: true
+        items:
+        - uid: uid
+          name: name
+          created_at: created_at
+          id: id
+          updatedAt: updatedAt
+        - uid: uid
+          name: name
+          created_at: created_at
+          id: id
+          updatedAt: updatedAt
+      properties:
+        has_next:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/Wallet'
+          type: array
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+      required:
+      - has_next
+      - items
+      type: object
+    CursorPage-openweb3_io_waas_app_waas-openapi-server_api_dtos_Chain:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        has_next: true
+        items:
+        - icon_url: icon_url
+          symbol: symbol
+          metadata:
+            key: ""
+          updated_at: updated_at
+          need_memo: true
+          name: name
+          created_at: created_at
+          confirm_num: 0
+          id: id
+          explorer_tx_url: explorer_tx_url
+          explorer_address_url: explorer_address_url
+        - icon_url: icon_url
+          symbol: symbol
+          metadata:
+            key: ""
+          updated_at: updated_at
+          need_memo: true
+          name: name
+          created_at: created_at
+          confirm_num: 0
+          id: id
+          explorer_tx_url: explorer_tx_url
+          explorer_address_url: explorer_address_url
+      properties:
+        has_next:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/openweb3_io_waas_app_waas-openapi-server_api_dtos.Chain'
+          type: array
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+      required:
+      - has_next
+      - items
+      type: object
+    Endpoint:
+      example:
+        filter: filter
+        createdAt: createdAt
+        headers:
+          key: headers
+        uid: uid
+        metadata:
+          key: ""
+        description: description
+        disabled: true
+        id: id
+        eventTypes:
+        - eventTypes
+        - eventTypes
+        url: url
+      properties:
+        createdAt:
+          type: string
+        description:
+          type: string
+        disabled:
+          type: boolean
+        eventTypes:
+          items:
+            type: string
+          type: array
+        filter:
+          type: string
+        headers:
+          additionalProperties:
+            type: string
+          type: object
+        id:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type: object
+        uid:
+          type: string
+        url:
+          type: string
+      required:
+      - createdAt
+      - description
+      - disabled
+      - eventTypes
+      - filter
+      - headers
+      - id
+      - metadata
+      - url
+      type: object
+    Error:
+      properties:
+        code:
+          description: error code
+          type: integer
+        msg:
+          description: error message
+          type: string
+      required:
+      - code
+      - msg
+      type: object
+    Fee:
+      example:
+        maxFeeAmount: maxFeeAmount
+        tokenId: tokenId
+      properties:
+        maxFeeAmount:
+          type: string
+        tokenId:
+          type: string
+        type:
+          $ref: '#/components/schemas/openweb3_io_waas_app_waas-openapi-server_api_dtos.FeeType'
+      type: object
+    Page-Transaction:
+      example:
+        total: 6
+        items:
+        - walletId: walletId
+          chain: chain
+          tokenId: tokenId
+          signature: signature
+          fee:
+            maxFeeAmount: maxFeeAmount
+            tokenId: tokenId
+          confirmedNum: 0
+          destination:
+            amount: amount
+            address: address
+            memo: memo
+            type: type
+          description: description
+          source:
+            amount: amount
+            address: address
+            memo: memo
+            type: type
+          createdAt: createdAt
+          chainId: chainId
+          assetId: assetId
+          extra:
+            key: ""
+          id: id
+          hash: hash
+          failedReason: failedReason
+          status: status
+          updatedAt: updatedAt
+        - walletId: walletId
+          chain: chain
+          tokenId: tokenId
+          signature: signature
+          fee:
+            maxFeeAmount: maxFeeAmount
+            tokenId: tokenId
+          confirmedNum: 0
+          destination:
+            amount: amount
+            address: address
+            memo: memo
+            type: type
+          description: description
+          source:
+            amount: amount
+            address: address
+            memo: memo
+            type: type
+          createdAt: createdAt
+          chainId: chainId
+          assetId: assetId
+          extra:
+            key: ""
+          id: id
+          hash: hash
+          failedReason: failedReason
+          status: status
+          updatedAt: updatedAt
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Transaction'
+          type: array
+        total:
+          type: integer
+      required:
+      - items
+      - total
+      type: object
+    Token:
+      example:
+        icon_url: icon_url
+        symbol: symbol
+        metadata:
+          key: metadata
+        need_memo: true
+        total_supply: ""
+        precision: 6
+        created_at: created_at
+        can_deposit: true
+        contract_address: contract_address
+        min_withdraw_amount: ""
+        max_withdraw_amount: ""
+        updated_at: updated_at
+        decimals: 0
+        name: name
+        can_withdraw: true
+        id: id
+        min_deposit_amount: ""
+      properties:
+        can_deposit:
+          description: Whether deposits are allowed
+          type: boolean
+        can_withdraw:
+          description: Whether withdrawals are allowed
+          type: boolean
+        contract_address:
+          description: Contract address
+          type: string
+        created_at:
+          description: Creation time
+          type: string
+        decimals:
+          description: Decimals
+          type: integer
+        icon_url:
+          description: Icon
+          type: string
+        id:
+          description: Token ID
+          type: string
+        max_withdraw_amount:
+          allOf:
+          - $ref: '#/components/schemas/BigInt'
+          description: Max withdraw amount
+        metadata:
+          additionalProperties:
+            type: string
+          description: Extended metadata
+          type: object
+        min_deposit_amount:
+          allOf:
+          - $ref: '#/components/schemas/BigInt'
+          description: Min deposit amount
+        min_withdraw_amount:
+          allOf:
+          - $ref: '#/components/schemas/BigInt'
+          description: Min withdraw amount
+        name:
+          description: Name
+          type: string
+        need_memo:
+          description: Whether a memo is required
+          type: boolean
+        precision:
+          description: Precision
+          type: integer
+        symbol:
+          description: 'Symbol . e.g.: BTC / ETH'
+          type: string
+        total_supply:
+          allOf:
+          - $ref: '#/components/schemas/BigInt'
+          description: Total supply
+        updated_at:
+          description: Last updated time
+          type: string
+      type: object
+    Transaction:
+      example:
+        walletId: walletId
+        chain: chain
+        tokenId: tokenId
+        signature: signature
+        fee:
+          maxFeeAmount: maxFeeAmount
+          tokenId: tokenId
+        confirmedNum: 0
+        destination:
+          amount: amount
+          address: address
+          memo: memo
+          type: type
+        description: description
+        source:
+          amount: amount
+          address: address
+          memo: memo
+          type: type
+        createdAt: createdAt
+        chainId: chainId
+        assetId: assetId
+        extra:
+          key: ""
+        id: id
+        hash: hash
+        failedReason: failedReason
+        status: status
+        updatedAt: updatedAt
+      properties:
+        assetId:
+          type: string
+        chain:
+          type: string
+        chainId:
+          type: string
+        confirmedNum:
+          type: integer
+        createdAt:
+          type: string
+        description:
+          type: string
+        destination:
+          $ref: '#/components/schemas/TransactionEndpoint'
+        extra:
+          additionalProperties: {}
+          type: object
+        failedReason:
+          type: string
+        fee:
+          $ref: '#/components/schemas/Fee'
+        hash:
+          type: string
+        id:
+          type: string
+        signature:
+          type: string
+        source:
+          $ref: '#/components/schemas/TransactionEndpoint'
+        status:
+          type: string
+        tokenId:
+          type: string
+        type:
+          $ref: '#/components/schemas/TransactionType'
+        updatedAt:
+          type: string
+        walletId:
+          type: string
+      type: object
+    TransactionEndpoint:
+      example:
+        amount: amount
+        address: address
+        memo: memo
+        type: type
+      properties:
+        address:
+          type: string
+        amount:
+          type: string
+        memo:
+          type: string
+        type:
+          type: string
+      type: object
+    TransactionType:
+      enum:
+      - Unkown
+      - Deposit
+      - Withdraw
+      type: string
+      x-enum-varnames:
+      - TransactionType_Unknown
+      - TransactionType_Deposit
+      - TransactionType_Withdraw
+    UpdateEndpoint:
+      example:
+        headers:
+          key: headers
+        uid: uid
+        metadata:
+          key: ""
+        description: description
+        disabled: true
+        eventTypes:
+        - eventTypes
+        - eventTypes
+        url: url
+      properties:
+        description:
+          type: string
+        disabled:
+          type: boolean
+        eventTypes:
+          items:
+            type: string
+          type: array
+        headers:
+          additionalProperties:
+            type: string
+          type: object
+        metadata:
+          additionalProperties: {}
+          type: object
+        uid:
+          type: string
+        url:
+          type: string
+      required:
+      - eventTypes
+      - headers
+      - metadata
+      type: object
+    UpdateWalletRequest:
+      example:
+        uid: uid
+        name: name
+      properties:
+        name:
+          description: Wallet Name
+          type: string
+        uid:
+          description: Custom ID
+          type: string
+      type: object
+    Wallet:
+      example:
+        uid: uid
+        name: name
+        created_at: created_at
+        id: id
+        updatedAt: updatedAt
+      properties:
+        created_at:
+          description: Created time
+          type: string
+        id:
+          description: Wallet ID
+          type: string
+        name:
+          description: Wallet name
+          type: string
+        uid:
+          description: External unique ID
+          type: string
+        updatedAt:
+          description: Updated time
+          type: string
+      required:
+      - id
+      - name
+      - uid
+      type: object
+    openweb3_io_waas_app_waas-openapi-server_api_dtos.Chain:
+      example:
+        icon_url: icon_url
+        symbol: symbol
+        metadata:
+          key: ""
+        updated_at: updated_at
+        need_memo: true
+        name: name
+        created_at: created_at
+        confirm_num: 0
+        id: id
+        explorer_tx_url: explorer_tx_url
+        explorer_address_url: explorer_address_url
+      properties:
+        confirm_num:
+          type: integer
+        created_at:
+          type: string
+        explorer_address_url:
+          type: string
+        explorer_tx_url:
+          type: string
+        icon_url:
+          type: string
+        id:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type: object
+        name:
+          type: string
+        need_memo:
+          type: boolean
+        symbol:
+          type: string
+        updated_at:
+          type: string
+      type: object
+    openweb3_io_waas_app_waas-openapi-server_api_dtos.FeeType:
+      enum:
+      - 0
+      type: integer
+      x-enum-varnames:
+      - Fixed
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: X-Api-Key
+      type: apiKey
+    SignatureAuth:
+      in: header
+      name: X-Signature
+      type: apiKey
+
