@@ -5,9 +5,9 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1AddressesList**](AddressesApi.md#V1AddressesList) | **Get** /api/v1/addresses | List all addresses
-[**V1WalletsCreateAddress**](AddressesApi.md#V1WalletsCreateAddress) | **Post** /api/v1/wallets/{walletId}/addresses | Get deposit address
+[**V1WalletsCreateAddress**](AddressesApi.md#V1WalletsCreateAddress) | **Post** /api/v1/wallets/{walletId}/addresses | Create deposit address
 [**V1WalletsGetDepositAddress**](AddressesApi.md#V1WalletsGetDepositAddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-[**V1WalletsListDepositAddresses**](AddressesApi.md#V1WalletsListDepositAddresses) | **Get** /api/v1/wallets/{walletId}/deposit_addresses | List deposit addresses
+[**V1WalletsListDepositAddresses**](AddressesApi.md#V1WalletsListDepositAddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List deposit addresses
 
 
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > Address V1WalletsCreateAddress(ctx, walletId).CreateAddressRequest(createAddressRequest).Execute()
 
-Get deposit address
+Create deposit address
 
 
 
@@ -105,7 +105,7 @@ import (
 
 func main() {
     walletId := "walletId_example" // string | Wallet ID
-    createAddressRequest := *openapiclient.NewCreateAddressRequest() // CreateAddressRequest | Request Body
+    createAddressRequest := *openapiclient.NewCreateAddressRequest("ChainId_example", "WalletId_example") // CreateAddressRequest | Request Body
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

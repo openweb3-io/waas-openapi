@@ -24,14 +24,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Endpoint
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class Endpoint {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -53,17 +51,9 @@ public class Endpoint {
   @SerializedName(SERIALIZED_NAME_FILTER)
   private String filter;
 
-  public static final String SERIALIZED_NAME_HEADERS = "headers";
-  @SerializedName(SERIALIZED_NAME_HEADERS)
-  private Map<String, String> headers = new HashMap<String, String>();
-
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
-
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private Map<String, Object> metadata = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
@@ -189,33 +179,6 @@ public class Endpoint {
   }
 
 
-  public Endpoint headers(Map<String, String> headers) {
-    
-    this.headers = headers;
-    return this;
-  }
-
-  public Endpoint putHeadersItem(String key, String headersItem) {
-    this.headers.put(key, headersItem);
-    return this;
-  }
-
-   /**
-   * Get headers
-   * @return headers
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public Map<String, String> getHeaders() {
-    return headers;
-  }
-
-
-  public void setHeaders(Map<String, String> headers) {
-    this.headers = headers;
-  }
-
-
   public Endpoint id(String id) {
     
     this.id = id;
@@ -235,33 +198,6 @@ public class Endpoint {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-
-  public Endpoint metadata(Map<String, Object> metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-  public Endpoint putMetadataItem(String key, Object metadataItem) {
-    this.metadata.put(key, metadataItem);
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public Map<String, Object> getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(Map<String, Object> metadata) {
-    this.metadata = metadata;
   }
 
 
@@ -324,16 +260,14 @@ public class Endpoint {
         Objects.equals(this.disabled, endpoint.disabled) &&
         Objects.equals(this.eventTypes, endpoint.eventTypes) &&
         Objects.equals(this.filter, endpoint.filter) &&
-        Objects.equals(this.headers, endpoint.headers) &&
         Objects.equals(this.id, endpoint.id) &&
-        Objects.equals(this.metadata, endpoint.metadata) &&
         Objects.equals(this.uid, endpoint.uid) &&
         Objects.equals(this.url, endpoint.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, description, disabled, eventTypes, filter, headers, id, metadata, uid, url);
+    return Objects.hash(createdAt, description, disabled, eventTypes, filter, id, uid, url);
   }
 
   @Override
@@ -345,9 +279,7 @@ public class Endpoint {
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
     sb.append("    eventTypes: ").append(toIndentedString(eventTypes)).append("\n");
     sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
-    sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");

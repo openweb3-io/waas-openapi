@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType from './Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType';
+import FeeType from './FeeType';
 
 /**
  * The Fee model module.
@@ -55,7 +55,7 @@ class Fee {
                 obj['tokenId'] = ApiClient.convertToType(data['tokenId'], 'String');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType.constructFromObject(data['type']);
+                obj['type'] = ApiClient.convertToType(data['type'], FeeType);
             }
         }
         return obj;
@@ -65,17 +65,20 @@ class Fee {
 }
 
 /**
+ * Max fee amount
  * @member {String} maxFeeAmount
  */
 Fee.prototype['maxFeeAmount'] = undefined;
 
 /**
+ * Token ID
  * @member {String} tokenId
  */
 Fee.prototype['tokenId'] = undefined;
 
 /**
- * @member {module:model/Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType} type
+ * Fee type
+ * @member {module:model/FeeType} type
  */
 Fee.prototype['type'] = undefined;
 

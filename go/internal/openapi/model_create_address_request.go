@@ -16,16 +16,20 @@ import (
 
 // CreateAddressRequest struct for CreateAddressRequest
 type CreateAddressRequest struct {
-	ChainId *string `json:"chainId,omitempty"`
-	WalletId *string `json:"walletId,omitempty"`
+	// Chain ID
+	ChainId string `json:"chainId"`
+	// Wallet ID
+	WalletId string `json:"walletId"`
 }
 
 // NewCreateAddressRequest instantiates a new CreateAddressRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAddressRequest() *CreateAddressRequest {
+func NewCreateAddressRequest(chainId string, walletId string) *CreateAddressRequest {
 	this := CreateAddressRequest{}
+	this.ChainId = chainId
+	this.WalletId = walletId
 	return &this
 }
 
@@ -37,76 +41,60 @@ func NewCreateAddressRequestWithDefaults() *CreateAddressRequest {
 	return &this
 }
 
-// GetChainId returns the ChainId field value if set, zero value otherwise.
+// GetChainId returns the ChainId field value
 func (o *CreateAddressRequest) GetChainId() string {
-	if o == nil || o.ChainId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ChainId
+
+	return o.ChainId
 }
 
-// GetChainIdOk returns a tuple with the ChainId field value if set, nil otherwise
+// GetChainIdOk returns a tuple with the ChainId field value
 // and a boolean to check if the value has been set.
 func (o *CreateAddressRequest) GetChainIdOk() (*string, bool) {
-	if o == nil || o.ChainId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.ChainId, true
+	return &o.ChainId, true
 }
 
-// HasChainId returns a boolean if a field has been set.
-func (o *CreateAddressRequest) HasChainId() bool {
-	if o != nil && o.ChainId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetChainId gets a reference to the given string and assigns it to the ChainId field.
+// SetChainId sets field value
 func (o *CreateAddressRequest) SetChainId(v string) {
-	o.ChainId = &v
+	o.ChainId = v
 }
 
-// GetWalletId returns the WalletId field value if set, zero value otherwise.
+// GetWalletId returns the WalletId field value
 func (o *CreateAddressRequest) GetWalletId() string {
-	if o == nil || o.WalletId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.WalletId
+
+	return o.WalletId
 }
 
-// GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
+// GetWalletIdOk returns a tuple with the WalletId field value
 // and a boolean to check if the value has been set.
 func (o *CreateAddressRequest) GetWalletIdOk() (*string, bool) {
-	if o == nil || o.WalletId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.WalletId, true
+	return &o.WalletId, true
 }
 
-// HasWalletId returns a boolean if a field has been set.
-func (o *CreateAddressRequest) HasWalletId() bool {
-	if o != nil && o.WalletId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWalletId gets a reference to the given string and assigns it to the WalletId field.
+// SetWalletId sets field value
 func (o *CreateAddressRequest) SetWalletId(v string) {
-	o.WalletId = &v
+	o.WalletId = v
 }
 
 func (o CreateAddressRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ChainId != nil {
+	if true {
 		toSerialize["chainId"] = o.ChainId
 	}
-	if o.WalletId != nil {
+	if true {
 		toSerialize["walletId"] = o.WalletId
 	}
 	return json.Marshal(toSerialize)

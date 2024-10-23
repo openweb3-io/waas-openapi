@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | **String** |  |  [optional]
-**transactionId** | **String** |  | 
+**status** | **String** | Transaction status |  [optional]
+**transactionId** | **String** | Transaction ID | 
 
 
 

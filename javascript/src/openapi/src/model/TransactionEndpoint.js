@@ -67,21 +67,25 @@ class TransactionEndpoint {
 }
 
 /**
+ * Address
  * @member {String} address
  */
 TransactionEndpoint.prototype['address'] = undefined;
 
 /**
+ * Amount
  * @member {String} amount
  */
 TransactionEndpoint.prototype['amount'] = undefined;
 
 /**
+ * The memo
  * @member {String} memo
  */
 TransactionEndpoint.prototype['memo'] = undefined;
 
 /**
+ * Transaction endpoint type
  * @member {String} type
  */
 TransactionEndpoint.prototype['type'] = undefined;

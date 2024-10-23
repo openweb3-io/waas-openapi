@@ -16,24 +16,43 @@ import (
 
 // Transaction struct for Transaction
 type Transaction struct {
+	// Asset ID
 	AssetId *string `json:"assetId,omitempty"`
+	// Chain
 	Chain *string `json:"chain,omitempty"`
+	// Chain ID
 	ChainId *string `json:"chainId,omitempty"`
+	// Confirmed number
 	ConfirmedNum *int32 `json:"confirmedNum,omitempty"`
+	// Created time
 	CreatedAt *string `json:"createdAt,omitempty"`
+	// Description
 	Description *string `json:"description,omitempty"`
+	// Destination
 	Destination *TransactionEndpoint `json:"destination,omitempty"`
+	// Extra
 	Extra *map[string]interface{} `json:"extra,omitempty"`
+	// Failed reason
 	FailedReason *string `json:"failedReason,omitempty"`
+	// Fee
 	Fee *Fee `json:"fee,omitempty"`
+	// Transaction hash
 	Hash *string `json:"hash,omitempty"`
+	// Transaction ID
 	Id *string `json:"id,omitempty"`
+	// Signature
 	Signature *string `json:"signature,omitempty"`
+	// Source
 	Source *TransactionEndpoint `json:"source,omitempty"`
+	// Transaction status
 	Status *string `json:"status,omitempty"`
+	// Token ID
 	TokenId *string `json:"tokenId,omitempty"`
+	// Transaction type
 	Type *TransactionType `json:"type,omitempty"`
+	// Updated time
 	UpdatedAt *string `json:"updatedAt,omitempty"`
+	// Wallet ID
 	WalletId *string `json:"walletId,omitempty"`
 }
 

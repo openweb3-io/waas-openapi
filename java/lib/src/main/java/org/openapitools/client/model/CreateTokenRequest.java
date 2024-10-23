@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreateTokenRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class CreateTokenRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -45,11 +45,11 @@ public class CreateTokenRequest {
   }
 
    /**
-   * Get name
+   * Token name
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Token name")
 
   public String getName() {
     return name;
@@ -68,11 +68,11 @@ public class CreateTokenRequest {
   }
 
    /**
-   * Get uid
+   * Unique ID
    * @return uid
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Unique ID")
 
   public String getUid() {
     return uid;

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MaxFeeAmount** | Pointer to **string** |  | [optional] 
-**TokenId** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to [**Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType**](Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType.md) |  | [optional] 
+**MaxFeeAmount** | Pointer to **string** | Max fee amount | [optional] 
+**TokenId** | Pointer to **string** | Token ID | [optional] 
+**Type** | Pointer to [**FeeType**](FeeType.md) | Fee type | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasTokenId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Fee) GetType() Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType`
+`func (o *Fee) GetType() FeeType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Fee) GetTypeOk() (*Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType, bool)`
+`func (o *Fee) GetTypeOk() (*FeeType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Fee) SetType(v Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType)`
+`func (o *Fee) SetType(v FeeType)`
 
 SetType sets Type field to given value.
 

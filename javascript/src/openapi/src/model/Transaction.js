@@ -69,7 +69,7 @@ class Transaction {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = TransactionEndpoint.constructFromObject(data['destination']);
+                obj['destination'] = ApiClient.convertToType(data['destination'], TransactionEndpoint);
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = ApiClient.convertToType(data['extra'], {'String': Object});
@@ -78,7 +78,7 @@ class Transaction {
                 obj['failedReason'] = ApiClient.convertToType(data['failedReason'], 'String');
             }
             if (data.hasOwnProperty('fee')) {
-                obj['fee'] = Fee.constructFromObject(data['fee']);
+                obj['fee'] = ApiClient.convertToType(data['fee'], Fee);
             }
             if (data.hasOwnProperty('hash')) {
                 obj['hash'] = ApiClient.convertToType(data['hash'], 'String');
@@ -90,7 +90,7 @@ class Transaction {
                 obj['signature'] = ApiClient.convertToType(data['signature'], 'String');
             }
             if (data.hasOwnProperty('source')) {
-                obj['source'] = TransactionEndpoint.constructFromObject(data['source']);
+                obj['source'] = ApiClient.convertToType(data['source'], TransactionEndpoint);
             }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
@@ -99,7 +99,7 @@ class Transaction {
                 obj['tokenId'] = ApiClient.convertToType(data['tokenId'], 'String');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = TransactionType.constructFromObject(data['type']);
+                obj['type'] = ApiClient.convertToType(data['type'], TransactionType);
             }
             if (data.hasOwnProperty('updatedAt')) {
                 obj['updatedAt'] = ApiClient.convertToType(data['updatedAt'], 'String');
@@ -115,96 +115,115 @@ class Transaction {
 }
 
 /**
+ * Asset ID
  * @member {String} assetId
  */
 Transaction.prototype['assetId'] = undefined;
 
 /**
+ * Chain
  * @member {String} chain
  */
 Transaction.prototype['chain'] = undefined;
 
 /**
+ * Chain ID
  * @member {String} chainId
  */
 Transaction.prototype['chainId'] = undefined;
 
 /**
+ * Confirmed number
  * @member {Number} confirmedNum
  */
 Transaction.prototype['confirmedNum'] = undefined;
 
 /**
+ * Created time
  * @member {String} createdAt
  */
 Transaction.prototype['createdAt'] = undefined;
 
 /**
+ * Description
  * @member {String} description
  */
 Transaction.prototype['description'] = undefined;
 
 /**
+ * Destination
  * @member {module:model/TransactionEndpoint} destination
  */
 Transaction.prototype['destination'] = undefined;
 
 /**
+ * Extra
  * @member {Object.<String, Object>} extra
  */
 Transaction.prototype['extra'] = undefined;
 
 /**
+ * Failed reason
  * @member {String} failedReason
  */
 Transaction.prototype['failedReason'] = undefined;
 
 /**
+ * Fee
  * @member {module:model/Fee} fee
  */
 Transaction.prototype['fee'] = undefined;
 
 /**
+ * Transaction hash
  * @member {String} hash
  */
 Transaction.prototype['hash'] = undefined;
 
 /**
+ * Transaction ID
  * @member {String} id
  */
 Transaction.prototype['id'] = undefined;
 
 /**
+ * Signature
  * @member {String} signature
  */
 Transaction.prototype['signature'] = undefined;
 
 /**
+ * Source
  * @member {module:model/TransactionEndpoint} source
  */
 Transaction.prototype['source'] = undefined;
 
 /**
+ * Transaction status
  * @member {String} status
  */
 Transaction.prototype['status'] = undefined;
 
 /**
+ * Token ID
  * @member {String} tokenId
  */
 Transaction.prototype['tokenId'] = undefined;
 
 /**
+ * Transaction type
  * @member {module:model/TransactionType} type
  */
 Transaction.prototype['type'] = undefined;
 
 /**
+ * Updated time
  * @member {String} updatedAt
  */
 Transaction.prototype['updatedAt'] = undefined;
 
 /**
+ * Wallet ID
  * @member {String} walletId
  */
 Transaction.prototype['walletId'] = undefined;

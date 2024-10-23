@@ -16,19 +16,19 @@ import (
 
 // Address struct for Address
 type Address struct {
-	// The blockchain address.
+	// Blockchain address
 	Address string `json:"address"`
-	// The chain name
+	// Chain name
 	Chain *string `json:"chain,omitempty"`
-	// The chain id.
+	// Chain ID
 	ChainId *string `json:"chain_id,omitempty"`
-	// The creation time
+	// Created time
 	CreatedAt *string `json:"created_at,omitempty"`
-	// The memo.
+	// The memo
 	Memo *string `json:"memo,omitempty"`
-	// The derivation path.
+	// Derivation path
 	Path *string `json:"path,omitempty"`
-	// The update time
+	// Updated time
 	UpdatedAt *string `json:"updated_at,omitempty"`
 }
 

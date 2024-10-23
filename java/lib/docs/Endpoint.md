@@ -12,9 +12,7 @@ Name | Type | Description | Notes
 **disabled** | **Boolean** |  | 
 **eventTypes** | **List&lt;String&gt;** |  | 
 **filter** | **String** |  | 
-**headers** | **Map&lt;String, String&gt;** |  | 
 **id** | **String** |  | 
-**metadata** | **Map&lt;String, Object&gt;** |  | 
 **uid** | **String** |  |  [optional]
 **url** | **String** |  | 
 

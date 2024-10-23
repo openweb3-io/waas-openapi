@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChainId** | Pointer to **string** |  | [optional] 
-**WalletId** | Pointer to **string** |  | [optional] 
+**ChainId** | **string** | Chain ID | 
+**WalletId** | **string** | Wallet ID | 
 
 ## Methods
 
 ### NewCreateAddressRequest
 
-`func NewCreateAddressRequest() *CreateAddressRequest`
+`func NewCreateAddressRequest(chainId string, walletId string, ) *CreateAddressRequest`
 
 NewCreateAddressRequest instantiates a new CreateAddressRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetChainId sets ChainId field to given value.
 
-### HasChainId
-
-`func (o *CreateAddressRequest) HasChainId() bool`
-
-HasChainId returns a boolean if a field has been set.
 
 ### GetWalletId
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetWalletId sets WalletId field to given value.
 
-### HasWalletId
-
-`func (o *CreateAddressRequest) HasWalletId() bool`
-
-HasWalletId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -9,9 +9,7 @@ Name | Type | Description | Notes
 **Disabled** | **bool** |  | 
 **EventTypes** | **[]string** |  | 
 **Filter** | **string** |  | 
-**Headers** | **map[string]string** |  | 
 **Id** | **string** |  | 
-**Metadata** | **map[string]interface{}** |  | 
 **Uid** | Pointer to **string** |  | [optional] 
 **Url** | **string** |  | 
 
@@ -19,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewEndpoint
 
-`func NewEndpoint(createdAt string, description string, disabled bool, eventTypes []string, filter string, headers map[string]string, id string, metadata map[string]interface{}, url string, ) *Endpoint`
+`func NewEndpoint(createdAt string, description string, disabled bool, eventTypes []string, filter string, id string, url string, ) *Endpoint`
 
 NewEndpoint instantiates a new Endpoint object
 This constructor will assign default values to properties that have it defined,
@@ -134,26 +132,6 @@ and a boolean to check if the value has been set.
 SetFilter sets Filter field to given value.
 
 
-### GetHeaders
-
-`func (o *Endpoint) GetHeaders() map[string]string`
-
-GetHeaders returns the Headers field if non-nil, zero value otherwise.
-
-### GetHeadersOk
-
-`func (o *Endpoint) GetHeadersOk() (*map[string]string, bool)`
-
-GetHeadersOk returns a tuple with the Headers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHeaders
-
-`func (o *Endpoint) SetHeaders(v map[string]string)`
-
-SetHeaders sets Headers field to given value.
-
-
 ### GetId
 
 `func (o *Endpoint) GetId() string`
@@ -172,26 +150,6 @@ and a boolean to check if the value has been set.
 `func (o *Endpoint) SetId(v string)`
 
 SetId sets Id field to given value.
-
-
-### GetMetadata
-
-`func (o *Endpoint) GetMetadata() map[string]interface{}`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *Endpoint) GetMetadataOk() (*map[string]interface{}, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *Endpoint) SetMetadata(v map[string]interface{})`
-
-SetMetadata sets Metadata field to given value.
 
 
 ### GetUid

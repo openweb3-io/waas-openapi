@@ -27,14 +27,12 @@ class Endpoint {
      * @param disabled {Boolean} 
      * @param eventTypes {Array.<String>} 
      * @param filter {String} 
-     * @param headers {Object.<String, String>} 
      * @param id {String} 
-     * @param metadata {Object.<String, Object>} 
      * @param url {String} 
      */
-    constructor(createdAt, description, disabled, eventTypes, filter, headers, id, metadata, url) { 
+    constructor(createdAt, description, disabled, eventTypes, filter, id, url) { 
         
-        Endpoint.initialize(this, createdAt, description, disabled, eventTypes, filter, headers, id, metadata, url);
+        Endpoint.initialize(this, createdAt, description, disabled, eventTypes, filter, id, url);
     }
 
     /**
@@ -42,15 +40,13 @@ class Endpoint {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, createdAt, description, disabled, eventTypes, filter, headers, id, metadata, url) { 
+    static initialize(obj, createdAt, description, disabled, eventTypes, filter, id, url) { 
         obj['createdAt'] = createdAt;
         obj['description'] = description;
         obj['disabled'] = disabled;
         obj['eventTypes'] = eventTypes;
         obj['filter'] = filter;
-        obj['headers'] = headers;
         obj['id'] = id;
-        obj['metadata'] = metadata;
         obj['url'] = url;
     }
 
@@ -80,14 +76,8 @@ class Endpoint {
             if (data.hasOwnProperty('filter')) {
                 obj['filter'] = ApiClient.convertToType(data['filter'], 'String');
             }
-            if (data.hasOwnProperty('headers')) {
-                obj['headers'] = ApiClient.convertToType(data['headers'], {'String': 'String'});
-            }
             if (data.hasOwnProperty('id')) {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
-            }
-            if (data.hasOwnProperty('metadata')) {
-                obj['metadata'] = ApiClient.convertToType(data['metadata'], {'String': Object});
             }
             if (data.hasOwnProperty('uid')) {
                 obj['uid'] = ApiClient.convertToType(data['uid'], 'String');
@@ -128,19 +118,9 @@ Endpoint.prototype['eventTypes'] = undefined;
 Endpoint.prototype['filter'] = undefined;
 
 /**
- * @member {Object.<String, String>} headers
- */
-Endpoint.prototype['headers'] = undefined;
-
-/**
  * @member {String} id
  */
 Endpoint.prototype['id'] = undefined;
-
-/**
- * @member {Object.<String, Object>} metadata
- */
-Endpoint.prototype['metadata'] = undefined;
 
 /**
  * @member {String} uid

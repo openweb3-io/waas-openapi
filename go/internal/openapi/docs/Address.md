@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | The blockchain address. | 
-**Chain** | Pointer to **string** | The chain name | [optional] 
-**ChainId** | Pointer to **string** | The chain id. | [optional] 
-**CreatedAt** | Pointer to **string** | The creation time | [optional] 
-**Memo** | Pointer to **string** | The memo. | [optional] 
-**Path** | Pointer to **string** | The derivation path. | [optional] 
-**UpdatedAt** | Pointer to **string** | The update time | [optional] 
+**Address** | **string** | Blockchain address | 
+**Chain** | Pointer to **string** | Chain name | [optional] 
+**ChainId** | Pointer to **string** | Chain ID | [optional] 
+**CreatedAt** | Pointer to **string** | Created time | [optional] 
+**Memo** | Pointer to **string** | The memo | [optional] 
+**Path** | Pointer to **string** | Derivation path | [optional] 
+**UpdatedAt** | Pointer to **string** | Updated time | [optional] 
 
 ## Methods
 

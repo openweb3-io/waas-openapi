@@ -195,7 +195,7 @@ public class WebhookEndpointsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/webhooks//endpoints/{endpointId}"
+        String localVarPath = "/api/v1/webhooks/endpoints/{endpointId}"
             .replaceAll("\\{" + "endpointId" + "\\}", localVarApiClient.escapeString(endpointId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -300,7 +300,7 @@ public class WebhookEndpointsApi {
     /**
      * Build call for v1WebhooksList
      * @param cursor  (optional)
-     * @param limit  (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -363,7 +363,7 @@ public class WebhookEndpointsApi {
      * List webhook endpoints
      * List webhook endpoints
      * @param cursor  (optional)
-     * @param limit  (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @return CursorPageEndpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -383,7 +383,7 @@ public class WebhookEndpointsApi {
      * List webhook endpoints
      * List webhook endpoints
      * @param cursor  (optional)
-     * @param limit  (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @return ApiResponse&lt;CursorPageEndpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -404,7 +404,7 @@ public class WebhookEndpointsApi {
      * List webhook endpoints (asynchronously)
      * List webhook endpoints
      * @param cursor  (optional)
-     * @param limit  (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

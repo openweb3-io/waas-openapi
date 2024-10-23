@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreateAddressRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class CreateAddressRequest {
   public static final String SERIALIZED_NAME_CHAIN_ID = "chainId";
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)
@@ -45,11 +45,10 @@ public class CreateAddressRequest {
   }
 
    /**
-   * Get chainId
+   * Chain ID
    * @return chainId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Chain ID")
 
   public String getChainId() {
     return chainId;
@@ -68,11 +67,10 @@ public class CreateAddressRequest {
   }
 
    /**
-   * Get walletId
+   * Wallet ID
    * @return walletId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Wallet ID")
 
   public String getWalletId() {
     return walletId;

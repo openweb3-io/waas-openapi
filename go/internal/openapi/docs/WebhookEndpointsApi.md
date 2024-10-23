@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1WebhooksCreate**](WebhookEndpointsApi.md#V1WebhooksCreate) | **Post** /api/v1/webhooks/endpoints | Create webhook endpoint
-[**V1WebhooksDelete**](WebhookEndpointsApi.md#V1WebhooksDelete) | **Delete** /api/v1/webhooks//endpoints/{endpointId} | Delete webhook endpoint
+[**V1WebhooksDelete**](WebhookEndpointsApi.md#V1WebhooksDelete) | **Delete** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
 [**V1WebhooksList**](WebhookEndpointsApi.md#V1WebhooksList) | **Get** /api/v1/endpoints | List webhook endpoints
 [**V1WebhooksRetrieve**](WebhookEndpointsApi.md#V1WebhooksRetrieve) | **Get** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
 [**V1WebhooksUpdate**](WebhookEndpointsApi.md#V1WebhooksUpdate) | **Patch** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    createEndpoint := *openapiclient.NewCreateEndpoint([]string{"EventTypes_example"}, map[string]string{"key": "Inner_example"}, map[string]interface{}{"key": interface{}(123)}, "Url_example") // CreateEndpoint | Request body
+    createEndpoint := *openapiclient.NewCreateEndpoint([]string{"EventTypes_example"}, "Url_example") // CreateEndpoint | Request body
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -170,7 +170,7 @@ import (
 
 func main() {
     cursor := "cursor_example" // string |  (optional)
-    limit := int32(56) // int32 |  (optional)
+    limit := int32(56) // int32 | The number of records to return default: 20 (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -196,7 +196,7 @@ Other parameters are passed through a pointer to a apiV1WebhooksListRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **string** |  | 
- **limit** | **int32** |  | 
+ **limit** | **int32** | The number of records to return default: 20 | 
 
 ### Return type
 
@@ -308,7 +308,7 @@ import (
 
 func main() {
     endpointId := "endpointId_example" // string | Endpoint ID
-    updateEndpoint := *openapiclient.NewUpdateEndpoint([]string{"EventTypes_example"}, map[string]string{"key": "Inner_example"}, map[string]interface{}{"key": interface{}(123)}) // UpdateEndpoint | Request body
+    updateEndpoint := *openapiclient.NewUpdateEndpoint([]string{"EventTypes_example"}) // UpdateEndpoint | Request body
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

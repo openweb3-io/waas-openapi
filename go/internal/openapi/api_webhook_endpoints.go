@@ -231,7 +231,7 @@ func (a *WebhookEndpointsApiService) V1WebhooksDeleteExecute(r ApiV1WebhooksDele
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/webhooks//endpoints/{endpointId}"
+	localVarPath := localBasePath + "/api/v1/webhooks/endpoints/{endpointId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", _neturl.PathEscape(parameterToString(r.endpointId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

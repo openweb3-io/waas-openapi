@@ -117,7 +117,7 @@ export default class WebhookEndpointsApi {
       let accepts = ['application/json'];
       let returnType = Endpoint;
       return this.apiClient.callApi(
-        '/api/v1/webhooks//endpoints/{endpointId}', 'DELETE',
+        '/api/v1/webhooks/endpoints/{endpointId}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -136,7 +136,7 @@ export default class WebhookEndpointsApi {
      * List webhook endpoints
      * @param {Object} opts Optional parameters
      * @param {String} opts.cursor 
-     * @param {Number} opts.limit 
+     * @param {Number} opts.limit The number of records to return default: 20
      * @param {module:api/WebhookEndpointsApi~v1WebhooksListCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageEndpoint}
      */

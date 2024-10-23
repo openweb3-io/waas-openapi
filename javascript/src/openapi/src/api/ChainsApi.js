@@ -13,9 +13,9 @@
 
 
 import ApiClient from "../ApiClient";
-import CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain from '../model/CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain';
+import Chain from '../model/Chain';
+import CursorPageChain from '../model/CursorPageChain';
 import Error from '../model/Error';
-import Openweb3IoWaasAppWaasOpenapiServerApiDtosChain from '../model/Openweb3IoWaasAppWaasOpenapiServerApiDtosChain';
 
 /**
 * Chains service.
@@ -40,7 +40,7 @@ export default class ChainsApi {
      * Callback function to receive the result of the v1ChainsList operation.
      * @callback module:api/ChainsApi~v1ChainsListCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain} data The data returned by the service call.
+     * @param {module:model/CursorPageChain} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -48,10 +48,10 @@ export default class ChainsApi {
      * List all chains
      * List of all available chains.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.cursor 
-     * @param {Number} opts.limit 
+     * @param {String} opts.cursor Cursor
+     * @param {Number} opts.limit The number of records to return default: 20
      * @param {module:api/ChainsApi~v1ChainsListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain}
+     * data is of type: {@link module:model/CursorPageChain}
      */
     v1ChainsList(opts, callback) {
       opts = opts || {};
@@ -71,7 +71,7 @@ export default class ChainsApi {
       let authNames = ['ApiKeyAuth', 'SignatureAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain;
+      let returnType = CursorPageChain;
       return this.apiClient.callApi(
         '/api/v1/chains', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -83,7 +83,7 @@ export default class ChainsApi {
      * Callback function to receive the result of the v1ChainsRetrieve operation.
      * @callback module:api/ChainsApi~v1ChainsRetrieveCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/Openweb3IoWaasAppWaasOpenapiServerApiDtosChain} data The data returned by the service call.
+     * @param {module:model/Chain} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -92,7 +92,7 @@ export default class ChainsApi {
      * Retrieve chain information.
      * @param {String} id Chain ID
      * @param {module:api/ChainsApi~v1ChainsRetrieveCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Openweb3IoWaasAppWaasOpenapiServerApiDtosChain}
+     * data is of type: {@link module:model/Chain}
      */
     v1ChainsRetrieve(id, callback) {
       let postBody = null;
@@ -114,7 +114,7 @@ export default class ChainsApi {
       let authNames = ['ApiKeyAuth', 'SignatureAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = Openweb3IoWaasAppWaasOpenapiServerApiDtosChain;
+      let returnType = Chain;
       return this.apiClient.callApi(
         '/api/v1/chains/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

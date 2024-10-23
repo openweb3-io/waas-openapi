@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1WebhooksCreate**](WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
-[**v1WebhooksDelete**](WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks//endpoints/{endpointId} | Delete webhook endpoint
+[**v1WebhooksDelete**](WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
 [**v1WebhooksList**](WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints
 [**v1WebhooksRetrieve**](WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
 [**v1WebhooksUpdate**](WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
@@ -202,7 +202,7 @@ public class Example {
 
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     String cursor = "cursor_example"; // String | 
-    Integer limit = 56; // Integer | 
+    Integer limit = 56; // Integer | The number of records to return default: 20
     try {
       CursorPageEndpoint result = apiInstance.v1WebhooksList(cursor, limit);
       System.out.println(result);
@@ -222,7 +222,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **String**|  | [optional]
- **limit** | **Integer**|  | [optional]
+ **limit** | **Integer**| The number of records to return default: 20 | [optional]
 
 ### Return type
 

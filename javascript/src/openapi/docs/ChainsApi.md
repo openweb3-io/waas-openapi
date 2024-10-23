@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## v1ChainsList
 
-> CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain v1ChainsList(opts)
+> CursorPageChain v1ChainsList(opts)
 
 List all chains
 
@@ -35,8 +35,8 @@ SignatureAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WaaSOpenApiDocumentation.ChainsApi();
 let opts = {
-  'cursor': "cursor_example", // String | 
-  'limit': 56 // Number | 
+  'cursor': "cursor_example", // String | Cursor
+  'limit': 56 // Number | The number of records to return default: 20
 };
 apiInstance.v1ChainsList(opts, (error, data, response) => {
   if (error) {
@@ -52,12 +52,12 @@ apiInstance.v1ChainsList(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cursor** | **String**|  | [optional] 
- **limit** | **Number**|  | [optional] 
+ **cursor** | **String**| Cursor | [optional] 
+ **limit** | **Number**| The number of records to return default: 20 | [optional] 
 
 ### Return type
 
-[**CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain**](CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
+[**CursorPageChain**](CursorPageChain.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ## v1ChainsRetrieve
 
-> Openweb3IoWaasAppWaasOpenapiServerApiDtosChain v1ChainsRetrieve(id)
+> Chain v1ChainsRetrieve(id)
 
 Retrieve chain
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Openweb3IoWaasAppWaasOpenapiServerApiDtosChain**](Openweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
+[**Chain**](Chain.md)
 
 ### Authorization
 

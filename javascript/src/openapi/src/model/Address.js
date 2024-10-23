@@ -22,7 +22,7 @@ class Address {
     /**
      * Constructs a new <code>Address</code>.
      * @alias module:model/Address
-     * @param address {String} The blockchain address.
+     * @param address {String} Blockchain address
      */
     constructor(address) { 
         
@@ -78,43 +78,43 @@ class Address {
 }
 
 /**
- * The blockchain address.
+ * Blockchain address
  * @member {String} address
  */
 Address.prototype['address'] = undefined;
 
 /**
- * The chain name
+ * Chain name
  * @member {String} chain
  */
 Address.prototype['chain'] = undefined;
 
 /**
- * The chain id.
+ * Chain ID
  * @member {String} chain_id
  */
 Address.prototype['chain_id'] = undefined;
 
 /**
- * The creation time
+ * Created time
  * @member {String} created_at
  */
 Address.prototype['created_at'] = undefined;
 
 /**
- * The memo.
+ * The memo
  * @member {String} memo
  */
 Address.prototype['memo'] = undefined;
 
 /**
- * The derivation path.
+ * Derivation path
  * @member {String} path
  */
 Address.prototype['path'] = undefined;
 
 /**
- * The update time
+ * Updated time
  * @member {String} updated_at
  */
 Address.prototype['updated_at'] = undefined;

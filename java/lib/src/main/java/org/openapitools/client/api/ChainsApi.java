@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain;
+import org.openapitools.client.model.Chain;
+import org.openapitools.client.model.CursorPageChain;
 import org.openapitools.client.model.Error;
-import org.openapitools.client.model.Openweb3IoWaasAppWaasOpenapiServerApiDtosChain;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -58,8 +58,8 @@ public class ChainsApi {
 
     /**
      * Build call for v1ChainsList
-     * @param cursor  (optional)
-     * @param limit  (optional)
+     * @param cursor Cursor (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -123,9 +123,9 @@ public class ChainsApi {
     /**
      * List all chains
      * List of all available chains.
-     * @param cursor  (optional)
-     * @param limit  (optional)
-     * @return CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain
+     * @param cursor Cursor (optional)
+     * @param limit The number of records to return default: 20 (optional)
+     * @return CursorPageChain
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -137,17 +137,17 @@ public class ChainsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain v1ChainsList(String cursor, Integer limit) throws ApiException {
-        ApiResponse<CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain> localVarResp = v1ChainsListWithHttpInfo(cursor, limit);
+    public CursorPageChain v1ChainsList(String cursor, Integer limit) throws ApiException {
+        ApiResponse<CursorPageChain> localVarResp = v1ChainsListWithHttpInfo(cursor, limit);
         return localVarResp.getData();
     }
 
     /**
      * List all chains
      * List of all available chains.
-     * @param cursor  (optional)
-     * @param limit  (optional)
-     * @return ApiResponse&lt;CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain&gt;
+     * @param cursor Cursor (optional)
+     * @param limit The number of records to return default: 20 (optional)
+     * @return ApiResponse&lt;CursorPageChain&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -159,17 +159,17 @@ public class ChainsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain> v1ChainsListWithHttpInfo(String cursor, Integer limit) throws ApiException {
+    public ApiResponse<CursorPageChain> v1ChainsListWithHttpInfo(String cursor, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = v1ChainsListValidateBeforeCall(cursor, limit, null);
-        Type localVarReturnType = new TypeToken<CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain>(){}.getType();
+        Type localVarReturnType = new TypeToken<CursorPageChain>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List all chains (asynchronously)
      * List of all available chains.
-     * @param cursor  (optional)
-     * @param limit  (optional)
+     * @param cursor Cursor (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -183,10 +183,10 @@ public class ChainsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1ChainsListAsync(String cursor, Integer limit, final ApiCallback<CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain> _callback) throws ApiException {
+    public okhttp3.Call v1ChainsListAsync(String cursor, Integer limit, final ApiCallback<CursorPageChain> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = v1ChainsListValidateBeforeCall(cursor, limit, _callback);
-        Type localVarReturnType = new TypeToken<CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain>(){}.getType();
+        Type localVarReturnType = new TypeToken<CursorPageChain>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -255,7 +255,7 @@ public class ChainsApi {
      * Retrieve chain
      * Retrieve chain information.
      * @param id Chain ID (required)
-     * @return Openweb3IoWaasAppWaasOpenapiServerApiDtosChain
+     * @return Chain
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -267,8 +267,8 @@ public class ChainsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Openweb3IoWaasAppWaasOpenapiServerApiDtosChain v1ChainsRetrieve(String id) throws ApiException {
-        ApiResponse<Openweb3IoWaasAppWaasOpenapiServerApiDtosChain> localVarResp = v1ChainsRetrieveWithHttpInfo(id);
+    public Chain v1ChainsRetrieve(String id) throws ApiException {
+        ApiResponse<Chain> localVarResp = v1ChainsRetrieveWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -276,7 +276,7 @@ public class ChainsApi {
      * Retrieve chain
      * Retrieve chain information.
      * @param id Chain ID (required)
-     * @return ApiResponse&lt;Openweb3IoWaasAppWaasOpenapiServerApiDtosChain&gt;
+     * @return ApiResponse&lt;Chain&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -288,9 +288,9 @@ public class ChainsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Openweb3IoWaasAppWaasOpenapiServerApiDtosChain> v1ChainsRetrieveWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<Chain> v1ChainsRetrieveWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = v1ChainsRetrieveValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Openweb3IoWaasAppWaasOpenapiServerApiDtosChain>(){}.getType();
+        Type localVarReturnType = new TypeToken<Chain>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -311,10 +311,10 @@ public class ChainsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1ChainsRetrieveAsync(String id, final ApiCallback<Openweb3IoWaasAppWaasOpenapiServerApiDtosChain> _callback) throws ApiException {
+    public okhttp3.Call v1ChainsRetrieveAsync(String id, final ApiCallback<Chain> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = v1ChainsRetrieveValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Openweb3IoWaasAppWaasOpenapiServerApiDtosChain>(){}.getType();
+        Type localVarReturnType = new TypeToken<Chain>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

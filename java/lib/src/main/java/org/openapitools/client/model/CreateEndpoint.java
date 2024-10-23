@@ -24,14 +24,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * CreateEndpoint
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class CreateEndpoint {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -44,14 +42,6 @@ public class CreateEndpoint {
   public static final String SERIALIZED_NAME_EVENT_TYPES = "eventTypes";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPES)
   private List<String> eventTypes = new ArrayList<String>();
-
-  public static final String SERIALIZED_NAME_HEADERS = "headers";
-  @SerializedName(SERIALIZED_NAME_HEADERS)
-  private Map<String, String> headers = new HashMap<String, String>();
-
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private Map<String, Object> metadata = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
@@ -135,60 +125,6 @@ public class CreateEndpoint {
   }
 
 
-  public CreateEndpoint headers(Map<String, String> headers) {
-    
-    this.headers = headers;
-    return this;
-  }
-
-  public CreateEndpoint putHeadersItem(String key, String headersItem) {
-    this.headers.put(key, headersItem);
-    return this;
-  }
-
-   /**
-   * The headers of the endpoint
-   * @return headers
-  **/
-  @ApiModelProperty(required = true, value = "The headers of the endpoint")
-
-  public Map<String, String> getHeaders() {
-    return headers;
-  }
-
-
-  public void setHeaders(Map<String, String> headers) {
-    this.headers = headers;
-  }
-
-
-  public CreateEndpoint metadata(Map<String, Object> metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-  public CreateEndpoint putMetadataItem(String key, Object metadataItem) {
-    this.metadata.put(key, metadataItem);
-    return this;
-  }
-
-   /**
-   * The metadata of the endpoint
-   * @return metadata
-  **/
-  @ApiModelProperty(required = true, value = "The metadata of the endpoint")
-
-  public Map<String, Object> getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(Map<String, Object> metadata) {
-    this.metadata = metadata;
-  }
-
-
   public CreateEndpoint uid(String uid) {
     
     this.uid = uid;
@@ -246,15 +182,13 @@ public class CreateEndpoint {
     return Objects.equals(this.description, createEndpoint.description) &&
         Objects.equals(this.disabled, createEndpoint.disabled) &&
         Objects.equals(this.eventTypes, createEndpoint.eventTypes) &&
-        Objects.equals(this.headers, createEndpoint.headers) &&
-        Objects.equals(this.metadata, createEndpoint.metadata) &&
         Objects.equals(this.uid, createEndpoint.uid) &&
         Objects.equals(this.url, createEndpoint.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, disabled, eventTypes, headers, metadata, uid, url);
+    return Objects.hash(description, disabled, eventTypes, uid, url);
   }
 
   @Override
@@ -264,8 +198,6 @@ public class CreateEndpoint {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
     sb.append("    eventTypes: ").append(toIndentedString(eventTypes)).append("\n");
-    sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");

@@ -4,8 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1TokensCreate**](TokensApi.md#V1TokensCreate) | **Get** /api/v1/tokens | Create token
+[**V1TokensCreate**](TokensApi.md#V1TokensCreate) | **Post** /api/v1/tokens | Create token
+[**V1TokensList**](TokensApi.md#V1TokensList) | **Get** /api/v1/tokens | List tokens
 [**V1TokensRetrieve**](TokensApi.md#V1TokensRetrieve) | **Get** /api/v1/tokens/{id} | Get Token
+[**V1TokensUpdate**](TokensApi.md#V1TokensUpdate) | **Patch** /api/v1/tokens/{tokenId} | Update token
 
 
 
@@ -68,6 +70,74 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1TokensList
+
+> CursorPageToken V1TokensList(ctx).Cursor(cursor).Limit(limit).Execute()
+
+List tokens
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    cursor := "cursor_example" // string | Cursor (optional)
+    limit := int32(56) // int32 | The number of records to return default: 20 (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.TokensApi.V1TokensList(context.Background()).Cursor(cursor).Limit(limit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.V1TokensList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `V1TokensList`: CursorPageToken
+    fmt.Fprintf(os.Stdout, "Response from `TokensApi.V1TokensList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1TokensListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cursor** | **string** | Cursor | 
+ **limit** | **int32** | The number of records to return default: 20 | 
+
+### Return type
+
+[**CursorPageToken**](CursorPageToken.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -138,6 +208,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1TokensUpdate
+
+> Token V1TokensUpdate(ctx, tokenId).UpdateTokenRequest(updateTokenRequest).Execute()
+
+Update token
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tokenId := "tokenId_example" // string | Token ID
+    updateTokenRequest := *openapiclient.NewUpdateTokenRequest() // UpdateTokenRequest | Request Body
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.TokensApi.V1TokensUpdate(context.Background(), tokenId).UpdateTokenRequest(updateTokenRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.V1TokensUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `V1TokensUpdate`: Token
+    fmt.Fprintf(os.Stdout, "Response from `TokensApi.V1TokensUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tokenId** | **string** | Token ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1TokensUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **updateTokenRequest** | [**UpdateTokenRequest**](UpdateTokenRequest.md) | Request Body | 
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

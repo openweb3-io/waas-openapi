@@ -14,8 +14,10 @@
 
 import ApiClient from "../ApiClient";
 import CreateTokenRequest from '../model/CreateTokenRequest';
+import CursorPageToken from '../model/CursorPageToken';
 import Error from '../model/Error';
 import Token from '../model/Token';
+import UpdateTokenRequest from '../model/UpdateTokenRequest';
 
 /**
 * Tokens service.
@@ -72,6 +74,49 @@ export default class TokensApi {
       let accepts = ['application/json'];
       let returnType = Token;
       return this.apiClient.callApi(
+        '/api/v1/tokens', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the v1TokensList operation.
+     * @callback module:api/TokensApi~v1TokensListCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CursorPageToken} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List tokens
+     * Retrieve a list of all tokens.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.cursor Cursor
+     * @param {Number} opts.limit The number of records to return default: 20
+     * @param {module:api/TokensApi~v1TokensListCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CursorPageToken}
+     */
+    v1TokensList(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'cursor': opts['cursor'],
+        'limit': opts['limit']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CursorPageToken;
+      return this.apiClient.callApi(
         '/api/v1/tokens', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
@@ -116,6 +161,54 @@ export default class TokensApi {
       let returnType = Token;
       return this.apiClient.callApi(
         '/api/v1/tokens/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the v1TokensUpdate operation.
+     * @callback module:api/TokensApi~v1TokensUpdateCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Token} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Update token
+     * Update a tokens.
+     * @param {String} tokenId Token ID
+     * @param {module:model/UpdateTokenRequest} updateTokenRequest Request Body
+     * @param {module:api/TokensApi~v1TokensUpdateCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Token}
+     */
+    v1TokensUpdate(tokenId, updateTokenRequest, callback) {
+      let postBody = updateTokenRequest;
+      // verify the required parameter 'tokenId' is set
+      if (tokenId === undefined || tokenId === null) {
+        throw new Error("Missing the required parameter 'tokenId' when calling v1TokensUpdate");
+      }
+      // verify the required parameter 'updateTokenRequest' is set
+      if (updateTokenRequest === undefined || updateTokenRequest === null) {
+        throw new Error("Missing the required parameter 'updateTokenRequest' when calling v1TokensUpdate");
+      }
+
+      let pathParams = {
+        'tokenId': tokenId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = Token;
+      return this.apiClient.callApi(
+        '/api/v1/tokens/{tokenId}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

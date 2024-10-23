@@ -16,9 +16,12 @@ import (
 
 // Fee struct for Fee
 type Fee struct {
+	// Max fee amount
 	MaxFeeAmount *string `json:"maxFeeAmount,omitempty"`
+	// Token ID
 	TokenId *string `json:"tokenId,omitempty"`
-	Type *Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType `json:"type,omitempty"`
+	// Fee type
+	Type *FeeType `json:"type,omitempty"`
 }
 
 // NewFee instantiates a new Fee object
@@ -103,9 +106,9 @@ func (o *Fee) SetTokenId(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Fee) GetType() Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType {
+func (o *Fee) GetType() FeeType {
 	if o == nil || o.Type == nil {
-		var ret Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType
+		var ret FeeType
 		return ret
 	}
 	return *o.Type
@@ -113,7 +116,7 @@ func (o *Fee) GetType() Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Fee) GetTypeOk() (*Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType, bool) {
+func (o *Fee) GetTypeOk() (*FeeType, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -129,8 +132,8 @@ func (o *Fee) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType and assigns it to the Type field.
-func (o *Fee) SetType(v Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType) {
+// SetType gets a reference to the given FeeType and assigns it to the Type field.
+func (o *Fee) SetType(v FeeType) {
 	o.Type = &v
 }
 

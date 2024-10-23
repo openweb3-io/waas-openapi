@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreateTransferResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class CreateTransferResponse {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -45,11 +45,11 @@ public class CreateTransferResponse {
   }
 
    /**
-   * Get status
+   * Transaction status
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Transaction status")
 
   public String getStatus() {
     return status;
@@ -68,10 +68,10 @@ public class CreateTransferResponse {
   }
 
    /**
-   * Get transactionId
+   * Transaction ID
    * @return transactionId
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "Transaction ID")
 
   public String getTransactionId() {
     return transactionId;

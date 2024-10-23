@@ -19,7 +19,7 @@
                 ],
                 "description": "List of all available addresses.",
                 "tags": [
-                    "addresses"
+                    "Addresses"
                 ],
                 "summary": "List all addresses",
                 "operationId": "v1.addresses.list",
@@ -133,12 +133,13 @@
                 ],
                 "description": "List of all available chains.",
                 "tags": [
-                    "chains"
+                    "Chains"
                 ],
                 "summary": "List all chains",
                 "operationId": "v1.chains.list",
                 "parameters": [
                     {
+                        "description": "Cursor",
                         "name": "cursor",
                         "in": "query",
                         "schema": {
@@ -146,6 +147,7 @@
                         }
                     },
                     {
+                        "description": "The number of records to return default: 20",
                         "name": "limit",
                         "in": "query",
                         "schema": {
@@ -159,7 +161,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/CursorPage-openweb3_io_waas_app_waas-openapi-server_api_dtos_Chain"
+                                    "$ref": "#/components/schemas/CursorPage-Chain"
                                 }
                             }
                         }
@@ -219,7 +221,7 @@
                 ],
                 "description": "Retrieve chain information.",
                 "tags": [
-                    "chains"
+                    "Chains"
                 ],
                 "summary": "Retrieve chain",
                 "operationId": "v1.chains.retrieve",
@@ -240,7 +242,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/openweb3_io_waas_app_waas-openapi-server_api_dtos.Chain"
+                                    "$ref": "#/components/schemas/Chain"
                                 }
                             }
                         }
@@ -300,7 +302,7 @@
                 ],
                 "description": "List webhook endpoints",
                 "tags": [
-                    "webhook endpoints"
+                    "Webhook endpoints"
                 ],
                 "summary": "List webhook endpoints",
                 "operationId": "v1.webhooks.list",
@@ -313,6 +315,7 @@
                         }
                     },
                     {
+                        "description": "The number of records to return default: 20",
                         "name": "limit",
                         "in": "query",
                         "schema": {
@@ -364,9 +367,95 @@
                         "SignatureAuth": []
                     }
                 ],
+                "description": "Retrieve a list of all tokens.",
+                "tags": [
+                    "Tokens"
+                ],
+                "summary": "List tokens",
+                "operationId": "v1.tokens.list",
+                "parameters": [
+                    {
+                        "description": "Cursor",
+                        "name": "cursor",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "The number of records to return default: 20",
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CursorPage-Token"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "SignatureAuth": []
+                    }
+                ],
                 "description": "Create a tokens.",
                 "tags": [
-                    "tokens"
+                    "Tokens"
                 ],
                 "summary": "Create token",
                 "operationId": "v1.tokens.create",
@@ -447,7 +536,7 @@
                 ],
                 "description": "Get token info by ID",
                 "tags": [
-                    "tokens"
+                    "Tokens"
                 ],
                 "summary": "Get Token",
                 "operationId": "v1.tokens.retrieve",
@@ -516,6 +605,98 @@
                 }
             }
         },
+        "/api/v1/tokens/{tokenId}": {
+            "patch": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "SignatureAuth": []
+                    }
+                ],
+                "description": "Update a tokens.",
+                "tags": [
+                    "Tokens"
+                ],
+                "summary": "Update token",
+                "operationId": "v1.tokens.update",
+                "parameters": [
+                    {
+                        "description": "Token ID",
+                        "name": "tokenId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateTokenRequest"
+                            }
+                        }
+                    },
+                    "description": "Request Body",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Token"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/transactions": {
             "get": {
                 "security": [
@@ -528,7 +709,7 @@
                 ],
                 "description": "List transactions",
                 "tags": [
-                    "transactions"
+                    "Transactions"
                 ],
                 "summary": "List transactions",
                 "operationId": "v1.transactions.list",
@@ -684,7 +865,7 @@
                 ],
                 "description": "Create a transfer transaction",
                 "tags": [
-                    "transactions"
+                    "Transactions"
                 ],
                 "summary": "Transfer token",
                 "operationId": "v1.transactions.transfer",
@@ -765,7 +946,7 @@
                 ],
                 "description": "Get a transaction by ID",
                 "tags": [
-                    "transactions"
+                    "Transactions"
                 ],
                 "summary": "Get transaction",
                 "operationId": "v1.transactions.retrieve",
@@ -846,12 +1027,13 @@
                 ],
                 "description": "List all wallets",
                 "tags": [
-                    "wallets"
+                    "Wallets"
                 ],
                 "summary": "List wallets",
                 "operationId": "v1.wallets.list",
                 "parameters": [
                     {
+                        "description": "Cursor",
                         "name": "cursor",
                         "in": "query",
                         "schema": {
@@ -859,6 +1041,7 @@
                         }
                     },
                     {
+                        "description": "The number of records to return default: 20",
                         "name": "limit",
                         "in": "query",
                         "schema": {
@@ -930,7 +1113,7 @@
                 ],
                 "description": "Create a Wallet",
                 "tags": [
-                    "wallets"
+                    "Wallets"
                 ],
                 "summary": "Create wallet",
                 "operationId": "v1.wallets.create",
@@ -1011,10 +1194,89 @@
                 ],
                 "description": "Get a wallet by ID",
                 "tags": [
-                    "wallets"
+                    "Wallets"
                 ],
                 "summary": "Get wallet",
                 "operationId": "v1.wallets.retrieve",
+                "parameters": [
+                    {
+                        "description": "Wallet ID",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wallet"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "SignatureAuth": []
+                    }
+                ],
+                "description": "Delete a Wallet",
+                "tags": [
+                    "Wallets"
+                ],
+                "summary": "Delete wallet",
+                "operationId": "v1.wallets.delete",
                 "parameters": [
                     {
                         "description": "Wallet ID",
@@ -1090,7 +1352,7 @@
                 ],
                 "description": "Update a Wallet",
                 "tags": [
-                    "wallets"
+                    "Wallets"
                 ],
                 "summary": "Update wallet",
                 "operationId": "v1.wallets.update",
@@ -1171,197 +1433,6 @@
             }
         },
         "/api/v1/wallets/{walletId}/addresses": {
-            "post": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    },
-                    {
-                        "SignatureAuth": []
-                    }
-                ],
-                "description": "Get wallet's deposit address",
-                "tags": [
-                    "addresses"
-                ],
-                "summary": "Get deposit address",
-                "operationId": "v1.wallets.createAddress",
-                "parameters": [
-                    {
-                        "description": "Wallet ID",
-                        "name": "walletId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/CreateAddressRequest"
-                            }
-                        }
-                    },
-                    "description": "Request Body",
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Address"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/wallets/{walletId}/addresses/{address}": {
-            "get": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    },
-                    {
-                        "SignatureAuth": []
-                    }
-                ],
-                "description": "Get wallet's deposit address",
-                "tags": [
-                    "addresses"
-                ],
-                "summary": "Get deposit address",
-                "operationId": "v1.wallets.getDepositAddress",
-                "parameters": [
-                    {
-                        "description": "Wallet ID",
-                        "name": "walletId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "Address",
-                        "name": "address",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "The token id used in the transaction (e.g., TON, USDT_ETH, etc.).",
-                        "name": "token_id",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Address"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Error"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/v1/wallets/{walletId}/deposit_addresses": {
             "get": {
                 "security": [
                     {
@@ -1373,7 +1444,7 @@
                 ],
                 "description": "List wallet's deposit addresses",
                 "tags": [
-                    "addresses"
+                    "Addresses"
                 ],
                 "summary": "List deposit addresses",
                 "operationId": "v1.wallets.listDepositAddresses",
@@ -1469,10 +1540,8 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/v1/webhooks//endpoints/{endpointId}": {
-            "delete": {
+            },
+            "post": {
                 "security": [
                     {
                         "ApiKeyAuth": []
@@ -1481,17 +1550,127 @@
                         "SignatureAuth": []
                     }
                 ],
-                "description": "Delete specific webhook endpoint",
+                "description": "Create deposit address for wallet",
                 "tags": [
-                    "webhook endpoints"
+                    "Addresses"
                 ],
-                "summary": "Delete webhook endpoint",
-                "operationId": "v1.webhooks.delete",
+                "summary": "Create deposit address",
+                "operationId": "v1.wallets.createAddress",
                 "parameters": [
                     {
-                        "description": "Endpoint ID",
-                        "name": "endpointId",
+                        "description": "Wallet ID",
+                        "name": "walletId",
                         "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateAddressRequest"
+                            }
+                        }
+                    },
+                    "description": "Request Body",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/wallets/{walletId}/addresses/{address}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "SignatureAuth": []
+                    }
+                ],
+                "description": "Get wallet's deposit address",
+                "tags": [
+                    "Addresses"
+                ],
+                "summary": "Get deposit address",
+                "operationId": "v1.wallets.getDepositAddress",
+                "parameters": [
+                    {
+                        "description": "Wallet ID",
+                        "name": "walletId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "Address",
+                        "name": "address",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "The token id used in the transaction (e.g., TON, USDT_ETH, etc.).",
+                        "name": "token_id",
+                        "in": "query",
                         "required": true,
                         "schema": {
                             "type": "string"
@@ -1504,13 +1683,33 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Endpoint"
+                                    "$ref": "#/components/schemas/Address"
                                 }
                             }
                         }
                     },
                     "400": {
                         "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1544,7 +1743,7 @@
                 ],
                 "description": "Create a webhook endpoint",
                 "tags": [
-                    "webhook endpoints"
+                    "Webhook endpoints"
                 ],
                 "summary": "Create webhook endpoint",
                 "operationId": "v1.webhooks.create",
@@ -1605,7 +1804,7 @@
                 ],
                 "description": "Get specific webhook endpoint",
                 "tags": [
-                    "webhook endpoints"
+                    "Webhook endpoints"
                 ],
                 "summary": "Get webhook endpoint",
                 "operationId": "v1.webhooks.retrieve",
@@ -1663,6 +1862,65 @@
                     }
                 }
             },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "SignatureAuth": []
+                    }
+                ],
+                "description": "Delete specific webhook endpoint",
+                "tags": [
+                    "Webhook endpoints"
+                ],
+                "summary": "Delete webhook endpoint",
+                "operationId": "v1.webhooks.delete",
+                "parameters": [
+                    {
+                        "description": "Endpoint ID",
+                        "name": "endpointId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Endpoint"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "patch": {
                 "security": [
                     {
@@ -1674,7 +1932,7 @@
                 ],
                 "description": "Update specific webhook endpoint",
                 "tags": [
-                    "webhook endpoints"
+                    "Webhook endpoints"
                 ],
                 "summary": "Update webhook endpoint",
                 "operationId": "v1.webhooks.update",
@@ -1736,31 +1994,31 @@
                 ],
                 "properties": {
                     "address": {
-                        "description": "The blockchain address.",
+                        "description": "Blockchain address",
                         "type": "string"
                     },
                     "chain": {
-                        "description": "The chain name",
+                        "description": "Chain name",
                         "type": "string"
                     },
                     "chain_id": {
-                        "description": "The chain id.",
+                        "description": "Chain ID",
                         "type": "string"
                     },
                     "created_at": {
-                        "description": "The creation time",
+                        "description": "Created time",
                         "type": "string"
                     },
                     "memo": {
-                        "description": "The memo.",
+                        "description": "The memo",
                         "type": "string"
                     },
                     "path": {
-                        "description": "The derivation path.",
+                        "description": "Derivation path",
                         "type": "string"
                     },
                     "updated_at": {
-                        "description": "The update time",
+                        "description": "Updated time",
                         "type": "string"
                     }
                 }
@@ -1768,13 +2026,64 @@
             "BigInt": {
                 "type": "object"
             },
-            "CreateAddressRequest": {
+            "Chain": {
                 "type": "object",
                 "properties": {
+                    "confirm_num": {
+                        "description": "Confirmation number",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "Created time",
+                        "type": "string"
+                    },
+                    "explorer_address_url": {
+                        "description": "Explorer address URL",
+                        "type": "string"
+                    },
+                    "explorer_tx_url": {
+                        "description": "Explorer transaction URL",
+                        "type": "string"
+                    },
+                    "icon_url": {
+                        "description": "Icon URL",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Chain ID",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Chain name",
+                        "type": "string"
+                    },
+                    "need_memo": {
+                        "description": "Need memo",
+                        "type": "boolean"
+                    },
+                    "symbol": {
+                        "description": "Chain symbol",
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "description": "Updated time",
+                        "type": "string"
+                    }
+                }
+            },
+            "CreateAddressRequest": {
+                "type": "object",
+                "required": [
+                    "chainId",
+                    "walletId"
+                ],
+                "properties": {
                     "chainId": {
+                        "description": "Chain ID",
                         "type": "string"
                     },
                     "walletId": {
+                        "description": "Wallet ID",
                         "type": "string"
                     }
                 }
@@ -1783,8 +2092,6 @@
                 "type": "object",
                 "required": [
                     "eventTypes",
-                    "headers",
-                    "metadata",
                     "url"
                 ],
                 "properties": {
@@ -1803,18 +2110,6 @@
                             "type": "string"
                         }
                     },
-                    "headers": {
-                        "description": "The headers of the endpoint",
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    },
-                    "metadata": {
-                        "description": "The metadata of the endpoint",
-                        "type": "object",
-                        "additionalProperties": {}
-                    },
                     "uid": {
                         "description": "The uid of the endpoint",
                         "type": "string"
@@ -1829,9 +2124,11 @@
                 "type": "object",
                 "properties": {
                     "name": {
+                        "description": "Token name",
                         "type": "string"
                     },
                     "uid": {
+                        "description": "Unique ID",
                         "type": "string"
                     }
                 }
@@ -1870,9 +2167,11 @@
                 ],
                 "properties": {
                     "status": {
+                        "description": "Transaction status",
                         "type": "string"
                     },
                     "transaction_id": {
+                        "description": "Transaction ID",
                         "type": "string"
                     }
                 }
@@ -1907,6 +2206,30 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/Address"
+                        }
+                    },
+                    "next_cursor": {
+                        "type": "string"
+                    },
+                    "prev_cursor": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CursorPage-Chain": {
+                "type": "object",
+                "required": [
+                    "has_next",
+                    "items"
+                ],
+                "properties": {
+                    "has_next": {
+                        "type": "boolean"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Chain"
                         }
                     },
                     "next_cursor": {
@@ -1989,30 +2312,6 @@
                     }
                 }
             },
-            "CursorPage-openweb3_io_waas_app_waas-openapi-server_api_dtos_Chain": {
-                "type": "object",
-                "required": [
-                    "has_next",
-                    "items"
-                ],
-                "properties": {
-                    "has_next": {
-                        "type": "boolean"
-                    },
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/openweb3_io_waas_app_waas-openapi-server_api_dtos.Chain"
-                        }
-                    },
-                    "next_cursor": {
-                        "type": "string"
-                    },
-                    "prev_cursor": {
-                        "type": "string"
-                    }
-                }
-            },
             "Endpoint": {
                 "type": "object",
                 "required": [
@@ -2021,9 +2320,7 @@
                     "disabled",
                     "eventTypes",
                     "filter",
-                    "headers",
                     "id",
-                    "metadata",
                     "url"
                 ],
                 "properties": {
@@ -2045,18 +2342,8 @@
                     "filter": {
                         "type": "string"
                     },
-                    "headers": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    },
                     "id": {
                         "type": "string"
-                    },
-                    "metadata": {
-                        "type": "object",
-                        "additionalProperties": {}
                     },
                     "uid": {
                         "type": "string"
@@ -2087,15 +2374,31 @@
                 "type": "object",
                 "properties": {
                     "maxFeeAmount": {
+                        "description": "Max fee amount",
                         "type": "string"
                     },
                     "tokenId": {
+                        "description": "Token ID",
                         "type": "string"
                     },
                     "type": {
-                        "$ref": "#/components/schemas/openweb3_io_waas_app_waas-openapi-server_api_dtos.FeeType"
+                        "description": "Fee type",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/FeeType"
+                            }
+                        ]
                     }
                 }
+            },
+            "FeeType": {
+                "type": "integer",
+                "enum": [
+                    0
+                ],
+                "x-enum-varnames": [
+                    "Fixed"
+                ]
             },
             "Page-Transaction": {
                 "type": "object",
@@ -2211,61 +2514,96 @@
                 "type": "object",
                 "properties": {
                     "assetId": {
+                        "description": "Asset ID",
                         "type": "string"
                     },
                     "chain": {
+                        "description": "Chain",
                         "type": "string"
                     },
                     "chainId": {
+                        "description": "Chain ID",
                         "type": "string"
                     },
                     "confirmedNum": {
+                        "description": "Confirmed number",
                         "type": "integer"
                     },
                     "createdAt": {
+                        "description": "Created time",
                         "type": "string"
                     },
                     "description": {
+                        "description": "Description",
                         "type": "string"
                     },
                     "destination": {
-                        "$ref": "#/components/schemas/TransactionEndpoint"
+                        "description": "Destination",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/TransactionEndpoint"
+                            }
+                        ]
                     },
                     "extra": {
+                        "description": "Extra",
                         "type": "object",
                         "additionalProperties": {}
                     },
                     "failedReason": {
+                        "description": "Failed reason",
                         "type": "string"
                     },
                     "fee": {
-                        "$ref": "#/components/schemas/Fee"
+                        "description": "Fee",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/Fee"
+                            }
+                        ]
                     },
                     "hash": {
+                        "description": "Transaction hash",
                         "type": "string"
                     },
                     "id": {
+                        "description": "Transaction ID",
                         "type": "string"
                     },
                     "signature": {
+                        "description": "Signature",
                         "type": "string"
                     },
                     "source": {
-                        "$ref": "#/components/schemas/TransactionEndpoint"
+                        "description": "Source",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/TransactionEndpoint"
+                            }
+                        ]
                     },
                     "status": {
+                        "description": "Transaction status",
                         "type": "string"
                     },
                     "tokenId": {
+                        "description": "Token ID",
                         "type": "string"
                     },
                     "type": {
-                        "$ref": "#/components/schemas/TransactionType"
+                        "description": "Transaction type",
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/TransactionType"
+                            }
+                        ]
                     },
                     "updatedAt": {
+                        "description": "Updated time",
                         "type": "string"
                     },
                     "walletId": {
+                        "description": "Wallet ID",
                         "type": "string"
                     }
                 }
@@ -2274,15 +2612,19 @@
                 "type": "object",
                 "properties": {
                     "address": {
+                        "description": "Address",
                         "type": "string"
                     },
                     "amount": {
+                        "description": "Amount",
                         "type": "string"
                     },
                     "memo": {
+                        "description": "The memo",
                         "type": "string"
                     },
                     "type": {
+                        "description": "Transaction endpoint type",
                         "type": "string"
                     }
                 }
@@ -2303,9 +2645,7 @@
             "UpdateEndpoint": {
                 "type": "object",
                 "required": [
-                    "eventTypes",
-                    "headers",
-                    "metadata"
+                    "eventTypes"
                 ],
                 "properties": {
                     "description": {
@@ -2320,20 +2660,27 @@
                             "type": "string"
                         }
                     },
-                    "headers": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    },
-                    "metadata": {
-                        "type": "object",
-                        "additionalProperties": {}
-                    },
                     "uid": {
                         "type": "string"
                     },
                     "url": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UpdateTokenRequest": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "Token ID",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Token name",
+                        "type": "string"
+                    },
+                    "uid": {
+                        "description": "Unique ID",
                         "type": "string"
                     }
                 }
@@ -2380,54 +2727,6 @@
                         "type": "string"
                     }
                 }
-            },
-            "openweb3_io_waas_app_waas-openapi-server_api_dtos.Chain": {
-                "type": "object",
-                "properties": {
-                    "confirm_num": {
-                        "type": "integer"
-                    },
-                    "created_at": {
-                        "type": "string"
-                    },
-                    "explorer_address_url": {
-                        "type": "string"
-                    },
-                    "explorer_tx_url": {
-                        "type": "string"
-                    },
-                    "icon_url": {
-                        "type": "string"
-                    },
-                    "id": {
-                        "type": "string"
-                    },
-                    "metadata": {
-                        "type": "object",
-                        "additionalProperties": {}
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "need_memo": {
-                        "type": "boolean"
-                    },
-                    "symbol": {
-                        "type": "string"
-                    },
-                    "updated_at": {
-                        "type": "string"
-                    }
-                }
-            },
-            "openweb3_io_waas_app_waas-openapi-server_api_dtos.FeeType": {
-                "type": "integer",
-                "enum": [
-                    0
-                ],
-                "x-enum-varnames": [
-                    "Fixed"
-                ]
             }
         }
     }

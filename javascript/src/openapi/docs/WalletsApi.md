@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1WalletsCreate**](WalletsApi.md#v1WalletsCreate) | **POST** /api/v1/wallets | Create wallet
+[**v1WalletsDelete**](WalletsApi.md#v1WalletsDelete) | **DELETE** /api/v1/wallets/{walletId} | Delete wallet
 [**v1WalletsList**](WalletsApi.md#v1WalletsList) | **GET** /api/v1/wallets | List wallets
 [**v1WalletsRetrieve**](WalletsApi.md#v1WalletsRetrieve) | **GET** /api/v1/wallets/{walletId} | Get wallet
 [**v1WalletsUpdate**](WalletsApi.md#v1WalletsUpdate) | **PATCH** /api/v1/wallets/{walletId} | Update wallet
@@ -67,6 +68,62 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
+## v1WalletsDelete
+
+> Wallet v1WalletsDelete(walletId)
+
+Delete wallet
+
+Delete a Wallet
+
+### Example
+
+```javascript
+import WaaSOpenApiDocumentation from 'waa_s_open_api_documentation';
+let defaultClient = WaaSOpenApiDocumentation.ApiClient.instance;
+// Configure API key authorization: ApiKeyAuth
+let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix = 'Token';
+// Configure API key authorization: SignatureAuth
+let SignatureAuth = defaultClient.authentications['SignatureAuth'];
+SignatureAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//SignatureAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
+let walletId = "walletId_example"; // String | Wallet ID
+apiInstance.v1WalletsDelete(walletId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **String**| Wallet ID | 
+
+### Return type
+
+[**Wallet**](Wallet.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## v1WalletsList
 
 > CursorPageWallet v1WalletsList(opts)
@@ -93,8 +150,8 @@ SignatureAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
 let opts = {
-  'cursor': "cursor_example", // String | 
-  'limit': 56 // Number | 
+  'cursor': "cursor_example", // String | Cursor
+  'limit': 56 // Number | The number of records to return default: 20
 };
 apiInstance.v1WalletsList(opts, (error, data, response) => {
   if (error) {
@@ -110,8 +167,8 @@ apiInstance.v1WalletsList(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cursor** | **String**|  | [optional] 
- **limit** | **Number**|  | [optional] 
+ **cursor** | **String**| Cursor | [optional] 
+ **limit** | **Number**| The number of records to return default: 20 | [optional] 
 
 ### Return type
 

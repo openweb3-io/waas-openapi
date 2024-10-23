@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to **string** |  | [optional] 
-**Amount** | Pointer to **string** |  | [optional] 
-**Memo** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Address** | Pointer to **string** | Address | [optional] 
+**Amount** | Pointer to **string** | Amount | [optional] 
+**Memo** | Pointer to **string** | The memo | [optional] 
+**Type** | Pointer to **string** | Transaction endpoint type | [optional] 
 
 ## Methods
 

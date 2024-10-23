@@ -23,12 +23,10 @@ class UpdateEndpoint {
      * Constructs a new <code>UpdateEndpoint</code>.
      * @alias module:model/UpdateEndpoint
      * @param eventTypes {Array.<String>} 
-     * @param headers {Object.<String, String>} 
-     * @param metadata {Object.<String, Object>} 
      */
-    constructor(eventTypes, headers, metadata) { 
+    constructor(eventTypes) { 
         
-        UpdateEndpoint.initialize(this, eventTypes, headers, metadata);
+        UpdateEndpoint.initialize(this, eventTypes);
     }
 
     /**
@@ -36,10 +34,8 @@ class UpdateEndpoint {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, eventTypes, headers, metadata) { 
+    static initialize(obj, eventTypes) { 
         obj['eventTypes'] = eventTypes;
-        obj['headers'] = headers;
-        obj['metadata'] = metadata;
     }
 
     /**
@@ -61,12 +57,6 @@ class UpdateEndpoint {
             }
             if (data.hasOwnProperty('eventTypes')) {
                 obj['eventTypes'] = ApiClient.convertToType(data['eventTypes'], ['String']);
-            }
-            if (data.hasOwnProperty('headers')) {
-                obj['headers'] = ApiClient.convertToType(data['headers'], {'String': 'String'});
-            }
-            if (data.hasOwnProperty('metadata')) {
-                obj['metadata'] = ApiClient.convertToType(data['metadata'], {'String': Object});
             }
             if (data.hasOwnProperty('uid')) {
                 obj['uid'] = ApiClient.convertToType(data['uid'], 'String');
@@ -95,16 +85,6 @@ UpdateEndpoint.prototype['disabled'] = undefined;
  * @member {Array.<String>} eventTypes
  */
 UpdateEndpoint.prototype['eventTypes'] = undefined;
-
-/**
- * @member {Object.<String, String>} headers
- */
-UpdateEndpoint.prototype['headers'] = undefined;
-
-/**
- * @member {Object.<String, Object>} metadata
- */
-UpdateEndpoint.prototype['metadata'] = undefined;
 
 /**
  * @member {String} uid

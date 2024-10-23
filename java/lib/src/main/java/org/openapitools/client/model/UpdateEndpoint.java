@@ -24,14 +24,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * UpdateEndpoint
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class UpdateEndpoint {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -44,14 +42,6 @@ public class UpdateEndpoint {
   public static final String SERIALIZED_NAME_EVENT_TYPES = "eventTypes";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPES)
   private List<String> eventTypes = new ArrayList<String>();
-
-  public static final String SERIALIZED_NAME_HEADERS = "headers";
-  @SerializedName(SERIALIZED_NAME_HEADERS)
-  private Map<String, String> headers = new HashMap<String, String>();
-
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private Map<String, Object> metadata = new HashMap<String, Object>();
 
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
@@ -135,60 +125,6 @@ public class UpdateEndpoint {
   }
 
 
-  public UpdateEndpoint headers(Map<String, String> headers) {
-    
-    this.headers = headers;
-    return this;
-  }
-
-  public UpdateEndpoint putHeadersItem(String key, String headersItem) {
-    this.headers.put(key, headersItem);
-    return this;
-  }
-
-   /**
-   * Get headers
-   * @return headers
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public Map<String, String> getHeaders() {
-    return headers;
-  }
-
-
-  public void setHeaders(Map<String, String> headers) {
-    this.headers = headers;
-  }
-
-
-  public UpdateEndpoint metadata(Map<String, Object> metadata) {
-    
-    this.metadata = metadata;
-    return this;
-  }
-
-  public UpdateEndpoint putMetadataItem(String key, Object metadataItem) {
-    this.metadata.put(key, metadataItem);
-    return this;
-  }
-
-   /**
-   * Get metadata
-   * @return metadata
-  **/
-  @ApiModelProperty(required = true, value = "")
-
-  public Map<String, Object> getMetadata() {
-    return metadata;
-  }
-
-
-  public void setMetadata(Map<String, Object> metadata) {
-    this.metadata = metadata;
-  }
-
-
   public UpdateEndpoint uid(String uid) {
     
     this.uid = uid;
@@ -247,15 +183,13 @@ public class UpdateEndpoint {
     return Objects.equals(this.description, updateEndpoint.description) &&
         Objects.equals(this.disabled, updateEndpoint.disabled) &&
         Objects.equals(this.eventTypes, updateEndpoint.eventTypes) &&
-        Objects.equals(this.headers, updateEndpoint.headers) &&
-        Objects.equals(this.metadata, updateEndpoint.metadata) &&
         Objects.equals(this.uid, updateEndpoint.uid) &&
         Objects.equals(this.url, updateEndpoint.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, disabled, eventTypes, headers, metadata, uid, url);
+    return Objects.hash(description, disabled, eventTypes, uid, url);
   }
 
   @Override
@@ -265,8 +199,6 @@ public class UpdateEndpoint {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
     sb.append("    eventTypes: ").append(toIndentedString(eventTypes)).append("\n");
-    sb.append("    headers: ").append(toIndentedString(headers)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");

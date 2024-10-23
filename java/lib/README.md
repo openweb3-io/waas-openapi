@@ -2,7 +2,7 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Build date: 2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]
+  - Build date: 2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]
 
 This is a custody wallet service openapi server.
 
@@ -124,22 +124,25 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AddressesApi* | [**v1AddressesList**](docs/AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
-*AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Get deposit address
+*AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create deposit address
 *AddressesApi* | [**v1WalletsGetDepositAddress**](docs/AddressesApi.md#v1WalletsGetDepositAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-*AddressesApi* | [**v1WalletsListDepositAddresses**](docs/AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/deposit_addresses | List deposit addresses
+*AddressesApi* | [**v1WalletsListDepositAddresses**](docs/AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List deposit addresses
 *ChainsApi* | [**v1ChainsList**](docs/ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
 *ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{id} | Retrieve chain
-*TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **GET** /api/v1/tokens | Create token
+*TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
+*TokensApi* | [**v1TokensList**](docs/TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
 *TokensApi* | [**v1TokensRetrieve**](docs/TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{id} | Get Token
+*TokensApi* | [**v1TokensUpdate**](docs/TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token
 *TransactionsApi* | [**v1TransactionsList**](docs/TransactionsApi.md#v1TransactionsList) | **GET** /api/v1/transactions | List transactions
 *TransactionsApi* | [**v1TransactionsRetrieve**](docs/TransactionsApi.md#v1TransactionsRetrieve) | **GET** /api/v1/transactions/{transactionId} | Get transaction
 *TransactionsApi* | [**v1TransactionsTransfer**](docs/TransactionsApi.md#v1TransactionsTransfer) | **POST** /api/v1/transactions/transfer | Transfer token
 *WalletsApi* | [**v1WalletsCreate**](docs/WalletsApi.md#v1WalletsCreate) | **POST** /api/v1/wallets | Create wallet
+*WalletsApi* | [**v1WalletsDelete**](docs/WalletsApi.md#v1WalletsDelete) | **DELETE** /api/v1/wallets/{walletId} | Delete wallet
 *WalletsApi* | [**v1WalletsList**](docs/WalletsApi.md#v1WalletsList) | **GET** /api/v1/wallets | List wallets
 *WalletsApi* | [**v1WalletsRetrieve**](docs/WalletsApi.md#v1WalletsRetrieve) | **GET** /api/v1/wallets/{walletId} | Get wallet
 *WalletsApi* | [**v1WalletsUpdate**](docs/WalletsApi.md#v1WalletsUpdate) | **PATCH** /api/v1/wallets/{walletId} | Update wallet
 *WebhookEndpointsApi* | [**v1WebhooksCreate**](docs/WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
-*WebhookEndpointsApi* | [**v1WebhooksDelete**](docs/WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks//endpoints/{endpointId} | Delete webhook endpoint
+*WebhookEndpointsApi* | [**v1WebhooksDelete**](docs/WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
 *WebhookEndpointsApi* | [**v1WebhooksList**](docs/WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints
 *WebhookEndpointsApi* | [**v1WebhooksRetrieve**](docs/WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
 *WebhookEndpointsApi* | [**v1WebhooksUpdate**](docs/WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
@@ -148,6 +151,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Address](docs/Address.md)
+ - [Chain](docs/Chain.md)
  - [CreateAddressRequest](docs/CreateAddressRequest.md)
  - [CreateEndpoint](docs/CreateEndpoint.md)
  - [CreateTokenRequest](docs/CreateTokenRequest.md)
@@ -155,21 +159,21 @@ Class | Method | HTTP request | Description
  - [CreateTransferResponse](docs/CreateTransferResponse.md)
  - [CreateWalletRequest](docs/CreateWalletRequest.md)
  - [CursorPageAddress](docs/CursorPageAddress.md)
+ - [CursorPageChain](docs/CursorPageChain.md)
  - [CursorPageEndpoint](docs/CursorPageEndpoint.md)
- - [CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain](docs/CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
  - [CursorPageToken](docs/CursorPageToken.md)
  - [CursorPageWallet](docs/CursorPageWallet.md)
  - [Endpoint](docs/Endpoint.md)
  - [Error](docs/Error.md)
  - [Fee](docs/Fee.md)
- - [Openweb3IoWaasAppWaasOpenapiServerApiDtosChain](docs/Openweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
- - [Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType](docs/Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType.md)
+ - [FeeType](docs/FeeType.md)
  - [PageTransaction](docs/PageTransaction.md)
  - [Token](docs/Token.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionEndpoint](docs/TransactionEndpoint.md)
  - [TransactionType](docs/TransactionType.md)
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
+ - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)
  - [Wallet](docs/Wallet.md)
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** |  | [optional] 
-**TransactionId** | **string** |  | 
+**Status** | Pointer to **string** | Transaction status | [optional] 
+**TransactionId** | **string** | Transaction ID | 
 
 ## Methods
 

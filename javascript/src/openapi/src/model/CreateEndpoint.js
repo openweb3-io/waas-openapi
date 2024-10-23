@@ -23,13 +23,11 @@ class CreateEndpoint {
      * Constructs a new <code>CreateEndpoint</code>.
      * @alias module:model/CreateEndpoint
      * @param eventTypes {Array.<String>} The event types of the endpoint
-     * @param headers {Object.<String, String>} The headers of the endpoint
-     * @param metadata {Object.<String, Object>} The metadata of the endpoint
      * @param url {String} The url of the endpoint
      */
-    constructor(eventTypes, headers, metadata, url) { 
+    constructor(eventTypes, url) { 
         
-        CreateEndpoint.initialize(this, eventTypes, headers, metadata, url);
+        CreateEndpoint.initialize(this, eventTypes, url);
     }
 
     /**
@@ -37,10 +35,8 @@ class CreateEndpoint {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, eventTypes, headers, metadata, url) { 
+    static initialize(obj, eventTypes, url) { 
         obj['eventTypes'] = eventTypes;
-        obj['headers'] = headers;
-        obj['metadata'] = metadata;
         obj['url'] = url;
     }
 
@@ -63,12 +59,6 @@ class CreateEndpoint {
             }
             if (data.hasOwnProperty('eventTypes')) {
                 obj['eventTypes'] = ApiClient.convertToType(data['eventTypes'], ['String']);
-            }
-            if (data.hasOwnProperty('headers')) {
-                obj['headers'] = ApiClient.convertToType(data['headers'], {'String': 'String'});
-            }
-            if (data.hasOwnProperty('metadata')) {
-                obj['metadata'] = ApiClient.convertToType(data['metadata'], {'String': Object});
             }
             if (data.hasOwnProperty('uid')) {
                 obj['uid'] = ApiClient.convertToType(data['uid'], 'String');
@@ -100,18 +90,6 @@ CreateEndpoint.prototype['disabled'] = undefined;
  * @member {Array.<String>} eventTypes
  */
 CreateEndpoint.prototype['eventTypes'] = undefined;
-
-/**
- * The headers of the endpoint
- * @member {Object.<String, String>} headers
- */
-CreateEndpoint.prototype['headers'] = undefined;
-
-/**
- * The metadata of the endpoint
- * @member {Object.<String, Object>} metadata
- */
-CreateEndpoint.prototype['metadata'] = undefined;
 
 /**
  * The uid of the endpoint

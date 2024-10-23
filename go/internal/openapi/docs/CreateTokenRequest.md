@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**Uid** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** | Token name | [optional] 
+**Uid** | Pointer to **string** | Unique ID | [optional] 
 
 ## Methods
 

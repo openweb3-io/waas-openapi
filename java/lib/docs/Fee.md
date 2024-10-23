@@ -7,9 +7,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**maxFeeAmount** | **String** |  |  [optional]
-**tokenId** | **String** |  |  [optional]
-**type** | **Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType** |  |  [optional]
+**maxFeeAmount** | **String** | Max fee amount |  [optional]
+**tokenId** | **String** | Token ID |  [optional]
+**type** | [**FeeType**](FeeType.md) | Fee type |  [optional]
 
 
 

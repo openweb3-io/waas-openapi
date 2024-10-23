@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Address
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class Address {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
@@ -65,10 +65,10 @@ public class Address {
   }
 
    /**
-   * The blockchain address.
+   * Blockchain address
    * @return address
   **/
-  @ApiModelProperty(required = true, value = "The blockchain address.")
+  @ApiModelProperty(required = true, value = "Blockchain address")
 
   public String getAddress() {
     return address;
@@ -87,11 +87,11 @@ public class Address {
   }
 
    /**
-   * The chain name
+   * Chain name
    * @return chain
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The chain name")
+  @ApiModelProperty(value = "Chain name")
 
   public String getChain() {
     return chain;
@@ -110,11 +110,11 @@ public class Address {
   }
 
    /**
-   * The chain id.
+   * Chain ID
    * @return chainId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The chain id.")
+  @ApiModelProperty(value = "Chain ID")
 
   public String getChainId() {
     return chainId;
@@ -133,11 +133,11 @@ public class Address {
   }
 
    /**
-   * The creation time
+   * Created time
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The creation time")
+  @ApiModelProperty(value = "Created time")
 
   public String getCreatedAt() {
     return createdAt;
@@ -156,11 +156,11 @@ public class Address {
   }
 
    /**
-   * The memo.
+   * The memo
    * @return memo
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The memo.")
+  @ApiModelProperty(value = "The memo")
 
   public String getMemo() {
     return memo;
@@ -179,11 +179,11 @@ public class Address {
   }
 
    /**
-   * The derivation path.
+   * Derivation path
    * @return path
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The derivation path.")
+  @ApiModelProperty(value = "Derivation path")
 
   public String getPath() {
     return path;
@@ -202,11 +202,11 @@ public class Address {
   }
 
    /**
-   * The update time
+   * Updated time
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The update time")
+  @ApiModelProperty(value = "Updated time")
 
   public String getUpdatedAt() {
     return updatedAt;

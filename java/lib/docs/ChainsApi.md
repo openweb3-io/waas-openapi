@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="v1ChainsList"></a>
 # **v1ChainsList**
-> CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain v1ChainsList(cursor, limit)
+> CursorPageChain v1ChainsList(cursor, limit)
 
 List all chains
 
@@ -44,10 +44,10 @@ public class Example {
     //SignatureAuth.setApiKeyPrefix("Token");
 
     ChainsApi apiInstance = new ChainsApi(defaultClient);
-    String cursor = "cursor_example"; // String | 
-    Integer limit = 56; // Integer | 
+    String cursor = "cursor_example"; // String | Cursor
+    Integer limit = 56; // Integer | The number of records to return default: 20
     try {
-      CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain result = apiInstance.v1ChainsList(cursor, limit);
+      CursorPageChain result = apiInstance.v1ChainsList(cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ChainsApi#v1ChainsList");
@@ -64,12 +64,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cursor** | **String**|  | [optional]
- **limit** | **Integer**|  | [optional]
+ **cursor** | **String**| Cursor | [optional]
+ **limit** | **Integer**| The number of records to return default: 20 | [optional]
 
 ### Return type
 
-[**CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain**](CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
+[**CursorPageChain**](CursorPageChain.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 <a name="v1ChainsRetrieve"></a>
 # **v1ChainsRetrieve**
-> Openweb3IoWaasAppWaasOpenapiServerApiDtosChain v1ChainsRetrieve(id)
+> Chain v1ChainsRetrieve(id)
 
 Retrieve chain
 
@@ -127,7 +127,7 @@ public class Example {
     ChainsApi apiInstance = new ChainsApi(defaultClient);
     String id = "id_example"; // String | Chain ID
     try {
-      Openweb3IoWaasAppWaasOpenapiServerApiDtosChain result = apiInstance.v1ChainsRetrieve(id);
+      Chain result = apiInstance.v1ChainsRetrieve(id);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ChainsApi#v1ChainsRetrieve");
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Openweb3IoWaasAppWaasOpenapiServerApiDtosChain**](Openweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
+[**Chain**](Chain.md)
 
 ### Authorization
 

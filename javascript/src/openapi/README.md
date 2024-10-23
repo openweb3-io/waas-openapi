@@ -137,22 +137,25 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1AddressesList**](docs/AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
-*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Get deposit address
+*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create deposit address
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsGetDepositAddress**](docs/AddressesApi.md#v1WalletsGetDepositAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsListDepositAddresses**](docs/AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/deposit_addresses | List deposit addresses
+*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsListDepositAddresses**](docs/AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List deposit addresses
 *WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsList**](docs/ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
 *WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{id} | Retrieve chain
-*WaaSOpenApiDocumentation.TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **GET** /api/v1/tokens | Create token
+*WaaSOpenApiDocumentation.TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
+*WaaSOpenApiDocumentation.TokensApi* | [**v1TokensList**](docs/TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
 *WaaSOpenApiDocumentation.TokensApi* | [**v1TokensRetrieve**](docs/TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{id} | Get Token
+*WaaSOpenApiDocumentation.TokensApi* | [**v1TokensUpdate**](docs/TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token
 *WaaSOpenApiDocumentation.TransactionsApi* | [**v1TransactionsList**](docs/TransactionsApi.md#v1TransactionsList) | **GET** /api/v1/transactions | List transactions
 *WaaSOpenApiDocumentation.TransactionsApi* | [**v1TransactionsRetrieve**](docs/TransactionsApi.md#v1TransactionsRetrieve) | **GET** /api/v1/transactions/{transactionId} | Get transaction
 *WaaSOpenApiDocumentation.TransactionsApi* | [**v1TransactionsTransfer**](docs/TransactionsApi.md#v1TransactionsTransfer) | **POST** /api/v1/transactions/transfer | Transfer token
 *WaaSOpenApiDocumentation.WalletsApi* | [**v1WalletsCreate**](docs/WalletsApi.md#v1WalletsCreate) | **POST** /api/v1/wallets | Create wallet
+*WaaSOpenApiDocumentation.WalletsApi* | [**v1WalletsDelete**](docs/WalletsApi.md#v1WalletsDelete) | **DELETE** /api/v1/wallets/{walletId} | Delete wallet
 *WaaSOpenApiDocumentation.WalletsApi* | [**v1WalletsList**](docs/WalletsApi.md#v1WalletsList) | **GET** /api/v1/wallets | List wallets
 *WaaSOpenApiDocumentation.WalletsApi* | [**v1WalletsRetrieve**](docs/WalletsApi.md#v1WalletsRetrieve) | **GET** /api/v1/wallets/{walletId} | Get wallet
 *WaaSOpenApiDocumentation.WalletsApi* | [**v1WalletsUpdate**](docs/WalletsApi.md#v1WalletsUpdate) | **PATCH** /api/v1/wallets/{walletId} | Update wallet
 *WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksCreate**](docs/WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
-*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksDelete**](docs/WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks//endpoints/{endpointId} | Delete webhook endpoint
+*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksDelete**](docs/WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
 *WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksList**](docs/WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints
 *WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksRetrieve**](docs/WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
 *WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksUpdate**](docs/WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
@@ -161,6 +164,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [WaaSOpenApiDocumentation.Address](docs/Address.md)
+ - [WaaSOpenApiDocumentation.Chain](docs/Chain.md)
  - [WaaSOpenApiDocumentation.CreateAddressRequest](docs/CreateAddressRequest.md)
  - [WaaSOpenApiDocumentation.CreateEndpoint](docs/CreateEndpoint.md)
  - [WaaSOpenApiDocumentation.CreateTokenRequest](docs/CreateTokenRequest.md)
@@ -168,21 +172,21 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.CreateTransferResponse](docs/CreateTransferResponse.md)
  - [WaaSOpenApiDocumentation.CreateWalletRequest](docs/CreateWalletRequest.md)
  - [WaaSOpenApiDocumentation.CursorPageAddress](docs/CursorPageAddress.md)
+ - [WaaSOpenApiDocumentation.CursorPageChain](docs/CursorPageChain.md)
  - [WaaSOpenApiDocumentation.CursorPageEndpoint](docs/CursorPageEndpoint.md)
- - [WaaSOpenApiDocumentation.CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain](docs/CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
  - [WaaSOpenApiDocumentation.CursorPageToken](docs/CursorPageToken.md)
  - [WaaSOpenApiDocumentation.CursorPageWallet](docs/CursorPageWallet.md)
  - [WaaSOpenApiDocumentation.Endpoint](docs/Endpoint.md)
  - [WaaSOpenApiDocumentation.Error](docs/Error.md)
  - [WaaSOpenApiDocumentation.Fee](docs/Fee.md)
- - [WaaSOpenApiDocumentation.Openweb3IoWaasAppWaasOpenapiServerApiDtosChain](docs/Openweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
- - [WaaSOpenApiDocumentation.Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType](docs/Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType.md)
+ - [WaaSOpenApiDocumentation.FeeType](docs/FeeType.md)
  - [WaaSOpenApiDocumentation.PageTransaction](docs/PageTransaction.md)
  - [WaaSOpenApiDocumentation.Token](docs/Token.md)
  - [WaaSOpenApiDocumentation.Transaction](docs/Transaction.md)
  - [WaaSOpenApiDocumentation.TransactionEndpoint](docs/TransactionEndpoint.md)
  - [WaaSOpenApiDocumentation.TransactionType](docs/TransactionType.md)
  - [WaaSOpenApiDocumentation.UpdateEndpoint](docs/UpdateEndpoint.md)
+ - [WaaSOpenApiDocumentation.UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [WaaSOpenApiDocumentation.UpdateWalletRequest](docs/UpdateWalletRequest.md)
  - [WaaSOpenApiDocumentation.Wallet](docs/Wallet.md)
 

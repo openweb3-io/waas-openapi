@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | [optional] 
-**uid** | **String** |  | [optional] 
+**name** | **String** | Token name | [optional] 
+**uid** | **String** | Unique ID | [optional] 
 
 

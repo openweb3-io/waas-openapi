@@ -22,7 +22,7 @@ class CreateTransferResponse {
     /**
      * Constructs a new <code>CreateTransferResponse</code>.
      * @alias module:model/CreateTransferResponse
-     * @param transactionId {String} 
+     * @param transactionId {String} Transaction ID
      */
     constructor(transactionId) { 
         
@@ -63,11 +63,13 @@ class CreateTransferResponse {
 }
 
 /**
+ * Transaction status
  * @member {String} status
  */
 CreateTransferResponse.prototype['status'] = undefined;
 
 /**
+ * Transaction ID
  * @member {String} transaction_id
  */
 CreateTransferResponse.prototype['transaction_id'] = undefined;

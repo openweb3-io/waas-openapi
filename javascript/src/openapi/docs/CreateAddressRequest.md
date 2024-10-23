@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**chainId** | **String** |  | [optional] 
-**walletId** | **String** |  | [optional] 
+**chainId** | **String** | Chain ID | 
+**walletId** | **String** | Wallet ID | 
 
 

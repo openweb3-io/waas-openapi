@@ -16,9 +16,13 @@ import (
 
 // TransactionEndpoint struct for TransactionEndpoint
 type TransactionEndpoint struct {
+	// Address
 	Address *string `json:"address,omitempty"`
+	// Amount
 	Amount *string `json:"amount,omitempty"`
+	// The memo
 	Memo *string `json:"memo,omitempty"`
+	// Transaction endpoint type
 	Type *string `json:"type,omitempty"`
 }
 

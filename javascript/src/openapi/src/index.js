@@ -14,6 +14,7 @@
 
 import ApiClient from './ApiClient';
 import Address from './model/Address';
+import Chain from './model/Chain';
 import CreateAddressRequest from './model/CreateAddressRequest';
 import CreateEndpoint from './model/CreateEndpoint';
 import CreateTokenRequest from './model/CreateTokenRequest';
@@ -21,21 +22,21 @@ import CreateTransferRequest from './model/CreateTransferRequest';
 import CreateTransferResponse from './model/CreateTransferResponse';
 import CreateWalletRequest from './model/CreateWalletRequest';
 import CursorPageAddress from './model/CursorPageAddress';
+import CursorPageChain from './model/CursorPageChain';
 import CursorPageEndpoint from './model/CursorPageEndpoint';
-import CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain from './model/CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain';
 import CursorPageToken from './model/CursorPageToken';
 import CursorPageWallet from './model/CursorPageWallet';
 import Endpoint from './model/Endpoint';
 import Error from './model/Error';
 import Fee from './model/Fee';
-import Openweb3IoWaasAppWaasOpenapiServerApiDtosChain from './model/Openweb3IoWaasAppWaasOpenapiServerApiDtosChain';
-import Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType from './model/Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType';
+import FeeType from './model/FeeType';
 import PageTransaction from './model/PageTransaction';
 import Token from './model/Token';
 import Transaction from './model/Transaction';
 import TransactionEndpoint from './model/TransactionEndpoint';
 import TransactionType from './model/TransactionType';
 import UpdateEndpoint from './model/UpdateEndpoint';
+import UpdateTokenRequest from './model/UpdateTokenRequest';
 import UpdateWalletRequest from './model/UpdateWalletRequest';
 import Wallet from './model/Wallet';
 import AddressesApi from './api/AddressesApi';
@@ -91,6 +92,12 @@ export {
     Address,
 
     /**
+     * The Chain model constructor.
+     * @property {module:model/Chain}
+     */
+    Chain,
+
+    /**
      * The CreateAddressRequest model constructor.
      * @property {module:model/CreateAddressRequest}
      */
@@ -133,16 +140,16 @@ export {
     CursorPageAddress,
 
     /**
+     * The CursorPageChain model constructor.
+     * @property {module:model/CursorPageChain}
+     */
+    CursorPageChain,
+
+    /**
      * The CursorPageEndpoint model constructor.
      * @property {module:model/CursorPageEndpoint}
      */
     CursorPageEndpoint,
-
-    /**
-     * The CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain model constructor.
-     * @property {module:model/CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain}
-     */
-    CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain,
 
     /**
      * The CursorPageToken model constructor.
@@ -175,16 +182,10 @@ export {
     Fee,
 
     /**
-     * The Openweb3IoWaasAppWaasOpenapiServerApiDtosChain model constructor.
-     * @property {module:model/Openweb3IoWaasAppWaasOpenapiServerApiDtosChain}
+     * The FeeType model constructor.
+     * @property {module:model/FeeType}
      */
-    Openweb3IoWaasAppWaasOpenapiServerApiDtosChain,
-
-    /**
-     * The Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType model constructor.
-     * @property {module:model/Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType}
-     */
-    Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType,
+    FeeType,
 
     /**
      * The PageTransaction model constructor.
@@ -221,6 +222,12 @@ export {
      * @property {module:model/UpdateEndpoint}
      */
     UpdateEndpoint,
+
+    /**
+     * The UpdateTokenRequest model constructor.
+     * @property {module:model/UpdateTokenRequest}
+     */
+    UpdateTokenRequest,
 
     /**
      * The UpdateWalletRequest model constructor.

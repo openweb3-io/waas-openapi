@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1WebhooksCreate**](WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
-[**v1WebhooksDelete**](WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks//endpoints/{endpointId} | Delete webhook endpoint
+[**v1WebhooksDelete**](WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
 [**v1WebhooksList**](WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints
 [**v1WebhooksRetrieve**](WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
 [**v1WebhooksUpdate**](WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
@@ -151,7 +151,7 @@ SignatureAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WaaSOpenApiDocumentation.WebhookEndpointsApi();
 let opts = {
   'cursor': "cursor_example", // String | 
-  'limit': 56 // Number | 
+  'limit': 56 // Number | The number of records to return default: 20
 };
 apiInstance.v1WebhooksList(opts, (error, data, response) => {
   if (error) {
@@ -168,7 +168,7 @@ apiInstance.v1WebhooksList(opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **String**|  | [optional] 
- **limit** | **Number**|  | [optional] 
+ **limit** | **Number**| The number of records to return default: 20 | [optional] 
 
 ### Return type
 

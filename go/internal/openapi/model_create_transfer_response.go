@@ -16,7 +16,9 @@ import (
 
 // CreateTransferResponse struct for CreateTransferResponse
 type CreateTransferResponse struct {
+	// Transaction status
 	Status *string `json:"status,omitempty"`
+	// Transaction ID
 	TransactionId string `json:"transaction_id"`
 }
 

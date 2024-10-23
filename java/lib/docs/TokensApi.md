@@ -4,8 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1TokensCreate**](TokensApi.md#v1TokensCreate) | **GET** /api/v1/tokens | Create token
+[**v1TokensCreate**](TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
+[**v1TokensList**](TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
 [**v1TokensRetrieve**](TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{id} | Get Token
+[**v1TokensUpdate**](TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token
 
 
 <a name="v1TokensCreate"></a>
@@ -87,6 +89,87 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **500** | Internal Server Error |  -  |
 
+<a name="v1TokensList"></a>
+# **v1TokensList**
+> CursorPageToken v1TokensList(cursor, limit)
+
+List tokens
+
+Retrieve a list of all tokens.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.TokensApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: SignatureAuth
+    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
+    SignatureAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //SignatureAuth.setApiKeyPrefix("Token");
+
+    TokensApi apiInstance = new TokensApi(defaultClient);
+    String cursor = "cursor_example"; // String | Cursor
+    Integer limit = 56; // Integer | The number of records to return default: 20
+    try {
+      CursorPageToken result = apiInstance.v1TokensList(cursor, limit);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TokensApi#v1TokensList");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cursor** | **String**| Cursor | [optional]
+ **limit** | **Integer**| The number of records to return default: 20 | [optional]
+
+### Return type
+
+[**CursorPageToken**](CursorPageToken.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
 <a name="v1TokensRetrieve"></a>
 # **v1TokensRetrieve**
 > Token v1TokensRetrieve(id)
@@ -155,6 +238,87 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+<a name="v1TokensUpdate"></a>
+# **v1TokensUpdate**
+> Token v1TokensUpdate(tokenId, updateTokenRequest)
+
+Update token
+
+Update a tokens.
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.TokensApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    // Configure API key authorization: SignatureAuth
+    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
+    SignatureAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //SignatureAuth.setApiKeyPrefix("Token");
+
+    TokensApi apiInstance = new TokensApi(defaultClient);
+    String tokenId = "tokenId_example"; // String | Token ID
+    UpdateTokenRequest updateTokenRequest = new UpdateTokenRequest(); // UpdateTokenRequest | Request Body
+    try {
+      Token result = apiInstance.v1TokensUpdate(tokenId, updateTokenRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TokensApi#v1TokensUpdate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenId** | **String**| Token ID |
+ **updateTokenRequest** | [**UpdateTokenRequest**](UpdateTokenRequest.md)| Request Body |
+
+### Return type
+
+[**Token**](Token.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

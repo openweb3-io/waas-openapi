@@ -43,7 +43,7 @@ func (r ApiV1ChainsListRequest) Limit(limit int32) ApiV1ChainsListRequest {
 	return r
 }
 
-func (r ApiV1ChainsListRequest) Execute() (CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain, *_nethttp.Response, error) {
+func (r ApiV1ChainsListRequest) Execute() (CursorPageChain, *_nethttp.Response, error) {
 	return r.ApiService.V1ChainsListExecute(r)
 }
 
@@ -62,16 +62,16 @@ func (a *ChainsApiService) V1ChainsList(ctx _context.Context) ApiV1ChainsListReq
 
 /*
  * Execute executes the request
- * @return CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain
+ * @return CursorPageChain
  */
-func (a *ChainsApiService) V1ChainsListExecute(r ApiV1ChainsListRequest) (CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain, *_nethttp.Response, error) {
+func (a *ChainsApiService) V1ChainsListExecute(r ApiV1ChainsListRequest) (CursorPageChain, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain
+		localVarReturnValue  CursorPageChain
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChainsApiService.V1ChainsList")
@@ -219,7 +219,7 @@ type ApiV1ChainsRetrieveRequest struct {
 }
 
 
-func (r ApiV1ChainsRetrieveRequest) Execute() (Openweb3IoWaasAppWaasOpenapiServerApiDtosChain, *_nethttp.Response, error) {
+func (r ApiV1ChainsRetrieveRequest) Execute() (Chain, *_nethttp.Response, error) {
 	return r.ApiService.V1ChainsRetrieveExecute(r)
 }
 
@@ -240,16 +240,16 @@ func (a *ChainsApiService) V1ChainsRetrieve(ctx _context.Context, id string) Api
 
 /*
  * Execute executes the request
- * @return Openweb3IoWaasAppWaasOpenapiServerApiDtosChain
+ * @return Chain
  */
-func (a *ChainsApiService) V1ChainsRetrieveExecute(r ApiV1ChainsRetrieveRequest) (Openweb3IoWaasAppWaasOpenapiServerApiDtosChain, *_nethttp.Response, error) {
+func (a *ChainsApiService) V1ChainsRetrieveExecute(r ApiV1ChainsRetrieveRequest) (Chain, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Openweb3IoWaasAppWaasOpenapiServerApiDtosChain
+		localVarReturnValue  Chain
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ChainsApiService.V1ChainsRetrieve")

@@ -16,7 +16,9 @@ import (
 
 // CreateTokenRequest struct for CreateTokenRequest
 type CreateTokenRequest struct {
+	// Token name
 	Name *string `json:"name,omitempty"`
+	// Unique ID
 	Uid *string `json:"uid,omitempty"`
 }
 

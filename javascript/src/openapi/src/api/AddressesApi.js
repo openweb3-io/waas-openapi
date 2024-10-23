@@ -93,8 +93,8 @@ export default class AddressesApi {
      */
 
     /**
-     * Get deposit address
-     * Get wallet's deposit address
+     * Create deposit address
+     * Create deposit address for wallet
      * @param {String} walletId Wallet ID
      * @param {module:model/CreateAddressRequest} createAddressRequest Request Body
      * @param {module:api/AddressesApi~v1WalletsCreateAddressCallback} callback The callback function, accepting three arguments: error, data, response
@@ -232,7 +232,7 @@ export default class AddressesApi {
       let accepts = ['application/json'];
       let returnType = CursorPageAddress;
       return this.apiClient.callApi(
-        '/api/v1/wallets/{walletId}/deposit_addresses', 'GET',
+        '/api/v1/wallets/{walletId}/addresses', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

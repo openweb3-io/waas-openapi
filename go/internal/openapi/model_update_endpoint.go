@@ -19,8 +19,6 @@ type UpdateEndpoint struct {
 	Description *string `json:"description,omitempty"`
 	Disabled *bool `json:"disabled,omitempty"`
 	EventTypes []string `json:"eventTypes"`
-	Headers map[string]string `json:"headers"`
-	Metadata map[string]interface{} `json:"metadata"`
 	Uid *string `json:"uid,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
@@ -29,11 +27,9 @@ type UpdateEndpoint struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateEndpoint(eventTypes []string, headers map[string]string, metadata map[string]interface{}) *UpdateEndpoint {
+func NewUpdateEndpoint(eventTypes []string) *UpdateEndpoint {
 	this := UpdateEndpoint{}
 	this.EventTypes = eventTypes
-	this.Headers = headers
-	this.Metadata = metadata
 	return &this
 }
 
@@ -133,54 +129,6 @@ func (o *UpdateEndpoint) SetEventTypes(v []string) {
 	o.EventTypes = v
 }
 
-// GetHeaders returns the Headers field value
-func (o *UpdateEndpoint) GetHeaders() map[string]string {
-	if o == nil {
-		var ret map[string]string
-		return ret
-	}
-
-	return o.Headers
-}
-
-// GetHeadersOk returns a tuple with the Headers field value
-// and a boolean to check if the value has been set.
-func (o *UpdateEndpoint) GetHeadersOk() (*map[string]string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Headers, true
-}
-
-// SetHeaders sets field value
-func (o *UpdateEndpoint) SetHeaders(v map[string]string) {
-	o.Headers = v
-}
-
-// GetMetadata returns the Metadata field value
-func (o *UpdateEndpoint) GetMetadata() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Metadata
-}
-
-// GetMetadataOk returns a tuple with the Metadata field value
-// and a boolean to check if the value has been set.
-func (o *UpdateEndpoint) GetMetadataOk() (*map[string]interface{}, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.Metadata, true
-}
-
-// SetMetadata sets field value
-func (o *UpdateEndpoint) SetMetadata(v map[string]interface{}) {
-	o.Metadata = v
-}
-
 // GetUid returns the Uid field value if set, zero value otherwise.
 func (o *UpdateEndpoint) GetUid() string {
 	if o == nil || o.Uid == nil {
@@ -255,12 +203,6 @@ func (o UpdateEndpoint) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["eventTypes"] = o.EventTypes
-	}
-	if true {
-		toSerialize["headers"] = o.Headers
-	}
-	if true {
-		toSerialize["metadata"] = o.Metadata
 	}
 	if o.Uid != nil {
 		toSerialize["uid"] = o.Uid

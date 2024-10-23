@@ -33,7 +33,7 @@ import org.openapitools.client.model.TransactionType;
 /**
  * Transaction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class Transaction {
   public static final String SERIALIZED_NAME_ASSET_ID = "assetId";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
@@ -119,11 +119,11 @@ public class Transaction {
   }
 
    /**
-   * Get assetId
+   * Asset ID
    * @return assetId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Asset ID")
 
   public String getAssetId() {
     return assetId;
@@ -142,11 +142,11 @@ public class Transaction {
   }
 
    /**
-   * Get chain
+   * Chain
    * @return chain
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Chain")
 
   public String getChain() {
     return chain;
@@ -165,11 +165,11 @@ public class Transaction {
   }
 
    /**
-   * Get chainId
+   * Chain ID
    * @return chainId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Chain ID")
 
   public String getChainId() {
     return chainId;
@@ -188,11 +188,11 @@ public class Transaction {
   }
 
    /**
-   * Get confirmedNum
+   * Confirmed number
    * @return confirmedNum
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Confirmed number")
 
   public Integer getConfirmedNum() {
     return confirmedNum;
@@ -211,11 +211,11 @@ public class Transaction {
   }
 
    /**
-   * Get createdAt
+   * Created time
    * @return createdAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Created time")
 
   public String getCreatedAt() {
     return createdAt;
@@ -234,11 +234,11 @@ public class Transaction {
   }
 
    /**
-   * Get description
+   * Description
    * @return description
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Description")
 
   public String getDescription() {
     return description;
@@ -257,11 +257,11 @@ public class Transaction {
   }
 
    /**
-   * Get destination
+   * Destination
    * @return destination
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Destination")
 
   public TransactionEndpoint getDestination() {
     return destination;
@@ -288,11 +288,11 @@ public class Transaction {
   }
 
    /**
-   * Get extra
+   * Extra
    * @return extra
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Extra")
 
   public Map<String, Object> getExtra() {
     return extra;
@@ -311,11 +311,11 @@ public class Transaction {
   }
 
    /**
-   * Get failedReason
+   * Failed reason
    * @return failedReason
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Failed reason")
 
   public String getFailedReason() {
     return failedReason;
@@ -334,11 +334,11 @@ public class Transaction {
   }
 
    /**
-   * Get fee
+   * Fee
    * @return fee
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Fee")
 
   public Fee getFee() {
     return fee;
@@ -357,11 +357,11 @@ public class Transaction {
   }
 
    /**
-   * Get hash
+   * Transaction hash
    * @return hash
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Transaction hash")
 
   public String getHash() {
     return hash;
@@ -380,11 +380,11 @@ public class Transaction {
   }
 
    /**
-   * Get id
+   * Transaction ID
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Transaction ID")
 
   public String getId() {
     return id;
@@ -403,11 +403,11 @@ public class Transaction {
   }
 
    /**
-   * Get signature
+   * Signature
    * @return signature
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Signature")
 
   public String getSignature() {
     return signature;
@@ -426,11 +426,11 @@ public class Transaction {
   }
 
    /**
-   * Get source
+   * Source
    * @return source
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Source")
 
   public TransactionEndpoint getSource() {
     return source;
@@ -449,11 +449,11 @@ public class Transaction {
   }
 
    /**
-   * Get status
+   * Transaction status
    * @return status
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Transaction status")
 
   public String getStatus() {
     return status;
@@ -472,11 +472,11 @@ public class Transaction {
   }
 
    /**
-   * Get tokenId
+   * Token ID
    * @return tokenId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Token ID")
 
   public String getTokenId() {
     return tokenId;
@@ -495,11 +495,11 @@ public class Transaction {
   }
 
    /**
-   * Get type
+   * Transaction type
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Transaction type")
 
   public TransactionType getType() {
     return type;
@@ -518,11 +518,11 @@ public class Transaction {
   }
 
    /**
-   * Get updatedAt
+   * Updated time
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Updated time")
 
   public String getUpdatedAt() {
     return updatedAt;
@@ -541,11 +541,11 @@ public class Transaction {
   }
 
    /**
-   * Get walletId
+   * Wallet ID
    * @return walletId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Wallet ID")
 
   public String getWalletId() {
     return walletId;

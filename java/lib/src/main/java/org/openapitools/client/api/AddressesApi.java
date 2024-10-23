@@ -275,8 +275,8 @@ public class AddressesApi {
     }
 
     /**
-     * Get deposit address
-     * Get wallet&#39;s deposit address
+     * Create deposit address
+     * Create deposit address for wallet
      * @param walletId Wallet ID (required)
      * @param createAddressRequest Request Body (required)
      * @return Address
@@ -297,8 +297,8 @@ public class AddressesApi {
     }
 
     /**
-     * Get deposit address
-     * Get wallet&#39;s deposit address
+     * Create deposit address
+     * Create deposit address for wallet
      * @param walletId Wallet ID (required)
      * @param createAddressRequest Request Body (required)
      * @return ApiResponse&lt;Address&gt;
@@ -320,8 +320,8 @@ public class AddressesApi {
     }
 
     /**
-     * Get deposit address (asynchronously)
-     * Get wallet&#39;s deposit address
+     * Create deposit address (asynchronously)
+     * Create deposit address for wallet
      * @param walletId Wallet ID (required)
      * @param createAddressRequest Request Body (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -518,7 +518,7 @@ public class AddressesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/wallets/{walletId}/deposit_addresses"
+        String localVarPath = "/api/v1/wallets/{walletId}/addresses"
             .replaceAll("\\{" + "walletId" + "\\}", localVarApiClient.escapeString(walletId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

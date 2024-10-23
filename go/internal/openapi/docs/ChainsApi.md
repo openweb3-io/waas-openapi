@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## V1ChainsList
 
-> CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain V1ChainsList(ctx).Cursor(cursor).Limit(limit).Execute()
+> CursorPageChain V1ChainsList(ctx).Cursor(cursor).Limit(limit).Execute()
 
 List all chains
 
@@ -30,8 +30,8 @@ import (
 )
 
 func main() {
-    cursor := "cursor_example" // string |  (optional)
-    limit := int32(56) // int32 |  (optional)
+    cursor := "cursor_example" // string | Cursor (optional)
+    limit := int32(56) // int32 | The number of records to return default: 20 (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ChainsApi.V1ChainsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `V1ChainsList`: CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain
+    // response from `V1ChainsList`: CursorPageChain
     fmt.Fprintf(os.Stdout, "Response from `ChainsApi.V1ChainsList`: %v\n", resp)
 }
 ```
@@ -56,12 +56,12 @@ Other parameters are passed through a pointer to a apiV1ChainsListRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cursor** | **string** |  | 
- **limit** | **int32** |  | 
+ **cursor** | **string** | Cursor | 
+ **limit** | **int32** | The number of records to return default: 20 | 
 
 ### Return type
 
-[**CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain**](CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
+[**CursorPageChain**](CursorPageChain.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## V1ChainsRetrieve
 
-> Openweb3IoWaasAppWaasOpenapiServerApiDtosChain V1ChainsRetrieve(ctx, id).Execute()
+> Chain V1ChainsRetrieve(ctx, id).Execute()
 
 Retrieve chain
 
@@ -107,7 +107,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ChainsApi.V1ChainsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `V1ChainsRetrieve`: Openweb3IoWaasAppWaasOpenapiServerApiDtosChain
+    // response from `V1ChainsRetrieve`: Chain
     fmt.Fprintf(os.Stdout, "Response from `ChainsApi.V1ChainsRetrieve`: %v\n", resp)
 }
 ```
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Openweb3IoWaasAppWaasOpenapiServerApiDtosChain**](Openweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
+[**Chain**](Chain.md)
 
 ### Authorization
 

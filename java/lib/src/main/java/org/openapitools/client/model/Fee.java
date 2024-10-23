@@ -23,12 +23,12 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.openapitools.client.model.Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType;
+import org.openapitools.client.model.FeeType;
 
 /**
  * Fee
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class Fee {
   public static final String SERIALIZED_NAME_MAX_FEE_AMOUNT = "maxFeeAmount";
   @SerializedName(SERIALIZED_NAME_MAX_FEE_AMOUNT)
@@ -40,7 +40,7 @@ public class Fee {
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType type;
+  private FeeType type;
 
 
   public Fee maxFeeAmount(String maxFeeAmount) {
@@ -50,11 +50,11 @@ public class Fee {
   }
 
    /**
-   * Get maxFeeAmount
+   * Max fee amount
    * @return maxFeeAmount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Max fee amount")
 
   public String getMaxFeeAmount() {
     return maxFeeAmount;
@@ -73,11 +73,11 @@ public class Fee {
   }
 
    /**
-   * Get tokenId
+   * Token ID
    * @return tokenId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Token ID")
 
   public String getTokenId() {
     return tokenId;
@@ -89,25 +89,25 @@ public class Fee {
   }
 
 
-  public Fee type(Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType type) {
+  public Fee type(FeeType type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * Get type
+   * Fee type
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Fee type")
 
-  public Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType getType() {
+  public FeeType getType() {
     return type;
   }
 
 
-  public void setType(Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType type) {
+  public void setType(FeeType type) {
     this.type = type;
   }
 

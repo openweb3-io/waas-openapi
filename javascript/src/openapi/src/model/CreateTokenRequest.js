@@ -61,11 +61,13 @@ class CreateTokenRequest {
 }
 
 /**
+ * Token name
  * @member {String} name
  */
 CreateTokenRequest.prototype['name'] = undefined;
 
 /**
+ * Unique ID
  * @member {String} uid
  */
 CreateTokenRequest.prototype['uid'] = undefined;

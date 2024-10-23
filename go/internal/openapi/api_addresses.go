@@ -245,8 +245,8 @@ func (r ApiV1WalletsCreateAddressRequest) Execute() (Address, *_nethttp.Response
 }
 
 /*
- * V1WalletsCreateAddress Get deposit address
- * Get wallet's deposit address
+ * V1WalletsCreateAddress Create deposit address
+ * Create deposit address for wallet
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param walletId Wallet ID
  * @return ApiV1WalletsCreateAddressRequest
@@ -657,7 +657,7 @@ func (a *AddressesApiService) V1WalletsListDepositAddressesExecute(r ApiV1Wallet
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/wallets/{walletId}/deposit_addresses"
+	localVarPath := localBasePath + "/api/v1/wallets/{walletId}/addresses"
 	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", _neturl.PathEscape(parameterToString(r.walletId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

@@ -7,8 +7,6 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Disabled** | Pointer to **bool** |  | [optional] 
 **EventTypes** | **[]string** |  | 
-**Headers** | **map[string]string** |  | 
-**Metadata** | **map[string]interface{}** |  | 
 **Uid** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 
@@ -16,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateEndpoint
 
-`func NewUpdateEndpoint(eventTypes []string, headers map[string]string, metadata map[string]interface{}, ) *UpdateEndpoint`
+`func NewUpdateEndpoint(eventTypes []string, ) *UpdateEndpoint`
 
 NewUpdateEndpoint instantiates a new UpdateEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -99,46 +97,6 @@ and a boolean to check if the value has been set.
 `func (o *UpdateEndpoint) SetEventTypes(v []string)`
 
 SetEventTypes sets EventTypes field to given value.
-
-
-### GetHeaders
-
-`func (o *UpdateEndpoint) GetHeaders() map[string]string`
-
-GetHeaders returns the Headers field if non-nil, zero value otherwise.
-
-### GetHeadersOk
-
-`func (o *UpdateEndpoint) GetHeadersOk() (*map[string]string, bool)`
-
-GetHeadersOk returns a tuple with the Headers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHeaders
-
-`func (o *UpdateEndpoint) SetHeaders(v map[string]string)`
-
-SetHeaders sets Headers field to given value.
-
-
-### GetMetadata
-
-`func (o *UpdateEndpoint) GetMetadata() map[string]interface{}`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *UpdateEndpoint) GetMetadataOk() (*map[string]interface{}, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *UpdateEndpoint) SetMetadata(v map[string]interface{})`
-
-SetMetadata sets Metadata field to given value.
 
 
 ### GetUid

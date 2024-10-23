@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TransactionEndpoint
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-22T21:59:47.491709+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]")
 public class TransactionEndpoint {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
@@ -53,11 +53,11 @@ public class TransactionEndpoint {
   }
 
    /**
-   * Get address
+   * Address
    * @return address
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Address")
 
   public String getAddress() {
     return address;
@@ -76,11 +76,11 @@ public class TransactionEndpoint {
   }
 
    /**
-   * Get amount
+   * Amount
    * @return amount
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Amount")
 
   public String getAmount() {
     return amount;
@@ -99,11 +99,11 @@ public class TransactionEndpoint {
   }
 
    /**
-   * Get memo
+   * The memo
    * @return memo
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The memo")
 
   public String getMemo() {
     return memo;
@@ -122,11 +122,11 @@ public class TransactionEndpoint {
   }
 
    /**
-   * Get type
+   * Transaction endpoint type
    * @return type
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Transaction endpoint type")
 
   public String getType() {
     return type;

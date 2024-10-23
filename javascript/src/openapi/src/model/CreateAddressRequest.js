@@ -22,10 +22,12 @@ class CreateAddressRequest {
     /**
      * Constructs a new <code>CreateAddressRequest</code>.
      * @alias module:model/CreateAddressRequest
+     * @param chainId {String} Chain ID
+     * @param walletId {String} Wallet ID
      */
-    constructor() { 
+    constructor(chainId, walletId) { 
         
-        CreateAddressRequest.initialize(this);
+        CreateAddressRequest.initialize(this, chainId, walletId);
     }
 
     /**
@@ -33,7 +35,9 @@ class CreateAddressRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, chainId, walletId) { 
+        obj['chainId'] = chainId;
+        obj['walletId'] = walletId;
     }
 
     /**
@@ -61,11 +65,13 @@ class CreateAddressRequest {
 }
 
 /**
+ * Chain ID
  * @member {String} chainId
  */
 CreateAddressRequest.prototype['chainId'] = undefined;
 
 /**
+ * Wallet ID
  * @member {String} walletId
  */
 CreateAddressRequest.prototype['walletId'] = undefined;

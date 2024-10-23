@@ -79,22 +79,25 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AddressesApi* | [**V1AddressesList**](docs/AddressesApi.md#v1addresseslist) | **Get** /api/v1/addresses | List all addresses
-*AddressesApi* | [**V1WalletsCreateAddress**](docs/AddressesApi.md#v1walletscreateaddress) | **Post** /api/v1/wallets/{walletId}/addresses | Get deposit address
+*AddressesApi* | [**V1WalletsCreateAddress**](docs/AddressesApi.md#v1walletscreateaddress) | **Post** /api/v1/wallets/{walletId}/addresses | Create deposit address
 *AddressesApi* | [**V1WalletsGetDepositAddress**](docs/AddressesApi.md#v1walletsgetdepositaddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-*AddressesApi* | [**V1WalletsListDepositAddresses**](docs/AddressesApi.md#v1walletslistdepositaddresses) | **Get** /api/v1/wallets/{walletId}/deposit_addresses | List deposit addresses
+*AddressesApi* | [**V1WalletsListDepositAddresses**](docs/AddressesApi.md#v1walletslistdepositaddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List deposit addresses
 *ChainsApi* | [**V1ChainsList**](docs/ChainsApi.md#v1chainslist) | **Get** /api/v1/chains | List all chains
 *ChainsApi* | [**V1ChainsRetrieve**](docs/ChainsApi.md#v1chainsretrieve) | **Get** /api/v1/chains/{id} | Retrieve chain
-*TokensApi* | [**V1TokensCreate**](docs/TokensApi.md#v1tokenscreate) | **Get** /api/v1/tokens | Create token
+*TokensApi* | [**V1TokensCreate**](docs/TokensApi.md#v1tokenscreate) | **Post** /api/v1/tokens | Create token
+*TokensApi* | [**V1TokensList**](docs/TokensApi.md#v1tokenslist) | **Get** /api/v1/tokens | List tokens
 *TokensApi* | [**V1TokensRetrieve**](docs/TokensApi.md#v1tokensretrieve) | **Get** /api/v1/tokens/{id} | Get Token
+*TokensApi* | [**V1TokensUpdate**](docs/TokensApi.md#v1tokensupdate) | **Patch** /api/v1/tokens/{tokenId} | Update token
 *TransactionsApi* | [**V1TransactionsList**](docs/TransactionsApi.md#v1transactionslist) | **Get** /api/v1/transactions | List transactions
 *TransactionsApi* | [**V1TransactionsRetrieve**](docs/TransactionsApi.md#v1transactionsretrieve) | **Get** /api/v1/transactions/{transactionId} | Get transaction
 *TransactionsApi* | [**V1TransactionsTransfer**](docs/TransactionsApi.md#v1transactionstransfer) | **Post** /api/v1/transactions/transfer | Transfer token
 *WalletsApi* | [**V1WalletsCreate**](docs/WalletsApi.md#v1walletscreate) | **Post** /api/v1/wallets | Create wallet
+*WalletsApi* | [**V1WalletsDelete**](docs/WalletsApi.md#v1walletsdelete) | **Delete** /api/v1/wallets/{walletId} | Delete wallet
 *WalletsApi* | [**V1WalletsList**](docs/WalletsApi.md#v1walletslist) | **Get** /api/v1/wallets | List wallets
 *WalletsApi* | [**V1WalletsRetrieve**](docs/WalletsApi.md#v1walletsretrieve) | **Get** /api/v1/wallets/{walletId} | Get wallet
 *WalletsApi* | [**V1WalletsUpdate**](docs/WalletsApi.md#v1walletsupdate) | **Patch** /api/v1/wallets/{walletId} | Update wallet
 *WebhookEndpointsApi* | [**V1WebhooksCreate**](docs/WebhookEndpointsApi.md#v1webhookscreate) | **Post** /api/v1/webhooks/endpoints | Create webhook endpoint
-*WebhookEndpointsApi* | [**V1WebhooksDelete**](docs/WebhookEndpointsApi.md#v1webhooksdelete) | **Delete** /api/v1/webhooks//endpoints/{endpointId} | Delete webhook endpoint
+*WebhookEndpointsApi* | [**V1WebhooksDelete**](docs/WebhookEndpointsApi.md#v1webhooksdelete) | **Delete** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
 *WebhookEndpointsApi* | [**V1WebhooksList**](docs/WebhookEndpointsApi.md#v1webhookslist) | **Get** /api/v1/endpoints | List webhook endpoints
 *WebhookEndpointsApi* | [**V1WebhooksRetrieve**](docs/WebhookEndpointsApi.md#v1webhooksretrieve) | **Get** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
 *WebhookEndpointsApi* | [**V1WebhooksUpdate**](docs/WebhookEndpointsApi.md#v1webhooksupdate) | **Patch** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
@@ -103,6 +106,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Address](docs/Address.md)
+ - [Chain](docs/Chain.md)
  - [CreateAddressRequest](docs/CreateAddressRequest.md)
  - [CreateEndpoint](docs/CreateEndpoint.md)
  - [CreateTokenRequest](docs/CreateTokenRequest.md)
@@ -110,21 +114,21 @@ Class | Method | HTTP request | Description
  - [CreateTransferResponse](docs/CreateTransferResponse.md)
  - [CreateWalletRequest](docs/CreateWalletRequest.md)
  - [CursorPageAddress](docs/CursorPageAddress.md)
+ - [CursorPageChain](docs/CursorPageChain.md)
  - [CursorPageEndpoint](docs/CursorPageEndpoint.md)
- - [CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain](docs/CursorPageOpenweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
  - [CursorPageToken](docs/CursorPageToken.md)
  - [CursorPageWallet](docs/CursorPageWallet.md)
  - [Endpoint](docs/Endpoint.md)
  - [Error](docs/Error.md)
  - [Fee](docs/Fee.md)
- - [Openweb3IoWaasAppWaasOpenapiServerApiDtosChain](docs/Openweb3IoWaasAppWaasOpenapiServerApiDtosChain.md)
- - [Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType](docs/Openweb3IoWaasAppWaasOpenapiServerApiDtosFeeType.md)
+ - [FeeType](docs/FeeType.md)
  - [PageTransaction](docs/PageTransaction.md)
  - [Token](docs/Token.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionEndpoint](docs/TransactionEndpoint.md)
  - [TransactionType](docs/TransactionType.md)
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
+ - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)
  - [Wallet](docs/Wallet.md)
 
