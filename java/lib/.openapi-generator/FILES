@@ -110,5 +110,3 @@ src/main/java/io/openweb3/waas/models/UpdateEndpoint.java
 src/main/java/io/openweb3/waas/models/UpdateTokenRequest.java
 src/main/java/io/openweb3/waas/models/UpdateWalletRequest.java
 src/main/java/io/openweb3/waas/models/Wallet.java
-src/test/java/io/openweb3/waas/models/TransferDestinationAddressTest.java
-src/test/java/io/openweb3/waas/models/TransferSourceAddressTest.java

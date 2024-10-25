@@ -2,7 +2,7 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Build date: 2024-10-25T20:13:15.872929+08:00[Asia/Shanghai]
+  - Build date: 2024-10-25T20:59:16.612595+08:00[Asia/Shanghai]
 
 This is a custody wallet service openapi server.
 

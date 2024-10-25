@@ -8,6 +8,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **String** | Address |  [optional]
+**walletId** | **String** | Wallet ID |  [optional]
 
 
 

@@ -27,11 +27,15 @@ import java.io.IOException;
 /**
  * TransferSourceAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T20:13:15.872929+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T20:59:16.612595+08:00[Asia/Shanghai]")
 public class TransferSourceAddress {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
   private String address;
+
+  public static final String SERIALIZED_NAME_WALLET_ID = "wallet_id";
+  @SerializedName(SERIALIZED_NAME_WALLET_ID)
+  private String walletId;
 
 
   public TransferSourceAddress address(String address) {
@@ -57,6 +61,29 @@ public class TransferSourceAddress {
   }
 
 
+  public TransferSourceAddress walletId(String walletId) {
+    
+    this.walletId = walletId;
+    return this;
+  }
+
+   /**
+   * Wallet ID
+   * @return walletId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Wallet ID")
+
+  public String getWalletId() {
+    return walletId;
+  }
+
+
+  public void setWalletId(String walletId) {
+    this.walletId = walletId;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -66,12 +93,13 @@ public class TransferSourceAddress {
       return false;
     }
     TransferSourceAddress transferSourceAddress = (TransferSourceAddress) o;
-    return Objects.equals(this.address, transferSourceAddress.address);
+    return Objects.equals(this.address, transferSourceAddress.address) &&
+        Objects.equals(this.walletId, transferSourceAddress.walletId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address);
+    return Objects.hash(address, walletId);
   }
 
   @Override
@@ -79,6 +107,7 @@ public class TransferSourceAddress {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransferSourceAddress {\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

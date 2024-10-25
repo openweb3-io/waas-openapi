@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property walletId (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property walletId
+      //var instance = new WaaSOpenApiDocumentation.TransferSourceAddress();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

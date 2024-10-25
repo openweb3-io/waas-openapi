@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | Address | [optional] 
+**WalletId** | Pointer to **string** | Wallet ID | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetAddress sets Address field to given value.
 `func (o *TransferSourceAddress) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetWalletId
+
+`func (o *TransferSourceAddress) GetWalletId() string`
+
+GetWalletId returns the WalletId field if non-nil, zero value otherwise.
+
+### GetWalletIdOk
+
+`func (o *TransferSourceAddress) GetWalletIdOk() (*string, bool)`
+
+GetWalletIdOk returns a tuple with the WalletId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWalletId
+
+`func (o *TransferSourceAddress) SetWalletId(v string)`
+
+SetWalletId sets WalletId field to given value.
+
+### HasWalletId
+
+`func (o *TransferSourceAddress) HasWalletId() bool`
+
+HasWalletId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

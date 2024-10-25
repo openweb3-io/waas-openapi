@@ -2459,6 +2459,10 @@
                 "address": {
                     "description": "Address",
                     "type": "string"
+                },
+                "wallet_id": {
+                    "description": "Wallet ID",
+                    "type": "string"
                 }
             }
         },

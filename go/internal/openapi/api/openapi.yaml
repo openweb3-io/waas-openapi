@@ -2167,6 +2167,9 @@ components:
         address:
           description: Address
           type: string
+        wallet_id:
+          description: Wallet ID
+          type: string
       type: object
     TransferSourceType:
       enum:

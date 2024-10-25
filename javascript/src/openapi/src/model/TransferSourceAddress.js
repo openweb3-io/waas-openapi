@@ -50,6 +50,9 @@ class TransferSourceAddress {
             if (data.hasOwnProperty('address')) {
                 obj['address'] = ApiClient.convertToType(data['address'], 'String');
             }
+            if (data.hasOwnProperty('wallet_id')) {
+                obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
+            }
         }
         return obj;
     }
@@ -62,6 +65,12 @@ class TransferSourceAddress {
  * @member {String} address
  */
 TransferSourceAddress.prototype['address'] = undefined;
+
+/**
+ * Wallet ID
+ * @member {String} wallet_id
+ */
+TransferSourceAddress.prototype['wallet_id'] = undefined;
 
 
 
