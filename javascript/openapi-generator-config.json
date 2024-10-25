@@ -1,4 +1,5 @@
 {
+    "_comment": "reference: https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/javascript.md",
     "packageName": "openweb3-io/waas-openapi",
     "isGoSubmodule": true,
     "enumClassPrefix": true,

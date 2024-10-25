@@ -1,4 +1,5 @@
 {
+  "_comment": "reference: https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/go.md",
   "packageName": "openapi",
   "isGoSubmodule": true,
   "enumClassPrefix": true,
