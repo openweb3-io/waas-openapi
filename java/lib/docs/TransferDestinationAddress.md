@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | **String** | Address |  [optional]
+**address** | **String** | Address | 
 
 
 

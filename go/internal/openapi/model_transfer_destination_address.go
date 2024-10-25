@@ -17,15 +17,16 @@ import (
 // TransferDestinationAddress struct for TransferDestinationAddress
 type TransferDestinationAddress struct {
 	// Address
-	Address *string `json:"address,omitempty"`
+	Address string `json:"address"`
 }
 
 // NewTransferDestinationAddress instantiates a new TransferDestinationAddress object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferDestinationAddress() *TransferDestinationAddress {
+func NewTransferDestinationAddress(address string) *TransferDestinationAddress {
 	this := TransferDestinationAddress{}
+	this.Address = address
 	return &this
 }
 
@@ -37,41 +38,33 @@ func NewTransferDestinationAddressWithDefaults() *TransferDestinationAddress {
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
+// GetAddress returns the Address field value
 func (o *TransferDestinationAddress) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Address
+
+	return o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 func (o *TransferDestinationAddress) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Address, true
+	return &o.Address, true
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *TransferDestinationAddress) HasAddress() bool {
-	if o != nil && o.Address != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given string and assigns it to the Address field.
+// SetAddress sets field value
 func (o *TransferDestinationAddress) SetAddress(v string) {
-	o.Address = &v
+	o.Address = v
 }
 
 func (o TransferDestinationAddress) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Address != nil {
+	if true {
 		toSerialize["address"] = o.Address
 	}
 	return json.Marshal(toSerialize)

@@ -23,10 +23,13 @@ class Fee {
     /**
      * Constructs a new <code>Fee</code>.
      * @alias module:model/Fee
+     * @param maxFeeAmount {String} Max fee amount
+     * @param tokenId {String} Token ID
+     * @param type {module:model/FeeType} Fee type
      */
-    constructor() { 
+    constructor(maxFeeAmount, tokenId, type) { 
         
-        Fee.initialize(this);
+        Fee.initialize(this, maxFeeAmount, tokenId, type);
     }
 
     /**
@@ -34,7 +37,10 @@ class Fee {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, maxFeeAmount, tokenId, type) { 
+        obj['maxFeeAmount'] = maxFeeAmount;
+        obj['tokenId'] = tokenId;
+        obj['type'] = type;
     }
 
     /**

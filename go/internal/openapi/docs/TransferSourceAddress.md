@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to **string** | Address | [optional] 
-**WalletId** | Pointer to **string** | Wallet ID | [optional] 
+**Address** | **string** | Address | 
+**WalletId** | **string** | Wallet ID | 
 
 ## Methods
 
 ### NewTransferSourceAddress
 
-`func NewTransferSourceAddress() *TransferSourceAddress`
+`func NewTransferSourceAddress(address string, walletId string, ) *TransferSourceAddress`
 
 NewTransferSourceAddress instantiates a new TransferSourceAddress object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
-### HasAddress
-
-`func (o *TransferSourceAddress) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
 
 ### GetWalletId
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetWalletId sets WalletId field to given value.
 
-### HasWalletId
-
-`func (o *TransferSourceAddress) HasWalletId() bool`
-
-HasWalletId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

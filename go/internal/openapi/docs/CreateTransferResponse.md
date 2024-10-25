@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to **string** | Transaction status | [optional] 
+**Status** | **string** | Transaction status | 
 **TransactionId** | **string** | Transaction ID | 
 
 ## Methods
 
 ### NewCreateTransferResponse
 
-`func NewCreateTransferResponse(transactionId string, ) *CreateTransferResponse`
+`func NewCreateTransferResponse(status string, transactionId string, ) *CreateTransferResponse`
 
 NewCreateTransferResponse instantiates a new CreateTransferResponse object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *CreateTransferResponse) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetTransactionId
 

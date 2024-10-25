@@ -29,7 +29,7 @@ import java.io.IOException;
 /**
  * TransferDestination
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:10:37.121837+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:45:46.651278+08:00[Asia/Shanghai]")
 public class TransferDestination {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
@@ -73,8 +73,7 @@ public class TransferDestination {
    * Transfer destination type
    * @return type
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Transfer destination type")
+  @ApiModelProperty(required = true, value = "Transfer destination type")
 
   public TransferDestinationType getType() {
     return type;

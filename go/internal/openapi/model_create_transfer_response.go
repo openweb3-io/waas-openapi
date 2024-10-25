@@ -17,7 +17,7 @@ import (
 // CreateTransferResponse struct for CreateTransferResponse
 type CreateTransferResponse struct {
 	// Transaction status
-	Status *string `json:"status,omitempty"`
+	Status string `json:"status"`
 	// Transaction ID
 	TransactionId string `json:"transaction_id"`
 }
@@ -26,8 +26,9 @@ type CreateTransferResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateTransferResponse(transactionId string) *CreateTransferResponse {
+func NewCreateTransferResponse(status string, transactionId string) *CreateTransferResponse {
 	this := CreateTransferResponse{}
+	this.Status = status
 	this.TransactionId = transactionId
 	return &this
 }
@@ -40,36 +41,28 @@ func NewCreateTransferResponseWithDefaults() *CreateTransferResponse {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *CreateTransferResponse) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *CreateTransferResponse) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *CreateTransferResponse) HasStatus() bool {
-	if o != nil && o.Status != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus sets field value
 func (o *CreateTransferResponse) SetStatus(v string) {
-	o.Status = &v
+	o.Status = v
 }
 
 // GetTransactionId returns the TransactionId field value
@@ -98,7 +91,7 @@ func (o *CreateTransferResponse) SetTransactionId(v string) {
 
 func (o CreateTransferResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status != nil {
+	if true {
 		toSerialize["status"] = o.Status
 	}
 	if true {

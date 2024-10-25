@@ -19,15 +19,16 @@ type TransferSource struct {
 	// Address
 	Address *TransferSourceAddress `json:"address,omitempty"`
 	// Transfer source type
-	Type *TransferSourceType `json:"type,omitempty"`
+	Type TransferSourceType `json:"type"`
 }
 
 // NewTransferSource instantiates a new TransferSource object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferSource() *TransferSource {
+func NewTransferSource(type_ TransferSourceType) *TransferSource {
 	this := TransferSource{}
+	this.Type = type_
 	return &this
 }
 
@@ -71,36 +72,28 @@ func (o *TransferSource) SetAddress(v TransferSourceAddress) {
 	o.Address = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *TransferSource) GetType() TransferSourceType {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret TransferSourceType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *TransferSource) GetTypeOk() (*TransferSourceType, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *TransferSource) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given TransferSourceType and assigns it to the Type field.
+// SetType sets field value
 func (o *TransferSource) SetType(v TransferSourceType) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o TransferSource) MarshalJSON() ([]byte, error) {
@@ -108,7 +101,7 @@ func (o TransferSource) MarshalJSON() ([]byte, error) {
 	if o.Address != nil {
 		toSerialize["address"] = o.Address
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)

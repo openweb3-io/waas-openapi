@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MaxFeeAmount** | Pointer to **string** | Max fee amount | [optional] 
-**TokenId** | Pointer to **string** | Token ID | [optional] 
-**Type** | Pointer to [**FeeType**](FeeType.md) | Fee type | [optional] 
+**MaxFeeAmount** | **string** | Max fee amount | 
+**TokenId** | **string** | Token ID | 
+**Type** | [**FeeType**](FeeType.md) | Fee type | 
 
 ## Methods
 
 ### NewFee
 
-`func NewFee() *Fee`
+`func NewFee(maxFeeAmount string, tokenId string, type_ FeeType, ) *Fee`
 
 NewFee instantiates a new Fee object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetMaxFeeAmount sets MaxFeeAmount field to given value.
 
-### HasMaxFeeAmount
-
-`func (o *Fee) HasMaxFeeAmount() bool`
-
-HasMaxFeeAmount returns a boolean if a field has been set.
 
 ### GetTokenId
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetTokenId sets TokenId field to given value.
 
-### HasTokenId
-
-`func (o *Fee) HasTokenId() bool`
-
-HasTokenId returns a boolean if a field has been set.
 
 ### GetType
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *Fee) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

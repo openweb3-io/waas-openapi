@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * Fee
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:10:37.121837+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:45:46.651278+08:00[Asia/Shanghai]")
 public class Fee {
   public static final String SERIALIZED_NAME_MAX_FEE_AMOUNT = "maxFeeAmount";
   @SerializedName(SERIALIZED_NAME_MAX_FEE_AMOUNT)
@@ -53,8 +53,7 @@ public class Fee {
    * Max fee amount
    * @return maxFeeAmount
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Max fee amount")
+  @ApiModelProperty(required = true, value = "Max fee amount")
 
   public String getMaxFeeAmount() {
     return maxFeeAmount;
@@ -76,8 +75,7 @@ public class Fee {
    * Token ID
    * @return tokenId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Token ID")
+  @ApiModelProperty(required = true, value = "Token ID")
 
   public String getTokenId() {
     return tokenId;
@@ -99,8 +97,7 @@ public class Fee {
    * Fee type
    * @return type
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Fee type")
+  @ApiModelProperty(required = true, value = "Fee type")
 
   public FeeType getType() {
     return type;

@@ -1500,6 +1500,7 @@ components:
           description: Transaction ID
           type: string
       required:
+      - status
       - transaction_id
       type: object
     CreateWalletRequest:
@@ -1879,6 +1880,10 @@ components:
           allOf:
           - $ref: '#/components/schemas/FeeType'
           description: Fee type
+      required:
+      - maxFeeAmount
+      - tokenId
+      - type
       type: object
     FeeType:
       enum:
@@ -2141,12 +2146,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/TransferDestinationType'
           description: Transfer destination type
+      required:
+      - type
       type: object
     TransferDestinationAddress:
       properties:
         address:
           description: Address
           type: string
+      required:
+      - address
       type: object
     TransferDestinationType:
       enum:
@@ -2164,6 +2173,8 @@ components:
           allOf:
           - $ref: '#/components/schemas/TransferSourceType'
           description: Transfer source type
+      required:
+      - type
       type: object
     TransferSourceAddress:
       properties:
@@ -2173,6 +2184,9 @@ components:
         wallet_id:
           description: Wallet ID
           type: string
+      required:
+      - address
+      - wallet_id
       type: object
     TransferSourceType:
       enum:

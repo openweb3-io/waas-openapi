@@ -17,19 +17,22 @@ import (
 // Fee struct for Fee
 type Fee struct {
 	// Max fee amount
-	MaxFeeAmount *string `json:"maxFeeAmount,omitempty"`
+	MaxFeeAmount string `json:"maxFeeAmount"`
 	// Token ID
-	TokenId *string `json:"tokenId,omitempty"`
+	TokenId string `json:"tokenId"`
 	// Fee type
-	Type *FeeType `json:"type,omitempty"`
+	Type FeeType `json:"type"`
 }
 
 // NewFee instantiates a new Fee object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFee() *Fee {
+func NewFee(maxFeeAmount string, tokenId string, type_ FeeType) *Fee {
 	this := Fee{}
+	this.MaxFeeAmount = maxFeeAmount
+	this.TokenId = tokenId
+	this.Type = type_
 	return &this
 }
 
@@ -41,111 +44,87 @@ func NewFeeWithDefaults() *Fee {
 	return &this
 }
 
-// GetMaxFeeAmount returns the MaxFeeAmount field value if set, zero value otherwise.
+// GetMaxFeeAmount returns the MaxFeeAmount field value
 func (o *Fee) GetMaxFeeAmount() string {
-	if o == nil || o.MaxFeeAmount == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MaxFeeAmount
+
+	return o.MaxFeeAmount
 }
 
-// GetMaxFeeAmountOk returns a tuple with the MaxFeeAmount field value if set, nil otherwise
+// GetMaxFeeAmountOk returns a tuple with the MaxFeeAmount field value
 // and a boolean to check if the value has been set.
 func (o *Fee) GetMaxFeeAmountOk() (*string, bool) {
-	if o == nil || o.MaxFeeAmount == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.MaxFeeAmount, true
+	return &o.MaxFeeAmount, true
 }
 
-// HasMaxFeeAmount returns a boolean if a field has been set.
-func (o *Fee) HasMaxFeeAmount() bool {
-	if o != nil && o.MaxFeeAmount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxFeeAmount gets a reference to the given string and assigns it to the MaxFeeAmount field.
+// SetMaxFeeAmount sets field value
 func (o *Fee) SetMaxFeeAmount(v string) {
-	o.MaxFeeAmount = &v
+	o.MaxFeeAmount = v
 }
 
-// GetTokenId returns the TokenId field value if set, zero value otherwise.
+// GetTokenId returns the TokenId field value
 func (o *Fee) GetTokenId() string {
-	if o == nil || o.TokenId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TokenId
+
+	return o.TokenId
 }
 
-// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
+// GetTokenIdOk returns a tuple with the TokenId field value
 // and a boolean to check if the value has been set.
 func (o *Fee) GetTokenIdOk() (*string, bool) {
-	if o == nil || o.TokenId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.TokenId, true
+	return &o.TokenId, true
 }
 
-// HasTokenId returns a boolean if a field has been set.
-func (o *Fee) HasTokenId() bool {
-	if o != nil && o.TokenId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
+// SetTokenId sets field value
 func (o *Fee) SetTokenId(v string) {
-	o.TokenId = &v
+	o.TokenId = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *Fee) GetType() FeeType {
-	if o == nil || o.Type == nil {
+	if o == nil {
 		var ret FeeType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *Fee) GetTypeOk() (*FeeType, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *Fee) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given FeeType and assigns it to the Type field.
+// SetType sets field value
 func (o *Fee) SetType(v FeeType) {
-	o.Type = &v
+	o.Type = v
 }
 
 func (o Fee) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MaxFeeAmount != nil {
+	if true {
 		toSerialize["maxFeeAmount"] = o.MaxFeeAmount
 	}
-	if o.TokenId != nil {
+	if true {
 		toSerialize["tokenId"] = o.TokenId
 	}
-	if o.Type != nil {
+	if true {
 		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)

@@ -22,10 +22,12 @@ class TransferSourceAddress {
     /**
      * Constructs a new <code>TransferSourceAddress</code>.
      * @alias module:model/TransferSourceAddress
+     * @param address {String} Address
+     * @param walletId {String} Wallet ID
      */
-    constructor() { 
+    constructor(address, walletId) { 
         
-        TransferSourceAddress.initialize(this);
+        TransferSourceAddress.initialize(this, address, walletId);
     }
 
     /**
@@ -33,7 +35,9 @@ class TransferSourceAddress {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, address, walletId) { 
+        obj['address'] = address;
+        obj['wallet_id'] = walletId;
     }
 
     /**

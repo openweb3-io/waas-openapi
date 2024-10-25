@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to [**TransferDestinationAddress**](TransferDestinationAddress.md) | Address | [optional] 
-**Type** | Pointer to [**TransferDestinationType**](TransferDestinationType.md) | Transfer destination type | [optional] 
+**Type** | [**TransferDestinationType**](TransferDestinationType.md) | Transfer destination type | 
 
 ## Methods
 
 ### NewTransferDestination
 
-`func NewTransferDestination() *TransferDestination`
+`func NewTransferDestination(type_ TransferDestinationType, ) *TransferDestination`
 
 NewTransferDestination instantiates a new TransferDestination object
 This constructor will assign default values to properties that have it defined,
@@ -70,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *TransferDestination) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

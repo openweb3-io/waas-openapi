@@ -7,15 +7,26 @@ import (
 )
 
 type (
-	TransactionOut      = openapi.Transaction
-	PageTransactionOut  = openapi.PageTransaction
-	TransferIn          = openapi.CreateTransferRequest
-	TransferSource      = openapi.TransferSource
-	TransferDestination = openapi.TransferDestination
-	TransferFee         = openapi.Fee
-	TransferOut         = openapi.CreateTransferResponse
-	EstimateFeeIn       = openapi.EstimateFeeRequest
-	EstimateFeeOut      = openapi.EstimateFeeResponse
+	TransactionOut             = openapi.Transaction
+	PageTransactionOut         = openapi.PageTransaction
+	TransferIn                 = openapi.CreateTransferRequest
+	TransferSourceType         = openapi.TransferSourceType
+	TransferSource             = openapi.TransferSource
+	TransferSourceAddress      = openapi.TransferSourceAddress
+	TransferDestination        = openapi.TransferDestination
+	TransferDestinationType    = openapi.TransferDestinationType
+	TransferDestinationAddress = openapi.TransferDestinationAddress
+	TransferFee                = openapi.Fee
+	TransferOut                = openapi.CreateTransferResponse
+	EstimateFeeIn              = openapi.EstimateFeeRequest
+	EstimateFeeOut             = openapi.EstimateFeeResponse
+)
+
+const (
+	TransferSourceType_Address      = openapi.TRANSFERSOURCETYPE_TransferSourceType_Address
+	TransferDestinationType_Address = openapi.TRANSFERDESTINATIONTYPE_TransferDestinationType_Address
+
+	TransferFeeType_Fixed = openapi.FEETYPE_Fixed
 )
 
 type Transaction struct {

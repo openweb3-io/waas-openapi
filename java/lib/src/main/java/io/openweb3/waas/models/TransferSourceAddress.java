@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TransferSourceAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:10:37.121837+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:45:46.651278+08:00[Asia/Shanghai]")
 public class TransferSourceAddress {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
@@ -48,8 +48,7 @@ public class TransferSourceAddress {
    * Address
    * @return address
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Address")
+  @ApiModelProperty(required = true, value = "Address")
 
   public String getAddress() {
     return address;
@@ -71,8 +70,7 @@ public class TransferSourceAddress {
    * Wallet ID
    * @return walletId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Wallet ID")
+  @ApiModelProperty(required = true, value = "Wallet ID")
 
   public String getWalletId() {
     return walletId;

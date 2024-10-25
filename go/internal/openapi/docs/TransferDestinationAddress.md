@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to **string** | Address | [optional] 
+**Address** | **string** | Address | 
 
 ## Methods
 
 ### NewTransferDestinationAddress
 
-`func NewTransferDestinationAddress() *TransferDestinationAddress`
+`func NewTransferDestinationAddress(address string, ) *TransferDestinationAddress`
 
 NewTransferDestinationAddress instantiates a new TransferDestinationAddress object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
-### HasAddress
-
-`func (o *TransferDestinationAddress) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

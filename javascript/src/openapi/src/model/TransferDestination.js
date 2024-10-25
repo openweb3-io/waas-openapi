@@ -24,10 +24,11 @@ class TransferDestination {
     /**
      * Constructs a new <code>TransferDestination</code>.
      * @alias module:model/TransferDestination
+     * @param type {module:model/TransferDestinationType} Transfer destination type
      */
-    constructor() { 
+    constructor(type) { 
         
-        TransferDestination.initialize(this);
+        TransferDestination.initialize(this, type);
     }
 
     /**
@@ -35,7 +36,8 @@ class TransferDestination {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, type) { 
+        obj['type'] = type;
     }
 
     /**

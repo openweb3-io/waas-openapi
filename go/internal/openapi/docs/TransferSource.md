@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to [**TransferSourceAddress**](TransferSourceAddress.md) | Address | [optional] 
-**Type** | Pointer to [**TransferSourceType**](TransferSourceType.md) | Transfer source type | [optional] 
+**Type** | [**TransferSourceType**](TransferSourceType.md) | Transfer source type | 
 
 ## Methods
 
 ### NewTransferSource
 
-`func NewTransferSource() *TransferSource`
+`func NewTransferSource(type_ TransferSourceType, ) *TransferSource`
 
 NewTransferSource instantiates a new TransferSource object
 This constructor will assign default values to properties that have it defined,
@@ -70,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *TransferSource) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

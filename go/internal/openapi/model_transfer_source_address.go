@@ -17,17 +17,19 @@ import (
 // TransferSourceAddress struct for TransferSourceAddress
 type TransferSourceAddress struct {
 	// Address
-	Address *string `json:"address,omitempty"`
+	Address string `json:"address"`
 	// Wallet ID
-	WalletId *string `json:"wallet_id,omitempty"`
+	WalletId string `json:"wallet_id"`
 }
 
 // NewTransferSourceAddress instantiates a new TransferSourceAddress object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferSourceAddress() *TransferSourceAddress {
+func NewTransferSourceAddress(address string, walletId string) *TransferSourceAddress {
 	this := TransferSourceAddress{}
+	this.Address = address
+	this.WalletId = walletId
 	return &this
 }
 
@@ -39,76 +41,60 @@ func NewTransferSourceAddressWithDefaults() *TransferSourceAddress {
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
+// GetAddress returns the Address field value
 func (o *TransferSourceAddress) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Address
+
+	return o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 func (o *TransferSourceAddress) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Address, true
+	return &o.Address, true
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *TransferSourceAddress) HasAddress() bool {
-	if o != nil && o.Address != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given string and assigns it to the Address field.
+// SetAddress sets field value
 func (o *TransferSourceAddress) SetAddress(v string) {
-	o.Address = &v
+	o.Address = v
 }
 
-// GetWalletId returns the WalletId field value if set, zero value otherwise.
+// GetWalletId returns the WalletId field value
 func (o *TransferSourceAddress) GetWalletId() string {
-	if o == nil || o.WalletId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.WalletId
+
+	return o.WalletId
 }
 
-// GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
+// GetWalletIdOk returns a tuple with the WalletId field value
 // and a boolean to check if the value has been set.
 func (o *TransferSourceAddress) GetWalletIdOk() (*string, bool) {
-	if o == nil || o.WalletId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.WalletId, true
+	return &o.WalletId, true
 }
 
-// HasWalletId returns a boolean if a field has been set.
-func (o *TransferSourceAddress) HasWalletId() bool {
-	if o != nil && o.WalletId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWalletId gets a reference to the given string and assigns it to the WalletId field.
+// SetWalletId sets field value
 func (o *TransferSourceAddress) SetWalletId(v string) {
-	o.WalletId = &v
+	o.WalletId = v
 }
 
 func (o TransferSourceAddress) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Address != nil {
+	if true {
 		toSerialize["address"] = o.Address
 	}
-	if o.WalletId != nil {
+	if true {
 		toSerialize["wallet_id"] = o.WalletId
 	}
 	return json.Marshal(toSerialize)

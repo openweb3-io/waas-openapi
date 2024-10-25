@@ -22,11 +22,12 @@ class CreateTransferResponse {
     /**
      * Constructs a new <code>CreateTransferResponse</code>.
      * @alias module:model/CreateTransferResponse
+     * @param status {String} Transaction status
      * @param transactionId {String} Transaction ID
      */
-    constructor(transactionId) { 
+    constructor(status, transactionId) { 
         
-        CreateTransferResponse.initialize(this, transactionId);
+        CreateTransferResponse.initialize(this, status, transactionId);
     }
 
     /**
@@ -34,7 +35,8 @@ class CreateTransferResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, transactionId) { 
+    static initialize(obj, status, transactionId) { 
+        obj['status'] = status;
         obj['transaction_id'] = transactionId;
     }
 

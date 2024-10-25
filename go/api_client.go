@@ -18,8 +18,8 @@ type (
 	ApiClientOptions struct {
 		Debug bool
 
-		ApiKey     string
-		PrivateKey string
+		ApiKey string
+		Secret string
 
 		// Overrides the base URL (protocol + hostname) used for all requests sent by this waas client. (Useful for testing)
 		ServerUrl  *url.URL
@@ -65,7 +65,7 @@ func New(options *ApiClientOptions) *ApiClient {
 		}
 		dataToBeSignature = dataToBeSignature + req.URL.RequestURI() + requestTime
 
-		signature, err := genSign([]byte(dataToBeSignature), []byte(options.PrivateKey))
+		signature, err := genSign([]byte(dataToBeSignature), []byte(options.Secret))
 		if err != nil {
 			log.Printf("Error generating signature: %v", err)
 		}

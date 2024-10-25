@@ -2257,6 +2257,7 @@
             "CreateTransferResponse": {
                 "type": "object",
                 "required": [
+                    "status",
                     "transaction_id"
                 ],
                 "properties": {
@@ -2562,6 +2563,11 @@
             },
             "Fee": {
                 "type": "object",
+                "required": [
+                    "maxFeeAmount",
+                    "tokenId",
+                    "type"
+                ],
                 "properties": {
                     "maxFeeAmount": {
                         "description": "Max fee amount",
@@ -2834,6 +2840,9 @@
             },
             "TransferDestination": {
                 "type": "object",
+                "required": [
+                    "type"
+                ],
                 "properties": {
                     "address": {
                         "description": "Address",
@@ -2855,6 +2864,9 @@
             },
             "TransferDestinationAddress": {
                 "type": "object",
+                "required": [
+                    "address"
+                ],
                 "properties": {
                     "address": {
                         "description": "Address",
@@ -2873,6 +2885,9 @@
             },
             "TransferSource": {
                 "type": "object",
+                "required": [
+                    "type"
+                ],
                 "properties": {
                     "address": {
                         "description": "Address",
@@ -2894,6 +2909,10 @@
             },
             "TransferSourceAddress": {
                 "type": "object",
+                "required": [
+                    "address",
+                    "wallet_id"
+                ],
                 "properties": {
                     "address": {
                         "description": "Address",
