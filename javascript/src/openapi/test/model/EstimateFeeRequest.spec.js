@@ -60,8 +60,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property contractAddress (base name: "contract_address")', function() {
-      // uncomment below and update the code to test the property contractAddress
+    it('should have the property destination (base name: "destination")', function() {
+      // uncomment below and update the code to test the property destination
       //var instance = new WaaSOpenApiDocumentation.EstimateFeeRequest();
       //expect(instance).to.be();
     });
@@ -72,20 +72,14 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property fromAddress (base name: "from_address")', function() {
-      // uncomment below and update the code to test the property fromAddress
-      //var instance = new WaaSOpenApiDocumentation.EstimateFeeRequest();
-      //expect(instance).to.be();
-    });
-
     it('should have the property memo (base name: "memo")', function() {
       // uncomment below and update the code to test the property memo
       //var instance = new WaaSOpenApiDocumentation.EstimateFeeRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property toAddress (base name: "to_address")', function() {
-      // uncomment below and update the code to test the property toAddress
+    it('should have the property source (base name: "source")', function() {
+      // uncomment below and update the code to test the property source
       //var instance = new WaaSOpenApiDocumentation.EstimateFeeRequest();
       //expect(instance).to.be();
     });

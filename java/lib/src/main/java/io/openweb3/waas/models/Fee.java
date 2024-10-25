@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * Fee
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:45:46.651278+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T22:27:20.371039+08:00[Asia/Shanghai]")
 public class Fee {
   public static final String SERIALIZED_NAME_MAX_FEE_AMOUNT = "maxFeeAmount";
   @SerializedName(SERIALIZED_NAME_MAX_FEE_AMOUNT)

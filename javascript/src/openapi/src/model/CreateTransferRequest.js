@@ -64,8 +64,14 @@ class CreateTransferRequest {
             if (data.hasOwnProperty('destination')) {
                 obj['destination'] = ApiClient.convertToType(data['destination'], TransferDestination);
             }
+            if (data.hasOwnProperty('extra')) {
+                obj['extra'] = ApiClient.convertToType(data['extra'], 'String');
+            }
             if (data.hasOwnProperty('fee')) {
                 obj['fee'] = ApiClient.convertToType(data['fee'], Fee);
+            }
+            if (data.hasOwnProperty('memo')) {
+                obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
             }
             if (data.hasOwnProperty('source')) {
                 obj['source'] = ApiClient.convertToType(data['source'], TransferSource);
@@ -93,10 +99,22 @@ CreateTransferRequest.prototype['amount'] = undefined;
 CreateTransferRequest.prototype['destination'] = undefined;
 
 /**
+ * Extra
+ * @member {String} extra
+ */
+CreateTransferRequest.prototype['extra'] = undefined;
+
+/**
  * Fee
  * @member {module:model/Fee} fee
  */
 CreateTransferRequest.prototype['fee'] = undefined;
+
+/**
+ * Memo
+ * @member {String} memo
+ */
+CreateTransferRequest.prototype['memo'] = undefined;
 
 /**
  * The ID of the wallet from which the transfer will be made

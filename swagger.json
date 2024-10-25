@@ -1797,6 +1797,10 @@
                         }
                     ]
                 },
+                "extra": {
+                    "description": "Extra",
+                    "type": "string"
+                },
                 "fee": {
                     "description": "Fee",
                     "allOf": [
@@ -1804,6 +1808,10 @@
                             "$ref": "#/definitions/Fee"
                         }
                     ]
+                },
+                "memo": {
+                    "description": "Memo",
+                    "type": "string"
                 },
                 "source": {
                     "description": "The ID of the wallet from which the transfer will be made",
@@ -2074,8 +2082,8 @@
             "type": "object",
             "required": [
                 "amount",
-                "from_address",
-                "to_address",
+                "destination",
+                "source",
                 "token_id"
             ],
             "properties": {
@@ -2083,25 +2091,29 @@
                     "description": "Amount",
                     "type": "string"
                 },
-                "contract_address": {
-                    "description": "Contract address",
-                    "type": "string"
+                "destination": {
+                    "description": "The ID of the wallet to which the transfer will be made",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TransferDestination"
+                        }
+                    ]
                 },
                 "extra": {
                     "description": "Extra",
-                    "type": "string"
-                },
-                "from_address": {
-                    "description": "From address",
                     "type": "string"
                 },
                 "memo": {
                     "description": "Memo",
                     "type": "string"
                 },
-                "to_address": {
-                    "description": "To address",
-                    "type": "string"
+                "source": {
+                    "description": "The ID of the wallet from which the transfer will be made",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TransferSource"
+                        }
+                    ]
                 },
                 "token_id": {
                     "description": "Token ID",

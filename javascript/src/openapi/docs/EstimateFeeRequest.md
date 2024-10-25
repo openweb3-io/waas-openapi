@@ -5,11 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **String** | Amount | 
-**contractAddress** | **String** | Contract address | [optional] 
+**destination** | [**TransferDestination**](TransferDestination.md) | The ID of the wallet to which the transfer will be made | 
 **extra** | **String** | Extra | [optional] 
-**fromAddress** | **String** | From address | 
 **memo** | **String** | Memo | [optional] 
-**toAddress** | **String** | To address | 
+**source** | [**TransferSource**](TransferSource.md) | The ID of the wallet from which the transfer will be made | 
 **tokenId** | **String** | Token ID | 
 
 

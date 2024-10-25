@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-    estimateFeeRequest := *openapiclient.NewEstimateFeeRequest("Amount_example", "FromAddress_example", "ToAddress_example", "TokenId_example") // EstimateFeeRequest | Request Body
+    estimateFeeRequest := *openapiclient.NewEstimateFeeRequest("Amount_example", *openapiclient.NewTransferDestination(openapiclient.TransferDestinationType("Address")), *openapiclient.NewTransferSource(openapiclient.TransferSourceType("Address")), "TokenId_example") // EstimateFeeRequest | Request Body
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

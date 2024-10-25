@@ -18,16 +18,14 @@ import (
 type EstimateFeeRequest struct {
 	// Amount
 	Amount string `json:"amount"`
-	// Contract address
-	ContractAddress *string `json:"contract_address,omitempty"`
+	// The ID of the wallet to which the transfer will be made
+	Destination TransferDestination `json:"destination"`
 	// Extra
 	Extra *string `json:"extra,omitempty"`
-	// From address
-	FromAddress string `json:"from_address"`
 	// Memo
 	Memo *string `json:"memo,omitempty"`
-	// To address
-	ToAddress string `json:"to_address"`
+	// The ID of the wallet from which the transfer will be made
+	Source TransferSource `json:"source"`
 	// Token ID
 	TokenId string `json:"token_id"`
 }
@@ -36,11 +34,11 @@ type EstimateFeeRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEstimateFeeRequest(amount string, fromAddress string, toAddress string, tokenId string) *EstimateFeeRequest {
+func NewEstimateFeeRequest(amount string, destination TransferDestination, source TransferSource, tokenId string) *EstimateFeeRequest {
 	this := EstimateFeeRequest{}
 	this.Amount = amount
-	this.FromAddress = fromAddress
-	this.ToAddress = toAddress
+	this.Destination = destination
+	this.Source = source
 	this.TokenId = tokenId
 	return &this
 }
@@ -77,36 +75,28 @@ func (o *EstimateFeeRequest) SetAmount(v string) {
 	o.Amount = v
 }
 
-// GetContractAddress returns the ContractAddress field value if set, zero value otherwise.
-func (o *EstimateFeeRequest) GetContractAddress() string {
-	if o == nil || o.ContractAddress == nil {
-		var ret string
+// GetDestination returns the Destination field value
+func (o *EstimateFeeRequest) GetDestination() TransferDestination {
+	if o == nil {
+		var ret TransferDestination
 		return ret
 	}
-	return *o.ContractAddress
+
+	return o.Destination
 }
 
-// GetContractAddressOk returns a tuple with the ContractAddress field value if set, nil otherwise
+// GetDestinationOk returns a tuple with the Destination field value
 // and a boolean to check if the value has been set.
-func (o *EstimateFeeRequest) GetContractAddressOk() (*string, bool) {
-	if o == nil || o.ContractAddress == nil {
+func (o *EstimateFeeRequest) GetDestinationOk() (*TransferDestination, bool) {
+	if o == nil  {
 		return nil, false
 	}
-	return o.ContractAddress, true
+	return &o.Destination, true
 }
 
-// HasContractAddress returns a boolean if a field has been set.
-func (o *EstimateFeeRequest) HasContractAddress() bool {
-	if o != nil && o.ContractAddress != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetContractAddress gets a reference to the given string and assigns it to the ContractAddress field.
-func (o *EstimateFeeRequest) SetContractAddress(v string) {
-	o.ContractAddress = &v
+// SetDestination sets field value
+func (o *EstimateFeeRequest) SetDestination(v TransferDestination) {
+	o.Destination = v
 }
 
 // GetExtra returns the Extra field value if set, zero value otherwise.
@@ -141,30 +131,6 @@ func (o *EstimateFeeRequest) SetExtra(v string) {
 	o.Extra = &v
 }
 
-// GetFromAddress returns the FromAddress field value
-func (o *EstimateFeeRequest) GetFromAddress() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.FromAddress
-}
-
-// GetFromAddressOk returns a tuple with the FromAddress field value
-// and a boolean to check if the value has been set.
-func (o *EstimateFeeRequest) GetFromAddressOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.FromAddress, true
-}
-
-// SetFromAddress sets field value
-func (o *EstimateFeeRequest) SetFromAddress(v string) {
-	o.FromAddress = v
-}
-
 // GetMemo returns the Memo field value if set, zero value otherwise.
 func (o *EstimateFeeRequest) GetMemo() string {
 	if o == nil || o.Memo == nil {
@@ -197,28 +163,28 @@ func (o *EstimateFeeRequest) SetMemo(v string) {
 	o.Memo = &v
 }
 
-// GetToAddress returns the ToAddress field value
-func (o *EstimateFeeRequest) GetToAddress() string {
+// GetSource returns the Source field value
+func (o *EstimateFeeRequest) GetSource() TransferSource {
 	if o == nil {
-		var ret string
+		var ret TransferSource
 		return ret
 	}
 
-	return o.ToAddress
+	return o.Source
 }
 
-// GetToAddressOk returns a tuple with the ToAddress field value
+// GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *EstimateFeeRequest) GetToAddressOk() (*string, bool) {
+func (o *EstimateFeeRequest) GetSourceOk() (*TransferSource, bool) {
 	if o == nil  {
 		return nil, false
 	}
-	return &o.ToAddress, true
+	return &o.Source, true
 }
 
-// SetToAddress sets field value
-func (o *EstimateFeeRequest) SetToAddress(v string) {
-	o.ToAddress = v
+// SetSource sets field value
+func (o *EstimateFeeRequest) SetSource(v TransferSource) {
+	o.Source = v
 }
 
 // GetTokenId returns the TokenId field value
@@ -250,20 +216,17 @@ func (o EstimateFeeRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["amount"] = o.Amount
 	}
-	if o.ContractAddress != nil {
-		toSerialize["contract_address"] = o.ContractAddress
+	if true {
+		toSerialize["destination"] = o.Destination
 	}
 	if o.Extra != nil {
 		toSerialize["extra"] = o.Extra
-	}
-	if true {
-		toSerialize["from_address"] = o.FromAddress
 	}
 	if o.Memo != nil {
 		toSerialize["memo"] = o.Memo
 	}
 	if true {
-		toSerialize["to_address"] = o.ToAddress
+		toSerialize["source"] = o.Source
 	}
 	if true {
 		toSerialize["token_id"] = o.TokenId

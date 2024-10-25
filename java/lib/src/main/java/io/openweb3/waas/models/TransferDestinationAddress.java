@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TransferDestinationAddress
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:45:46.651278+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T22:27:20.371039+08:00[Asia/Shanghai]")
 public class TransferDestinationAddress {
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)

@@ -66,8 +66,20 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property extra (base name: "extra")', function() {
+      // uncomment below and update the code to test the property extra
+      //var instance = new WaaSOpenApiDocumentation.CreateTransferRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property fee (base name: "fee")', function() {
       // uncomment below and update the code to test the property fee
+      //var instance = new WaaSOpenApiDocumentation.CreateTransferRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property memo (base name: "memo")', function() {
+      // uncomment below and update the code to test the property memo
       //var instance = new WaaSOpenApiDocumentation.CreateTransferRequest();
       //expect(instance).to.be();
     });

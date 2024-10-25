@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **string** | The amount to be transferred | 
 **Destination** | [**TransferDestination**](TransferDestination.md) | The ID of the wallet to which the transfer will be made | 
+**Extra** | Pointer to **string** | Extra | [optional] 
 **Fee** | Pointer to [**Fee**](Fee.md) | Fee | [optional] 
+**Memo** | Pointer to **string** | Memo | [optional] 
 **Source** | [**TransferSource**](TransferSource.md) | The ID of the wallet from which the transfer will be made | 
 **TokenId** | **string** | The tokenId to be transferred | 
 
@@ -69,6 +71,31 @@ and a boolean to check if the value has been set.
 SetDestination sets Destination field to given value.
 
 
+### GetExtra
+
+`func (o *CreateTransferRequest) GetExtra() string`
+
+GetExtra returns the Extra field if non-nil, zero value otherwise.
+
+### GetExtraOk
+
+`func (o *CreateTransferRequest) GetExtraOk() (*string, bool)`
+
+GetExtraOk returns a tuple with the Extra field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtra
+
+`func (o *CreateTransferRequest) SetExtra(v string)`
+
+SetExtra sets Extra field to given value.
+
+### HasExtra
+
+`func (o *CreateTransferRequest) HasExtra() bool`
+
+HasExtra returns a boolean if a field has been set.
+
 ### GetFee
 
 `func (o *CreateTransferRequest) GetFee() Fee`
@@ -93,6 +120,31 @@ SetFee sets Fee field to given value.
 `func (o *CreateTransferRequest) HasFee() bool`
 
 HasFee returns a boolean if a field has been set.
+
+### GetMemo
+
+`func (o *CreateTransferRequest) GetMemo() string`
+
+GetMemo returns the Memo field if non-nil, zero value otherwise.
+
+### GetMemoOk
+
+`func (o *CreateTransferRequest) GetMemoOk() (*string, bool)`
+
+GetMemoOk returns a tuple with the Memo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMemo
+
+`func (o *CreateTransferRequest) SetMemo(v string)`
+
+SetMemo sets Memo field to given value.
+
+### HasMemo
+
+`func (o *CreateTransferRequest) HasMemo() bool`
+
+HasMemo returns a boolean if a field has been set.
 
 ### GetSource
 

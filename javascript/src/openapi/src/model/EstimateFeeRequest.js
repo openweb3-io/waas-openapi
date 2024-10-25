@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import TransferDestination from './TransferDestination';
+import TransferSource from './TransferSource';
 
 /**
  * The EstimateFeeRequest model module.
@@ -23,13 +25,13 @@ class EstimateFeeRequest {
      * Constructs a new <code>EstimateFeeRequest</code>.
      * @alias module:model/EstimateFeeRequest
      * @param amount {String} Amount
-     * @param fromAddress {String} From address
-     * @param toAddress {String} To address
+     * @param destination {module:model/TransferDestination} The ID of the wallet to which the transfer will be made
+     * @param source {module:model/TransferSource} The ID of the wallet from which the transfer will be made
      * @param tokenId {String} Token ID
      */
-    constructor(amount, fromAddress, toAddress, tokenId) { 
+    constructor(amount, destination, source, tokenId) { 
         
-        EstimateFeeRequest.initialize(this, amount, fromAddress, toAddress, tokenId);
+        EstimateFeeRequest.initialize(this, amount, destination, source, tokenId);
     }
 
     /**
@@ -37,10 +39,10 @@ class EstimateFeeRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, amount, fromAddress, toAddress, tokenId) { 
+    static initialize(obj, amount, destination, source, tokenId) { 
         obj['amount'] = amount;
-        obj['from_address'] = fromAddress;
-        obj['to_address'] = toAddress;
+        obj['destination'] = destination;
+        obj['source'] = source;
         obj['token_id'] = tokenId;
     }
 
@@ -58,20 +60,17 @@ class EstimateFeeRequest {
             if (data.hasOwnProperty('amount')) {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
-            if (data.hasOwnProperty('contract_address')) {
-                obj['contract_address'] = ApiClient.convertToType(data['contract_address'], 'String');
+            if (data.hasOwnProperty('destination')) {
+                obj['destination'] = ApiClient.convertToType(data['destination'], TransferDestination);
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = ApiClient.convertToType(data['extra'], 'String');
             }
-            if (data.hasOwnProperty('from_address')) {
-                obj['from_address'] = ApiClient.convertToType(data['from_address'], 'String');
-            }
             if (data.hasOwnProperty('memo')) {
                 obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
             }
-            if (data.hasOwnProperty('to_address')) {
-                obj['to_address'] = ApiClient.convertToType(data['to_address'], 'String');
+            if (data.hasOwnProperty('source')) {
+                obj['source'] = ApiClient.convertToType(data['source'], TransferSource);
             }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -90,10 +89,10 @@ class EstimateFeeRequest {
 EstimateFeeRequest.prototype['amount'] = undefined;
 
 /**
- * Contract address
- * @member {String} contract_address
+ * The ID of the wallet to which the transfer will be made
+ * @member {module:model/TransferDestination} destination
  */
-EstimateFeeRequest.prototype['contract_address'] = undefined;
+EstimateFeeRequest.prototype['destination'] = undefined;
 
 /**
  * Extra
@@ -102,22 +101,16 @@ EstimateFeeRequest.prototype['contract_address'] = undefined;
 EstimateFeeRequest.prototype['extra'] = undefined;
 
 /**
- * From address
- * @member {String} from_address
- */
-EstimateFeeRequest.prototype['from_address'] = undefined;
-
-/**
  * Memo
  * @member {String} memo
  */
 EstimateFeeRequest.prototype['memo'] = undefined;
 
 /**
- * To address
- * @member {String} to_address
+ * The ID of the wallet from which the transfer will be made
+ * @member {module:model/TransferSource} source
  */
-EstimateFeeRequest.prototype['to_address'] = undefined;
+EstimateFeeRequest.prototype['source'] = undefined;
 
 /**
  * Token ID

@@ -5,18 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **string** | Amount | 
-**ContractAddress** | Pointer to **string** | Contract address | [optional] 
+**Destination** | [**TransferDestination**](TransferDestination.md) | The ID of the wallet to which the transfer will be made | 
 **Extra** | Pointer to **string** | Extra | [optional] 
-**FromAddress** | **string** | From address | 
 **Memo** | Pointer to **string** | Memo | [optional] 
-**ToAddress** | **string** | To address | 
+**Source** | [**TransferSource**](TransferSource.md) | The ID of the wallet from which the transfer will be made | 
 **TokenId** | **string** | Token ID | 
 
 ## Methods
 
 ### NewEstimateFeeRequest
 
-`func NewEstimateFeeRequest(amount string, fromAddress string, toAddress string, tokenId string, ) *EstimateFeeRequest`
+`func NewEstimateFeeRequest(amount string, destination TransferDestination, source TransferSource, tokenId string, ) *EstimateFeeRequest`
 
 NewEstimateFeeRequest instantiates a new EstimateFeeRequest object
 This constructor will assign default values to properties that have it defined,
@@ -51,30 +50,25 @@ and a boolean to check if the value has been set.
 SetAmount sets Amount field to given value.
 
 
-### GetContractAddress
+### GetDestination
 
-`func (o *EstimateFeeRequest) GetContractAddress() string`
+`func (o *EstimateFeeRequest) GetDestination() TransferDestination`
 
-GetContractAddress returns the ContractAddress field if non-nil, zero value otherwise.
+GetDestination returns the Destination field if non-nil, zero value otherwise.
 
-### GetContractAddressOk
+### GetDestinationOk
 
-`func (o *EstimateFeeRequest) GetContractAddressOk() (*string, bool)`
+`func (o *EstimateFeeRequest) GetDestinationOk() (*TransferDestination, bool)`
 
-GetContractAddressOk returns a tuple with the ContractAddress field if it's non-nil, zero value otherwise
+GetDestinationOk returns a tuple with the Destination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetContractAddress
+### SetDestination
 
-`func (o *EstimateFeeRequest) SetContractAddress(v string)`
+`func (o *EstimateFeeRequest) SetDestination(v TransferDestination)`
 
-SetContractAddress sets ContractAddress field to given value.
+SetDestination sets Destination field to given value.
 
-### HasContractAddress
-
-`func (o *EstimateFeeRequest) HasContractAddress() bool`
-
-HasContractAddress returns a boolean if a field has been set.
 
 ### GetExtra
 
@@ -101,26 +95,6 @@ SetExtra sets Extra field to given value.
 
 HasExtra returns a boolean if a field has been set.
 
-### GetFromAddress
-
-`func (o *EstimateFeeRequest) GetFromAddress() string`
-
-GetFromAddress returns the FromAddress field if non-nil, zero value otherwise.
-
-### GetFromAddressOk
-
-`func (o *EstimateFeeRequest) GetFromAddressOk() (*string, bool)`
-
-GetFromAddressOk returns a tuple with the FromAddress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFromAddress
-
-`func (o *EstimateFeeRequest) SetFromAddress(v string)`
-
-SetFromAddress sets FromAddress field to given value.
-
-
 ### GetMemo
 
 `func (o *EstimateFeeRequest) GetMemo() string`
@@ -146,24 +120,24 @@ SetMemo sets Memo field to given value.
 
 HasMemo returns a boolean if a field has been set.
 
-### GetToAddress
+### GetSource
 
-`func (o *EstimateFeeRequest) GetToAddress() string`
+`func (o *EstimateFeeRequest) GetSource() TransferSource`
 
-GetToAddress returns the ToAddress field if non-nil, zero value otherwise.
+GetSource returns the Source field if non-nil, zero value otherwise.
 
-### GetToAddressOk
+### GetSourceOk
 
-`func (o *EstimateFeeRequest) GetToAddressOk() (*string, bool)`
+`func (o *EstimateFeeRequest) GetSourceOk() (*TransferSource, bool)`
 
-GetToAddressOk returns a tuple with the ToAddress field if it's non-nil, zero value otherwise
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetToAddress
+### SetSource
 
-`func (o *EstimateFeeRequest) SetToAddress(v string)`
+`func (o *EstimateFeeRequest) SetSource(v TransferSource)`
 
-SetToAddress sets ToAddress field to given value.
+SetSource sets Source field to given value.
 
 
 ### GetTokenId

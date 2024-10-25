@@ -30,7 +30,7 @@ import java.io.IOException;
 /**
  * CreateTransferRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:45:46.651278+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T22:27:20.371039+08:00[Asia/Shanghai]")
 public class CreateTransferRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -40,9 +40,17 @@ public class CreateTransferRequest {
   @SerializedName(SERIALIZED_NAME_DESTINATION)
   private TransferDestination destination;
 
+  public static final String SERIALIZED_NAME_EXTRA = "extra";
+  @SerializedName(SERIALIZED_NAME_EXTRA)
+  private String extra;
+
   public static final String SERIALIZED_NAME_FEE = "fee";
   @SerializedName(SERIALIZED_NAME_FEE)
   private Fee fee;
+
+  public static final String SERIALIZED_NAME_MEMO = "memo";
+  @SerializedName(SERIALIZED_NAME_MEMO)
+  private String memo;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -97,6 +105,29 @@ public class CreateTransferRequest {
   }
 
 
+  public CreateTransferRequest extra(String extra) {
+    
+    this.extra = extra;
+    return this;
+  }
+
+   /**
+   * Extra
+   * @return extra
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Extra")
+
+  public String getExtra() {
+    return extra;
+  }
+
+
+  public void setExtra(String extra) {
+    this.extra = extra;
+  }
+
+
   public CreateTransferRequest fee(Fee fee) {
     
     this.fee = fee;
@@ -117,6 +148,29 @@ public class CreateTransferRequest {
 
   public void setFee(Fee fee) {
     this.fee = fee;
+  }
+
+
+  public CreateTransferRequest memo(String memo) {
+    
+    this.memo = memo;
+    return this;
+  }
+
+   /**
+   * Memo
+   * @return memo
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Memo")
+
+  public String getMemo() {
+    return memo;
+  }
+
+
+  public void setMemo(String memo) {
+    this.memo = memo;
   }
 
 
@@ -175,14 +229,16 @@ public class CreateTransferRequest {
     CreateTransferRequest createTransferRequest = (CreateTransferRequest) o;
     return Objects.equals(this.amount, createTransferRequest.amount) &&
         Objects.equals(this.destination, createTransferRequest.destination) &&
+        Objects.equals(this.extra, createTransferRequest.extra) &&
         Objects.equals(this.fee, createTransferRequest.fee) &&
+        Objects.equals(this.memo, createTransferRequest.memo) &&
         Objects.equals(this.source, createTransferRequest.source) &&
         Objects.equals(this.tokenId, createTransferRequest.tokenId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, destination, fee, source, tokenId);
+    return Objects.hash(amount, destination, extra, fee, memo, source, tokenId);
   }
 
   @Override
@@ -191,7 +247,9 @@ public class CreateTransferRequest {
     sb.append("class CreateTransferRequest {\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    destination: ").append(toIndentedString(destination)).append("\n");
+    sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
     sb.append("    fee: ").append(toIndentedString(fee)).append("\n");
+    sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("}");

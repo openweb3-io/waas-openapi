@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.openweb3.waas.models.TransferDestination;
+import io.openweb3.waas.models.TransferSource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,31 +29,27 @@ import java.io.IOException;
 /**
  * EstimateFeeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:45:46.651278+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T22:27:20.371039+08:00[Asia/Shanghai]")
 public class EstimateFeeRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private String amount;
 
-  public static final String SERIALIZED_NAME_CONTRACT_ADDRESS = "contract_address";
-  @SerializedName(SERIALIZED_NAME_CONTRACT_ADDRESS)
-  private String contractAddress;
+  public static final String SERIALIZED_NAME_DESTINATION = "destination";
+  @SerializedName(SERIALIZED_NAME_DESTINATION)
+  private TransferDestination destination;
 
   public static final String SERIALIZED_NAME_EXTRA = "extra";
   @SerializedName(SERIALIZED_NAME_EXTRA)
   private String extra;
 
-  public static final String SERIALIZED_NAME_FROM_ADDRESS = "from_address";
-  @SerializedName(SERIALIZED_NAME_FROM_ADDRESS)
-  private String fromAddress;
-
   public static final String SERIALIZED_NAME_MEMO = "memo";
   @SerializedName(SERIALIZED_NAME_MEMO)
   private String memo;
 
-  public static final String SERIALIZED_NAME_TO_ADDRESS = "to_address";
-  @SerializedName(SERIALIZED_NAME_TO_ADDRESS)
-  private String toAddress;
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  private TransferSource source;
 
   public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
@@ -80,26 +78,25 @@ public class EstimateFeeRequest {
   }
 
 
-  public EstimateFeeRequest contractAddress(String contractAddress) {
+  public EstimateFeeRequest destination(TransferDestination destination) {
     
-    this.contractAddress = contractAddress;
+    this.destination = destination;
     return this;
   }
 
    /**
-   * Contract address
-   * @return contractAddress
+   * The ID of the wallet to which the transfer will be made
+   * @return destination
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "Contract address")
+  @ApiModelProperty(required = true, value = "The ID of the wallet to which the transfer will be made")
 
-  public String getContractAddress() {
-    return contractAddress;
+  public TransferDestination getDestination() {
+    return destination;
   }
 
 
-  public void setContractAddress(String contractAddress) {
-    this.contractAddress = contractAddress;
+  public void setDestination(TransferDestination destination) {
+    this.destination = destination;
   }
 
 
@@ -126,28 +123,6 @@ public class EstimateFeeRequest {
   }
 
 
-  public EstimateFeeRequest fromAddress(String fromAddress) {
-    
-    this.fromAddress = fromAddress;
-    return this;
-  }
-
-   /**
-   * From address
-   * @return fromAddress
-  **/
-  @ApiModelProperty(required = true, value = "From address")
-
-  public String getFromAddress() {
-    return fromAddress;
-  }
-
-
-  public void setFromAddress(String fromAddress) {
-    this.fromAddress = fromAddress;
-  }
-
-
   public EstimateFeeRequest memo(String memo) {
     
     this.memo = memo;
@@ -171,25 +146,25 @@ public class EstimateFeeRequest {
   }
 
 
-  public EstimateFeeRequest toAddress(String toAddress) {
+  public EstimateFeeRequest source(TransferSource source) {
     
-    this.toAddress = toAddress;
+    this.source = source;
     return this;
   }
 
    /**
-   * To address
-   * @return toAddress
+   * The ID of the wallet from which the transfer will be made
+   * @return source
   **/
-  @ApiModelProperty(required = true, value = "To address")
+  @ApiModelProperty(required = true, value = "The ID of the wallet from which the transfer will be made")
 
-  public String getToAddress() {
-    return toAddress;
+  public TransferSource getSource() {
+    return source;
   }
 
 
-  public void setToAddress(String toAddress) {
-    this.toAddress = toAddress;
+  public void setSource(TransferSource source) {
+    this.source = source;
   }
 
 
@@ -225,17 +200,16 @@ public class EstimateFeeRequest {
     }
     EstimateFeeRequest estimateFeeRequest = (EstimateFeeRequest) o;
     return Objects.equals(this.amount, estimateFeeRequest.amount) &&
-        Objects.equals(this.contractAddress, estimateFeeRequest.contractAddress) &&
+        Objects.equals(this.destination, estimateFeeRequest.destination) &&
         Objects.equals(this.extra, estimateFeeRequest.extra) &&
-        Objects.equals(this.fromAddress, estimateFeeRequest.fromAddress) &&
         Objects.equals(this.memo, estimateFeeRequest.memo) &&
-        Objects.equals(this.toAddress, estimateFeeRequest.toAddress) &&
+        Objects.equals(this.source, estimateFeeRequest.source) &&
         Objects.equals(this.tokenId, estimateFeeRequest.tokenId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, contractAddress, extra, fromAddress, memo, toAddress, tokenId);
+    return Objects.hash(amount, destination, extra, memo, source, tokenId);
   }
 
   @Override
@@ -243,11 +217,10 @@ public class EstimateFeeRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class EstimateFeeRequest {\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    contractAddress: ").append(toIndentedString(contractAddress)).append("\n");
+    sb.append("    destination: ").append(toIndentedString(destination)).append("\n");
     sb.append("    extra: ").append(toIndentedString(extra)).append("\n");
-    sb.append("    fromAddress: ").append(toIndentedString(fromAddress)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
-    sb.append("    toAddress: ").append(toIndentedString(toAddress)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("}");
     return sb.toString();

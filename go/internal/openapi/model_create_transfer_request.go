@@ -20,8 +20,12 @@ type CreateTransferRequest struct {
 	Amount string `json:"amount"`
 	// The ID of the wallet to which the transfer will be made
 	Destination TransferDestination `json:"destination"`
+	// Extra
+	Extra *string `json:"extra,omitempty"`
 	// Fee
 	Fee *Fee `json:"fee,omitempty"`
+	// Memo
+	Memo *string `json:"memo,omitempty"`
 	// The ID of the wallet from which the transfer will be made
 	Source TransferSource `json:"source"`
 	// The tokenId to be transferred
@@ -97,6 +101,38 @@ func (o *CreateTransferRequest) SetDestination(v TransferDestination) {
 	o.Destination = v
 }
 
+// GetExtra returns the Extra field value if set, zero value otherwise.
+func (o *CreateTransferRequest) GetExtra() string {
+	if o == nil || o.Extra == nil {
+		var ret string
+		return ret
+	}
+	return *o.Extra
+}
+
+// GetExtraOk returns a tuple with the Extra field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTransferRequest) GetExtraOk() (*string, bool) {
+	if o == nil || o.Extra == nil {
+		return nil, false
+	}
+	return o.Extra, true
+}
+
+// HasExtra returns a boolean if a field has been set.
+func (o *CreateTransferRequest) HasExtra() bool {
+	if o != nil && o.Extra != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExtra gets a reference to the given string and assigns it to the Extra field.
+func (o *CreateTransferRequest) SetExtra(v string) {
+	o.Extra = &v
+}
+
 // GetFee returns the Fee field value if set, zero value otherwise.
 func (o *CreateTransferRequest) GetFee() Fee {
 	if o == nil || o.Fee == nil {
@@ -127,6 +163,38 @@ func (o *CreateTransferRequest) HasFee() bool {
 // SetFee gets a reference to the given Fee and assigns it to the Fee field.
 func (o *CreateTransferRequest) SetFee(v Fee) {
 	o.Fee = &v
+}
+
+// GetMemo returns the Memo field value if set, zero value otherwise.
+func (o *CreateTransferRequest) GetMemo() string {
+	if o == nil || o.Memo == nil {
+		var ret string
+		return ret
+	}
+	return *o.Memo
+}
+
+// GetMemoOk returns a tuple with the Memo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTransferRequest) GetMemoOk() (*string, bool) {
+	if o == nil || o.Memo == nil {
+		return nil, false
+	}
+	return o.Memo, true
+}
+
+// HasMemo returns a boolean if a field has been set.
+func (o *CreateTransferRequest) HasMemo() bool {
+	if o != nil && o.Memo != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMemo gets a reference to the given string and assigns it to the Memo field.
+func (o *CreateTransferRequest) SetMemo(v string) {
+	o.Memo = &v
 }
 
 // GetSource returns the Source field value
@@ -185,8 +253,14 @@ func (o CreateTransferRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["destination"] = o.Destination
 	}
+	if o.Extra != nil {
+		toSerialize["extra"] = o.Extra
+	}
 	if o.Fee != nil {
 		toSerialize["fee"] = o.Fee
+	}
+	if o.Memo != nil {
+		toSerialize["memo"] = o.Memo
 	}
 	if true {
 		toSerialize["source"] = o.Source
