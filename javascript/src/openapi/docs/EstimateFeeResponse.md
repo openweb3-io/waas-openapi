@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **String** | Amount | [optional] 
-**tokenId** | **String** | Token ID | [optional] 
+**amount** | **String** | Amount | 
+**tokenId** | **String** | Token ID | 
 
 

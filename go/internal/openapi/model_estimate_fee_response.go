@@ -1,7 +1,7 @@
 /*
  * WaaS OpenAPI Documentation
  *
- * This is a custody wallet service openapi server.
+ * This is a WaaS OpenAPI Server.
  *
  * API version: 1.0
  */
@@ -17,17 +17,19 @@ import (
 // EstimateFeeResponse struct for EstimateFeeResponse
 type EstimateFeeResponse struct {
 	// Amount
-	Amount *string `json:"amount,omitempty"`
+	Amount string `json:"amount"`
 	// Token ID
-	TokenId *string `json:"token_id,omitempty"`
+	TokenId string `json:"token_id"`
 }
 
 // NewEstimateFeeResponse instantiates a new EstimateFeeResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEstimateFeeResponse() *EstimateFeeResponse {
+func NewEstimateFeeResponse(amount string, tokenId string) *EstimateFeeResponse {
 	this := EstimateFeeResponse{}
+	this.Amount = amount
+	this.TokenId = tokenId
 	return &this
 }
 
@@ -39,76 +41,60 @@ func NewEstimateFeeResponseWithDefaults() *EstimateFeeResponse {
 	return &this
 }
 
-// GetAmount returns the Amount field value if set, zero value otherwise.
+// GetAmount returns the Amount field value
 func (o *EstimateFeeResponse) GetAmount() string {
-	if o == nil || o.Amount == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Amount
+
+	return o.Amount
 }
 
-// GetAmountOk returns a tuple with the Amount field value if set, nil otherwise
+// GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
 func (o *EstimateFeeResponse) GetAmountOk() (*string, bool) {
-	if o == nil || o.Amount == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.Amount, true
+	return &o.Amount, true
 }
 
-// HasAmount returns a boolean if a field has been set.
-func (o *EstimateFeeResponse) HasAmount() bool {
-	if o != nil && o.Amount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAmount gets a reference to the given string and assigns it to the Amount field.
+// SetAmount sets field value
 func (o *EstimateFeeResponse) SetAmount(v string) {
-	o.Amount = &v
+	o.Amount = v
 }
 
-// GetTokenId returns the TokenId field value if set, zero value otherwise.
+// GetTokenId returns the TokenId field value
 func (o *EstimateFeeResponse) GetTokenId() string {
-	if o == nil || o.TokenId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TokenId
+
+	return o.TokenId
 }
 
-// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
+// GetTokenIdOk returns a tuple with the TokenId field value
 // and a boolean to check if the value has been set.
 func (o *EstimateFeeResponse) GetTokenIdOk() (*string, bool) {
-	if o == nil || o.TokenId == nil {
+	if o == nil  {
 		return nil, false
 	}
-	return o.TokenId, true
+	return &o.TokenId, true
 }
 
-// HasTokenId returns a boolean if a field has been set.
-func (o *EstimateFeeResponse) HasTokenId() bool {
-	if o != nil && o.TokenId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
+// SetTokenId sets field value
 func (o *EstimateFeeResponse) SetTokenId(v string) {
-	o.TokenId = &v
+	o.TokenId = v
 }
 
 func (o EstimateFeeResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Amount != nil {
+	if true {
 		toSerialize["amount"] = o.Amount
 	}
-	if o.TokenId != nil {
+	if true {
 		toSerialize["token_id"] = o.TokenId
 	}
 	return json.Marshal(toSerialize)

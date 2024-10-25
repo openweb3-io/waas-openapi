@@ -1,6 +1,6 @@
 /**
  * WaaS OpenAPI Documentation
- * This is a custody wallet service openapi server.
+ * This is a WaaS OpenAPI Server.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -56,7 +56,7 @@ import WebhookEndpointsApi from './api/WebhookEndpointsApi';
 
 
 /**
-* This_is_a_custody_wallet_service_openapi_server_.<br>
+* This_is_a_WaaS_OpenAPI_Server_.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:

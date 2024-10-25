@@ -1,7 +1,7 @@
 /*
  * WaaS OpenAPI Documentation
  *
- * This is a custody wallet service openapi server.
+ * This is a WaaS OpenAPI Server.
  *
  * API version: 1.0
  */

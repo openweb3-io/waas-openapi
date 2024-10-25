@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   contact: {}
-  description: This is a custody wallet service openapi server.
+  description: This is a WaaS OpenAPI Server.
   title: WaaS OpenAPI Documentation
   version: "1.0"
 servers:
@@ -1896,6 +1896,9 @@ components:
         token_id:
           description: Token ID
           type: string
+      required:
+      - amount
+      - token_id
       type: object
     Fee:
       properties:

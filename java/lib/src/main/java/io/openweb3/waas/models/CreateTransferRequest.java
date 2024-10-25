@@ -1,6 +1,6 @@
 /*
  * WaaS OpenAPI Documentation
- * This is a custody wallet service openapi server.
+ * This is a WaaS OpenAPI Server.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -30,7 +30,7 @@ import java.io.IOException;
 /**
  * CreateTransferRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T20:59:16.612595+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:10:37.121837+08:00[Asia/Shanghai]")
 public class CreateTransferRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)

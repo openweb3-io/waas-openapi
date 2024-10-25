@@ -1,6 +1,6 @@
 /*
  * WaaS OpenAPI Documentation
- * This is a custody wallet service openapi server.
+ * This is a WaaS OpenAPI Server.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -16,7 +16,7 @@ package io.openweb3.waas.internal;
 import java.util.Collection;
 import java.util.Iterator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T20:59:16.612595+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T21:10:37.121837+08:00[Asia/Shanghai]")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

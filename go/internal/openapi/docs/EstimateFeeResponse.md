@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Amount** | Pointer to **string** | Amount | [optional] 
-**TokenId** | Pointer to **string** | Token ID | [optional] 
+**Amount** | **string** | Amount | 
+**TokenId** | **string** | Token ID | 
 
 ## Methods
 
 ### NewEstimateFeeResponse
 
-`func NewEstimateFeeResponse() *EstimateFeeResponse`
+`func NewEstimateFeeResponse(amount string, tokenId string, ) *EstimateFeeResponse`
 
 NewEstimateFeeResponse instantiates a new EstimateFeeResponse object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetAmount sets Amount field to given value.
 
-### HasAmount
-
-`func (o *EstimateFeeResponse) HasAmount() bool`
-
-HasAmount returns a boolean if a field has been set.
 
 ### GetTokenId
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetTokenId sets TokenId field to given value.
 
-### HasTokenId
-
-`func (o *EstimateFeeResponse) HasTokenId() bool`
-
-HasTokenId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

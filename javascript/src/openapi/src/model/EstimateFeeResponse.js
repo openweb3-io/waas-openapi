@@ -1,6 +1,6 @@
 /**
  * WaaS OpenAPI Documentation
- * This is a custody wallet service openapi server.
+ * This is a WaaS OpenAPI Server.
  *
  * The version of the OpenAPI document: 1.0
  * 
@@ -22,10 +22,12 @@ class EstimateFeeResponse {
     /**
      * Constructs a new <code>EstimateFeeResponse</code>.
      * @alias module:model/EstimateFeeResponse
+     * @param amount {String} Amount
+     * @param tokenId {String} Token ID
      */
-    constructor() { 
+    constructor(amount, tokenId) { 
         
-        EstimateFeeResponse.initialize(this);
+        EstimateFeeResponse.initialize(this, amount, tokenId);
     }
 
     /**
@@ -33,7 +35,9 @@ class EstimateFeeResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, amount, tokenId) { 
+        obj['amount'] = amount;
+        obj['token_id'] = tokenId;
     }
 
     /**
