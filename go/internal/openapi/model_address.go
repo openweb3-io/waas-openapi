@@ -30,6 +30,8 @@ type Address struct {
 	Path *string `json:"path,omitempty"`
 	// Updated time
 	UpdatedAt *string `json:"updated_at,omitempty"`
+	// Chain ID
+	WalletId *string `json:"wallet_id,omitempty"`
 }
 
 // NewAddress instantiates a new Address object
@@ -63,7 +65,7 @@ func (o *Address) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 func (o *Address) GetAddressOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Address, true
@@ -266,6 +268,38 @@ func (o *Address) SetUpdatedAt(v string) {
 	o.UpdatedAt = &v
 }
 
+// GetWalletId returns the WalletId field value if set, zero value otherwise.
+func (o *Address) GetWalletId() string {
+	if o == nil || o.WalletId == nil {
+		var ret string
+		return ret
+	}
+	return *o.WalletId
+}
+
+// GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Address) GetWalletIdOk() (*string, bool) {
+	if o == nil || o.WalletId == nil {
+		return nil, false
+	}
+	return o.WalletId, true
+}
+
+// HasWalletId returns a boolean if a field has been set.
+func (o *Address) HasWalletId() bool {
+	if o != nil && o.WalletId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWalletId gets a reference to the given string and assigns it to the WalletId field.
+func (o *Address) SetWalletId(v string) {
+	o.WalletId = &v
+}
+
 func (o Address) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -288,6 +322,9 @@ func (o Address) MarshalJSON() ([]byte, error) {
 	}
 	if o.UpdatedAt != nil {
 		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if o.WalletId != nil {
+		toSerialize["wallet_id"] = o.WalletId
 	}
 	return json.Marshal(toSerialize)
 }
@@ -327,5 +364,3 @@ func (v *NullableAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

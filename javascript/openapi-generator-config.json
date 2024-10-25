@@ -1,5 +1,5 @@
 {
-    "packageName": "openapi",
+    "packageName": "openweb3-io/waas-openapi",
     "isGoSubmodule": true,
     "enumClassPrefix": true,
     "additionalProperties": {

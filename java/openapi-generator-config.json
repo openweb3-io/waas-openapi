@@ -1,9 +1,5 @@
 {
-    "packageName": "openapi",
-    "isGoSubmodule": true,
-    "enumClassPrefix": true,
-    "additionalProperties": {
-        "withGoCodegenTests": true,
-        "withCustomMiddlewareFunction": true
-    }
+  "apiPackage": "io.openweb3.waas.internal.api",
+  "modelPackage": "io.openweb3.waas.models",
+  "dateLibrary": "java8"
 }

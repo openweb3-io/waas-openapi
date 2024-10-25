@@ -16,6 +16,8 @@ import ApiClient from "../ApiClient";
 import CreateTransferRequest from '../model/CreateTransferRequest';
 import CreateTransferResponse from '../model/CreateTransferResponse';
 import Error from '../model/Error';
+import EstimateFeeRequest from '../model/EstimateFeeRequest';
+import EstimateFeeResponse from '../model/EstimateFeeResponse';
 import PageTransaction from '../model/PageTransaction';
 import Transaction from '../model/Transaction';
 
@@ -37,6 +39,48 @@ export default class TransactionsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+    /**
+     * Callback function to receive the result of the v1TransactionsEstimateFee operation.
+     * @callback module:api/TransactionsApi~v1TransactionsEstimateFeeCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/EstimateFeeResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Estimate fee
+     * Estimate fee for a transfer transaction
+     * @param {module:model/EstimateFeeRequest} estimateFeeRequest Request Body
+     * @param {module:api/TransactionsApi~v1TransactionsEstimateFeeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/EstimateFeeResponse}
+     */
+    v1TransactionsEstimateFee(estimateFeeRequest, callback) {
+      let postBody = estimateFeeRequest;
+      // verify the required parameter 'estimateFeeRequest' is set
+      if (estimateFeeRequest === undefined || estimateFeeRequest === null) {
+        throw new Error("Missing the required parameter 'estimateFeeRequest' when calling v1TransactionsEstimateFee");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = EstimateFeeResponse;
+      return this.apiClient.callApi(
+        '/api/v1/transactions/estimate_fee', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the v1TransactionsList operation.

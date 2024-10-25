@@ -21,12 +21,12 @@ List of all available addresses.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.AddressesApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.AddressesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -106,12 +106,12 @@ Create deposit address for wallet
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.AddressesApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.AddressesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -187,12 +187,12 @@ Get wallet&#39;s deposit address
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.AddressesApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.AddressesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -270,12 +270,12 @@ List wallet&#39;s deposit addresses
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.AddressesApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.AddressesApi;
 
 public class Example {
   public static void main(String[] args) {

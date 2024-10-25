@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1ChainsList**](ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
-[**v1ChainsRetrieve**](ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{id} | Retrieve chain
+[**v1ChainsRetrieve**](ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{chainId} | Retrieve chain
 
 
 <a name="v1ChainsList"></a>
@@ -19,12 +19,12 @@ List of all available chains.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ChainsApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.ChainsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 <a name="v1ChainsRetrieve"></a>
 # **v1ChainsRetrieve**
-> Chain v1ChainsRetrieve(id)
+> Chain v1ChainsRetrieve(chainId)
 
 Retrieve chain
 
@@ -100,12 +100,12 @@ Retrieve chain information.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ChainsApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.ChainsApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -125,9 +125,9 @@ public class Example {
     //SignatureAuth.setApiKeyPrefix("Token");
 
     ChainsApi apiInstance = new ChainsApi(defaultClient);
-    String id = "id_example"; // String | Chain ID
+    String chainId = "chainId_example"; // String | Chain ID
     try {
-      Chain result = apiInstance.v1ChainsRetrieve(id);
+      Chain result = apiInstance.v1ChainsRetrieve(chainId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ChainsApi#v1ChainsRetrieve");
@@ -144,7 +144,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Chain ID |
+ **chainId** | **String**| Chain ID |
 
 ### Return type
 

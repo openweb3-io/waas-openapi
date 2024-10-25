@@ -16,20 +16,24 @@ import (
 
 // CursorPageAddress struct for CursorPageAddress
 type CursorPageAddress struct {
-	HasNext bool `json:"has_next"`
-	Items []Address `json:"items"`
-	NextCursor *string `json:"next_cursor,omitempty"`
-	PrevCursor *string `json:"prev_cursor,omitempty"`
+	HasNext    bool      `json:"has_next"`
+	HasPrev    bool      `json:"has_prev"`
+	Items      []Address `json:"items"`
+	NextCursor *string   `json:"next_cursor,omitempty"`
+	PrevCursor *string   `json:"prev_cursor,omitempty"`
+	Total      int32     `json:"total"`
 }
 
 // NewCursorPageAddress instantiates a new CursorPageAddress object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCursorPageAddress(hasNext bool, items []Address) *CursorPageAddress {
+func NewCursorPageAddress(hasNext bool, hasPrev bool, items []Address, total int32) *CursorPageAddress {
 	this := CursorPageAddress{}
 	this.HasNext = hasNext
+	this.HasPrev = hasPrev
 	this.Items = items
+	this.Total = total
 	return &this
 }
 
@@ -54,7 +58,7 @@ func (o *CursorPageAddress) GetHasNext() bool {
 // GetHasNextOk returns a tuple with the HasNext field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageAddress) GetHasNextOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HasNext, true
@@ -63,6 +67,30 @@ func (o *CursorPageAddress) GetHasNextOk() (*bool, bool) {
 // SetHasNext sets field value
 func (o *CursorPageAddress) SetHasNext(v bool) {
 	o.HasNext = v
+}
+
+// GetHasPrev returns the HasPrev field value
+func (o *CursorPageAddress) GetHasPrev() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HasPrev
+}
+
+// GetHasPrevOk returns a tuple with the HasPrev field value
+// and a boolean to check if the value has been set.
+func (o *CursorPageAddress) GetHasPrevOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HasPrev, true
+}
+
+// SetHasPrev sets field value
+func (o *CursorPageAddress) SetHasPrev(v bool) {
+	o.HasPrev = v
 }
 
 // GetItems returns the Items field value
@@ -78,7 +106,7 @@ func (o *CursorPageAddress) GetItems() []Address {
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageAddress) GetItemsOk() (*[]Address, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Items, true
@@ -153,10 +181,37 @@ func (o *CursorPageAddress) SetPrevCursor(v string) {
 	o.PrevCursor = &v
 }
 
+// GetTotal returns the Total field value
+func (o *CursorPageAddress) GetTotal() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Total
+}
+
+// GetTotalOk returns a tuple with the Total field value
+// and a boolean to check if the value has been set.
+func (o *CursorPageAddress) GetTotalOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Total, true
+}
+
+// SetTotal sets field value
+func (o *CursorPageAddress) SetTotal(v int32) {
+	o.Total = v
+}
+
 func (o CursorPageAddress) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["has_next"] = o.HasNext
+	}
+	if true {
+		toSerialize["has_prev"] = o.HasPrev
 	}
 	if true {
 		toSerialize["items"] = o.Items
@@ -166,6 +221,9 @@ func (o CursorPageAddress) MarshalJSON() ([]byte, error) {
 	}
 	if o.PrevCursor != nil {
 		toSerialize["prev_cursor"] = o.PrevCursor
+	}
+	if true {
+		toSerialize["total"] = o.Total
 	}
 	return json.Marshal(toSerialize)
 }
@@ -205,5 +263,3 @@ func (v *NullableCursorPageAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

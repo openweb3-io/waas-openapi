@@ -1,4 +1,4 @@
-module github.com/openweb3-io/wallet-openapi/go
+module github.com/openweb3-io/waas-openapi/go
 
 go 1.22.1
 

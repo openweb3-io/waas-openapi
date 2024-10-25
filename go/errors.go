@@ -1,9 +1,9 @@
-package wallet
+package waas
 
 import (
 	"net/http"
 
-	"github.com/openweb3-io/wallet-openapi/go/internal/openapi"
+	"github.com/openweb3-io/waas-openapi/go/internal/openapi"
 )
 
 // Error provides access to the body, status, and error on returned errors.

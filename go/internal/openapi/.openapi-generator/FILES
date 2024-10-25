@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -27,6 +28,8 @@ docs/CursorPageToken.md
 docs/CursorPageWallet.md
 docs/Endpoint.md
 docs/Error.md
+docs/EstimateFeeRequest.md
+docs/EstimateFeeResponse.md
 docs/Fee.md
 docs/FeeType.md
 docs/PageTransaction.md
@@ -60,6 +63,8 @@ model_cursor_page_token.go
 model_cursor_page_wallet.go
 model_endpoint.go
 model_error.go
+model_estimate_fee_request.go
+model_estimate_fee_response.go
 model_fee.go
 model_fee_type.go
 model_page_transaction.go

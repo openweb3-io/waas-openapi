@@ -60,8 +60,44 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property network (base name: "network")', function() {
-      // uncomment below and update the code to test the property network
+    it('should have the property chain (base name: "chain")', function() {
+      // uncomment below and update the code to test the property chain
+      //var instance = new WaaSOpenApiDocumentation.Address();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property chainId (base name: "chain_id")', function() {
+      // uncomment below and update the code to test the property chainId
+      //var instance = new WaaSOpenApiDocumentation.Address();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property createdAt (base name: "created_at")', function() {
+      // uncomment below and update the code to test the property createdAt
+      //var instance = new WaaSOpenApiDocumentation.Address();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property memo (base name: "memo")', function() {
+      // uncomment below and update the code to test the property memo
+      //var instance = new WaaSOpenApiDocumentation.Address();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property path (base name: "path")', function() {
+      // uncomment below and update the code to test the property path
+      //var instance = new WaaSOpenApiDocumentation.Address();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property updatedAt (base name: "updated_at")', function() {
+      // uncomment below and update the code to test the property updatedAt
+      //var instance = new WaaSOpenApiDocumentation.Address();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property walletId (base name: "wallet_id")', function() {
+      // uncomment below and update the code to test the property walletId
       //var instance = new WaaSOpenApiDocumentation.Address();
       //expect(instance).to.be();
     });

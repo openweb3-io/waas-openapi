@@ -16,20 +16,24 @@ import (
 
 // CursorPageToken struct for CursorPageToken
 type CursorPageToken struct {
-	HasNext bool `json:"has_next"`
-	Items []Token `json:"items"`
+	HasNext    bool    `json:"has_next"`
+	HasPrev    bool    `json:"has_prev"`
+	Items      []Token `json:"items"`
 	NextCursor *string `json:"next_cursor,omitempty"`
 	PrevCursor *string `json:"prev_cursor,omitempty"`
+	Total      int32   `json:"total"`
 }
 
 // NewCursorPageToken instantiates a new CursorPageToken object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCursorPageToken(hasNext bool, items []Token) *CursorPageToken {
+func NewCursorPageToken(hasNext bool, hasPrev bool, items []Token, total int32) *CursorPageToken {
 	this := CursorPageToken{}
 	this.HasNext = hasNext
+	this.HasPrev = hasPrev
 	this.Items = items
+	this.Total = total
 	return &this
 }
 
@@ -54,7 +58,7 @@ func (o *CursorPageToken) GetHasNext() bool {
 // GetHasNextOk returns a tuple with the HasNext field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageToken) GetHasNextOk() (*bool, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.HasNext, true
@@ -63,6 +67,30 @@ func (o *CursorPageToken) GetHasNextOk() (*bool, bool) {
 // SetHasNext sets field value
 func (o *CursorPageToken) SetHasNext(v bool) {
 	o.HasNext = v
+}
+
+// GetHasPrev returns the HasPrev field value
+func (o *CursorPageToken) GetHasPrev() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HasPrev
+}
+
+// GetHasPrevOk returns a tuple with the HasPrev field value
+// and a boolean to check if the value has been set.
+func (o *CursorPageToken) GetHasPrevOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HasPrev, true
+}
+
+// SetHasPrev sets field value
+func (o *CursorPageToken) SetHasPrev(v bool) {
+	o.HasPrev = v
 }
 
 // GetItems returns the Items field value
@@ -78,7 +106,7 @@ func (o *CursorPageToken) GetItems() []Token {
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageToken) GetItemsOk() (*[]Token, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.Items, true
@@ -153,10 +181,37 @@ func (o *CursorPageToken) SetPrevCursor(v string) {
 	o.PrevCursor = &v
 }
 
+// GetTotal returns the Total field value
+func (o *CursorPageToken) GetTotal() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Total
+}
+
+// GetTotalOk returns a tuple with the Total field value
+// and a boolean to check if the value has been set.
+func (o *CursorPageToken) GetTotalOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Total, true
+}
+
+// SetTotal sets field value
+func (o *CursorPageToken) SetTotal(v int32) {
+	o.Total = v
+}
+
 func (o CursorPageToken) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["has_next"] = o.HasNext
+	}
+	if true {
+		toSerialize["has_prev"] = o.HasPrev
 	}
 	if true {
 		toSerialize["items"] = o.Items
@@ -166,6 +221,9 @@ func (o CursorPageToken) MarshalJSON() ([]byte, error) {
 	}
 	if o.PrevCursor != nil {
 		toSerialize["prev_cursor"] = o.PrevCursor
+	}
+	if true {
+		toSerialize["total"] = o.Total
 	}
 	return json.Marshal(toSerialize)
 }
@@ -205,5 +263,3 @@ func (v *NullableCursorPageToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

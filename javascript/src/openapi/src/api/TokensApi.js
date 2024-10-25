@@ -134,19 +134,19 @@ export default class TokensApi {
     /**
      * Get Token
      * Get token info by ID
-     * @param {String} id Token ID
+     * @param {String} tokenId Token ID
      * @param {module:api/TokensApi~v1TokensRetrieveCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Token}
      */
-    v1TokensRetrieve(id, callback) {
+    v1TokensRetrieve(tokenId, callback) {
       let postBody = null;
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling v1TokensRetrieve");
+      // verify the required parameter 'tokenId' is set
+      if (tokenId === undefined || tokenId === null) {
+        throw new Error("Missing the required parameter 'tokenId' when calling v1TokensRetrieve");
       }
 
       let pathParams = {
-        'id': id
+        'tokenId': tokenId
       };
       let queryParams = {
       };
@@ -160,7 +160,7 @@ export default class TokensApi {
       let accepts = ['application/json'];
       let returnType = Token;
       return this.apiClient.callApi(
-        '/api/v1/tokens/{id}', 'GET',
+        '/api/v1/tokens/{tokenId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

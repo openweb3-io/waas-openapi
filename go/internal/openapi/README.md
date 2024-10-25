@@ -83,11 +83,12 @@ Class | Method | HTTP request | Description
 *AddressesApi* | [**V1WalletsGetDepositAddress**](docs/AddressesApi.md#v1walletsgetdepositaddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
 *AddressesApi* | [**V1WalletsListDepositAddresses**](docs/AddressesApi.md#v1walletslistdepositaddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List deposit addresses
 *ChainsApi* | [**V1ChainsList**](docs/ChainsApi.md#v1chainslist) | **Get** /api/v1/chains | List all chains
-*ChainsApi* | [**V1ChainsRetrieve**](docs/ChainsApi.md#v1chainsretrieve) | **Get** /api/v1/chains/{id} | Retrieve chain
+*ChainsApi* | [**V1ChainsRetrieve**](docs/ChainsApi.md#v1chainsretrieve) | **Get** /api/v1/chains/{chainId} | Retrieve chain
 *TokensApi* | [**V1TokensCreate**](docs/TokensApi.md#v1tokenscreate) | **Post** /api/v1/tokens | Create token
 *TokensApi* | [**V1TokensList**](docs/TokensApi.md#v1tokenslist) | **Get** /api/v1/tokens | List tokens
-*TokensApi* | [**V1TokensRetrieve**](docs/TokensApi.md#v1tokensretrieve) | **Get** /api/v1/tokens/{id} | Get Token
+*TokensApi* | [**V1TokensRetrieve**](docs/TokensApi.md#v1tokensretrieve) | **Get** /api/v1/tokens/{tokenId} | Get Token
 *TokensApi* | [**V1TokensUpdate**](docs/TokensApi.md#v1tokensupdate) | **Patch** /api/v1/tokens/{tokenId} | Update token
+*TransactionsApi* | [**V1TransactionsEstimateFee**](docs/TransactionsApi.md#v1transactionsestimatefee) | **Post** /api/v1/transactions/estimate_fee | Estimate fee
 *TransactionsApi* | [**V1TransactionsList**](docs/TransactionsApi.md#v1transactionslist) | **Get** /api/v1/transactions | List transactions
 *TransactionsApi* | [**V1TransactionsRetrieve**](docs/TransactionsApi.md#v1transactionsretrieve) | **Get** /api/v1/transactions/{transactionId} | Get transaction
 *TransactionsApi* | [**V1TransactionsTransfer**](docs/TransactionsApi.md#v1transactionstransfer) | **Post** /api/v1/transactions/transfer | Transfer token
@@ -120,6 +121,8 @@ Class | Method | HTTP request | Description
  - [CursorPageWallet](docs/CursorPageWallet.md)
  - [Endpoint](docs/Endpoint.md)
  - [Error](docs/Error.md)
+ - [EstimateFeeRequest](docs/EstimateFeeRequest.md)
+ - [EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [Fee](docs/Fee.md)
  - [FeeType](docs/FeeType.md)
  - [PageTransaction](docs/PageTransaction.md)

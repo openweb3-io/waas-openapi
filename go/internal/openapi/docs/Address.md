@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Memo** | Pointer to **string** | The memo | [optional] 
 **Path** | Pointer to **string** | Derivation path | [optional] 
 **UpdatedAt** | Pointer to **string** | Updated time | [optional] 
+**WalletId** | Pointer to **string** | Chain ID | [optional] 
 
 ## Methods
 
@@ -200,6 +201,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *Address) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetWalletId
+
+`func (o *Address) GetWalletId() string`
+
+GetWalletId returns the WalletId field if non-nil, zero value otherwise.
+
+### GetWalletIdOk
+
+`func (o *Address) GetWalletIdOk() (*string, bool)`
+
+GetWalletIdOk returns a tuple with the WalletId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWalletId
+
+`func (o *Address) SetWalletId(v string)`
+
+SetWalletId sets WalletId field to given value.
+
+### HasWalletId
+
+`func (o *Address) HasWalletId() bool`
+
+HasWalletId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

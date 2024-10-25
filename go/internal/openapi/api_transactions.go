@@ -27,17 +27,196 @@ var (
 // TransactionsApiService TransactionsApi service
 type TransactionsApiService service
 
+type ApiV1TransactionsEstimateFeeRequest struct {
+	ctx                _context.Context
+	ApiService         *TransactionsApiService
+	estimateFeeRequest *EstimateFeeRequest
+}
+
+func (r ApiV1TransactionsEstimateFeeRequest) EstimateFeeRequest(estimateFeeRequest EstimateFeeRequest) ApiV1TransactionsEstimateFeeRequest {
+	r.estimateFeeRequest = &estimateFeeRequest
+	return r
+}
+
+func (r ApiV1TransactionsEstimateFeeRequest) Execute() (EstimateFeeResponse, *_nethttp.Response, error) {
+	return r.ApiService.V1TransactionsEstimateFeeExecute(r)
+}
+
+/*
+ * V1TransactionsEstimateFee Estimate fee
+ * Estimate fee for a transfer transaction
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @return ApiV1TransactionsEstimateFeeRequest
+ */
+func (a *TransactionsApiService) V1TransactionsEstimateFee(ctx _context.Context) ApiV1TransactionsEstimateFeeRequest {
+	return ApiV1TransactionsEstimateFeeRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+/*
+ * Execute executes the request
+ * @return EstimateFeeResponse
+ */
+func (a *TransactionsApiService) V1TransactionsEstimateFeeExecute(r ApiV1TransactionsEstimateFeeRequest) (EstimateFeeResponse, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  EstimateFeeResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransactionsApiService.V1TransactionsEstimateFee")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/transactions/estimate_fee"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.estimateFeeRequest == nil {
+		return localVarReturnValue, nil, reportError("estimateFeeRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.estimateFeeRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Api-Key"] = key
+			}
+		}
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["SignatureAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Signature"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV1TransactionsListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *TransactionsApiService
-	assetIds *[]string
-	chainIds *[]string
-	cursor *string
-	hash *string
-	limit *int32
-	status *string
-	tokenIds *[]string
-	walletIds *[]string
+	assetIds   *[]string
+	chainIds   *[]string
+	cursor     *string
+	hash       *string
+	limit      *int32
+	status     *string
+	tokenIds   *[]string
+	walletIds  *[]string
 }
 
 func (r ApiV1TransactionsListRequest) AssetIds(assetIds []string) ApiV1TransactionsListRequest {
@@ -86,7 +265,7 @@ func (r ApiV1TransactionsListRequest) Execute() (PageTransaction, *_nethttp.Resp
 func (a *TransactionsApiService) V1TransactionsList(ctx _context.Context) ApiV1TransactionsListRequest {
 	return ApiV1TransactionsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -261,11 +440,10 @@ func (a *TransactionsApiService) V1TransactionsListExecute(r ApiV1TransactionsLi
 }
 
 type ApiV1TransactionsRetrieveRequest struct {
-	ctx _context.Context
-	ApiService *TransactionsApiService
+	ctx           _context.Context
+	ApiService    *TransactionsApiService
 	transactionId string
 }
-
 
 func (r ApiV1TransactionsRetrieveRequest) Execute() (Transaction, *_nethttp.Response, error) {
 	return r.ApiService.V1TransactionsRetrieveExecute(r)
@@ -280,8 +458,8 @@ func (r ApiV1TransactionsRetrieveRequest) Execute() (Transaction, *_nethttp.Resp
  */
 func (a *TransactionsApiService) V1TransactionsRetrieve(ctx _context.Context, transactionId string) ApiV1TransactionsRetrieveRequest {
 	return ApiV1TransactionsRetrieveRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		transactionId: transactionId,
 	}
 }
@@ -434,8 +612,8 @@ func (a *TransactionsApiService) V1TransactionsRetrieveExecute(r ApiV1Transactio
 }
 
 type ApiV1TransactionsTransferRequest struct {
-	ctx _context.Context
-	ApiService *TransactionsApiService
+	ctx                   _context.Context
+	ApiService            *TransactionsApiService
 	createTransferRequest *CreateTransferRequest
 }
 
@@ -457,7 +635,7 @@ func (r ApiV1TransactionsTransferRequest) Execute() (CreateTransferResponse, *_n
 func (a *TransactionsApiService) V1TransactionsTransfer(ctx _context.Context) ApiV1TransactionsTransferRequest {
 	return ApiV1TransactionsTransferRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 

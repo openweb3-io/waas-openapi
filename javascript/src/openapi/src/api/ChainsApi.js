@@ -90,19 +90,19 @@ export default class ChainsApi {
     /**
      * Retrieve chain
      * Retrieve chain information.
-     * @param {String} id Chain ID
+     * @param {String} chainId Chain ID
      * @param {module:api/ChainsApi~v1ChainsRetrieveCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Chain}
      */
-    v1ChainsRetrieve(id, callback) {
+    v1ChainsRetrieve(chainId, callback) {
       let postBody = null;
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling v1ChainsRetrieve");
+      // verify the required parameter 'chainId' is set
+      if (chainId === undefined || chainId === null) {
+        throw new Error("Missing the required parameter 'chainId' when calling v1ChainsRetrieve");
       }
 
       let pathParams = {
-        'id': id
+        'chainId': chainId
       };
       let queryParams = {
       };
@@ -116,7 +116,7 @@ export default class ChainsApi {
       let accepts = ['application/json'];
       let returnType = Chain;
       return this.apiClient.callApi(
-        '/api/v1/chains/{id}', 'GET',
+        '/api/v1/chains/{chainId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

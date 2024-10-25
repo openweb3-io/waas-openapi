@@ -48,10 +48,10 @@
   }
 
   describe('TokensApi', function() {
-    describe('v1TokensGet', function() {
-      it('should call v1TokensGet successfully', function(done) {
-        //uncomment below and update the code to test v1TokensGet
-        //instance.v1TokensGet(function(error) {
+    describe('v1TokensCreate', function() {
+      it('should call v1TokensCreate successfully', function(done) {
+        //uncomment below and update the code to test v1TokensCreate
+        //instance.v1TokensCreate(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -62,6 +62,26 @@
       it('should call v1TokensList successfully', function(done) {
         //uncomment below and update the code to test v1TokensList
         //instance.v1TokensList(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('v1TokensRetrieve', function() {
+      it('should call v1TokensRetrieve successfully', function(done) {
+        //uncomment below and update the code to test v1TokensRetrieve
+        //instance.v1TokensRetrieve(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('v1TokensUpdate', function() {
+      it('should call v1TokensUpdate successfully', function(done) {
+        //uncomment below and update the code to test v1TokensUpdate
+        //instance.v1TokensUpdate(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

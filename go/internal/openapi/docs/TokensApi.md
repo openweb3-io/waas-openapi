@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1TokensCreate**](TokensApi.md#V1TokensCreate) | **Post** /api/v1/tokens | Create token
 [**V1TokensList**](TokensApi.md#V1TokensList) | **Get** /api/v1/tokens | List tokens
-[**V1TokensRetrieve**](TokensApi.md#V1TokensRetrieve) | **Get** /api/v1/tokens/{id} | Get Token
+[**V1TokensRetrieve**](TokensApi.md#V1TokensRetrieve) | **Get** /api/v1/tokens/{tokenId} | Get Token
 [**V1TokensUpdate**](TokensApi.md#V1TokensUpdate) | **Patch** /api/v1/tokens/{tokenId} | Update token
 
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## V1TokensRetrieve
 
-> Token V1TokensRetrieve(ctx, id).Execute()
+> Token V1TokensRetrieve(ctx, tokenId).Execute()
 
 Get Token
 
@@ -166,11 +166,11 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Token ID
+    tokenId := "tokenId_example" // string | Token ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TokensApi.V1TokensRetrieve(context.Background(), id).Execute()
+    resp, r, err := api_client.TokensApi.V1TokensRetrieve(context.Background(), tokenId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.V1TokensRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -186,7 +186,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Token ID | 
+**tokenId** | **string** | Token ID | 
 
 ### Other Parameters
 

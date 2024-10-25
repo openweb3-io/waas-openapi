@@ -24,11 +24,13 @@ class CursorPageToken {
      * Constructs a new <code>CursorPageToken</code>.
      * @alias module:model/CursorPageToken
      * @param hasNext {Boolean} 
+     * @param hasPrev {Boolean} 
      * @param items {Array.<module:model/Token>} 
+     * @param total {Number} 
      */
-    constructor(hasNext, items) { 
+    constructor(hasNext, hasPrev, items, total) { 
         
-        CursorPageToken.initialize(this, hasNext, items);
+        CursorPageToken.initialize(this, hasNext, hasPrev, items, total);
     }
 
     /**
@@ -36,9 +38,11 @@ class CursorPageToken {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, hasNext, items) { 
+    static initialize(obj, hasNext, hasPrev, items, total) { 
         obj['has_next'] = hasNext;
+        obj['has_prev'] = hasPrev;
         obj['items'] = items;
+        obj['total'] = total;
     }
 
     /**
@@ -55,6 +59,9 @@ class CursorPageToken {
             if (data.hasOwnProperty('has_next')) {
                 obj['has_next'] = ApiClient.convertToType(data['has_next'], 'Boolean');
             }
+            if (data.hasOwnProperty('has_prev')) {
+                obj['has_prev'] = ApiClient.convertToType(data['has_prev'], 'Boolean');
+            }
             if (data.hasOwnProperty('items')) {
                 obj['items'] = ApiClient.convertToType(data['items'], [Token]);
             }
@@ -63,6 +70,9 @@ class CursorPageToken {
             }
             if (data.hasOwnProperty('prev_cursor')) {
                 obj['prev_cursor'] = ApiClient.convertToType(data['prev_cursor'], 'String');
+            }
+            if (data.hasOwnProperty('total')) {
+                obj['total'] = ApiClient.convertToType(data['total'], 'Number');
             }
         }
         return obj;
@@ -75,6 +85,11 @@ class CursorPageToken {
  * @member {Boolean} has_next
  */
 CursorPageToken.prototype['has_next'] = undefined;
+
+/**
+ * @member {Boolean} has_prev
+ */
+CursorPageToken.prototype['has_prev'] = undefined;
 
 /**
  * @member {Array.<module:model/Token>} items
@@ -90,6 +105,11 @@ CursorPageToken.prototype['next_cursor'] = undefined;
  * @member {String} prev_cursor
  */
 CursorPageToken.prototype['prev_cursor'] = undefined;
+
+/**
+ * @member {Number} total
+ */
+CursorPageToken.prototype['total'] = undefined;
 
 
 

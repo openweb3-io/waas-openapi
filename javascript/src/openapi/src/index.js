@@ -28,6 +28,8 @@ import CursorPageToken from './model/CursorPageToken';
 import CursorPageWallet from './model/CursorPageWallet';
 import Endpoint from './model/Endpoint';
 import Error from './model/Error';
+import EstimateFeeRequest from './model/EstimateFeeRequest';
+import EstimateFeeResponse from './model/EstimateFeeResponse';
 import Fee from './model/Fee';
 import FeeType from './model/FeeType';
 import PageTransaction from './model/PageTransaction';
@@ -174,6 +176,18 @@ export {
      * @property {module:model/Error}
      */
     Error,
+
+    /**
+     * The EstimateFeeRequest model constructor.
+     * @property {module:model/EstimateFeeRequest}
+     */
+    EstimateFeeRequest,
+
+    /**
+     * The EstimateFeeResponse model constructor.
+     * @property {module:model/EstimateFeeResponse}
+     */
+    EstimateFeeResponse,
 
     /**
      * The Fee model constructor.

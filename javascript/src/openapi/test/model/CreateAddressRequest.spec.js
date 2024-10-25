@@ -54,14 +54,8 @@
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CreateAddressRequest);
     });
 
-    it('should have the property chainId (base name: "chainId")', function() {
+    it('should have the property chainId (base name: "chain_id")', function() {
       // uncomment below and update the code to test the property chainId
-      //var instance = new WaaSOpenApiDocumentation.CreateAddressRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property walletId (base name: "walletId")', function() {
-      // uncomment below and update the code to test the property walletId
       //var instance = new WaaSOpenApiDocumentation.CreateAddressRequest();
       //expect(instance).to.be();
     });

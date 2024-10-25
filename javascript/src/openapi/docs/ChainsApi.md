@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1ChainsList**](ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
-[**v1ChainsRetrieve**](ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{id} | Retrieve chain
+[**v1ChainsRetrieve**](ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{chainId} | Retrieve chain
 
 
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ## v1ChainsRetrieve
 
-> Chain v1ChainsRetrieve(id)
+> Chain v1ChainsRetrieve(chainId)
 
 Retrieve chain
 
@@ -94,8 +94,8 @@ SignatureAuth.apiKey = 'YOUR API KEY';
 //SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.ChainsApi();
-let id = "id_example"; // String | Chain ID
-apiInstance.v1ChainsRetrieve(id, (error, data, response) => {
+let chainId = "chainId_example"; // String | Chain ID
+apiInstance.v1ChainsRetrieve(chainId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -109,7 +109,7 @@ apiInstance.v1ChainsRetrieve(id, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Chain ID | 
+ **chainId** | **String**| Chain ID | 
 
 ### Return type
 

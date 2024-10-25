@@ -5,15 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HasNext** | **bool** |  | 
+**HasPrev** | **bool** |  | 
 **Items** | [**[]Endpoint**](Endpoint.md) |  | 
 **NextCursor** | Pointer to **string** |  | [optional] 
 **PrevCursor** | Pointer to **string** |  | [optional] 
+**Total** | **int32** |  | 
 
 ## Methods
 
 ### NewCursorPageEndpoint
 
-`func NewCursorPageEndpoint(hasNext bool, items []Endpoint, ) *CursorPageEndpoint`
+`func NewCursorPageEndpoint(hasNext bool, hasPrev bool, items []Endpoint, total int32, ) *CursorPageEndpoint`
 
 NewCursorPageEndpoint instantiates a new CursorPageEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +48,26 @@ and a boolean to check if the value has been set.
 `func (o *CursorPageEndpoint) SetHasNext(v bool)`
 
 SetHasNext sets HasNext field to given value.
+
+
+### GetHasPrev
+
+`func (o *CursorPageEndpoint) GetHasPrev() bool`
+
+GetHasPrev returns the HasPrev field if non-nil, zero value otherwise.
+
+### GetHasPrevOk
+
+`func (o *CursorPageEndpoint) GetHasPrevOk() (*bool, bool)`
+
+GetHasPrevOk returns a tuple with the HasPrev field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasPrev
+
+`func (o *CursorPageEndpoint) SetHasPrev(v bool)`
+
+SetHasPrev sets HasPrev field to given value.
 
 
 ### GetItems
@@ -117,6 +139,26 @@ SetPrevCursor sets PrevCursor field to given value.
 `func (o *CursorPageEndpoint) HasPrevCursor() bool`
 
 HasPrevCursor returns a boolean if a field has been set.
+
+### GetTotal
+
+`func (o *CursorPageEndpoint) GetTotal() int32`
+
+GetTotal returns the Total field if non-nil, zero value otherwise.
+
+### GetTotalOk
+
+`func (o *CursorPageEndpoint) GetTotalOk() (*int32, bool)`
+
+GetTotalOk returns a tuple with the Total field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotal
+
+`func (o *CursorPageEndpoint) SetTotal(v int32)`
+
+SetTotal sets Total field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

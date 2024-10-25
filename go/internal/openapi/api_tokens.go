@@ -28,8 +28,8 @@ var (
 type TokensApiService service
 
 type ApiV1TokensCreateRequest struct {
-	ctx _context.Context
-	ApiService *TokensApiService
+	ctx                _context.Context
+	ApiService         *TokensApiService
 	createTokenRequest *CreateTokenRequest
 }
 
@@ -51,7 +51,7 @@ func (r ApiV1TokensCreateRequest) Execute() (Token, *_nethttp.Response, error) {
 func (a *TokensApiService) V1TokensCreate(ctx _context.Context) ApiV1TokensCreateRequest {
 	return ApiV1TokensCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -207,10 +207,10 @@ func (a *TokensApiService) V1TokensCreateExecute(r ApiV1TokensCreateRequest) (To
 }
 
 type ApiV1TokensListRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *TokensApiService
-	cursor *string
-	limit *int32
+	cursor     *string
+	limit      *int32
 }
 
 func (r ApiV1TokensListRequest) Cursor(cursor string) ApiV1TokensListRequest {
@@ -235,7 +235,7 @@ func (r ApiV1TokensListRequest) Execute() (CursorPageToken, *_nethttp.Response, 
 func (a *TokensApiService) V1TokensList(ctx _context.Context) ApiV1TokensListRequest {
 	return ApiV1TokensListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -392,11 +392,10 @@ func (a *TokensApiService) V1TokensListExecute(r ApiV1TokensListRequest) (Cursor
 }
 
 type ApiV1TokensRetrieveRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *TokensApiService
-	id string
+	tokenId    string
 }
-
 
 func (r ApiV1TokensRetrieveRequest) Execute() (Token, *_nethttp.Response, error) {
 	return r.ApiService.V1TokensRetrieveExecute(r)
@@ -406,14 +405,14 @@ func (r ApiV1TokensRetrieveRequest) Execute() (Token, *_nethttp.Response, error)
  * V1TokensRetrieve Get Token
  * Get token info by ID
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id Token ID
+ * @param tokenId Token ID
  * @return ApiV1TokensRetrieveRequest
  */
-func (a *TokensApiService) V1TokensRetrieve(ctx _context.Context, id string) ApiV1TokensRetrieveRequest {
+func (a *TokensApiService) V1TokensRetrieve(ctx _context.Context, tokenId string) ApiV1TokensRetrieveRequest {
 	return ApiV1TokensRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		tokenId:    tokenId,
 	}
 }
 
@@ -436,8 +435,8 @@ func (a *TokensApiService) V1TokensRetrieveExecute(r ApiV1TokensRetrieveRequest)
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/tokens/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", _neturl.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath := localBasePath + "/api/v1/tokens/{tokenId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tokenId"+"}", _neturl.PathEscape(parameterToString(r.tokenId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -565,9 +564,9 @@ func (a *TokensApiService) V1TokensRetrieveExecute(r ApiV1TokensRetrieveRequest)
 }
 
 type ApiV1TokensUpdateRequest struct {
-	ctx _context.Context
-	ApiService *TokensApiService
-	tokenId string
+	ctx                _context.Context
+	ApiService         *TokensApiService
+	tokenId            string
 	updateTokenRequest *UpdateTokenRequest
 }
 
@@ -590,8 +589,8 @@ func (r ApiV1TokensUpdateRequest) Execute() (Token, *_nethttp.Response, error) {
 func (a *TokensApiService) V1TokensUpdate(ctx _context.Context, tokenId string) ApiV1TokensUpdateRequest {
 	return ApiV1TokensUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		tokenId: tokenId,
+		ctx:        ctx,
+		tokenId:    tokenId,
 	}
 }
 

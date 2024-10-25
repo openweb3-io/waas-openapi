@@ -1,20 +1,16 @@
-package wallet
+package waas
 
 import (
 	"context"
 
-	"github.com/openweb3-io/wallet-openapi/go/internal/openapi"
+	"github.com/openweb3-io/waas-openapi/go/internal/openapi"
 )
 
 type (
-	TransactionOut       = openapi.Transaction
-	PageTransactionOut   = openapi.PageTransaction
-	TransactionDirection = openapi.TransactionDirection
-	TransactionStatus    = openapi.TransactionStatus
-	WithdrawIn           = openapi.CreateWithdrawRequest
-	WithdrawOut          = openapi.CreateWithdrawReply
-	TransferIn           = openapi.CreateTransferRequest
-	TransferOut          = openapi.CreateTransferResponse
+	TransactionOut     = openapi.Transaction
+	PageTransactionOut = openapi.PageTransaction
+	TransferIn         = openapi.CreateTransferRequest
+	TransferOut        = openapi.CreateTransferResponse
 )
 
 type Transaction struct {
@@ -22,32 +18,35 @@ type Transaction struct {
 }
 
 type ListTransactionOptions struct {
-	WalletId  *string
+	WalletIds *[]string
+	ChainIds  *[]string
+	TokenIds  *[]string
+	AssetIds  *[]string
 	Network   *string
 	Currency  *string
 	Direction *string
-	Txhash    *string
+	Hash      *string
 	Status    *string
 	Cursor    *string
 	Limit     int
 }
 
-func (e *Transaction) List(ctx context.Context, appId string, options *ListTransactionOptions) (*PageTransactionOut, error) {
-	req := e.api.TransactionsApi.V1TransactionsList(ctx, appId)
-	if options.WalletId != nil {
-		req = req.WalletId(*options.WalletId)
+func (e *Transaction) List(ctx context.Context, options *ListTransactionOptions) (*PageTransactionOut, error) {
+	req := e.api.TransactionsApi.V1TransactionsList(ctx)
+	if options.WalletIds != nil {
+		req = req.WalletIds(*options.WalletIds)
 	}
-	if options.Network != nil {
-		req = req.Network(*options.Network)
+	if options.ChainIds != nil {
+		req = req.ChainIds(*options.ChainIds)
 	}
-	if options.Currency != nil {
-		req = req.Currency(*options.Currency)
+	if options.TokenIds != nil {
+		req = req.TokenIds(*options.TokenIds)
 	}
-	if options.Direction != nil {
-		req = req.Direction(*options.Direction)
+	if options.AssetIds != nil {
+		req = req.TokenIds(*options.AssetIds)
 	}
-	if options.Txhash != nil {
-		req = req.Txhash(*options.Txhash)
+	if options.Hash != nil {
+		req = req.Hash(*options.Hash)
 	}
 	if options.Status != nil {
 		req = req.Status(*options.Status)
@@ -64,27 +63,16 @@ func (e *Transaction) List(ctx context.Context, appId string, options *ListTrans
 	return &out, nil
 }
 
-func (e *Transaction) Retrieve(ctx context.Context, appId string, transactionId string) (*TransactionOut, error) {
-	req := e.api.TransactionsApi.V1TransactionsRetrieve(ctx, appId, transactionId)
+func (e *Transaction) Retrieve(ctx context.Context, transactionId string) (*TransactionOut, error) {
+	req := e.api.TransactionsApi.V1TransactionsRetrieve(ctx, transactionId)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
 	return &out, nil
 }
-
-func (e *Transaction) Withdraw(ctx context.Context, appId string, walletId string, withdrawIn *WithdrawIn) (*WithdrawOut, error) {
-	req := e.api.TransactionsApi.V1WalletsWithdraw(ctx, appId)
-	req = req.CreateWithdrawRequest(*withdrawIn)
-	out, res, err := req.Execute()
-	if err != nil {
-		return nil, wrapError(err, res)
-	}
-	return &out, nil
-}
-
-func (e *Transaction) Transfer(ctx context.Context, appId string, walletId string, transferIn *TransferIn) (*TransferOut, error) {
-	req := e.api.TransactionsApi.V1TransactionsTransfer(ctx, appId)
+func (e *Transaction) Transfer(ctx context.Context, transferIn *TransferIn) (*TransferOut, error) {
+	req := e.api.TransactionsApi.V1TransactionsTransfer(ctx)
 	req = req.CreateTransferRequest(*transferIn)
 	out, res, err := req.Execute()
 	if err != nil {

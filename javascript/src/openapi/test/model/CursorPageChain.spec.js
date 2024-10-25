@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property hasPrev (base name: "has_prev")', function() {
+      // uncomment below and update the code to test the property hasPrev
+      //var instance = new WaaSOpenApiDocumentation.CursorPageChain();
+      //expect(instance).to.be();
+    });
+
     it('should have the property items (base name: "items")', function() {
       // uncomment below and update the code to test the property items
       //var instance = new WaaSOpenApiDocumentation.CursorPageChain();
@@ -74,6 +80,12 @@
 
     it('should have the property prevCursor (base name: "prev_cursor")', function() {
       // uncomment below and update the code to test the property prevCursor
+      //var instance = new WaaSOpenApiDocumentation.CursorPageChain();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property total (base name: "total")', function() {
+      // uncomment below and update the code to test the property total
       //var instance = new WaaSOpenApiDocumentation.CursorPageChain();
       //expect(instance).to.be();
     });

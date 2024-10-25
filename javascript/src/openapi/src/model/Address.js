@@ -70,6 +70,9 @@ class Address {
             if (data.hasOwnProperty('updated_at')) {
                 obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'String');
             }
+            if (data.hasOwnProperty('wallet_id')) {
+                obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
+            }
         }
         return obj;
     }
@@ -118,6 +121,12 @@ Address.prototype['path'] = undefined;
  * @member {String} updated_at
  */
 Address.prototype['updated_at'] = undefined;
+
+/**
+ * Chain ID
+ * @member {String} wallet_id
+ */
+Address.prototype['wallet_id'] = undefined;
 
 
 

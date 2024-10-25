@@ -17,19 +17,16 @@ import (
 // CreateAddressRequest struct for CreateAddressRequest
 type CreateAddressRequest struct {
 	// Chain ID
-	ChainId string `json:"chainId"`
-	// Wallet ID
-	WalletId string `json:"walletId"`
+	ChainId string `json:"chain_id"`
 }
 
 // NewCreateAddressRequest instantiates a new CreateAddressRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAddressRequest(chainId string, walletId string) *CreateAddressRequest {
+func NewCreateAddressRequest(chainId string) *CreateAddressRequest {
 	this := CreateAddressRequest{}
 	this.ChainId = chainId
-	this.WalletId = walletId
 	return &this
 }
 
@@ -54,7 +51,7 @@ func (o *CreateAddressRequest) GetChainId() string {
 // GetChainIdOk returns a tuple with the ChainId field value
 // and a boolean to check if the value has been set.
 func (o *CreateAddressRequest) GetChainIdOk() (*string, bool) {
-	if o == nil  {
+	if o == nil {
 		return nil, false
 	}
 	return &o.ChainId, true
@@ -65,37 +62,10 @@ func (o *CreateAddressRequest) SetChainId(v string) {
 	o.ChainId = v
 }
 
-// GetWalletId returns the WalletId field value
-func (o *CreateAddressRequest) GetWalletId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.WalletId
-}
-
-// GetWalletIdOk returns a tuple with the WalletId field value
-// and a boolean to check if the value has been set.
-func (o *CreateAddressRequest) GetWalletIdOk() (*string, bool) {
-	if o == nil  {
-		return nil, false
-	}
-	return &o.WalletId, true
-}
-
-// SetWalletId sets field value
-func (o *CreateAddressRequest) SetWalletId(v string) {
-	o.WalletId = v
-}
-
 func (o CreateAddressRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
-		toSerialize["chainId"] = o.ChainId
-	}
-	if true {
-		toSerialize["walletId"] = o.WalletId
+		toSerialize["chain_id"] = o.ChainId
 	}
 	return json.Marshal(toSerialize)
 }
@@ -135,5 +105,3 @@ func (v *NullableCreateAddressRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

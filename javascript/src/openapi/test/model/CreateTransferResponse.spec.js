@@ -54,6 +54,12 @@
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CreateTransferResponse);
     });
 
+    it('should have the property status (base name: "status")', function() {
+      // uncomment below and update the code to test the property status
+      //var instance = new WaaSOpenApiDocumentation.CreateTransferResponse();
+      //expect(instance).to.be();
+    });
+
     it('should have the property transactionId (base name: "transaction_id")', function() {
       // uncomment below and update the code to test the property transactionId
       //var instance = new WaaSOpenApiDocumentation.CreateTransferResponse();

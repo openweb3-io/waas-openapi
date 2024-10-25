@@ -5,13 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ChainId** | **string** | Chain ID | 
-**WalletId** | **string** | Wallet ID | 
 
 ## Methods
 
 ### NewCreateAddressRequest
 
-`func NewCreateAddressRequest(chainId string, walletId string, ) *CreateAddressRequest`
+`func NewCreateAddressRequest(chainId string, ) *CreateAddressRequest`
 
 NewCreateAddressRequest instantiates a new CreateAddressRequest object
 This constructor will assign default values to properties that have it defined,
@@ -44,26 +43,6 @@ and a boolean to check if the value has been set.
 `func (o *CreateAddressRequest) SetChainId(v string)`
 
 SetChainId sets ChainId field to given value.
-
-
-### GetWalletId
-
-`func (o *CreateAddressRequest) GetWalletId() string`
-
-GetWalletId returns the WalletId field if non-nil, zero value otherwise.
-
-### GetWalletIdOk
-
-`func (o *CreateAddressRequest) GetWalletIdOk() (*string, bool)`
-
-GetWalletIdOk returns a tuple with the WalletId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWalletId
-
-`func (o *CreateAddressRequest) SetWalletId(v string)`
-
-SetWalletId sets WalletId field to given value.
 
 
 

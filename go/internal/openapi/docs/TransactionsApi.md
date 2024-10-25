@@ -4,10 +4,77 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**V1TransactionsEstimateFee**](TransactionsApi.md#V1TransactionsEstimateFee) | **Post** /api/v1/transactions/estimate_fee | Estimate fee
 [**V1TransactionsList**](TransactionsApi.md#V1TransactionsList) | **Get** /api/v1/transactions | List transactions
 [**V1TransactionsRetrieve**](TransactionsApi.md#V1TransactionsRetrieve) | **Get** /api/v1/transactions/{transactionId} | Get transaction
 [**V1TransactionsTransfer**](TransactionsApi.md#V1TransactionsTransfer) | **Post** /api/v1/transactions/transfer | Transfer token
 
+
+
+## V1TransactionsEstimateFee
+
+> EstimateFeeResponse V1TransactionsEstimateFee(ctx).EstimateFeeRequest(estimateFeeRequest).Execute()
+
+Estimate fee
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    estimateFeeRequest := *openapiclient.NewEstimateFeeRequest("Amount_example", "FromAddress_example", "ToAddress_example", "TokenId_example") // EstimateFeeRequest | Request Body
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.TransactionsApi.V1TransactionsEstimateFee(context.Background()).EstimateFeeRequest(estimateFeeRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TransactionsApi.V1TransactionsEstimateFee``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `V1TransactionsEstimateFee`: EstimateFeeResponse
+    fmt.Fprintf(os.Stdout, "Response from `TransactionsApi.V1TransactionsEstimateFee`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1TransactionsEstimateFeeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **estimateFeeRequest** | [**EstimateFeeRequest**](EstimateFeeRequest.md) | Request Body | 
+
+### Return type
+
+[**EstimateFeeResponse**](EstimateFeeResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## V1TransactionsList

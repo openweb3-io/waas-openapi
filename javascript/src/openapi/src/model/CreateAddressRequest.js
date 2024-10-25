@@ -23,11 +23,10 @@ class CreateAddressRequest {
      * Constructs a new <code>CreateAddressRequest</code>.
      * @alias module:model/CreateAddressRequest
      * @param chainId {String} Chain ID
-     * @param walletId {String} Wallet ID
      */
-    constructor(chainId, walletId) { 
+    constructor(chainId) { 
         
-        CreateAddressRequest.initialize(this, chainId, walletId);
+        CreateAddressRequest.initialize(this, chainId);
     }
 
     /**
@@ -35,9 +34,8 @@ class CreateAddressRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, chainId, walletId) { 
-        obj['chainId'] = chainId;
-        obj['walletId'] = walletId;
+    static initialize(obj, chainId) { 
+        obj['chain_id'] = chainId;
     }
 
     /**
@@ -51,11 +49,8 @@ class CreateAddressRequest {
         if (data) {
             obj = obj || new CreateAddressRequest();
 
-            if (data.hasOwnProperty('chainId')) {
-                obj['chainId'] = ApiClient.convertToType(data['chainId'], 'String');
-            }
-            if (data.hasOwnProperty('walletId')) {
-                obj['walletId'] = ApiClient.convertToType(data['walletId'], 'String');
+            if (data.hasOwnProperty('chain_id')) {
+                obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
             }
         }
         return obj;
@@ -66,15 +61,9 @@ class CreateAddressRequest {
 
 /**
  * Chain ID
- * @member {String} chainId
+ * @member {String} chain_id
  */
-CreateAddressRequest.prototype['chainId'] = undefined;
-
-/**
- * Wallet ID
- * @member {String} walletId
- */
-CreateAddressRequest.prototype['walletId'] = undefined;
+CreateAddressRequest.prototype['chain_id'] = undefined;
 
 
 

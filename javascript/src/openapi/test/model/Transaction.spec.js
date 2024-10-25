@@ -54,20 +54,68 @@
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.Transaction);
     });
 
-    it('should have the property amount (base name: "amount")', function() {
-      // uncomment below and update the code to test the property amount
+    it('should have the property assetId (base name: "assetId")', function() {
+      // uncomment below and update the code to test the property assetId
       //var instance = new WaaSOpenApiDocumentation.Transaction();
       //expect(instance).to.be();
     });
 
-    it('should have the property chainId (base name: "chain_id")', function() {
+    it('should have the property chain (base name: "chain")', function() {
+      // uncomment below and update the code to test the property chain
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property chainId (base name: "chainId")', function() {
       // uncomment below and update the code to test the property chainId
       //var instance = new WaaSOpenApiDocumentation.Transaction();
       //expect(instance).to.be();
     });
 
-    it('should have the property createdAt (base name: "created_at")', function() {
+    it('should have the property confirmedNum (base name: "confirmedNum")', function() {
+      // uncomment below and update the code to test the property confirmedNum
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property createdAt (base name: "createdAt")', function() {
       // uncomment below and update the code to test the property createdAt
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property description (base name: "description")', function() {
+      // uncomment below and update the code to test the property description
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property destination (base name: "destination")', function() {
+      // uncomment below and update the code to test the property destination
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property extra (base name: "extra")', function() {
+      // uncomment below and update the code to test the property extra
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property failedReason (base name: "failedReason")', function() {
+      // uncomment below and update the code to test the property failedReason
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fee (base name: "fee")', function() {
+      // uncomment below and update the code to test the property fee
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property hash (base name: "hash")', function() {
+      // uncomment below and update the code to test the property hash
       //var instance = new WaaSOpenApiDocumentation.Transaction();
       //expect(instance).to.be();
     });
@@ -78,13 +126,25 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property signature (base name: "signature")', function() {
+      // uncomment below and update the code to test the property signature
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property source (base name: "source")', function() {
+      // uncomment below and update the code to test the property source
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
       //var instance = new WaaSOpenApiDocumentation.Transaction();
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenId (base name: "token_id")', function() {
+    it('should have the property tokenId (base name: "tokenId")', function() {
       // uncomment below and update the code to test the property tokenId
       //var instance = new WaaSOpenApiDocumentation.Transaction();
       //expect(instance).to.be();
@@ -92,6 +152,18 @@
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property updatedAt (base name: "updatedAt")', function() {
+      // uncomment below and update the code to test the property updatedAt
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property walletId (base name: "walletId")', function() {
+      // uncomment below and update the code to test the property walletId
       //var instance = new WaaSOpenApiDocumentation.Transaction();
       //expect(instance).to.be();
     });

@@ -1,17 +1,20 @@
-package wallet
+package waas
 
 import (
 	"context"
 
-	"github.com/openweb3-io/wallet-openapi/go/internal/openapi"
+	"github.com/openweb3-io/waas-openapi/go/internal/openapi"
 )
 
 type (
-	PageWalletOut  = openapi.PageWallet
-	WalletOut      = openapi.Wallet
-	CreateWalletIn = openapi.CreateWalletRequest
-	UpdateWalletIn = openapi.UpdateWalletRequest
-	PageAccountOut = openapi.PageAccount
+	CursorPageWalletOut  = openapi.CursorPageWallet
+	WalletOut            = openapi.Wallet
+	CreateWalletIn       = openapi.CreateWalletRequest
+	UpdateWalletIn       = openapi.UpdateWalletRequest
+	DeleteWalletIn       = openapi.ApiV1WalletsDeleteRequest
+	CreateAddressIn      = openapi.CreateAddressRequest
+	GetDepositAddressIn  = openapi.ApiV1WalletsGetDepositAddressRequest
+	CursorAddressPageOut = openapi.CursorPageAddress
 )
 
 type Wallet struct {
@@ -19,13 +22,8 @@ type Wallet struct {
 }
 
 type ListWalletOptions struct {
-	Page int
-	Size int
-}
-
-type ListAccountsOptions struct {
-	Page int
-	Size int
+	Cursor string
+	Limit  int
 }
 
 type GetDepositAddressOptions struct {
@@ -38,10 +36,10 @@ type ListDepositAddressesOptions struct {
 	Network  *string
 }
 
-func (e *Wallet) List(ctx context.Context, appId string, options *ListWalletOptions) (*PageWalletOut, error) {
-	req := e.api.WalletsApi.V1WalletsList(ctx, appId)
-	req = req.Page(int32(options.Page))
-	req = req.Size(int32(options.Size))
+func (e *Wallet) List(ctx context.Context, options *ListWalletOptions) (*CursorPageWalletOut, error) {
+	req := e.api.WalletsApi.V1WalletsList(ctx)
+	req = req.Cursor(options.Cursor)
+	req = req.Limit(int32(options.Limit))
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
@@ -49,8 +47,8 @@ func (e *Wallet) List(ctx context.Context, appId string, options *ListWalletOpti
 	return &out, nil
 }
 
-func (e *Wallet) Retrieve(ctx context.Context, appId string, walletId string) (*WalletOut, error) {
-	req := e.api.WalletsApi.V1WalletsRetrieve(ctx, appId, walletId)
+func (e *Wallet) Retrieve(ctx context.Context, walletId string) (*WalletOut, error) {
+	req := e.api.WalletsApi.V1WalletsRetrieve(ctx, walletId)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
@@ -58,8 +56,8 @@ func (e *Wallet) Retrieve(ctx context.Context, appId string, walletId string) (*
 	return &out, nil
 }
 
-func (e *Wallet) Create(ctx context.Context, appId string, createWalletIn *CreateWalletIn) (*WalletOut, error) {
-	req := e.api.WalletsApi.V1WalletsCreate(ctx, appId)
+func (e *Wallet) Create(ctx context.Context, createWalletIn *CreateWalletIn) (*WalletOut, error) {
+	req := e.api.WalletsApi.V1WalletsCreate(ctx)
 	req = req.CreateWalletRequest(*createWalletIn)
 	out, res, err := req.Execute()
 	if err != nil {
@@ -68,8 +66,8 @@ func (e *Wallet) Create(ctx context.Context, appId string, createWalletIn *Creat
 	return &out, nil
 }
 
-func (e *Wallet) Update(ctx context.Context, appId string, walletId string, updateWalletIn *UpdateWalletIn) (*WalletOut, error) {
-	req := e.api.WalletsApi.V1WalletsUpdate(ctx, appId, walletId)
+func (e *Wallet) Update(ctx context.Context, walletId string, updateWalletIn *UpdateWalletIn) (*WalletOut, error) {
+	req := e.api.WalletsApi.V1WalletsUpdate(ctx, walletId)
 	req = req.UpdateWalletRequest(*updateWalletIn)
 	out, res, err := req.Execute()
 	if err != nil {
@@ -78,10 +76,38 @@ func (e *Wallet) Update(ctx context.Context, appId string, walletId string, upda
 	return &out, nil
 }
 
-func (e *Wallet) ListAccounts(ctx context.Context, appId string, walletId string, options *ListAccountsOptions) (*PageAccountOut, error) {
-	req := e.api.WalletsApi.V1WalletsListAccounts(ctx, appId, walletId)
-	req = req.Page(int32(options.Page))
-	req = req.Size(int32(options.Size))
+func (e *Wallet) Delete(ctx context.Context, walletId string) (*WalletOut, error) {
+	req := e.api.WalletsApi.V1WalletsDelete(ctx, walletId)
+	out, res, err := req.Execute()
+	if err != nil {
+		return nil, wrapError(err, res)
+	}
+	return &out, nil
+}
+
+func (e *Wallet) ListDepositAddresses(ctx context.Context, walletId string, options *ListAddressOptions) (*CursorAddressPageOut, error) {
+	req := e.api.AddressesApi.V1WalletsListDepositAddresses(ctx, walletId)
+	req = req.Cursor(options.Cursor)
+	req = req.Limit(int32(options.Limit))
+	out, res, err := req.Execute()
+	if err != nil {
+		return nil, wrapError(err, res)
+	}
+	return &out, nil
+}
+
+func (e *Wallet) CreateAddress(ctx context.Context, walletId string, createAddressIn *CreateAddressIn) (*AddressOut, error) {
+	req := e.api.AddressesApi.V1WalletsCreateAddress(ctx, walletId)
+	req = req.CreateAddressRequest(*createAddressIn)
+	out, res, err := req.Execute()
+	if err != nil {
+		return nil, wrapError(err, res)
+	}
+	return &out, nil
+}
+
+func (e *Wallet) GetDepositAddress(ctx context.Context, walletId string, address string) (*AddressOut, error) {
+	req := e.api.AddressesApi.V1WalletsGetDepositAddress(ctx, walletId, address)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)

@@ -48,6 +48,16 @@
   }
 
   describe('TransactionsApi', function() {
+    describe('v1TransactionsEstimateFee', function() {
+      it('should call v1TransactionsEstimateFee successfully', function(done) {
+        //uncomment below and update the code to test v1TransactionsEstimateFee
+        //instance.v1TransactionsEstimateFee(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('v1TransactionsList', function() {
       it('should call v1TransactionsList successfully', function(done) {
         //uncomment below and update the code to test v1TransactionsList

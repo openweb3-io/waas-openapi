@@ -84,20 +84,8 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property headers (base name: "headers")', function() {
-      // uncomment below and update the code to test the property headers
-      //var instance = new WaaSOpenApiDocumentation.Endpoint();
-      //expect(instance).to.be();
-    });
-
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new WaaSOpenApiDocumentation.Endpoint();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property metadata (base name: "metadata")', function() {
-      // uncomment below and update the code to test the property metadata
       //var instance = new WaaSOpenApiDocumentation.Endpoint();
       //expect(instance).to.be();
     });

@@ -209,7 +209,7 @@
                 }
             }
         },
-        "/api/v1/chains/{id}": {
+        "/api/v1/chains/{chainId}": {
             "get": {
                 "security": [
                     {
@@ -228,7 +228,7 @@
                 "parameters": [
                     {
                         "description": "Chain ID",
-                        "name": "id",
+                        "name": "chainId",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -524,7 +524,7 @@
                 }
             }
         },
-        "/api/v1/tokens/{id}": {
+        "/api/v1/tokens/{tokenId}": {
             "get": {
                 "security": [
                     {
@@ -543,7 +543,7 @@
                 "parameters": [
                     {
                         "description": "Token ID",
-                        "name": "id",
+                        "name": "tokenId",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -603,9 +603,7 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/v1/tokens/{tokenId}": {
+            },
             "patch": {
                 "security": [
                     {
@@ -806,6 +804,87 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/Page-Transaction"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/transactions/estimate_fee": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    },
+                    {
+                        "SignatureAuth": []
+                    }
+                ],
+                "description": "Estimate fee for a transfer transaction",
+                "tags": [
+                    "Transactions"
+                ],
+                "summary": "Estimate fee",
+                "operationId": "v1.transactions.estimate_fee",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EstimateFeeRequest"
+                            }
+                        }
+                    },
+                    "description": "Request Body",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EstimateFeeResponse"
                                 }
                             }
                         }
@@ -2020,6 +2099,10 @@
                     "updated_at": {
                         "description": "Updated time",
                         "type": "string"
+                    },
+                    "wallet_id": {
+                        "description": "Chain ID",
+                        "type": "string"
                     }
                 }
             },
@@ -2074,16 +2157,11 @@
             "CreateAddressRequest": {
                 "type": "object",
                 "required": [
-                    "chainId",
-                    "walletId"
+                    "chain_id"
                 ],
                 "properties": {
-                    "chainId": {
+                    "chain_id": {
                         "description": "Chain ID",
-                        "type": "string"
-                    },
-                    "walletId": {
-                        "description": "Wallet ID",
                         "type": "string"
                     }
                 }
@@ -2196,10 +2274,15 @@
                 "type": "object",
                 "required": [
                     "has_next",
-                    "items"
+                    "has_prev",
+                    "items",
+                    "total"
                 ],
                 "properties": {
                     "has_next": {
+                        "type": "boolean"
+                    },
+                    "has_prev": {
                         "type": "boolean"
                     },
                     "items": {
@@ -2213,6 +2296,9 @@
                     },
                     "prev_cursor": {
                         "type": "string"
+                    },
+                    "total": {
+                        "type": "integer"
                     }
                 }
             },
@@ -2220,10 +2306,15 @@
                 "type": "object",
                 "required": [
                     "has_next",
-                    "items"
+                    "has_prev",
+                    "items",
+                    "total"
                 ],
                 "properties": {
                     "has_next": {
+                        "type": "boolean"
+                    },
+                    "has_prev": {
                         "type": "boolean"
                     },
                     "items": {
@@ -2237,6 +2328,9 @@
                     },
                     "prev_cursor": {
                         "type": "string"
+                    },
+                    "total": {
+                        "type": "integer"
                     }
                 }
             },
@@ -2244,10 +2338,15 @@
                 "type": "object",
                 "required": [
                     "has_next",
-                    "items"
+                    "has_prev",
+                    "items",
+                    "total"
                 ],
                 "properties": {
                     "has_next": {
+                        "type": "boolean"
+                    },
+                    "has_prev": {
                         "type": "boolean"
                     },
                     "items": {
@@ -2261,6 +2360,9 @@
                     },
                     "prev_cursor": {
                         "type": "string"
+                    },
+                    "total": {
+                        "type": "integer"
                     }
                 }
             },
@@ -2268,10 +2370,15 @@
                 "type": "object",
                 "required": [
                     "has_next",
-                    "items"
+                    "has_prev",
+                    "items",
+                    "total"
                 ],
                 "properties": {
                     "has_next": {
+                        "type": "boolean"
+                    },
+                    "has_prev": {
                         "type": "boolean"
                     },
                     "items": {
@@ -2285,6 +2392,9 @@
                     },
                     "prev_cursor": {
                         "type": "string"
+                    },
+                    "total": {
+                        "type": "integer"
                     }
                 }
             },
@@ -2292,10 +2402,15 @@
                 "type": "object",
                 "required": [
                     "has_next",
-                    "items"
+                    "has_prev",
+                    "items",
+                    "total"
                 ],
                 "properties": {
                     "has_next": {
+                        "type": "boolean"
+                    },
+                    "has_prev": {
                         "type": "boolean"
                     },
                     "items": {
@@ -2309,6 +2424,9 @@
                     },
                     "prev_cursor": {
                         "type": "string"
+                    },
+                    "total": {
+                        "type": "integer"
                     }
                 }
             },
@@ -2366,6 +2484,58 @@
                     },
                     "msg": {
                         "description": "error message",
+                        "type": "string"
+                    }
+                }
+            },
+            "EstimateFeeRequest": {
+                "type": "object",
+                "required": [
+                    "amount",
+                    "from_address",
+                    "to_address",
+                    "token_id"
+                ],
+                "properties": {
+                    "amount": {
+                        "description": "Amount",
+                        "type": "string"
+                    },
+                    "contract_address": {
+                        "description": "Contract address",
+                        "type": "string"
+                    },
+                    "extra": {
+                        "description": "Extra",
+                        "type": "string"
+                    },
+                    "from_address": {
+                        "description": "From address",
+                        "type": "string"
+                    },
+                    "memo": {
+                        "description": "Memo",
+                        "type": "string"
+                    },
+                    "to_address": {
+                        "description": "To address",
+                        "type": "string"
+                    },
+                    "token_id": {
+                        "description": "Token ID",
+                        "type": "string"
+                    }
+                }
+            },
+            "EstimateFeeResponse": {
+                "type": "object",
+                "properties": {
+                    "amount": {
+                        "description": "Amount",
+                        "type": "string"
+                    },
+                    "token_id": {
+                        "description": "Token ID",
                         "type": "string"
                     }
                 }

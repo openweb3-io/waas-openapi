@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1TokensCreate**](TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
 [**v1TokensList**](TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
-[**v1TokensRetrieve**](TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{id} | Get Token
+[**v1TokensRetrieve**](TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{tokenId} | Get Token
 [**v1TokensUpdate**](TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token
 
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ## v1TokensRetrieve
 
-> Token v1TokensRetrieve(id)
+> Token v1TokensRetrieve(tokenId)
 
 Get Token
 
@@ -152,8 +152,8 @@ SignatureAuth.apiKey = 'YOUR API KEY';
 //SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.TokensApi();
-let id = "id_example"; // String | Token ID
-apiInstance.v1TokensRetrieve(id, (error, data, response) => {
+let tokenId = "tokenId_example"; // String | Token ID
+apiInstance.v1TokensRetrieve(tokenId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -167,7 +167,7 @@ apiInstance.v1TokensRetrieve(id, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Token ID | 
+ **tokenId** | **String**| Token ID | 
 
 ### Return type
 

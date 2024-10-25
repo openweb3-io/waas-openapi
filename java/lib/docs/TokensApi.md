@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1TokensCreate**](TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
 [**v1TokensList**](TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
-[**v1TokensRetrieve**](TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{id} | Get Token
+[**v1TokensRetrieve**](TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{tokenId} | Get Token
 [**v1TokensUpdate**](TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token
 
 
@@ -21,12 +21,12 @@ Create a tokens.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.TokensApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.TokensApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -100,12 +100,12 @@ Retrieve a list of all tokens.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.TokensApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.TokensApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 <a name="v1TokensRetrieve"></a>
 # **v1TokensRetrieve**
-> Token v1TokensRetrieve(id)
+> Token v1TokensRetrieve(tokenId)
 
 Get Token
 
@@ -181,12 +181,12 @@ Get token info by ID
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.TokensApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.TokensApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -206,9 +206,9 @@ public class Example {
     //SignatureAuth.setApiKeyPrefix("Token");
 
     TokensApi apiInstance = new TokensApi(defaultClient);
-    String id = "id_example"; // String | Token ID
+    String tokenId = "tokenId_example"; // String | Token ID
     try {
-      Token result = apiInstance.v1TokensRetrieve(id);
+      Token result = apiInstance.v1TokensRetrieve(tokenId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TokensApi#v1TokensRetrieve");
@@ -225,7 +225,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| Token ID |
+ **tokenId** | **String**| Token ID |
 
 ### Return type
 
@@ -260,12 +260,12 @@ Update a tokens.
 ### Example
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.TokensApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.TokensApi;
 
 public class Example {
   public static void main(String[] args) {

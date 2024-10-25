@@ -2,7 +2,7 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Build date: 2024-10-24T00:17:04.449656+08:00[Asia/Shanghai]
+  - Build date: 2024-10-25T17:53:36.175105+08:00[Asia/Shanghai]
 
 This is a custody wallet service openapi server.
 
@@ -13,7 +13,7 @@ This is a custody wallet service openapi server.
 ## Requirements
 
 Building the API client library requires:
-1. Java 1.7+
+1. Java 1.8+
 2. Maven/Gradle
 
 ## Installation
@@ -73,12 +73,12 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.AddressesApi;
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.AddressesApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -128,11 +128,12 @@ Class | Method | HTTP request | Description
 *AddressesApi* | [**v1WalletsGetDepositAddress**](docs/AddressesApi.md#v1WalletsGetDepositAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
 *AddressesApi* | [**v1WalletsListDepositAddresses**](docs/AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List deposit addresses
 *ChainsApi* | [**v1ChainsList**](docs/ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
-*ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{id} | Retrieve chain
+*ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{chainId} | Retrieve chain
 *TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
 *TokensApi* | [**v1TokensList**](docs/TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
-*TokensApi* | [**v1TokensRetrieve**](docs/TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{id} | Get Token
+*TokensApi* | [**v1TokensRetrieve**](docs/TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{tokenId} | Get Token
 *TokensApi* | [**v1TokensUpdate**](docs/TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token
+*TransactionsApi* | [**v1TransactionsEstimateFee**](docs/TransactionsApi.md#v1TransactionsEstimateFee) | **POST** /api/v1/transactions/estimate_fee | Estimate fee
 *TransactionsApi* | [**v1TransactionsList**](docs/TransactionsApi.md#v1TransactionsList) | **GET** /api/v1/transactions | List transactions
 *TransactionsApi* | [**v1TransactionsRetrieve**](docs/TransactionsApi.md#v1TransactionsRetrieve) | **GET** /api/v1/transactions/{transactionId} | Get transaction
 *TransactionsApi* | [**v1TransactionsTransfer**](docs/TransactionsApi.md#v1TransactionsTransfer) | **POST** /api/v1/transactions/transfer | Transfer token
@@ -165,6 +166,8 @@ Class | Method | HTTP request | Description
  - [CursorPageWallet](docs/CursorPageWallet.md)
  - [Endpoint](docs/Endpoint.md)
  - [Error](docs/Error.md)
+ - [EstimateFeeRequest](docs/EstimateFeeRequest.md)
+ - [EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [Fee](docs/Fee.md)
  - [FeeType](docs/FeeType.md)
  - [PageTransaction](docs/PageTransaction.md)

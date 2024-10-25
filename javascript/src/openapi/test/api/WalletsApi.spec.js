@@ -58,6 +58,16 @@
         done();
       });
     });
+    describe('v1WalletsDelete', function() {
+      it('should call v1WalletsDelete successfully', function(done) {
+        //uncomment below and update the code to test v1WalletsDelete
+        //instance.v1WalletsDelete(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('v1WalletsList', function() {
       it('should call v1WalletsList successfully', function(done) {
         //uncomment below and update the code to test v1WalletsList

@@ -5,7 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1ChainsList**](ChainsApi.md#V1ChainsList) | **Get** /api/v1/chains | List all chains
-[**V1ChainsRetrieve**](ChainsApi.md#V1ChainsRetrieve) | **Get** /api/v1/chains/{id} | Retrieve chain
+[**V1ChainsRetrieve**](ChainsApi.md#V1ChainsRetrieve) | **Get** /api/v1/chains/{chainId} | Retrieve chain
 
 
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## V1ChainsRetrieve
 
-> Chain V1ChainsRetrieve(ctx, id).Execute()
+> Chain V1ChainsRetrieve(ctx, chainId).Execute()
 
 Retrieve chain
 
@@ -98,11 +98,11 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Chain ID
+    chainId := "chainId_example" // string | Chain ID
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ChainsApi.V1ChainsRetrieve(context.Background(), id).Execute()
+    resp, r, err := api_client.ChainsApi.V1ChainsRetrieve(context.Background(), chainId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ChainsApi.V1ChainsRetrieve``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -118,7 +118,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Chain ID | 
+**chainId** | **string** | Chain ID | 
 
 ### Other Parameters
 

@@ -141,11 +141,12 @@ Class | Method | HTTP request | Description
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsGetDepositAddress**](docs/AddressesApi.md#v1WalletsGetDepositAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsListDepositAddresses**](docs/AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List deposit addresses
 *WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsList**](docs/ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
-*WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{id} | Retrieve chain
+*WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{chainId} | Retrieve chain
 *WaaSOpenApiDocumentation.TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
 *WaaSOpenApiDocumentation.TokensApi* | [**v1TokensList**](docs/TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
-*WaaSOpenApiDocumentation.TokensApi* | [**v1TokensRetrieve**](docs/TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{id} | Get Token
+*WaaSOpenApiDocumentation.TokensApi* | [**v1TokensRetrieve**](docs/TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{tokenId} | Get Token
 *WaaSOpenApiDocumentation.TokensApi* | [**v1TokensUpdate**](docs/TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token
+*WaaSOpenApiDocumentation.TransactionsApi* | [**v1TransactionsEstimateFee**](docs/TransactionsApi.md#v1TransactionsEstimateFee) | **POST** /api/v1/transactions/estimate_fee | Estimate fee
 *WaaSOpenApiDocumentation.TransactionsApi* | [**v1TransactionsList**](docs/TransactionsApi.md#v1TransactionsList) | **GET** /api/v1/transactions | List transactions
 *WaaSOpenApiDocumentation.TransactionsApi* | [**v1TransactionsRetrieve**](docs/TransactionsApi.md#v1TransactionsRetrieve) | **GET** /api/v1/transactions/{transactionId} | Get transaction
 *WaaSOpenApiDocumentation.TransactionsApi* | [**v1TransactionsTransfer**](docs/TransactionsApi.md#v1TransactionsTransfer) | **POST** /api/v1/transactions/transfer | Transfer token
@@ -178,6 +179,8 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.CursorPageWallet](docs/CursorPageWallet.md)
  - [WaaSOpenApiDocumentation.Endpoint](docs/Endpoint.md)
  - [WaaSOpenApiDocumentation.Error](docs/Error.md)
+ - [WaaSOpenApiDocumentation.EstimateFeeRequest](docs/EstimateFeeRequest.md)
+ - [WaaSOpenApiDocumentation.EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [WaaSOpenApiDocumentation.Fee](docs/Fee.md)
  - [WaaSOpenApiDocumentation.FeeType](docs/FeeType.md)
  - [WaaSOpenApiDocumentation.PageTransaction](docs/PageTransaction.md)

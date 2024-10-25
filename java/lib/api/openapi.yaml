@@ -145,7 +145,7 @@ paths:
       tags:
       - Chains
       x-accepts: application/json
-  /api/v1/chains/{id}:
+  /api/v1/chains/{chainId}:
     get:
       description: Retrieve chain information.
       operationId: v1.chains.retrieve
@@ -153,7 +153,7 @@ paths:
       - description: Chain ID
         explode: false
         in: path
-        name: id
+        name: chainId
         required: true
         schema:
           type: string
@@ -350,7 +350,7 @@ paths:
       - Tokens
       x-contentType: application/json
       x-accepts: application/json
-  /api/v1/tokens/{id}:
+  /api/v1/tokens/{tokenId}:
     get:
       description: Get token info by ID
       operationId: v1.tokens.retrieve
@@ -358,7 +358,7 @@ paths:
       - description: Token ID
         explode: false
         in: path
-        name: id
+        name: tokenId
         required: true
         schema:
           type: string
@@ -401,7 +401,6 @@ paths:
       tags:
       - Tokens
       x-accepts: application/json
-  /api/v1/tokens/{tokenId}:
     patch:
       description: Update a tokens.
       operationId: v1.tokens.update
@@ -575,6 +574,56 @@ paths:
       summary: List transactions
       tags:
       - Transactions
+      x-accepts: application/json
+  /api/v1/transactions/estimate_fee:
+    post:
+      description: Estimate fee for a transfer transaction
+      operationId: v1.transactions.estimate_fee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimateFeeRequest'
+        description: Request Body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateFeeResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Estimate fee
+      tags:
+      - Transactions
+      x-contentType: application/json
       x-accepts: application/json
   /api/v1/transactions/transfer:
     post:
@@ -1307,6 +1356,7 @@ components:
       example:
         path: path
         chain: chain
+        wallet_id: wallet_id
         address: address
         chain_id: chain_id
         updated_at: updated_at
@@ -1333,6 +1383,9 @@ components:
           type: string
         updated_at:
           description: Updated time
+          type: string
+        wallet_id:
+          description: Chain ID
           type: string
       required:
       - address
@@ -1385,18 +1438,13 @@ components:
       type: object
     CreateAddressRequest:
       example:
-        walletId: walletId
-        chainId: chainId
+        chain_id: chain_id
       properties:
-        chainId:
+        chain_id:
           description: Chain ID
           type: string
-        walletId:
-          description: Wallet ID
-          type: string
       required:
-      - chainId
-      - walletId
+      - chain_id
       type: object
     CreateEndpoint:
       example:
@@ -1498,10 +1546,13 @@ components:
       example:
         prev_cursor: prev_cursor
         next_cursor: next_cursor
+        total: 0
         has_next: true
+        has_prev: true
         items:
         - path: path
           chain: chain
+          wallet_id: wallet_id
           address: address
           chain_id: chain_id
           updated_at: updated_at
@@ -1509,6 +1560,7 @@ components:
           memo: memo
         - path: path
           chain: chain
+          wallet_id: wallet_id
           address: address
           chain_id: chain_id
           updated_at: updated_at
@@ -1516,6 +1568,8 @@ components:
           memo: memo
       properties:
         has_next:
+          type: boolean
+        has_prev:
           type: boolean
         items:
           items:
@@ -1525,15 +1579,21 @@ components:
           type: string
         prev_cursor:
           type: string
+        total:
+          type: integer
       required:
       - has_next
+      - has_prev
       - items
+      - total
       type: object
     CursorPage-Chain:
       example:
         prev_cursor: prev_cursor
         next_cursor: next_cursor
+        total: 6
         has_next: true
+        has_prev: true
         items:
         - icon_url: icon_url
           symbol: symbol
@@ -1557,6 +1617,8 @@ components:
           explorer_address_url: explorer_address_url
       properties:
         has_next:
+          type: boolean
+        has_prev:
           type: boolean
         items:
           items:
@@ -1566,15 +1628,21 @@ components:
           type: string
         prev_cursor:
           type: string
+        total:
+          type: integer
       required:
       - has_next
+      - has_prev
       - items
+      - total
       type: object
     CursorPage-Endpoint:
       example:
         prev_cursor: prev_cursor
         next_cursor: next_cursor
+        total: 0
         has_next: true
+        has_prev: true
         items:
         - filter: filter
           createdAt: createdAt
@@ -1598,6 +1666,8 @@ components:
           url: url
       properties:
         has_next:
+          type: boolean
+        has_prev:
           type: boolean
         items:
           items:
@@ -1607,15 +1677,21 @@ components:
           type: string
         prev_cursor:
           type: string
+        total:
+          type: integer
       required:
       - has_next
+      - has_prev
       - items
+      - total
       type: object
     CursorPage-Token:
       example:
         prev_cursor: prev_cursor
         next_cursor: next_cursor
+        total: 1
         has_next: true
+        has_prev: true
         items:
         - icon_url: icon_url
           symbol: symbol
@@ -1655,6 +1731,8 @@ components:
           min_deposit_amount: ""
       properties:
         has_next:
+          type: boolean
+        has_prev:
           type: boolean
         items:
           items:
@@ -1664,15 +1742,21 @@ components:
           type: string
         prev_cursor:
           type: string
+        total:
+          type: integer
       required:
       - has_next
+      - has_prev
       - items
+      - total
       type: object
     CursorPage-Wallet:
       example:
         prev_cursor: prev_cursor
         next_cursor: next_cursor
+        total: 0
         has_next: true
+        has_prev: true
         items:
         - uid: uid
           name: name
@@ -1687,6 +1771,8 @@ components:
       properties:
         has_next:
           type: boolean
+        has_prev:
+          type: boolean
         items:
           items:
             $ref: '#/components/schemas/Wallet'
@@ -1695,9 +1781,13 @@ components:
           type: string
         prev_cursor:
           type: string
+        total:
+          type: integer
       required:
       - has_next
+      - has_prev
       - items
+      - total
       type: object
     Endpoint:
       example:
@@ -1750,6 +1840,55 @@ components:
       required:
       - code
       - msg
+      type: object
+    EstimateFeeRequest:
+      example:
+        amount: amount
+        token_id: token_id
+        extra: extra
+        memo: memo
+        to_address: to_address
+        contract_address: contract_address
+        from_address: from_address
+      properties:
+        amount:
+          description: Amount
+          type: string
+        contract_address:
+          description: Contract address
+          type: string
+        extra:
+          description: Extra
+          type: string
+        from_address:
+          description: From address
+          type: string
+        memo:
+          description: Memo
+          type: string
+        to_address:
+          description: To address
+          type: string
+        token_id:
+          description: Token ID
+          type: string
+      required:
+      - amount
+      - from_address
+      - to_address
+      - token_id
+      type: object
+    EstimateFeeResponse:
+      example:
+        amount: amount
+        token_id: token_id
+      properties:
+        amount:
+          description: Amount
+          type: string
+        token_id:
+          description: Token ID
+          type: string
       type: object
     Fee:
       properties:
