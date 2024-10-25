@@ -16,12 +16,12 @@ import (
 
 // CursorPageChain struct for CursorPageChain
 type CursorPageChain struct {
-	HasNext    bool    `json:"has_next"`
-	HasPrev    bool    `json:"has_prev"`
-	Items      []Chain `json:"items"`
+	HasNext bool `json:"has_next"`
+	HasPrev bool `json:"has_prev"`
+	Items []Chain `json:"items"`
 	NextCursor *string `json:"next_cursor,omitempty"`
 	PrevCursor *string `json:"prev_cursor,omitempty"`
-	Total      int32   `json:"total"`
+	Total int32 `json:"total"`
 }
 
 // NewCursorPageChain instantiates a new CursorPageChain object
@@ -58,7 +58,7 @@ func (o *CursorPageChain) GetHasNext() bool {
 // GetHasNextOk returns a tuple with the HasNext field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageChain) GetHasNextOk() (*bool, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.HasNext, true
@@ -82,7 +82,7 @@ func (o *CursorPageChain) GetHasPrev() bool {
 // GetHasPrevOk returns a tuple with the HasPrev field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageChain) GetHasPrevOk() (*bool, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.HasPrev, true
@@ -106,7 +106,7 @@ func (o *CursorPageChain) GetItems() []Chain {
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageChain) GetItemsOk() (*[]Chain, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Items, true
@@ -194,7 +194,7 @@ func (o *CursorPageChain) GetTotal() int32 {
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageChain) GetTotalOk() (*int32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Total, true
@@ -263,3 +263,5 @@ func (v *NullableCursorPageChain) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

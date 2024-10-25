@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CreateAddressRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T17:53:36.175105+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T20:13:15.872929+08:00[Asia/Shanghai]")
 public class CreateAddressRequest {
   public static final String SERIALIZED_NAME_CHAIN_ID = "chain_id";
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)

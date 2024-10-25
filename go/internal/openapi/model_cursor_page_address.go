@@ -16,12 +16,12 @@ import (
 
 // CursorPageAddress struct for CursorPageAddress
 type CursorPageAddress struct {
-	HasNext    bool      `json:"has_next"`
-	HasPrev    bool      `json:"has_prev"`
-	Items      []Address `json:"items"`
-	NextCursor *string   `json:"next_cursor,omitempty"`
-	PrevCursor *string   `json:"prev_cursor,omitempty"`
-	Total      int32     `json:"total"`
+	HasNext bool `json:"has_next"`
+	HasPrev bool `json:"has_prev"`
+	Items []Address `json:"items"`
+	NextCursor *string `json:"next_cursor,omitempty"`
+	PrevCursor *string `json:"prev_cursor,omitempty"`
+	Total int32 `json:"total"`
 }
 
 // NewCursorPageAddress instantiates a new CursorPageAddress object
@@ -58,7 +58,7 @@ func (o *CursorPageAddress) GetHasNext() bool {
 // GetHasNextOk returns a tuple with the HasNext field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageAddress) GetHasNextOk() (*bool, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.HasNext, true
@@ -82,7 +82,7 @@ func (o *CursorPageAddress) GetHasPrev() bool {
 // GetHasPrevOk returns a tuple with the HasPrev field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageAddress) GetHasPrevOk() (*bool, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.HasPrev, true
@@ -106,7 +106,7 @@ func (o *CursorPageAddress) GetItems() []Address {
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageAddress) GetItemsOk() (*[]Address, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Items, true
@@ -194,7 +194,7 @@ func (o *CursorPageAddress) GetTotal() int32 {
 // GetTotalOk returns a tuple with the Total field value
 // and a boolean to check if the value has been set.
 func (o *CursorPageAddress) GetTotalOk() (*int32, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Total, true
@@ -263,3 +263,5 @@ func (v *NullableCursorPageAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

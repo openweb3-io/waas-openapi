@@ -19,18 +19,20 @@ type CreateTransferRequest struct {
 	// The amount to be transferred
 	Amount string `json:"amount"`
 	// The ID of the wallet to which the transfer will be made
-	Destination string `json:"destination"`
+	Destination TransferDestination `json:"destination"`
+	// Fee
+	Fee *Fee `json:"fee,omitempty"`
 	// The ID of the wallet from which the transfer will be made
-	Source string `json:"source"`
+	Source TransferSource `json:"source"`
 	// The tokenId to be transferred
-	TokenId string `json:"tokenId"`
+	TokenId string `json:"token_id"`
 }
 
 // NewCreateTransferRequest instantiates a new CreateTransferRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateTransferRequest(amount string, destination string, source string, tokenId string) *CreateTransferRequest {
+func NewCreateTransferRequest(amount string, destination TransferDestination, source TransferSource, tokenId string) *CreateTransferRequest {
 	this := CreateTransferRequest{}
 	this.Amount = amount
 	this.Destination = destination
@@ -72,9 +74,9 @@ func (o *CreateTransferRequest) SetAmount(v string) {
 }
 
 // GetDestination returns the Destination field value
-func (o *CreateTransferRequest) GetDestination() string {
+func (o *CreateTransferRequest) GetDestination() TransferDestination {
 	if o == nil {
-		var ret string
+		var ret TransferDestination
 		return ret
 	}
 
@@ -83,7 +85,7 @@ func (o *CreateTransferRequest) GetDestination() string {
 
 // GetDestinationOk returns a tuple with the Destination field value
 // and a boolean to check if the value has been set.
-func (o *CreateTransferRequest) GetDestinationOk() (*string, bool) {
+func (o *CreateTransferRequest) GetDestinationOk() (*TransferDestination, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -91,14 +93,46 @@ func (o *CreateTransferRequest) GetDestinationOk() (*string, bool) {
 }
 
 // SetDestination sets field value
-func (o *CreateTransferRequest) SetDestination(v string) {
+func (o *CreateTransferRequest) SetDestination(v TransferDestination) {
 	o.Destination = v
 }
 
+// GetFee returns the Fee field value if set, zero value otherwise.
+func (o *CreateTransferRequest) GetFee() Fee {
+	if o == nil || o.Fee == nil {
+		var ret Fee
+		return ret
+	}
+	return *o.Fee
+}
+
+// GetFeeOk returns a tuple with the Fee field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTransferRequest) GetFeeOk() (*Fee, bool) {
+	if o == nil || o.Fee == nil {
+		return nil, false
+	}
+	return o.Fee, true
+}
+
+// HasFee returns a boolean if a field has been set.
+func (o *CreateTransferRequest) HasFee() bool {
+	if o != nil && o.Fee != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetFee gets a reference to the given Fee and assigns it to the Fee field.
+func (o *CreateTransferRequest) SetFee(v Fee) {
+	o.Fee = &v
+}
+
 // GetSource returns the Source field value
-func (o *CreateTransferRequest) GetSource() string {
+func (o *CreateTransferRequest) GetSource() TransferSource {
 	if o == nil {
-		var ret string
+		var ret TransferSource
 		return ret
 	}
 
@@ -107,7 +141,7 @@ func (o *CreateTransferRequest) GetSource() string {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *CreateTransferRequest) GetSourceOk() (*string, bool) {
+func (o *CreateTransferRequest) GetSourceOk() (*TransferSource, bool) {
 	if o == nil  {
 		return nil, false
 	}
@@ -115,7 +149,7 @@ func (o *CreateTransferRequest) GetSourceOk() (*string, bool) {
 }
 
 // SetSource sets field value
-func (o *CreateTransferRequest) SetSource(v string) {
+func (o *CreateTransferRequest) SetSource(v TransferSource) {
 	o.Source = v
 }
 
@@ -151,11 +185,14 @@ func (o CreateTransferRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["destination"] = o.Destination
 	}
+	if o.Fee != nil {
+		toSerialize["fee"] = o.Fee
+	}
 	if true {
 		toSerialize["source"] = o.Source
 	}
 	if true {
-		toSerialize["tokenId"] = o.TokenId
+		toSerialize["token_id"] = o.TokenId
 	}
 	return json.Marshal(toSerialize)
 }

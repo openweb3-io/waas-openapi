@@ -1459,27 +1459,34 @@ components:
     CreateTransferRequest:
       example:
         amount: amount
-        tokenId: tokenId
-        destination: destination
-        source: source
+        token_id: token_id
+        fee: ""
+        destination: ""
+        source: ""
       properties:
         amount:
           description: The amount to be transferred
           type: string
         destination:
+          allOf:
+          - $ref: '#/components/schemas/TransferDestination'
           description: The ID of the wallet to which the transfer will be made
-          type: string
+        fee:
+          allOf:
+          - $ref: '#/components/schemas/Fee'
+          description: Fee
         source:
+          allOf:
+          - $ref: '#/components/schemas/TransferSource'
           description: The ID of the wallet from which the transfer will be made
-          type: string
-        tokenId:
+        token_id:
           description: The tokenId to be transferred
           type: string
       required:
       - amount
       - destination
       - source
-      - tokenId
+      - token_id
       type: object
     CreateTransferResponse:
       example:
@@ -2121,6 +2128,52 @@ components:
       - TransactionType_Unknown
       - TransactionType_Deposit
       - TransactionType_Withdraw
+    TransferDestination:
+      properties:
+        address:
+          allOf:
+          - $ref: '#/components/schemas/TransferDestinationAddress'
+          description: Address
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TransferDestinationType'
+          description: Transfer destination type
+      type: object
+    TransferDestinationAddress:
+      properties:
+        address:
+          description: Address
+          type: string
+      type: object
+    TransferDestinationType:
+      enum:
+      - Address
+      type: string
+      x-enum-varnames:
+      - TransferDestinationType_Address
+    TransferSource:
+      properties:
+        address:
+          allOf:
+          - $ref: '#/components/schemas/TransferSourceAddress'
+          description: Address
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TransferSourceType'
+          description: Transfer source type
+      type: object
+    TransferSourceAddress:
+      properties:
+        address:
+          description: Address
+          type: string
+      type: object
+    TransferSourceType:
+      enum:
+      - Address
+      type: string
+      x-enum-varnames:
+      - TransferSourceType_Address
     UpdateEndpoint:
       example:
         uid: uid

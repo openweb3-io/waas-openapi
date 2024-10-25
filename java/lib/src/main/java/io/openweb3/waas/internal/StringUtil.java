@@ -16,7 +16,7 @@ package io.openweb3.waas.internal;
 import java.util.Collection;
 import java.util.Iterator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T17:53:36.175105+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T20:13:15.872929+08:00[Asia/Shanghai]")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

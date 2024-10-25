@@ -1,6 +1,5 @@
 .babelrc
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/Address.md
@@ -31,6 +30,12 @@ docs/Transaction.md
 docs/TransactionEndpoint.md
 docs/TransactionType.md
 docs/TransactionsApi.md
+docs/TransferDestination.md
+docs/TransferDestinationAddress.md
+docs/TransferDestinationType.md
+docs/TransferSource.md
+docs/TransferSourceAddress.md
+docs/TransferSourceType.md
 docs/UpdateEndpoint.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
@@ -72,6 +77,12 @@ src/model/Token.js
 src/model/Transaction.js
 src/model/TransactionEndpoint.js
 src/model/TransactionType.js
+src/model/TransferDestination.js
+src/model/TransferDestinationAddress.js
+src/model/TransferDestinationType.js
+src/model/TransferSource.js
+src/model/TransferSourceAddress.js
+src/model/TransferSourceType.js
 src/model/UpdateEndpoint.js
 src/model/UpdateTokenRequest.js
 src/model/UpdateWalletRequest.js
@@ -106,6 +117,12 @@ test/model/Token.spec.js
 test/model/Transaction.spec.js
 test/model/TransactionEndpoint.spec.js
 test/model/TransactionType.spec.js
+test/model/TransferDestination.spec.js
+test/model/TransferDestinationAddress.spec.js
+test/model/TransferDestinationType.spec.js
+test/model/TransferSource.spec.js
+test/model/TransferSourceAddress.spec.js
+test/model/TransferSourceType.spec.js
 test/model/UpdateEndpoint.spec.js
 test/model/UpdateTokenRequest.spec.js
 test/model/UpdateWalletRequest.spec.js

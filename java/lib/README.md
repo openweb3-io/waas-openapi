@@ -2,7 +2,7 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Build date: 2024-10-25T17:53:36.175105+08:00[Asia/Shanghai]
+  - Build date: 2024-10-25T20:13:15.872929+08:00[Asia/Shanghai]
 
 This is a custody wallet service openapi server.
 
@@ -175,6 +175,12 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransactionEndpoint](docs/TransactionEndpoint.md)
  - [TransactionType](docs/TransactionType.md)
+ - [TransferDestination](docs/TransferDestination.md)
+ - [TransferDestinationAddress](docs/TransferDestinationAddress.md)
+ - [TransferDestinationType](docs/TransferDestinationType.md)
+ - [TransferSource](docs/TransferSource.md)
+ - [TransferSourceAddress](docs/TransferSourceAddress.md)
+ - [TransferSourceType](docs/TransferSourceType.md)
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)

@@ -37,6 +37,12 @@ import Token from './model/Token';
 import Transaction from './model/Transaction';
 import TransactionEndpoint from './model/TransactionEndpoint';
 import TransactionType from './model/TransactionType';
+import TransferDestination from './model/TransferDestination';
+import TransferDestinationAddress from './model/TransferDestinationAddress';
+import TransferDestinationType from './model/TransferDestinationType';
+import TransferSource from './model/TransferSource';
+import TransferSourceAddress from './model/TransferSourceAddress';
+import TransferSourceType from './model/TransferSourceType';
 import UpdateEndpoint from './model/UpdateEndpoint';
 import UpdateTokenRequest from './model/UpdateTokenRequest';
 import UpdateWalletRequest from './model/UpdateWalletRequest';
@@ -230,6 +236,42 @@ export {
      * @property {module:model/TransactionType}
      */
     TransactionType,
+
+    /**
+     * The TransferDestination model constructor.
+     * @property {module:model/TransferDestination}
+     */
+    TransferDestination,
+
+    /**
+     * The TransferDestinationAddress model constructor.
+     * @property {module:model/TransferDestinationAddress}
+     */
+    TransferDestinationAddress,
+
+    /**
+     * The TransferDestinationType model constructor.
+     * @property {module:model/TransferDestinationType}
+     */
+    TransferDestinationType,
+
+    /**
+     * The TransferSource model constructor.
+     * @property {module:model/TransferSource}
+     */
+    TransferSource,
+
+    /**
+     * The TransferSourceAddress model constructor.
+     * @property {module:model/TransferSourceAddress}
+     */
+    TransferSourceAddress,
+
+    /**
+     * The TransferSourceType model constructor.
+     * @property {module:model/TransferSourceType}
+     */
+    TransferSourceType,
 
     /**
      * The UpdateEndpoint model constructor.

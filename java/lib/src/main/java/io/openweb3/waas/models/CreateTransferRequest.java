@@ -20,6 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.openweb3.waas.models.Fee;
+import io.openweb3.waas.models.TransferDestination;
+import io.openweb3.waas.models.TransferSource;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,7 +30,7 @@ import java.io.IOException;
 /**
  * CreateTransferRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T17:53:36.175105+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T20:13:15.872929+08:00[Asia/Shanghai]")
 public class CreateTransferRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -35,13 +38,17 @@ public class CreateTransferRequest {
 
   public static final String SERIALIZED_NAME_DESTINATION = "destination";
   @SerializedName(SERIALIZED_NAME_DESTINATION)
-  private String destination;
+  private TransferDestination destination;
+
+  public static final String SERIALIZED_NAME_FEE = "fee";
+  @SerializedName(SERIALIZED_NAME_FEE)
+  private Fee fee;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
-  private String source;
+  private TransferSource source;
 
-  public static final String SERIALIZED_NAME_TOKEN_ID = "tokenId";
+  public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
 
@@ -68,7 +75,7 @@ public class CreateTransferRequest {
   }
 
 
-  public CreateTransferRequest destination(String destination) {
+  public CreateTransferRequest destination(TransferDestination destination) {
     
     this.destination = destination;
     return this;
@@ -80,17 +87,40 @@ public class CreateTransferRequest {
   **/
   @ApiModelProperty(required = true, value = "The ID of the wallet to which the transfer will be made")
 
-  public String getDestination() {
+  public TransferDestination getDestination() {
     return destination;
   }
 
 
-  public void setDestination(String destination) {
+  public void setDestination(TransferDestination destination) {
     this.destination = destination;
   }
 
 
-  public CreateTransferRequest source(String source) {
+  public CreateTransferRequest fee(Fee fee) {
+    
+    this.fee = fee;
+    return this;
+  }
+
+   /**
+   * Fee
+   * @return fee
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Fee")
+
+  public Fee getFee() {
+    return fee;
+  }
+
+
+  public void setFee(Fee fee) {
+    this.fee = fee;
+  }
+
+
+  public CreateTransferRequest source(TransferSource source) {
     
     this.source = source;
     return this;
@@ -102,12 +132,12 @@ public class CreateTransferRequest {
   **/
   @ApiModelProperty(required = true, value = "The ID of the wallet from which the transfer will be made")
 
-  public String getSource() {
+  public TransferSource getSource() {
     return source;
   }
 
 
-  public void setSource(String source) {
+  public void setSource(TransferSource source) {
     this.source = source;
   }
 
@@ -145,13 +175,14 @@ public class CreateTransferRequest {
     CreateTransferRequest createTransferRequest = (CreateTransferRequest) o;
     return Objects.equals(this.amount, createTransferRequest.amount) &&
         Objects.equals(this.destination, createTransferRequest.destination) &&
+        Objects.equals(this.fee, createTransferRequest.fee) &&
         Objects.equals(this.source, createTransferRequest.source) &&
         Objects.equals(this.tokenId, createTransferRequest.tokenId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, destination, source, tokenId);
+    return Objects.hash(amount, destination, fee, source, tokenId);
   }
 
   @Override
@@ -160,6 +191,7 @@ public class CreateTransferRequest {
     sb.append("class CreateTransferRequest {\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    destination: ").append(toIndentedString(destination)).append("\n");
+    sb.append("    fee: ").append(toIndentedString(fee)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("}");

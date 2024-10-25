@@ -1782,7 +1782,7 @@
                 "amount",
                 "destination",
                 "source",
-                "tokenId"
+                "token_id"
             ],
             "properties": {
                 "amount": {
@@ -1791,13 +1791,29 @@
                 },
                 "destination": {
                     "description": "The ID of the wallet to which the transfer will be made",
-                    "type": "string"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TransferDestination"
+                        }
+                    ]
+                },
+                "fee": {
+                    "description": "Fee",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Fee"
+                        }
+                    ]
                 },
                 "source": {
                     "description": "The ID of the wallet from which the transfer will be made",
-                    "type": "string"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TransferSource"
+                        }
+                    ]
                 },
-                "tokenId": {
+                "token_id": {
                     "description": "The tokenId to be transferred",
                     "type": "string"
                 }
@@ -2375,6 +2391,84 @@
                 "TransactionType_Unknown",
                 "TransactionType_Deposit",
                 "TransactionType_Withdraw"
+            ]
+        },
+        "TransferDestination": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "description": "Address",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TransferDestinationAddress"
+                        }
+                    ]
+                },
+                "type": {
+                    "description": "Transfer destination type",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TransferDestinationType"
+                        }
+                    ]
+                }
+            }
+        },
+        "TransferDestinationAddress": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "description": "Address",
+                    "type": "string"
+                }
+            }
+        },
+        "TransferDestinationType": {
+            "type": "string",
+            "enum": [
+                "Address"
+            ],
+            "x-enum-varnames": [
+                "TransferDestinationType_Address"
+            ]
+        },
+        "TransferSource": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "description": "Address",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TransferSourceAddress"
+                        }
+                    ]
+                },
+                "type": {
+                    "description": "Transfer source type",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/TransferSourceType"
+                        }
+                    ]
+                }
+            }
+        },
+        "TransferSourceAddress": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "description": "Address",
+                    "type": "string"
+                }
+            }
+        },
+        "TransferSourceType": {
+            "type": "string",
+            "enum": [
+                "Address"
+            ],
+            "x-enum-varnames": [
+                "TransferSourceType_Address"
             ]
         },
         "UpdateEndpoint": {

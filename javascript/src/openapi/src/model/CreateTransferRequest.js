@@ -12,6 +12,9 @@
  */
 
 import ApiClient from '../ApiClient';
+import Fee from './Fee';
+import TransferDestination from './TransferDestination';
+import TransferSource from './TransferSource';
 
 /**
  * The CreateTransferRequest model module.
@@ -23,8 +26,8 @@ class CreateTransferRequest {
      * Constructs a new <code>CreateTransferRequest</code>.
      * @alias module:model/CreateTransferRequest
      * @param amount {String} The amount to be transferred
-     * @param destination {String} The ID of the wallet to which the transfer will be made
-     * @param source {String} The ID of the wallet from which the transfer will be made
+     * @param destination {module:model/TransferDestination} The ID of the wallet to which the transfer will be made
+     * @param source {module:model/TransferSource} The ID of the wallet from which the transfer will be made
      * @param tokenId {String} The tokenId to be transferred
      */
     constructor(amount, destination, source, tokenId) { 
@@ -41,7 +44,7 @@ class CreateTransferRequest {
         obj['amount'] = amount;
         obj['destination'] = destination;
         obj['source'] = source;
-        obj['tokenId'] = tokenId;
+        obj['token_id'] = tokenId;
     }
 
     /**
@@ -59,13 +62,16 @@ class CreateTransferRequest {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = ApiClient.convertToType(data['destination'], 'String');
+                obj['destination'] = ApiClient.convertToType(data['destination'], TransferDestination);
+            }
+            if (data.hasOwnProperty('fee')) {
+                obj['fee'] = ApiClient.convertToType(data['fee'], Fee);
             }
             if (data.hasOwnProperty('source')) {
-                obj['source'] = ApiClient.convertToType(data['source'], 'String');
+                obj['source'] = ApiClient.convertToType(data['source'], TransferSource);
             }
-            if (data.hasOwnProperty('tokenId')) {
-                obj['tokenId'] = ApiClient.convertToType(data['tokenId'], 'String');
+            if (data.hasOwnProperty('token_id')) {
+                obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
         }
         return obj;
@@ -82,21 +88,27 @@ CreateTransferRequest.prototype['amount'] = undefined;
 
 /**
  * The ID of the wallet to which the transfer will be made
- * @member {String} destination
+ * @member {module:model/TransferDestination} destination
  */
 CreateTransferRequest.prototype['destination'] = undefined;
 
 /**
+ * Fee
+ * @member {module:model/Fee} fee
+ */
+CreateTransferRequest.prototype['fee'] = undefined;
+
+/**
  * The ID of the wallet from which the transfer will be made
- * @member {String} source
+ * @member {module:model/TransferSource} source
  */
 CreateTransferRequest.prototype['source'] = undefined;
 
 /**
  * The tokenId to be transferred
- * @member {String} tokenId
+ * @member {String} token_id
  */
-CreateTransferRequest.prototype['tokenId'] = undefined;
+CreateTransferRequest.prototype['token_id'] = undefined;
 
 
 

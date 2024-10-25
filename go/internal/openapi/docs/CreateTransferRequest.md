@@ -5,15 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **string** | The amount to be transferred | 
-**Destination** | **string** | The ID of the wallet to which the transfer will be made | 
-**Source** | **string** | The ID of the wallet from which the transfer will be made | 
+**Destination** | [**TransferDestination**](TransferDestination.md) | The ID of the wallet to which the transfer will be made | 
+**Fee** | Pointer to [**Fee**](Fee.md) | Fee | [optional] 
+**Source** | [**TransferSource**](TransferSource.md) | The ID of the wallet from which the transfer will be made | 
 **TokenId** | **string** | The tokenId to be transferred | 
 
 ## Methods
 
 ### NewCreateTransferRequest
 
-`func NewCreateTransferRequest(amount string, destination string, source string, tokenId string, ) *CreateTransferRequest`
+`func NewCreateTransferRequest(amount string, destination TransferDestination, source TransferSource, tokenId string, ) *CreateTransferRequest`
 
 NewCreateTransferRequest instantiates a new CreateTransferRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,40 +51,65 @@ SetAmount sets Amount field to given value.
 
 ### GetDestination
 
-`func (o *CreateTransferRequest) GetDestination() string`
+`func (o *CreateTransferRequest) GetDestination() TransferDestination`
 
 GetDestination returns the Destination field if non-nil, zero value otherwise.
 
 ### GetDestinationOk
 
-`func (o *CreateTransferRequest) GetDestinationOk() (*string, bool)`
+`func (o *CreateTransferRequest) GetDestinationOk() (*TransferDestination, bool)`
 
 GetDestinationOk returns a tuple with the Destination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDestination
 
-`func (o *CreateTransferRequest) SetDestination(v string)`
+`func (o *CreateTransferRequest) SetDestination(v TransferDestination)`
 
 SetDestination sets Destination field to given value.
 
 
+### GetFee
+
+`func (o *CreateTransferRequest) GetFee() Fee`
+
+GetFee returns the Fee field if non-nil, zero value otherwise.
+
+### GetFeeOk
+
+`func (o *CreateTransferRequest) GetFeeOk() (*Fee, bool)`
+
+GetFeeOk returns a tuple with the Fee field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFee
+
+`func (o *CreateTransferRequest) SetFee(v Fee)`
+
+SetFee sets Fee field to given value.
+
+### HasFee
+
+`func (o *CreateTransferRequest) HasFee() bool`
+
+HasFee returns a boolean if a field has been set.
+
 ### GetSource
 
-`func (o *CreateTransferRequest) GetSource() string`
+`func (o *CreateTransferRequest) GetSource() TransferSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *CreateTransferRequest) GetSourceOk() (*string, bool)`
+`func (o *CreateTransferRequest) GetSourceOk() (*TransferSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *CreateTransferRequest) SetSource(v string)`
+`func (o *CreateTransferRequest) SetSource(v TransferSource)`
 
 SetSource sets Source field to given value.
 

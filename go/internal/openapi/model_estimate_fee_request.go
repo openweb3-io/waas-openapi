@@ -66,7 +66,7 @@ func (o *EstimateFeeRequest) GetAmount() string {
 // GetAmountOk returns a tuple with the Amount field value
 // and a boolean to check if the value has been set.
 func (o *EstimateFeeRequest) GetAmountOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.Amount, true
@@ -154,7 +154,7 @@ func (o *EstimateFeeRequest) GetFromAddress() string {
 // GetFromAddressOk returns a tuple with the FromAddress field value
 // and a boolean to check if the value has been set.
 func (o *EstimateFeeRequest) GetFromAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.FromAddress, true
@@ -210,7 +210,7 @@ func (o *EstimateFeeRequest) GetToAddress() string {
 // GetToAddressOk returns a tuple with the ToAddress field value
 // and a boolean to check if the value has been set.
 func (o *EstimateFeeRequest) GetToAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.ToAddress, true
@@ -234,7 +234,7 @@ func (o *EstimateFeeRequest) GetTokenId() string {
 // GetTokenIdOk returns a tuple with the TokenId field value
 // and a boolean to check if the value has been set.
 func (o *EstimateFeeRequest) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil  {
 		return nil, false
 	}
 	return &o.TokenId, true
@@ -306,3 +306,5 @@ func (v *NullableEstimateFeeRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

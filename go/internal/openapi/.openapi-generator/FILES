@@ -39,6 +39,12 @@ docs/Transaction.md
 docs/TransactionEndpoint.md
 docs/TransactionType.md
 docs/TransactionsApi.md
+docs/TransferDestination.md
+docs/TransferDestinationAddress.md
+docs/TransferDestinationType.md
+docs/TransferSource.md
+docs/TransferSourceAddress.md
+docs/TransferSourceType.md
 docs/UpdateEndpoint.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
@@ -72,6 +78,12 @@ model_token.go
 model_transaction.go
 model_transaction_endpoint.go
 model_transaction_type.go
+model_transfer_destination.go
+model_transfer_destination_address.go
+model_transfer_destination_type.go
+model_transfer_source.go
+model_transfer_source_address.go
+model_transfer_source_type.go
 model_update_endpoint.go
 model_update_token_request.go
 model_update_wallet_request.go

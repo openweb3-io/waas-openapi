@@ -28,10 +28,10 @@ var (
 type ChainsApiService service
 
 type ApiV1ChainsListRequest struct {
-	ctx        _context.Context
+	ctx _context.Context
 	ApiService *ChainsApiService
-	cursor     *string
-	limit      *int32
+	cursor *string
+	limit *int32
 }
 
 func (r ApiV1ChainsListRequest) Cursor(cursor string) ApiV1ChainsListRequest {
@@ -56,7 +56,7 @@ func (r ApiV1ChainsListRequest) Execute() (CursorPageChain, *_nethttp.Response, 
 func (a *ChainsApiService) V1ChainsList(ctx _context.Context) ApiV1ChainsListRequest {
 	return ApiV1ChainsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -213,10 +213,11 @@ func (a *ChainsApiService) V1ChainsListExecute(r ApiV1ChainsListRequest) (Cursor
 }
 
 type ApiV1ChainsRetrieveRequest struct {
-	ctx        _context.Context
+	ctx _context.Context
 	ApiService *ChainsApiService
-	chainId    string
+	chainId string
 }
+
 
 func (r ApiV1ChainsRetrieveRequest) Execute() (Chain, *_nethttp.Response, error) {
 	return r.ApiService.V1ChainsRetrieveExecute(r)
@@ -232,8 +233,8 @@ func (r ApiV1ChainsRetrieveRequest) Execute() (Chain, *_nethttp.Response, error)
 func (a *ChainsApiService) V1ChainsRetrieve(ctx _context.Context, chainId string) ApiV1ChainsRetrieveRequest {
 	return ApiV1ChainsRetrieveRequest{
 		ApiService: a,
-		ctx:        ctx,
-		chainId:    chainId,
+		ctx: ctx,
+		chainId: chainId,
 	}
 }
 

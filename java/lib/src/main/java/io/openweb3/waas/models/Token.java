@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * Token
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T17:53:36.175105+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-25T20:13:15.872929+08:00[Asia/Shanghai]")
 public class Token {
   public static final String SERIALIZED_NAME_CAN_DEPOSIT = "can_deposit";
   @SerializedName(SERIALIZED_NAME_CAN_DEPOSIT)

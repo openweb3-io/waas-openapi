@@ -248,7 +248,7 @@ import (
 )
 
 func main() {
-    createTransferRequest := *openapiclient.NewCreateTransferRequest("Amount_example", "Destination_example", "Source_example", "TokenId_example") // CreateTransferRequest | Request Body
+    createTransferRequest := *openapiclient.NewCreateTransferRequest("Amount_example", *openapiclient.NewTransferDestination(), *openapiclient.NewTransferSource(), "TokenId_example") // CreateTransferRequest | Request Body
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)

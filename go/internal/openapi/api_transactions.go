@@ -28,8 +28,8 @@ var (
 type TransactionsApiService service
 
 type ApiV1TransactionsEstimateFeeRequest struct {
-	ctx                _context.Context
-	ApiService         *TransactionsApiService
+	ctx _context.Context
+	ApiService *TransactionsApiService
 	estimateFeeRequest *EstimateFeeRequest
 }
 
@@ -51,7 +51,7 @@ func (r ApiV1TransactionsEstimateFeeRequest) Execute() (EstimateFeeResponse, *_n
 func (a *TransactionsApiService) V1TransactionsEstimateFee(ctx _context.Context) ApiV1TransactionsEstimateFeeRequest {
 	return ApiV1TransactionsEstimateFeeRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -207,16 +207,16 @@ func (a *TransactionsApiService) V1TransactionsEstimateFeeExecute(r ApiV1Transac
 }
 
 type ApiV1TransactionsListRequest struct {
-	ctx        _context.Context
+	ctx _context.Context
 	ApiService *TransactionsApiService
-	assetIds   *[]string
-	chainIds   *[]string
-	cursor     *string
-	hash       *string
-	limit      *int32
-	status     *string
-	tokenIds   *[]string
-	walletIds  *[]string
+	assetIds *[]string
+	chainIds *[]string
+	cursor *string
+	hash *string
+	limit *int32
+	status *string
+	tokenIds *[]string
+	walletIds *[]string
 }
 
 func (r ApiV1TransactionsListRequest) AssetIds(assetIds []string) ApiV1TransactionsListRequest {
@@ -265,7 +265,7 @@ func (r ApiV1TransactionsListRequest) Execute() (PageTransaction, *_nethttp.Resp
 func (a *TransactionsApiService) V1TransactionsList(ctx _context.Context) ApiV1TransactionsListRequest {
 	return ApiV1TransactionsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
@@ -440,10 +440,11 @@ func (a *TransactionsApiService) V1TransactionsListExecute(r ApiV1TransactionsLi
 }
 
 type ApiV1TransactionsRetrieveRequest struct {
-	ctx           _context.Context
-	ApiService    *TransactionsApiService
+	ctx _context.Context
+	ApiService *TransactionsApiService
 	transactionId string
 }
+
 
 func (r ApiV1TransactionsRetrieveRequest) Execute() (Transaction, *_nethttp.Response, error) {
 	return r.ApiService.V1TransactionsRetrieveExecute(r)
@@ -458,8 +459,8 @@ func (r ApiV1TransactionsRetrieveRequest) Execute() (Transaction, *_nethttp.Resp
  */
 func (a *TransactionsApiService) V1TransactionsRetrieve(ctx _context.Context, transactionId string) ApiV1TransactionsRetrieveRequest {
 	return ApiV1TransactionsRetrieveRequest{
-		ApiService:    a,
-		ctx:           ctx,
+		ApiService: a,
+		ctx: ctx,
 		transactionId: transactionId,
 	}
 }
@@ -612,8 +613,8 @@ func (a *TransactionsApiService) V1TransactionsRetrieveExecute(r ApiV1Transactio
 }
 
 type ApiV1TransactionsTransferRequest struct {
-	ctx                   _context.Context
-	ApiService            *TransactionsApiService
+	ctx _context.Context
+	ApiService *TransactionsApiService
 	createTransferRequest *CreateTransferRequest
 }
 
@@ -635,7 +636,7 @@ func (r ApiV1TransactionsTransferRequest) Execute() (CreateTransferResponse, *_n
 func (a *TransactionsApiService) V1TransactionsTransfer(ctx _context.Context) ApiV1TransactionsTransferRequest {
 	return ApiV1TransactionsTransferRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 

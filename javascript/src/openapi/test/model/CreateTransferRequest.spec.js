@@ -66,13 +66,19 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property fee (base name: "fee")', function() {
+      // uncomment below and update the code to test the property fee
+      //var instance = new WaaSOpenApiDocumentation.CreateTransferRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property source (base name: "source")', function() {
       // uncomment below and update the code to test the property source
       //var instance = new WaaSOpenApiDocumentation.CreateTransferRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property tokenId (base name: "tokenId")', function() {
+    it('should have the property tokenId (base name: "token_id")', function() {
       // uncomment below and update the code to test the property tokenId
       //var instance = new WaaSOpenApiDocumentation.CreateTransferRequest();
       //expect(instance).to.be();

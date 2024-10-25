@@ -4,6 +4,8 @@ set -ex
 
 rm -fr go/internal/openapi
 yarn openapi-generator-cli generate -i openapi.json -g go -o go/internal/openapi -c go/openapi-generator-config.json -t go/templates
+rm -rf go/internal/openapi/go.mod
+rm -rf go/internal/openapi/go.sum
 
 rm -fr java/lib/src/main/java/io/openweb3/waas/internal
 rm -fr java/lib/src/main/java/io/openweb3/waas/models
