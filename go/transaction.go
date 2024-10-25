@@ -11,6 +11,8 @@ type (
 	PageTransactionOut = openapi.PageTransaction
 	TransferIn         = openapi.CreateTransferRequest
 	TransferOut        = openapi.CreateTransferResponse
+	EstimateFeeIn      = openapi.EstimateFeeRequest
+	EstimateFeeOut     = openapi.EstimateFeeResponse
 )
 
 type Transaction struct {
@@ -74,6 +76,16 @@ func (e *Transaction) Retrieve(ctx context.Context, transactionId string) (*Tran
 func (e *Transaction) Transfer(ctx context.Context, transferIn *TransferIn) (*TransferOut, error) {
 	req := e.api.TransactionsApi.V1TransactionsTransfer(ctx)
 	req = req.CreateTransferRequest(*transferIn)
+	out, res, err := req.Execute()
+	if err != nil {
+		return nil, wrapError(err, res)
+	}
+	return &out, nil
+}
+
+func (e *Transaction) EstimateFee(ctx context.Context, estimateFeeIn *EstimateFeeIn) (*EstimateFeeOut, error) {
+	req := e.api.TransactionsApi.V1TransactionsEstimateFee(ctx)
+	req = req.EstimateFeeRequest(*estimateFeeIn)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
