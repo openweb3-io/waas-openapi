@@ -7,12 +7,15 @@ import (
 )
 
 type (
-	TransactionOut     = openapi.Transaction
-	PageTransactionOut = openapi.PageTransaction
-	TransferIn         = openapi.CreateTransferRequest
-	TransferOut        = openapi.CreateTransferResponse
-	EstimateFeeIn      = openapi.EstimateFeeRequest
-	EstimateFeeOut     = openapi.EstimateFeeResponse
+	TransactionOut      = openapi.Transaction
+	PageTransactionOut  = openapi.PageTransaction
+	TransferIn          = openapi.CreateTransferRequest
+	TransferSource      = openapi.TransferSource
+	TransferDestination = openapi.TransferDestination
+	TransferFee         = openapi.Fee
+	TransferOut         = openapi.CreateTransferResponse
+	EstimateFeeIn       = openapi.EstimateFeeRequest
+	EstimateFeeOut      = openapi.EstimateFeeResponse
 )
 
 type Transaction struct {
