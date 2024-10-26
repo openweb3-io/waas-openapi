@@ -25,16 +25,6 @@ type ListWalletOptions struct {
 	Limit  int
 }
 
-type GetDepositAddressOptions struct {
-	Currency string
-	Network  *string
-}
-
-type ListDepositAddressesOptions struct {
-	Currency *string
-	Network  *string
-}
-
 func (e *Wallet) List(ctx context.Context, options *ListWalletOptions) (*CursorPageWalletOut, error) {
 	req := e.api.WalletsApi.V1WalletsList(ctx)
 	req = req.Cursor(options.Cursor)
