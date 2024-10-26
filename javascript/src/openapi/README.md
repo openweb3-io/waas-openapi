@@ -137,9 +137,9 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1AddressesList**](docs/AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
-*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create deposit address
-*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsGetDepositAddress**](docs/AddressesApi.md#v1WalletsGetDepositAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsListDepositAddresses**](docs/AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List deposit addresses
+*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address
+*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsGetAddress**](docs/AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
+*WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsListAddresses**](docs/AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 *WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsList**](docs/ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
 *WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{chainId} | Retrieve chain
 *WaaSOpenApiDocumentation.TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token

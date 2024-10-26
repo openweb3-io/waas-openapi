@@ -13,7 +13,6 @@ type (
 	UpdateWalletIn       = openapi.UpdateWalletRequest
 	DeleteWalletIn       = openapi.ApiV1WalletsDeleteRequest
 	CreateAddressIn      = openapi.CreateAddressRequest
-	GetDepositAddressIn  = openapi.ApiV1WalletsGetDepositAddressRequest
 	CursorAddressPageOut = openapi.CursorPageAddress
 )
 
@@ -85,8 +84,8 @@ func (e *Wallet) Delete(ctx context.Context, walletId string) (*WalletOut, error
 	return &out, nil
 }
 
-func (e *Wallet) ListDepositAddresses(ctx context.Context, walletId string, options *ListAddressOptions) (*CursorAddressPageOut, error) {
-	req := e.api.AddressesApi.V1WalletsListDepositAddresses(ctx, walletId)
+func (e *Wallet) ListAddresses(ctx context.Context, walletId string, options *ListAddressOptions) (*CursorAddressPageOut, error) {
+	req := e.api.AddressesApi.V1WalletsListAddresses(ctx, walletId)
 	req = req.Cursor(options.Cursor)
 	req = req.Limit(int32(options.Limit))
 	out, res, err := req.Execute()
@@ -106,8 +105,8 @@ func (e *Wallet) CreateAddress(ctx context.Context, walletId string, createAddre
 	return &out, nil
 }
 
-func (e *Wallet) GetDepositAddress(ctx context.Context, walletId string, address string) (*AddressOut, error) {
-	req := e.api.AddressesApi.V1WalletsGetDepositAddress(ctx, walletId, address)
+func (e *Wallet) GetAddress(ctx context.Context, walletId string, address string) (*AddressOut, error) {
+	req := e.api.AddressesApi.V1WalletsGetAddress(ctx, walletId, address)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)

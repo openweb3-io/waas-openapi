@@ -5,9 +5,9 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1AddressesList**](AddressesApi.md#V1AddressesList) | **Get** /api/v1/addresses | List all addresses
-[**V1WalletsCreateAddress**](AddressesApi.md#V1WalletsCreateAddress) | **Post** /api/v1/wallets/{walletId}/addresses | Create deposit address
-[**V1WalletsGetDepositAddress**](AddressesApi.md#V1WalletsGetDepositAddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-[**V1WalletsListDepositAddresses**](AddressesApi.md#V1WalletsListDepositAddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List deposit addresses
+[**V1WalletsCreateAddress**](AddressesApi.md#V1WalletsCreateAddress) | **Post** /api/v1/wallets/{walletId}/addresses | Create address
+[**V1WalletsGetAddress**](AddressesApi.md#V1WalletsGetAddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
+[**V1WalletsListAddresses**](AddressesApi.md#V1WalletsListAddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 
 
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > Address V1WalletsCreateAddress(ctx, walletId).CreateAddressRequest(createAddressRequest).Execute()
 
-Create deposit address
+Create address
 
 
 
@@ -155,11 +155,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1WalletsGetDepositAddress
+## V1WalletsGetAddress
 
-> Address V1WalletsGetDepositAddress(ctx, walletId, address).TokenId(tokenId).Execute()
+> Address V1WalletsGetAddress(ctx, walletId, address).Execute()
 
-Get deposit address
+Get address information
 
 
 
@@ -178,17 +178,16 @@ import (
 func main() {
     walletId := "walletId_example" // string | Wallet ID
     address := "address_example" // string | Address
-    tokenId := "tokenId_example" // string | The token id used in the transaction (e.g., TON, USDT_ETH, etc.).
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AddressesApi.V1WalletsGetDepositAddress(context.Background(), walletId, address).TokenId(tokenId).Execute()
+    resp, r, err := api_client.AddressesApi.V1WalletsGetAddress(context.Background(), walletId, address).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AddressesApi.V1WalletsGetDepositAddress``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AddressesApi.V1WalletsGetAddress``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `V1WalletsGetDepositAddress`: Address
-    fmt.Fprintf(os.Stdout, "Response from `AddressesApi.V1WalletsGetDepositAddress`: %v\n", resp)
+    // response from `V1WalletsGetAddress`: Address
+    fmt.Fprintf(os.Stdout, "Response from `AddressesApi.V1WalletsGetAddress`: %v\n", resp)
 }
 ```
 
@@ -203,14 +202,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1WalletsGetDepositAddressRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1WalletsGetAddressRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **tokenId** | **string** | The token id used in the transaction (e.g., TON, USDT_ETH, etc.). | 
 
 ### Return type
 
@@ -230,11 +228,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## V1WalletsListDepositAddresses
+## V1WalletsListAddresses
 
-> CursorPageAddress V1WalletsListDepositAddresses(ctx, walletId).ChainIds(chainIds).Cursor(cursor).Limit(limit).Execute()
+> CursorPageAddress V1WalletsListAddresses(ctx, walletId).ChainIds(chainIds).Cursor(cursor).Limit(limit).Execute()
 
-List deposit addresses
+List wallet addresses
 
 
 
@@ -258,13 +256,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.AddressesApi.V1WalletsListDepositAddresses(context.Background(), walletId).ChainIds(chainIds).Cursor(cursor).Limit(limit).Execute()
+    resp, r, err := api_client.AddressesApi.V1WalletsListAddresses(context.Background(), walletId).ChainIds(chainIds).Cursor(cursor).Limit(limit).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AddressesApi.V1WalletsListDepositAddresses``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AddressesApi.V1WalletsListAddresses``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `V1WalletsListDepositAddresses`: CursorPageAddress
-    fmt.Fprintf(os.Stdout, "Response from `AddressesApi.V1WalletsListDepositAddresses`: %v\n", resp)
+    // response from `V1WalletsListAddresses`: CursorPageAddress
+    fmt.Fprintf(os.Stdout, "Response from `AddressesApi.V1WalletsListAddresses`: %v\n", resp)
 }
 ```
 
@@ -278,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiV1WalletsListDepositAddressesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiV1WalletsListAddressesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

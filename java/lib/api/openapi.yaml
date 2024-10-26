@@ -995,8 +995,8 @@ paths:
       x-accepts: application/json
   /api/v1/wallets/{walletId}/addresses:
     get:
-      description: List wallet's deposit addresses
-      operationId: v1.wallets.listDepositAddresses
+      description: List addresses in wallet
+      operationId: v1.wallets.listAddresses
       parameters:
       - description: Wallet ID
         explode: false
@@ -1066,12 +1066,12 @@ paths:
       security:
       - ApiKeyAuth: []
       - SignatureAuth: []
-      summary: List deposit addresses
+      summary: List wallet addresses
       tags:
       - Addresses
       x-accepts: application/json
     post:
-      description: Create deposit address for wallet
+      description: Create address for wallet
       operationId: v1.wallets.createAddress
       parameters:
       - description: Wallet ID
@@ -1123,15 +1123,15 @@ paths:
       security:
       - ApiKeyAuth: []
       - SignatureAuth: []
-      summary: Create deposit address
+      summary: Create address
       tags:
       - Addresses
       x-contentType: application/json
       x-accepts: application/json
   /api/v1/wallets/{walletId}/addresses/{address}:
     get:
-      description: Get wallet's deposit address
-      operationId: v1.wallets.getDepositAddress
+      description: Get specific address information in wallet
+      operationId: v1.wallets.getAddress
       parameters:
       - description: Wallet ID
         explode: false
@@ -1149,14 +1149,6 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The token id used in the transaction (e.g., TON, USDT_ETH, etc.).
-        explode: true
-        in: query
-        name: token_id
-        required: true
-        schema:
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -1191,7 +1183,7 @@ paths:
       security:
       - ApiKeyAuth: []
       - SignatureAuth: []
-      summary: Get deposit address
+      summary: Get address information
       tags:
       - Addresses
       x-accepts: application/json

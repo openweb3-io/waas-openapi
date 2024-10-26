@@ -5,9 +5,9 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1AddressesList**](AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
-[**v1WalletsCreateAddress**](AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create deposit address
-[**v1WalletsGetDepositAddress**](AddressesApi.md#v1WalletsGetDepositAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-[**v1WalletsListDepositAddresses**](AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List deposit addresses
+[**v1WalletsCreateAddress**](AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address
+[**v1WalletsGetAddress**](AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
+[**v1WalletsListAddresses**](AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 
 
 
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 
 > Address v1WalletsCreateAddress(walletId, createAddressRequest)
 
-Create deposit address
+Create address
 
-Create deposit address for wallet
+Create address for wallet
 
 ### Example
 
@@ -133,13 +133,13 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## v1WalletsGetDepositAddress
+## v1WalletsGetAddress
 
-> Address v1WalletsGetDepositAddress(walletId, address, tokenId)
+> Address v1WalletsGetAddress(walletId, address)
 
-Get deposit address
+Get address information
 
-Get wallet&#39;s deposit address
+Get specific address information in wallet
 
 ### Example
 
@@ -160,8 +160,7 @@ SignatureAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WaaSOpenApiDocumentation.AddressesApi();
 let walletId = "walletId_example"; // String | Wallet ID
 let address = "address_example"; // String | Address
-let tokenId = "tokenId_example"; // String | The token id used in the transaction (e.g., TON, USDT_ETH, etc.).
-apiInstance.v1WalletsGetDepositAddress(walletId, address, tokenId, (error, data, response) => {
+apiInstance.v1WalletsGetAddress(walletId, address, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -177,7 +176,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **String**| Wallet ID | 
  **address** | **String**| Address | 
- **tokenId** | **String**| The token id used in the transaction (e.g., TON, USDT_ETH, etc.). | 
 
 ### Return type
 
@@ -193,13 +191,13 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## v1WalletsListDepositAddresses
+## v1WalletsListAddresses
 
-> CursorPageAddress v1WalletsListDepositAddresses(walletId, opts)
+> CursorPageAddress v1WalletsListAddresses(walletId, opts)
 
-List deposit addresses
+List wallet addresses
 
-List wallet&#39;s deposit addresses
+List addresses in wallet
 
 ### Example
 
@@ -224,7 +222,7 @@ let opts = {
   'cursor': "cursor_example", // String | Cursor
   'limit': 56 // Number | Limit, default is 20
 };
-apiInstance.v1WalletsListDepositAddresses(walletId, opts, (error, data, response) => {
+apiInstance.v1WalletsListAddresses(walletId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {

@@ -1197,15 +1197,15 @@
                         "SignatureAuth": []
                     }
                 ],
-                "description": "List wallet's deposit addresses",
+                "description": "List addresses in wallet",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Addresses"
                 ],
-                "summary": "List deposit addresses",
-                "operationId": "v1.wallets.listDepositAddresses",
+                "summary": "List wallet addresses",
+                "operationId": "v1.wallets.listAddresses",
                 "parameters": [
                     {
                         "type": "string",
@@ -1279,7 +1279,7 @@
                         "SignatureAuth": []
                     }
                 ],
-                "description": "Create deposit address for wallet",
+                "description": "Create address for wallet",
                 "consumes": [
                     "application/json"
                 ],
@@ -1289,7 +1289,7 @@
                 "tags": [
                     "Addresses"
                 ],
-                "summary": "Create deposit address",
+                "summary": "Create address",
                 "operationId": "v1.wallets.createAddress",
                 "parameters": [
                     {
@@ -1353,15 +1353,15 @@
                         "SignatureAuth": []
                     }
                 ],
-                "description": "Get wallet's deposit address",
+                "description": "Get specific address information in wallet",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Addresses"
                 ],
-                "summary": "Get deposit address",
-                "operationId": "v1.wallets.getDepositAddress",
+                "summary": "Get address information",
+                "operationId": "v1.wallets.getAddress",
                 "parameters": [
                     {
                         "type": "string",
@@ -1375,13 +1375,6 @@
                         "description": "Address",
                         "name": "address",
                         "in": "path",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "The token id used in the transaction (e.g., TON, USDT_ETH, etc.).",
-                        "name": "token_id",
-                        "in": "query",
                         "required": true
                     }
                 ],

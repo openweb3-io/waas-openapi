@@ -245,8 +245,8 @@ func (r ApiV1WalletsCreateAddressRequest) Execute() (Address, *_nethttp.Response
 }
 
 /*
- * V1WalletsCreateAddress Create deposit address
- * Create deposit address for wallet
+ * V1WalletsCreateAddress Create address
+ * Create address for wallet
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param walletId Wallet ID
  * @return ApiV1WalletsCreateAddressRequest
@@ -411,33 +411,28 @@ func (a *AddressesApiService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1WalletsGetDepositAddressRequest struct {
+type ApiV1WalletsGetAddressRequest struct {
 	ctx _context.Context
 	ApiService *AddressesApiService
 	walletId string
 	address string
-	tokenId *string
 }
 
-func (r ApiV1WalletsGetDepositAddressRequest) TokenId(tokenId string) ApiV1WalletsGetDepositAddressRequest {
-	r.tokenId = &tokenId
-	return r
-}
 
-func (r ApiV1WalletsGetDepositAddressRequest) Execute() (Address, *_nethttp.Response, error) {
-	return r.ApiService.V1WalletsGetDepositAddressExecute(r)
+func (r ApiV1WalletsGetAddressRequest) Execute() (Address, *_nethttp.Response, error) {
+	return r.ApiService.V1WalletsGetAddressExecute(r)
 }
 
 /*
- * V1WalletsGetDepositAddress Get deposit address
- * Get wallet's deposit address
+ * V1WalletsGetAddress Get address information
+ * Get specific address information in wallet
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param walletId Wallet ID
  * @param address Address
- * @return ApiV1WalletsGetDepositAddressRequest
+ * @return ApiV1WalletsGetAddressRequest
  */
-func (a *AddressesApiService) V1WalletsGetDepositAddress(ctx _context.Context, walletId string, address string) ApiV1WalletsGetDepositAddressRequest {
-	return ApiV1WalletsGetDepositAddressRequest{
+func (a *AddressesApiService) V1WalletsGetAddress(ctx _context.Context, walletId string, address string) ApiV1WalletsGetAddressRequest {
+	return ApiV1WalletsGetAddressRequest{
 		ApiService: a,
 		ctx: ctx,
 		walletId: walletId,
@@ -449,7 +444,7 @@ func (a *AddressesApiService) V1WalletsGetDepositAddress(ctx _context.Context, w
  * Execute executes the request
  * @return Address
  */
-func (a *AddressesApiService) V1WalletsGetDepositAddressExecute(r ApiV1WalletsGetDepositAddressRequest) (Address, *_nethttp.Response, error) {
+func (a *AddressesApiService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddressRequest) (Address, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -459,7 +454,7 @@ func (a *AddressesApiService) V1WalletsGetDepositAddressExecute(r ApiV1WalletsGe
 		localVarReturnValue  Address
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesApiService.V1WalletsGetDepositAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesApiService.V1WalletsGetAddress")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -471,11 +466,7 @@ func (a *AddressesApiService) V1WalletsGetDepositAddressExecute(r ApiV1WalletsGe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
-	if r.tokenId == nil {
-		return localVarReturnValue, nil, reportError("tokenId is required and must be specified")
-	}
 
-	localVarQueryParams.Add("token_id", parameterToString(*r.tokenId, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -597,7 +588,7 @@ func (a *AddressesApiService) V1WalletsGetDepositAddressExecute(r ApiV1WalletsGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1WalletsListDepositAddressesRequest struct {
+type ApiV1WalletsListAddressesRequest struct {
 	ctx _context.Context
 	ApiService *AddressesApiService
 	walletId string
@@ -606,32 +597,32 @@ type ApiV1WalletsListDepositAddressesRequest struct {
 	limit *int32
 }
 
-func (r ApiV1WalletsListDepositAddressesRequest) ChainIds(chainIds []string) ApiV1WalletsListDepositAddressesRequest {
+func (r ApiV1WalletsListAddressesRequest) ChainIds(chainIds []string) ApiV1WalletsListAddressesRequest {
 	r.chainIds = &chainIds
 	return r
 }
-func (r ApiV1WalletsListDepositAddressesRequest) Cursor(cursor string) ApiV1WalletsListDepositAddressesRequest {
+func (r ApiV1WalletsListAddressesRequest) Cursor(cursor string) ApiV1WalletsListAddressesRequest {
 	r.cursor = &cursor
 	return r
 }
-func (r ApiV1WalletsListDepositAddressesRequest) Limit(limit int32) ApiV1WalletsListDepositAddressesRequest {
+func (r ApiV1WalletsListAddressesRequest) Limit(limit int32) ApiV1WalletsListAddressesRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiV1WalletsListDepositAddressesRequest) Execute() (CursorPageAddress, *_nethttp.Response, error) {
-	return r.ApiService.V1WalletsListDepositAddressesExecute(r)
+func (r ApiV1WalletsListAddressesRequest) Execute() (CursorPageAddress, *_nethttp.Response, error) {
+	return r.ApiService.V1WalletsListAddressesExecute(r)
 }
 
 /*
- * V1WalletsListDepositAddresses List deposit addresses
- * List wallet's deposit addresses
+ * V1WalletsListAddresses List wallet addresses
+ * List addresses in wallet
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param walletId Wallet ID
- * @return ApiV1WalletsListDepositAddressesRequest
+ * @return ApiV1WalletsListAddressesRequest
  */
-func (a *AddressesApiService) V1WalletsListDepositAddresses(ctx _context.Context, walletId string) ApiV1WalletsListDepositAddressesRequest {
-	return ApiV1WalletsListDepositAddressesRequest{
+func (a *AddressesApiService) V1WalletsListAddresses(ctx _context.Context, walletId string) ApiV1WalletsListAddressesRequest {
+	return ApiV1WalletsListAddressesRequest{
 		ApiService: a,
 		ctx: ctx,
 		walletId: walletId,
@@ -642,7 +633,7 @@ func (a *AddressesApiService) V1WalletsListDepositAddresses(ctx _context.Context
  * Execute executes the request
  * @return CursorPageAddress
  */
-func (a *AddressesApiService) V1WalletsListDepositAddressesExecute(r ApiV1WalletsListDepositAddressesRequest) (CursorPageAddress, *_nethttp.Response, error) {
+func (a *AddressesApiService) V1WalletsListAddressesExecute(r ApiV1WalletsListAddressesRequest) (CursorPageAddress, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -652,7 +643,7 @@ func (a *AddressesApiService) V1WalletsListDepositAddressesExecute(r ApiV1Wallet
 		localVarReturnValue  CursorPageAddress
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesApiService.V1WalletsListDepositAddresses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesApiService.V1WalletsListAddresses")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}

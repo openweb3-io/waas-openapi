@@ -93,8 +93,8 @@ export default class AddressesApi {
      */
 
     /**
-     * Create deposit address
-     * Create deposit address for wallet
+     * Create address
+     * Create address for wallet
      * @param {String} walletId Wallet ID
      * @param {module:model/CreateAddressRequest} createAddressRequest Request Body
      * @param {module:api/AddressesApi~v1WalletsCreateAddressCallback} callback The callback function, accepting three arguments: error, data, response
@@ -133,35 +133,30 @@ export default class AddressesApi {
     }
 
     /**
-     * Callback function to receive the result of the v1WalletsGetDepositAddress operation.
-     * @callback module:api/AddressesApi~v1WalletsGetDepositAddressCallback
+     * Callback function to receive the result of the v1WalletsGetAddress operation.
+     * @callback module:api/AddressesApi~v1WalletsGetAddressCallback
      * @param {String} error Error message, if any.
      * @param {module:model/Address} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get deposit address
-     * Get wallet's deposit address
+     * Get address information
+     * Get specific address information in wallet
      * @param {String} walletId Wallet ID
      * @param {String} address Address
-     * @param {String} tokenId The token id used in the transaction (e.g., TON, USDT_ETH, etc.).
-     * @param {module:api/AddressesApi~v1WalletsGetDepositAddressCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/AddressesApi~v1WalletsGetAddressCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Address}
      */
-    v1WalletsGetDepositAddress(walletId, address, tokenId, callback) {
+    v1WalletsGetAddress(walletId, address, callback) {
       let postBody = null;
       // verify the required parameter 'walletId' is set
       if (walletId === undefined || walletId === null) {
-        throw new Error("Missing the required parameter 'walletId' when calling v1WalletsGetDepositAddress");
+        throw new Error("Missing the required parameter 'walletId' when calling v1WalletsGetAddress");
       }
       // verify the required parameter 'address' is set
       if (address === undefined || address === null) {
-        throw new Error("Missing the required parameter 'address' when calling v1WalletsGetDepositAddress");
-      }
-      // verify the required parameter 'tokenId' is set
-      if (tokenId === undefined || tokenId === null) {
-        throw new Error("Missing the required parameter 'tokenId' when calling v1WalletsGetDepositAddress");
+        throw new Error("Missing the required parameter 'address' when calling v1WalletsGetAddress");
       }
 
       let pathParams = {
@@ -169,7 +164,6 @@ export default class AddressesApi {
         'address': address
       };
       let queryParams = {
-        'token_id': tokenId
       };
       let headerParams = {
       };
@@ -188,30 +182,30 @@ export default class AddressesApi {
     }
 
     /**
-     * Callback function to receive the result of the v1WalletsListDepositAddresses operation.
-     * @callback module:api/AddressesApi~v1WalletsListDepositAddressesCallback
+     * Callback function to receive the result of the v1WalletsListAddresses operation.
+     * @callback module:api/AddressesApi~v1WalletsListAddressesCallback
      * @param {String} error Error message, if any.
      * @param {module:model/CursorPageAddress} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * List deposit addresses
-     * List wallet's deposit addresses
+     * List wallet addresses
+     * List addresses in wallet
      * @param {String} walletId Wallet ID
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.chainIds chain ids
      * @param {String} opts.cursor Cursor
      * @param {Number} opts.limit Limit, default is 20
-     * @param {module:api/AddressesApi~v1WalletsListDepositAddressesCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/AddressesApi~v1WalletsListAddressesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageAddress}
      */
-    v1WalletsListDepositAddresses(walletId, opts, callback) {
+    v1WalletsListAddresses(walletId, opts, callback) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'walletId' is set
       if (walletId === undefined || walletId === null) {
-        throw new Error("Missing the required parameter 'walletId' when calling v1WalletsListDepositAddresses");
+        throw new Error("Missing the required parameter 'walletId' when calling v1WalletsListAddresses");
       }
 
       let pathParams = {

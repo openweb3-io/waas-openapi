@@ -5,9 +5,9 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1AddressesList**](AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
-[**v1WalletsCreateAddress**](AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create deposit address
-[**v1WalletsGetDepositAddress**](AddressesApi.md#v1WalletsGetDepositAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-[**v1WalletsListDepositAddresses**](AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List deposit addresses
+[**v1WalletsCreateAddress**](AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address
+[**v1WalletsGetAddress**](AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
+[**v1WalletsListAddresses**](AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 
 
 <a name="v1AddressesList"></a>
@@ -99,9 +99,9 @@ Name | Type | Description  | Notes
 # **v1WalletsCreateAddress**
 > Address v1WalletsCreateAddress(walletId, createAddressRequest)
 
-Create deposit address
+Create address
 
-Create deposit address for wallet
+Create address for wallet
 
 ### Example
 ```java
@@ -176,13 +176,13 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **500** | Internal Server Error |  -  |
 
-<a name="v1WalletsGetDepositAddress"></a>
-# **v1WalletsGetDepositAddress**
-> Address v1WalletsGetDepositAddress(walletId, address, tokenId)
+<a name="v1WalletsGetAddress"></a>
+# **v1WalletsGetAddress**
+> Address v1WalletsGetAddress(walletId, address)
 
-Get deposit address
+Get address information
 
-Get wallet&#39;s deposit address
+Get specific address information in wallet
 
 ### Example
 ```java
@@ -214,12 +214,11 @@ public class Example {
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     String walletId = "walletId_example"; // String | Wallet ID
     String address = "address_example"; // String | Address
-    String tokenId = "tokenId_example"; // String | The token id used in the transaction (e.g., TON, USDT_ETH, etc.).
     try {
-      Address result = apiInstance.v1WalletsGetDepositAddress(walletId, address, tokenId);
+      Address result = apiInstance.v1WalletsGetAddress(walletId, address);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AddressesApi#v1WalletsGetDepositAddress");
+      System.err.println("Exception when calling AddressesApi#v1WalletsGetAddress");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -235,7 +234,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **String**| Wallet ID |
  **address** | **String**| Address |
- **tokenId** | **String**| The token id used in the transaction (e.g., TON, USDT_ETH, etc.). |
 
 ### Return type
 
@@ -259,13 +257,13 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **500** | Internal Server Error |  -  |
 
-<a name="v1WalletsListDepositAddresses"></a>
-# **v1WalletsListDepositAddresses**
-> CursorPageAddress v1WalletsListDepositAddresses(walletId, chainIds, cursor, limit)
+<a name="v1WalletsListAddresses"></a>
+# **v1WalletsListAddresses**
+> CursorPageAddress v1WalletsListAddresses(walletId, chainIds, cursor, limit)
 
-List deposit addresses
+List wallet addresses
 
-List wallet&#39;s deposit addresses
+List addresses in wallet
 
 ### Example
 ```java
@@ -300,10 +298,10 @@ public class Example {
     String cursor = "cursor_example"; // String | Cursor
     Integer limit = 56; // Integer | Limit, default is 20
     try {
-      CursorPageAddress result = apiInstance.v1WalletsListDepositAddresses(walletId, chainIds, cursor, limit);
+      CursorPageAddress result = apiInstance.v1WalletsListAddresses(walletId, chainIds, cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AddressesApi#v1WalletsListDepositAddresses");
+      System.err.println("Exception when calling AddressesApi#v1WalletsListAddresses");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

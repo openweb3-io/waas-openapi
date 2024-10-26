@@ -79,9 +79,9 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AddressesApi* | [**V1AddressesList**](docs/AddressesApi.md#v1addresseslist) | **Get** /api/v1/addresses | List all addresses
-*AddressesApi* | [**V1WalletsCreateAddress**](docs/AddressesApi.md#v1walletscreateaddress) | **Post** /api/v1/wallets/{walletId}/addresses | Create deposit address
-*AddressesApi* | [**V1WalletsGetDepositAddress**](docs/AddressesApi.md#v1walletsgetdepositaddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-*AddressesApi* | [**V1WalletsListDepositAddresses**](docs/AddressesApi.md#v1walletslistdepositaddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List deposit addresses
+*AddressesApi* | [**V1WalletsCreateAddress**](docs/AddressesApi.md#v1walletscreateaddress) | **Post** /api/v1/wallets/{walletId}/addresses | Create address
+*AddressesApi* | [**V1WalletsGetAddress**](docs/AddressesApi.md#v1walletsgetaddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
+*AddressesApi* | [**V1WalletsListAddresses**](docs/AddressesApi.md#v1walletslistaddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 *ChainsApi* | [**V1ChainsList**](docs/ChainsApi.md#v1chainslist) | **Get** /api/v1/chains | List all chains
 *ChainsApi* | [**V1ChainsRetrieve**](docs/ChainsApi.md#v1chainsretrieve) | **Get** /api/v1/chains/{chainId} | Retrieve chain
 *TokensApi* | [**V1TokensCreate**](docs/TokensApi.md#v1tokenscreate) | **Post** /api/v1/tokens | Create token

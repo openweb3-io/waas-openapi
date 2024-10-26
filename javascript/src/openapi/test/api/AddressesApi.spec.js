@@ -68,20 +68,20 @@
         done();
       });
     });
-    describe('v1WalletsGetDepositAddress', function() {
-      it('should call v1WalletsGetDepositAddress successfully', function(done) {
-        //uncomment below and update the code to test v1WalletsGetDepositAddress
-        //instance.v1WalletsGetDepositAddress(function(error) {
+    describe('v1WalletsGetAddress', function() {
+      it('should call v1WalletsGetAddress successfully', function(done) {
+        //uncomment below and update the code to test v1WalletsGetAddress
+        //instance.v1WalletsGetAddress(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('v1WalletsListDepositAddresses', function() {
-      it('should call v1WalletsListDepositAddresses successfully', function(done) {
-        //uncomment below and update the code to test v1WalletsListDepositAddresses
-        //instance.v1WalletsListDepositAddresses(function(error) {
+    describe('v1WalletsListAddresses', function() {
+      it('should call v1WalletsListAddresses successfully', function(done) {
+        //uncomment below and update the code to test v1WalletsListAddresses
+        //instance.v1WalletsListAddresses(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

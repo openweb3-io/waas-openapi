@@ -2,7 +2,7 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Build date: 2024-10-25T22:27:20.371039+08:00[Asia/Shanghai]
+  - Build date: 2024-10-26T22:02:49.883062+08:00[Asia/Shanghai]
 
 This is a WaaS OpenAPI Server.
 
@@ -124,9 +124,9 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AddressesApi* | [**v1AddressesList**](docs/AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
-*AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create deposit address
-*AddressesApi* | [**v1WalletsGetDepositAddress**](docs/AddressesApi.md#v1WalletsGetDepositAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get deposit address
-*AddressesApi* | [**v1WalletsListDepositAddresses**](docs/AddressesApi.md#v1WalletsListDepositAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List deposit addresses
+*AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address
+*AddressesApi* | [**v1WalletsGetAddress**](docs/AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
+*AddressesApi* | [**v1WalletsListAddresses**](docs/AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 *ChainsApi* | [**v1ChainsList**](docs/ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
 *ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{chainId} | Retrieve chain
 *TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
