@@ -50,7 +50,7 @@
   describe('TransactionEndpoint', function() {
     it('should create an instance of TransactionEndpoint', function() {
       // uncomment below and update the code to test TransactionEndpoint
-      //var instane = new WaaSOpenApiDocumentation.TransactionEndpoint();
+      //var instance = new WaaSOpenApiDocumentation.TransactionEndpoint();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.TransactionEndpoint);
     });
 

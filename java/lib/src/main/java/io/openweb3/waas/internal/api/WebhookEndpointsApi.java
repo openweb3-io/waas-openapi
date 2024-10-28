@@ -41,6 +41,8 @@ import java.util.Map;
 
 public class WebhookEndpointsApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public WebhookEndpointsApi() {
         this(Configuration.getDefaultApiClient());
@@ -58,6 +60,22 @@ public class WebhookEndpointsApi {
         this.localVarApiClient = apiClient;
     }
 
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
+    }
+
     /**
      * Build call for v1WebhooksCreate
      * @param createEndpoint Request body (required)
@@ -73,6 +91,19 @@ public class WebhookEndpointsApi {
      </table>
      */
     public okhttp3.Call v1WebhooksCreateCall(CreateEndpoint createEndpoint, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createEndpoint;
 
         // create path and map variables
@@ -96,23 +127,22 @@ public class WebhookEndpointsApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1WebhooksCreateValidateBeforeCall(CreateEndpoint createEndpoint, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'createEndpoint' is set
         if (createEndpoint == null) {
             throw new ApiException("Missing the required parameter 'createEndpoint' when calling v1WebhooksCreate(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1WebhooksCreateCall(createEndpoint, _callback);
-        return localVarCall;
+        return v1WebhooksCreateCall(createEndpoint, _callback);
 
     }
 
@@ -180,6 +210,7 @@ public class WebhookEndpointsApi {
     /**
      * Build call for v1WebhooksDelete
      * @param endpointId Endpoint ID (required)
+     * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -191,12 +222,25 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WebhooksDeleteCall(String endpointId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+    public okhttp3.Call v1WebhooksDeleteCall(String endpointId, Object body, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/api/v1/webhooks/endpoints/{endpointId}"
-            .replaceAll("\\{" + "endpointId" + "\\}", localVarApiClient.escapeString(endpointId.toString()));
+            .replace("{" + "endpointId" + "}", localVarApiClient.escapeString(endpointId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -213,26 +257,25 @@ public class WebhookEndpointsApi {
         }
 
         final String[] localVarContentTypes = {
-            
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WebhooksDeleteValidateBeforeCall(String endpointId, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call v1WebhooksDeleteValidateBeforeCall(String endpointId, Object body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'endpointId' is set
         if (endpointId == null) {
             throw new ApiException("Missing the required parameter 'endpointId' when calling v1WebhooksDelete(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1WebhooksDeleteCall(endpointId, _callback);
-        return localVarCall;
+        return v1WebhooksDeleteCall(endpointId, body, _callback);
 
     }
 
@@ -240,6 +283,7 @@ public class WebhookEndpointsApi {
      * Delete webhook endpoint
      * Delete specific webhook endpoint
      * @param endpointId Endpoint ID (required)
+     * @param body  (optional)
      * @return Endpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -250,8 +294,8 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint v1WebhooksDelete(String endpointId) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = v1WebhooksDeleteWithHttpInfo(endpointId);
+    public Endpoint v1WebhooksDelete(String endpointId, Object body) throws ApiException {
+        ApiResponse<Endpoint> localVarResp = v1WebhooksDeleteWithHttpInfo(endpointId, body);
         return localVarResp.getData();
     }
 
@@ -259,6 +303,7 @@ public class WebhookEndpointsApi {
      * Delete webhook endpoint
      * Delete specific webhook endpoint
      * @param endpointId Endpoint ID (required)
+     * @param body  (optional)
      * @return ApiResponse&lt;Endpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -269,8 +314,8 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> v1WebhooksDeleteWithHttpInfo(String endpointId) throws ApiException {
-        okhttp3.Call localVarCall = v1WebhooksDeleteValidateBeforeCall(endpointId, null);
+    public ApiResponse<Endpoint> v1WebhooksDeleteWithHttpInfo(String endpointId, Object body) throws ApiException {
+        okhttp3.Call localVarCall = v1WebhooksDeleteValidateBeforeCall(endpointId, body, null);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -279,6 +324,7 @@ public class WebhookEndpointsApi {
      * Delete webhook endpoint (asynchronously)
      * Delete specific webhook endpoint
      * @param endpointId Endpoint ID (required)
+     * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -290,9 +336,9 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WebhooksDeleteAsync(String endpointId, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call v1WebhooksDeleteAsync(String endpointId, Object body, final ApiCallback<Endpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WebhooksDeleteValidateBeforeCall(endpointId, _callback);
+        okhttp3.Call localVarCall = v1WebhooksDeleteValidateBeforeCall(endpointId, body, _callback);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -313,6 +359,19 @@ public class WebhookEndpointsApi {
      </table>
      */
     public okhttp3.Call v1WebhooksListCall(String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -341,21 +400,19 @@ public class WebhookEndpointsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1WebhooksListValidateBeforeCall(String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = v1WebhooksListCall(cursor, limit, _callback);
-        return localVarCall;
+        return v1WebhooksListCall(cursor, limit, _callback);
 
     }
 
@@ -439,11 +496,24 @@ public class WebhookEndpointsApi {
      </table>
      */
     public okhttp3.Call v1WebhooksRetrieveCall(String endpointId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/v1/webhooks/endpoints/{endpointId}"
-            .replaceAll("\\{" + "endpointId" + "\\}", localVarApiClient.escapeString(endpointId.toString()));
+            .replace("{" + "endpointId" + "}", localVarApiClient.escapeString(endpointId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -460,26 +530,24 @@ public class WebhookEndpointsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1WebhooksRetrieveValidateBeforeCall(String endpointId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'endpointId' is set
         if (endpointId == null) {
             throw new ApiException("Missing the required parameter 'endpointId' when calling v1WebhooksRetrieve(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1WebhooksRetrieveCall(endpointId, _callback);
-        return localVarCall;
+        return v1WebhooksRetrieveCall(endpointId, _callback);
 
     }
 
@@ -561,11 +629,24 @@ public class WebhookEndpointsApi {
      </table>
      */
     public okhttp3.Call v1WebhooksUpdateCall(String endpointId, UpdateEndpoint updateEndpoint, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = updateEndpoint;
 
         // create path and map variables
         String localVarPath = "/api/v1/webhooks/endpoints/{endpointId}"
-            .replaceAll("\\{" + "endpointId" + "\\}", localVarApiClient.escapeString(endpointId.toString()));
+            .replace("{" + "endpointId" + "}", localVarApiClient.escapeString(endpointId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -585,28 +666,27 @@ public class WebhookEndpointsApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1WebhooksUpdateValidateBeforeCall(String endpointId, UpdateEndpoint updateEndpoint, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'endpointId' is set
         if (endpointId == null) {
             throw new ApiException("Missing the required parameter 'endpointId' when calling v1WebhooksUpdate(Async)");
         }
-        
+
         // verify the required parameter 'updateEndpoint' is set
         if (updateEndpoint == null) {
             throw new ApiException("Missing the required parameter 'updateEndpoint' when calling v1WebhooksUpdate(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1WebhooksUpdateCall(endpointId, updateEndpoint, _callback);
-        return localVarCall;
+        return v1WebhooksUpdateCall(endpointId, updateEndpoint, _callback);
 
     }
 

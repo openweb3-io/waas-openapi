@@ -1,7 +1,7 @@
 {
   "name": "waa_s_open_api_documentation",
   "version": "1.0",
-  "description": "This_is_a_WaaS_OpenAPI_Server_",
+  "description": "This is a WaaS OpenAPI Server.",
   "license": "Unlicense",
   "main": "dist/index.js",
   "scripts": {

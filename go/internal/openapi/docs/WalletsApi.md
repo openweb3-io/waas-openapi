@@ -1,14 +1,14 @@
-# \WalletsApi
+# \WalletsAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1WalletsCreate**](WalletsApi.md#V1WalletsCreate) | **Post** /api/v1/wallets | Create wallet
-[**V1WalletsDelete**](WalletsApi.md#V1WalletsDelete) | **Delete** /api/v1/wallets/{walletId} | Delete wallet
-[**V1WalletsList**](WalletsApi.md#V1WalletsList) | **Get** /api/v1/wallets | List wallets
-[**V1WalletsRetrieve**](WalletsApi.md#V1WalletsRetrieve) | **Get** /api/v1/wallets/{walletId} | Get wallet
-[**V1WalletsUpdate**](WalletsApi.md#V1WalletsUpdate) | **Patch** /api/v1/wallets/{walletId} | Update wallet
+[**V1WalletsCreate**](WalletsAPI.md#V1WalletsCreate) | **Post** /api/v1/wallets | Create wallet
+[**V1WalletsDelete**](WalletsAPI.md#V1WalletsDelete) | **Delete** /api/v1/wallets/{walletId} | Delete wallet
+[**V1WalletsList**](WalletsAPI.md#V1WalletsList) | **Get** /api/v1/wallets | List wallets
+[**V1WalletsRetrieve**](WalletsAPI.md#V1WalletsRetrieve) | **Get** /api/v1/wallets/{walletId} | Get wallet
+[**V1WalletsUpdate**](WalletsAPI.md#V1WalletsUpdate) | **Patch** /api/v1/wallets/{walletId} | Update wallet
 
 
 
@@ -26,24 +26,24 @@ Create wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    createWalletRequest := *openapiclient.NewCreateWalletRequest("Name_example") // CreateWalletRequest | Request body
+	createWalletRequest := *openapiclient.NewCreateWalletRequest("Name_example") // CreateWalletRequest | Request body
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WalletsApi.V1WalletsCreate(context.Background()).CreateWalletRequest(createWalletRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WalletsApi.V1WalletsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WalletsCreate`: Wallet
-    fmt.Fprintf(os.Stdout, "Response from `WalletsApi.V1WalletsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WalletsAPI.V1WalletsCreate(context.Background()).CreateWalletRequest(createWalletRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WalletsAPI.V1WalletsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WalletsCreate`: Wallet
+	fmt.Fprintf(os.Stdout, "Response from `WalletsAPI.V1WalletsCreate`: %v\n", resp)
 }
 ```
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## V1WalletsDelete
 
-> Wallet V1WalletsDelete(ctx, walletId).Execute()
+> Wallet V1WalletsDelete(ctx, walletId).Body(body).Execute()
 
 Delete wallet
 
@@ -92,24 +92,25 @@ Delete wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    walletId := "walletId_example" // string | Wallet ID
+	walletId := "walletId_example" // string | Wallet ID
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WalletsApi.V1WalletsDelete(context.Background(), walletId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WalletsApi.V1WalletsDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WalletsDelete`: Wallet
-    fmt.Fprintf(os.Stdout, "Response from `WalletsApi.V1WalletsDelete`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WalletsAPI.V1WalletsDelete(context.Background(), walletId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WalletsAPI.V1WalletsDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WalletsDelete`: Wallet
+	fmt.Fprintf(os.Stdout, "Response from `WalletsAPI.V1WalletsDelete`: %v\n", resp)
 }
 ```
 
@@ -129,6 +130,7 @@ Other parameters are passed through a pointer to a apiV1WalletsDeleteRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
@@ -136,11 +138,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -162,25 +164,25 @@ List wallets
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    cursor := "cursor_example" // string | Cursor (optional)
-    limit := int32(56) // int32 | The number of records to return default: 20 (optional)
+	cursor := "cursor_example" // string | Cursor (optional)
+	limit := int32(56) // int32 | The number of records to return default: 20 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WalletsApi.V1WalletsList(context.Background()).Cursor(cursor).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WalletsApi.V1WalletsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WalletsList`: CursorPageWallet
-    fmt.Fprintf(os.Stdout, "Response from `WalletsApi.V1WalletsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WalletsAPI.V1WalletsList(context.Background()).Cursor(cursor).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WalletsAPI.V1WalletsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WalletsList`: CursorPageWallet
+	fmt.Fprintf(os.Stdout, "Response from `WalletsAPI.V1WalletsList`: %v\n", resp)
 }
 ```
 
@@ -204,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -230,24 +232,24 @@ Get wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    walletId := "walletId_example" // string | Wallet ID
+	walletId := "walletId_example" // string | Wallet ID
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WalletsApi.V1WalletsRetrieve(context.Background(), walletId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WalletsApi.V1WalletsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WalletsRetrieve`: Wallet
-    fmt.Fprintf(os.Stdout, "Response from `WalletsApi.V1WalletsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WalletsAPI.V1WalletsRetrieve(context.Background(), walletId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WalletsAPI.V1WalletsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WalletsRetrieve`: Wallet
+	fmt.Fprintf(os.Stdout, "Response from `WalletsAPI.V1WalletsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -274,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -300,25 +302,25 @@ Update wallet
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    walletId := "walletId_example" // string | Wallet ID
-    updateWalletRequest := *openapiclient.NewUpdateWalletRequest() // UpdateWalletRequest | Request body
+	walletId := "walletId_example" // string | Wallet ID
+	updateWalletRequest := *openapiclient.NewUpdateWalletRequest() // UpdateWalletRequest | Request body
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WalletsApi.V1WalletsUpdate(context.Background(), walletId).UpdateWalletRequest(updateWalletRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WalletsApi.V1WalletsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WalletsUpdate`: Wallet
-    fmt.Fprintf(os.Stdout, "Response from `WalletsApi.V1WalletsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WalletsAPI.V1WalletsUpdate(context.Background(), walletId).UpdateWalletRequest(updateWalletRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WalletsAPI.V1WalletsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WalletsUpdate`: Wallet
+	fmt.Fprintf(os.Stdout, "Response from `WalletsAPI.V1WalletsUpdate`: %v\n", resp)
 }
 ```
 
@@ -346,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

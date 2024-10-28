@@ -5,18 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **string** | The amount to be transferred | 
-**Destination** | [**TransferDestination**](TransferDestination.md) | The ID of the wallet to which the transfer will be made | 
+**Destination** | **[]int32** | The ID of the wallet to which the transfer will be made | 
 **Extra** | Pointer to **string** | Extra | [optional] 
-**Fee** | Pointer to [**Fee**](Fee.md) | Fee | [optional] 
+**Fee** | Pointer to [**Fee**](Fee.md) |  | [optional] 
 **Memo** | Pointer to **string** | Memo | [optional] 
-**Source** | [**TransferSource**](TransferSource.md) | The ID of the wallet from which the transfer will be made | 
+**Source** | **[]int32** | The ID of the wallet from which the transfer will be made | 
 **TokenId** | **string** | The tokenId to be transferred | 
 
 ## Methods
 
 ### NewCreateTransferRequest
 
-`func NewCreateTransferRequest(amount string, destination TransferDestination, source TransferSource, tokenId string, ) *CreateTransferRequest`
+`func NewCreateTransferRequest(amount string, destination []int32, source []int32, tokenId string, ) *CreateTransferRequest`
 
 NewCreateTransferRequest instantiates a new CreateTransferRequest object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ SetAmount sets Amount field to given value.
 
 ### GetDestination
 
-`func (o *CreateTransferRequest) GetDestination() TransferDestination`
+`func (o *CreateTransferRequest) GetDestination() []int32`
 
 GetDestination returns the Destination field if non-nil, zero value otherwise.
 
 ### GetDestinationOk
 
-`func (o *CreateTransferRequest) GetDestinationOk() (*TransferDestination, bool)`
+`func (o *CreateTransferRequest) GetDestinationOk() (*[]int32, bool)`
 
 GetDestinationOk returns a tuple with the Destination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDestination
 
-`func (o *CreateTransferRequest) SetDestination(v TransferDestination)`
+`func (o *CreateTransferRequest) SetDestination(v []int32)`
 
 SetDestination sets Destination field to given value.
 
@@ -148,20 +148,20 @@ HasMemo returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *CreateTransferRequest) GetSource() TransferSource`
+`func (o *CreateTransferRequest) GetSource() []int32`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *CreateTransferRequest) GetSourceOk() (*TransferSource, bool)`
+`func (o *CreateTransferRequest) GetSourceOk() (*[]int32, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *CreateTransferRequest) SetSource(v TransferSource)`
+`func (o *CreateTransferRequest) SetSource(v []int32)`
 
 SetSource sets Source field to given value.
 

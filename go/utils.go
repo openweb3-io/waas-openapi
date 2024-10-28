@@ -120,7 +120,6 @@ func verify(data []byte, publicKey []byte, signature string) (err error) {
  * 私钥去生成签名
  */
 func genSign(data []byte, privateKey []byte) (sign string, err error) {
-
 	block, _ := pem.Decode(privateKey)
 	if block == nil {
 		return "", errors.New("private key error")

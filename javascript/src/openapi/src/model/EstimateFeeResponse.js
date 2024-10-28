@@ -61,8 +61,34 @@ class EstimateFeeResponse {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>EstimateFeeResponse</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>EstimateFeeResponse</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of EstimateFeeResponse.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
+        }
+        // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+
+        return true;
+    }
+
 
 }
+
+EstimateFeeResponse.RequiredProperties = ["amount", "token_id"];
 
 /**
  * Amount

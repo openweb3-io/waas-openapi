@@ -2,15 +2,15 @@
 
 All URIs are relative to *http://localhost*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**v1TokensCreate**](TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
-[**v1TokensList**](TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
-[**v1TokensRetrieve**](TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{tokenId} | Get Token
-[**v1TokensUpdate**](TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**v1TokensCreate**](TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token |
+| [**v1TokensList**](TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens |
+| [**v1TokensRetrieve**](TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{tokenId} | Get Token |
+| [**v1TokensUpdate**](TokensApi.md#v1TokensUpdate) | **PATCH** /api/v1/tokens/{tokenId} | Update token |
 
 
-<a name="v1TokensCreate"></a>
+<a id="v1TokensCreate"></a>
 # **v1TokensCreate**
 > Token v1TokensCreate(createTokenRequest)
 
@@ -39,12 +39,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     TokensApi apiInstance = new TokensApi(defaultClient);
     CreateTokenRequest createTokenRequest = new CreateTokenRequest(); // CreateTokenRequest | Request Body
     try {
@@ -63,9 +57,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createTokenRequest** | [**CreateTokenRequest**](CreateTokenRequest.md)| Request Body |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createTokenRequest** | [**CreateTokenRequest**](CreateTokenRequest.md)| Request Body | |
 
 ### Return type
 
@@ -73,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -83,13 +77,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1TokensList"></a>
+<a id="v1TokensList"></a>
 # **v1TokensList**
 > CursorPageToken v1TokensList(cursor, limit)
 
@@ -118,12 +112,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     TokensApi apiInstance = new TokensApi(defaultClient);
     String cursor = "cursor_example"; // String | Cursor
     Integer limit = 56; // Integer | The number of records to return default: 20
@@ -143,10 +131,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cursor** | **String**| Cursor | [optional]
- **limit** | **Integer**| The number of records to return default: 20 | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **cursor** | **String**| Cursor | [optional] |
+| **limit** | **Integer**| The number of records to return default: 20 | [optional] |
 
 ### Return type
 
@@ -154,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -164,13 +152,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1TokensRetrieve"></a>
+<a id="v1TokensRetrieve"></a>
 # **v1TokensRetrieve**
 > Token v1TokensRetrieve(tokenId)
 
@@ -199,12 +187,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     TokensApi apiInstance = new TokensApi(defaultClient);
     String tokenId = "tokenId_example"; // String | Token ID
     try {
@@ -223,9 +205,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tokenId** | **String**| Token ID |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tokenId** | **String**| Token ID | |
 
 ### Return type
 
@@ -233,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -243,13 +225,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1TokensUpdate"></a>
+<a id="v1TokensUpdate"></a>
 # **v1TokensUpdate**
 > Token v1TokensUpdate(tokenId, updateTokenRequest)
 
@@ -278,12 +260,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     TokensApi apiInstance = new TokensApi(defaultClient);
     String tokenId = "tokenId_example"; // String | Token ID
     UpdateTokenRequest updateTokenRequest = new UpdateTokenRequest(); // UpdateTokenRequest | Request Body
@@ -303,10 +279,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tokenId** | **String**| Token ID |
- **updateTokenRequest** | [**UpdateTokenRequest**](UpdateTokenRequest.md)| Request Body |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tokenId** | **String**| Token ID | |
+| **updateTokenRequest** | [**UpdateTokenRequest**](UpdateTokenRequest.md)| Request Body | |
 
 ### Return type
 
@@ -314,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -324,9 +300,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 

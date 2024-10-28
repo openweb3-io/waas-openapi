@@ -25,24 +25,18 @@ import CursorPageAddress from './model/CursorPageAddress';
 import CursorPageChain from './model/CursorPageChain';
 import CursorPageEndpoint from './model/CursorPageEndpoint';
 import CursorPageToken from './model/CursorPageToken';
+import CursorPageTransaction from './model/CursorPageTransaction';
 import CursorPageWallet from './model/CursorPageWallet';
 import Endpoint from './model/Endpoint';
 import Error from './model/Error';
 import EstimateFeeRequest from './model/EstimateFeeRequest';
 import EstimateFeeResponse from './model/EstimateFeeResponse';
 import Fee from './model/Fee';
-import FeeType from './model/FeeType';
-import PageTransaction from './model/PageTransaction';
 import Token from './model/Token';
 import Transaction from './model/Transaction';
 import TransactionEndpoint from './model/TransactionEndpoint';
-import TransactionType from './model/TransactionType';
-import TransferDestination from './model/TransferDestination';
 import TransferDestinationAddress from './model/TransferDestinationAddress';
-import TransferDestinationType from './model/TransferDestinationType';
-import TransferSource from './model/TransferSource';
 import TransferSourceAddress from './model/TransferSourceAddress';
-import TransferSourceType from './model/TransferSourceType';
 import UpdateEndpoint from './model/UpdateEndpoint';
 import UpdateTokenRequest from './model/UpdateTokenRequest';
 import UpdateWalletRequest from './model/UpdateWalletRequest';
@@ -56,7 +50,7 @@ import WebhookEndpointsApi from './api/WebhookEndpointsApi';
 
 
 /**
-* This_is_a_WaaS_OpenAPI_Server_.<br>
+* This is a WaaS OpenAPI Server..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -166,6 +160,12 @@ export {
     CursorPageToken,
 
     /**
+     * The CursorPageTransaction model constructor.
+     * @property {module:model/CursorPageTransaction}
+     */
+    CursorPageTransaction,
+
+    /**
      * The CursorPageWallet model constructor.
      * @property {module:model/CursorPageWallet}
      */
@@ -202,18 +202,6 @@ export {
     Fee,
 
     /**
-     * The FeeType model constructor.
-     * @property {module:model/FeeType}
-     */
-    FeeType,
-
-    /**
-     * The PageTransaction model constructor.
-     * @property {module:model/PageTransaction}
-     */
-    PageTransaction,
-
-    /**
      * The Token model constructor.
      * @property {module:model/Token}
      */
@@ -232,46 +220,16 @@ export {
     TransactionEndpoint,
 
     /**
-     * The TransactionType model constructor.
-     * @property {module:model/TransactionType}
-     */
-    TransactionType,
-
-    /**
-     * The TransferDestination model constructor.
-     * @property {module:model/TransferDestination}
-     */
-    TransferDestination,
-
-    /**
      * The TransferDestinationAddress model constructor.
      * @property {module:model/TransferDestinationAddress}
      */
     TransferDestinationAddress,
 
     /**
-     * The TransferDestinationType model constructor.
-     * @property {module:model/TransferDestinationType}
-     */
-    TransferDestinationType,
-
-    /**
-     * The TransferSource model constructor.
-     * @property {module:model/TransferSource}
-     */
-    TransferSource,
-
-    /**
      * The TransferSourceAddress model constructor.
      * @property {module:model/TransferSourceAddress}
      */
     TransferSourceAddress,
-
-    /**
-     * The TransferSourceType model constructor.
-     * @property {module:model/TransferSourceType}
-     */
-    TransferSourceType,
 
     /**
      * The UpdateEndpoint model constructor.

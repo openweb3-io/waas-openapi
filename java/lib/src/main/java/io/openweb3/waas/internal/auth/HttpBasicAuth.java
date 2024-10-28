@@ -14,13 +14,13 @@
 package io.openweb3.waas.internal.auth;
 
 import io.openweb3.waas.internal.Pair;
+import io.openweb3.waas.internal.ApiException;
 
 import okhttp3.Credentials;
 
+import java.net.URI;
 import java.util.Map;
 import java.util.List;
-
-import java.io.UnsupportedEncodingException;
 
 public class HttpBasicAuth implements Authentication {
     private String username;
@@ -43,7 +43,8 @@ public class HttpBasicAuth implements Authentication {
     }
 
     @Override
-    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+    public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams,
+                              String payload, String method, URI uri) throws ApiException {
         if (username == null && password == null) {
             return;
         }

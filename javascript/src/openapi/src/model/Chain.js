@@ -81,8 +81,52 @@ class Chain {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>Chain</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Chain</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['created_at'] && !(typeof data['created_at'] === 'string' || data['created_at'] instanceof String)) {
+            throw new Error("Expected the field `created_at` to be a primitive type in the JSON string but got " + data['created_at']);
+        }
+        // ensure the json data is a string
+        if (data['explorer_address_url'] && !(typeof data['explorer_address_url'] === 'string' || data['explorer_address_url'] instanceof String)) {
+            throw new Error("Expected the field `explorer_address_url` to be a primitive type in the JSON string but got " + data['explorer_address_url']);
+        }
+        // ensure the json data is a string
+        if (data['explorer_tx_url'] && !(typeof data['explorer_tx_url'] === 'string' || data['explorer_tx_url'] instanceof String)) {
+            throw new Error("Expected the field `explorer_tx_url` to be a primitive type in the JSON string but got " + data['explorer_tx_url']);
+        }
+        // ensure the json data is a string
+        if (data['icon_url'] && !(typeof data['icon_url'] === 'string' || data['icon_url'] instanceof String)) {
+            throw new Error("Expected the field `icon_url` to be a primitive type in the JSON string but got " + data['icon_url']);
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['symbol'] && !(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
+            throw new Error("Expected the field `symbol` to be a primitive type in the JSON string but got " + data['symbol']);
+        }
+        // ensure the json data is a string
+        if (data['updated_at'] && !(typeof data['updated_at'] === 'string' || data['updated_at'] instanceof String)) {
+            throw new Error("Expected the field `updated_at` to be a primitive type in the JSON string but got " + data['updated_at']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * Confirmation number

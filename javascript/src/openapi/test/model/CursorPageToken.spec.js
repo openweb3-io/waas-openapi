@@ -50,7 +50,7 @@
   describe('CursorPageToken', function() {
     it('should create an instance of CursorPageToken', function() {
       // uncomment below and update the code to test CursorPageToken
-      //var instane = new WaaSOpenApiDocumentation.CursorPageToken();
+      //var instance = new WaaSOpenApiDocumentation.CursorPageToken();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CursorPageToken);
     });
 

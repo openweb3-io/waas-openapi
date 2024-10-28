@@ -50,7 +50,7 @@
   describe('CursorPageChain', function() {
     it('should create an instance of CursorPageChain', function() {
       // uncomment below and update the code to test CursorPageChain
-      //var instane = new WaaSOpenApiDocumentation.CursorPageChain();
+      //var instance = new WaaSOpenApiDocumentation.CursorPageChain();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CursorPageChain);
     });
 

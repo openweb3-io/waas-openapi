@@ -29,11 +29,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.TransactionsApi();
 let estimateFeeRequest = new WaaSOpenApiDocumentation.EstimateFeeRequest(); // EstimateFeeRequest | Request Body
@@ -59,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -69,7 +64,7 @@ Name | Type | Description  | Notes
 
 ## v1TransactionsList
 
-> PageTransaction v1TransactionsList(opts)
+> CursorPageTransaction v1TransactionsList(opts)
 
 List transactions
 
@@ -85,22 +80,17 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.TransactionsApi();
 let opts = {
-  'assetIds': ["null"], // [String] | The assetId involved in the transaction.
+  'walletIds': ["null"], // [String] | Unique system generated identifier of the wallet
   'chainIds': ["null"], // [String] | The blockchain network on which the transaction takes place.
-  'cursor': "cursor_example", // String | A cursor value for pagination purposes.
-  'hash': "hash_example", // String | The transaction hash, which uniquely identifies a transaction on the blockchain.
-  'limit': 56, // Number | The number of records to return default: 20
-  'status': "status_example", // String | The status of the transaction.
   'tokenIds': ["null"], // [String] | The tokenId involved in the transaction.
-  'walletIds': ["null"] // [String] | Unique system generated identifier of the wallet
+  'assetIds': ["null"], // [String] | The assetId involved in the transaction.
+  'hash': "hash_example", // String | The transaction hash, which uniquely identifies a transaction on the blockchain.
+  'status': "status_example", // String | The status of the transaction.
+  'cursor': "cursor_example", // String | A cursor value for pagination purposes.
+  'limit': 56 // Number | The number of records to return default: 20
 };
 apiInstance.v1TransactionsList(opts, (error, data, response) => {
   if (error) {
@@ -116,22 +106,22 @@ apiInstance.v1TransactionsList(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assetIds** | [**[String]**](String.md)| The assetId involved in the transaction. | [optional] 
- **chainIds** | [**[String]**](String.md)| The blockchain network on which the transaction takes place. | [optional] 
- **cursor** | **String**| A cursor value for pagination purposes. | [optional] 
- **hash** | **String**| The transaction hash, which uniquely identifies a transaction on the blockchain. | [optional] 
- **limit** | **Number**| The number of records to return default: 20 | [optional] 
- **status** | **String**| The status of the transaction. | [optional] 
- **tokenIds** | [**[String]**](String.md)| The tokenId involved in the transaction. | [optional] 
  **walletIds** | [**[String]**](String.md)| Unique system generated identifier of the wallet | [optional] 
+ **chainIds** | [**[String]**](String.md)| The blockchain network on which the transaction takes place. | [optional] 
+ **tokenIds** | [**[String]**](String.md)| The tokenId involved in the transaction. | [optional] 
+ **assetIds** | [**[String]**](String.md)| The assetId involved in the transaction. | [optional] 
+ **hash** | **String**| The transaction hash, which uniquely identifies a transaction on the blockchain. | [optional] 
+ **status** | **String**| The status of the transaction. | [optional] 
+ **cursor** | **String**| A cursor value for pagination purposes. | [optional] 
+ **limit** | **Number**| The number of records to return default: 20 | [optional] 
 
 ### Return type
 
-[**PageTransaction**](PageTransaction.md)
+[**CursorPageTransaction**](CursorPageTransaction.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -157,11 +147,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.TransactionsApi();
 let transactionId = "transactionId_example"; // String | Transaction ID
@@ -187,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -213,11 +198,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.TransactionsApi();
 let createTransferRequest = new WaaSOpenApiDocumentation.CreateTransferRequest(); // CreateTransferRequest | Request Body
@@ -243,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

@@ -8,25 +8,14 @@ import (
 
 type (
 	TransactionOut             = openapi.Transaction
-	PageTransactionOut         = openapi.PageTransaction
+	CursorPageTransactionOut   = openapi.CursorPageTransaction
 	TransferIn                 = openapi.CreateTransferRequest
-	TransferSourceType         = openapi.TransferSourceType
-	TransferSource             = openapi.TransferSource
 	TransferSourceAddress      = openapi.TransferSourceAddress
-	TransferDestination        = openapi.TransferDestination
-	TransferDestinationType    = openapi.TransferDestinationType
 	TransferDestinationAddress = openapi.TransferDestinationAddress
 	TransferFee                = openapi.Fee
 	TransferOut                = openapi.CreateTransferResponse
 	EstimateFeeIn              = openapi.EstimateFeeRequest
 	EstimateFeeOut             = openapi.EstimateFeeResponse
-)
-
-const (
-	TransferSourceType_Address      = openapi.TRANSFERSOURCETYPE_TransferSourceType_Address
-	TransferDestinationType_Address = openapi.TRANSFERDESTINATIONTYPE_TransferDestinationType_Address
-
-	TransferFeeType_Fixed = openapi.FEETYPE_Fixed
 )
 
 type Transaction struct {
@@ -47,8 +36,8 @@ type ListTransactionOptions struct {
 	Limit     int
 }
 
-func (e *Transaction) List(ctx context.Context, options *ListTransactionOptions) (*PageTransactionOut, error) {
-	req := e.api.TransactionsApi.V1TransactionsList(ctx)
+func (e *Transaction) List(ctx context.Context, options *ListTransactionOptions) (*CursorPageTransactionOut, error) {
+	req := e.api.TransactionsAPI.V1TransactionsList(ctx)
 	if options.WalletIds != nil {
 		req = req.WalletIds(*options.WalletIds)
 	}
@@ -76,33 +65,33 @@ func (e *Transaction) List(ctx context.Context, options *ListTransactionOptions)
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
-	return &out, nil
+	return out, nil
 }
 
 func (e *Transaction) Retrieve(ctx context.Context, transactionId string) (*TransactionOut, error) {
-	req := e.api.TransactionsApi.V1TransactionsRetrieve(ctx, transactionId)
+	req := e.api.TransactionsAPI.V1TransactionsRetrieve(ctx, transactionId)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
-	return &out, nil
+	return out, nil
 }
 func (e *Transaction) Transfer(ctx context.Context, transferIn *TransferIn) (*TransferOut, error) {
-	req := e.api.TransactionsApi.V1TransactionsTransfer(ctx)
+	req := e.api.TransactionsAPI.V1TransactionsTransfer(ctx)
 	req = req.CreateTransferRequest(*transferIn)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
-	return &out, nil
+	return out, nil
 }
 
 func (e *Transaction) EstimateFee(ctx context.Context, estimateFeeIn *EstimateFeeIn) (*EstimateFeeOut, error) {
-	req := e.api.TransactionsApi.V1TransactionsEstimateFee(ctx)
+	req := e.api.TransactionsAPI.V1TransactionsEstimateFee(ctx)
 	req = req.EstimateFeeRequest(*estimateFeeIn)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
-	return &out, nil
+	return out, nil
 }

@@ -15,10 +15,10 @@
 import ApiClient from "../ApiClient";
 import CreateTransferRequest from '../model/CreateTransferRequest';
 import CreateTransferResponse from '../model/CreateTransferResponse';
+import CursorPageTransaction from '../model/CursorPageTransaction';
 import Error from '../model/Error';
 import EstimateFeeRequest from '../model/EstimateFeeRequest';
 import EstimateFeeResponse from '../model/EstimateFeeResponse';
-import PageTransaction from '../model/PageTransaction';
 import Transaction from '../model/Transaction';
 
 /**
@@ -71,7 +71,7 @@ export default class TransactionsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = EstimateFeeResponse;
@@ -86,7 +86,7 @@ export default class TransactionsApi {
      * Callback function to receive the result of the v1TransactionsList operation.
      * @callback module:api/TransactionsApi~v1TransactionsListCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/PageTransaction} data The data returned by the service call.
+     * @param {module:model/CursorPageTransaction} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -94,16 +94,16 @@ export default class TransactionsApi {
      * List transactions
      * List transactions
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.assetIds The assetId involved in the transaction.
-     * @param {Array.<String>} opts.chainIds The blockchain network on which the transaction takes place.
-     * @param {String} opts.cursor A cursor value for pagination purposes.
-     * @param {String} opts.hash The transaction hash, which uniquely identifies a transaction on the blockchain.
-     * @param {Number} opts.limit The number of records to return default: 20
-     * @param {String} opts.status The status of the transaction.
-     * @param {Array.<String>} opts.tokenIds The tokenId involved in the transaction.
-     * @param {Array.<String>} opts.walletIds Unique system generated identifier of the wallet
+     * @param {Array.<String>} [walletIds] Unique system generated identifier of the wallet
+     * @param {Array.<String>} [chainIds] The blockchain network on which the transaction takes place.
+     * @param {Array.<String>} [tokenIds] The tokenId involved in the transaction.
+     * @param {Array.<String>} [assetIds] The assetId involved in the transaction.
+     * @param {String} [hash] The transaction hash, which uniquely identifies a transaction on the blockchain.
+     * @param {String} [status] The status of the transaction.
+     * @param {String} [cursor] A cursor value for pagination purposes.
+     * @param {Number} [limit] The number of records to return default: 20
      * @param {module:api/TransactionsApi~v1TransactionsListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/PageTransaction}
+     * data is of type: {@link module:model/CursorPageTransaction}
      */
     v1TransactionsList(opts, callback) {
       opts = opts || {};
@@ -112,24 +112,24 @@ export default class TransactionsApi {
       let pathParams = {
       };
       let queryParams = {
-        'asset_ids': this.apiClient.buildCollectionParam(opts['assetIds'], 'csv'),
-        'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'csv'),
-        'cursor': opts['cursor'],
+        'wallet_ids': this.apiClient.buildCollectionParam(opts['walletIds'], 'multi'),
+        'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'multi'),
+        'token_ids': this.apiClient.buildCollectionParam(opts['tokenIds'], 'multi'),
+        'asset_ids': this.apiClient.buildCollectionParam(opts['assetIds'], 'multi'),
         'hash': opts['hash'],
-        'limit': opts['limit'],
         'status': opts['status'],
-        'token_ids': this.apiClient.buildCollectionParam(opts['tokenIds'], 'csv'),
-        'wallet_ids': this.apiClient.buildCollectionParam(opts['walletIds'], 'csv')
+        'cursor': opts['cursor'],
+        'limit': opts['limit']
       };
       let headerParams = {
       };
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = PageTransaction;
+      let returnType = CursorPageTransaction;
       return this.apiClient.callApi(
         '/api/v1/transactions', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -169,7 +169,7 @@ export default class TransactionsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = Transaction;
@@ -211,7 +211,7 @@ export default class TransactionsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = CreateTransferResponse;

@@ -87,8 +87,7 @@ public class ApiClient {
         initHttpClient();
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("ApiKeyAuth", new ApiKeyAuth("header", "X-Api-Key"));
-        authentications.put("SignatureAuth", new ApiKeyAuth("header", "X-Signature"));
+        authentications.put("ApiKeyAuth", new ApiKeyAuth("header", "X-Signature"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -102,8 +101,7 @@ public class ApiClient {
         httpClient = client;
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("ApiKeyAuth", new ApiKeyAuth("header", "X-Api-Key"));
-        authentications.put("SignatureAuth", new ApiKeyAuth("header", "X-Signature"));
+        authentications.put("ApiKeyAuth", new ApiKeyAuth("header", "X-Signature"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }

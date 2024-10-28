@@ -50,7 +50,7 @@
   describe('CreateWalletRequest', function() {
     it('should create an instance of CreateWalletRequest', function() {
       // uncomment below and update the code to test CreateWalletRequest
-      //var instane = new WaaSOpenApiDocumentation.CreateWalletRequest();
+      //var instance = new WaaSOpenApiDocumentation.CreateWalletRequest();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CreateWalletRequest);
     });
 

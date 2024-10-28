@@ -50,7 +50,7 @@
   describe('Token', function() {
     it('should create an instance of Token', function() {
       // uncomment below and update the code to test Token
-      //var instane = new WaaSOpenApiDocumentation.Token();
+      //var instance = new WaaSOpenApiDocumentation.Token();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.Token);
     });
 

@@ -2,15 +2,15 @@
 
 All URIs are relative to *http://localhost*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**v1TransactionsEstimateFee**](TransactionsApi.md#v1TransactionsEstimateFee) | **POST** /api/v1/transactions/estimate_fee | Estimate fee
-[**v1TransactionsList**](TransactionsApi.md#v1TransactionsList) | **GET** /api/v1/transactions | List transactions
-[**v1TransactionsRetrieve**](TransactionsApi.md#v1TransactionsRetrieve) | **GET** /api/v1/transactions/{transactionId} | Get transaction
-[**v1TransactionsTransfer**](TransactionsApi.md#v1TransactionsTransfer) | **POST** /api/v1/transactions/transfer | Transfer token
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**v1TransactionsEstimateFee**](TransactionsApi.md#v1TransactionsEstimateFee) | **POST** /api/v1/transactions/estimate_fee | Estimate fee |
+| [**v1TransactionsList**](TransactionsApi.md#v1TransactionsList) | **GET** /api/v1/transactions | List transactions |
+| [**v1TransactionsRetrieve**](TransactionsApi.md#v1TransactionsRetrieve) | **GET** /api/v1/transactions/{transactionId} | Get transaction |
+| [**v1TransactionsTransfer**](TransactionsApi.md#v1TransactionsTransfer) | **POST** /api/v1/transactions/transfer | Transfer token |
 
 
-<a name="v1TransactionsEstimateFee"></a>
+<a id="v1TransactionsEstimateFee"></a>
 # **v1TransactionsEstimateFee**
 > EstimateFeeResponse v1TransactionsEstimateFee(estimateFeeRequest)
 
@@ -39,12 +39,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     TransactionsApi apiInstance = new TransactionsApi(defaultClient);
     EstimateFeeRequest estimateFeeRequest = new EstimateFeeRequest(); // EstimateFeeRequest | Request Body
     try {
@@ -63,9 +57,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **estimateFeeRequest** | [**EstimateFeeRequest**](EstimateFeeRequest.md)| Request Body |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **estimateFeeRequest** | [**EstimateFeeRequest**](EstimateFeeRequest.md)| Request Body | |
 
 ### Return type
 
@@ -73,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -83,15 +77,15 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1TransactionsList"></a>
+<a id="v1TransactionsList"></a>
 # **v1TransactionsList**
-> PageTransaction v1TransactionsList(assetIds, chainIds, cursor, hash, limit, status, tokenIds, walletIds)
+> CursorPageTransaction v1TransactionsList(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit)
 
 List transactions
 
@@ -118,23 +112,17 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     TransactionsApi apiInstance = new TransactionsApi(defaultClient);
-    List<String> assetIds = Arrays.asList(); // List<String> | The assetId involved in the transaction.
-    List<String> chainIds = Arrays.asList(); // List<String> | The blockchain network on which the transaction takes place.
-    String cursor = "cursor_example"; // String | A cursor value for pagination purposes.
-    String hash = "hash_example"; // String | The transaction hash, which uniquely identifies a transaction on the blockchain.
-    Integer limit = 56; // Integer | The number of records to return default: 20
-    String status = "status_example"; // String | The status of the transaction.
-    List<String> tokenIds = Arrays.asList(); // List<String> | The tokenId involved in the transaction.
     List<String> walletIds = Arrays.asList(); // List<String> | Unique system generated identifier of the wallet
+    List<String> chainIds = Arrays.asList(); // List<String> | The blockchain network on which the transaction takes place.
+    List<String> tokenIds = Arrays.asList(); // List<String> | The tokenId involved in the transaction.
+    List<String> assetIds = Arrays.asList(); // List<String> | The assetId involved in the transaction.
+    String hash = "hash_example"; // String | The transaction hash, which uniquely identifies a transaction on the blockchain.
+    String status = "status_example"; // String | The status of the transaction.
+    String cursor = "cursor_example"; // String | A cursor value for pagination purposes.
+    Integer limit = 56; // Integer | The number of records to return default: 20
     try {
-      PageTransaction result = apiInstance.v1TransactionsList(assetIds, chainIds, cursor, hash, limit, status, tokenIds, walletIds);
+      CursorPageTransaction result = apiInstance.v1TransactionsList(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionsApi#v1TransactionsList");
@@ -149,24 +137,24 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **assetIds** | [**List&lt;String&gt;**](String.md)| The assetId involved in the transaction. | [optional]
- **chainIds** | [**List&lt;String&gt;**](String.md)| The blockchain network on which the transaction takes place. | [optional]
- **cursor** | **String**| A cursor value for pagination purposes. | [optional]
- **hash** | **String**| The transaction hash, which uniquely identifies a transaction on the blockchain. | [optional]
- **limit** | **Integer**| The number of records to return default: 20 | [optional]
- **status** | **String**| The status of the transaction. | [optional]
- **tokenIds** | [**List&lt;String&gt;**](String.md)| The tokenId involved in the transaction. | [optional]
- **walletIds** | [**List&lt;String&gt;**](String.md)| Unique system generated identifier of the wallet | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **walletIds** | [**List&lt;String&gt;**](String.md)| Unique system generated identifier of the wallet | [optional] |
+| **chainIds** | [**List&lt;String&gt;**](String.md)| The blockchain network on which the transaction takes place. | [optional] |
+| **tokenIds** | [**List&lt;String&gt;**](String.md)| The tokenId involved in the transaction. | [optional] |
+| **assetIds** | [**List&lt;String&gt;**](String.md)| The assetId involved in the transaction. | [optional] |
+| **hash** | **String**| The transaction hash, which uniquely identifies a transaction on the blockchain. | [optional] |
+| **status** | **String**| The status of the transaction. | [optional] |
+| **cursor** | **String**| A cursor value for pagination purposes. | [optional] |
+| **limit** | **Integer**| The number of records to return default: 20 | [optional] |
 
 ### Return type
 
-[**PageTransaction**](PageTransaction.md)
+[**CursorPageTransaction**](CursorPageTransaction.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -176,13 +164,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1TransactionsRetrieve"></a>
+<a id="v1TransactionsRetrieve"></a>
 # **v1TransactionsRetrieve**
 > Transaction v1TransactionsRetrieve(transactionId)
 
@@ -211,12 +199,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     TransactionsApi apiInstance = new TransactionsApi(defaultClient);
     String transactionId = "transactionId_example"; // String | Transaction ID
     try {
@@ -235,9 +217,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **transactionId** | **String**| Transaction ID |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **transactionId** | **String**| Transaction ID | |
 
 ### Return type
 
@@ -245,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -255,13 +237,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1TransactionsTransfer"></a>
+<a id="v1TransactionsTransfer"></a>
 # **v1TransactionsTransfer**
 > CreateTransferResponse v1TransactionsTransfer(createTransferRequest)
 
@@ -290,12 +272,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     TransactionsApi apiInstance = new TransactionsApi(defaultClient);
     CreateTransferRequest createTransferRequest = new CreateTransferRequest(); // CreateTransferRequest | Request Body
     try {
@@ -314,9 +290,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createTransferRequest** | [**CreateTransferRequest**](CreateTransferRequest.md)| Request Body |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createTransferRequest** | [**CreateTransferRequest**](CreateTransferRequest.md)| Request Body | |
 
 ### Return type
 
@@ -324,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -334,9 +310,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 

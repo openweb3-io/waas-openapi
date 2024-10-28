@@ -50,7 +50,7 @@
   describe('CursorPageAddress', function() {
     it('should create an instance of CursorPageAddress', function() {
       // uncomment below and update the code to test CursorPageAddress
-      //var instane = new WaaSOpenApiDocumentation.CursorPageAddress();
+      //var instance = new WaaSOpenApiDocumentation.CursorPageAddress();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CursorPageAddress);
     });
 

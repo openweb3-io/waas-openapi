@@ -14,23 +14,43 @@
 package io.openweb3.waas.models;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import io.openweb3.waas.internal.JSON;
 
 /**
  * Token
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-26T22:02:49.883062+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T01:35:38.261544+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
 public class Token {
   public static final String SERIALIZED_NAME_CAN_DEPOSIT = "can_deposit";
   @SerializedName(SERIALIZED_NAME_CAN_DEPOSIT)
@@ -62,19 +82,19 @@ public class Token {
 
   public static final String SERIALIZED_NAME_MAX_WITHDRAW_AMOUNT = "max_withdraw_amount";
   @SerializedName(SERIALIZED_NAME_MAX_WITHDRAW_AMOUNT)
-  private Object maxWithdrawAmount;
+  private String maxWithdrawAmount;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
-  private Map<String, String> metadata = null;
+  private Map<String, String> metadata = new HashMap<>();
 
   public static final String SERIALIZED_NAME_MIN_DEPOSIT_AMOUNT = "min_deposit_amount";
   @SerializedName(SERIALIZED_NAME_MIN_DEPOSIT_AMOUNT)
-  private Object minDepositAmount;
+  private String minDepositAmount;
 
   public static final String SERIALIZED_NAME_MIN_WITHDRAW_AMOUNT = "min_withdraw_amount";
   @SerializedName(SERIALIZED_NAME_MIN_WITHDRAW_AMOUNT)
-  private Object minWithdrawAmount;
+  private String minWithdrawAmount;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -94,30 +114,28 @@ public class Token {
 
   public static final String SERIALIZED_NAME_TOTAL_SUPPLY = "total_supply";
   @SerializedName(SERIALIZED_NAME_TOTAL_SUPPLY)
-  private Object totalSupply;
+  private String totalSupply;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private String updatedAt;
 
+  public Token() {
+  }
 
   public Token canDeposit(Boolean canDeposit) {
-    
     this.canDeposit = canDeposit;
     return this;
   }
 
-   /**
+  /**
    * Whether deposits are allowed
    * @return canDeposit
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether deposits are allowed")
-
   public Boolean getCanDeposit() {
     return canDeposit;
   }
-
 
   public void setCanDeposit(Boolean canDeposit) {
     this.canDeposit = canDeposit;
@@ -125,22 +143,18 @@ public class Token {
 
 
   public Token canWithdraw(Boolean canWithdraw) {
-    
     this.canWithdraw = canWithdraw;
     return this;
   }
 
-   /**
+  /**
    * Whether withdrawals are allowed
    * @return canWithdraw
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether withdrawals are allowed")
-
   public Boolean getCanWithdraw() {
     return canWithdraw;
   }
-
 
   public void setCanWithdraw(Boolean canWithdraw) {
     this.canWithdraw = canWithdraw;
@@ -148,22 +162,18 @@ public class Token {
 
 
   public Token contractAddress(String contractAddress) {
-    
     this.contractAddress = contractAddress;
     return this;
   }
 
-   /**
+  /**
    * Contract address
    * @return contractAddress
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Contract address")
-
   public String getContractAddress() {
     return contractAddress;
   }
-
 
   public void setContractAddress(String contractAddress) {
     this.contractAddress = contractAddress;
@@ -171,22 +181,18 @@ public class Token {
 
 
   public Token createdAt(String createdAt) {
-    
     this.createdAt = createdAt;
     return this;
   }
 
-   /**
+  /**
    * Creation time
    * @return createdAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Creation time")
-
   public String getCreatedAt() {
     return createdAt;
   }
-
 
   public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
@@ -194,22 +200,18 @@ public class Token {
 
 
   public Token decimals(Integer decimals) {
-    
     this.decimals = decimals;
     return this;
   }
 
-   /**
+  /**
    * Decimals
    * @return decimals
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Decimals")
-
   public Integer getDecimals() {
     return decimals;
   }
-
 
   public void setDecimals(Integer decimals) {
     this.decimals = decimals;
@@ -217,22 +219,18 @@ public class Token {
 
 
   public Token iconUrl(String iconUrl) {
-    
     this.iconUrl = iconUrl;
     return this;
   }
 
-   /**
+  /**
    * Icon
    * @return iconUrl
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Icon")
-
   public String getIconUrl() {
     return iconUrl;
   }
-
 
   public void setIconUrl(String iconUrl) {
     this.iconUrl = iconUrl;
@@ -240,53 +238,44 @@ public class Token {
 
 
   public Token id(String id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Token ID
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Token ID")
-
   public String getId() {
     return id;
   }
-
 
   public void setId(String id) {
     this.id = id;
   }
 
 
-  public Token maxWithdrawAmount(Object maxWithdrawAmount) {
-    
+  public Token maxWithdrawAmount(String maxWithdrawAmount) {
     this.maxWithdrawAmount = maxWithdrawAmount;
     return this;
   }
 
-   /**
+  /**
    * Max withdraw amount
    * @return maxWithdrawAmount
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Max withdraw amount")
-
-  public Object getMaxWithdrawAmount() {
+  public String getMaxWithdrawAmount() {
     return maxWithdrawAmount;
   }
 
-
-  public void setMaxWithdrawAmount(Object maxWithdrawAmount) {
+  public void setMaxWithdrawAmount(String maxWithdrawAmount) {
     this.maxWithdrawAmount = maxWithdrawAmount;
   }
 
 
   public Token metadata(Map<String, String> metadata) {
-    
     this.metadata = metadata;
     return this;
   }
@@ -299,86 +288,71 @@ public class Token {
     return this;
   }
 
-   /**
+  /**
    * Extended metadata
    * @return metadata
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Extended metadata")
-
   public Map<String, String> getMetadata() {
     return metadata;
   }
-
 
   public void setMetadata(Map<String, String> metadata) {
     this.metadata = metadata;
   }
 
 
-  public Token minDepositAmount(Object minDepositAmount) {
-    
+  public Token minDepositAmount(String minDepositAmount) {
     this.minDepositAmount = minDepositAmount;
     return this;
   }
 
-   /**
+  /**
    * Min deposit amount
    * @return minDepositAmount
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Min deposit amount")
-
-  public Object getMinDepositAmount() {
+  public String getMinDepositAmount() {
     return minDepositAmount;
   }
 
-
-  public void setMinDepositAmount(Object minDepositAmount) {
+  public void setMinDepositAmount(String minDepositAmount) {
     this.minDepositAmount = minDepositAmount;
   }
 
 
-  public Token minWithdrawAmount(Object minWithdrawAmount) {
-    
+  public Token minWithdrawAmount(String minWithdrawAmount) {
     this.minWithdrawAmount = minWithdrawAmount;
     return this;
   }
 
-   /**
+  /**
    * Min withdraw amount
    * @return minWithdrawAmount
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Min withdraw amount")
-
-  public Object getMinWithdrawAmount() {
+  public String getMinWithdrawAmount() {
     return minWithdrawAmount;
   }
 
-
-  public void setMinWithdrawAmount(Object minWithdrawAmount) {
+  public void setMinWithdrawAmount(String minWithdrawAmount) {
     this.minWithdrawAmount = minWithdrawAmount;
   }
 
 
   public Token name(String name) {
-    
     this.name = name;
     return this;
   }
 
-   /**
+  /**
    * Name
    * @return name
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Name")
-
   public String getName() {
     return name;
   }
-
 
   public void setName(String name) {
     this.name = name;
@@ -386,22 +360,18 @@ public class Token {
 
 
   public Token needMemo(Boolean needMemo) {
-    
     this.needMemo = needMemo;
     return this;
   }
 
-   /**
+  /**
    * Whether a memo is required
    * @return needMemo
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Whether a memo is required")
-
   public Boolean getNeedMemo() {
     return needMemo;
   }
-
 
   public void setNeedMemo(Boolean needMemo) {
     this.needMemo = needMemo;
@@ -409,22 +379,18 @@ public class Token {
 
 
   public Token precision(Integer precision) {
-    
     this.precision = precision;
     return this;
   }
 
-   /**
+  /**
    * Precision
    * @return precision
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Precision")
-
   public Integer getPrecision() {
     return precision;
   }
-
 
   public void setPrecision(Integer precision) {
     this.precision = precision;
@@ -432,72 +398,61 @@ public class Token {
 
 
   public Token symbol(String symbol) {
-    
     this.symbol = symbol;
     return this;
   }
 
-   /**
+  /**
    * Symbol . e.g.: BTC / ETH
    * @return symbol
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Symbol . e.g.: BTC / ETH")
-
   public String getSymbol() {
     return symbol;
   }
-
 
   public void setSymbol(String symbol) {
     this.symbol = symbol;
   }
 
 
-  public Token totalSupply(Object totalSupply) {
-    
+  public Token totalSupply(String totalSupply) {
     this.totalSupply = totalSupply;
     return this;
   }
 
-   /**
+  /**
    * Total supply
    * @return totalSupply
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Total supply")
-
-  public Object getTotalSupply() {
+  public String getTotalSupply() {
     return totalSupply;
   }
 
-
-  public void setTotalSupply(Object totalSupply) {
+  public void setTotalSupply(String totalSupply) {
     this.totalSupply = totalSupply;
   }
 
 
   public Token updatedAt(String updatedAt) {
-    
     this.updatedAt = updatedAt;
     return this;
   }
 
-   /**
+  /**
    * Last updated time
    * @return updatedAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Last updated time")
-
   public String getUpdatedAt() {
     return updatedAt;
   }
 
-
   public void setUpdatedAt(String updatedAt) {
     this.updatedAt = updatedAt;
   }
+
 
 
   @Override
@@ -569,5 +524,138 @@ public class Token {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("can_deposit");
+    openapiFields.add("can_withdraw");
+    openapiFields.add("contract_address");
+    openapiFields.add("created_at");
+    openapiFields.add("decimals");
+    openapiFields.add("icon_url");
+    openapiFields.add("id");
+    openapiFields.add("max_withdraw_amount");
+    openapiFields.add("metadata");
+    openapiFields.add("min_deposit_amount");
+    openapiFields.add("min_withdraw_amount");
+    openapiFields.add("name");
+    openapiFields.add("need_memo");
+    openapiFields.add("precision");
+    openapiFields.add("symbol");
+    openapiFields.add("total_supply");
+    openapiFields.add("updated_at");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Token
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Token.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Token is not found in the empty JSON string", Token.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!Token.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Token` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("contract_address") != null && !jsonObj.get("contract_address").isJsonNull()) && !jsonObj.get("contract_address").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `contract_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contract_address").toString()));
+      }
+      if ((jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) && !jsonObj.get("created_at").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `created_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_at").toString()));
+      }
+      if ((jsonObj.get("icon_url") != null && !jsonObj.get("icon_url").isJsonNull()) && !jsonObj.get("icon_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `icon_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("icon_url").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("max_withdraw_amount") != null && !jsonObj.get("max_withdraw_amount").isJsonNull()) && !jsonObj.get("max_withdraw_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `max_withdraw_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("max_withdraw_amount").toString()));
+      }
+      if ((jsonObj.get("min_deposit_amount") != null && !jsonObj.get("min_deposit_amount").isJsonNull()) && !jsonObj.get("min_deposit_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `min_deposit_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("min_deposit_amount").toString()));
+      }
+      if ((jsonObj.get("min_withdraw_amount") != null && !jsonObj.get("min_withdraw_amount").isJsonNull()) && !jsonObj.get("min_withdraw_amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `min_withdraw_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("min_withdraw_amount").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("symbol") != null && !jsonObj.get("symbol").isJsonNull()) && !jsonObj.get("symbol").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `symbol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol").toString()));
+      }
+      if ((jsonObj.get("total_supply") != null && !jsonObj.get("total_supply").isJsonNull()) && !jsonObj.get("total_supply").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `total_supply` to be a primitive type in the JSON string but got `%s`", jsonObj.get("total_supply").toString()));
+      }
+      if ((jsonObj.get("updated_at") != null && !jsonObj.get("updated_at").isJsonNull()) && !jsonObj.get("updated_at").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `updated_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated_at").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Token.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Token' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Token> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Token.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Token>() {
+           @Override
+           public void write(JsonWriter out, Token value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Token read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+  /**
+   * Create an instance of Token given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Token
+   * @throws IOException if the JSON string is invalid with respect to Token
+   */
+  public static Token fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Token.class);
+  }
+
+  /**
+   * Convert an instance of Token to an JSON string
+   *
+   * @return JSON string
+   */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

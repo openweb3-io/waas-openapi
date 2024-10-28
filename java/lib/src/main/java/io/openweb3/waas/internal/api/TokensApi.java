@@ -41,6 +41,8 @@ import java.util.Map;
 
 public class TokensApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public TokensApi() {
         this(Configuration.getDefaultApiClient());
@@ -56,6 +58,22 @@ public class TokensApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -75,6 +93,19 @@ public class TokensApi {
      </table>
      */
     public okhttp3.Call v1TokensCreateCall(CreateTokenRequest createTokenRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createTokenRequest;
 
         // create path and map variables
@@ -98,23 +129,22 @@ public class TokensApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1TokensCreateValidateBeforeCall(CreateTokenRequest createTokenRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'createTokenRequest' is set
         if (createTokenRequest == null) {
             throw new ApiException("Missing the required parameter 'createTokenRequest' when calling v1TokensCreate(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1TokensCreateCall(createTokenRequest, _callback);
-        return localVarCall;
+        return v1TokensCreateCall(createTokenRequest, _callback);
 
     }
 
@@ -203,6 +233,19 @@ public class TokensApi {
      </table>
      */
     public okhttp3.Call v1TokensListCall(String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -231,21 +274,19 @@ public class TokensApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1TokensListValidateBeforeCall(String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = v1TokensListCall(cursor, limit, _callback);
-        return localVarCall;
+        return v1TokensListCall(cursor, limit, _callback);
 
     }
 
@@ -336,11 +377,24 @@ public class TokensApi {
      </table>
      */
     public okhttp3.Call v1TokensRetrieveCall(String tokenId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/v1/tokens/{tokenId}"
-            .replaceAll("\\{" + "tokenId" + "\\}", localVarApiClient.escapeString(tokenId.toString()));
+            .replace("{" + "tokenId" + "}", localVarApiClient.escapeString(tokenId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -357,26 +411,24 @@ public class TokensApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1TokensRetrieveValidateBeforeCall(String tokenId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'tokenId' is set
         if (tokenId == null) {
             throw new ApiException("Missing the required parameter 'tokenId' when calling v1TokensRetrieve(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1TokensRetrieveCall(tokenId, _callback);
-        return localVarCall;
+        return v1TokensRetrieveCall(tokenId, _callback);
 
     }
 
@@ -465,11 +517,24 @@ public class TokensApi {
      </table>
      */
     public okhttp3.Call v1TokensUpdateCall(String tokenId, UpdateTokenRequest updateTokenRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = updateTokenRequest;
 
         // create path and map variables
         String localVarPath = "/api/v1/tokens/{tokenId}"
-            .replaceAll("\\{" + "tokenId" + "\\}", localVarApiClient.escapeString(tokenId.toString()));
+            .replace("{" + "tokenId" + "}", localVarApiClient.escapeString(tokenId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -489,28 +554,27 @@ public class TokensApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1TokensUpdateValidateBeforeCall(String tokenId, UpdateTokenRequest updateTokenRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'tokenId' is set
         if (tokenId == null) {
             throw new ApiException("Missing the required parameter 'tokenId' when calling v1TokensUpdate(Async)");
         }
-        
+
         // verify the required parameter 'updateTokenRequest' is set
         if (updateTokenRequest == null) {
             throw new ApiException("Missing the required parameter 'updateTokenRequest' when calling v1TokensUpdate(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1TokensUpdateCall(tokenId, updateTokenRequest, _callback);
-        return localVarCall;
+        return v1TokensUpdateCall(tokenId, updateTokenRequest, _callback);
 
     }
 

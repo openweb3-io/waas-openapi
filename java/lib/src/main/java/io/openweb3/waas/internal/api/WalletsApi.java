@@ -41,6 +41,8 @@ import java.util.Map;
 
 public class WalletsApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public WalletsApi() {
         this(Configuration.getDefaultApiClient());
@@ -56,6 +58,22 @@ public class WalletsApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -75,6 +93,19 @@ public class WalletsApi {
      </table>
      */
     public okhttp3.Call v1WalletsCreateCall(CreateWalletRequest createWalletRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createWalletRequest;
 
         // create path and map variables
@@ -98,23 +129,22 @@ public class WalletsApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1WalletsCreateValidateBeforeCall(CreateWalletRequest createWalletRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'createWalletRequest' is set
         if (createWalletRequest == null) {
             throw new ApiException("Missing the required parameter 'createWalletRequest' when calling v1WalletsCreate(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1WalletsCreateCall(createWalletRequest, _callback);
-        return localVarCall;
+        return v1WalletsCreateCall(createWalletRequest, _callback);
 
     }
 
@@ -188,6 +218,7 @@ public class WalletsApi {
     /**
      * Build call for v1WalletsDelete
      * @param walletId Wallet ID (required)
+     * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -201,12 +232,25 @@ public class WalletsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsDeleteCall(String walletId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+    public okhttp3.Call v1WalletsDeleteCall(String walletId, Object body, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/api/v1/wallets/{walletId}"
-            .replaceAll("\\{" + "walletId" + "\\}", localVarApiClient.escapeString(walletId.toString()));
+            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -223,26 +267,25 @@ public class WalletsApi {
         }
 
         final String[] localVarContentTypes = {
-            
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WalletsDeleteValidateBeforeCall(String walletId, final ApiCallback _callback) throws ApiException {
-        
+    private okhttp3.Call v1WalletsDeleteValidateBeforeCall(String walletId, Object body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletId' is set
         if (walletId == null) {
             throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsDelete(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1WalletsDeleteCall(walletId, _callback);
-        return localVarCall;
+        return v1WalletsDeleteCall(walletId, body, _callback);
 
     }
 
@@ -250,6 +293,7 @@ public class WalletsApi {
      * Delete wallet
      * Delete a Wallet
      * @param walletId Wallet ID (required)
+     * @param body  (optional)
      * @return Wallet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -262,8 +306,8 @@ public class WalletsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Wallet v1WalletsDelete(String walletId) throws ApiException {
-        ApiResponse<Wallet> localVarResp = v1WalletsDeleteWithHttpInfo(walletId);
+    public Wallet v1WalletsDelete(String walletId, Object body) throws ApiException {
+        ApiResponse<Wallet> localVarResp = v1WalletsDeleteWithHttpInfo(walletId, body);
         return localVarResp.getData();
     }
 
@@ -271,6 +315,7 @@ public class WalletsApi {
      * Delete wallet
      * Delete a Wallet
      * @param walletId Wallet ID (required)
+     * @param body  (optional)
      * @return ApiResponse&lt;Wallet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -283,8 +328,8 @@ public class WalletsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wallet> v1WalletsDeleteWithHttpInfo(String walletId) throws ApiException {
-        okhttp3.Call localVarCall = v1WalletsDeleteValidateBeforeCall(walletId, null);
+    public ApiResponse<Wallet> v1WalletsDeleteWithHttpInfo(String walletId, Object body) throws ApiException {
+        okhttp3.Call localVarCall = v1WalletsDeleteValidateBeforeCall(walletId, body, null);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -293,6 +338,7 @@ public class WalletsApi {
      * Delete wallet (asynchronously)
      * Delete a Wallet
      * @param walletId Wallet ID (required)
+     * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -306,9 +352,9 @@ public class WalletsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsDeleteAsync(String walletId, final ApiCallback<Wallet> _callback) throws ApiException {
+    public okhttp3.Call v1WalletsDeleteAsync(String walletId, Object body, final ApiCallback<Wallet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WalletsDeleteValidateBeforeCall(walletId, _callback);
+        okhttp3.Call localVarCall = v1WalletsDeleteValidateBeforeCall(walletId, body, _callback);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -331,6 +377,19 @@ public class WalletsApi {
      </table>
      */
     public okhttp3.Call v1WalletsListCall(String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -359,21 +418,19 @@ public class WalletsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1WalletsListValidateBeforeCall(String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = v1WalletsListCall(cursor, limit, _callback);
-        return localVarCall;
+        return v1WalletsListCall(cursor, limit, _callback);
 
     }
 
@@ -464,11 +521,24 @@ public class WalletsApi {
      </table>
      */
     public okhttp3.Call v1WalletsRetrieveCall(String walletId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/v1/wallets/{walletId}"
-            .replaceAll("\\{" + "walletId" + "\\}", localVarApiClient.escapeString(walletId.toString()));
+            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -485,26 +555,24 @@ public class WalletsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1WalletsRetrieveValidateBeforeCall(String walletId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'walletId' is set
         if (walletId == null) {
             throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsRetrieve(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1WalletsRetrieveCall(walletId, _callback);
-        return localVarCall;
+        return v1WalletsRetrieveCall(walletId, _callback);
 
     }
 
@@ -593,11 +661,24 @@ public class WalletsApi {
      </table>
      */
     public okhttp3.Call v1WalletsUpdateCall(String walletId, UpdateWalletRequest updateWalletRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = updateWalletRequest;
 
         // create path and map variables
         String localVarPath = "/api/v1/wallets/{walletId}"
-            .replaceAll("\\{" + "walletId" + "\\}", localVarApiClient.escapeString(walletId.toString()));
+            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -617,28 +698,27 @@ public class WalletsApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1WalletsUpdateValidateBeforeCall(String walletId, UpdateWalletRequest updateWalletRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'walletId' is set
         if (walletId == null) {
             throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsUpdate(Async)");
         }
-        
+
         // verify the required parameter 'updateWalletRequest' is set
         if (updateWalletRequest == null) {
             throw new ApiException("Missing the required parameter 'updateWalletRequest' when calling v1WalletsUpdate(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1WalletsUpdateCall(walletId, updateWalletRequest, _callback);
-        return localVarCall;
+        return v1WalletsUpdateCall(walletId, updateWalletRequest, _callback);
 
     }
 

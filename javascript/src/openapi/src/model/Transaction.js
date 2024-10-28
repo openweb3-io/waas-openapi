@@ -14,7 +14,6 @@
 import ApiClient from '../ApiClient';
 import Fee from './Fee';
 import TransactionEndpoint from './TransactionEndpoint';
-import TransactionType from './TransactionType';
 
 /**
  * The Transaction model module.
@@ -69,7 +68,7 @@ class Transaction {
                 obj['description'] = ApiClient.convertToType(data['description'], 'String');
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = ApiClient.convertToType(data['destination'], TransactionEndpoint);
+                obj['destination'] = TransactionEndpoint.constructFromObject(data['destination']);
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = ApiClient.convertToType(data['extra'], {'String': Object});
@@ -78,7 +77,7 @@ class Transaction {
                 obj['failedReason'] = ApiClient.convertToType(data['failedReason'], 'String');
             }
             if (data.hasOwnProperty('fee')) {
-                obj['fee'] = ApiClient.convertToType(data['fee'], Fee);
+                obj['fee'] = Fee.constructFromObject(data['fee']);
             }
             if (data.hasOwnProperty('hash')) {
                 obj['hash'] = ApiClient.convertToType(data['hash'], 'String');
@@ -90,7 +89,7 @@ class Transaction {
                 obj['signature'] = ApiClient.convertToType(data['signature'], 'String');
             }
             if (data.hasOwnProperty('source')) {
-                obj['source'] = ApiClient.convertToType(data['source'], TransactionEndpoint);
+                obj['source'] = TransactionEndpoint.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('status')) {
                 obj['status'] = ApiClient.convertToType(data['status'], 'String');
@@ -99,7 +98,7 @@ class Transaction {
                 obj['tokenId'] = ApiClient.convertToType(data['tokenId'], 'String');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], TransactionType);
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
             if (data.hasOwnProperty('updatedAt')) {
                 obj['updatedAt'] = ApiClient.convertToType(data['updatedAt'], 'String');
@@ -111,8 +110,88 @@ class Transaction {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>Transaction</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Transaction</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['assetId'] && !(typeof data['assetId'] === 'string' || data['assetId'] instanceof String)) {
+            throw new Error("Expected the field `assetId` to be a primitive type in the JSON string but got " + data['assetId']);
+        }
+        // ensure the json data is a string
+        if (data['chain'] && !(typeof data['chain'] === 'string' || data['chain'] instanceof String)) {
+            throw new Error("Expected the field `chain` to be a primitive type in the JSON string but got " + data['chain']);
+        }
+        // ensure the json data is a string
+        if (data['chainId'] && !(typeof data['chainId'] === 'string' || data['chainId'] instanceof String)) {
+            throw new Error("Expected the field `chainId` to be a primitive type in the JSON string but got " + data['chainId']);
+        }
+        // ensure the json data is a string
+        if (data['createdAt'] && !(typeof data['createdAt'] === 'string' || data['createdAt'] instanceof String)) {
+            throw new Error("Expected the field `createdAt` to be a primitive type in the JSON string but got " + data['createdAt']);
+        }
+        // ensure the json data is a string
+        if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
+            throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
+        }
+        // validate the optional field `destination`
+        if (data['destination']) { // data not null
+          TransactionEndpoint.validateJSON(data['destination']);
+        }
+        // ensure the json data is a string
+        if (data['failedReason'] && !(typeof data['failedReason'] === 'string' || data['failedReason'] instanceof String)) {
+            throw new Error("Expected the field `failedReason` to be a primitive type in the JSON string but got " + data['failedReason']);
+        }
+        // validate the optional field `fee`
+        if (data['fee']) { // data not null
+          Fee.validateJSON(data['fee']);
+        }
+        // ensure the json data is a string
+        if (data['hash'] && !(typeof data['hash'] === 'string' || data['hash'] instanceof String)) {
+            throw new Error("Expected the field `hash` to be a primitive type in the JSON string but got " + data['hash']);
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['signature'] && !(typeof data['signature'] === 'string' || data['signature'] instanceof String)) {
+            throw new Error("Expected the field `signature` to be a primitive type in the JSON string but got " + data['signature']);
+        }
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          TransactionEndpoint.validateJSON(data['source']);
+        }
+        // ensure the json data is a string
+        if (data['status'] && !(typeof data['status'] === 'string' || data['status'] instanceof String)) {
+            throw new Error("Expected the field `status` to be a primitive type in the JSON string but got " + data['status']);
+        }
+        // ensure the json data is a string
+        if (data['tokenId'] && !(typeof data['tokenId'] === 'string' || data['tokenId'] instanceof String)) {
+            throw new Error("Expected the field `tokenId` to be a primitive type in the JSON string but got " + data['tokenId']);
+        }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
+        // ensure the json data is a string
+        if (data['updatedAt'] && !(typeof data['updatedAt'] === 'string' || data['updatedAt'] instanceof String)) {
+            throw new Error("Expected the field `updatedAt` to be a primitive type in the JSON string but got " + data['updatedAt']);
+        }
+        // ensure the json data is a string
+        if (data['walletId'] && !(typeof data['walletId'] === 'string' || data['walletId'] instanceof String)) {
+            throw new Error("Expected the field `walletId` to be a primitive type in the JSON string but got " + data['walletId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * Asset ID
@@ -151,7 +230,6 @@ Transaction.prototype['createdAt'] = undefined;
 Transaction.prototype['description'] = undefined;
 
 /**
- * Destination
  * @member {module:model/TransactionEndpoint} destination
  */
 Transaction.prototype['destination'] = undefined;
@@ -169,7 +247,6 @@ Transaction.prototype['extra'] = undefined;
 Transaction.prototype['failedReason'] = undefined;
 
 /**
- * Fee
  * @member {module:model/Fee} fee
  */
 Transaction.prototype['fee'] = undefined;
@@ -193,7 +270,6 @@ Transaction.prototype['id'] = undefined;
 Transaction.prototype['signature'] = undefined;
 
 /**
- * Source
  * @member {module:model/TransactionEndpoint} source
  */
 Transaction.prototype['source'] = undefined;
@@ -212,7 +288,7 @@ Transaction.prototype['tokenId'] = undefined;
 
 /**
  * Transaction type
- * @member {module:model/TransactionType} type
+ * @member {String} type
  */
 Transaction.prototype['type'] = undefined;
 

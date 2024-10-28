@@ -69,16 +69,16 @@ class Token {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
             if (data.hasOwnProperty('max_withdraw_amount')) {
-                obj['max_withdraw_amount'] = ApiClient.convertToType(data['max_withdraw_amount'], Object);
+                obj['max_withdraw_amount'] = ApiClient.convertToType(data['max_withdraw_amount'], 'String');
             }
             if (data.hasOwnProperty('metadata')) {
                 obj['metadata'] = ApiClient.convertToType(data['metadata'], {'String': 'String'});
             }
             if (data.hasOwnProperty('min_deposit_amount')) {
-                obj['min_deposit_amount'] = ApiClient.convertToType(data['min_deposit_amount'], Object);
+                obj['min_deposit_amount'] = ApiClient.convertToType(data['min_deposit_amount'], 'String');
             }
             if (data.hasOwnProperty('min_withdraw_amount')) {
-                obj['min_withdraw_amount'] = ApiClient.convertToType(data['min_withdraw_amount'], Object);
+                obj['min_withdraw_amount'] = ApiClient.convertToType(data['min_withdraw_amount'], 'String');
             }
             if (data.hasOwnProperty('name')) {
                 obj['name'] = ApiClient.convertToType(data['name'], 'String');
@@ -93,7 +93,7 @@ class Token {
                 obj['symbol'] = ApiClient.convertToType(data['symbol'], 'String');
             }
             if (data.hasOwnProperty('total_supply')) {
-                obj['total_supply'] = ApiClient.convertToType(data['total_supply'], Object);
+                obj['total_supply'] = ApiClient.convertToType(data['total_supply'], 'String');
             }
             if (data.hasOwnProperty('updated_at')) {
                 obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'String');
@@ -102,8 +102,64 @@ class Token {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>Token</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Token</code>.
+     */
+    static validateJSON(data) {
+        // ensure the json data is a string
+        if (data['contract_address'] && !(typeof data['contract_address'] === 'string' || data['contract_address'] instanceof String)) {
+            throw new Error("Expected the field `contract_address` to be a primitive type in the JSON string but got " + data['contract_address']);
+        }
+        // ensure the json data is a string
+        if (data['created_at'] && !(typeof data['created_at'] === 'string' || data['created_at'] instanceof String)) {
+            throw new Error("Expected the field `created_at` to be a primitive type in the JSON string but got " + data['created_at']);
+        }
+        // ensure the json data is a string
+        if (data['icon_url'] && !(typeof data['icon_url'] === 'string' || data['icon_url'] instanceof String)) {
+            throw new Error("Expected the field `icon_url` to be a primitive type in the JSON string but got " + data['icon_url']);
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['max_withdraw_amount'] && !(typeof data['max_withdraw_amount'] === 'string' || data['max_withdraw_amount'] instanceof String)) {
+            throw new Error("Expected the field `max_withdraw_amount` to be a primitive type in the JSON string but got " + data['max_withdraw_amount']);
+        }
+        // ensure the json data is a string
+        if (data['min_deposit_amount'] && !(typeof data['min_deposit_amount'] === 'string' || data['min_deposit_amount'] instanceof String)) {
+            throw new Error("Expected the field `min_deposit_amount` to be a primitive type in the JSON string but got " + data['min_deposit_amount']);
+        }
+        // ensure the json data is a string
+        if (data['min_withdraw_amount'] && !(typeof data['min_withdraw_amount'] === 'string' || data['min_withdraw_amount'] instanceof String)) {
+            throw new Error("Expected the field `min_withdraw_amount` to be a primitive type in the JSON string but got " + data['min_withdraw_amount']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['symbol'] && !(typeof data['symbol'] === 'string' || data['symbol'] instanceof String)) {
+            throw new Error("Expected the field `symbol` to be a primitive type in the JSON string but got " + data['symbol']);
+        }
+        // ensure the json data is a string
+        if (data['total_supply'] && !(typeof data['total_supply'] === 'string' || data['total_supply'] instanceof String)) {
+            throw new Error("Expected the field `total_supply` to be a primitive type in the JSON string but got " + data['total_supply']);
+        }
+        // ensure the json data is a string
+        if (data['updated_at'] && !(typeof data['updated_at'] === 'string' || data['updated_at'] instanceof String)) {
+            throw new Error("Expected the field `updated_at` to be a primitive type in the JSON string but got " + data['updated_at']);
+        }
+
+        return true;
+    }
+
 
 }
+
+
 
 /**
  * Whether deposits are allowed
@@ -149,7 +205,7 @@ Token.prototype['id'] = undefined;
 
 /**
  * Max withdraw amount
- * @member {Object} max_withdraw_amount
+ * @member {String} max_withdraw_amount
  */
 Token.prototype['max_withdraw_amount'] = undefined;
 
@@ -161,13 +217,13 @@ Token.prototype['metadata'] = undefined;
 
 /**
  * Min deposit amount
- * @member {Object} min_deposit_amount
+ * @member {String} min_deposit_amount
  */
 Token.prototype['min_deposit_amount'] = undefined;
 
 /**
  * Min withdraw amount
- * @member {Object} min_withdraw_amount
+ * @member {String} min_withdraw_amount
  */
 Token.prototype['min_withdraw_amount'] = undefined;
 
@@ -197,7 +253,7 @@ Token.prototype['symbol'] = undefined;
 
 /**
  * Total supply
- * @member {Object} total_supply
+ * @member {String} total_supply
  */
 Token.prototype['total_supply'] = undefined;
 

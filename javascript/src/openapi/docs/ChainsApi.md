@@ -27,11 +27,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.ChainsApi();
 let opts = {
@@ -61,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -87,11 +82,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.ChainsApi();
 let chainId = "chainId_example"; // String | Chain ID
@@ -117,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

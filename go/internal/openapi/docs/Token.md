@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **Decimals** | Pointer to **int32** | Decimals | [optional] 
 **IconUrl** | Pointer to **string** | Icon | [optional] 
 **Id** | Pointer to **string** | Token ID | [optional] 
-**MaxWithdrawAmount** | Pointer to **map[string]interface{}** | Max withdraw amount | [optional] 
+**MaxWithdrawAmount** | Pointer to **string** | Max withdraw amount | [optional] 
 **Metadata** | Pointer to **map[string]string** | Extended metadata | [optional] 
-**MinDepositAmount** | Pointer to **map[string]interface{}** | Min deposit amount | [optional] 
-**MinWithdrawAmount** | Pointer to **map[string]interface{}** | Min withdraw amount | [optional] 
+**MinDepositAmount** | Pointer to **string** | Min deposit amount | [optional] 
+**MinWithdrawAmount** | Pointer to **string** | Min withdraw amount | [optional] 
 **Name** | Pointer to **string** | Name | [optional] 
 **NeedMemo** | Pointer to **bool** | Whether a memo is required | [optional] 
 **Precision** | Pointer to **int32** | Precision | [optional] 
 **Symbol** | Pointer to **string** | Symbol . e.g.: BTC / ETH | [optional] 
-**TotalSupply** | Pointer to **map[string]interface{}** | Total supply | [optional] 
+**TotalSupply** | Pointer to **string** | Total supply | [optional] 
 **UpdatedAt** | Pointer to **string** | Last updated time | [optional] 
 
 ## Methods
@@ -218,20 +218,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetMaxWithdrawAmount
 
-`func (o *Token) GetMaxWithdrawAmount() map[string]interface{}`
+`func (o *Token) GetMaxWithdrawAmount() string`
 
 GetMaxWithdrawAmount returns the MaxWithdrawAmount field if non-nil, zero value otherwise.
 
 ### GetMaxWithdrawAmountOk
 
-`func (o *Token) GetMaxWithdrawAmountOk() (*map[string]interface{}, bool)`
+`func (o *Token) GetMaxWithdrawAmountOk() (*string, bool)`
 
 GetMaxWithdrawAmountOk returns a tuple with the MaxWithdrawAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxWithdrawAmount
 
-`func (o *Token) SetMaxWithdrawAmount(v map[string]interface{})`
+`func (o *Token) SetMaxWithdrawAmount(v string)`
 
 SetMaxWithdrawAmount sets MaxWithdrawAmount field to given value.
 
@@ -268,20 +268,20 @@ HasMetadata returns a boolean if a field has been set.
 
 ### GetMinDepositAmount
 
-`func (o *Token) GetMinDepositAmount() map[string]interface{}`
+`func (o *Token) GetMinDepositAmount() string`
 
 GetMinDepositAmount returns the MinDepositAmount field if non-nil, zero value otherwise.
 
 ### GetMinDepositAmountOk
 
-`func (o *Token) GetMinDepositAmountOk() (*map[string]interface{}, bool)`
+`func (o *Token) GetMinDepositAmountOk() (*string, bool)`
 
 GetMinDepositAmountOk returns a tuple with the MinDepositAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMinDepositAmount
 
-`func (o *Token) SetMinDepositAmount(v map[string]interface{})`
+`func (o *Token) SetMinDepositAmount(v string)`
 
 SetMinDepositAmount sets MinDepositAmount field to given value.
 
@@ -293,20 +293,20 @@ HasMinDepositAmount returns a boolean if a field has been set.
 
 ### GetMinWithdrawAmount
 
-`func (o *Token) GetMinWithdrawAmount() map[string]interface{}`
+`func (o *Token) GetMinWithdrawAmount() string`
 
 GetMinWithdrawAmount returns the MinWithdrawAmount field if non-nil, zero value otherwise.
 
 ### GetMinWithdrawAmountOk
 
-`func (o *Token) GetMinWithdrawAmountOk() (*map[string]interface{}, bool)`
+`func (o *Token) GetMinWithdrawAmountOk() (*string, bool)`
 
 GetMinWithdrawAmountOk returns a tuple with the MinWithdrawAmount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMinWithdrawAmount
 
-`func (o *Token) SetMinWithdrawAmount(v map[string]interface{})`
+`func (o *Token) SetMinWithdrawAmount(v string)`
 
 SetMinWithdrawAmount sets MinWithdrawAmount field to given value.
 
@@ -418,20 +418,20 @@ HasSymbol returns a boolean if a field has been set.
 
 ### GetTotalSupply
 
-`func (o *Token) GetTotalSupply() map[string]interface{}`
+`func (o *Token) GetTotalSupply() string`
 
 GetTotalSupply returns the TotalSupply field if non-nil, zero value otherwise.
 
 ### GetTotalSupplyOk
 
-`func (o *Token) GetTotalSupplyOk() (*map[string]interface{}, bool)`
+`func (o *Token) GetTotalSupplyOk() (*string, bool)`
 
 GetTotalSupplyOk returns a tuple with the TotalSupply field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalSupply
 
-`func (o *Token) SetTotalSupply(v map[string]interface{})`
+`func (o *Token) SetTotalSupply(v string)`
 
 SetTotalSupply sets TotalSupply field to given value.
 

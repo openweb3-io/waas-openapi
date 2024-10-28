@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WaaSOpenApiDocumentation.PageTransaction();
+    instance = new WaaSOpenApiDocumentation.CursorPageTransaction();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,46 @@
       object[property] = value;
   }
 
-  describe('PageTransaction', function() {
-    it('should create an instance of PageTransaction', function() {
-      // uncomment below and update the code to test PageTransaction
-      //var instane = new WaaSOpenApiDocumentation.PageTransaction();
-      //expect(instance).to.be.a(WaaSOpenApiDocumentation.PageTransaction);
+  describe('CursorPageTransaction', function() {
+    it('should create an instance of CursorPageTransaction', function() {
+      // uncomment below and update the code to test CursorPageTransaction
+      //var instance = new WaaSOpenApiDocumentation.CursorPageTransaction();
+      //expect(instance).to.be.a(WaaSOpenApiDocumentation.CursorPageTransaction);
+    });
+
+    it('should have the property hasNext (base name: "has_next")', function() {
+      // uncomment below and update the code to test the property hasNext
+      //var instance = new WaaSOpenApiDocumentation.CursorPageTransaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property hasPrev (base name: "has_prev")', function() {
+      // uncomment below and update the code to test the property hasPrev
+      //var instance = new WaaSOpenApiDocumentation.CursorPageTransaction();
+      //expect(instance).to.be();
     });
 
     it('should have the property items (base name: "items")', function() {
       // uncomment below and update the code to test the property items
-      //var instance = new WaaSOpenApiDocumentation.PageTransaction();
+      //var instance = new WaaSOpenApiDocumentation.CursorPageTransaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property nextCursor (base name: "next_cursor")', function() {
+      // uncomment below and update the code to test the property nextCursor
+      //var instance = new WaaSOpenApiDocumentation.CursorPageTransaction();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property prevCursor (base name: "prev_cursor")', function() {
+      // uncomment below and update the code to test the property prevCursor
+      //var instance = new WaaSOpenApiDocumentation.CursorPageTransaction();
       //expect(instance).to.be();
     });
 
     it('should have the property total (base name: "total")', function() {
       // uncomment below and update the code to test the property total
-      //var instance = new WaaSOpenApiDocumentation.PageTransaction();
+      //var instance = new WaaSOpenApiDocumentation.CursorPageTransaction();
       //expect(instance).to.be();
     });
 

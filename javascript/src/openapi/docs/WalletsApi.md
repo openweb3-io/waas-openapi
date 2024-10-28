@@ -30,11 +30,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
 let createWalletRequest = new WaaSOpenApiDocumentation.CreateWalletRequest(); // CreateWalletRequest | Request body
@@ -60,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -70,7 +65,7 @@ Name | Type | Description  | Notes
 
 ## v1WalletsDelete
 
-> Wallet v1WalletsDelete(walletId)
+> Wallet v1WalletsDelete(walletId, opts)
 
 Delete wallet
 
@@ -86,15 +81,13 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
 let walletId = "walletId_example"; // String | Wallet ID
-apiInstance.v1WalletsDelete(walletId, (error, data, response) => {
+let opts = {
+  'body': {key: null} // Object | 
+};
+apiInstance.v1WalletsDelete(walletId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -109,6 +102,7 @@ apiInstance.v1WalletsDelete(walletId, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **String**| Wallet ID | 
+ **body** | **Object**|  | [optional] 
 
 ### Return type
 
@@ -116,11 +110,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -142,11 +136,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
 let opts = {
@@ -176,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -202,11 +191,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
 let walletId = "walletId_example"; // String | Wallet ID
@@ -232,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -258,11 +242,6 @@ let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
 ApiKeyAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //ApiKeyAuth.apiKeyPrefix = 'Token';
-// Configure API key authorization: SignatureAuth
-let SignatureAuth = defaultClient.authentications['SignatureAuth'];
-SignatureAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//SignatureAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
 let walletId = "walletId_example"; // String | Wallet ID
@@ -290,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

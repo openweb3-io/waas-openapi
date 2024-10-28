@@ -50,7 +50,7 @@
   describe('Chain', function() {
     it('should create an instance of Chain', function() {
       // uncomment below and update the code to test Chain
-      //var instane = new WaaSOpenApiDocumentation.Chain();
+      //var instance = new WaaSOpenApiDocumentation.Chain();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.Chain);
     });
 

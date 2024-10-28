@@ -50,7 +50,7 @@
   describe('Wallet', function() {
     it('should create an instance of Wallet', function() {
       // uncomment below and update the code to test Wallet
-      //var instane = new WaaSOpenApiDocumentation.Wallet();
+      //var instance = new WaaSOpenApiDocumentation.Wallet();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.Wallet);
     });
 

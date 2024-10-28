@@ -1,9 +1,11 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
-  contact: {}
   description: This is a WaaS OpenAPI Server.
   title: WaaS OpenAPI Documentation
   version: "1.0"
+externalDocs:
+  description: ""
+  url: ""
 servers:
 - url: /
 paths:
@@ -12,15 +14,29 @@ paths:
       description: List of all available addresses.
       operationId: v1.addresses.list
       parameters:
+      - description: Unique system generated identifier of the wallet
+        explode: true
+        in: query
+        name: wallet_ids
+        required: false
+        schema:
+          description: Unique system generated identifier of the wallet
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        style: form
       - description: The chain ids.
-        explode: false
+        explode: true
         in: query
         name: chain_ids
         required: false
         schema:
+          description: The chain ids.
           items:
             type: string
           type: array
+          uniqueItems: false
         style: form
       - description: The cursor to use for pagination.
         explode: true
@@ -28,25 +44,17 @@ paths:
         name: cursor
         required: false
         schema:
+          description: The cursor to use for pagination.
           type: string
         style: form
-      - description: 'The number of records to return default: 20'
+      - description: "The number of records to return default: 20"
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          description: "The number of records to return default: 20"
           type: integer
-        style: form
-      - description: Unique system generated identifier of the wallet
-        explode: false
-        in: query
-        name: wallet_ids
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
         style: form
       responses:
         "200":
@@ -85,7 +93,8 @@ paths:
       summary: List all addresses
       tags:
       - Addresses
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /api/v1/chains:
     get:
       description: List of all available chains.
@@ -97,14 +106,16 @@ paths:
         name: cursor
         required: false
         schema:
+          description: Cursor
           type: string
         style: form
-      - description: 'The number of records to return default: 20'
+      - description: "The number of records to return default: 20"
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          description: "The number of records to return default: 20"
           type: integer
         style: form
       responses:
@@ -144,7 +155,8 @@ paths:
       summary: List all chains
       tags:
       - Chains
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /api/v1/chains/{chainId}:
     get:
       description: Retrieve chain information.
@@ -195,7 +207,8 @@ paths:
       summary: Retrieve chain
       tags:
       - Chains
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /api/v1/endpoints:
     get:
       description: List webhook endpoints
@@ -208,12 +221,13 @@ paths:
         schema:
           type: string
         style: form
-      - description: 'The number of records to return default: 20'
+      - description: "The number of records to return default: 20"
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          description: "The number of records to return default: 20"
           type: integer
         style: form
       responses:
@@ -241,7 +255,8 @@ paths:
       summary: List webhook endpoints
       tags:
       - Webhook endpoints
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /api/v1/tokens:
     get:
       description: Retrieve a list of all tokens.
@@ -253,14 +268,16 @@ paths:
         name: cursor
         required: false
         schema:
+          description: Cursor
           type: string
         style: form
-      - description: 'The number of records to return default: 20'
+      - description: "The number of records to return default: 20"
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          description: "The number of records to return default: 20"
           type: integer
         style: form
       responses:
@@ -300,7 +317,8 @@ paths:
       summary: List tokens
       tags:
       - Tokens
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: Create a tokens.
       operationId: v1.tokens.create
@@ -348,8 +366,9 @@ paths:
       summary: Create token
       tags:
       - Tokens
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/tokens/{tokenId}:
     get:
       description: Get token info by ID
@@ -400,7 +419,8 @@ paths:
       summary: Get Token
       tags:
       - Tokens
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     patch:
       description: Update a tokens.
       operationId: v1.tokens.update
@@ -457,57 +477,72 @@ paths:
       summary: Update token
       tags:
       - Tokens
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/transactions:
     get:
       description: List transactions
       operationId: v1.transactions.list
       parameters:
-      - description: The assetId involved in the transaction.
-        explode: false
+      - description: Unique system generated identifier of the wallet
+        explode: true
         in: query
-        name: asset_ids
+        name: wallet_ids
         required: false
         schema:
+          description: Unique system generated identifier of the wallet
           items:
             type: string
           type: array
+          uniqueItems: false
         style: form
       - description: The blockchain network on which the transaction takes place.
-        explode: false
+        explode: true
         in: query
         name: chain_ids
         required: false
         schema:
+          description: The blockchain network on which the transaction takes place.
           items:
             type: string
           type: array
+          uniqueItems: false
         style: form
-      - description: A cursor value for pagination purposes.
+      - description: The tokenId involved in the transaction.
         explode: true
         in: query
-        name: cursor
+        name: token_ids
         required: false
         schema:
-          type: string
+          description: The tokenId involved in the transaction.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         style: form
-      - description: The transaction hash, which uniquely identifies a transaction
-          on the blockchain.
+      - description: The assetId involved in the transaction.
+        explode: true
+        in: query
+        name: asset_ids
+        required: false
+        schema:
+          description: The assetId involved in the transaction.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        style: form
+      - description: "The transaction hash, which uniquely identifies a transaction\
+          \ on the blockchain."
         explode: true
         in: query
         name: hash
         required: false
         schema:
+          description: "The transaction hash, which uniquely identifies a transaction\
+            \ on the blockchain."
           type: string
-        style: form
-      - description: 'The number of records to return default: 20'
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          type: integer
         style: form
       - description: The status of the transaction.
         explode: true
@@ -515,34 +550,33 @@ paths:
         name: status
         required: false
         schema:
+          description: The status of the transaction.
           type: string
         style: form
-      - description: The tokenId involved in the transaction.
-        explode: false
+      - description: A cursor value for pagination purposes.
+        explode: true
         in: query
-        name: token_ids
+        name: cursor
         required: false
         schema:
-          items:
-            type: string
-          type: array
+          description: A cursor value for pagination purposes.
+          type: string
         style: form
-      - description: Unique system generated identifier of the wallet
-        explode: false
+      - description: "The number of records to return default: 20"
+        explode: true
         in: query
-        name: wallet_ids
+        name: limit
         required: false
         schema:
-          items:
-            type: string
-          type: array
+          description: "The number of records to return default: 20"
+          type: integer
         style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Page-Transaction'
+                $ref: '#/components/schemas/CursorPage-Transaction'
           description: OK
         "400":
           content:
@@ -574,7 +608,8 @@ paths:
       summary: List transactions
       tags:
       - Transactions
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /api/v1/transactions/estimate_fee:
     post:
       description: Estimate fee for a transfer transaction
@@ -623,8 +658,9 @@ paths:
       summary: Estimate fee
       tags:
       - Transactions
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/transactions/transfer:
     post:
       description: Create a transfer transaction
@@ -673,8 +709,9 @@ paths:
       summary: Transfer token
       tags:
       - Transactions
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/transactions/{transactionId}:
     get:
       description: Get a transaction by ID
@@ -725,7 +762,8 @@ paths:
       summary: Get transaction
       tags:
       - Transactions
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /api/v1/wallets:
     get:
       description: List all wallets
@@ -737,14 +775,16 @@ paths:
         name: cursor
         required: false
         schema:
+          description: Cursor
           type: string
         style: form
-      - description: 'The number of records to return default: 20'
+      - description: "The number of records to return default: 20"
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          description: "The number of records to return default: 20"
           type: integer
         style: form
       responses:
@@ -784,7 +824,8 @@ paths:
       summary: List wallets
       tags:
       - Wallets
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: Create a Wallet
       operationId: v1.wallets.create
@@ -832,8 +873,9 @@ paths:
       summary: Create wallet
       tags:
       - Wallets
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/wallets/{walletId}:
     delete:
       description: Delete a Wallet
@@ -847,6 +889,11 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
       responses:
         "200":
           content:
@@ -884,7 +931,9 @@ paths:
       summary: Delete wallet
       tags:
       - Wallets
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
     get:
       description: Get a wallet by ID
       operationId: v1.wallets.retrieve
@@ -934,7 +983,8 @@ paths:
       summary: Get wallet
       tags:
       - Wallets
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     patch:
       description: Update a Wallet
       operationId: v1.wallets.update
@@ -991,8 +1041,9 @@ paths:
       summary: Update wallet
       tags:
       - Wallets
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/wallets/{walletId}/addresses:
     get:
       description: List addresses in wallet
@@ -1006,31 +1057,35 @@ paths:
         schema:
           type: string
         style: simple
-      - description: chain ids
-        explode: false
-        in: query
-        name: chain_ids
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
       - description: Cursor
         explode: true
         in: query
         name: cursor
         required: false
         schema:
+          description: Cursor
           type: string
         style: form
-      - description: Limit, default is 20
+      - description: "Limit, default is 20"
         explode: true
         in: query
         name: limit
         required: false
         schema:
+          description: "Limit, default is 20"
           type: integer
+        style: form
+      - description: chain ids
+        explode: true
+        in: query
+        name: chain_ids
+        required: false
+        schema:
+          description: chain ids
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         style: form
       responses:
         "200":
@@ -1069,7 +1124,8 @@ paths:
       summary: List wallet addresses
       tags:
       - Addresses
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     post:
       description: Create address for wallet
       operationId: v1.wallets.createAddress
@@ -1126,8 +1182,9 @@ paths:
       summary: Create address
       tags:
       - Addresses
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/wallets/{walletId}/addresses/{address}:
     get:
       description: Get specific address information in wallet
@@ -1186,7 +1243,8 @@ paths:
       summary: Get address information
       tags:
       - Addresses
-      x-accepts: application/json
+      x-accepts:
+      - application/json
   /api/v1/webhooks/endpoints:
     post:
       description: Create a webhook endpoint
@@ -1223,8 +1281,9 @@ paths:
       summary: Create webhook endpoint
       tags:
       - Webhook endpoints
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/webhooks/endpoints/{endpointId}:
     delete:
       description: Delete specific webhook endpoint
@@ -1238,6 +1297,11 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
       responses:
         "200":
           content:
@@ -1263,7 +1327,9 @@ paths:
       summary: Delete webhook endpoint
       tags:
       - Webhook endpoints
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
     get:
       description: Get specific webhook endpoint
       operationId: v1.webhooks.retrieve
@@ -1307,7 +1373,8 @@ paths:
       summary: Get webhook endpoint
       tags:
       - Webhook endpoints
-      x-accepts: application/json
+      x-accepts:
+      - application/json
     patch:
       description: Update specific webhook endpoint
       operationId: v1.webhooks.update
@@ -1340,8 +1407,9 @@ paths:
       summary: Update webhook endpoint
       tags:
       - Webhook endpoints
-      x-contentType: application/json
-      x-accepts: application/json
+      x-content-type: application/json
+      x-accepts:
+      - application/json
 components:
   schemas:
     Address:
@@ -1381,9 +1449,6 @@ components:
           type: string
       required:
       - address
-      type: object
-    BigInt:
-      type: object
     Chain:
       example:
         icon_url: icon_url
@@ -1427,7 +1492,6 @@ components:
         updated_at:
           description: Updated time
           type: string
-      type: object
     CreateAddressRequest:
       example:
         chain_id: chain_id
@@ -1437,7 +1501,6 @@ components:
           type: string
       required:
       - chain_id
-      type: object
     CreateEndpoint:
       example:
         uid: uid
@@ -1459,6 +1522,7 @@ components:
           items:
             type: string
           type: array
+          uniqueItems: false
         uid:
           description: The uid of the endpoint
           type: string
@@ -1468,7 +1532,6 @@ components:
       required:
       - eventTypes
       - url
-      type: object
     CreateTokenRequest:
       example:
         uid: uid
@@ -1480,38 +1543,46 @@ components:
         uid:
           description: Unique ID
           type: string
-      type: object
     CreateTransferRequest:
       example:
         amount: amount
         token_id: token_id
         extra: extra
-        fee: ""
-        destination: ""
+        fee:
+          maxFeeAmount: maxFeeAmount
+          tokenId: tokenId
+          type: 6
+        destination:
+        - 0
+        - 0
         memo: memo
-        source: ""
+        source:
+        - 6
+        - 6
       properties:
         amount:
           description: The amount to be transferred
           type: string
         destination:
-          allOf:
-          - $ref: '#/components/schemas/TransferDestination'
           description: The ID of the wallet to which the transfer will be made
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
         extra:
           description: Extra
           type: string
         fee:
-          allOf:
-          - $ref: '#/components/schemas/Fee'
-          description: Fee
+          $ref: '#/components/schemas/Fee'
         memo:
           description: Memo
           type: string
         source:
-          allOf:
-          - $ref: '#/components/schemas/TransferSource'
           description: The ID of the wallet from which the transfer will be made
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
         token_id:
           description: The tokenId to be transferred
           type: string
@@ -1520,7 +1591,6 @@ components:
       - destination
       - source
       - token_id
-      type: object
     CreateTransferResponse:
       example:
         transaction_id: transaction_id
@@ -1535,7 +1605,6 @@ components:
       required:
       - status
       - transaction_id
-      type: object
     CreateWalletRequest:
       example:
         uid: uid
@@ -1549,7 +1618,6 @@ components:
           type: string
       required:
       - name
-      type: object
     CursorPage-Address:
       example:
         prev_cursor: prev_cursor
@@ -1583,6 +1651,7 @@ components:
           items:
             $ref: '#/components/schemas/Address'
           type: array
+          uniqueItems: false
         next_cursor:
           type: string
         prev_cursor:
@@ -1594,7 +1663,6 @@ components:
       - has_prev
       - items
       - total
-      type: object
     CursorPage-Chain:
       example:
         prev_cursor: prev_cursor
@@ -1632,6 +1700,7 @@ components:
           items:
             $ref: '#/components/schemas/Chain'
           type: array
+          uniqueItems: false
         next_cursor:
           type: string
         prev_cursor:
@@ -1643,7 +1712,6 @@ components:
       - has_prev
       - items
       - total
-      type: object
     CursorPage-Endpoint:
       example:
         prev_cursor: prev_cursor
@@ -1681,6 +1749,7 @@ components:
           items:
             $ref: '#/components/schemas/Endpoint'
           type: array
+          uniqueItems: false
         next_cursor:
           type: string
         prev_cursor:
@@ -1692,7 +1761,6 @@ components:
       - has_prev
       - items
       - total
-      type: object
     CursorPage-Token:
       example:
         prev_cursor: prev_cursor
@@ -1706,37 +1774,37 @@ components:
           metadata:
             key: metadata
           need_memo: true
-          total_supply: ""
+          total_supply: total_supply
           precision: 6
           created_at: created_at
           can_deposit: true
           contract_address: contract_address
-          min_withdraw_amount: ""
-          max_withdraw_amount: ""
+          min_withdraw_amount: min_withdraw_amount
+          max_withdraw_amount: max_withdraw_amount
           updated_at: updated_at
           decimals: 0
           name: name
           can_withdraw: true
           id: id
-          min_deposit_amount: ""
+          min_deposit_amount: min_deposit_amount
         - icon_url: icon_url
           symbol: symbol
           metadata:
             key: metadata
           need_memo: true
-          total_supply: ""
+          total_supply: total_supply
           precision: 6
           created_at: created_at
           can_deposit: true
           contract_address: contract_address
-          min_withdraw_amount: ""
-          max_withdraw_amount: ""
+          min_withdraw_amount: min_withdraw_amount
+          max_withdraw_amount: max_withdraw_amount
           updated_at: updated_at
           decimals: 0
           name: name
           can_withdraw: true
           id: id
-          min_deposit_amount: ""
+          min_deposit_amount: min_deposit_amount
       properties:
         has_next:
           type: boolean
@@ -1746,6 +1814,7 @@ components:
           items:
             $ref: '#/components/schemas/Token'
           type: array
+          uniqueItems: false
         next_cursor:
           type: string
         prev_cursor:
@@ -1757,7 +1826,97 @@ components:
       - has_prev
       - items
       - total
-      type: object
+    CursorPage-Transaction:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        total: 1
+        has_next: true
+        has_prev: true
+        items:
+        - walletId: walletId
+          chain: chain
+          tokenId: tokenId
+          signature: signature
+          fee:
+            maxFeeAmount: maxFeeAmount
+            tokenId: tokenId
+            type: 6
+          confirmedNum: 0
+          destination:
+            amount: amount
+            address: address
+            memo: memo
+            type: type
+          description: description
+          source:
+            amount: amount
+            address: address
+            memo: memo
+            type: type
+          type: type
+          createdAt: createdAt
+          chainId: chainId
+          assetId: assetId
+          extra:
+            key: ""
+          id: id
+          hash: hash
+          failedReason: failedReason
+          status: status
+          updatedAt: updatedAt
+        - walletId: walletId
+          chain: chain
+          tokenId: tokenId
+          signature: signature
+          fee:
+            maxFeeAmount: maxFeeAmount
+            tokenId: tokenId
+            type: 6
+          confirmedNum: 0
+          destination:
+            amount: amount
+            address: address
+            memo: memo
+            type: type
+          description: description
+          source:
+            amount: amount
+            address: address
+            memo: memo
+            type: type
+          type: type
+          createdAt: createdAt
+          chainId: chainId
+          assetId: assetId
+          extra:
+            key: ""
+          id: id
+          hash: hash
+          failedReason: failedReason
+          status: status
+          updatedAt: updatedAt
+      properties:
+        has_next:
+          type: boolean
+        has_prev:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/Transaction'
+          type: array
+          uniqueItems: false
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+        total:
+          type: integer
+      required:
+      - has_next
+      - has_prev
+      - items
+      - total
     CursorPage-Wallet:
       example:
         prev_cursor: prev_cursor
@@ -1785,6 +1944,7 @@ components:
           items:
             $ref: '#/components/schemas/Wallet'
           type: array
+          uniqueItems: false
         next_cursor:
           type: string
         prev_cursor:
@@ -1796,7 +1956,6 @@ components:
       - has_prev
       - items
       - total
-      type: object
     Endpoint:
       example:
         filter: filter
@@ -1820,6 +1979,7 @@ components:
           items:
             type: string
           type: array
+          uniqueItems: false
         filter:
           type: string
         id:
@@ -1836,8 +1996,10 @@ components:
       - filter
       - id
       - url
-      type: object
     Error:
+      example:
+        msg: msg
+        code: 6
       properties:
         code:
           description: error code
@@ -1848,23 +2010,28 @@ components:
       required:
       - code
       - msg
-      type: object
     EstimateFeeRequest:
       example:
         amount: amount
         token_id: token_id
         extra: extra
-        destination: ""
+        destination:
+        - 0
+        - 0
         memo: memo
-        source: ""
+        source:
+        - 6
+        - 6
       properties:
         amount:
           description: Amount
           type: string
         destination:
-          allOf:
-          - $ref: '#/components/schemas/TransferDestination'
           description: The ID of the wallet to which the transfer will be made
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
         extra:
           description: Extra
           type: string
@@ -1872,9 +2039,11 @@ components:
           description: Memo
           type: string
         source:
-          allOf:
-          - $ref: '#/components/schemas/TransferSource'
           description: The ID of the wallet from which the transfer will be made
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
         token_id:
           description: Token ID
           type: string
@@ -1883,7 +2052,6 @@ components:
       - destination
       - source
       - token_id
-      type: object
     EstimateFeeResponse:
       example:
         amount: amount
@@ -1898,8 +2066,12 @@ components:
       required:
       - amount
       - token_id
-      type: object
     Fee:
+      description: Fee
+      example:
+        maxFeeAmount: maxFeeAmount
+        tokenId: tokenId
+        type: 6
       properties:
         maxFeeAmount:
           description: Max fee amount
@@ -1908,75 +2080,19 @@ components:
           description: Token ID
           type: string
         type:
-          allOf:
-          - $ref: '#/components/schemas/FeeType'
           description: Fee type
+          type: integer
+          x-enum-varnames:
+          - Fixed
       required:
       - maxFeeAmount
       - tokenId
       - type
-      type: object
     FeeType:
-      enum:
-      - 0
+      description: Fee type
       type: integer
       x-enum-varnames:
       - Fixed
-    Page-Transaction:
-      example:
-        total: 6
-        items:
-        - walletId: walletId
-          chain: chain
-          tokenId: tokenId
-          signature: signature
-          fee: ""
-          confirmedNum: 0
-          destination: ""
-          description: description
-          source: ""
-          type: ""
-          createdAt: createdAt
-          chainId: chainId
-          assetId: assetId
-          extra:
-            key: ""
-          id: id
-          hash: hash
-          failedReason: failedReason
-          status: status
-          updatedAt: updatedAt
-        - walletId: walletId
-          chain: chain
-          tokenId: tokenId
-          signature: signature
-          fee: ""
-          confirmedNum: 0
-          destination: ""
-          description: description
-          source: ""
-          type: ""
-          createdAt: createdAt
-          chainId: chainId
-          assetId: assetId
-          extra:
-            key: ""
-          id: id
-          hash: hash
-          failedReason: failedReason
-          status: status
-          updatedAt: updatedAt
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Transaction'
-          type: array
-        total:
-          type: integer
-      required:
-      - items
-      - total
-      type: object
     Token:
       example:
         icon_url: icon_url
@@ -1984,19 +2100,19 @@ components:
         metadata:
           key: metadata
         need_memo: true
-        total_supply: ""
+        total_supply: total_supply
         precision: 6
         created_at: created_at
         can_deposit: true
         contract_address: contract_address
-        min_withdraw_amount: ""
-        max_withdraw_amount: ""
+        min_withdraw_amount: min_withdraw_amount
+        max_withdraw_amount: max_withdraw_amount
         updated_at: updated_at
         decimals: 0
         name: name
         can_withdraw: true
         id: id
-        min_deposit_amount: ""
+        min_deposit_amount: min_deposit_amount
       properties:
         can_deposit:
           description: Whether deposits are allowed
@@ -2020,22 +2136,18 @@ components:
           description: Token ID
           type: string
         max_withdraw_amount:
-          allOf:
-          - $ref: '#/components/schemas/BigInt'
           description: Max withdraw amount
+          type: string
         metadata:
           additionalProperties:
             type: string
           description: Extended metadata
-          type: object
         min_deposit_amount:
-          allOf:
-          - $ref: '#/components/schemas/BigInt'
           description: Min deposit amount
+          type: string
         min_withdraw_amount:
-          allOf:
-          - $ref: '#/components/schemas/BigInt'
           description: Min withdraw amount
+          type: string
         name:
           description: Name
           type: string
@@ -2046,28 +2158,37 @@ components:
           description: Precision
           type: integer
         symbol:
-          description: 'Symbol . e.g.: BTC / ETH'
+          description: "Symbol . e.g.: BTC / ETH"
           type: string
         total_supply:
-          allOf:
-          - $ref: '#/components/schemas/BigInt'
           description: Total supply
+          type: string
         updated_at:
           description: Last updated time
           type: string
-      type: object
     Transaction:
       example:
         walletId: walletId
         chain: chain
         tokenId: tokenId
         signature: signature
-        fee: ""
+        fee:
+          maxFeeAmount: maxFeeAmount
+          tokenId: tokenId
+          type: 6
         confirmedNum: 0
-        destination: ""
+        destination:
+          amount: amount
+          address: address
+          memo: memo
+          type: type
         description: description
-        source: ""
-        type: ""
+        source:
+          amount: amount
+          address: address
+          memo: memo
+          type: type
+        type: type
         createdAt: createdAt
         chainId: chainId
         assetId: assetId
@@ -2098,20 +2219,15 @@ components:
           description: Description
           type: string
         destination:
-          allOf:
-          - $ref: '#/components/schemas/TransactionEndpoint'
-          description: Destination
+          $ref: '#/components/schemas/TransactionEndpoint'
         extra:
           additionalProperties: {}
           description: Extra
-          type: object
         failedReason:
           description: Failed reason
           type: string
         fee:
-          allOf:
-          - $ref: '#/components/schemas/Fee'
-          description: Fee
+          $ref: '#/components/schemas/Fee'
         hash:
           description: Transaction hash
           type: string
@@ -2122,9 +2238,7 @@ components:
           description: Signature
           type: string
         source:
-          allOf:
-          - $ref: '#/components/schemas/TransactionEndpoint'
-          description: Source
+          $ref: '#/components/schemas/TransactionEndpoint'
         status:
           description: Transaction status
           type: string
@@ -2132,17 +2246,25 @@ components:
           description: Token ID
           type: string
         type:
-          allOf:
-          - $ref: '#/components/schemas/TransactionType'
           description: Transaction type
+          type: string
+          x-enum-varnames:
+          - TransactionType_Unknown
+          - TransactionType_Deposit
+          - TransactionType_Withdraw
         updatedAt:
           description: Updated time
           type: string
         walletId:
           description: Wallet ID
           type: string
-      type: object
     TransactionEndpoint:
+      description: Source
+      example:
+        amount: amount
+        address: address
+        memo: memo
+        type: type
       properties:
         address:
           description: Address
@@ -2156,30 +2278,13 @@ components:
         type:
           description: Transaction endpoint type
           type: string
-      type: object
     TransactionType:
-      enum:
-      - Unkown
-      - Deposit
-      - Withdraw
+      description: Transaction type
       type: string
       x-enum-varnames:
       - TransactionType_Unknown
       - TransactionType_Deposit
       - TransactionType_Withdraw
-    TransferDestination:
-      properties:
-        address:
-          allOf:
-          - $ref: '#/components/schemas/TransferDestinationAddress'
-          description: Address
-        type:
-          allOf:
-          - $ref: '#/components/schemas/TransferDestinationType'
-          description: Transfer destination type
-      required:
-      - type
-      type: object
     TransferDestinationAddress:
       properties:
         address:
@@ -2187,26 +2292,6 @@ components:
           type: string
       required:
       - address
-      type: object
-    TransferDestinationType:
-      enum:
-      - Address
-      type: string
-      x-enum-varnames:
-      - TransferDestinationType_Address
-    TransferSource:
-      properties:
-        address:
-          allOf:
-          - $ref: '#/components/schemas/TransferSourceAddress'
-          description: Address
-        type:
-          allOf:
-          - $ref: '#/components/schemas/TransferSourceType'
-          description: Transfer source type
-      required:
-      - type
-      type: object
     TransferSourceAddress:
       properties:
         address:
@@ -2218,13 +2303,6 @@ components:
       required:
       - address
       - wallet_id
-      type: object
-    TransferSourceType:
-      enum:
-      - Address
-      type: string
-      x-enum-varnames:
-      - TransferSourceType_Address
     UpdateEndpoint:
       example:
         uid: uid
@@ -2243,13 +2321,13 @@ components:
           items:
             type: string
           type: array
+          uniqueItems: false
         uid:
           type: string
         url:
           type: string
       required:
       - eventTypes
-      type: object
     UpdateTokenRequest:
       example:
         uid: uid
@@ -2265,7 +2343,6 @@ components:
         uid:
           description: Unique ID
           type: string
-      type: object
     UpdateWalletRequest:
       example:
         uid: uid
@@ -2277,7 +2354,6 @@ components:
         uid:
           description: Custom ID
           type: string
-      type: object
     Wallet:
       example:
         uid: uid
@@ -2305,13 +2381,8 @@ components:
       - id
       - name
       - uid
-      type: object
   securitySchemes:
     ApiKeyAuth:
-      in: header
-      name: X-Api-Key
-      type: apiKey
-    SignatureAuth:
       in: header
       name: X-Signature
       type: apiKey

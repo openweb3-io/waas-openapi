@@ -50,7 +50,7 @@
   describe('UpdateTokenRequest', function() {
     it('should create an instance of UpdateTokenRequest', function() {
       // uncomment below and update the code to test UpdateTokenRequest
-      //var instane = new WaaSOpenApiDocumentation.UpdateTokenRequest();
+      //var instance = new WaaSOpenApiDocumentation.UpdateTokenRequest();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.UpdateTokenRequest);
     });
 

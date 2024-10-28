@@ -50,7 +50,7 @@
   describe('CreateTokenRequest', function() {
     it('should create an instance of CreateTokenRequest', function() {
       // uncomment below and update the code to test CreateTokenRequest
-      //var instane = new WaaSOpenApiDocumentation.CreateTokenRequest();
+      //var instance = new WaaSOpenApiDocumentation.CreateTokenRequest();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CreateTokenRequest);
     });
 

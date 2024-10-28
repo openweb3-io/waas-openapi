@@ -1,13 +1,13 @@
-# \TransactionsApi
+# \TransactionsAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1TransactionsEstimateFee**](TransactionsApi.md#V1TransactionsEstimateFee) | **Post** /api/v1/transactions/estimate_fee | Estimate fee
-[**V1TransactionsList**](TransactionsApi.md#V1TransactionsList) | **Get** /api/v1/transactions | List transactions
-[**V1TransactionsRetrieve**](TransactionsApi.md#V1TransactionsRetrieve) | **Get** /api/v1/transactions/{transactionId} | Get transaction
-[**V1TransactionsTransfer**](TransactionsApi.md#V1TransactionsTransfer) | **Post** /api/v1/transactions/transfer | Transfer token
+[**V1TransactionsEstimateFee**](TransactionsAPI.md#V1TransactionsEstimateFee) | **Post** /api/v1/transactions/estimate_fee | Estimate fee
+[**V1TransactionsList**](TransactionsAPI.md#V1TransactionsList) | **Get** /api/v1/transactions | List transactions
+[**V1TransactionsRetrieve**](TransactionsAPI.md#V1TransactionsRetrieve) | **Get** /api/v1/transactions/{transactionId} | Get transaction
+[**V1TransactionsTransfer**](TransactionsAPI.md#V1TransactionsTransfer) | **Post** /api/v1/transactions/transfer | Transfer token
 
 
 
@@ -25,24 +25,24 @@ Estimate fee
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    estimateFeeRequest := *openapiclient.NewEstimateFeeRequest("Amount_example", *openapiclient.NewTransferDestination(openapiclient.TransferDestinationType("Address")), *openapiclient.NewTransferSource(openapiclient.TransferSourceType("Address")), "TokenId_example") // EstimateFeeRequest | Request Body
+	estimateFeeRequest := *openapiclient.NewEstimateFeeRequest("Amount_example", []int32{int32(123)}, []int32{int32(123)}, "TokenId_example") // EstimateFeeRequest | Request Body
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TransactionsApi.V1TransactionsEstimateFee(context.Background()).EstimateFeeRequest(estimateFeeRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransactionsApi.V1TransactionsEstimateFee``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TransactionsEstimateFee`: EstimateFeeResponse
-    fmt.Fprintf(os.Stdout, "Response from `TransactionsApi.V1TransactionsEstimateFee`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransactionsAPI.V1TransactionsEstimateFee(context.Background()).EstimateFeeRequest(estimateFeeRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.V1TransactionsEstimateFee``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TransactionsEstimateFee`: EstimateFeeResponse
+	fmt.Fprintf(os.Stdout, "Response from `TransactionsAPI.V1TransactionsEstimateFee`: %v\n", resp)
 }
 ```
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## V1TransactionsList
 
-> PageTransaction V1TransactionsList(ctx).AssetIds(assetIds).ChainIds(chainIds).Cursor(cursor).Hash(hash).Limit(limit).Status(status).TokenIds(tokenIds).WalletIds(walletIds).Execute()
+> CursorPageTransaction V1TransactionsList(ctx).WalletIds(walletIds).ChainIds(chainIds).TokenIds(tokenIds).AssetIds(assetIds).Hash(hash).Status(status).Cursor(cursor).Limit(limit).Execute()
 
 List transactions
 
@@ -91,31 +91,31 @@ List transactions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    assetIds := []string{"Inner_example"} // []string | The assetId involved in the transaction. (optional)
-    chainIds := []string{"Inner_example"} // []string | The blockchain network on which the transaction takes place. (optional)
-    cursor := "cursor_example" // string | A cursor value for pagination purposes. (optional)
-    hash := "hash_example" // string | The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
-    limit := int32(56) // int32 | The number of records to return default: 20 (optional)
-    status := "status_example" // string | The status of the transaction. (optional)
-    tokenIds := []string{"Inner_example"} // []string | The tokenId involved in the transaction. (optional)
-    walletIds := []string{"Inner_example"} // []string | Unique system generated identifier of the wallet (optional)
+	walletIds := []string{"Inner_example"} // []string | Unique system generated identifier of the wallet (optional)
+	chainIds := []string{"Inner_example"} // []string | The blockchain network on which the transaction takes place. (optional)
+	tokenIds := []string{"Inner_example"} // []string | The tokenId involved in the transaction. (optional)
+	assetIds := []string{"Inner_example"} // []string | The assetId involved in the transaction. (optional)
+	hash := "hash_example" // string | The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
+	status := "status_example" // string | The status of the transaction. (optional)
+	cursor := "cursor_example" // string | A cursor value for pagination purposes. (optional)
+	limit := int32(56) // int32 | The number of records to return default: 20 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TransactionsApi.V1TransactionsList(context.Background()).AssetIds(assetIds).ChainIds(chainIds).Cursor(cursor).Hash(hash).Limit(limit).Status(status).TokenIds(tokenIds).WalletIds(walletIds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransactionsApi.V1TransactionsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TransactionsList`: PageTransaction
-    fmt.Fprintf(os.Stdout, "Response from `TransactionsApi.V1TransactionsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransactionsAPI.V1TransactionsList(context.Background()).WalletIds(walletIds).ChainIds(chainIds).TokenIds(tokenIds).AssetIds(assetIds).Hash(hash).Status(status).Cursor(cursor).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.V1TransactionsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TransactionsList`: CursorPageTransaction
+	fmt.Fprintf(os.Stdout, "Response from `TransactionsAPI.V1TransactionsList`: %v\n", resp)
 }
 ```
 
@@ -130,22 +130,22 @@ Other parameters are passed through a pointer to a apiV1TransactionsListRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assetIds** | **[]string** | The assetId involved in the transaction. | 
- **chainIds** | **[]string** | The blockchain network on which the transaction takes place. | 
- **cursor** | **string** | A cursor value for pagination purposes. | 
- **hash** | **string** | The transaction hash, which uniquely identifies a transaction on the blockchain. | 
- **limit** | **int32** | The number of records to return default: 20 | 
- **status** | **string** | The status of the transaction. | 
- **tokenIds** | **[]string** | The tokenId involved in the transaction. | 
  **walletIds** | **[]string** | Unique system generated identifier of the wallet | 
+ **chainIds** | **[]string** | The blockchain network on which the transaction takes place. | 
+ **tokenIds** | **[]string** | The tokenId involved in the transaction. | 
+ **assetIds** | **[]string** | The assetId involved in the transaction. | 
+ **hash** | **string** | The transaction hash, which uniquely identifies a transaction on the blockchain. | 
+ **status** | **string** | The status of the transaction. | 
+ **cursor** | **string** | A cursor value for pagination purposes. | 
+ **limit** | **int32** | The number of records to return default: 20 | 
 
 ### Return type
 
-[**PageTransaction**](PageTransaction.md)
+[**CursorPageTransaction**](CursorPageTransaction.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -171,24 +171,24 @@ Get transaction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    transactionId := "transactionId_example" // string | Transaction ID
+	transactionId := "transactionId_example" // string | Transaction ID
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TransactionsApi.V1TransactionsRetrieve(context.Background(), transactionId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransactionsApi.V1TransactionsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TransactionsRetrieve`: Transaction
-    fmt.Fprintf(os.Stdout, "Response from `TransactionsApi.V1TransactionsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransactionsAPI.V1TransactionsRetrieve(context.Background(), transactionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.V1TransactionsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TransactionsRetrieve`: Transaction
+	fmt.Fprintf(os.Stdout, "Response from `TransactionsAPI.V1TransactionsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -241,24 +241,24 @@ Transfer token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    createTransferRequest := *openapiclient.NewCreateTransferRequest("Amount_example", *openapiclient.NewTransferDestination(openapiclient.TransferDestinationType("Address")), *openapiclient.NewTransferSource(openapiclient.TransferSourceType("Address")), "TokenId_example") // CreateTransferRequest | Request Body
+	createTransferRequest := *openapiclient.NewCreateTransferRequest("Amount_example", []int32{int32(123)}, []int32{int32(123)}, "TokenId_example") // CreateTransferRequest | Request Body
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TransactionsApi.V1TransactionsTransfer(context.Background()).CreateTransferRequest(createTransferRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransactionsApi.V1TransactionsTransfer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TransactionsTransfer`: CreateTransferResponse
-    fmt.Fprintf(os.Stdout, "Response from `TransactionsApi.V1TransactionsTransfer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransactionsAPI.V1TransactionsTransfer(context.Background()).CreateTransferRequest(createTransferRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.V1TransactionsTransfer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TransactionsTransfer`: CreateTransferResponse
+	fmt.Fprintf(os.Stdout, "Response from `TransactionsAPI.V1TransactionsTransfer`: %v\n", resp)
 }
 ```
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

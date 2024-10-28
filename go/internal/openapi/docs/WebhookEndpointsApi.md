@@ -1,14 +1,14 @@
-# \WebhookEndpointsApi
+# \WebhookEndpointsAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1WebhooksCreate**](WebhookEndpointsApi.md#V1WebhooksCreate) | **Post** /api/v1/webhooks/endpoints | Create webhook endpoint
-[**V1WebhooksDelete**](WebhookEndpointsApi.md#V1WebhooksDelete) | **Delete** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
-[**V1WebhooksList**](WebhookEndpointsApi.md#V1WebhooksList) | **Get** /api/v1/endpoints | List webhook endpoints
-[**V1WebhooksRetrieve**](WebhookEndpointsApi.md#V1WebhooksRetrieve) | **Get** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
-[**V1WebhooksUpdate**](WebhookEndpointsApi.md#V1WebhooksUpdate) | **Patch** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
+[**V1WebhooksCreate**](WebhookEndpointsAPI.md#V1WebhooksCreate) | **Post** /api/v1/webhooks/endpoints | Create webhook endpoint
+[**V1WebhooksDelete**](WebhookEndpointsAPI.md#V1WebhooksDelete) | **Delete** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
+[**V1WebhooksList**](WebhookEndpointsAPI.md#V1WebhooksList) | **Get** /api/v1/endpoints | List webhook endpoints
+[**V1WebhooksRetrieve**](WebhookEndpointsAPI.md#V1WebhooksRetrieve) | **Get** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
+[**V1WebhooksUpdate**](WebhookEndpointsAPI.md#V1WebhooksUpdate) | **Patch** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
 
 
 
@@ -26,24 +26,24 @@ Create webhook endpoint
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    createEndpoint := *openapiclient.NewCreateEndpoint([]string{"EventTypes_example"}, "Url_example") // CreateEndpoint | Request body
+	createEndpoint := *openapiclient.NewCreateEndpoint([]string{"EventTypes_example"}, "Url_example") // CreateEndpoint | Request body
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhookEndpointsApi.V1WebhooksCreate(context.Background()).CreateEndpoint(createEndpoint).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsApi.V1WebhooksCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WebhooksCreate`: Endpoint
-    fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsApi.V1WebhooksCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WebhookEndpointsAPI.V1WebhooksCreate(context.Background()).CreateEndpoint(createEndpoint).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.V1WebhooksCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WebhooksCreate`: Endpoint
+	fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsAPI.V1WebhooksCreate`: %v\n", resp)
 }
 ```
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## V1WebhooksDelete
 
-> Endpoint V1WebhooksDelete(ctx, endpointId).Execute()
+> Endpoint V1WebhooksDelete(ctx, endpointId).Body(body).Execute()
 
 Delete webhook endpoint
 
@@ -92,24 +92,25 @@ Delete webhook endpoint
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    endpointId := "endpointId_example" // string | Endpoint ID
+	endpointId := "endpointId_example" // string | Endpoint ID
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhookEndpointsApi.V1WebhooksDelete(context.Background(), endpointId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsApi.V1WebhooksDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WebhooksDelete`: Endpoint
-    fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsApi.V1WebhooksDelete`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WebhookEndpointsAPI.V1WebhooksDelete(context.Background(), endpointId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.V1WebhooksDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WebhooksDelete`: Endpoint
+	fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsAPI.V1WebhooksDelete`: %v\n", resp)
 }
 ```
 
@@ -129,6 +130,7 @@ Other parameters are passed through a pointer to a apiV1WebhooksDeleteRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
@@ -136,11 +138,11 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -162,25 +164,25 @@ List webhook endpoints
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    cursor := "cursor_example" // string |  (optional)
-    limit := int32(56) // int32 | The number of records to return default: 20 (optional)
+	cursor := "cursor_example" // string |  (optional)
+	limit := int32(56) // int32 | The number of records to return default: 20 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhookEndpointsApi.V1WebhooksList(context.Background()).Cursor(cursor).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsApi.V1WebhooksList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WebhooksList`: CursorPageEndpoint
-    fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsApi.V1WebhooksList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WebhookEndpointsAPI.V1WebhooksList(context.Background()).Cursor(cursor).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.V1WebhooksList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WebhooksList`: CursorPageEndpoint
+	fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsAPI.V1WebhooksList`: %v\n", resp)
 }
 ```
 
@@ -204,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -230,24 +232,24 @@ Get webhook endpoint
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    endpointId := "endpointId_example" // string | Endpoint ID
+	endpointId := "endpointId_example" // string | Endpoint ID
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhookEndpointsApi.V1WebhooksRetrieve(context.Background(), endpointId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsApi.V1WebhooksRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WebhooksRetrieve`: Endpoint
-    fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsApi.V1WebhooksRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WebhookEndpointsAPI.V1WebhooksRetrieve(context.Background(), endpointId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.V1WebhooksRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WebhooksRetrieve`: Endpoint
+	fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsAPI.V1WebhooksRetrieve`: %v\n", resp)
 }
 ```
 
@@ -274,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -300,25 +302,25 @@ Update webhook endpoint
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    endpointId := "endpointId_example" // string | Endpoint ID
-    updateEndpoint := *openapiclient.NewUpdateEndpoint([]string{"EventTypes_example"}) // UpdateEndpoint | Request body
+	endpointId := "endpointId_example" // string | Endpoint ID
+	updateEndpoint := *openapiclient.NewUpdateEndpoint([]string{"EventTypes_example"}) // UpdateEndpoint | Request body
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.WebhookEndpointsApi.V1WebhooksUpdate(context.Background(), endpointId).UpdateEndpoint(updateEndpoint).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsApi.V1WebhooksUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1WebhooksUpdate`: Endpoint
-    fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsApi.V1WebhooksUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.WebhookEndpointsAPI.V1WebhooksUpdate(context.Background(), endpointId).UpdateEndpoint(updateEndpoint).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.V1WebhooksUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1WebhooksUpdate`: Endpoint
+	fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsAPI.V1WebhooksUpdate`: %v\n", resp)
 }
 ```
 
@@ -346,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

@@ -16,17 +16,19 @@ type Address struct {
 }
 
 type ListAddressOptions struct {
-	Cursor string
+	Cursor *string
 	Limit  int
 }
 
 func (e *Address) List(ctx context.Context, options *ListAddressOptions) (*CursorPageAddressOut, error) {
-	req := e.api.AddressesApi.V1AddressesList(ctx)
-	req = req.Cursor(options.Cursor)
+	req := e.api.AddressesAPI.V1AddressesList(ctx)
+	if options.Cursor != nil {
+		req = req.Cursor(*options.Cursor)
+	}
 	req = req.Limit(int32(options.Limit))
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
-	return &out, nil
+	return out, nil
 }

@@ -61,8 +61,30 @@ class Error {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>Error</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Error</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of Error.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['msg'] && !(typeof data['msg'] === 'string' || data['msg'] instanceof String)) {
+            throw new Error("Expected the field `msg` to be a primitive type in the JSON string but got " + data['msg']);
+        }
+
+        return true;
+    }
+
 
 }
+
+Error.RequiredProperties = ["code", "msg"];
 
 /**
  * error code

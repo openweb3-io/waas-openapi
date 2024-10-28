@@ -77,8 +77,58 @@ class Address {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>Address</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Address</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of Address.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
+            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
+        }
+        // ensure the json data is a string
+        if (data['chain'] && !(typeof data['chain'] === 'string' || data['chain'] instanceof String)) {
+            throw new Error("Expected the field `chain` to be a primitive type in the JSON string but got " + data['chain']);
+        }
+        // ensure the json data is a string
+        if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
+            throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
+        }
+        // ensure the json data is a string
+        if (data['created_at'] && !(typeof data['created_at'] === 'string' || data['created_at'] instanceof String)) {
+            throw new Error("Expected the field `created_at` to be a primitive type in the JSON string but got " + data['created_at']);
+        }
+        // ensure the json data is a string
+        if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
+            throw new Error("Expected the field `memo` to be a primitive type in the JSON string but got " + data['memo']);
+        }
+        // ensure the json data is a string
+        if (data['path'] && !(typeof data['path'] === 'string' || data['path'] instanceof String)) {
+            throw new Error("Expected the field `path` to be a primitive type in the JSON string but got " + data['path']);
+        }
+        // ensure the json data is a string
+        if (data['updated_at'] && !(typeof data['updated_at'] === 'string' || data['updated_at'] instanceof String)) {
+            throw new Error("Expected the field `updated_at` to be a primitive type in the JSON string but got " + data['updated_at']);
+        }
+        // ensure the json data is a string
+        if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
+            throw new Error("Expected the field `wallet_id` to be a primitive type in the JSON string but got " + data['wallet_id']);
+        }
+
+        return true;
+    }
+
 
 }
+
+Address.RequiredProperties = ["address"];
 
 /**
  * Blockchain address

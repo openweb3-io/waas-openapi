@@ -50,7 +50,7 @@
   describe('TransferDestinationAddress', function() {
     it('should create an instance of TransferDestinationAddress', function() {
       // uncomment below and update the code to test TransferDestinationAddress
-      //var instane = new WaaSOpenApiDocumentation.TransferDestinationAddress();
+      //var instance = new WaaSOpenApiDocumentation.TransferDestinationAddress();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.TransferDestinationAddress);
     });
 

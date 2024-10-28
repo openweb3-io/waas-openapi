@@ -2,7 +2,9 @@ package waas
 
 import (
 	"bytes"
+	"encoding/hex"
 	"fmt"
+	"github.com/openweb3-io/waas-openapi/go/internal/signature"
 	"io"
 	"log"
 	"net/http"
@@ -65,12 +67,19 @@ func New(options *ApiClientOptions) *ApiClient {
 		}
 		dataToBeSignature = dataToBeSignature + req.URL.RequestURI() + requestTime
 
-		signature, err := genSign([]byte(dataToBeSignature), []byte(options.Secret))
+		signer := signature.Get(signature.SigningMethodEd25519)
+		privateKeyBytes, err := hex.DecodeString(options.Secret)
+		if err != nil {
+			log.Printf("Error private key format: %v", err)
+		}
+
+		signBytes, err := signer.Sign(privateKeyBytes, []byte(dataToBeSignature))
 		if err != nil {
 			log.Printf("Error generating signature: %v", err)
 		}
+		signData := hex.EncodeToString(signBytes)
 
-		req.Header.Set("X-Signature", signature)
+		req.Header.Set("X-Signature", signData)
 	}
 
 	if options != nil {

@@ -49,10 +49,10 @@ export default class AddressesApi {
      * List all addresses
      * List of all available addresses.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.chainIds The chain ids.
-     * @param {String} opts.cursor The cursor to use for pagination.
-     * @param {Number} opts.limit The number of records to return default: 20
-     * @param {Array.<String>} opts.walletIds Unique system generated identifier of the wallet
+     * @param {Array.<String>} [walletIds] Unique system generated identifier of the wallet
+     * @param {Array.<String>} [chainIds] The chain ids.
+     * @param {String} [cursor] The cursor to use for pagination.
+     * @param {Number} [limit] The number of records to return default: 20
      * @param {module:api/AddressesApi~v1AddressesListCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageAddress}
      */
@@ -63,17 +63,17 @@ export default class AddressesApi {
       let pathParams = {
       };
       let queryParams = {
-        'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'csv'),
+        'wallet_ids': this.apiClient.buildCollectionParam(opts['walletIds'], 'multi'),
+        'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'multi'),
         'cursor': opts['cursor'],
-        'limit': opts['limit'],
-        'wallet_ids': this.apiClient.buildCollectionParam(opts['walletIds'], 'csv')
+        'limit': opts['limit']
       };
       let headerParams = {
       };
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = CursorPageAddress;
@@ -121,7 +121,7 @@ export default class AddressesApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Address;
@@ -170,7 +170,7 @@ export default class AddressesApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = Address;
@@ -194,9 +194,9 @@ export default class AddressesApi {
      * List addresses in wallet
      * @param {String} walletId Wallet ID
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.chainIds chain ids
-     * @param {String} opts.cursor Cursor
-     * @param {Number} opts.limit Limit, default is 20
+     * @param {String} [cursor] Cursor
+     * @param {Number} [limit] Limit, default is 20
+     * @param {Array.<String>} [chainIds] chain ids
      * @param {module:api/AddressesApi~v1WalletsListAddressesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageAddress}
      */
@@ -212,16 +212,16 @@ export default class AddressesApi {
         'walletId': walletId
       };
       let queryParams = {
-        'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'csv'),
         'cursor': opts['cursor'],
-        'limit': opts['limit']
+        'limit': opts['limit'],
+        'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'multi')
       };
       let headerParams = {
       };
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = CursorPageAddress;

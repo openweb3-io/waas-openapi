@@ -2,7 +2,8 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Build date: 2024-10-26T22:02:49.883062+08:00[Asia/Shanghai]
+  - Build date: 2024-10-29T01:35:38.261544+08:00[Asia/Shanghai]
+  - Generator version: 7.9.0
 
 This is a WaaS OpenAPI Server.
 
@@ -14,7 +15,7 @@ This is a WaaS OpenAPI Server.
 
 Building the API client library requires:
 1. Java 1.8+
-2. Maven/Gradle
+2. Maven (3.8.3+)/Gradle (7.2+)
 
 ## Installation
 
@@ -50,7 +51,14 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "org.openapitools:openapi-java-client:1.0"
+  repositories {
+    mavenCentral()     // Needed if the 'openapi-java-client' jar has been published to maven central.
+    mavenLocal()       // Needed if the 'openapi-java-client' jar has been published to the local maven repo.
+  }
+
+  dependencies {
+     implementation "org.openapitools:openapi-java-client:1.0"
+  }
 ```
 
 ### Others
@@ -77,7 +85,7 @@ import io.openweb3.waas.internal.ApiClient;
 import io.openweb3.waas.internal.ApiException;
 import io.openweb3.waas.internal.Configuration;
 import io.openweb3.waas.internal.auth.*;
-import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.models.*;
 import io.openweb3.waas.internal.api.AddressesApi;
 
 public class Example {
@@ -91,19 +99,13 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     AddressesApi apiInstance = new AddressesApi(defaultClient);
+    List<String> walletIds = Arrays.asList(); // List<String> | Unique system generated identifier of the wallet
     List<String> chainIds = Arrays.asList(); // List<String> | The chain ids.
     String cursor = "cursor_example"; // String | The cursor to use for pagination.
     Integer limit = 56; // Integer | The number of records to return default: 20
-    List<String> walletIds = Arrays.asList(); // List<String> | Unique system generated identifier of the wallet
     try {
-      CursorPageAddress result = apiInstance.v1AddressesList(chainIds, cursor, limit, walletIds);
+      CursorPageAddress result = apiInstance.v1AddressesList(walletIds, chainIds, cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressesApi#v1AddressesList");
@@ -163,40 +165,31 @@ Class | Method | HTTP request | Description
  - [CursorPageChain](docs/CursorPageChain.md)
  - [CursorPageEndpoint](docs/CursorPageEndpoint.md)
  - [CursorPageToken](docs/CursorPageToken.md)
+ - [CursorPageTransaction](docs/CursorPageTransaction.md)
  - [CursorPageWallet](docs/CursorPageWallet.md)
  - [Endpoint](docs/Endpoint.md)
  - [Error](docs/Error.md)
  - [EstimateFeeRequest](docs/EstimateFeeRequest.md)
  - [EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [Fee](docs/Fee.md)
- - [FeeType](docs/FeeType.md)
- - [PageTransaction](docs/PageTransaction.md)
  - [Token](docs/Token.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionEndpoint](docs/TransactionEndpoint.md)
- - [TransactionType](docs/TransactionType.md)
- - [TransferDestination](docs/TransferDestination.md)
  - [TransferDestinationAddress](docs/TransferDestinationAddress.md)
- - [TransferDestinationType](docs/TransferDestinationType.md)
- - [TransferSource](docs/TransferSource.md)
  - [TransferSourceAddress](docs/TransferSourceAddress.md)
- - [TransferSourceType](docs/TransferSourceType.md)
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)
  - [Wallet](docs/Wallet.md)
 
 
+<a id="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
+
 Authentication schemes defined for the API:
+<a id="ApiKeyAuth"></a>
 ### ApiKeyAuth
-
-- **Type**: API key
-- **API key parameter name**: X-Api-Key
-- **Location**: HTTP header
-
-### SignatureAuth
 
 - **Type**: API key
 - **API key parameter name**: X-Signature

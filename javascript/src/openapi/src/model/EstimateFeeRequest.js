@@ -12,8 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import TransferDestination from './TransferDestination';
-import TransferSource from './TransferSource';
 
 /**
  * The EstimateFeeRequest model module.
@@ -25,8 +23,8 @@ class EstimateFeeRequest {
      * Constructs a new <code>EstimateFeeRequest</code>.
      * @alias module:model/EstimateFeeRequest
      * @param amount {String} Amount
-     * @param destination {module:model/TransferDestination} The ID of the wallet to which the transfer will be made
-     * @param source {module:model/TransferSource} The ID of the wallet from which the transfer will be made
+     * @param destination {Array.<Number>} The ID of the wallet to which the transfer will be made
+     * @param source {Array.<Number>} The ID of the wallet from which the transfer will be made
      * @param tokenId {String} Token ID
      */
     constructor(amount, destination, source, tokenId) { 
@@ -61,7 +59,7 @@ class EstimateFeeRequest {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = ApiClient.convertToType(data['destination'], TransferDestination);
+                obj['destination'] = ApiClient.convertToType(data['destination'], ['Number']);
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = ApiClient.convertToType(data['extra'], 'String');
@@ -70,7 +68,7 @@ class EstimateFeeRequest {
                 obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
             }
             if (data.hasOwnProperty('source')) {
-                obj['source'] = ApiClient.convertToType(data['source'], TransferSource);
+                obj['source'] = ApiClient.convertToType(data['source'], ['Number']);
             }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -79,8 +77,50 @@ class EstimateFeeRequest {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>EstimateFeeRequest</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>EstimateFeeRequest</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of EstimateFeeRequest.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['destination'])) {
+            throw new Error("Expected the field `destination` to be an array in the JSON data but got " + data['destination']);
+        }
+        // ensure the json data is a string
+        if (data['extra'] && !(typeof data['extra'] === 'string' || data['extra'] instanceof String)) {
+            throw new Error("Expected the field `extra` to be a primitive type in the JSON string but got " + data['extra']);
+        }
+        // ensure the json data is a string
+        if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
+            throw new Error("Expected the field `memo` to be a primitive type in the JSON string but got " + data['memo']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['source'])) {
+            throw new Error("Expected the field `source` to be an array in the JSON data but got " + data['source']);
+        }
+        // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+
+        return true;
+    }
+
 
 }
+
+EstimateFeeRequest.RequiredProperties = ["amount", "destination", "source", "token_id"];
 
 /**
  * Amount
@@ -90,7 +130,7 @@ EstimateFeeRequest.prototype['amount'] = undefined;
 
 /**
  * The ID of the wallet to which the transfer will be made
- * @member {module:model/TransferDestination} destination
+ * @member {Array.<Number>} destination
  */
 EstimateFeeRequest.prototype['destination'] = undefined;
 
@@ -108,7 +148,7 @@ EstimateFeeRequest.prototype['memo'] = undefined;
 
 /**
  * The ID of the wallet from which the transfer will be made
- * @member {module:model/TransferSource} source
+ * @member {Array.<Number>} source
  */
 EstimateFeeRequest.prototype['source'] = undefined;
 

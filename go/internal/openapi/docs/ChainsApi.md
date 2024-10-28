@@ -1,11 +1,11 @@
-# \ChainsApi
+# \ChainsAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ChainsList**](ChainsApi.md#V1ChainsList) | **Get** /api/v1/chains | List all chains
-[**V1ChainsRetrieve**](ChainsApi.md#V1ChainsRetrieve) | **Get** /api/v1/chains/{chainId} | Retrieve chain
+[**V1ChainsList**](ChainsAPI.md#V1ChainsList) | **Get** /api/v1/chains | List all chains
+[**V1ChainsRetrieve**](ChainsAPI.md#V1ChainsRetrieve) | **Get** /api/v1/chains/{chainId} | Retrieve chain
 
 
 
@@ -23,25 +23,25 @@ List all chains
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    cursor := "cursor_example" // string | Cursor (optional)
-    limit := int32(56) // int32 | The number of records to return default: 20 (optional)
+	cursor := "cursor_example" // string | Cursor (optional)
+	limit := int32(56) // int32 | The number of records to return default: 20 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ChainsApi.V1ChainsList(context.Background()).Cursor(cursor).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ChainsApi.V1ChainsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ChainsList`: CursorPageChain
-    fmt.Fprintf(os.Stdout, "Response from `ChainsApi.V1ChainsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ChainsAPI.V1ChainsList(context.Background()).Cursor(cursor).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ChainsAPI.V1ChainsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ChainsList`: CursorPageChain
+	fmt.Fprintf(os.Stdout, "Response from `ChainsAPI.V1ChainsList`: %v\n", resp)
 }
 ```
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -91,24 +91,24 @@ Retrieve chain
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    chainId := "chainId_example" // string | Chain ID
+	chainId := "chainId_example" // string | Chain ID
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ChainsApi.V1ChainsRetrieve(context.Background(), chainId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ChainsApi.V1ChainsRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ChainsRetrieve`: Chain
-    fmt.Fprintf(os.Stdout, "Response from `ChainsApi.V1ChainsRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ChainsAPI.V1ChainsRetrieve(context.Background(), chainId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ChainsAPI.V1ChainsRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ChainsRetrieve`: Chain
+	fmt.Fprintf(os.Stdout, "Response from `ChainsAPI.V1ChainsRetrieve`: %v\n", resp)
 }
 ```
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

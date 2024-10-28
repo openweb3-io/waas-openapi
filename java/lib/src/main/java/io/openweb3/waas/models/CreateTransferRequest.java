@@ -14,23 +14,44 @@
 package io.openweb3.waas.models;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.openweb3.waas.models.Fee;
-import io.openweb3.waas.models.TransferDestination;
-import io.openweb3.waas.models.TransferSource;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import io.openweb3.waas.internal.JSON;
 
 /**
  * CreateTransferRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-26T22:02:49.883062+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T01:35:38.261544+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
 public class CreateTransferRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -38,7 +59,7 @@ public class CreateTransferRequest {
 
   public static final String SERIALIZED_NAME_DESTINATION = "destination";
   @SerializedName(SERIALIZED_NAME_DESTINATION)
-  private TransferDestination destination;
+  private List<Integer> destination = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_EXTRA = "extra";
   @SerializedName(SERIALIZED_NAME_EXTRA)
@@ -54,74 +75,74 @@ public class CreateTransferRequest {
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
-  private TransferSource source;
+  private List<Integer> source = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
 
+  public CreateTransferRequest() {
+  }
 
   public CreateTransferRequest amount(String amount) {
-    
     this.amount = amount;
     return this;
   }
 
-   /**
+  /**
    * The amount to be transferred
    * @return amount
-  **/
-  @ApiModelProperty(required = true, value = "The amount to be transferred")
-
+   */
+  @javax.annotation.Nonnull
   public String getAmount() {
     return amount;
   }
-
 
   public void setAmount(String amount) {
     this.amount = amount;
   }
 
 
-  public CreateTransferRequest destination(TransferDestination destination) {
-    
+  public CreateTransferRequest destination(List<Integer> destination) {
     this.destination = destination;
     return this;
   }
 
-   /**
+  public CreateTransferRequest addDestinationItem(Integer destinationItem) {
+    if (this.destination == null) {
+      this.destination = new ArrayList<>();
+    }
+    this.destination.add(destinationItem);
+    return this;
+  }
+
+  /**
    * The ID of the wallet to which the transfer will be made
    * @return destination
-  **/
-  @ApiModelProperty(required = true, value = "The ID of the wallet to which the transfer will be made")
-
-  public TransferDestination getDestination() {
+   */
+  @javax.annotation.Nonnull
+  public List<Integer> getDestination() {
     return destination;
   }
 
-
-  public void setDestination(TransferDestination destination) {
+  public void setDestination(List<Integer> destination) {
     this.destination = destination;
   }
 
 
   public CreateTransferRequest extra(String extra) {
-    
     this.extra = extra;
     return this;
   }
 
-   /**
+  /**
    * Extra
    * @return extra
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Extra")
-
   public String getExtra() {
     return extra;
   }
-
 
   public void setExtra(String extra) {
     this.extra = extra;
@@ -129,22 +150,18 @@ public class CreateTransferRequest {
 
 
   public CreateTransferRequest fee(Fee fee) {
-    
     this.fee = fee;
     return this;
   }
 
-   /**
-   * Fee
+  /**
+   * Get fee
    * @return fee
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Fee")
-
   public Fee getFee() {
     return fee;
   }
-
 
   public void setFee(Fee fee) {
     this.fee = fee;
@@ -152,70 +169,69 @@ public class CreateTransferRequest {
 
 
   public CreateTransferRequest memo(String memo) {
-    
     this.memo = memo;
     return this;
   }
 
-   /**
+  /**
    * Memo
    * @return memo
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Memo")
-
   public String getMemo() {
     return memo;
   }
-
 
   public void setMemo(String memo) {
     this.memo = memo;
   }
 
 
-  public CreateTransferRequest source(TransferSource source) {
-    
+  public CreateTransferRequest source(List<Integer> source) {
     this.source = source;
     return this;
   }
 
-   /**
+  public CreateTransferRequest addSourceItem(Integer sourceItem) {
+    if (this.source == null) {
+      this.source = new ArrayList<>();
+    }
+    this.source.add(sourceItem);
+    return this;
+  }
+
+  /**
    * The ID of the wallet from which the transfer will be made
    * @return source
-  **/
-  @ApiModelProperty(required = true, value = "The ID of the wallet from which the transfer will be made")
-
-  public TransferSource getSource() {
+   */
+  @javax.annotation.Nonnull
+  public List<Integer> getSource() {
     return source;
   }
 
-
-  public void setSource(TransferSource source) {
+  public void setSource(List<Integer> source) {
     this.source = source;
   }
 
 
   public CreateTransferRequest tokenId(String tokenId) {
-    
     this.tokenId = tokenId;
     return this;
   }
 
-   /**
+  /**
    * The tokenId to be transferred
    * @return tokenId
-  **/
-  @ApiModelProperty(required = true, value = "The tokenId to be transferred")
-
+   */
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
 
-
   public void setTokenId(String tokenId) {
     this.tokenId = tokenId;
   }
+
 
 
   @Override
@@ -267,5 +283,134 @@ public class CreateTransferRequest {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("amount");
+    openapiFields.add("destination");
+    openapiFields.add("extra");
+    openapiFields.add("fee");
+    openapiFields.add("memo");
+    openapiFields.add("source");
+    openapiFields.add("token_id");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("amount");
+    openapiRequiredFields.add("destination");
+    openapiRequiredFields.add("source");
+    openapiRequiredFields.add("token_id");
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to CreateTransferRequest
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!CreateTransferRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CreateTransferRequest is not found in the empty JSON string", CreateTransferRequest.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!CreateTransferRequest.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CreateTransferRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : CreateTransferRequest.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("amount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("destination") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("destination").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `destination` to be an array in the JSON string but got `%s`", jsonObj.get("destination").toString()));
+      }
+      if ((jsonObj.get("extra") != null && !jsonObj.get("extra").isJsonNull()) && !jsonObj.get("extra").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `extra` to be a primitive type in the JSON string but got `%s`", jsonObj.get("extra").toString()));
+      }
+      // validate the optional field `fee`
+      if (jsonObj.get("fee") != null && !jsonObj.get("fee").isJsonNull()) {
+        Fee.validateJsonElement(jsonObj.get("fee"));
+      }
+      if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("source") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("source").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source` to be an array in the JSON string but got `%s`", jsonObj.get("source").toString()));
+      }
+      if (!jsonObj.get("token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!CreateTransferRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CreateTransferRequest' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<CreateTransferRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CreateTransferRequest.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<CreateTransferRequest>() {
+           @Override
+           public void write(JsonWriter out, CreateTransferRequest value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public CreateTransferRequest read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+  /**
+   * Create an instance of CreateTransferRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of CreateTransferRequest
+   * @throws IOException if the JSON string is invalid with respect to CreateTransferRequest
+   */
+  public static CreateTransferRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CreateTransferRequest.class);
+  }
+
+  /**
+   * Convert an instance of CreateTransferRequest to an JSON string
+   *
+   * @return JSON string
+   */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

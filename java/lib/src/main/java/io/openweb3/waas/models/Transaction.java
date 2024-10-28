@@ -14,7 +14,6 @@
 package io.openweb3.waas.models;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,18 +21,38 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.openweb3.waas.models.Fee;
 import io.openweb3.waas.models.TransactionEndpoint;
-import io.openweb3.waas.models.TransactionType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import io.openweb3.waas.internal.JSON;
 
 /**
  * Transaction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-26T22:02:49.883062+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T01:35:38.261544+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
 public class Transaction {
   public static final String SERIALIZED_NAME_ASSET_ID = "assetId";
   @SerializedName(SERIALIZED_NAME_ASSET_ID)
@@ -65,7 +84,7 @@ public class Transaction {
 
   public static final String SERIALIZED_NAME_EXTRA = "extra";
   @SerializedName(SERIALIZED_NAME_EXTRA)
-  private Map<String, Object> extra = null;
+  private Map<String, Object> extra = new HashMap<>();
 
   public static final String SERIALIZED_NAME_FAILED_REASON = "failedReason";
   @SerializedName(SERIALIZED_NAME_FAILED_REASON)
@@ -101,7 +120,7 @@ public class Transaction {
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TransactionType type;
+  private String type;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -111,24 +130,22 @@ public class Transaction {
   @SerializedName(SERIALIZED_NAME_WALLET_ID)
   private String walletId;
 
+  public Transaction() {
+  }
 
   public Transaction assetId(String assetId) {
-    
     this.assetId = assetId;
     return this;
   }
 
-   /**
+  /**
    * Asset ID
    * @return assetId
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Asset ID")
-
   public String getAssetId() {
     return assetId;
   }
-
 
   public void setAssetId(String assetId) {
     this.assetId = assetId;
@@ -136,22 +153,18 @@ public class Transaction {
 
 
   public Transaction chain(String chain) {
-    
     this.chain = chain;
     return this;
   }
 
-   /**
+  /**
    * Chain
    * @return chain
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Chain")
-
   public String getChain() {
     return chain;
   }
-
 
   public void setChain(String chain) {
     this.chain = chain;
@@ -159,22 +172,18 @@ public class Transaction {
 
 
   public Transaction chainId(String chainId) {
-    
     this.chainId = chainId;
     return this;
   }
 
-   /**
+  /**
    * Chain ID
    * @return chainId
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Chain ID")
-
   public String getChainId() {
     return chainId;
   }
-
 
   public void setChainId(String chainId) {
     this.chainId = chainId;
@@ -182,22 +191,18 @@ public class Transaction {
 
 
   public Transaction confirmedNum(Integer confirmedNum) {
-    
     this.confirmedNum = confirmedNum;
     return this;
   }
 
-   /**
+  /**
    * Confirmed number
    * @return confirmedNum
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Confirmed number")
-
   public Integer getConfirmedNum() {
     return confirmedNum;
   }
-
 
   public void setConfirmedNum(Integer confirmedNum) {
     this.confirmedNum = confirmedNum;
@@ -205,22 +210,18 @@ public class Transaction {
 
 
   public Transaction createdAt(String createdAt) {
-    
     this.createdAt = createdAt;
     return this;
   }
 
-   /**
+  /**
    * Created time
    * @return createdAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Created time")
-
   public String getCreatedAt() {
     return createdAt;
   }
-
 
   public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
@@ -228,22 +229,18 @@ public class Transaction {
 
 
   public Transaction description(String description) {
-    
     this.description = description;
     return this;
   }
 
-   /**
+  /**
    * Description
    * @return description
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Description")
-
   public String getDescription() {
     return description;
   }
-
 
   public void setDescription(String description) {
     this.description = description;
@@ -251,22 +248,18 @@ public class Transaction {
 
 
   public Transaction destination(TransactionEndpoint destination) {
-    
     this.destination = destination;
     return this;
   }
 
-   /**
-   * Destination
+  /**
+   * Get destination
    * @return destination
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Destination")
-
   public TransactionEndpoint getDestination() {
     return destination;
   }
-
 
   public void setDestination(TransactionEndpoint destination) {
     this.destination = destination;
@@ -274,7 +267,6 @@ public class Transaction {
 
 
   public Transaction extra(Map<String, Object> extra) {
-    
     this.extra = extra;
     return this;
   }
@@ -287,17 +279,14 @@ public class Transaction {
     return this;
   }
 
-   /**
+  /**
    * Extra
    * @return extra
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Extra")
-
   public Map<String, Object> getExtra() {
     return extra;
   }
-
 
   public void setExtra(Map<String, Object> extra) {
     this.extra = extra;
@@ -305,22 +294,18 @@ public class Transaction {
 
 
   public Transaction failedReason(String failedReason) {
-    
     this.failedReason = failedReason;
     return this;
   }
 
-   /**
+  /**
    * Failed reason
    * @return failedReason
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Failed reason")
-
   public String getFailedReason() {
     return failedReason;
   }
-
 
   public void setFailedReason(String failedReason) {
     this.failedReason = failedReason;
@@ -328,22 +313,18 @@ public class Transaction {
 
 
   public Transaction fee(Fee fee) {
-    
     this.fee = fee;
     return this;
   }
 
-   /**
-   * Fee
+  /**
+   * Get fee
    * @return fee
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Fee")
-
   public Fee getFee() {
     return fee;
   }
-
 
   public void setFee(Fee fee) {
     this.fee = fee;
@@ -351,22 +332,18 @@ public class Transaction {
 
 
   public Transaction hash(String hash) {
-    
     this.hash = hash;
     return this;
   }
 
-   /**
+  /**
    * Transaction hash
    * @return hash
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Transaction hash")
-
   public String getHash() {
     return hash;
   }
-
 
   public void setHash(String hash) {
     this.hash = hash;
@@ -374,22 +351,18 @@ public class Transaction {
 
 
   public Transaction id(String id) {
-    
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Transaction ID
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Transaction ID")
-
   public String getId() {
     return id;
   }
-
 
   public void setId(String id) {
     this.id = id;
@@ -397,22 +370,18 @@ public class Transaction {
 
 
   public Transaction signature(String signature) {
-    
     this.signature = signature;
     return this;
   }
 
-   /**
+  /**
    * Signature
    * @return signature
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Signature")
-
   public String getSignature() {
     return signature;
   }
-
 
   public void setSignature(String signature) {
     this.signature = signature;
@@ -420,22 +389,18 @@ public class Transaction {
 
 
   public Transaction source(TransactionEndpoint source) {
-    
     this.source = source;
     return this;
   }
 
-   /**
-   * Source
+  /**
+   * Get source
    * @return source
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Source")
-
   public TransactionEndpoint getSource() {
     return source;
   }
-
 
   public void setSource(TransactionEndpoint source) {
     this.source = source;
@@ -443,22 +408,18 @@ public class Transaction {
 
 
   public Transaction status(String status) {
-    
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Transaction status
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Transaction status")
-
   public String getStatus() {
     return status;
   }
-
 
   public void setStatus(String status) {
     this.status = status;
@@ -466,68 +427,56 @@ public class Transaction {
 
 
   public Transaction tokenId(String tokenId) {
-    
     this.tokenId = tokenId;
     return this;
   }
 
-   /**
+  /**
    * Token ID
    * @return tokenId
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Token ID")
-
   public String getTokenId() {
     return tokenId;
   }
-
 
   public void setTokenId(String tokenId) {
     this.tokenId = tokenId;
   }
 
 
-  public Transaction type(TransactionType type) {
-    
+  public Transaction type(String type) {
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Transaction type
    * @return type
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Transaction type")
-
-  public TransactionType getType() {
+  public String getType() {
     return type;
   }
 
-
-  public void setType(TransactionType type) {
+  public void setType(String type) {
     this.type = type;
   }
 
 
   public Transaction updatedAt(String updatedAt) {
-    
     this.updatedAt = updatedAt;
     return this;
   }
 
-   /**
+  /**
    * Updated time
    * @return updatedAt
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Updated time")
-
   public String getUpdatedAt() {
     return updatedAt;
   }
-
 
   public void setUpdatedAt(String updatedAt) {
     this.updatedAt = updatedAt;
@@ -535,26 +484,23 @@ public class Transaction {
 
 
   public Transaction walletId(String walletId) {
-    
     this.walletId = walletId;
     return this;
   }
 
-   /**
+  /**
    * Wallet ID
    * @return walletId
-  **/
+   */
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Wallet ID")
-
   public String getWalletId() {
     return walletId;
   }
 
-
   public void setWalletId(String walletId) {
     this.walletId = walletId;
   }
+
 
 
   @Override
@@ -630,5 +576,161 @@ public class Transaction {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("assetId");
+    openapiFields.add("chain");
+    openapiFields.add("chainId");
+    openapiFields.add("confirmedNum");
+    openapiFields.add("createdAt");
+    openapiFields.add("description");
+    openapiFields.add("destination");
+    openapiFields.add("extra");
+    openapiFields.add("failedReason");
+    openapiFields.add("fee");
+    openapiFields.add("hash");
+    openapiFields.add("id");
+    openapiFields.add("signature");
+    openapiFields.add("source");
+    openapiFields.add("status");
+    openapiFields.add("tokenId");
+    openapiFields.add("type");
+    openapiFields.add("updatedAt");
+    openapiFields.add("walletId");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Transaction
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Transaction.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Transaction is not found in the empty JSON string", Transaction.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!Transaction.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Transaction` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("assetId") != null && !jsonObj.get("assetId").isJsonNull()) && !jsonObj.get("assetId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `assetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assetId").toString()));
+      }
+      if ((jsonObj.get("chain") != null && !jsonObj.get("chain").isJsonNull()) && !jsonObj.get("chain").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `chain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain").toString()));
+      }
+      if ((jsonObj.get("chainId") != null && !jsonObj.get("chainId").isJsonNull()) && !jsonObj.get("chainId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `chainId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chainId").toString()));
+      }
+      if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      // validate the optional field `destination`
+      if (jsonObj.get("destination") != null && !jsonObj.get("destination").isJsonNull()) {
+        TransactionEndpoint.validateJsonElement(jsonObj.get("destination"));
+      }
+      if ((jsonObj.get("failedReason") != null && !jsonObj.get("failedReason").isJsonNull()) && !jsonObj.get("failedReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `failedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("failedReason").toString()));
+      }
+      // validate the optional field `fee`
+      if (jsonObj.get("fee") != null && !jsonObj.get("fee").isJsonNull()) {
+        Fee.validateJsonElement(jsonObj.get("fee"));
+      }
+      if ((jsonObj.get("hash") != null && !jsonObj.get("hash").isJsonNull()) && !jsonObj.get("hash").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `hash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash").toString()));
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("signature") != null && !jsonObj.get("signature").isJsonNull()) && !jsonObj.get("signature").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `signature` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signature").toString()));
+      }
+      // validate the optional field `source`
+      if (jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) {
+        TransactionEndpoint.validateJsonElement(jsonObj.get("source"));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if ((jsonObj.get("tokenId") != null && !jsonObj.get("tokenId").isJsonNull()) && !jsonObj.get("tokenId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tokenId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tokenId").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("updatedAt") != null && !jsonObj.get("updatedAt").isJsonNull()) && !jsonObj.get("updatedAt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `updatedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updatedAt").toString()));
+      }
+      if ((jsonObj.get("walletId") != null && !jsonObj.get("walletId").isJsonNull()) && !jsonObj.get("walletId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `walletId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("walletId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Transaction.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Transaction' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Transaction> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Transaction.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Transaction>() {
+           @Override
+           public void write(JsonWriter out, Transaction value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Transaction read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+  /**
+   * Create an instance of Transaction given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Transaction
+   * @throws IOException if the JSON string is invalid with respect to Transaction
+   */
+  public static Transaction fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Transaction.class);
+  }
+
+  /**
+   * Convert an instance of Transaction to an JSON string
+   *
+   * @return JSON string
+   */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

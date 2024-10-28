@@ -50,7 +50,7 @@
   describe('Address', function() {
     it('should create an instance of Address', function() {
       // uncomment below and update the code to test Address
-      //var instane = new WaaSOpenApiDocumentation.Address();
+      //var instance = new WaaSOpenApiDocumentation.Address();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.Address);
     });
 

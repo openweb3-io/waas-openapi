@@ -50,7 +50,7 @@
   describe('CreateTransferRequest', function() {
     it('should create an instance of CreateTransferRequest', function() {
       // uncomment below and update the code to test CreateTransferRequest
-      //var instane = new WaaSOpenApiDocumentation.CreateTransferRequest();
+      //var instance = new WaaSOpenApiDocumentation.CreateTransferRequest();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CreateTransferRequest);
     });
 

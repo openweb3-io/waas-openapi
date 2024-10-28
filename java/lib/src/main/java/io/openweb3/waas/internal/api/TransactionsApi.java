@@ -29,10 +29,10 @@ import java.io.IOException;
 
 import io.openweb3.waas.models.CreateTransferRequest;
 import io.openweb3.waas.models.CreateTransferResponse;
+import io.openweb3.waas.models.CursorPageTransaction;
 import io.openweb3.waas.models.Error;
 import io.openweb3.waas.models.EstimateFeeRequest;
 import io.openweb3.waas.models.EstimateFeeResponse;
-import io.openweb3.waas.models.PageTransaction;
 import io.openweb3.waas.models.Transaction;
 
 import java.lang.reflect.Type;
@@ -43,6 +43,8 @@ import java.util.Map;
 
 public class TransactionsApi {
     private ApiClient localVarApiClient;
+    private int localHostIndex;
+    private String localCustomBaseUrl;
 
     public TransactionsApi() {
         this(Configuration.getDefaultApiClient());
@@ -58,6 +60,22 @@ public class TransactionsApi {
 
     public void setApiClient(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
+    }
+
+    public int getHostIndex() {
+        return localHostIndex;
+    }
+
+    public void setHostIndex(int hostIndex) {
+        this.localHostIndex = hostIndex;
+    }
+
+    public String getCustomBaseUrl() {
+        return localCustomBaseUrl;
+    }
+
+    public void setCustomBaseUrl(String customBaseUrl) {
+        this.localCustomBaseUrl = customBaseUrl;
     }
 
     /**
@@ -77,6 +95,19 @@ public class TransactionsApi {
      </table>
      */
     public okhttp3.Call v1TransactionsEstimateFeeCall(EstimateFeeRequest estimateFeeRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = estimateFeeRequest;
 
         // create path and map variables
@@ -100,23 +131,22 @@ public class TransactionsApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1TransactionsEstimateFeeValidateBeforeCall(EstimateFeeRequest estimateFeeRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'estimateFeeRequest' is set
         if (estimateFeeRequest == null) {
             throw new ApiException("Missing the required parameter 'estimateFeeRequest' when calling v1TransactionsEstimateFee(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1TransactionsEstimateFeeCall(estimateFeeRequest, _callback);
-        return localVarCall;
+        return v1TransactionsEstimateFeeCall(estimateFeeRequest, _callback);
 
     }
 
@@ -189,14 +219,14 @@ public class TransactionsApi {
     }
     /**
      * Build call for v1TransactionsList
-     * @param assetIds The assetId involved in the transaction. (optional)
-     * @param chainIds The blockchain network on which the transaction takes place. (optional)
-     * @param cursor A cursor value for pagination purposes. (optional)
-     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
-     * @param limit The number of records to return default: 20 (optional)
-     * @param status The status of the transaction. (optional)
-     * @param tokenIds The tokenId involved in the transaction. (optional)
      * @param walletIds Unique system generated identifier of the wallet (optional)
+     * @param chainIds The blockchain network on which the transaction takes place. (optional)
+     * @param tokenIds The tokenId involved in the transaction. (optional)
+     * @param assetIds The assetId involved in the transaction. (optional)
+     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
+     * @param status The status of the transaction. (optional)
+     * @param cursor A cursor value for pagination purposes. (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -210,7 +240,20 @@ public class TransactionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1TransactionsListCall(List<String> assetIds, List<String> chainIds, String cursor, String hash, Integer limit, String status, List<String> tokenIds, List<String> walletIds, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1TransactionsListCall(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -222,36 +265,36 @@ public class TransactionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (assetIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "asset_ids", assetIds));
+        if (walletIds != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "wallet_ids", walletIds));
         }
 
         if (chainIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "chain_ids", chainIds));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "chain_ids", chainIds));
         }
 
-        if (cursor != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        if (tokenIds != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "token_ids", tokenIds));
+        }
+
+        if (assetIds != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "asset_ids", assetIds));
         }
 
         if (hash != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("hash", hash));
         }
 
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
         if (status != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
         }
 
-        if (tokenIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "token_ids", tokenIds));
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
         }
 
-        if (walletIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "wallet_ids", walletIds));
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         final String[] localVarAccepts = {
@@ -263,36 +306,34 @@ public class TransactionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1TransactionsListValidateBeforeCall(List<String> assetIds, List<String> chainIds, String cursor, String hash, Integer limit, String status, List<String> tokenIds, List<String> walletIds, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = v1TransactionsListCall(assetIds, chainIds, cursor, hash, limit, status, tokenIds, walletIds, _callback);
-        return localVarCall;
+    private okhttp3.Call v1TransactionsListValidateBeforeCall(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        return v1TransactionsListCall(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _callback);
 
     }
 
     /**
      * List transactions
      * List transactions
-     * @param assetIds The assetId involved in the transaction. (optional)
-     * @param chainIds The blockchain network on which the transaction takes place. (optional)
-     * @param cursor A cursor value for pagination purposes. (optional)
-     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
-     * @param limit The number of records to return default: 20 (optional)
-     * @param status The status of the transaction. (optional)
-     * @param tokenIds The tokenId involved in the transaction. (optional)
      * @param walletIds Unique system generated identifier of the wallet (optional)
-     * @return PageTransaction
+     * @param chainIds The blockchain network on which the transaction takes place. (optional)
+     * @param tokenIds The tokenId involved in the transaction. (optional)
+     * @param assetIds The assetId involved in the transaction. (optional)
+     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
+     * @param status The status of the transaction. (optional)
+     * @param cursor A cursor value for pagination purposes. (optional)
+     * @param limit The number of records to return default: 20 (optional)
+     * @return CursorPageTransaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -304,23 +345,23 @@ public class TransactionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public PageTransaction v1TransactionsList(List<String> assetIds, List<String> chainIds, String cursor, String hash, Integer limit, String status, List<String> tokenIds, List<String> walletIds) throws ApiException {
-        ApiResponse<PageTransaction> localVarResp = v1TransactionsListWithHttpInfo(assetIds, chainIds, cursor, hash, limit, status, tokenIds, walletIds);
+    public CursorPageTransaction v1TransactionsList(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit) throws ApiException {
+        ApiResponse<CursorPageTransaction> localVarResp = v1TransactionsListWithHttpInfo(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit);
         return localVarResp.getData();
     }
 
     /**
      * List transactions
      * List transactions
-     * @param assetIds The assetId involved in the transaction. (optional)
-     * @param chainIds The blockchain network on which the transaction takes place. (optional)
-     * @param cursor A cursor value for pagination purposes. (optional)
-     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
-     * @param limit The number of records to return default: 20 (optional)
-     * @param status The status of the transaction. (optional)
-     * @param tokenIds The tokenId involved in the transaction. (optional)
      * @param walletIds Unique system generated identifier of the wallet (optional)
-     * @return ApiResponse&lt;PageTransaction&gt;
+     * @param chainIds The blockchain network on which the transaction takes place. (optional)
+     * @param tokenIds The tokenId involved in the transaction. (optional)
+     * @param assetIds The assetId involved in the transaction. (optional)
+     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
+     * @param status The status of the transaction. (optional)
+     * @param cursor A cursor value for pagination purposes. (optional)
+     * @param limit The number of records to return default: 20 (optional)
+     * @return ApiResponse&lt;CursorPageTransaction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -332,23 +373,23 @@ public class TransactionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PageTransaction> v1TransactionsListWithHttpInfo(List<String> assetIds, List<String> chainIds, String cursor, String hash, Integer limit, String status, List<String> tokenIds, List<String> walletIds) throws ApiException {
-        okhttp3.Call localVarCall = v1TransactionsListValidateBeforeCall(assetIds, chainIds, cursor, hash, limit, status, tokenIds, walletIds, null);
-        Type localVarReturnType = new TypeToken<PageTransaction>(){}.getType();
+    public ApiResponse<CursorPageTransaction> v1TransactionsListWithHttpInfo(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = v1TransactionsListValidateBeforeCall(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, null);
+        Type localVarReturnType = new TypeToken<CursorPageTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * List transactions (asynchronously)
      * List transactions
-     * @param assetIds The assetId involved in the transaction. (optional)
-     * @param chainIds The blockchain network on which the transaction takes place. (optional)
-     * @param cursor A cursor value for pagination purposes. (optional)
-     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
-     * @param limit The number of records to return default: 20 (optional)
-     * @param status The status of the transaction. (optional)
-     * @param tokenIds The tokenId involved in the transaction. (optional)
      * @param walletIds Unique system generated identifier of the wallet (optional)
+     * @param chainIds The blockchain network on which the transaction takes place. (optional)
+     * @param tokenIds The tokenId involved in the transaction. (optional)
+     * @param assetIds The assetId involved in the transaction. (optional)
+     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
+     * @param status The status of the transaction. (optional)
+     * @param cursor A cursor value for pagination purposes. (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -362,10 +403,10 @@ public class TransactionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1TransactionsListAsync(List<String> assetIds, List<String> chainIds, String cursor, String hash, Integer limit, String status, List<String> tokenIds, List<String> walletIds, final ApiCallback<PageTransaction> _callback) throws ApiException {
+    public okhttp3.Call v1TransactionsListAsync(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, final ApiCallback<CursorPageTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1TransactionsListValidateBeforeCall(assetIds, chainIds, cursor, hash, limit, status, tokenIds, walletIds, _callback);
-        Type localVarReturnType = new TypeToken<PageTransaction>(){}.getType();
+        okhttp3.Call localVarCall = v1TransactionsListValidateBeforeCall(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _callback);
+        Type localVarReturnType = new TypeToken<CursorPageTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -386,11 +427,24 @@ public class TransactionsApi {
      </table>
      */
     public okhttp3.Call v1TransactionsRetrieveCall(String transactionId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/v1/transactions/{transactionId}"
-            .replaceAll("\\{" + "transactionId" + "\\}", localVarApiClient.escapeString(transactionId.toString()));
+            .replace("{" + "transactionId" + "}", localVarApiClient.escapeString(transactionId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -407,26 +461,24 @@ public class TransactionsApi {
         }
 
         final String[] localVarContentTypes = {
-            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1TransactionsRetrieveValidateBeforeCall(String transactionId, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'transactionId' is set
         if (transactionId == null) {
             throw new ApiException("Missing the required parameter 'transactionId' when calling v1TransactionsRetrieve(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1TransactionsRetrieveCall(transactionId, _callback);
-        return localVarCall;
+        return v1TransactionsRetrieveCall(transactionId, _callback);
 
     }
 
@@ -514,6 +566,19 @@ public class TransactionsApi {
      </table>
      */
     public okhttp3.Call v1TransactionsTransferCall(CreateTransferRequest createTransferRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
         Object localVarPostBody = createTransferRequest;
 
         // create path and map variables
@@ -537,23 +602,22 @@ public class TransactionsApi {
             "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth", "SignatureAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call v1TransactionsTransferValidateBeforeCall(CreateTransferRequest createTransferRequest, final ApiCallback _callback) throws ApiException {
-        
         // verify the required parameter 'createTransferRequest' is set
         if (createTransferRequest == null) {
             throw new ApiException("Missing the required parameter 'createTransferRequest' when calling v1TransactionsTransfer(Async)");
         }
-        
 
-        okhttp3.Call localVarCall = v1TransactionsTransferCall(createTransferRequest, _callback);
-        return localVarCall;
+        return v1TransactionsTransferCall(createTransferRequest, _callback);
 
     }
 

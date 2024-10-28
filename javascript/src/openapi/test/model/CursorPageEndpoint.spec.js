@@ -50,7 +50,7 @@
   describe('CursorPageEndpoint', function() {
     it('should create an instance of CursorPageEndpoint', function() {
       // uncomment below and update the code to test CursorPageEndpoint
-      //var instane = new WaaSOpenApiDocumentation.CursorPageEndpoint();
+      //var instance = new WaaSOpenApiDocumentation.CursorPageEndpoint();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CursorPageEndpoint);
     });
 

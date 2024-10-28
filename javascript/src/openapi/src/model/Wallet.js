@@ -72,8 +72,46 @@ class Wallet {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>Wallet</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Wallet</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of Wallet.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['created_at'] && !(typeof data['created_at'] === 'string' || data['created_at'] instanceof String)) {
+            throw new Error("Expected the field `created_at` to be a primitive type in the JSON string but got " + data['created_at']);
+        }
+        // ensure the json data is a string
+        if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
+            throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
+        }
+        // ensure the json data is a string
+        if (data['name'] && !(typeof data['name'] === 'string' || data['name'] instanceof String)) {
+            throw new Error("Expected the field `name` to be a primitive type in the JSON string but got " + data['name']);
+        }
+        // ensure the json data is a string
+        if (data['uid'] && !(typeof data['uid'] === 'string' || data['uid'] instanceof String)) {
+            throw new Error("Expected the field `uid` to be a primitive type in the JSON string but got " + data['uid']);
+        }
+        // ensure the json data is a string
+        if (data['updatedAt'] && !(typeof data['updatedAt'] === 'string' || data['updatedAt'] instanceof String)) {
+            throw new Error("Expected the field `updatedAt` to be a primitive type in the JSON string but got " + data['updatedAt']);
+        }
+
+        return true;
+    }
+
 
 }
+
+Wallet.RequiredProperties = ["id", "name", "uid"];
 
 /**
  * Created time

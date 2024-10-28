@@ -50,7 +50,7 @@
   describe('UpdateEndpoint', function() {
     it('should create an instance of UpdateEndpoint', function() {
       // uncomment below and update the code to test UpdateEndpoint
-      //var instane = new WaaSOpenApiDocumentation.UpdateEndpoint();
+      //var instance = new WaaSOpenApiDocumentation.UpdateEndpoint();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.UpdateEndpoint);
     });
 

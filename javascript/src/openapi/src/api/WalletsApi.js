@@ -69,7 +69,7 @@ export default class WalletsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Wallet;
@@ -92,11 +92,14 @@ export default class WalletsApi {
      * Delete wallet
      * Delete a Wallet
      * @param {String} walletId Wallet ID
+     * @param {Object} opts Optional parameters
+     * @param {Object.<String, Object>} [body] 
      * @param {module:api/WalletsApi~v1WalletsDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Wallet}
      */
-    v1WalletsDelete(walletId, callback) {
-      let postBody = null;
+    v1WalletsDelete(walletId, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['body'];
       // verify the required parameter 'walletId' is set
       if (walletId === undefined || walletId === null) {
         throw new Error("Missing the required parameter 'walletId' when calling v1WalletsDelete");
@@ -112,8 +115,8 @@ export default class WalletsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
-      let contentTypes = [];
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Wallet;
       return this.apiClient.callApi(
@@ -135,8 +138,8 @@ export default class WalletsApi {
      * List wallets
      * List all wallets
      * @param {Object} opts Optional parameters
-     * @param {String} opts.cursor Cursor
-     * @param {Number} opts.limit The number of records to return default: 20
+     * @param {String} [cursor] Cursor
+     * @param {Number} [limit] The number of records to return default: 20
      * @param {module:api/WalletsApi~v1WalletsListCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageWallet}
      */
@@ -155,7 +158,7 @@ export default class WalletsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = CursorPageWallet;
@@ -198,7 +201,7 @@ export default class WalletsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = Wallet;
@@ -246,7 +249,7 @@ export default class WalletsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Wallet;

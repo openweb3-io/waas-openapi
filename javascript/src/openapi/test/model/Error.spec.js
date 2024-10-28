@@ -50,7 +50,7 @@
   describe('Error', function() {
     it('should create an instance of Error', function() {
       // uncomment below and update the code to test Error
-      //var instane = new WaaSOpenApiDocumentation.Error();
+      //var instance = new WaaSOpenApiDocumentation.Error();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.Error);
     });
 

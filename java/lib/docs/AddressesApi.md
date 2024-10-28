@@ -2,17 +2,17 @@
 
 All URIs are relative to *http://localhost*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**v1AddressesList**](AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
-[**v1WalletsCreateAddress**](AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address
-[**v1WalletsGetAddress**](AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
-[**v1WalletsListAddresses**](AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**v1AddressesList**](AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses |
+| [**v1WalletsCreateAddress**](AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address |
+| [**v1WalletsGetAddress**](AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information |
+| [**v1WalletsListAddresses**](AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses |
 
 
-<a name="v1AddressesList"></a>
+<a id="v1AddressesList"></a>
 # **v1AddressesList**
-> CursorPageAddress v1AddressesList(chainIds, cursor, limit, walletIds)
+> CursorPageAddress v1AddressesList(walletIds, chainIds, cursor, limit)
 
 List all addresses
 
@@ -39,19 +39,13 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     AddressesApi apiInstance = new AddressesApi(defaultClient);
+    List<String> walletIds = Arrays.asList(); // List<String> | Unique system generated identifier of the wallet
     List<String> chainIds = Arrays.asList(); // List<String> | The chain ids.
     String cursor = "cursor_example"; // String | The cursor to use for pagination.
     Integer limit = 56; // Integer | The number of records to return default: 20
-    List<String> walletIds = Arrays.asList(); // List<String> | Unique system generated identifier of the wallet
     try {
-      CursorPageAddress result = apiInstance.v1AddressesList(chainIds, cursor, limit, walletIds);
+      CursorPageAddress result = apiInstance.v1AddressesList(walletIds, chainIds, cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressesApi#v1AddressesList");
@@ -66,12 +60,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chainIds** | [**List&lt;String&gt;**](String.md)| The chain ids. | [optional]
- **cursor** | **String**| The cursor to use for pagination. | [optional]
- **limit** | **Integer**| The number of records to return default: 20 | [optional]
- **walletIds** | [**List&lt;String&gt;**](String.md)| Unique system generated identifier of the wallet | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **walletIds** | [**List&lt;String&gt;**](String.md)| Unique system generated identifier of the wallet | [optional] |
+| **chainIds** | [**List&lt;String&gt;**](String.md)| The chain ids. | [optional] |
+| **cursor** | **String**| The cursor to use for pagination. | [optional] |
+| **limit** | **Integer**| The number of records to return default: 20 | [optional] |
 
 ### Return type
 
@@ -79,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -89,13 +83,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1WalletsCreateAddress"></a>
+<a id="v1WalletsCreateAddress"></a>
 # **v1WalletsCreateAddress**
 > Address v1WalletsCreateAddress(walletId, createAddressRequest)
 
@@ -124,12 +118,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     String walletId = "walletId_example"; // String | Wallet ID
     CreateAddressRequest createAddressRequest = new CreateAddressRequest(); // CreateAddressRequest | Request Body
@@ -149,10 +137,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID |
- **createAddressRequest** | [**CreateAddressRequest**](CreateAddressRequest.md)| Request Body |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **walletId** | **String**| Wallet ID | |
+| **createAddressRequest** | [**CreateAddressRequest**](CreateAddressRequest.md)| Request Body | |
 
 ### Return type
 
@@ -160,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -170,13 +158,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1WalletsGetAddress"></a>
+<a id="v1WalletsGetAddress"></a>
 # **v1WalletsGetAddress**
 > Address v1WalletsGetAddress(walletId, address)
 
@@ -205,12 +193,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     String walletId = "walletId_example"; // String | Wallet ID
     String address = "address_example"; // String | Address
@@ -230,10 +212,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID |
- **address** | **String**| Address |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **walletId** | **String**| Wallet ID | |
+| **address** | **String**| Address | |
 
 ### Return type
 
@@ -241,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -251,15 +233,15 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1WalletsListAddresses"></a>
+<a id="v1WalletsListAddresses"></a>
 # **v1WalletsListAddresses**
-> CursorPageAddress v1WalletsListAddresses(walletId, chainIds, cursor, limit)
+> CursorPageAddress v1WalletsListAddresses(walletId, cursor, limit, chainIds)
 
 List wallet addresses
 
@@ -286,19 +268,13 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     String walletId = "walletId_example"; // String | Wallet ID
-    List<String> chainIds = Arrays.asList(); // List<String> | chain ids
     String cursor = "cursor_example"; // String | Cursor
     Integer limit = 56; // Integer | Limit, default is 20
+    List<String> chainIds = Arrays.asList(); // List<String> | chain ids
     try {
-      CursorPageAddress result = apiInstance.v1WalletsListAddresses(walletId, chainIds, cursor, limit);
+      CursorPageAddress result = apiInstance.v1WalletsListAddresses(walletId, cursor, limit, chainIds);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressesApi#v1WalletsListAddresses");
@@ -313,12 +289,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID |
- **chainIds** | [**List&lt;String&gt;**](String.md)| chain ids | [optional]
- **cursor** | **String**| Cursor | [optional]
- **limit** | **Integer**| Limit, default is 20 | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **walletId** | **String**| Wallet ID | |
+| **cursor** | **String**| Cursor | [optional] |
+| **limit** | **Integer**| Limit, default is 20 | [optional] |
+| **chainIds** | [**List&lt;String&gt;**](String.md)| chain ids | [optional] |
 
 ### Return type
 
@@ -326,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -336,9 +312,9 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 

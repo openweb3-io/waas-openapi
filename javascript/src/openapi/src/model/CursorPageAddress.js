@@ -78,8 +78,44 @@ class CursorPageAddress {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>CursorPageAddress</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CursorPageAddress</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CursorPageAddress.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        if (data['items']) { // data not null
+            // ensure the json data is an array
+            if (!Array.isArray(data['items'])) {
+                throw new Error("Expected the field `items` to be an array in the JSON data but got " + data['items']);
+            }
+            // validate the optional field `items` (array)
+            for (const item of data['items']) {
+                Address.validateJSON(item);
+            };
+        }
+        // ensure the json data is a string
+        if (data['next_cursor'] && !(typeof data['next_cursor'] === 'string' || data['next_cursor'] instanceof String)) {
+            throw new Error("Expected the field `next_cursor` to be a primitive type in the JSON string but got " + data['next_cursor']);
+        }
+        // ensure the json data is a string
+        if (data['prev_cursor'] && !(typeof data['prev_cursor'] === 'string' || data['prev_cursor'] instanceof String)) {
+            throw new Error("Expected the field `prev_cursor` to be a primitive type in the JSON string but got " + data['prev_cursor']);
+        }
+
+        return true;
+    }
+
 
 }
+
+CursorPageAddress.RequiredProperties = ["has_next", "has_prev", "items", "total"];
 
 /**
  * @member {Boolean} has_next

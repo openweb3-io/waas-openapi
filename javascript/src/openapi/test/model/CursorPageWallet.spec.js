@@ -50,7 +50,7 @@
   describe('CursorPageWallet', function() {
     it('should create an instance of CursorPageWallet', function() {
       // uncomment below and update the code to test CursorPageWallet
-      //var instane = new WaaSOpenApiDocumentation.CursorPageWallet();
+      //var instance = new WaaSOpenApiDocumentation.CursorPageWallet();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.CursorPageWallet);
     });
 

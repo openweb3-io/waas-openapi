@@ -50,7 +50,7 @@
   describe('Transaction', function() {
     it('should create an instance of Transaction', function() {
       // uncomment below and update the code to test Transaction
-      //var instane = new WaaSOpenApiDocumentation.Transaction();
+      //var instance = new WaaSOpenApiDocumentation.Transaction();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.Transaction);
     });
 

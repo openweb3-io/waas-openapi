@@ -14,21 +14,41 @@
 package io.openweb3.waas.models;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.openweb3.waas.models.FeeType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.Arrays;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import java.io.IOException;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import io.openweb3.waas.internal.JSON;
 
 /**
  * Fee
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-26T22:02:49.883062+08:00[Asia/Shanghai]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T01:35:38.261544+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
 public class Fee {
   public static final String SERIALIZED_NAME_MAX_FEE_AMOUNT = "maxFeeAmount";
   @SerializedName(SERIALIZED_NAME_MAX_FEE_AMOUNT)
@@ -40,25 +60,24 @@ public class Fee {
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private FeeType type;
+  private Integer type;
 
+  public Fee() {
+  }
 
   public Fee maxFeeAmount(String maxFeeAmount) {
-    
     this.maxFeeAmount = maxFeeAmount;
     return this;
   }
 
-   /**
+  /**
    * Max fee amount
    * @return maxFeeAmount
-  **/
-  @ApiModelProperty(required = true, value = "Max fee amount")
-
+   */
+  @javax.annotation.Nonnull
   public String getMaxFeeAmount() {
     return maxFeeAmount;
   }
-
 
   public void setMaxFeeAmount(String maxFeeAmount) {
     this.maxFeeAmount = maxFeeAmount;
@@ -66,47 +85,42 @@ public class Fee {
 
 
   public Fee tokenId(String tokenId) {
-    
     this.tokenId = tokenId;
     return this;
   }
 
-   /**
+  /**
    * Token ID
    * @return tokenId
-  **/
-  @ApiModelProperty(required = true, value = "Token ID")
-
+   */
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
-
 
   public void setTokenId(String tokenId) {
     this.tokenId = tokenId;
   }
 
 
-  public Fee type(FeeType type) {
-    
+  public Fee type(Integer type) {
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Fee type
    * @return type
-  **/
-  @ApiModelProperty(required = true, value = "Fee type")
-
-  public FeeType getType() {
+   */
+  @javax.annotation.Nonnull
+  public Integer getType() {
     return type;
   }
 
-
-  public void setType(FeeType type) {
+  public void setType(Integer type) {
     this.type = type;
   }
+
 
 
   @Override
@@ -150,5 +164,107 @@ public class Fee {
     return o.toString().replace("\n", "\n    ");
   }
 
+
+  public static HashSet<String> openapiFields;
+  public static HashSet<String> openapiRequiredFields;
+
+  static {
+    // a set of all properties/fields (JSON key names)
+    openapiFields = new HashSet<String>();
+    openapiFields.add("maxFeeAmount");
+    openapiFields.add("tokenId");
+    openapiFields.add("type");
+
+    // a set of required properties/fields (JSON key names)
+    openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("maxFeeAmount");
+    openapiRequiredFields.add("tokenId");
+    openapiRequiredFields.add("type");
+  }
+
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Fee
+   */
+  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      if (jsonElement == null) {
+        if (!Fee.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Fee is not found in the empty JSON string", Fee.openapiRequiredFields.toString()));
+        }
+      }
+
+      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
+      // check to see if the JSON string contains additional fields
+      for (Map.Entry<String, JsonElement> entry : entries) {
+        if (!Fee.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Fee` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        }
+      }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Fee.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("maxFeeAmount").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `maxFeeAmount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("maxFeeAmount").toString()));
+      }
+      if (!jsonObj.get("tokenId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `tokenId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tokenId").toString()));
+      }
+  }
+
+  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+       if (!Fee.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Fee' and its subtypes
+       }
+       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+       final TypeAdapter<Fee> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Fee.class));
+
+       return (TypeAdapter<T>) new TypeAdapter<Fee>() {
+           @Override
+           public void write(JsonWriter out, Fee value) throws IOException {
+             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             elementAdapter.write(out, obj);
+           }
+
+           @Override
+           public Fee read(JsonReader in) throws IOException {
+             JsonElement jsonElement = elementAdapter.read(in);
+             validateJsonElement(jsonElement);
+             return thisAdapter.fromJsonTree(jsonElement);
+           }
+
+       }.nullSafe();
+    }
+  }
+
+  /**
+   * Create an instance of Fee given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Fee
+   * @throws IOException if the JSON string is invalid with respect to Fee
+   */
+  public static Fee fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Fee.class);
+  }
+
+  /**
+   * Convert an instance of Fee to an JSON string
+   *
+   * @return JSON string
+   */
+  public String toJson() {
+    return JSON.getGson().toJson(this);
+  }
 }
 

@@ -10,17 +10,17 @@ Name | Type | Description | Notes
 **ConfirmedNum** | Pointer to **int32** | Confirmed number | [optional] 
 **CreatedAt** | Pointer to **string** | Created time | [optional] 
 **Description** | Pointer to **string** | Description | [optional] 
-**Destination** | Pointer to [**TransactionEndpoint**](TransactionEndpoint.md) | Destination | [optional] 
+**Destination** | Pointer to [**TransactionEndpoint**](TransactionEndpoint.md) |  | [optional] 
 **Extra** | Pointer to **map[string]interface{}** | Extra | [optional] 
 **FailedReason** | Pointer to **string** | Failed reason | [optional] 
-**Fee** | Pointer to [**Fee**](Fee.md) | Fee | [optional] 
+**Fee** | Pointer to [**Fee**](Fee.md) |  | [optional] 
 **Hash** | Pointer to **string** | Transaction hash | [optional] 
 **Id** | Pointer to **string** | Transaction ID | [optional] 
 **Signature** | Pointer to **string** | Signature | [optional] 
-**Source** | Pointer to [**TransactionEndpoint**](TransactionEndpoint.md) | Source | [optional] 
+**Source** | Pointer to [**TransactionEndpoint**](TransactionEndpoint.md) |  | [optional] 
 **Status** | Pointer to **string** | Transaction status | [optional] 
 **TokenId** | Pointer to **string** | Token ID | [optional] 
-**Type** | Pointer to [**TransactionType**](TransactionType.md) | Transaction type | [optional] 
+**Type** | Pointer to **string** | Transaction type | [optional] 
 **UpdatedAt** | Pointer to **string** | Updated time | [optional] 
 **WalletId** | Pointer to **string** | Wallet ID | [optional] 
 
@@ -445,20 +445,20 @@ HasTokenId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Transaction) GetType() TransactionType`
+`func (o *Transaction) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Transaction) GetTypeOk() (*TransactionType, bool)`
+`func (o *Transaction) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Transaction) SetType(v TransactionType)`
+`func (o *Transaction) SetType(v string)`
 
 SetType sets Type field to given value.
 

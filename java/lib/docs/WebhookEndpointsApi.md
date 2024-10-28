@@ -2,16 +2,16 @@
 
 All URIs are relative to *http://localhost*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**v1WebhooksCreate**](WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
-[**v1WebhooksDelete**](WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
-[**v1WebhooksList**](WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints
-[**v1WebhooksRetrieve**](WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
-[**v1WebhooksUpdate**](WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**v1WebhooksCreate**](WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint |
+| [**v1WebhooksDelete**](WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint |
+| [**v1WebhooksList**](WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints |
+| [**v1WebhooksRetrieve**](WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint |
+| [**v1WebhooksUpdate**](WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint |
 
 
-<a name="v1WebhooksCreate"></a>
+<a id="v1WebhooksCreate"></a>
 # **v1WebhooksCreate**
 > Endpoint v1WebhooksCreate(createEndpoint)
 
@@ -40,12 +40,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     CreateEndpoint createEndpoint = new CreateEndpoint(); // CreateEndpoint | Request body
     try {
@@ -64,9 +58,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createEndpoint** | [**CreateEndpoint**](CreateEndpoint.md)| Request body |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createEndpoint** | [**CreateEndpoint**](CreateEndpoint.md)| Request body | |
 
 ### Return type
 
@@ -74,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -84,13 +78,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1WebhooksDelete"></a>
+<a id="v1WebhooksDelete"></a>
 # **v1WebhooksDelete**
-> Endpoint v1WebhooksDelete(endpointId)
+> Endpoint v1WebhooksDelete(endpointId, body)
 
 Delete webhook endpoint
 
@@ -117,16 +111,11 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     String endpointId = "endpointId_example"; // String | Endpoint ID
+    Object body = null; // Object | 
     try {
-      Endpoint result = apiInstance.v1WebhooksDelete(endpointId);
+      Endpoint result = apiInstance.v1WebhooksDelete(endpointId, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksDelete");
@@ -141,9 +130,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| Endpoint ID |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **endpointId** | **String**| Endpoint ID | |
+| **body** | **Object**|  | [optional] |
 
 ### Return type
 
@@ -151,21 +141,21 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1WebhooksList"></a>
+<a id="v1WebhooksList"></a>
 # **v1WebhooksList**
 > CursorPageEndpoint v1WebhooksList(cursor, limit)
 
@@ -194,12 +184,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     String cursor = "cursor_example"; // String | 
     Integer limit = 56; // Integer | The number of records to return default: 20
@@ -219,10 +203,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cursor** | **String**|  | [optional]
- **limit** | **Integer**| The number of records to return default: 20 | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **cursor** | **String**|  | [optional] |
+| **limit** | **Integer**| The number of records to return default: 20 | [optional] |
 
 ### Return type
 
@@ -230,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -240,11 +224,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1WebhooksRetrieve"></a>
+<a id="v1WebhooksRetrieve"></a>
 # **v1WebhooksRetrieve**
 > Endpoint v1WebhooksRetrieve(endpointId)
 
@@ -273,12 +257,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     String endpointId = "endpointId_example"; // String | Endpoint ID
     try {
@@ -297,9 +275,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| Endpoint ID |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **endpointId** | **String**| Endpoint ID | |
 
 ### Return type
 
@@ -307,7 +285,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -317,12 +295,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**404** | Not Found |  -  |
-**500** | Internal Server Error |  -  |
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
 
-<a name="v1WebhooksUpdate"></a>
+<a id="v1WebhooksUpdate"></a>
 # **v1WebhooksUpdate**
 > Endpoint v1WebhooksUpdate(endpointId, updateEndpoint)
 
@@ -351,12 +329,6 @@ public class Example {
     // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
-    // Configure API key authorization: SignatureAuth
-    ApiKeyAuth SignatureAuth = (ApiKeyAuth) defaultClient.getAuthentication("SignatureAuth");
-    SignatureAuth.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //SignatureAuth.setApiKeyPrefix("Token");
-
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     String endpointId = "endpointId_example"; // String | Endpoint ID
     UpdateEndpoint updateEndpoint = new UpdateEndpoint(); // UpdateEndpoint | Request body
@@ -376,10 +348,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **endpointId** | **String**| Endpoint ID |
- **updateEndpoint** | [**UpdateEndpoint**](UpdateEndpoint.md)| Request body |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **endpointId** | **String**| Endpoint ID | |
+| **updateEndpoint** | [**UpdateEndpoint**](UpdateEndpoint.md)| Request body | |
 
 ### Return type
 
@@ -387,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -397,5 +369,5 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
+| **200** | OK |  -  |
 

@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import FeeType from './FeeType';
 
 /**
  * The Fee model module.
@@ -22,10 +21,11 @@ import FeeType from './FeeType';
 class Fee {
     /**
      * Constructs a new <code>Fee</code>.
+     * Fee
      * @alias module:model/Fee
      * @param maxFeeAmount {String} Max fee amount
      * @param tokenId {String} Token ID
-     * @param type {module:model/FeeType} Fee type
+     * @param type {Number} Fee type
      */
     constructor(maxFeeAmount, tokenId, type) { 
         
@@ -61,14 +61,40 @@ class Fee {
                 obj['tokenId'] = ApiClient.convertToType(data['tokenId'], 'String');
             }
             if (data.hasOwnProperty('type')) {
-                obj['type'] = ApiClient.convertToType(data['type'], FeeType);
+                obj['type'] = ApiClient.convertToType(data['type'], 'Number');
             }
         }
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>Fee</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>Fee</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of Fee.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['maxFeeAmount'] && !(typeof data['maxFeeAmount'] === 'string' || data['maxFeeAmount'] instanceof String)) {
+            throw new Error("Expected the field `maxFeeAmount` to be a primitive type in the JSON string but got " + data['maxFeeAmount']);
+        }
+        // ensure the json data is a string
+        if (data['tokenId'] && !(typeof data['tokenId'] === 'string' || data['tokenId'] instanceof String)) {
+            throw new Error("Expected the field `tokenId` to be a primitive type in the JSON string but got " + data['tokenId']);
+        }
+
+        return true;
+    }
+
 
 }
+
+Fee.RequiredProperties = ["maxFeeAmount", "tokenId", "type"];
 
 /**
  * Max fee amount
@@ -84,7 +110,7 @@ Fee.prototype['tokenId'] = undefined;
 
 /**
  * Fee type
- * @member {module:model/FeeType} type
+ * @member {Number} type
  */
 Fee.prototype['type'] = undefined;
 

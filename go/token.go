@@ -16,26 +16,28 @@ type Token struct {
 }
 
 type ListTokenOptions struct {
-	Cursor string
+	Cursor *string
 	Limit  int
 }
 
 func (e *Token) List(ctx context.Context, options *ListTokenOptions) (*CursorPageTokenOut, error) {
-	req := e.api.TokensApi.V1TokensList(ctx)
-	req = req.Cursor(options.Cursor)
+	req := e.api.TokensAPI.V1TokensList(ctx)
+	if options.Cursor != nil {
+		req = req.Cursor(*options.Cursor)
+	}
 	req = req.Limit(int32(options.Limit))
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
-	return &out, nil
+	return out, nil
 }
 
 func (e *Token) GetDepositToken(ctx context.Context, tokenId string) (*TokenOut, error) {
-	req := e.api.TokensApi.V1TokensRetrieve(ctx, tokenId)
+	req := e.api.TokensAPI.V1TokensRetrieve(ctx, tokenId)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
-	return &out, nil
+	return out, nil
 }

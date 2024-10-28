@@ -69,7 +69,7 @@ export default class TokensApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Token;
@@ -92,8 +92,8 @@ export default class TokensApi {
      * List tokens
      * Retrieve a list of all tokens.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.cursor Cursor
-     * @param {Number} opts.limit The number of records to return default: 20
+     * @param {String} [cursor] Cursor
+     * @param {Number} [limit] The number of records to return default: 20
      * @param {module:api/TokensApi~v1TokensListCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageToken}
      */
@@ -112,7 +112,7 @@ export default class TokensApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = CursorPageToken;
@@ -155,7 +155,7 @@ export default class TokensApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = Token;
@@ -203,7 +203,7 @@ export default class TokensApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Token;

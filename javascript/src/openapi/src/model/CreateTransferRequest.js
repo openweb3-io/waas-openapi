@@ -13,8 +13,6 @@
 
 import ApiClient from '../ApiClient';
 import Fee from './Fee';
-import TransferDestination from './TransferDestination';
-import TransferSource from './TransferSource';
 
 /**
  * The CreateTransferRequest model module.
@@ -26,8 +24,8 @@ class CreateTransferRequest {
      * Constructs a new <code>CreateTransferRequest</code>.
      * @alias module:model/CreateTransferRequest
      * @param amount {String} The amount to be transferred
-     * @param destination {module:model/TransferDestination} The ID of the wallet to which the transfer will be made
-     * @param source {module:model/TransferSource} The ID of the wallet from which the transfer will be made
+     * @param destination {Array.<Number>} The ID of the wallet to which the transfer will be made
+     * @param source {Array.<Number>} The ID of the wallet from which the transfer will be made
      * @param tokenId {String} The tokenId to be transferred
      */
     constructor(amount, destination, source, tokenId) { 
@@ -62,19 +60,19 @@ class CreateTransferRequest {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = ApiClient.convertToType(data['destination'], TransferDestination);
+                obj['destination'] = ApiClient.convertToType(data['destination'], ['Number']);
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = ApiClient.convertToType(data['extra'], 'String');
             }
             if (data.hasOwnProperty('fee')) {
-                obj['fee'] = ApiClient.convertToType(data['fee'], Fee);
+                obj['fee'] = Fee.constructFromObject(data['fee']);
             }
             if (data.hasOwnProperty('memo')) {
                 obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
             }
             if (data.hasOwnProperty('source')) {
-                obj['source'] = ApiClient.convertToType(data['source'], TransferSource);
+                obj['source'] = ApiClient.convertToType(data['source'], ['Number']);
             }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -83,8 +81,54 @@ class CreateTransferRequest {
         return obj;
     }
 
+    /**
+     * Validates the JSON data with respect to <code>CreateTransferRequest</code>.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CreateTransferRequest</code>.
+     */
+    static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of CreateTransferRequest.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
+        // ensure the json data is a string
+        if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
+            throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['destination'])) {
+            throw new Error("Expected the field `destination` to be an array in the JSON data but got " + data['destination']);
+        }
+        // ensure the json data is a string
+        if (data['extra'] && !(typeof data['extra'] === 'string' || data['extra'] instanceof String)) {
+            throw new Error("Expected the field `extra` to be a primitive type in the JSON string but got " + data['extra']);
+        }
+        // validate the optional field `fee`
+        if (data['fee']) { // data not null
+          Fee.validateJSON(data['fee']);
+        }
+        // ensure the json data is a string
+        if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
+            throw new Error("Expected the field `memo` to be a primitive type in the JSON string but got " + data['memo']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['source'])) {
+            throw new Error("Expected the field `source` to be an array in the JSON data but got " + data['source']);
+        }
+        // ensure the json data is a string
+        if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
+            throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+
+        return true;
+    }
+
 
 }
+
+CreateTransferRequest.RequiredProperties = ["amount", "destination", "source", "token_id"];
 
 /**
  * The amount to be transferred
@@ -94,7 +138,7 @@ CreateTransferRequest.prototype['amount'] = undefined;
 
 /**
  * The ID of the wallet to which the transfer will be made
- * @member {module:model/TransferDestination} destination
+ * @member {Array.<Number>} destination
  */
 CreateTransferRequest.prototype['destination'] = undefined;
 
@@ -105,7 +149,6 @@ CreateTransferRequest.prototype['destination'] = undefined;
 CreateTransferRequest.prototype['extra'] = undefined;
 
 /**
- * Fee
  * @member {module:model/Fee} fee
  */
 CreateTransferRequest.prototype['fee'] = undefined;
@@ -118,7 +161,7 @@ CreateTransferRequest.prototype['memo'] = undefined;
 
 /**
  * The ID of the wallet from which the transfer will be made
- * @member {module:model/TransferSource} source
+ * @member {Array.<Number>} source
  */
 CreateTransferRequest.prototype['source'] = undefined;
 

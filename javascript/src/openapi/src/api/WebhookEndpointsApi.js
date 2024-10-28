@@ -69,7 +69,7 @@ export default class WebhookEndpointsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Endpoint;
@@ -92,11 +92,14 @@ export default class WebhookEndpointsApi {
      * Delete webhook endpoint
      * Delete specific webhook endpoint
      * @param {String} endpointId Endpoint ID
+     * @param {Object} opts Optional parameters
+     * @param {Object.<String, Object>} [body] 
      * @param {module:api/WebhookEndpointsApi~v1WebhooksDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Endpoint}
      */
-    v1WebhooksDelete(endpointId, callback) {
-      let postBody = null;
+    v1WebhooksDelete(endpointId, opts, callback) {
+      opts = opts || {};
+      let postBody = opts['body'];
       // verify the required parameter 'endpointId' is set
       if (endpointId === undefined || endpointId === null) {
         throw new Error("Missing the required parameter 'endpointId' when calling v1WebhooksDelete");
@@ -112,8 +115,8 @@ export default class WebhookEndpointsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
-      let contentTypes = [];
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Endpoint;
       return this.apiClient.callApi(
@@ -135,8 +138,8 @@ export default class WebhookEndpointsApi {
      * List webhook endpoints
      * List webhook endpoints
      * @param {Object} opts Optional parameters
-     * @param {String} opts.cursor 
-     * @param {Number} opts.limit The number of records to return default: 20
+     * @param {String} [cursor] 
+     * @param {Number} [limit] The number of records to return default: 20
      * @param {module:api/WebhookEndpointsApi~v1WebhooksListCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageEndpoint}
      */
@@ -155,7 +158,7 @@ export default class WebhookEndpointsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = CursorPageEndpoint;
@@ -198,7 +201,7 @@ export default class WebhookEndpointsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = Endpoint;
@@ -246,7 +249,7 @@ export default class WebhookEndpointsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = Endpoint;

@@ -50,7 +50,7 @@
   describe('EstimateFeeResponse', function() {
     it('should create an instance of EstimateFeeResponse', function() {
       // uncomment below and update the code to test EstimateFeeResponse
-      //var instane = new WaaSOpenApiDocumentation.EstimateFeeResponse();
+      //var instance = new WaaSOpenApiDocumentation.EstimateFeeResponse();
       //expect(instance).to.be.a(WaaSOpenApiDocumentation.EstimateFeeResponse);
     });
 

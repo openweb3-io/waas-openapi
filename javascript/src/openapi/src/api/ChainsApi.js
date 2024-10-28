@@ -48,8 +48,8 @@ export default class ChainsApi {
      * List all chains
      * List of all available chains.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.cursor Cursor
-     * @param {Number} opts.limit The number of records to return default: 20
+     * @param {String} [cursor] Cursor
+     * @param {Number} [limit] The number of records to return default: 20
      * @param {module:api/ChainsApi~v1ChainsListCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageChain}
      */
@@ -68,7 +68,7 @@ export default class ChainsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = CursorPageChain;
@@ -111,7 +111,7 @@ export default class ChainsApi {
       let formParams = {
       };
 
-      let authNames = ['ApiKeyAuth', 'SignatureAuth'];
+      let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = Chain;

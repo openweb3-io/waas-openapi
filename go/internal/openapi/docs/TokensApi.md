@@ -1,13 +1,13 @@
-# \TokensApi
+# \TokensAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1TokensCreate**](TokensApi.md#V1TokensCreate) | **Post** /api/v1/tokens | Create token
-[**V1TokensList**](TokensApi.md#V1TokensList) | **Get** /api/v1/tokens | List tokens
-[**V1TokensRetrieve**](TokensApi.md#V1TokensRetrieve) | **Get** /api/v1/tokens/{tokenId} | Get Token
-[**V1TokensUpdate**](TokensApi.md#V1TokensUpdate) | **Patch** /api/v1/tokens/{tokenId} | Update token
+[**V1TokensCreate**](TokensAPI.md#V1TokensCreate) | **Post** /api/v1/tokens | Create token
+[**V1TokensList**](TokensAPI.md#V1TokensList) | **Get** /api/v1/tokens | List tokens
+[**V1TokensRetrieve**](TokensAPI.md#V1TokensRetrieve) | **Get** /api/v1/tokens/{tokenId} | Get Token
+[**V1TokensUpdate**](TokensAPI.md#V1TokensUpdate) | **Patch** /api/v1/tokens/{tokenId} | Update token
 
 
 
@@ -25,24 +25,24 @@ Create token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    createTokenRequest := *openapiclient.NewCreateTokenRequest() // CreateTokenRequest | Request Body
+	createTokenRequest := *openapiclient.NewCreateTokenRequest() // CreateTokenRequest | Request Body
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TokensApi.V1TokensCreate(context.Background()).CreateTokenRequest(createTokenRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.V1TokensCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TokensCreate`: Token
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.V1TokensCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.V1TokensCreate(context.Background()).CreateTokenRequest(createTokenRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.V1TokensCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TokensCreate`: Token
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.V1TokensCreate`: %v\n", resp)
 }
 ```
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -91,25 +91,25 @@ List tokens
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    cursor := "cursor_example" // string | Cursor (optional)
-    limit := int32(56) // int32 | The number of records to return default: 20 (optional)
+	cursor := "cursor_example" // string | Cursor (optional)
+	limit := int32(56) // int32 | The number of records to return default: 20 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TokensApi.V1TokensList(context.Background()).Cursor(cursor).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.V1TokensList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TokensList`: CursorPageToken
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.V1TokensList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.V1TokensList(context.Background()).Cursor(cursor).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.V1TokensList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TokensList`: CursorPageToken
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.V1TokensList`: %v\n", resp)
 }
 ```
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -159,24 +159,24 @@ Get Token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    tokenId := "tokenId_example" // string | Token ID
+	tokenId := "tokenId_example" // string | Token ID
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TokensApi.V1TokensRetrieve(context.Background(), tokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.V1TokensRetrieve``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TokensRetrieve`: Token
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.V1TokensRetrieve`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.V1TokensRetrieve(context.Background(), tokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.V1TokensRetrieve``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TokensRetrieve`: Token
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.V1TokensRetrieve`: %v\n", resp)
 }
 ```
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -229,25 +229,25 @@ Update token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
 )
 
 func main() {
-    tokenId := "tokenId_example" // string | Token ID
-    updateTokenRequest := *openapiclient.NewUpdateTokenRequest() // UpdateTokenRequest | Request Body
+	tokenId := "tokenId_example" // string | Token ID
+	updateTokenRequest := *openapiclient.NewUpdateTokenRequest() // UpdateTokenRequest | Request Body
 
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TokensApi.V1TokensUpdate(context.Background(), tokenId).UpdateTokenRequest(updateTokenRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.V1TokensUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TokensUpdate`: Token
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.V1TokensUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.V1TokensUpdate(context.Background(), tokenId).UpdateTokenRequest(updateTokenRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.V1TokensUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TokensUpdate`: Token
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.V1TokensUpdate`: %v\n", resp)
 }
 ```
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [SignatureAuth](../README.md#SignatureAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
