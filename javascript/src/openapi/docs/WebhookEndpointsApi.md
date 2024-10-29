@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1WebhooksCreate**](WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
-[**v1WebhooksDelete**](WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
-[**v1WebhooksList**](WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints
-[**v1WebhooksRetrieve**](WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
-[**v1WebhooksUpdate**](WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
+[**v1WebhooksEndpointCreate**](WebhookEndpointsApi.md#v1WebhooksEndpointCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
+[**v1WebhooksEndpointDelete**](WebhookEndpointsApi.md#v1WebhooksEndpointDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
+[**v1WebhooksEndpointList**](WebhookEndpointsApi.md#v1WebhooksEndpointList) | **GET** /api/v1/webhooks/endpoints | List webhook endpoints
+[**v1WebhooksEndpointRetrieve**](WebhookEndpointsApi.md#v1WebhooksEndpointRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
+[**v1WebhooksEndpointUpdate**](WebhookEndpointsApi.md#v1WebhooksEndpointUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
 
 
 
-## v1WebhooksCreate
+## v1WebhooksEndpointCreate
 
-> Endpoint v1WebhooksCreate(createEndpoint)
+> Endpoint v1WebhooksEndpointCreate(createEndpoint)
 
 Create webhook endpoint
 
@@ -33,7 +33,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WaaSOpenApiDocumentation.WebhookEndpointsApi();
 let createEndpoint = new WaaSOpenApiDocumentation.CreateEndpoint(); // CreateEndpoint | Request body
-apiInstance.v1WebhooksCreate(createEndpoint, (error, data, response) => {
+apiInstance.v1WebhooksEndpointCreate(createEndpoint, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -63,9 +63,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## v1WebhooksDelete
+## v1WebhooksEndpointDelete
 
-> Endpoint v1WebhooksDelete(endpointId)
+> Endpoint v1WebhooksEndpointDelete(endpointId)
 
 Delete webhook endpoint
 
@@ -84,7 +84,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WaaSOpenApiDocumentation.WebhookEndpointsApi();
 let endpointId = "endpointId_example"; // String | Endpoint ID
-apiInstance.v1WebhooksDelete(endpointId, (error, data, response) => {
+apiInstance.v1WebhooksEndpointDelete(endpointId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -114,9 +114,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## v1WebhooksList
+## v1WebhooksEndpointList
 
-> CursorPageEndpoint v1WebhooksList(opts)
+> CursorPageEndpoint v1WebhooksEndpointList(opts)
 
 List webhook endpoints
 
@@ -138,7 +138,7 @@ let opts = {
   'cursor': "cursor_example", // String | 
   'limit': 56 // Number | The number of records to return default: 20
 };
-apiInstance.v1WebhooksList(opts, (error, data, response) => {
+apiInstance.v1WebhooksEndpointList(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -169,9 +169,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## v1WebhooksRetrieve
+## v1WebhooksEndpointRetrieve
 
-> Endpoint v1WebhooksRetrieve(endpointId)
+> Endpoint v1WebhooksEndpointRetrieve(endpointId)
 
 Get webhook endpoint
 
@@ -190,7 +190,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WaaSOpenApiDocumentation.WebhookEndpointsApi();
 let endpointId = "endpointId_example"; // String | Endpoint ID
-apiInstance.v1WebhooksRetrieve(endpointId, (error, data, response) => {
+apiInstance.v1WebhooksEndpointRetrieve(endpointId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## v1WebhooksUpdate
+## v1WebhooksEndpointUpdate
 
-> Endpoint v1WebhooksUpdate(endpointId, updateEndpoint)
+> Endpoint v1WebhooksEndpointUpdate(endpointId, updateEndpoint)
 
 Update webhook endpoint
 
@@ -242,7 +242,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WaaSOpenApiDocumentation.WebhookEndpointsApi();
 let endpointId = "endpointId_example"; // String | Endpoint ID
 let updateEndpoint = new WaaSOpenApiDocumentation.UpdateEndpoint(); // UpdateEndpoint | Request body
-apiInstance.v1WebhooksUpdate(endpointId, updateEndpoint, (error, data, response) => {
+apiInstance.v1WebhooksEndpointUpdate(endpointId, updateEndpoint, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {

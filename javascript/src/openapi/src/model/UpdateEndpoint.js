@@ -22,11 +22,10 @@ class UpdateEndpoint {
     /**
      * Constructs a new <code>UpdateEndpoint</code>.
      * @alias module:model/UpdateEndpoint
-     * @param eventTypes {Array.<String>} 
      */
-    constructor(eventTypes) { 
+    constructor() { 
         
-        UpdateEndpoint.initialize(this, eventTypes);
+        UpdateEndpoint.initialize(this);
     }
 
     /**
@@ -34,8 +33,7 @@ class UpdateEndpoint {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, eventTypes) { 
-        obj['eventTypes'] = eventTypes;
+    static initialize(obj) { 
     }
 
     /**
@@ -74,12 +72,6 @@ class UpdateEndpoint {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UpdateEndpoint</code>.
      */
     static validateJSON(data) {
-        // check to make sure all required properties are present in the JSON string
-        for (const property of UpdateEndpoint.RequiredProperties) {
-            if (!data.hasOwnProperty(property)) {
-                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
-            }
-        }
         // ensure the json data is a string
         if (data['description'] && !(typeof data['description'] === 'string' || data['description'] instanceof String)) {
             throw new Error("Expected the field `description` to be a primitive type in the JSON string but got " + data['description']);
@@ -103,7 +95,7 @@ class UpdateEndpoint {
 
 }
 
-UpdateEndpoint.RequiredProperties = ["eventTypes"];
+
 
 /**
  * @member {String} description

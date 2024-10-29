@@ -28,11 +28,13 @@ type (
 		HTTPClient *http.Client
 	}
 	ApiClient struct {
-		Address     *Address
-		Chain       *Chain
-		Token       *Token
-		Transaction *Transaction
-		Wallet      *Wallet
+		Address         *Address
+		Chain           *Chain
+		Token           *Token
+		Transaction     *Transaction
+		Wallet          *Wallet
+		WebhookEndpoint *WebhookEndpoint
+		WebhookEvent    *WebhookEvent
 	}
 )
 
@@ -110,6 +112,12 @@ func New(options *ApiClientOptions) *ApiClient {
 			api: apiClient,
 		},
 		Wallet: &Wallet{
+			api: apiClient,
+		},
+		WebhookEndpoint: &WebhookEndpoint{
+			api: apiClient,
+		},
+		WebhookEvent: &WebhookEvent{
 			api: apiClient,
 		},
 	}

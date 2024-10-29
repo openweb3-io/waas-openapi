@@ -130,7 +130,7 @@ public class UpdateEndpoint {
    * Get eventTypes
    * @return eventTypes
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getEventTypes() {
     return eventTypes;
   }
@@ -239,7 +239,6 @@ public class UpdateEndpoint {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("eventTypes");
   }
 
   /**
@@ -262,21 +261,12 @@ public class UpdateEndpoint {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateEndpoint` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UpdateEndpoint.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("eventTypes") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("eventTypes").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("eventTypes") != null && !jsonObj.get("eventTypes").isJsonNull() && !jsonObj.get("eventTypes").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `eventTypes` to be an array in the JSON string but got `%s`", jsonObj.get("eventTypes").toString()));
       }
       if ((jsonObj.get("uid") != null && !jsonObj.get("uid").isJsonNull()) && !jsonObj.get("uid").isJsonPrimitive()) {

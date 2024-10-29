@@ -97,11 +97,12 @@ Class | Method | HTTP request | Description
 *WalletsAPI* | [**V1WalletsList**](docs/WalletsAPI.md#v1walletslist) | **Get** /api/v1/wallets | List wallets
 *WalletsAPI* | [**V1WalletsRetrieve**](docs/WalletsAPI.md#v1walletsretrieve) | **Get** /api/v1/wallets/{walletId} | Get wallet
 *WalletsAPI* | [**V1WalletsUpdate**](docs/WalletsAPI.md#v1walletsupdate) | **Patch** /api/v1/wallets/{walletId} | Update wallet
-*WebhookEndpointsAPI* | [**V1WebhooksCreate**](docs/WebhookEndpointsAPI.md#v1webhookscreate) | **Post** /api/v1/webhooks/endpoints | Create webhook endpoint
-*WebhookEndpointsAPI* | [**V1WebhooksDelete**](docs/WebhookEndpointsAPI.md#v1webhooksdelete) | **Delete** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
-*WebhookEndpointsAPI* | [**V1WebhooksList**](docs/WebhookEndpointsAPI.md#v1webhookslist) | **Get** /api/v1/endpoints | List webhook endpoints
-*WebhookEndpointsAPI* | [**V1WebhooksRetrieve**](docs/WebhookEndpointsAPI.md#v1webhooksretrieve) | **Get** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
-*WebhookEndpointsAPI* | [**V1WebhooksUpdate**](docs/WebhookEndpointsAPI.md#v1webhooksupdate) | **Patch** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
+*WebhookEndpointsAPI* | [**V1WebhooksEndpointCreate**](docs/WebhookEndpointsAPI.md#v1webhooksendpointcreate) | **Post** /api/v1/webhooks/endpoints | Create webhook endpoint
+*WebhookEndpointsAPI* | [**V1WebhooksEndpointDelete**](docs/WebhookEndpointsAPI.md#v1webhooksendpointdelete) | **Delete** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
+*WebhookEndpointsAPI* | [**V1WebhooksEndpointList**](docs/WebhookEndpointsAPI.md#v1webhooksendpointlist) | **Get** /api/v1/webhooks/endpoints | List webhook endpoints
+*WebhookEndpointsAPI* | [**V1WebhooksEndpointRetrieve**](docs/WebhookEndpointsAPI.md#v1webhooksendpointretrieve) | **Get** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
+*WebhookEndpointsAPI* | [**V1WebhooksEndpointUpdate**](docs/WebhookEndpointsAPI.md#v1webhooksendpointupdate) | **Patch** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
+*WebhookEventsAPI* | [**V1WebhooksEventsList**](docs/WebhookEventsAPI.md#v1webhookseventslist) | **Get** /api/v1/webhooks/events | List webhook event types
 
 
 ## Documentation For Models
@@ -119,6 +120,7 @@ Class | Method | HTTP request | Description
  - [CursorPageAddress](docs/CursorPageAddress.md)
  - [CursorPageChain](docs/CursorPageChain.md)
  - [CursorPageEndpoint](docs/CursorPageEndpoint.md)
+ - [CursorPageEventType](docs/CursorPageEventType.md)
  - [CursorPageToken](docs/CursorPageToken.md)
  - [CursorPageTransaction](docs/CursorPageTransaction.md)
  - [CursorPageWallet](docs/CursorPageWallet.md)
@@ -126,6 +128,7 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [EstimateFeeRequest](docs/EstimateFeeRequest.md)
  - [EstimateFeeResponse](docs/EstimateFeeResponse.md)
+ - [EventType](docs/EventType.md)
  - [Fee](docs/Fee.md)
  - [Token](docs/Token.md)
  - [Transaction](docs/Transaction.md)

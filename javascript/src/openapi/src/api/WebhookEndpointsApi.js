@@ -39,8 +39,8 @@ export default class WebhookEndpointsApi {
 
 
     /**
-     * Callback function to receive the result of the v1WebhooksCreate operation.
-     * @callback module:api/WebhookEndpointsApi~v1WebhooksCreateCallback
+     * Callback function to receive the result of the v1WebhooksEndpointCreate operation.
+     * @callback module:api/WebhookEndpointsApi~v1WebhooksEndpointCreateCallback
      * @param {String} error Error message, if any.
      * @param {module:model/Endpoint} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -50,14 +50,14 @@ export default class WebhookEndpointsApi {
      * Create webhook endpoint
      * Create a webhook endpoint
      * @param {module:model/CreateEndpoint} createEndpoint Request body
-     * @param {module:api/WebhookEndpointsApi~v1WebhooksCreateCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/WebhookEndpointsApi~v1WebhooksEndpointCreateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Endpoint}
      */
-    v1WebhooksCreate(createEndpoint, callback) {
+    v1WebhooksEndpointCreate(createEndpoint, callback) {
       let postBody = createEndpoint;
       // verify the required parameter 'createEndpoint' is set
       if (createEndpoint === undefined || createEndpoint === null) {
-        throw new Error("Missing the required parameter 'createEndpoint' when calling v1WebhooksCreate");
+        throw new Error("Missing the required parameter 'createEndpoint' when calling v1WebhooksEndpointCreate");
       }
 
       let pathParams = {
@@ -81,8 +81,8 @@ export default class WebhookEndpointsApi {
     }
 
     /**
-     * Callback function to receive the result of the v1WebhooksDelete operation.
-     * @callback module:api/WebhookEndpointsApi~v1WebhooksDeleteCallback
+     * Callback function to receive the result of the v1WebhooksEndpointDelete operation.
+     * @callback module:api/WebhookEndpointsApi~v1WebhooksEndpointDeleteCallback
      * @param {String} error Error message, if any.
      * @param {module:model/Endpoint} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -92,14 +92,14 @@ export default class WebhookEndpointsApi {
      * Delete webhook endpoint
      * Delete specific webhook endpoint
      * @param {String} endpointId Endpoint ID
-     * @param {module:api/WebhookEndpointsApi~v1WebhooksDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/WebhookEndpointsApi~v1WebhooksEndpointDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Endpoint}
      */
-    v1WebhooksDelete(endpointId, callback) {
+    v1WebhooksEndpointDelete(endpointId, callback) {
       let postBody = null;
       // verify the required parameter 'endpointId' is set
       if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling v1WebhooksDelete");
+        throw new Error("Missing the required parameter 'endpointId' when calling v1WebhooksEndpointDelete");
       }
 
       let pathParams = {
@@ -124,8 +124,8 @@ export default class WebhookEndpointsApi {
     }
 
     /**
-     * Callback function to receive the result of the v1WebhooksList operation.
-     * @callback module:api/WebhookEndpointsApi~v1WebhooksListCallback
+     * Callback function to receive the result of the v1WebhooksEndpointList operation.
+     * @callback module:api/WebhookEndpointsApi~v1WebhooksEndpointListCallback
      * @param {String} error Error message, if any.
      * @param {module:model/CursorPageEndpoint} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -137,10 +137,10 @@ export default class WebhookEndpointsApi {
      * @param {Object} opts Optional parameters
      * @param {String} [cursor] 
      * @param {Number} [limit] The number of records to return default: 20
-     * @param {module:api/WebhookEndpointsApi~v1WebhooksListCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/WebhookEndpointsApi~v1WebhooksEndpointListCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageEndpoint}
      */
-    v1WebhooksList(opts, callback) {
+    v1WebhooksEndpointList(opts, callback) {
       opts = opts || {};
       let postBody = null;
 
@@ -160,15 +160,15 @@ export default class WebhookEndpointsApi {
       let accepts = ['application/json'];
       let returnType = CursorPageEndpoint;
       return this.apiClient.callApi(
-        '/api/v1/endpoints', 'GET',
+        '/api/v1/webhooks/endpoints', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the v1WebhooksRetrieve operation.
-     * @callback module:api/WebhookEndpointsApi~v1WebhooksRetrieveCallback
+     * Callback function to receive the result of the v1WebhooksEndpointRetrieve operation.
+     * @callback module:api/WebhookEndpointsApi~v1WebhooksEndpointRetrieveCallback
      * @param {String} error Error message, if any.
      * @param {module:model/Endpoint} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -178,14 +178,14 @@ export default class WebhookEndpointsApi {
      * Get webhook endpoint
      * Get specific webhook endpoint
      * @param {String} endpointId Endpoint ID
-     * @param {module:api/WebhookEndpointsApi~v1WebhooksRetrieveCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/WebhookEndpointsApi~v1WebhooksEndpointRetrieveCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Endpoint}
      */
-    v1WebhooksRetrieve(endpointId, callback) {
+    v1WebhooksEndpointRetrieve(endpointId, callback) {
       let postBody = null;
       // verify the required parameter 'endpointId' is set
       if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling v1WebhooksRetrieve");
+        throw new Error("Missing the required parameter 'endpointId' when calling v1WebhooksEndpointRetrieve");
       }
 
       let pathParams = {
@@ -210,8 +210,8 @@ export default class WebhookEndpointsApi {
     }
 
     /**
-     * Callback function to receive the result of the v1WebhooksUpdate operation.
-     * @callback module:api/WebhookEndpointsApi~v1WebhooksUpdateCallback
+     * Callback function to receive the result of the v1WebhooksEndpointUpdate operation.
+     * @callback module:api/WebhookEndpointsApi~v1WebhooksEndpointUpdateCallback
      * @param {String} error Error message, if any.
      * @param {module:model/Endpoint} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -222,18 +222,18 @@ export default class WebhookEndpointsApi {
      * Update specific webhook endpoint
      * @param {String} endpointId Endpoint ID
      * @param {module:model/UpdateEndpoint} updateEndpoint Request body
-     * @param {module:api/WebhookEndpointsApi~v1WebhooksUpdateCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/WebhookEndpointsApi~v1WebhooksEndpointUpdateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Endpoint}
      */
-    v1WebhooksUpdate(endpointId, updateEndpoint, callback) {
+    v1WebhooksEndpointUpdate(endpointId, updateEndpoint, callback) {
       let postBody = updateEndpoint;
       // verify the required parameter 'endpointId' is set
       if (endpointId === undefined || endpointId === null) {
-        throw new Error("Missing the required parameter 'endpointId' when calling v1WebhooksUpdate");
+        throw new Error("Missing the required parameter 'endpointId' when calling v1WebhooksEndpointUpdate");
       }
       // verify the required parameter 'updateEndpoint' is set
       if (updateEndpoint === undefined || updateEndpoint === null) {
-        throw new Error("Missing the required parameter 'updateEndpoint' when calling v1WebhooksUpdate");
+        throw new Error("Missing the required parameter 'updateEndpoint' when calling v1WebhooksEndpointUpdate");
       }
 
       let pathParams = {

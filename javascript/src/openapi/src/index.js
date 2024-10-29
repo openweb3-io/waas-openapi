@@ -26,6 +26,7 @@ import CreateWalletRequest from './model/CreateWalletRequest';
 import CursorPageAddress from './model/CursorPageAddress';
 import CursorPageChain from './model/CursorPageChain';
 import CursorPageEndpoint from './model/CursorPageEndpoint';
+import CursorPageEventType from './model/CursorPageEventType';
 import CursorPageToken from './model/CursorPageToken';
 import CursorPageTransaction from './model/CursorPageTransaction';
 import CursorPageWallet from './model/CursorPageWallet';
@@ -33,6 +34,7 @@ import Endpoint from './model/Endpoint';
 import Error from './model/Error';
 import EstimateFeeRequest from './model/EstimateFeeRequest';
 import EstimateFeeResponse from './model/EstimateFeeResponse';
+import EventType from './model/EventType';
 import Fee from './model/Fee';
 import Token from './model/Token';
 import Transaction from './model/Transaction';
@@ -49,6 +51,7 @@ import TokensApi from './api/TokensApi';
 import TransactionsApi from './api/TransactionsApi';
 import WalletsApi from './api/WalletsApi';
 import WebhookEndpointsApi from './api/WebhookEndpointsApi';
+import WebhookEventsApi from './api/WebhookEventsApi';
 
 
 /**
@@ -168,6 +171,12 @@ export {
     CursorPageEndpoint,
 
     /**
+     * The CursorPageEventType model constructor.
+     * @property {module:model/CursorPageEventType}
+     */
+    CursorPageEventType,
+
+    /**
      * The CursorPageToken model constructor.
      * @property {module:model/CursorPageToken}
      */
@@ -208,6 +217,12 @@ export {
      * @property {module:model/EstimateFeeResponse}
      */
     EstimateFeeResponse,
+
+    /**
+     * The EventType model constructor.
+     * @property {module:model/EventType}
+     */
+    EventType,
 
     /**
      * The Fee model constructor.
@@ -303,5 +318,11 @@ export {
     * The WebhookEndpointsApi service constructor.
     * @property {module:api/WebhookEndpointsApi}
     */
-    WebhookEndpointsApi
+    WebhookEndpointsApi,
+
+    /**
+    * The WebhookEventsApi service constructor.
+    * @property {module:api/WebhookEventsApi}
+    */
+    WebhookEventsApi
 };

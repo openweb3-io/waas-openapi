@@ -1,17 +1,13 @@
 package io.openweb3.waas;
 
-import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.exceptions.SigningException;
 import io.openweb3.waas.internal.ApiCallback;
+import io.openweb3.waas.internal.ApiClient;
 import io.openweb3.waas.internal.Configuration;
 import io.openweb3.waas.internal.ProgressResponseBody;
-import io.openweb3.waas.internal.auth.ApiKeyAuth;
 import okhttp3.*;
 import okio.Buffer;
 import org.jetbrains.annotations.NotNull;
-import okhttp3.Interceptor;
-import okhttp3.Response;
-
-import io.openweb3.waas.exceptions.SigningException;
 
 import java.io.IOException;
 
@@ -23,6 +19,7 @@ public final class APIClient {
     private final TransactionsAPI transaction;
     private final WalletsAPI wallet;
     private final WebhookEndpointsAPI webhookEndpoint;
+    private final WebhookEventsAPI webhookEvent;
 
     public APIClient(final String apikey, final String privateKeyPath) throws Exception {
         this(new APIClientOptions().apiKey(apikey).secret(privateKeyPath));
@@ -96,6 +93,7 @@ public final class APIClient {
         this.transaction = new TransactionsAPI();
         this.wallet = new WalletsAPI();
         this.webhookEndpoint = new WebhookEndpointsAPI();
+        this.webhookEvent = new WebhookEventsAPI();
     }
 
     private Interceptor getProgressInterceptor() {
@@ -138,5 +136,9 @@ public final class APIClient {
 
     public WebhookEndpointsAPI getEndpoint() {
         return webhookEndpoint;
+    }
+
+    public WebhookEventsAPI getEvent() {
+        return webhookEvent;
     }
 }

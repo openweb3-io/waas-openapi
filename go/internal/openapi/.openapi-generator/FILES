@@ -9,6 +9,7 @@ api_tokens.go
 api_transactions.go
 api_wallets.go
 api_webhook_endpoints.go
+api_webhook_events.go
 client.go
 configuration.go
 docs/Address.md
@@ -26,6 +27,7 @@ docs/CreateWalletRequest.md
 docs/CursorPageAddress.md
 docs/CursorPageChain.md
 docs/CursorPageEndpoint.md
+docs/CursorPageEventType.md
 docs/CursorPageToken.md
 docs/CursorPageTransaction.md
 docs/CursorPageWallet.md
@@ -33,6 +35,7 @@ docs/Endpoint.md
 docs/Error.md
 docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
+docs/EventType.md
 docs/Fee.md
 docs/Token.md
 docs/TokensAPI.md
@@ -47,6 +50,7 @@ docs/UpdateWalletRequest.md
 docs/Wallet.md
 docs/WalletsAPI.md
 docs/WebhookEndpointsAPI.md
+docs/WebhookEventsAPI.md
 git_push.sh
 go.mod
 go.sum
@@ -63,6 +67,7 @@ model_create_wallet_request.go
 model_cursor_page_address.go
 model_cursor_page_chain.go
 model_cursor_page_endpoint.go
+model_cursor_page_event_type.go
 model_cursor_page_token.go
 model_cursor_page_transaction.go
 model_cursor_page_wallet.go
@@ -70,6 +75,7 @@ model_endpoint.go
 model_error.go
 model_estimate_fee_request.go
 model_estimate_fee_response.go
+model_event_type.go
 model_fee.go
 model_token.go
 model_transaction.go
@@ -87,4 +93,5 @@ test/api_tokens_test.go
 test/api_transactions_test.go
 test/api_wallets_test.go
 test/api_webhook_endpoints_test.go
+test/api_webhook_events_test.go
 utils.go

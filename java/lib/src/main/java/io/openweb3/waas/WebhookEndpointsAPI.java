@@ -16,7 +16,7 @@ public final class WebhookEndpointsAPI {
 
     public CursorPageEndpoint list(final ListWebhookEndpointOptions options) throws ApiException {
         try {
-            return api.v1WebhooksList(options.getCursor(), options.getLimit());
+            return api.v1WebhooksEndpointList(options.getCursor(), options.getLimit());
         } catch (io.openweb3.waas.internal.ApiException e) {
             throw Utils.WrapInternalApiException(e);
         }
@@ -25,7 +25,7 @@ public final class WebhookEndpointsAPI {
     public Endpoint create(final CreateEndpoint req)
             throws ApiException {
         try {
-            return api.v1WebhooksCreate(req);
+            return api.v1WebhooksEndpointCreate(req);
         } catch (io.openweb3.waas.internal.ApiException e) {
             throw Utils.WrapInternalApiException(e);
         }
@@ -34,7 +34,7 @@ public final class WebhookEndpointsAPI {
     // delete
     public Endpoint get(final String endpointId) throws ApiException {
         try {
-            return api.v1WebhooksRetrieve(endpointId);
+            return api.v1WebhooksEndpointRetrieve(endpointId);
         } catch (io.openweb3.waas.internal.ApiException e) {
             throw Utils.WrapInternalApiException(e);
         }
@@ -43,7 +43,7 @@ public final class WebhookEndpointsAPI {
     // delete
     public Endpoint delete(final String endpointId) throws ApiException {
         try {
-            return api.v1WebhooksDelete(endpointId);
+            return api.v1WebhooksEndpointDelete(endpointId);
         } catch (io.openweb3.waas.internal.ApiException e) {
             throw Utils.WrapInternalApiException(e);
         }
@@ -52,7 +52,7 @@ public final class WebhookEndpointsAPI {
     // update
     public Endpoint update(final String endpointId, final UpdateEndpoint req) throws ApiException {
         try {
-            return api.v1WebhooksUpdate(endpointId, req);
+            return api.v1WebhooksEndpointUpdate(endpointId, req);
         } catch (io.openweb3.waas.internal.ApiException e) {
             throw Utils.WrapInternalApiException(e);
         }

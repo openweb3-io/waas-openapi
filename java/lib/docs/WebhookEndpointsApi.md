@@ -4,16 +4,16 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**v1WebhooksCreate**](WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint |
-| [**v1WebhooksDelete**](WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint |
-| [**v1WebhooksList**](WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints |
-| [**v1WebhooksRetrieve**](WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint |
-| [**v1WebhooksUpdate**](WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint |
+| [**v1WebhooksEndpointCreate**](WebhookEndpointsApi.md#v1WebhooksEndpointCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint |
+| [**v1WebhooksEndpointDelete**](WebhookEndpointsApi.md#v1WebhooksEndpointDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint |
+| [**v1WebhooksEndpointList**](WebhookEndpointsApi.md#v1WebhooksEndpointList) | **GET** /api/v1/webhooks/endpoints | List webhook endpoints |
+| [**v1WebhooksEndpointRetrieve**](WebhookEndpointsApi.md#v1WebhooksEndpointRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint |
+| [**v1WebhooksEndpointUpdate**](WebhookEndpointsApi.md#v1WebhooksEndpointUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint |
 
 
-<a id="v1WebhooksCreate"></a>
-# **v1WebhooksCreate**
-> Endpoint v1WebhooksCreate(createEndpoint)
+<a id="v1WebhooksEndpointCreate"></a>
+# **v1WebhooksEndpointCreate**
+> Endpoint v1WebhooksEndpointCreate(createEndpoint)
 
 Create webhook endpoint
 
@@ -43,10 +43,10 @@ public class Example {
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     CreateEndpoint createEndpoint = new CreateEndpoint(); // CreateEndpoint | Request body
     try {
-      Endpoint result = apiInstance.v1WebhooksCreate(createEndpoint);
+      Endpoint result = apiInstance.v1WebhooksEndpointCreate(createEndpoint);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksCreate");
+      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksEndpointCreate");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -82,9 +82,9 @@ public class Example {
 | **400** | Bad Request |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="v1WebhooksDelete"></a>
-# **v1WebhooksDelete**
-> Endpoint v1WebhooksDelete(endpointId)
+<a id="v1WebhooksEndpointDelete"></a>
+# **v1WebhooksEndpointDelete**
+> Endpoint v1WebhooksEndpointDelete(endpointId)
 
 Delete webhook endpoint
 
@@ -114,10 +114,10 @@ public class Example {
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     String endpointId = "endpointId_example"; // String | Endpoint ID
     try {
-      Endpoint result = apiInstance.v1WebhooksDelete(endpointId);
+      Endpoint result = apiInstance.v1WebhooksEndpointDelete(endpointId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksDelete");
+      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksEndpointDelete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -153,9 +153,9 @@ public class Example {
 | **400** | Bad Request |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="v1WebhooksList"></a>
-# **v1WebhooksList**
-> CursorPageEndpoint v1WebhooksList(cursor, limit)
+<a id="v1WebhooksEndpointList"></a>
+# **v1WebhooksEndpointList**
+> CursorPageEndpoint v1WebhooksEndpointList(cursor, limit)
 
 List webhook endpoints
 
@@ -186,10 +186,10 @@ public class Example {
     String cursor = "cursor_example"; // String | 
     Integer limit = 56; // Integer | The number of records to return default: 20
     try {
-      CursorPageEndpoint result = apiInstance.v1WebhooksList(cursor, limit);
+      CursorPageEndpoint result = apiInstance.v1WebhooksEndpointList(cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksList");
+      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksEndpointList");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -226,9 +226,9 @@ public class Example {
 | **400** | Bad Request |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="v1WebhooksRetrieve"></a>
-# **v1WebhooksRetrieve**
-> Endpoint v1WebhooksRetrieve(endpointId)
+<a id="v1WebhooksEndpointRetrieve"></a>
+# **v1WebhooksEndpointRetrieve**
+> Endpoint v1WebhooksEndpointRetrieve(endpointId)
 
 Get webhook endpoint
 
@@ -258,10 +258,10 @@ public class Example {
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     String endpointId = "endpointId_example"; // String | Endpoint ID
     try {
-      Endpoint result = apiInstance.v1WebhooksRetrieve(endpointId);
+      Endpoint result = apiInstance.v1WebhooksEndpointRetrieve(endpointId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksRetrieve");
+      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksEndpointRetrieve");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -298,9 +298,9 @@ public class Example {
 | **404** | Not Found |  -  |
 | **500** | Internal Server Error |  -  |
 
-<a id="v1WebhooksUpdate"></a>
-# **v1WebhooksUpdate**
-> Endpoint v1WebhooksUpdate(endpointId, updateEndpoint)
+<a id="v1WebhooksEndpointUpdate"></a>
+# **v1WebhooksEndpointUpdate**
+> Endpoint v1WebhooksEndpointUpdate(endpointId, updateEndpoint)
 
 Update webhook endpoint
 
@@ -331,10 +331,10 @@ public class Example {
     String endpointId = "endpointId_example"; // String | Endpoint ID
     UpdateEndpoint updateEndpoint = new UpdateEndpoint(); // UpdateEndpoint | Request body
     try {
-      Endpoint result = apiInstance.v1WebhooksUpdate(endpointId, updateEndpoint);
+      Endpoint result = apiInstance.v1WebhooksEndpointUpdate(endpointId, updateEndpoint);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksUpdate");
+      System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksEndpointUpdate");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());

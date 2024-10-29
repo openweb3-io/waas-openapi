@@ -48,50 +48,50 @@
   }
 
   describe('WebhookEndpointsApi', function() {
-    describe('v1WebhooksCreate', function() {
-      it('should call v1WebhooksCreate successfully', function(done) {
-        //uncomment below and update the code to test v1WebhooksCreate
-        //instance.v1WebhooksCreate(function(error) {
+    describe('v1WebhooksEndpointCreate', function() {
+      it('should call v1WebhooksEndpointCreate successfully', function(done) {
+        //uncomment below and update the code to test v1WebhooksEndpointCreate
+        //instance.v1WebhooksEndpointCreate(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('v1WebhooksDelete', function() {
-      it('should call v1WebhooksDelete successfully', function(done) {
-        //uncomment below and update the code to test v1WebhooksDelete
-        //instance.v1WebhooksDelete(function(error) {
+    describe('v1WebhooksEndpointDelete', function() {
+      it('should call v1WebhooksEndpointDelete successfully', function(done) {
+        //uncomment below and update the code to test v1WebhooksEndpointDelete
+        //instance.v1WebhooksEndpointDelete(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('v1WebhooksList', function() {
-      it('should call v1WebhooksList successfully', function(done) {
-        //uncomment below and update the code to test v1WebhooksList
-        //instance.v1WebhooksList(function(error) {
+    describe('v1WebhooksEndpointList', function() {
+      it('should call v1WebhooksEndpointList successfully', function(done) {
+        //uncomment below and update the code to test v1WebhooksEndpointList
+        //instance.v1WebhooksEndpointList(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('v1WebhooksRetrieve', function() {
-      it('should call v1WebhooksRetrieve successfully', function(done) {
-        //uncomment below and update the code to test v1WebhooksRetrieve
-        //instance.v1WebhooksRetrieve(function(error) {
+    describe('v1WebhooksEndpointRetrieve', function() {
+      it('should call v1WebhooksEndpointRetrieve successfully', function(done) {
+        //uncomment below and update the code to test v1WebhooksEndpointRetrieve
+        //instance.v1WebhooksEndpointRetrieve(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('v1WebhooksUpdate', function() {
-      it('should call v1WebhooksUpdate successfully', function(done) {
-        //uncomment below and update the code to test v1WebhooksUpdate
-        //instance.v1WebhooksUpdate(function(error) {
+    describe('v1WebhooksEndpointUpdate', function() {
+      it('should call v1WebhooksEndpointUpdate successfully', function(done) {
+        //uncomment below and update the code to test v1WebhooksEndpointUpdate
+        //instance.v1WebhooksEndpointUpdate(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

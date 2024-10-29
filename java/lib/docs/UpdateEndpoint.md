@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**description** | **String** |  |  [optional] |
 |**disabled** | **Boolean** |  |  [optional] |
-|**eventTypes** | **List&lt;String&gt;** |  |  |
+|**eventTypes** | **List&lt;String&gt;** |  |  [optional] |
 |**uid** | **String** |  |  [optional] |
 |**url** | **String** |  |  [optional] |
 

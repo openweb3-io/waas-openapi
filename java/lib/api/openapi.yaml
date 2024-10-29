@@ -215,56 +215,6 @@ paths:
       - Chains
       x-accepts:
       - application/json
-  /api/v1/endpoints:
-    get:
-      description: List webhook endpoints
-      operationId: v1.webhooks.list
-      parameters:
-      - explode: true
-        in: query
-        name: cursor
-        required: false
-        schema:
-          type: string
-          x-order: "1"
-        style: form
-      - description: "The number of records to return default: 20"
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          description: "The number of records to return default: 20"
-          type: integer
-          x-order: "2"
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CursorPage-Endpoint'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Bad Request
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-          description: Internal Server Error
-      security:
-      - ApiKeyAuth: []
-      - SignatureAuth: []
-      summary: List webhook endpoints
-      tags:
-      - Webhook endpoints
-      x-accepts:
-      - application/json
   /api/v1/tokens:
     get:
       description: Retrieve a list of all tokens.
@@ -1263,9 +1213,58 @@ paths:
       x-accepts:
       - application/json
   /api/v1/webhooks/endpoints:
+    get:
+      description: List webhook endpoints
+      operationId: v1.webhooks.endpoint.list
+      parameters:
+      - explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+          x-order: "1"
+        style: form
+      - description: "The number of records to return default: 20"
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: "The number of records to return default: 20"
+          type: integer
+          x-order: "2"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorPage-Endpoint'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: List webhook endpoints
+      tags:
+      - Webhook endpoints
+      x-accepts:
+      - application/json
     post:
       description: Create a webhook endpoint
-      operationId: v1.webhooks.create
+      operationId: v1.webhooks.endpoint.create
       requestBody:
         content:
           application/json:
@@ -1304,7 +1303,7 @@ paths:
   /api/v1/webhooks/endpoints/{endpointId}:
     delete:
       description: Delete specific webhook endpoint
-      operationId: v1.webhooks.delete
+      operationId: v1.webhooks.endpoint.delete
       parameters:
       - description: Endpoint ID
         explode: false
@@ -1343,7 +1342,7 @@ paths:
       - application/json
     get:
       description: Get specific webhook endpoint
-      operationId: v1.webhooks.retrieve
+      operationId: v1.webhooks.endpoint.retrieve
       parameters:
       - description: Endpoint ID
         explode: false
@@ -1388,7 +1387,7 @@ paths:
       - application/json
     patch:
       description: Update specific webhook endpoint
-      operationId: v1.webhooks.update
+      operationId: v1.webhooks.endpoint.update
       parameters:
       - description: Endpoint ID
         explode: false
@@ -1419,6 +1418,56 @@ paths:
       tags:
       - Webhook endpoints
       x-content-type: application/json
+      x-accepts:
+      - application/json
+  /api/v1/webhooks/events:
+    get:
+      description: List webhook event types
+      operationId: v1.webhooks.events.list
+      parameters:
+      - explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+          x-order: "1"
+        style: form
+      - description: "The number of records to return default: 100"
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: "The number of records to return default: 100"
+          type: integer
+          x-order: "2"
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorPage-EventType'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: List webhook event types
+      tags:
+      - Webhook events
       x-accepts:
       - application/json
 components:
@@ -1769,6 +1818,39 @@ components:
       - has_prev
       - items
       - total
+    CursorPage-EventType:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        total: 0
+        has_next: true
+        has_prev: true
+        items:
+        - name: name
+          description: description
+        - name: name
+          description: description
+      properties:
+        has_next:
+          type: boolean
+        has_prev:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/EventType'
+          type: array
+          uniqueItems: false
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+        total:
+          type: integer
+      required:
+      - has_next
+      - has_prev
+      - items
+      - total
     CursorPage-Token:
       example:
         prev_cursor: prev_cursor
@@ -2065,6 +2147,15 @@ components:
       required:
       - amount
       - token_id
+    EventType:
+      example:
+        name: name
+        description: description
+      properties:
+        description:
+          type: string
+        name:
+          type: string
     Fee:
       description: Fee
       example:
@@ -2330,8 +2421,6 @@ components:
           type: string
         url:
           type: string
-      required:
-      - eventTypes
     UpdateTokenRequest:
       example:
         uid: uid

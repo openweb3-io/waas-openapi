@@ -17,6 +17,7 @@ docs/CreateWalletRequest.md
 docs/CursorPageAddress.md
 docs/CursorPageChain.md
 docs/CursorPageEndpoint.md
+docs/CursorPageEventType.md
 docs/CursorPageToken.md
 docs/CursorPageTransaction.md
 docs/CursorPageWallet.md
@@ -24,6 +25,7 @@ docs/Endpoint.md
 docs/Error.md
 docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
+docs/EventType.md
 docs/Fee.md
 docs/Token.md
 docs/TokensApi.md
@@ -38,6 +40,7 @@ docs/UpdateWalletRequest.md
 docs/Wallet.md
 docs/WalletsApi.md
 docs/WebhookEndpointsApi.md
+docs/WebhookEventsApi.md
 git_push.sh
 mocha.opts
 package.json
@@ -48,6 +51,7 @@ src/api/TokensApi.js
 src/api/TransactionsApi.js
 src/api/WalletsApi.js
 src/api/WebhookEndpointsApi.js
+src/api/WebhookEventsApi.js
 src/index.js
 src/model/Address.js
 src/model/Chain.js
@@ -62,6 +66,7 @@ src/model/CreateWalletRequest.js
 src/model/CursorPageAddress.js
 src/model/CursorPageChain.js
 src/model/CursorPageEndpoint.js
+src/model/CursorPageEventType.js
 src/model/CursorPageToken.js
 src/model/CursorPageTransaction.js
 src/model/CursorPageWallet.js
@@ -69,6 +74,7 @@ src/model/Endpoint.js
 src/model/Error.js
 src/model/EstimateFeeRequest.js
 src/model/EstimateFeeResponse.js
+src/model/EventType.js
 src/model/Fee.js
 src/model/Token.js
 src/model/Transaction.js
@@ -85,6 +91,7 @@ test/api/TokensApi.spec.js
 test/api/TransactionsApi.spec.js
 test/api/WalletsApi.spec.js
 test/api/WebhookEndpointsApi.spec.js
+test/api/WebhookEventsApi.spec.js
 test/model/Address.spec.js
 test/model/Chain.spec.js
 test/model/CreateAddressRequest.spec.js
@@ -98,6 +105,7 @@ test/model/CreateWalletRequest.spec.js
 test/model/CursorPageAddress.spec.js
 test/model/CursorPageChain.spec.js
 test/model/CursorPageEndpoint.spec.js
+test/model/CursorPageEventType.spec.js
 test/model/CursorPageToken.spec.js
 test/model/CursorPageTransaction.spec.js
 test/model/CursorPageWallet.spec.js
@@ -105,6 +113,7 @@ test/model/Endpoint.spec.js
 test/model/Error.spec.js
 test/model/EstimateFeeRequest.spec.js
 test/model/EstimateFeeResponse.spec.js
+test/model/EventType.spec.js
 test/model/Fee.spec.js
 test/model/Token.spec.js
 test/model/Transaction.spec.js

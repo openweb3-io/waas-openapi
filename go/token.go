@@ -33,7 +33,7 @@ func (e *Token) List(ctx context.Context, options *ListTokenOptions) (*CursorPag
 	return out, nil
 }
 
-func (e *Token) GetDepositToken(ctx context.Context, tokenId string) (*TokenOut, error) {
+func (e *Token) Retrieve(ctx context.Context, tokenId string) (*TokenOut, error) {
 	req := e.api.TokensAPI.V1TokensRetrieve(ctx, tokenId)
 	out, res, err := req.Execute()
 	if err != nil {

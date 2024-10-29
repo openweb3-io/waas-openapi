@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** |  | [optional] 
 **Disabled** | Pointer to **bool** |  | [optional] 
-**EventTypes** | **[]string** |  | 
+**EventTypes** | Pointer to **[]string** |  | [optional] 
 **Uid** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateEndpoint
 
-`func NewUpdateEndpoint(eventTypes []string, ) *UpdateEndpoint`
+`func NewUpdateEndpoint() *UpdateEndpoint`
 
 NewUpdateEndpoint instantiates a new UpdateEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -98,6 +98,11 @@ and a boolean to check if the value has been set.
 
 SetEventTypes sets EventTypes field to given value.
 
+### HasEventTypes
+
+`func (o *UpdateEndpoint) HasEventTypes() bool`
+
+HasEventTypes returns a boolean if a field has been set.
 
 ### GetUid
 

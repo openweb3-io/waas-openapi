@@ -12,8 +12,6 @@ package openapi
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the UpdateEndpoint type satisfies the MappedNullable interface at compile time
@@ -23,20 +21,17 @@ var _ MappedNullable = &UpdateEndpoint{}
 type UpdateEndpoint struct {
 	Description *string `json:"description,omitempty"`
 	Disabled *bool `json:"disabled,omitempty"`
-	EventTypes []string `json:"eventTypes"`
+	EventTypes []string `json:"eventTypes,omitempty"`
 	Uid *string `json:"uid,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
-
-type _UpdateEndpoint UpdateEndpoint
 
 // NewUpdateEndpoint instantiates a new UpdateEndpoint object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateEndpoint(eventTypes []string) *UpdateEndpoint {
+func NewUpdateEndpoint() *UpdateEndpoint {
 	this := UpdateEndpoint{}
-	this.EventTypes = eventTypes
 	return &this
 }
 
@@ -112,26 +107,34 @@ func (o *UpdateEndpoint) SetDisabled(v bool) {
 	o.Disabled = &v
 }
 
-// GetEventTypes returns the EventTypes field value
+// GetEventTypes returns the EventTypes field value if set, zero value otherwise.
 func (o *UpdateEndpoint) GetEventTypes() []string {
-	if o == nil {
+	if o == nil || IsNil(o.EventTypes) {
 		var ret []string
 		return ret
 	}
-
 	return o.EventTypes
 }
 
-// GetEventTypesOk returns a tuple with the EventTypes field value
+// GetEventTypesOk returns a tuple with the EventTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateEndpoint) GetEventTypesOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.EventTypes) {
 		return nil, false
 	}
 	return o.EventTypes, true
 }
 
-// SetEventTypes sets field value
+// HasEventTypes returns a boolean if a field has been set.
+func (o *UpdateEndpoint) HasEventTypes() bool {
+	if o != nil && !IsNil(o.EventTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventTypes gets a reference to the given []string and assigns it to the EventTypes field.
 func (o *UpdateEndpoint) SetEventTypes(v []string) {
 	o.EventTypes = v
 }
@@ -216,7 +219,9 @@ func (o UpdateEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled
 	}
-	toSerialize["eventTypes"] = o.EventTypes
+	if !IsNil(o.EventTypes) {
+		toSerialize["eventTypes"] = o.EventTypes
+	}
 	if !IsNil(o.Uid) {
 		toSerialize["uid"] = o.Uid
 	}
@@ -224,43 +229,6 @@ func (o UpdateEndpoint) ToMap() (map[string]interface{}, error) {
 		toSerialize["url"] = o.Url
 	}
 	return toSerialize, nil
-}
-
-func (o *UpdateEndpoint) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"eventTypes",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varUpdateEndpoint := _UpdateEndpoint{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUpdateEndpoint)
-
-	if err != nil {
-		return err
-	}
-
-	*o = UpdateEndpoint(varUpdateEndpoint)
-
-	return err
 }
 
 type NullableUpdateEndpoint struct {

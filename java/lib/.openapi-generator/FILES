@@ -20,6 +20,7 @@ docs/CreateWalletRequest.md
 docs/CursorPageAddress.md
 docs/CursorPageChain.md
 docs/CursorPageEndpoint.md
+docs/CursorPageEventType.md
 docs/CursorPageToken.md
 docs/CursorPageTransaction.md
 docs/CursorPageWallet.md
@@ -27,6 +28,7 @@ docs/Endpoint.md
 docs/Error.md
 docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
+docs/EventType.md
 docs/Fee.md
 docs/Token.md
 docs/TokensApi.md
@@ -41,6 +43,7 @@ docs/UpdateWalletRequest.md
 docs/Wallet.md
 docs/WalletsApi.md
 docs/WebhookEndpointsApi.md
+docs/WebhookEventsApi.md
 git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
@@ -69,6 +72,7 @@ src/main/java/io/openweb3/waas/internal/api/TokensApi.java
 src/main/java/io/openweb3/waas/internal/api/TransactionsApi.java
 src/main/java/io/openweb3/waas/internal/api/WalletsApi.java
 src/main/java/io/openweb3/waas/internal/api/WebhookEndpointsApi.java
+src/main/java/io/openweb3/waas/internal/api/WebhookEventsApi.java
 src/main/java/io/openweb3/waas/internal/auth/ApiKeyAuth.java
 src/main/java/io/openweb3/waas/internal/auth/Authentication.java
 src/main/java/io/openweb3/waas/internal/auth/HttpBasicAuth.java
@@ -87,6 +91,7 @@ src/main/java/io/openweb3/waas/models/CreateWalletRequest.java
 src/main/java/io/openweb3/waas/models/CursorPageAddress.java
 src/main/java/io/openweb3/waas/models/CursorPageChain.java
 src/main/java/io/openweb3/waas/models/CursorPageEndpoint.java
+src/main/java/io/openweb3/waas/models/CursorPageEventType.java
 src/main/java/io/openweb3/waas/models/CursorPageToken.java
 src/main/java/io/openweb3/waas/models/CursorPageTransaction.java
 src/main/java/io/openweb3/waas/models/CursorPageWallet.java
@@ -94,6 +99,7 @@ src/main/java/io/openweb3/waas/models/Endpoint.java
 src/main/java/io/openweb3/waas/models/Error.java
 src/main/java/io/openweb3/waas/models/EstimateFeeRequest.java
 src/main/java/io/openweb3/waas/models/EstimateFeeResponse.java
+src/main/java/io/openweb3/waas/models/EventType.java
 src/main/java/io/openweb3/waas/models/Fee.java
 src/main/java/io/openweb3/waas/models/Token.java
 src/main/java/io/openweb3/waas/models/Transaction.java
@@ -110,6 +116,7 @@ src/test/java/io/openweb3/waas/internal/api/TokensApiTest.java
 src/test/java/io/openweb3/waas/internal/api/TransactionsApiTest.java
 src/test/java/io/openweb3/waas/internal/api/WalletsApiTest.java
 src/test/java/io/openweb3/waas/internal/api/WebhookEndpointsApiTest.java
+src/test/java/io/openweb3/waas/internal/api/WebhookEventsApiTest.java
 src/test/java/io/openweb3/waas/models/AddressTest.java
 src/test/java/io/openweb3/waas/models/ChainTest.java
 src/test/java/io/openweb3/waas/models/CreateAddressRequestTest.java
@@ -123,6 +130,7 @@ src/test/java/io/openweb3/waas/models/CreateWalletRequestTest.java
 src/test/java/io/openweb3/waas/models/CursorPageAddressTest.java
 src/test/java/io/openweb3/waas/models/CursorPageChainTest.java
 src/test/java/io/openweb3/waas/models/CursorPageEndpointTest.java
+src/test/java/io/openweb3/waas/models/CursorPageEventTypeTest.java
 src/test/java/io/openweb3/waas/models/CursorPageTokenTest.java
 src/test/java/io/openweb3/waas/models/CursorPageTransactionTest.java
 src/test/java/io/openweb3/waas/models/CursorPageWalletTest.java
@@ -130,6 +138,7 @@ src/test/java/io/openweb3/waas/models/EndpointTest.java
 src/test/java/io/openweb3/waas/models/ErrorTest.java
 src/test/java/io/openweb3/waas/models/EstimateFeeRequestTest.java
 src/test/java/io/openweb3/waas/models/EstimateFeeResponseTest.java
+src/test/java/io/openweb3/waas/models/EventTypeTest.java
 src/test/java/io/openweb3/waas/models/FeeTest.java
 src/test/java/io/openweb3/waas/models/TokenTest.java
 src/test/java/io/openweb3/waas/models/TransactionEndpointTest.java

@@ -151,11 +151,12 @@ Class | Method | HTTP request | Description
 *WaaSOpenApiDocumentation.WalletsApi* | [**v1WalletsList**](docs/WalletsApi.md#v1WalletsList) | **GET** /api/v1/wallets | List wallets
 *WaaSOpenApiDocumentation.WalletsApi* | [**v1WalletsRetrieve**](docs/WalletsApi.md#v1WalletsRetrieve) | **GET** /api/v1/wallets/{walletId} | Get wallet
 *WaaSOpenApiDocumentation.WalletsApi* | [**v1WalletsUpdate**](docs/WalletsApi.md#v1WalletsUpdate) | **PATCH** /api/v1/wallets/{walletId} | Update wallet
-*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksCreate**](docs/WebhookEndpointsApi.md#v1WebhooksCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
-*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksDelete**](docs/WebhookEndpointsApi.md#v1WebhooksDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
-*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksList**](docs/WebhookEndpointsApi.md#v1WebhooksList) | **GET** /api/v1/endpoints | List webhook endpoints
-*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksRetrieve**](docs/WebhookEndpointsApi.md#v1WebhooksRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
-*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksUpdate**](docs/WebhookEndpointsApi.md#v1WebhooksUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
+*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksEndpointCreate**](docs/WebhookEndpointsApi.md#v1WebhooksEndpointCreate) | **POST** /api/v1/webhooks/endpoints | Create webhook endpoint
+*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksEndpointDelete**](docs/WebhookEndpointsApi.md#v1WebhooksEndpointDelete) | **DELETE** /api/v1/webhooks/endpoints/{endpointId} | Delete webhook endpoint
+*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksEndpointList**](docs/WebhookEndpointsApi.md#v1WebhooksEndpointList) | **GET** /api/v1/webhooks/endpoints | List webhook endpoints
+*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksEndpointRetrieve**](docs/WebhookEndpointsApi.md#v1WebhooksEndpointRetrieve) | **GET** /api/v1/webhooks/endpoints/{endpointId} | Get webhook endpoint
+*WaaSOpenApiDocumentation.WebhookEndpointsApi* | [**v1WebhooksEndpointUpdate**](docs/WebhookEndpointsApi.md#v1WebhooksEndpointUpdate) | **PATCH** /api/v1/webhooks/endpoints/{endpointId} | Update webhook endpoint
+*WaaSOpenApiDocumentation.WebhookEventsApi* | [**v1WebhooksEventsList**](docs/WebhookEventsApi.md#v1WebhooksEventsList) | **GET** /api/v1/webhooks/events | List webhook event types
 
 
 ## Documentation for Models
@@ -173,6 +174,7 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.CursorPageAddress](docs/CursorPageAddress.md)
  - [WaaSOpenApiDocumentation.CursorPageChain](docs/CursorPageChain.md)
  - [WaaSOpenApiDocumentation.CursorPageEndpoint](docs/CursorPageEndpoint.md)
+ - [WaaSOpenApiDocumentation.CursorPageEventType](docs/CursorPageEventType.md)
  - [WaaSOpenApiDocumentation.CursorPageToken](docs/CursorPageToken.md)
  - [WaaSOpenApiDocumentation.CursorPageTransaction](docs/CursorPageTransaction.md)
  - [WaaSOpenApiDocumentation.CursorPageWallet](docs/CursorPageWallet.md)
@@ -180,6 +182,7 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.Error](docs/Error.md)
  - [WaaSOpenApiDocumentation.EstimateFeeRequest](docs/EstimateFeeRequest.md)
  - [WaaSOpenApiDocumentation.EstimateFeeResponse](docs/EstimateFeeResponse.md)
+ - [WaaSOpenApiDocumentation.EventType](docs/EventType.md)
  - [WaaSOpenApiDocumentation.Fee](docs/Fee.md)
  - [WaaSOpenApiDocumentation.Token](docs/Token.md)
  - [WaaSOpenApiDocumentation.Transaction](docs/Transaction.md)
