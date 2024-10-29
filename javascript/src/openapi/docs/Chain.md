@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **confirmNum** | **Number** | Confirmation number | [optional] 
 **createdAt** | **String** | Created time | [optional] 
 **explorerAddressUrl** | **String** | Explorer address URL | [optional] 
+**explorerBlockUrl** | **String** | Explorer block URL | [optional] 
 **explorerTxUrl** | **String** | Explorer transaction URL | [optional] 
 **iconUrl** | **String** | Icon URL | [optional] 
 **id** | **String** | Chain ID | [optional] 

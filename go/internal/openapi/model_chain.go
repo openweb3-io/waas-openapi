@@ -25,6 +25,8 @@ type Chain struct {
 	CreatedAt *string `json:"created_at,omitempty"`
 	// Explorer address URL
 	ExplorerAddressUrl *string `json:"explorer_address_url,omitempty"`
+	// Explorer block URL
+	ExplorerBlockUrl *string `json:"explorer_block_url,omitempty"`
 	// Explorer transaction URL
 	ExplorerTxUrl *string `json:"explorer_tx_url,omitempty"`
 	// Icon URL
@@ -152,6 +154,38 @@ func (o *Chain) HasExplorerAddressUrl() bool {
 // SetExplorerAddressUrl gets a reference to the given string and assigns it to the ExplorerAddressUrl field.
 func (o *Chain) SetExplorerAddressUrl(v string) {
 	o.ExplorerAddressUrl = &v
+}
+
+// GetExplorerBlockUrl returns the ExplorerBlockUrl field value if set, zero value otherwise.
+func (o *Chain) GetExplorerBlockUrl() string {
+	if o == nil || IsNil(o.ExplorerBlockUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ExplorerBlockUrl
+}
+
+// GetExplorerBlockUrlOk returns a tuple with the ExplorerBlockUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Chain) GetExplorerBlockUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ExplorerBlockUrl) {
+		return nil, false
+	}
+	return o.ExplorerBlockUrl, true
+}
+
+// HasExplorerBlockUrl returns a boolean if a field has been set.
+func (o *Chain) HasExplorerBlockUrl() bool {
+	if o != nil && !IsNil(o.ExplorerBlockUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetExplorerBlockUrl gets a reference to the given string and assigns it to the ExplorerBlockUrl field.
+func (o *Chain) SetExplorerBlockUrl(v string) {
+	o.ExplorerBlockUrl = &v
 }
 
 // GetExplorerTxUrl returns the ExplorerTxUrl field value if set, zero value otherwise.
@@ -396,6 +430,9 @@ func (o Chain) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExplorerAddressUrl) {
 		toSerialize["explorer_address_url"] = o.ExplorerAddressUrl
+	}
+	if !IsNil(o.ExplorerBlockUrl) {
+		toSerialize["explorer_block_url"] = o.ExplorerBlockUrl
 	}
 	if !IsNil(o.ExplorerTxUrl) {
 		toSerialize["explorer_tx_url"] = o.ExplorerTxUrl

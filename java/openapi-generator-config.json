@@ -2,5 +2,6 @@
   "_comment": "reference: https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/java.md",
   "apiPackage": "io.openweb3.waas.internal.api",
   "modelPackage": "io.openweb3.waas.models",
-  "dateLibrary": "java8"
+  "dateLibrary": "java8",
+  "hideGenerationTimestamp": true
 }

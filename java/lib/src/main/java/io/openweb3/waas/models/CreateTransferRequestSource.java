@@ -58,7 +58,7 @@ import com.google.gson.JsonParseException;
 
 import io.openweb3.waas.internal.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T22:20:40.982823+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class CreateTransferRequestSource extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(CreateTransferRequestSource.class.getName());
 

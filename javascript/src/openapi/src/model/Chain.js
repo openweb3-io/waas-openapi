@@ -56,6 +56,9 @@ class Chain {
             if (data.hasOwnProperty('explorer_address_url')) {
                 obj['explorer_address_url'] = ApiClient.convertToType(data['explorer_address_url'], 'String');
             }
+            if (data.hasOwnProperty('explorer_block_url')) {
+                obj['explorer_block_url'] = ApiClient.convertToType(data['explorer_block_url'], 'String');
+            }
             if (data.hasOwnProperty('explorer_tx_url')) {
                 obj['explorer_tx_url'] = ApiClient.convertToType(data['explorer_tx_url'], 'String');
             }
@@ -94,6 +97,10 @@ class Chain {
         // ensure the json data is a string
         if (data['explorer_address_url'] && !(typeof data['explorer_address_url'] === 'string' || data['explorer_address_url'] instanceof String)) {
             throw new Error("Expected the field `explorer_address_url` to be a primitive type in the JSON string but got " + data['explorer_address_url']);
+        }
+        // ensure the json data is a string
+        if (data['explorer_block_url'] && !(typeof data['explorer_block_url'] === 'string' || data['explorer_block_url'] instanceof String)) {
+            throw new Error("Expected the field `explorer_block_url` to be a primitive type in the JSON string but got " + data['explorer_block_url']);
         }
         // ensure the json data is a string
         if (data['explorer_tx_url'] && !(typeof data['explorer_tx_url'] === 'string' || data['explorer_tx_url'] instanceof String)) {
@@ -145,6 +152,12 @@ Chain.prototype['created_at'] = undefined;
  * @member {String} explorer_address_url
  */
 Chain.prototype['explorer_address_url'] = undefined;
+
+/**
+ * Explorer block URL
+ * @member {String} explorer_block_url
+ */
+Chain.prototype['explorer_block_url'] = undefined;
 
 /**
  * Explorer transaction URL

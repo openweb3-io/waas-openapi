@@ -1411,6 +1411,7 @@ components:
         need_memo: true
         name: name
         created_at: created_at
+        explorer_block_url: explorer_block_url
         confirm_num: 0
         id: id
         explorer_tx_url: explorer_tx_url
@@ -1424,6 +1425,9 @@ components:
           type: string
         explorer_address_url:
           description: Explorer address URL
+          type: string
+        explorer_block_url:
+          description: Explorer block URL
           type: string
         explorer_tx_url:
           description: Explorer transaction URL
@@ -1622,6 +1626,7 @@ components:
           need_memo: true
           name: name
           created_at: created_at
+          explorer_block_url: explorer_block_url
           confirm_num: 0
           id: id
           explorer_tx_url: explorer_tx_url
@@ -1632,6 +1637,7 @@ components:
           need_memo: true
           name: name
           created_at: created_at
+          explorer_block_url: explorer_block_url
           confirm_num: 0
           id: id
           explorer_tx_url: explorer_tx_url

@@ -2,7 +2,6 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Build date: 2024-10-29T22:20:40.982823+08:00[Asia/Shanghai]
   - Generator version: 7.9.0
 
 This is a WaaS OpenAPI Server.

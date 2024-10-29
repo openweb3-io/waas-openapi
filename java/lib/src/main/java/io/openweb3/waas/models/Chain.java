@@ -48,7 +48,7 @@ import io.openweb3.waas.internal.JSON;
 /**
  * Chain
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T22:20:40.982823+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Chain {
   public static final String SERIALIZED_NAME_CONFIRM_NUM = "confirm_num";
   @SerializedName(SERIALIZED_NAME_CONFIRM_NUM)
@@ -61,6 +61,10 @@ public class Chain {
   public static final String SERIALIZED_NAME_EXPLORER_ADDRESS_URL = "explorer_address_url";
   @SerializedName(SERIALIZED_NAME_EXPLORER_ADDRESS_URL)
   private String explorerAddressUrl;
+
+  public static final String SERIALIZED_NAME_EXPLORER_BLOCK_URL = "explorer_block_url";
+  @SerializedName(SERIALIZED_NAME_EXPLORER_BLOCK_URL)
+  private String explorerBlockUrl;
 
   public static final String SERIALIZED_NAME_EXPLORER_TX_URL = "explorer_tx_url";
   @SerializedName(SERIALIZED_NAME_EXPLORER_TX_URL)
@@ -147,6 +151,25 @@ public class Chain {
 
   public void setExplorerAddressUrl(String explorerAddressUrl) {
     this.explorerAddressUrl = explorerAddressUrl;
+  }
+
+
+  public Chain explorerBlockUrl(String explorerBlockUrl) {
+    this.explorerBlockUrl = explorerBlockUrl;
+    return this;
+  }
+
+  /**
+   * Explorer block URL
+   * @return explorerBlockUrl
+   */
+  @javax.annotation.Nullable
+  public String getExplorerBlockUrl() {
+    return explorerBlockUrl;
+  }
+
+  public void setExplorerBlockUrl(String explorerBlockUrl) {
+    this.explorerBlockUrl = explorerBlockUrl;
   }
 
 
@@ -296,6 +319,7 @@ public class Chain {
     return Objects.equals(this.confirmNum, chain.confirmNum) &&
         Objects.equals(this.createdAt, chain.createdAt) &&
         Objects.equals(this.explorerAddressUrl, chain.explorerAddressUrl) &&
+        Objects.equals(this.explorerBlockUrl, chain.explorerBlockUrl) &&
         Objects.equals(this.explorerTxUrl, chain.explorerTxUrl) &&
         Objects.equals(this.iconUrl, chain.iconUrl) &&
         Objects.equals(this.id, chain.id) &&
@@ -307,7 +331,7 @@ public class Chain {
 
   @Override
   public int hashCode() {
-    return Objects.hash(confirmNum, createdAt, explorerAddressUrl, explorerTxUrl, iconUrl, id, name, needMemo, symbol, updatedAt);
+    return Objects.hash(confirmNum, createdAt, explorerAddressUrl, explorerBlockUrl, explorerTxUrl, iconUrl, id, name, needMemo, symbol, updatedAt);
   }
 
   @Override
@@ -317,6 +341,7 @@ public class Chain {
     sb.append("    confirmNum: ").append(toIndentedString(confirmNum)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    explorerAddressUrl: ").append(toIndentedString(explorerAddressUrl)).append("\n");
+    sb.append("    explorerBlockUrl: ").append(toIndentedString(explorerBlockUrl)).append("\n");
     sb.append("    explorerTxUrl: ").append(toIndentedString(explorerTxUrl)).append("\n");
     sb.append("    iconUrl: ").append(toIndentedString(iconUrl)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -349,6 +374,7 @@ public class Chain {
     openapiFields.add("confirm_num");
     openapiFields.add("created_at");
     openapiFields.add("explorer_address_url");
+    openapiFields.add("explorer_block_url");
     openapiFields.add("explorer_tx_url");
     openapiFields.add("icon_url");
     openapiFields.add("id");
@@ -387,6 +413,9 @@ public class Chain {
       }
       if ((jsonObj.get("explorer_address_url") != null && !jsonObj.get("explorer_address_url").isJsonNull()) && !jsonObj.get("explorer_address_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `explorer_address_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explorer_address_url").toString()));
+      }
+      if ((jsonObj.get("explorer_block_url") != null && !jsonObj.get("explorer_block_url").isJsonNull()) && !jsonObj.get("explorer_block_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `explorer_block_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explorer_block_url").toString()));
       }
       if ((jsonObj.get("explorer_tx_url") != null && !jsonObj.get("explorer_tx_url").isJsonNull()) && !jsonObj.get("explorer_tx_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `explorer_tx_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explorer_tx_url").toString()));

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ConfirmNum** | Pointer to **int32** | Confirmation number | [optional] 
 **CreatedAt** | Pointer to **string** | Created time | [optional] 
 **ExplorerAddressUrl** | Pointer to **string** | Explorer address URL | [optional] 
+**ExplorerBlockUrl** | Pointer to **string** | Explorer block URL | [optional] 
 **ExplorerTxUrl** | Pointer to **string** | Explorer transaction URL | [optional] 
 **IconUrl** | Pointer to **string** | Icon URL | [optional] 
 **Id** | Pointer to **string** | Chain ID | [optional] 
@@ -108,6 +109,31 @@ SetExplorerAddressUrl sets ExplorerAddressUrl field to given value.
 `func (o *Chain) HasExplorerAddressUrl() bool`
 
 HasExplorerAddressUrl returns a boolean if a field has been set.
+
+### GetExplorerBlockUrl
+
+`func (o *Chain) GetExplorerBlockUrl() string`
+
+GetExplorerBlockUrl returns the ExplorerBlockUrl field if non-nil, zero value otherwise.
+
+### GetExplorerBlockUrlOk
+
+`func (o *Chain) GetExplorerBlockUrlOk() (*string, bool)`
+
+GetExplorerBlockUrlOk returns a tuple with the ExplorerBlockUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExplorerBlockUrl
+
+`func (o *Chain) SetExplorerBlockUrl(v string)`
+
+SetExplorerBlockUrl sets ExplorerBlockUrl field to given value.
+
+### HasExplorerBlockUrl
+
+`func (o *Chain) HasExplorerBlockUrl() bool`
+
+HasExplorerBlockUrl returns a boolean if a field has been set.
 
 ### GetExplorerTxUrl
 

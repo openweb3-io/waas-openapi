@@ -72,6 +72,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property explorerBlockUrl (base name: "explorer_block_url")', function() {
+      // uncomment below and update the code to test the property explorerBlockUrl
+      //var instance = new WaaSOpenApiDocumentation.Chain();
+      //expect(instance).to.be();
+    });
+
     it('should have the property explorerTxUrl (base name: "explorer_tx_url")', function() {
       // uncomment below and update the code to test the property explorerTxUrl
       //var instance = new WaaSOpenApiDocumentation.Chain();
