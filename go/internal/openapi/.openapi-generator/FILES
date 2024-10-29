@@ -19,6 +19,8 @@ docs/CreateAddressRequest.md
 docs/CreateEndpoint.md
 docs/CreateTokenRequest.md
 docs/CreateTransferRequest.md
+docs/CreateTransferRequestDestination.md
+docs/CreateTransferRequestSource.md
 docs/CreateTransferResponse.md
 docs/CreateWalletRequest.md
 docs/CursorPageAddress.md
@@ -54,6 +56,8 @@ model_create_address_request.go
 model_create_endpoint.go
 model_create_token_request.go
 model_create_transfer_request.go
+model_create_transfer_request_destination.go
+model_create_transfer_request_source.go
 model_create_transfer_response.go
 model_create_wallet_request.go
 model_cursor_page_address.go

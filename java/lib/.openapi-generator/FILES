@@ -13,6 +13,8 @@ docs/CreateAddressRequest.md
 docs/CreateEndpoint.md
 docs/CreateTokenRequest.md
 docs/CreateTransferRequest.md
+docs/CreateTransferRequestDestination.md
+docs/CreateTransferRequestSource.md
 docs/CreateTransferResponse.md
 docs/CreateWalletRequest.md
 docs/CursorPageAddress.md
@@ -78,6 +80,8 @@ src/main/java/io/openweb3/waas/models/CreateAddressRequest.java
 src/main/java/io/openweb3/waas/models/CreateEndpoint.java
 src/main/java/io/openweb3/waas/models/CreateTokenRequest.java
 src/main/java/io/openweb3/waas/models/CreateTransferRequest.java
+src/main/java/io/openweb3/waas/models/CreateTransferRequestDestination.java
+src/main/java/io/openweb3/waas/models/CreateTransferRequestSource.java
 src/main/java/io/openweb3/waas/models/CreateTransferResponse.java
 src/main/java/io/openweb3/waas/models/CreateWalletRequest.java
 src/main/java/io/openweb3/waas/models/CursorPageAddress.java
@@ -100,3 +104,5 @@ src/main/java/io/openweb3/waas/models/UpdateEndpoint.java
 src/main/java/io/openweb3/waas/models/UpdateTokenRequest.java
 src/main/java/io/openweb3/waas/models/UpdateWalletRequest.java
 src/main/java/io/openweb3/waas/models/Wallet.java
+src/test/java/io/openweb3/waas/models/CreateTransferRequestDestinationTest.java
+src/test/java/io/openweb3/waas/models/CreateTransferRequestSourceTest.java

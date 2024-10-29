@@ -99,6 +99,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateEndpoint.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateTokenRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateTransferRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateTransferRequestDestination.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateTransferRequestSource.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateTransferResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateWalletRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CursorPageAddress.CustomTypeAdapterFactory());

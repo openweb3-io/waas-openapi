@@ -112,6 +112,8 @@ Class | Method | HTTP request | Description
  - [CreateEndpoint](docs/CreateEndpoint.md)
  - [CreateTokenRequest](docs/CreateTokenRequest.md)
  - [CreateTransferRequest](docs/CreateTransferRequest.md)
+ - [CreateTransferRequestDestination](docs/CreateTransferRequestDestination.md)
+ - [CreateTransferRequestSource](docs/CreateTransferRequestSource.md)
  - [CreateTransferResponse](docs/CreateTransferResponse.md)
  - [CreateWalletRequest](docs/CreateWalletRequest.md)
  - [CursorPageAddress](docs/CursorPageAddress.md)

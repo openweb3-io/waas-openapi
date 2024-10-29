@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateTransferRequestDestination from './CreateTransferRequestDestination';
+import CreateTransferRequestSource from './CreateTransferRequestSource';
 import Fee from './Fee';
 
 /**
@@ -24,8 +26,8 @@ class CreateTransferRequest {
      * Constructs a new <code>CreateTransferRequest</code>.
      * @alias module:model/CreateTransferRequest
      * @param amount {String} The amount to be transferred
-     * @param destination {Array.<Number>} The ID of the wallet to which the transfer will be made
-     * @param source {Array.<Number>} The ID of the wallet from which the transfer will be made
+     * @param destination {module:model/CreateTransferRequestDestination} 
+     * @param source {module:model/CreateTransferRequestSource} 
      * @param tokenId {String} The tokenId to be transferred
      */
     constructor(amount, destination, source, tokenId) { 
@@ -60,7 +62,7 @@ class CreateTransferRequest {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = ApiClient.convertToType(data['destination'], ['Number']);
+                obj['destination'] = CreateTransferRequestDestination.constructFromObject(data['destination']);
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = ApiClient.convertToType(data['extra'], 'String');
@@ -72,7 +74,7 @@ class CreateTransferRequest {
                 obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
             }
             if (data.hasOwnProperty('source')) {
-                obj['source'] = ApiClient.convertToType(data['source'], ['Number']);
+                obj['source'] = CreateTransferRequestSource.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -97,9 +99,9 @@ class CreateTransferRequest {
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['destination'])) {
-            throw new Error("Expected the field `destination` to be an array in the JSON data but got " + data['destination']);
+        // validate the optional field `destination`
+        if (data['destination']) { // data not null
+          CreateTransferRequestDestination.validateJSON(data['destination']);
         }
         // ensure the json data is a string
         if (data['extra'] && !(typeof data['extra'] === 'string' || data['extra'] instanceof String)) {
@@ -113,9 +115,9 @@ class CreateTransferRequest {
         if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
             throw new Error("Expected the field `memo` to be a primitive type in the JSON string but got " + data['memo']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['source'])) {
-            throw new Error("Expected the field `source` to be an array in the JSON data but got " + data['source']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          CreateTransferRequestSource.validateJSON(data['source']);
         }
         // ensure the json data is a string
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
@@ -137,8 +139,7 @@ CreateTransferRequest.RequiredProperties = ["amount", "destination", "source", "
 CreateTransferRequest.prototype['amount'] = undefined;
 
 /**
- * The ID of the wallet to which the transfer will be made
- * @member {Array.<Number>} destination
+ * @member {module:model/CreateTransferRequestDestination} destination
  */
 CreateTransferRequest.prototype['destination'] = undefined;
 
@@ -160,8 +161,7 @@ CreateTransferRequest.prototype['fee'] = undefined;
 CreateTransferRequest.prototype['memo'] = undefined;
 
 /**
- * The ID of the wallet from which the transfer will be made
- * @member {Array.<Number>} source
+ * @member {module:model/CreateTransferRequestSource} source
  */
 CreateTransferRequest.prototype['source'] = undefined;
 

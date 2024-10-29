@@ -11,8 +11,8 @@ API version: 1.0
 package openapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,16 +22,14 @@ var _ MappedNullable = &CreateTransferRequest{}
 // CreateTransferRequest struct for CreateTransferRequest
 type CreateTransferRequest struct {
 	// The amount to be transferred
-	Amount string `json:"amount"`
-	// The ID of the wallet to which the transfer will be made
-	Destination []int32 `json:"destination"`
+	Amount      string                           `json:"amount"`
+	Destination CreateTransferRequestDestination `json:"destination"`
 	// Extra
 	Extra *string `json:"extra,omitempty"`
-	Fee *Fee `json:"fee,omitempty"`
+	Fee   *Fee    `json:"fee,omitempty"`
 	// Memo
-	Memo *string `json:"memo,omitempty"`
-	// The ID of the wallet from which the transfer will be made
-	Source []int32 `json:"source"`
+	Memo   *string                     `json:"memo,omitempty"`
+	Source CreateTransferRequestSource `json:"source"`
 	// The tokenId to be transferred
 	TokenId string `json:"token_id"`
 }
@@ -42,7 +40,7 @@ type _CreateTransferRequest CreateTransferRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateTransferRequest(amount string, destination []int32, source []int32, tokenId string) *CreateTransferRequest {
+func NewCreateTransferRequest(amount string, destination CreateTransferRequestDestination, source CreateTransferRequestSource, tokenId string) *CreateTransferRequest {
 	this := CreateTransferRequest{}
 	this.Amount = amount
 	this.Destination = destination
@@ -84,9 +82,9 @@ func (o *CreateTransferRequest) SetAmount(v string) {
 }
 
 // GetDestination returns the Destination field value
-func (o *CreateTransferRequest) GetDestination() []int32 {
+func (o *CreateTransferRequest) GetDestination() CreateTransferRequestDestination {
 	if o == nil {
-		var ret []int32
+		var ret CreateTransferRequestDestination
 		return ret
 	}
 
@@ -95,15 +93,15 @@ func (o *CreateTransferRequest) GetDestination() []int32 {
 
 // GetDestinationOk returns a tuple with the Destination field value
 // and a boolean to check if the value has been set.
-func (o *CreateTransferRequest) GetDestinationOk() ([]int32, bool) {
+func (o *CreateTransferRequest) GetDestinationOk() (*CreateTransferRequestDestination, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Destination, true
+	return &o.Destination, true
 }
 
 // SetDestination sets field value
-func (o *CreateTransferRequest) SetDestination(v []int32) {
+func (o *CreateTransferRequest) SetDestination(v CreateTransferRequestDestination) {
 	o.Destination = v
 }
 
@@ -204,9 +202,9 @@ func (o *CreateTransferRequest) SetMemo(v string) {
 }
 
 // GetSource returns the Source field value
-func (o *CreateTransferRequest) GetSource() []int32 {
+func (o *CreateTransferRequest) GetSource() CreateTransferRequestSource {
 	if o == nil {
-		var ret []int32
+		var ret CreateTransferRequestSource
 		return ret
 	}
 
@@ -215,15 +213,15 @@ func (o *CreateTransferRequest) GetSource() []int32 {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *CreateTransferRequest) GetSourceOk() ([]int32, bool) {
+func (o *CreateTransferRequest) GetSourceOk() (*CreateTransferRequestSource, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Source, true
+	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *CreateTransferRequest) SetSource(v []int32) {
+func (o *CreateTransferRequest) SetSource(v CreateTransferRequestSource) {
 	o.Source = v
 }
 
@@ -252,7 +250,7 @@ func (o *CreateTransferRequest) SetTokenId(v string) {
 }
 
 func (o CreateTransferRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -293,10 +291,10 @@ func (o *CreateTransferRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -352,5 +350,3 @@ func (v *NullableCreateTransferRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

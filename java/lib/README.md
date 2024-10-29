@@ -2,7 +2,7 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Build date: 2024-10-29T01:35:38.261544+08:00[Asia/Shanghai]
+  - Build date: 2024-10-29T15:00:41.402192+08:00[Asia/Shanghai]
   - Generator version: 7.9.0
 
 This is a WaaS OpenAPI Server.
@@ -159,6 +159,8 @@ Class | Method | HTTP request | Description
  - [CreateEndpoint](docs/CreateEndpoint.md)
  - [CreateTokenRequest](docs/CreateTokenRequest.md)
  - [CreateTransferRequest](docs/CreateTransferRequest.md)
+ - [CreateTransferRequestDestination](docs/CreateTransferRequestDestination.md)
+ - [CreateTransferRequestSource](docs/CreateTransferRequestSource.md)
  - [CreateTransferResponse](docs/CreateTransferResponse.md)
  - [CreateWalletRequest](docs/CreateWalletRequest.md)
  - [CursorPageAddress](docs/CursorPageAddress.md)

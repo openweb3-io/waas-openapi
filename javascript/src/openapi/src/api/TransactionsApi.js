@@ -94,7 +94,6 @@ export default class TransactionsApi {
      * List transactions
      * List transactions
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} [walletIds] Unique system generated identifier of the wallet
      * @param {Array.<String>} [chainIds] The blockchain network on which the transaction takes place.
      * @param {Array.<String>} [tokenIds] The tokenId involved in the transaction.
      * @param {Array.<String>} [assetIds] The assetId involved in the transaction.
@@ -102,6 +101,7 @@ export default class TransactionsApi {
      * @param {String} [status] The status of the transaction.
      * @param {String} [cursor] A cursor value for pagination purposes.
      * @param {Number} [limit] The number of records to return default: 20
+     * @param {Array.<String>} [walletIds] Unique system generated identifier of the wallet
      * @param {module:api/TransactionsApi~v1TransactionsListCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageTransaction}
      */
@@ -112,14 +112,14 @@ export default class TransactionsApi {
       let pathParams = {
       };
       let queryParams = {
-        'wallet_ids': this.apiClient.buildCollectionParam(opts['walletIds'], 'multi'),
         'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'multi'),
         'token_ids': this.apiClient.buildCollectionParam(opts['tokenIds'], 'multi'),
         'asset_ids': this.apiClient.buildCollectionParam(opts['assetIds'], 'multi'),
         'hash': opts['hash'],
         'status': opts['status'],
         'cursor': opts['cursor'],
-        'limit': opts['limit']
+        'limit': opts['limit'],
+        'wallet_ids': this.apiClient.buildCollectionParam(opts['walletIds'], 'multi')
       };
       let headerParams = {
       };

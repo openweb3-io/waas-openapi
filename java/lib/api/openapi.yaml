@@ -485,18 +485,6 @@ paths:
       description: List transactions
       operationId: v1.transactions.list
       parameters:
-      - description: Unique system generated identifier of the wallet
-        explode: true
-        in: query
-        name: wallet_ids
-        required: false
-        schema:
-          description: Unique system generated identifier of the wallet
-          items:
-            type: string
-          type: array
-          uniqueItems: false
-        style: form
       - description: The blockchain network on which the transaction takes place.
         explode: true
         in: query
@@ -570,6 +558,18 @@ paths:
         schema:
           description: "The number of records to return default: 20"
           type: integer
+        style: form
+      - description: Unique system generated identifier of the wallet
+        explode: true
+        in: query
+        name: wallet_ids
+        required: false
+        schema:
+          description: Unique system generated identifier of the wallet
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         style: form
       responses:
         "200":
@@ -1553,22 +1553,17 @@ components:
           tokenId: tokenId
           type: 6
         destination:
-        - 0
-        - 0
+          address: address
         memo: memo
         source:
-        - 6
-        - 6
+          wallet_id: wallet_id
+          address: address
       properties:
         amount:
           description: The amount to be transferred
           type: string
         destination:
-          description: The ID of the wallet to which the transfer will be made
-          items:
-            type: integer
-          type: array
-          uniqueItems: false
+          $ref: '#/components/schemas/CreateTransferRequest_destination'
         extra:
           description: Extra
           type: string
@@ -1578,11 +1573,7 @@ components:
           description: Memo
           type: string
         source:
-          description: The ID of the wallet from which the transfer will be made
-          items:
-            type: integer
-          type: array
-          uniqueItems: false
+          $ref: '#/components/schemas/CreateTransferRequest_source'
         token_id:
           description: The tokenId to be transferred
           type: string
@@ -2016,22 +2007,17 @@ components:
         token_id: token_id
         extra: extra
         destination:
-        - 0
-        - 0
+          address: address
         memo: memo
         source:
-        - 6
-        - 6
+          wallet_id: wallet_id
+          address: address
       properties:
         amount:
           description: Amount
           type: string
         destination:
-          description: The ID of the wallet to which the transfer will be made
-          items:
-            type: integer
-          type: array
-          uniqueItems: false
+          $ref: '#/components/schemas/CreateTransferRequest_destination'
         extra:
           description: Extra
           type: string
@@ -2039,11 +2025,7 @@ components:
           description: Memo
           type: string
         source:
-          description: The ID of the wallet from which the transfer will be made
-          items:
-            type: integer
-          type: array
-          uniqueItems: false
+          $ref: '#/components/schemas/CreateTransferRequest_source'
         token_id:
           description: Token ID
           type: string
@@ -2286,6 +2268,8 @@ components:
       - TransactionType_Deposit
       - TransactionType_Withdraw
     TransferDestinationAddress:
+      example:
+        address: address
       properties:
         address:
           description: Address
@@ -2293,6 +2277,9 @@ components:
       required:
       - address
     TransferSourceAddress:
+      example:
+        wallet_id: wallet_id
+        address: address
       properties:
         address:
           description: Address
@@ -2381,6 +2368,14 @@ components:
       - id
       - name
       - uid
+    CreateTransferRequest_destination:
+      description: The ID of the wallet to which the transfer will be made
+      oneOf:
+      - $ref: '#/components/schemas/TransferDestinationAddress'
+    CreateTransferRequest_source:
+      description: The ID of the wallet from which the transfer will be made
+      oneOf:
+      - $ref: '#/components/schemas/TransferSourceAddress'
   securitySchemes:
     ApiKeyAuth:
       in: header

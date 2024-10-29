@@ -166,6 +166,8 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.CreateEndpoint](docs/CreateEndpoint.md)
  - [WaaSOpenApiDocumentation.CreateTokenRequest](docs/CreateTokenRequest.md)
  - [WaaSOpenApiDocumentation.CreateTransferRequest](docs/CreateTransferRequest.md)
+ - [WaaSOpenApiDocumentation.CreateTransferRequestDestination](docs/CreateTransferRequestDestination.md)
+ - [WaaSOpenApiDocumentation.CreateTransferRequestSource](docs/CreateTransferRequestSource.md)
  - [WaaSOpenApiDocumentation.CreateTransferResponse](docs/CreateTransferResponse.md)
  - [WaaSOpenApiDocumentation.CreateWalletRequest](docs/CreateWalletRequest.md)
  - [WaaSOpenApiDocumentation.CursorPageAddress](docs/CursorPageAddress.md)

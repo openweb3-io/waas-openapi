@@ -152,11 +152,12 @@
           },
           "destination": {
             "description": "The ID of the wallet to which the transfer will be made",
-            "items": {
-              "type": "integer"
-            },
-            "type": "array",
-            "uniqueItems": false
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TransferDestinationAddress"
+              }
+            ],
+            "type": "object"
           },
           "extra": {
             "description": "Extra",
@@ -171,11 +172,12 @@
           },
           "source": {
             "description": "The ID of the wallet from which the transfer will be made",
-            "items": {
-              "type": "integer"
-            },
-            "type": "array",
-            "uniqueItems": false
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TransferSourceAddress"
+              }
+            ],
+            "type": "object"
           },
           "token_id": {
             "description": "The tokenId to be transferred",
@@ -488,11 +490,12 @@
           },
           "destination": {
             "description": "The ID of the wallet to which the transfer will be made",
-            "items": {
-              "type": "integer"
-            },
-            "type": "array",
-            "uniqueItems": false
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TransferDestinationAddress"
+              }
+            ],
+            "type": "object"
           },
           "extra": {
             "description": "Extra",
@@ -504,11 +507,12 @@
           },
           "source": {
             "description": "The ID of the wallet from which the transfer will be made",
-            "items": {
-              "type": "integer"
-            },
-            "type": "array",
-            "uniqueItems": false
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TransferSourceAddress"
+              }
+            ],
+            "type": "object"
           },
           "token_id": {
             "description": "Token ID",
@@ -879,15 +883,16 @@
       }
     }
   },
+  "externalDocs": {
+    "description": "",
+    "url": ""
+  },
   "info": {
     "description": "This is a WaaS OpenAPI Server.",
     "title": "WaaS OpenAPI Documentation",
     "version": "1.0"
   },
-  "externalDocs": {
-    "description": "",
-    "url": ""
-  },
+  "openapi": "3.1.0",
   "paths": {
     "/api/v1/addresses": {
       "get": {
@@ -1590,19 +1595,6 @@
         "operationId": "v1.transactions.list",
         "parameters": [
           {
-            "description": "Unique system generated identifier of the wallet",
-            "in": "query",
-            "name": "wallet_ids",
-            "schema": {
-              "description": "Unique system generated identifier of the wallet",
-              "items": {
-                "type": "string"
-              },
-              "type": "array",
-              "uniqueItems": false
-            }
-          },
-          {
             "description": "The blockchain network on which the transaction takes place.",
             "in": "query",
             "name": "chain_ids",
@@ -1675,6 +1667,19 @@
             "schema": {
               "description": "The number of records to return default: 20",
               "type": "integer"
+            }
+          },
+          {
+            "description": "Unique system generated identifier of the wallet",
+            "in": "query",
+            "name": "wallet_ids",
+            "schema": {
+              "description": "Unique system generated identifier of the wallet",
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": false
             }
           }
         ],
@@ -2957,6 +2962,5 @@
         ]
       }
     }
-  },
-  "openapi": "3.1.0"
+  }
 }

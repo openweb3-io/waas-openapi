@@ -10,6 +10,8 @@ docs/CreateAddressRequest.md
 docs/CreateEndpoint.md
 docs/CreateTokenRequest.md
 docs/CreateTransferRequest.md
+docs/CreateTransferRequestDestination.md
+docs/CreateTransferRequestSource.md
 docs/CreateTransferResponse.md
 docs/CreateWalletRequest.md
 docs/CursorPageAddress.md
@@ -53,6 +55,8 @@ src/model/CreateAddressRequest.js
 src/model/CreateEndpoint.js
 src/model/CreateTokenRequest.js
 src/model/CreateTransferRequest.js
+src/model/CreateTransferRequestDestination.js
+src/model/CreateTransferRequestSource.js
 src/model/CreateTransferResponse.js
 src/model/CreateWalletRequest.js
 src/model/CursorPageAddress.js
@@ -87,6 +91,8 @@ test/model/CreateAddressRequest.spec.js
 test/model/CreateEndpoint.spec.js
 test/model/CreateTokenRequest.spec.js
 test/model/CreateTransferRequest.spec.js
+test/model/CreateTransferRequestDestination.spec.js
+test/model/CreateTransferRequestSource.spec.js
 test/model/CreateTransferResponse.spec.js
 test/model/CreateWalletRequest.spec.js
 test/model/CursorPageAddress.spec.js

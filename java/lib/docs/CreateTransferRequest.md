@@ -8,11 +8,11 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**amount** | **String** | The amount to be transferred |  |
-|**destination** | **List&lt;Integer&gt;** | The ID of the wallet to which the transfer will be made |  |
+|**destination** | [**CreateTransferRequestDestination**](CreateTransferRequestDestination.md) |  |  |
 |**extra** | **String** | Extra |  [optional] |
 |**fee** | [**Fee**](Fee.md) |  |  [optional] |
 |**memo** | **String** | Memo |  [optional] |
-|**source** | **List&lt;Integer&gt;** | The ID of the wallet from which the transfer will be made |  |
+|**source** | [**CreateTransferRequestSource**](CreateTransferRequestSource.md) |  |  |
 |**tokenId** | **String** | The tokenId to be transferred |  |
 
 

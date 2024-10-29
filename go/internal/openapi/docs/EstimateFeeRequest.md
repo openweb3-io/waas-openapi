@@ -5,17 +5,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **string** | Amount | 
-**Destination** | **[]int32** | The ID of the wallet to which the transfer will be made | 
+**Destination** | [**CreateTransferRequestDestination**](CreateTransferRequestDestination.md) |  | 
 **Extra** | Pointer to **string** | Extra | [optional] 
 **Memo** | Pointer to **string** | Memo | [optional] 
-**Source** | **[]int32** | The ID of the wallet from which the transfer will be made | 
+**Source** | [**CreateTransferRequestSource**](CreateTransferRequestSource.md) |  | 
 **TokenId** | **string** | Token ID | 
 
 ## Methods
 
 ### NewEstimateFeeRequest
 
-`func NewEstimateFeeRequest(amount string, destination []int32, source []int32, tokenId string, ) *EstimateFeeRequest`
+`func NewEstimateFeeRequest(amount string, destination CreateTransferRequestDestination, source CreateTransferRequestSource, tokenId string, ) *EstimateFeeRequest`
 
 NewEstimateFeeRequest instantiates a new EstimateFeeRequest object
 This constructor will assign default values to properties that have it defined,
@@ -52,20 +52,20 @@ SetAmount sets Amount field to given value.
 
 ### GetDestination
 
-`func (o *EstimateFeeRequest) GetDestination() []int32`
+`func (o *EstimateFeeRequest) GetDestination() CreateTransferRequestDestination`
 
 GetDestination returns the Destination field if non-nil, zero value otherwise.
 
 ### GetDestinationOk
 
-`func (o *EstimateFeeRequest) GetDestinationOk() (*[]int32, bool)`
+`func (o *EstimateFeeRequest) GetDestinationOk() (*CreateTransferRequestDestination, bool)`
 
 GetDestinationOk returns a tuple with the Destination field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDestination
 
-`func (o *EstimateFeeRequest) SetDestination(v []int32)`
+`func (o *EstimateFeeRequest) SetDestination(v CreateTransferRequestDestination)`
 
 SetDestination sets Destination field to given value.
 
@@ -122,20 +122,20 @@ HasMemo returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *EstimateFeeRequest) GetSource() []int32`
+`func (o *EstimateFeeRequest) GetSource() CreateTransferRequestSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *EstimateFeeRequest) GetSourceOk() (*[]int32, bool)`
+`func (o *EstimateFeeRequest) GetSourceOk() (*CreateTransferRequestSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *EstimateFeeRequest) SetSource(v []int32)`
+`func (o *EstimateFeeRequest) SetSource(v CreateTransferRequestSource)`
 
 SetSource sets Source field to given value.
 

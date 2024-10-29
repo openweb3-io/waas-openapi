@@ -11,8 +11,8 @@ API version: 1.0
 package openapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -22,15 +22,13 @@ var _ MappedNullable = &EstimateFeeRequest{}
 // EstimateFeeRequest struct for EstimateFeeRequest
 type EstimateFeeRequest struct {
 	// Amount
-	Amount string `json:"amount"`
-	// The ID of the wallet to which the transfer will be made
-	Destination []int32 `json:"destination"`
+	Amount      string                           `json:"amount"`
+	Destination CreateTransferRequestDestination `json:"destination"`
 	// Extra
 	Extra *string `json:"extra,omitempty"`
 	// Memo
-	Memo *string `json:"memo,omitempty"`
-	// The ID of the wallet from which the transfer will be made
-	Source []int32 `json:"source"`
+	Memo   *string                     `json:"memo,omitempty"`
+	Source CreateTransferRequestSource `json:"source"`
 	// Token ID
 	TokenId string `json:"token_id"`
 }
@@ -41,7 +39,7 @@ type _EstimateFeeRequest EstimateFeeRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEstimateFeeRequest(amount string, destination []int32, source []int32, tokenId string) *EstimateFeeRequest {
+func NewEstimateFeeRequest(amount string, destination CreateTransferRequestDestination, source CreateTransferRequestSource, tokenId string) *EstimateFeeRequest {
 	this := EstimateFeeRequest{}
 	this.Amount = amount
 	this.Destination = destination
@@ -83,9 +81,9 @@ func (o *EstimateFeeRequest) SetAmount(v string) {
 }
 
 // GetDestination returns the Destination field value
-func (o *EstimateFeeRequest) GetDestination() []int32 {
+func (o *EstimateFeeRequest) GetDestination() CreateTransferRequestDestination {
 	if o == nil {
-		var ret []int32
+		var ret CreateTransferRequestDestination
 		return ret
 	}
 
@@ -94,15 +92,15 @@ func (o *EstimateFeeRequest) GetDestination() []int32 {
 
 // GetDestinationOk returns a tuple with the Destination field value
 // and a boolean to check if the value has been set.
-func (o *EstimateFeeRequest) GetDestinationOk() ([]int32, bool) {
+func (o *EstimateFeeRequest) GetDestinationOk() (*CreateTransferRequestDestination, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Destination, true
+	return &o.Destination, true
 }
 
 // SetDestination sets field value
-func (o *EstimateFeeRequest) SetDestination(v []int32) {
+func (o *EstimateFeeRequest) SetDestination(v CreateTransferRequestDestination) {
 	o.Destination = v
 }
 
@@ -171,9 +169,9 @@ func (o *EstimateFeeRequest) SetMemo(v string) {
 }
 
 // GetSource returns the Source field value
-func (o *EstimateFeeRequest) GetSource() []int32 {
+func (o *EstimateFeeRequest) GetSource() CreateTransferRequestSource {
 	if o == nil {
-		var ret []int32
+		var ret CreateTransferRequestSource
 		return ret
 	}
 
@@ -182,15 +180,15 @@ func (o *EstimateFeeRequest) GetSource() []int32 {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *EstimateFeeRequest) GetSourceOk() ([]int32, bool) {
+func (o *EstimateFeeRequest) GetSourceOk() (*CreateTransferRequestSource, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Source, true
+	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *EstimateFeeRequest) SetSource(v []int32) {
+func (o *EstimateFeeRequest) SetSource(v CreateTransferRequestSource) {
 	o.Source = v
 }
 
@@ -219,7 +217,7 @@ func (o *EstimateFeeRequest) SetTokenId(v string) {
 }
 
 func (o EstimateFeeRequest) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -257,10 +255,10 @@ func (o *EstimateFeeRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -316,5 +314,3 @@ func (v *NullableEstimateFeeRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

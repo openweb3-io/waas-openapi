@@ -19,6 +19,8 @@ import CreateAddressRequest from './model/CreateAddressRequest';
 import CreateEndpoint from './model/CreateEndpoint';
 import CreateTokenRequest from './model/CreateTokenRequest';
 import CreateTransferRequest from './model/CreateTransferRequest';
+import CreateTransferRequestDestination from './model/CreateTransferRequestDestination';
+import CreateTransferRequestSource from './model/CreateTransferRequestSource';
 import CreateTransferResponse from './model/CreateTransferResponse';
 import CreateWalletRequest from './model/CreateWalletRequest';
 import CursorPageAddress from './model/CursorPageAddress';
@@ -122,6 +124,18 @@ export {
      * @property {module:model/CreateTransferRequest}
      */
     CreateTransferRequest,
+
+    /**
+     * The CreateTransferRequestDestination model constructor.
+     * @property {module:model/CreateTransferRequestDestination}
+     */
+    CreateTransferRequestDestination,
+
+    /**
+     * The CreateTransferRequestSource model constructor.
+     * @property {module:model/CreateTransferRequestSource}
+     */
+    CreateTransferRequestSource,
 
     /**
      * The CreateTransferResponse model constructor.

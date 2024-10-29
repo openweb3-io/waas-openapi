@@ -19,10 +19,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.openweb3.waas.models.CreateTransferRequestDestination;
+import io.openweb3.waas.models.CreateTransferRequestSource;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +50,7 @@ import io.openweb3.waas.internal.JSON;
 /**
  * EstimateFeeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T01:35:38.261544+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T15:00:41.402192+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
 public class EstimateFeeRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -58,7 +58,7 @@ public class EstimateFeeRequest {
 
   public static final String SERIALIZED_NAME_DESTINATION = "destination";
   @SerializedName(SERIALIZED_NAME_DESTINATION)
-  private List<Integer> destination = new ArrayList<>();
+  private CreateTransferRequestDestination destination;
 
   public static final String SERIALIZED_NAME_EXTRA = "extra";
   @SerializedName(SERIALIZED_NAME_EXTRA)
@@ -70,7 +70,7 @@ public class EstimateFeeRequest {
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
-  private List<Integer> source = new ArrayList<>();
+  private CreateTransferRequestSource source;
 
   public static final String SERIALIZED_NAME_TOKEN_ID = "token_id";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
@@ -98,29 +98,21 @@ public class EstimateFeeRequest {
   }
 
 
-  public EstimateFeeRequest destination(List<Integer> destination) {
+  public EstimateFeeRequest destination(CreateTransferRequestDestination destination) {
     this.destination = destination;
     return this;
   }
 
-  public EstimateFeeRequest addDestinationItem(Integer destinationItem) {
-    if (this.destination == null) {
-      this.destination = new ArrayList<>();
-    }
-    this.destination.add(destinationItem);
-    return this;
-  }
-
   /**
-   * The ID of the wallet to which the transfer will be made
+   * Get destination
    * @return destination
    */
   @javax.annotation.Nonnull
-  public List<Integer> getDestination() {
+  public CreateTransferRequestDestination getDestination() {
     return destination;
   }
 
-  public void setDestination(List<Integer> destination) {
+  public void setDestination(CreateTransferRequestDestination destination) {
     this.destination = destination;
   }
 
@@ -163,29 +155,21 @@ public class EstimateFeeRequest {
   }
 
 
-  public EstimateFeeRequest source(List<Integer> source) {
+  public EstimateFeeRequest source(CreateTransferRequestSource source) {
     this.source = source;
     return this;
   }
 
-  public EstimateFeeRequest addSourceItem(Integer sourceItem) {
-    if (this.source == null) {
-      this.source = new ArrayList<>();
-    }
-    this.source.add(sourceItem);
-    return this;
-  }
-
   /**
-   * The ID of the wallet from which the transfer will be made
+   * Get source
    * @return source
    */
   @javax.annotation.Nonnull
-  public List<Integer> getSource() {
+  public CreateTransferRequestSource getSource() {
     return source;
   }
 
-  public void setSource(List<Integer> source) {
+  public void setSource(CreateTransferRequestSource source) {
     this.source = source;
   }
 
@@ -310,24 +294,16 @@ public class EstimateFeeRequest {
       if (!jsonObj.get("amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("amount").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("destination") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("destination").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `destination` to be an array in the JSON string but got `%s`", jsonObj.get("destination").toString()));
-      }
+      // validate the required field `destination`
+      CreateTransferRequestDestination.validateJsonElement(jsonObj.get("destination"));
       if ((jsonObj.get("extra") != null && !jsonObj.get("extra").isJsonNull()) && !jsonObj.get("extra").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `extra` to be a primitive type in the JSON string but got `%s`", jsonObj.get("extra").toString()));
       }
       if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
       }
-      // ensure the required json array is present
-      if (jsonObj.get("source") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("source").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source` to be an array in the JSON string but got `%s`", jsonObj.get("source").toString()));
-      }
+      // validate the required field `source`
+      CreateTransferRequestSource.validateJsonElement(jsonObj.get("source"));
       if (!jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
       }

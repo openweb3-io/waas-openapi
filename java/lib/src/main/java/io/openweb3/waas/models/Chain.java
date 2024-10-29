@@ -48,7 +48,7 @@ import io.openweb3.waas.internal.JSON;
 /**
  * Chain
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T01:35:38.261544+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-10-29T15:00:41.402192+08:00[Asia/Shanghai]", comments = "Generator version: 7.9.0")
 public class Chain {
   public static final String SERIALIZED_NAME_CONFIRM_NUM = "confirm_num";
   @SerializedName(SERIALIZED_NAME_CONFIRM_NUM)

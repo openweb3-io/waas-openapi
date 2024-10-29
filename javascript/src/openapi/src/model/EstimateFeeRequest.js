@@ -12,6 +12,8 @@
  */
 
 import ApiClient from '../ApiClient';
+import CreateTransferRequestDestination from './CreateTransferRequestDestination';
+import CreateTransferRequestSource from './CreateTransferRequestSource';
 
 /**
  * The EstimateFeeRequest model module.
@@ -23,8 +25,8 @@ class EstimateFeeRequest {
      * Constructs a new <code>EstimateFeeRequest</code>.
      * @alias module:model/EstimateFeeRequest
      * @param amount {String} Amount
-     * @param destination {Array.<Number>} The ID of the wallet to which the transfer will be made
-     * @param source {Array.<Number>} The ID of the wallet from which the transfer will be made
+     * @param destination {module:model/CreateTransferRequestDestination} 
+     * @param source {module:model/CreateTransferRequestSource} 
      * @param tokenId {String} Token ID
      */
     constructor(amount, destination, source, tokenId) { 
@@ -59,7 +61,7 @@ class EstimateFeeRequest {
                 obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
             }
             if (data.hasOwnProperty('destination')) {
-                obj['destination'] = ApiClient.convertToType(data['destination'], ['Number']);
+                obj['destination'] = CreateTransferRequestDestination.constructFromObject(data['destination']);
             }
             if (data.hasOwnProperty('extra')) {
                 obj['extra'] = ApiClient.convertToType(data['extra'], 'String');
@@ -68,7 +70,7 @@ class EstimateFeeRequest {
                 obj['memo'] = ApiClient.convertToType(data['memo'], 'String');
             }
             if (data.hasOwnProperty('source')) {
-                obj['source'] = ApiClient.convertToType(data['source'], ['Number']);
+                obj['source'] = CreateTransferRequestSource.constructFromObject(data['source']);
             }
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
@@ -93,9 +95,9 @@ class EstimateFeeRequest {
         if (data['amount'] && !(typeof data['amount'] === 'string' || data['amount'] instanceof String)) {
             throw new Error("Expected the field `amount` to be a primitive type in the JSON string but got " + data['amount']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['destination'])) {
-            throw new Error("Expected the field `destination` to be an array in the JSON data but got " + data['destination']);
+        // validate the optional field `destination`
+        if (data['destination']) { // data not null
+          CreateTransferRequestDestination.validateJSON(data['destination']);
         }
         // ensure the json data is a string
         if (data['extra'] && !(typeof data['extra'] === 'string' || data['extra'] instanceof String)) {
@@ -105,9 +107,9 @@ class EstimateFeeRequest {
         if (data['memo'] && !(typeof data['memo'] === 'string' || data['memo'] instanceof String)) {
             throw new Error("Expected the field `memo` to be a primitive type in the JSON string but got " + data['memo']);
         }
-        // ensure the json data is an array
-        if (!Array.isArray(data['source'])) {
-            throw new Error("Expected the field `source` to be an array in the JSON data but got " + data['source']);
+        // validate the optional field `source`
+        if (data['source']) { // data not null
+          CreateTransferRequestSource.validateJSON(data['source']);
         }
         // ensure the json data is a string
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
@@ -129,8 +131,7 @@ EstimateFeeRequest.RequiredProperties = ["amount", "destination", "source", "tok
 EstimateFeeRequest.prototype['amount'] = undefined;
 
 /**
- * The ID of the wallet to which the transfer will be made
- * @member {Array.<Number>} destination
+ * @member {module:model/CreateTransferRequestDestination} destination
  */
 EstimateFeeRequest.prototype['destination'] = undefined;
 
@@ -147,8 +148,7 @@ EstimateFeeRequest.prototype['extra'] = undefined;
 EstimateFeeRequest.prototype['memo'] = undefined;
 
 /**
- * The ID of the wallet from which the transfer will be made
- * @member {Array.<Number>} source
+ * @member {module:model/CreateTransferRequestSource} source
  */
 EstimateFeeRequest.prototype['source'] = undefined;
 
