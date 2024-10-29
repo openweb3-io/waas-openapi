@@ -537,9 +537,9 @@ public class AddressesApi {
     /**
      * Build call for v1WalletsListAddresses
      * @param walletId Wallet ID (required)
+     * @param chainIds chain ids (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
-     * @param chainIds chain ids (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -553,7 +553,7 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsListAddressesCall(String walletId, String cursor, Integer limit, List<String> chainIds, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1WalletsListAddressesCall(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -579,16 +579,16 @@ public class AddressesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (chainIds != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "chain_ids", chainIds));
+        }
+
         if (cursor != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
         }
 
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (chainIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "chain_ids", chainIds));
         }
 
         final String[] localVarAccepts = {
@@ -611,13 +611,13 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WalletsListAddressesValidateBeforeCall(String walletId, String cursor, Integer limit, List<String> chainIds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call v1WalletsListAddressesValidateBeforeCall(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletId' is set
         if (walletId == null) {
             throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsListAddresses(Async)");
         }
 
-        return v1WalletsListAddressesCall(walletId, cursor, limit, chainIds, _callback);
+        return v1WalletsListAddressesCall(walletId, chainIds, cursor, limit, _callback);
 
     }
 
@@ -625,9 +625,9 @@ public class AddressesApi {
      * List wallet addresses
      * List addresses in wallet
      * @param walletId Wallet ID (required)
+     * @param chainIds chain ids (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
-     * @param chainIds chain ids (optional)
      * @return CursorPageAddress
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -640,8 +640,8 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CursorPageAddress v1WalletsListAddresses(String walletId, String cursor, Integer limit, List<String> chainIds) throws ApiException {
-        ApiResponse<CursorPageAddress> localVarResp = v1WalletsListAddressesWithHttpInfo(walletId, cursor, limit, chainIds);
+    public CursorPageAddress v1WalletsListAddresses(String walletId, List<String> chainIds, String cursor, Integer limit) throws ApiException {
+        ApiResponse<CursorPageAddress> localVarResp = v1WalletsListAddressesWithHttpInfo(walletId, chainIds, cursor, limit);
         return localVarResp.getData();
     }
 
@@ -649,9 +649,9 @@ public class AddressesApi {
      * List wallet addresses
      * List addresses in wallet
      * @param walletId Wallet ID (required)
+     * @param chainIds chain ids (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
-     * @param chainIds chain ids (optional)
      * @return ApiResponse&lt;CursorPageAddress&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -664,8 +664,8 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CursorPageAddress> v1WalletsListAddressesWithHttpInfo(String walletId, String cursor, Integer limit, List<String> chainIds) throws ApiException {
-        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, cursor, limit, chainIds, null);
+    public ApiResponse<CursorPageAddress> v1WalletsListAddressesWithHttpInfo(String walletId, List<String> chainIds, String cursor, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, chainIds, cursor, limit, null);
         Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -674,9 +674,9 @@ public class AddressesApi {
      * List wallet addresses (asynchronously)
      * List addresses in wallet
      * @param walletId Wallet ID (required)
+     * @param chainIds chain ids (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
-     * @param chainIds chain ids (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -690,9 +690,9 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsListAddressesAsync(String walletId, String cursor, Integer limit, List<String> chainIds, final ApiCallback<CursorPageAddress> _callback) throws ApiException {
+    public okhttp3.Call v1WalletsListAddressesAsync(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback<CursorPageAddress> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, cursor, limit, chainIds, _callback);
+        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, chainIds, cursor, limit, _callback);
         Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

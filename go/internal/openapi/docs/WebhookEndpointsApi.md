@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## V1WebhooksDelete
 
-> Endpoint V1WebhooksDelete(ctx, endpointId).Body(body).Execute()
+> Endpoint V1WebhooksDelete(ctx, endpointId).Execute()
 
 Delete webhook endpoint
 
@@ -100,11 +100,10 @@ import (
 
 func main() {
 	endpointId := "endpointId_example" // string | Endpoint ID
-	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhookEndpointsAPI.V1WebhooksDelete(context.Background(), endpointId).Body(body).Execute()
+	resp, r, err := apiClient.WebhookEndpointsAPI.V1WebhooksDelete(context.Background(), endpointId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.V1WebhooksDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +129,6 @@ Other parameters are passed through a pointer to a apiV1WebhooksDeleteRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
@@ -142,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -25,6 +25,7 @@ paths:
             type: string
           type: array
           uniqueItems: false
+          x-order: "1"
         style: form
       - description: The chain ids.
         explode: true
@@ -37,6 +38,7 @@ paths:
             type: string
           type: array
           uniqueItems: false
+          x-order: "2"
         style: form
       - description: The cursor to use for pagination.
         explode: true
@@ -46,6 +48,7 @@ paths:
         schema:
           description: The cursor to use for pagination.
           type: string
+          x-order: "3"
         style: form
       - description: "The number of records to return default: 20"
         explode: true
@@ -55,6 +58,7 @@ paths:
         schema:
           description: "The number of records to return default: 20"
           type: integer
+          x-order: "4"
         style: form
       responses:
         "200":
@@ -108,6 +112,7 @@ paths:
         schema:
           description: Cursor
           type: string
+          x-order: "1"
         style: form
       - description: "The number of records to return default: 20"
         explode: true
@@ -117,6 +122,7 @@ paths:
         schema:
           description: "The number of records to return default: 20"
           type: integer
+          x-order: "2"
         style: form
       responses:
         "200":
@@ -220,6 +226,7 @@ paths:
         required: false
         schema:
           type: string
+          x-order: "1"
         style: form
       - description: "The number of records to return default: 20"
         explode: true
@@ -229,6 +236,7 @@ paths:
         schema:
           description: "The number of records to return default: 20"
           type: integer
+          x-order: "2"
         style: form
       responses:
         "200":
@@ -270,6 +278,7 @@ paths:
         schema:
           description: Cursor
           type: string
+          x-order: "1"
         style: form
       - description: "The number of records to return default: 20"
         explode: true
@@ -279,6 +288,7 @@ paths:
         schema:
           description: "The number of records to return default: 20"
           type: integer
+          x-order: "2"
         style: form
       responses:
         "200":
@@ -485,6 +495,19 @@ paths:
       description: List transactions
       operationId: v1.transactions.list
       parameters:
+      - description: Unique system generated identifier of the wallet
+        explode: true
+        in: query
+        name: wallet_ids
+        required: false
+        schema:
+          description: Unique system generated identifier of the wallet
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+          x-order: "1"
+        style: form
       - description: The blockchain network on which the transaction takes place.
         explode: true
         in: query
@@ -496,6 +519,7 @@ paths:
             type: string
           type: array
           uniqueItems: false
+          x-order: "2"
         style: form
       - description: The tokenId involved in the transaction.
         explode: true
@@ -508,6 +532,7 @@ paths:
             type: string
           type: array
           uniqueItems: false
+          x-order: "3"
         style: form
       - description: The assetId involved in the transaction.
         explode: true
@@ -520,6 +545,7 @@ paths:
             type: string
           type: array
           uniqueItems: false
+          x-order: "4"
         style: form
       - description: "The transaction hash, which uniquely identifies a transaction\
           \ on the blockchain."
@@ -531,6 +557,7 @@ paths:
           description: "The transaction hash, which uniquely identifies a transaction\
             \ on the blockchain."
           type: string
+          x-order: "5"
         style: form
       - description: The status of the transaction.
         explode: true
@@ -540,6 +567,7 @@ paths:
         schema:
           description: The status of the transaction.
           type: string
+          x-order: "6"
         style: form
       - description: A cursor value for pagination purposes.
         explode: true
@@ -549,6 +577,7 @@ paths:
         schema:
           description: A cursor value for pagination purposes.
           type: string
+          x-order: "7"
         style: form
       - description: "The number of records to return default: 20"
         explode: true
@@ -558,18 +587,7 @@ paths:
         schema:
           description: "The number of records to return default: 20"
           type: integer
-        style: form
-      - description: Unique system generated identifier of the wallet
-        explode: true
-        in: query
-        name: wallet_ids
-        required: false
-        schema:
-          description: Unique system generated identifier of the wallet
-          items:
-            type: string
-          type: array
-          uniqueItems: false
+          x-order: "8"
         style: form
       responses:
         "200":
@@ -777,6 +795,7 @@ paths:
         schema:
           description: Cursor
           type: string
+          x-order: "1"
         style: form
       - description: "The number of records to return default: 20"
         explode: true
@@ -786,6 +805,7 @@ paths:
         schema:
           description: "The number of records to return default: 20"
           type: integer
+          x-order: "2"
         style: form
       responses:
         "200":
@@ -889,11 +909,6 @@ paths:
         schema:
           type: string
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
       responses:
         "200":
           content:
@@ -931,7 +946,6 @@ paths:
       summary: Delete wallet
       tags:
       - Wallets
-      x-content-type: application/json
       x-accepts:
       - application/json
     get:
@@ -1057,24 +1071,6 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Cursor
-        explode: true
-        in: query
-        name: cursor
-        required: false
-        schema:
-          description: Cursor
-          type: string
-        style: form
-      - description: "Limit, default is 20"
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          description: "Limit, default is 20"
-          type: integer
-        style: form
       - description: chain ids
         explode: true
         in: query
@@ -1086,6 +1082,27 @@ paths:
             type: string
           type: array
           uniqueItems: false
+          x-order: "1"
+        style: form
+      - description: Cursor
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          description: Cursor
+          type: string
+          x-order: "2"
+        style: form
+      - description: "Limit, default is 20"
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: "Limit, default is 20"
+          type: integer
+          x-order: "3"
         style: form
       responses:
         "200":
@@ -1297,11 +1314,6 @@ paths:
         schema:
           type: string
         style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
       responses:
         "200":
           content:
@@ -1327,7 +1339,6 @@ paths:
       summary: Delete webhook endpoint
       tags:
       - Webhook endpoints
-      x-content-type: application/json
       x-accepts:
       - application/json
     get:

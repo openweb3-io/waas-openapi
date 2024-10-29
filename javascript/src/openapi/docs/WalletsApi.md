@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ## v1WalletsDelete
 
-> Wallet v1WalletsDelete(walletId, opts)
+> Wallet v1WalletsDelete(walletId)
 
 Delete wallet
 
@@ -84,10 +84,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
 let walletId = "walletId_example"; // String | Wallet ID
-let opts = {
-  'body': {key: null} // Object | 
-};
-apiInstance.v1WalletsDelete(walletId, opts, (error, data, response) => {
+apiInstance.v1WalletsDelete(walletId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -102,7 +99,6 @@ apiInstance.v1WalletsDelete(walletId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **String**| Wallet ID | 
- **body** | **Object**|  | [optional] 
 
 ### Return type
 
@@ -114,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

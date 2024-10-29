@@ -92,14 +92,11 @@ export default class WalletsApi {
      * Delete wallet
      * Delete a Wallet
      * @param {String} walletId Wallet ID
-     * @param {Object} opts Optional parameters
-     * @param {Object.<String, Object>} [body] 
      * @param {module:api/WalletsApi~v1WalletsDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Wallet}
      */
-    v1WalletsDelete(walletId, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
+    v1WalletsDelete(walletId, callback) {
+      let postBody = null;
       // verify the required parameter 'walletId' is set
       if (walletId === undefined || walletId === null) {
         throw new Error("Missing the required parameter 'walletId' when calling v1WalletsDelete");
@@ -116,7 +113,7 @@ export default class WalletsApi {
       };
 
       let authNames = ['ApiKeyAuth'];
-      let contentTypes = ['application/json'];
+      let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = Wallet;
       return this.apiClient.callApi(

@@ -597,9 +597,15 @@ type ApiV1WalletsListAddressesRequest struct {
 	ctx context.Context
 	ApiService *AddressesAPIService
 	walletId string
+	chainIds *[]string
 	cursor *string
 	limit *int32
-	chainIds *[]string
+}
+
+// chain ids
+func (r ApiV1WalletsListAddressesRequest) ChainIds(chainIds []string) ApiV1WalletsListAddressesRequest {
+	r.chainIds = &chainIds
+	return r
 }
 
 // Cursor
@@ -611,12 +617,6 @@ func (r ApiV1WalletsListAddressesRequest) Cursor(cursor string) ApiV1WalletsList
 // Limit, default is 20
 func (r ApiV1WalletsListAddressesRequest) Limit(limit int32) ApiV1WalletsListAddressesRequest {
 	r.limit = &limit
-	return r
-}
-
-// chain ids
-func (r ApiV1WalletsListAddressesRequest) ChainIds(chainIds []string) ApiV1WalletsListAddressesRequest {
-	r.chainIds = &chainIds
 	return r
 }
 
@@ -663,12 +663,6 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
 	if r.chainIds != nil {
 		t := *r.chainIds
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
@@ -679,6 +673,12 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "chain_ids", t, "form", "multi")
 		}
+	}
+	if r.cursor != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

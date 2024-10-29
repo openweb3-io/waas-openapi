@@ -202,12 +202,6 @@ type ApiV1WalletsDeleteRequest struct {
 	ctx context.Context
 	ApiService *WalletsAPIService
 	walletId string
-	body *map[string]interface{}
-}
-
-func (r ApiV1WalletsDeleteRequest) Body(body map[string]interface{}) ApiV1WalletsDeleteRequest {
-	r.body = &body
-	return r
 }
 
 func (r ApiV1WalletsDeleteRequest) Execute() (*Wallet, *http.Response, error) {
@@ -254,7 +248,7 @@ func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) 
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -270,8 +264,6 @@ func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

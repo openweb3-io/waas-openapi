@@ -241,7 +241,7 @@ public class Example {
 
 <a id="v1WalletsListAddresses"></a>
 # **v1WalletsListAddresses**
-> CursorPageAddress v1WalletsListAddresses(walletId, cursor, limit, chainIds)
+> CursorPageAddress v1WalletsListAddresses(walletId, chainIds, cursor, limit)
 
 List wallet addresses
 
@@ -270,11 +270,11 @@ public class Example {
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     String walletId = "walletId_example"; // String | Wallet ID
+    List<String> chainIds = Arrays.asList(); // List<String> | chain ids
     String cursor = "cursor_example"; // String | Cursor
     Integer limit = 56; // Integer | Limit, default is 20
-    List<String> chainIds = Arrays.asList(); // List<String> | chain ids
     try {
-      CursorPageAddress result = apiInstance.v1WalletsListAddresses(walletId, cursor, limit, chainIds);
+      CursorPageAddress result = apiInstance.v1WalletsListAddresses(walletId, chainIds, cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressesApi#v1WalletsListAddresses");
@@ -292,9 +292,9 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **walletId** | **String**| Wallet ID | |
+| **chainIds** | [**List&lt;String&gt;**](String.md)| chain ids | [optional] |
 | **cursor** | **String**| Cursor | [optional] |
 | **limit** | **Integer**| Limit, default is 20 | [optional] |
-| **chainIds** | [**List&lt;String&gt;**](String.md)| chain ids | [optional] |
 
 ### Return type
 

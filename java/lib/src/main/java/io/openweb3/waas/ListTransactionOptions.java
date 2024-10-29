@@ -1,12 +1,12 @@
 package io.openweb3.waas;
 
 public final class ListTransactionOptions extends ListOptions<ListTransactionOptions> {
-    private String status;
-    private String hash;
-    private String[] assetIds;
+    private String[] walletIds;
     private String[] chainIds;
     private String[] tokenIds;
-    private String[] walletIds;
+    private String[] assetIds;
+    private String status;
+    private String hash;
 
 
     public ListTransactionOptions status(final String status) {

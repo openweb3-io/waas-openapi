@@ -194,9 +194,9 @@ export default class AddressesApi {
      * List addresses in wallet
      * @param {String} walletId Wallet ID
      * @param {Object} opts Optional parameters
+     * @param {Array.<String>} [chainIds] chain ids
      * @param {String} [cursor] Cursor
      * @param {Number} [limit] Limit, default is 20
-     * @param {Array.<String>} [chainIds] chain ids
      * @param {module:api/AddressesApi~v1WalletsListAddressesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CursorPageAddress}
      */
@@ -212,9 +212,9 @@ export default class AddressesApi {
         'walletId': walletId
       };
       let queryParams = {
+        'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'multi'),
         'cursor': opts['cursor'],
-        'limit': opts['limit'],
-        'chain_ids': this.apiClient.buildCollectionParam(opts['chainIds'], 'multi')
+        'limit': opts['limit']
       };
       let headerParams = {
       };

@@ -85,7 +85,7 @@ public class Example {
 
 <a id="v1TransactionsList"></a>
 # **v1TransactionsList**
-> CursorPageTransaction v1TransactionsList(chainIds, tokenIds, assetIds, hash, status, cursor, limit, walletIds)
+> CursorPageTransaction v1TransactionsList(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit)
 
 List transactions
 
@@ -113,6 +113,7 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     TransactionsApi apiInstance = new TransactionsApi(defaultClient);
+    List<String> walletIds = Arrays.asList(); // List<String> | Unique system generated identifier of the wallet
     List<String> chainIds = Arrays.asList(); // List<String> | The blockchain network on which the transaction takes place.
     List<String> tokenIds = Arrays.asList(); // List<String> | The tokenId involved in the transaction.
     List<String> assetIds = Arrays.asList(); // List<String> | The assetId involved in the transaction.
@@ -120,9 +121,8 @@ public class Example {
     String status = "status_example"; // String | The status of the transaction.
     String cursor = "cursor_example"; // String | A cursor value for pagination purposes.
     Integer limit = 56; // Integer | The number of records to return default: 20
-    List<String> walletIds = Arrays.asList(); // List<String> | Unique system generated identifier of the wallet
     try {
-      CursorPageTransaction result = apiInstance.v1TransactionsList(chainIds, tokenIds, assetIds, hash, status, cursor, limit, walletIds);
+      CursorPageTransaction result = apiInstance.v1TransactionsList(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionsApi#v1TransactionsList");
@@ -139,6 +139,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **walletIds** | [**List&lt;String&gt;**](String.md)| Unique system generated identifier of the wallet | [optional] |
 | **chainIds** | [**List&lt;String&gt;**](String.md)| The blockchain network on which the transaction takes place. | [optional] |
 | **tokenIds** | [**List&lt;String&gt;**](String.md)| The tokenId involved in the transaction. | [optional] |
 | **assetIds** | [**List&lt;String&gt;**](String.md)| The assetId involved in the transaction. | [optional] |
@@ -146,7 +147,6 @@ public class Example {
 | **status** | **String**| The status of the transaction. | [optional] |
 | **cursor** | **String**| A cursor value for pagination purposes. | [optional] |
 | **limit** | **Integer**| The number of records to return default: 20 | [optional] |
-| **walletIds** | [**List&lt;String&gt;**](String.md)| Unique system generated identifier of the wallet | [optional] |
 
 ### Return type
 

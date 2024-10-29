@@ -11,8 +11,8 @@ API version: 1.0
 package openapi
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -22,13 +22,13 @@ var _ MappedNullable = &CreateTransferRequest{}
 // CreateTransferRequest struct for CreateTransferRequest
 type CreateTransferRequest struct {
 	// The amount to be transferred
-	Amount      string                           `json:"amount"`
+	Amount string `json:"amount"`
 	Destination CreateTransferRequestDestination `json:"destination"`
 	// Extra
 	Extra *string `json:"extra,omitempty"`
-	Fee   *Fee    `json:"fee,omitempty"`
+	Fee *Fee `json:"fee,omitempty"`
 	// Memo
-	Memo   *string                     `json:"memo,omitempty"`
+	Memo *string `json:"memo,omitempty"`
 	Source CreateTransferRequestSource `json:"source"`
 	// The tokenId to be transferred
 	TokenId string `json:"token_id"`
@@ -250,7 +250,7 @@ func (o *CreateTransferRequest) SetTokenId(v string) {
 }
 
 func (o CreateTransferRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -291,10 +291,10 @@ func (o *CreateTransferRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -350,3 +350,5 @@ func (v *NullableCreateTransferRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

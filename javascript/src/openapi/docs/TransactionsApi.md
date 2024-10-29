@@ -83,14 +83,14 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WaaSOpenApiDocumentation.TransactionsApi();
 let opts = {
+  'walletIds': ["null"], // [String] | Unique system generated identifier of the wallet
   'chainIds': ["null"], // [String] | The blockchain network on which the transaction takes place.
   'tokenIds': ["null"], // [String] | The tokenId involved in the transaction.
   'assetIds': ["null"], // [String] | The assetId involved in the transaction.
   'hash': "hash_example", // String | The transaction hash, which uniquely identifies a transaction on the blockchain.
   'status': "status_example", // String | The status of the transaction.
   'cursor': "cursor_example", // String | A cursor value for pagination purposes.
-  'limit': 56, // Number | The number of records to return default: 20
-  'walletIds': ["null"] // [String] | Unique system generated identifier of the wallet
+  'limit': 56 // Number | The number of records to return default: 20
 };
 apiInstance.v1TransactionsList(opts, (error, data, response) => {
   if (error) {
@@ -106,6 +106,7 @@ apiInstance.v1TransactionsList(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **walletIds** | [**[String]**](String.md)| Unique system generated identifier of the wallet | [optional] 
  **chainIds** | [**[String]**](String.md)| The blockchain network on which the transaction takes place. | [optional] 
  **tokenIds** | [**[String]**](String.md)| The tokenId involved in the transaction. | [optional] 
  **assetIds** | [**[String]**](String.md)| The assetId involved in the transaction. | [optional] 
@@ -113,7 +114,6 @@ Name | Type | Description  | Notes
  **status** | **String**| The status of the transaction. | [optional] 
  **cursor** | **String**| A cursor value for pagination purposes. | [optional] 
  **limit** | **Number**| The number of records to return default: 20 | [optional] 
- **walletIds** | [**[String]**](String.md)| Unique system generated identifier of the wallet | [optional] 
 
 ### Return type
 

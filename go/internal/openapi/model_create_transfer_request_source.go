@@ -12,8 +12,8 @@ package openapi
 
 import (
 	"encoding/json"
-	"fmt"
 	"gopkg.in/validator.v2"
+	"fmt"
 )
 
 // CreateTransferRequestSource - The ID of the wallet from which the transfer will be made
@@ -27,6 +27,7 @@ func TransferSourceAddressAsCreateTransferRequestSource(v *TransferSourceAddress
 		TransferSourceAddress: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CreateTransferRequestSource) UnmarshalJSON(data []byte) error {
@@ -71,7 +72,7 @@ func (src CreateTransferRequestSource) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CreateTransferRequestSource) GetActualInstance() interface{} {
+func (obj *CreateTransferRequestSource) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -118,3 +119,5 @@ func (v *NullableCreateTransferRequestSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

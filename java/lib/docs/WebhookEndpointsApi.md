@@ -84,7 +84,7 @@ public class Example {
 
 <a id="v1WebhooksDelete"></a>
 # **v1WebhooksDelete**
-> Endpoint v1WebhooksDelete(endpointId, body)
+> Endpoint v1WebhooksDelete(endpointId)
 
 Delete webhook endpoint
 
@@ -113,9 +113,8 @@ public class Example {
 
     WebhookEndpointsApi apiInstance = new WebhookEndpointsApi(defaultClient);
     String endpointId = "endpointId_example"; // String | Endpoint ID
-    Object body = null; // Object | 
     try {
-      Endpoint result = apiInstance.v1WebhooksDelete(endpointId, body);
+      Endpoint result = apiInstance.v1WebhooksDelete(endpointId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksDelete");
@@ -133,7 +132,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **endpointId** | **String**| Endpoint ID | |
-| **body** | **Object**|  | [optional] |
 
 ### Return type
 
@@ -145,7 +143,7 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## V1TransactionsList
 
-> CursorPageTransaction V1TransactionsList(ctx).ChainIds(chainIds).TokenIds(tokenIds).AssetIds(assetIds).Hash(hash).Status(status).Cursor(cursor).Limit(limit).WalletIds(walletIds).Execute()
+> CursorPageTransaction V1TransactionsList(ctx).WalletIds(walletIds).ChainIds(chainIds).TokenIds(tokenIds).AssetIds(assetIds).Hash(hash).Status(status).Cursor(cursor).Limit(limit).Execute()
 
 List transactions
 
@@ -98,6 +98,7 @@ import (
 )
 
 func main() {
+	walletIds := []string{"Inner_example"} // []string | Unique system generated identifier of the wallet (optional)
 	chainIds := []string{"Inner_example"} // []string | The blockchain network on which the transaction takes place. (optional)
 	tokenIds := []string{"Inner_example"} // []string | The tokenId involved in the transaction. (optional)
 	assetIds := []string{"Inner_example"} // []string | The assetId involved in the transaction. (optional)
@@ -105,11 +106,10 @@ func main() {
 	status := "status_example" // string | The status of the transaction. (optional)
 	cursor := "cursor_example" // string | A cursor value for pagination purposes. (optional)
 	limit := int32(56) // int32 | The number of records to return default: 20 (optional)
-	walletIds := []string{"Inner_example"} // []string | Unique system generated identifier of the wallet (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TransactionsAPI.V1TransactionsList(context.Background()).ChainIds(chainIds).TokenIds(tokenIds).AssetIds(assetIds).Hash(hash).Status(status).Cursor(cursor).Limit(limit).WalletIds(walletIds).Execute()
+	resp, r, err := apiClient.TransactionsAPI.V1TransactionsList(context.Background()).WalletIds(walletIds).ChainIds(chainIds).TokenIds(tokenIds).AssetIds(assetIds).Hash(hash).Status(status).Cursor(cursor).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.V1TransactionsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,6 +130,7 @@ Other parameters are passed through a pointer to a apiV1TransactionsListRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **walletIds** | **[]string** | Unique system generated identifier of the wallet | 
  **chainIds** | **[]string** | The blockchain network on which the transaction takes place. | 
  **tokenIds** | **[]string** | The tokenId involved in the transaction. | 
  **assetIds** | **[]string** | The assetId involved in the transaction. | 
@@ -137,7 +138,6 @@ Name | Type | Description  | Notes
  **status** | **string** | The status of the transaction. | 
  **cursor** | **string** | A cursor value for pagination purposes. | 
  **limit** | **int32** | The number of records to return default: 20 | 
- **walletIds** | **[]string** | Unique system generated identifier of the wallet | 
 
 ### Return type
 

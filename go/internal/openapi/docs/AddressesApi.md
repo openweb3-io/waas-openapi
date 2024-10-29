@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## V1WalletsListAddresses
 
-> CursorPageAddress V1WalletsListAddresses(ctx, walletId).Cursor(cursor).Limit(limit).ChainIds(chainIds).Execute()
+> CursorPageAddress V1WalletsListAddresses(ctx, walletId).ChainIds(chainIds).Cursor(cursor).Limit(limit).Execute()
 
 List wallet addresses
 
@@ -250,13 +250,13 @@ import (
 
 func main() {
 	walletId := "walletId_example" // string | Wallet ID
+	chainIds := []string{"Inner_example"} // []string | chain ids (optional)
 	cursor := "cursor_example" // string | Cursor (optional)
 	limit := int32(56) // int32 | Limit, default is 20 (optional)
-	chainIds := []string{"Inner_example"} // []string | chain ids (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AddressesAPI.V1WalletsListAddresses(context.Background(), walletId).Cursor(cursor).Limit(limit).ChainIds(chainIds).Execute()
+	resp, r, err := apiClient.AddressesAPI.V1WalletsListAddresses(context.Background(), walletId).ChainIds(chainIds).Cursor(cursor).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressesAPI.V1WalletsListAddresses``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,9 +282,9 @@ Other parameters are passed through a pointer to a apiV1WalletsListAddressesRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **chainIds** | **[]string** | chain ids | 
  **cursor** | **string** | Cursor | 
  **limit** | **int32** | Limit, default is 20 | 
- **chainIds** | **[]string** | chain ids | 
 
 ### Return type
 

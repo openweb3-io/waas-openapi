@@ -198,9 +198,9 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new WaaSOpenApiDocumentation.AddressesApi();
 let walletId = "walletId_example"; // String | Wallet ID
 let opts = {
+  'chainIds': ["null"], // [String] | chain ids
   'cursor': "cursor_example", // String | Cursor
-  'limit': 56, // Number | Limit, default is 20
-  'chainIds': ["null"] // [String] | chain ids
+  'limit': 56 // Number | Limit, default is 20
 };
 apiInstance.v1WalletsListAddresses(walletId, opts, (error, data, response) => {
   if (error) {
@@ -217,9 +217,9 @@ apiInstance.v1WalletsListAddresses(walletId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **String**| Wallet ID | 
+ **chainIds** | [**[String]**](String.md)| chain ids | [optional] 
  **cursor** | **String**| Cursor | [optional] 
  **limit** | **Number**| Limit, default is 20 | [optional] 
- **chainIds** | [**[String]**](String.md)| chain ids | [optional] 
 
 ### Return type
 

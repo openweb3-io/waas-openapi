@@ -86,7 +86,7 @@ public class Example {
 
 <a id="v1WalletsDelete"></a>
 # **v1WalletsDelete**
-> Wallet v1WalletsDelete(walletId, body)
+> Wallet v1WalletsDelete(walletId)
 
 Delete wallet
 
@@ -115,9 +115,8 @@ public class Example {
 
     WalletsApi apiInstance = new WalletsApi(defaultClient);
     String walletId = "walletId_example"; // String | Wallet ID
-    Object body = null; // Object | 
     try {
-      Wallet result = apiInstance.v1WalletsDelete(walletId, body);
+      Wallet result = apiInstance.v1WalletsDelete(walletId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WalletsApi#v1WalletsDelete");
@@ -135,7 +134,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **walletId** | **String**| Wallet ID | |
-| **body** | **Object**|  | [optional] |
 
 ### Return type
 
@@ -147,7 +145,7 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

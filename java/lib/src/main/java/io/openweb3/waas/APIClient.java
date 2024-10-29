@@ -73,7 +73,8 @@ public final class APIClient {
                     throw new RuntimeException(e);
                 }
 
-                builder.header("x-signature", signature);
+                builder.header("X-Api-Key", options.getApiKey());
+                builder.header("X-Signature", signature);
 
                 Request newRequest = builder.build();
                 return chain.proceed(newRequest);
@@ -86,8 +87,6 @@ public final class APIClient {
         apiClient.setDebugging(options.getDebug());
         apiClient.setBasePath(options.getServerUrl());
         apiClient.setUserAgent(String.format("waas-libs/%s/java", VERSION));
-        ApiKeyAuth apiKeyAuth = (ApiKeyAuth) apiClient.getAuthentication("ApiKeyAuth");
-        apiKeyAuth.setApiKey(options.getApiKey());
 
         Configuration.setDefaultApiClient(apiClient);
 

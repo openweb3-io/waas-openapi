@@ -5,7 +5,6 @@ import io.openweb3.waas.internal.api.TransactionsApi;
 import io.openweb3.waas.models.*;
 
 import java.util.Arrays;
-import java.util.List;
 
 public final class TransactionsAPI {
     private final TransactionsApi api;
@@ -15,17 +14,17 @@ public final class TransactionsAPI {
     }
 
     // list transactions
-    public PageTransaction listTransactions(final ListTransactionOptions options) throws ApiException {
+    public CursorPageTransaction list(final ListTransactionOptions options) throws ApiException {
         try {
             return api.v1TransactionsList(
-                    Arrays.asList(options.getAssetIds()),
-                    Arrays.asList(options.getChainIds()),
-                    options.getCursor(),
+                    Arrays.asList(options.getWalletIds() == null ? new String[0] : options.getWalletIds()),
+                    Arrays.asList(options.getChainIds() == null ? new String[0] : options.getChainIds()),
+                    Arrays.asList(options.getTokenIds() == null ? new String[0] : options.getTokenIds()),
+                    Arrays.asList(options.getAssetIds() == null ? new String[0] : options.getAssetIds()),
                     options.getHash(),
-                    options.getLimit(),
                     options.getStatus(),
-                    Arrays.asList(options.getTokenIds()),
-                    Arrays.asList(options.getWalletIds())
+                    options.getCursor(),
+                    options.getLimit()
             );
         } catch (io.openweb3.waas.internal.ApiException e) {
             throw Utils.WrapInternalApiException(e);
@@ -33,7 +32,7 @@ public final class TransactionsAPI {
     }
 
     // get transaction
-    public Transaction getTransaction(final String transactionId) throws ApiException {
+    public Transaction retrieve(final String transactionId) throws ApiException {
         try {
             return api.v1TransactionsRetrieve(transactionId);
         } catch (io.openweb3.waas.internal.ApiException e) {

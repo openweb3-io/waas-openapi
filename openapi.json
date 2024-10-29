@@ -909,7 +909,8 @@
                 "type": "string"
               },
               "type": "array",
-              "uniqueItems": false
+              "uniqueItems": false,
+              "x-order": "1"
             }
           },
           {
@@ -922,7 +923,8 @@
                 "type": "string"
               },
               "type": "array",
-              "uniqueItems": false
+              "uniqueItems": false,
+              "x-order": "2"
             }
           },
           {
@@ -931,7 +933,8 @@
             "name": "cursor",
             "schema": {
               "description": "The cursor to use for pagination.",
-              "type": "string"
+              "type": "string",
+              "x-order": "3"
             }
           },
           {
@@ -940,7 +943,8 @@
             "name": "limit",
             "schema": {
               "description": "The number of records to return default: 20",
-              "type": "integer"
+              "type": "integer",
+              "x-order": "4"
             }
           }
         ],
@@ -1021,7 +1025,8 @@
             "name": "cursor",
             "schema": {
               "description": "Cursor",
-              "type": "string"
+              "type": "string",
+              "x-order": "1"
             }
           },
           {
@@ -1030,7 +1035,8 @@
             "name": "limit",
             "schema": {
               "description": "The number of records to return default: 20",
-              "type": "integer"
+              "type": "integer",
+              "x-order": "2"
             }
           }
         ],
@@ -1190,7 +1196,8 @@
             "in": "query",
             "name": "cursor",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "x-order": "1"
             }
           },
           {
@@ -1199,7 +1206,8 @@
             "name": "limit",
             "schema": {
               "description": "The number of records to return default: 20",
-              "type": "integer"
+              "type": "integer",
+              "x-order": "2"
             }
           }
         ],
@@ -1260,7 +1268,8 @@
             "name": "cursor",
             "schema": {
               "description": "Cursor",
-              "type": "string"
+              "type": "string",
+              "x-order": "1"
             }
           },
           {
@@ -1269,7 +1278,8 @@
             "name": "limit",
             "schema": {
               "description": "The number of records to return default: 20",
-              "type": "integer"
+              "type": "integer",
+              "x-order": "2"
             }
           }
         ],
@@ -1595,6 +1605,20 @@
         "operationId": "v1.transactions.list",
         "parameters": [
           {
+            "description": "Unique system generated identifier of the wallet",
+            "in": "query",
+            "name": "wallet_ids",
+            "schema": {
+              "description": "Unique system generated identifier of the wallet",
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": false,
+              "x-order": "1"
+            }
+          },
+          {
             "description": "The blockchain network on which the transaction takes place.",
             "in": "query",
             "name": "chain_ids",
@@ -1604,7 +1628,8 @@
                 "type": "string"
               },
               "type": "array",
-              "uniqueItems": false
+              "uniqueItems": false,
+              "x-order": "2"
             }
           },
           {
@@ -1617,7 +1642,8 @@
                 "type": "string"
               },
               "type": "array",
-              "uniqueItems": false
+              "uniqueItems": false,
+              "x-order": "3"
             }
           },
           {
@@ -1630,7 +1656,8 @@
                 "type": "string"
               },
               "type": "array",
-              "uniqueItems": false
+              "uniqueItems": false,
+              "x-order": "4"
             }
           },
           {
@@ -1639,7 +1666,8 @@
             "name": "hash",
             "schema": {
               "description": "The transaction hash, which uniquely identifies a transaction on the blockchain.",
-              "type": "string"
+              "type": "string",
+              "x-order": "5"
             }
           },
           {
@@ -1648,7 +1676,8 @@
             "name": "status",
             "schema": {
               "description": "The status of the transaction.",
-              "type": "string"
+              "type": "string",
+              "x-order": "6"
             }
           },
           {
@@ -1657,7 +1686,8 @@
             "name": "cursor",
             "schema": {
               "description": "A cursor value for pagination purposes.",
-              "type": "string"
+              "type": "string",
+              "x-order": "7"
             }
           },
           {
@@ -1666,20 +1696,8 @@
             "name": "limit",
             "schema": {
               "description": "The number of records to return default: 20",
-              "type": "integer"
-            }
-          },
-          {
-            "description": "Unique system generated identifier of the wallet",
-            "in": "query",
-            "name": "wallet_ids",
-            "schema": {
-              "description": "Unique system generated identifier of the wallet",
-              "items": {
-                "type": "string"
-              },
-              "type": "array",
-              "uniqueItems": false
+              "type": "integer",
+              "x-order": "8"
             }
           }
         ],
@@ -2003,7 +2021,8 @@
             "name": "cursor",
             "schema": {
               "description": "Cursor",
-              "type": "string"
+              "type": "string",
+              "x-order": "1"
             }
           },
           {
@@ -2012,7 +2031,8 @@
             "name": "limit",
             "schema": {
               "description": "The number of records to return default: 20",
-              "type": "integer"
+              "type": "integer",
+              "x-order": "2"
             }
           }
         ],
@@ -2176,15 +2196,6 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "content": {
@@ -2435,24 +2446,6 @@
             }
           },
           {
-            "description": "Cursor",
-            "in": "query",
-            "name": "cursor",
-            "schema": {
-              "description": "Cursor",
-              "type": "string"
-            }
-          },
-          {
-            "description": "Limit, default is 20",
-            "in": "query",
-            "name": "limit",
-            "schema": {
-              "description": "Limit, default is 20",
-              "type": "integer"
-            }
-          },
-          {
             "description": "chain ids",
             "in": "query",
             "name": "chain_ids",
@@ -2462,7 +2455,28 @@
                 "type": "string"
               },
               "type": "array",
-              "uniqueItems": false
+              "uniqueItems": false,
+              "x-order": "1"
+            }
+          },
+          {
+            "description": "Cursor",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "description": "Cursor",
+              "type": "string",
+              "x-order": "2"
+            }
+          },
+          {
+            "description": "Limit, default is 20",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "description": "Limit, default is 20",
+              "type": "integer",
+              "x-order": "3"
             }
           }
         ],
@@ -2788,15 +2802,6 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "content": {

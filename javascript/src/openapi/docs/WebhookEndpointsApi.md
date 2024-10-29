@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ## v1WebhooksDelete
 
-> Endpoint v1WebhooksDelete(endpointId, opts)
+> Endpoint v1WebhooksDelete(endpointId)
 
 Delete webhook endpoint
 
@@ -84,10 +84,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new WaaSOpenApiDocumentation.WebhookEndpointsApi();
 let endpointId = "endpointId_example"; // String | Endpoint ID
-let opts = {
-  'body': {key: null} // Object | 
-};
-apiInstance.v1WebhooksDelete(endpointId, opts, (error, data, response) => {
+apiInstance.v1WebhooksDelete(endpointId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -102,7 +99,6 @@ apiInstance.v1WebhooksDelete(endpointId, opts, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **endpointId** | **String**| Endpoint ID | 
- **body** | **Object**|  | [optional] 
 
 ### Return type
 
@@ -114,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

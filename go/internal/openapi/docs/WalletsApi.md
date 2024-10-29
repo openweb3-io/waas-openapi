@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ## V1WalletsDelete
 
-> Wallet V1WalletsDelete(ctx, walletId).Body(body).Execute()
+> Wallet V1WalletsDelete(ctx, walletId).Execute()
 
 Delete wallet
 
@@ -100,11 +100,10 @@ import (
 
 func main() {
 	walletId := "walletId_example" // string | Wallet ID
-	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WalletsAPI.V1WalletsDelete(context.Background(), walletId).Body(body).Execute()
+	resp, r, err := apiClient.WalletsAPI.V1WalletsDelete(context.Background(), walletId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WalletsAPI.V1WalletsDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,7 +129,6 @@ Other parameters are passed through a pointer to a apiV1WalletsDeleteRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
@@ -142,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

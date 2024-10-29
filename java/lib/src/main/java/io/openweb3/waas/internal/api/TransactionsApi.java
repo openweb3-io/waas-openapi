@@ -219,6 +219,7 @@ public class TransactionsApi {
     }
     /**
      * Build call for v1TransactionsList
+     * @param walletIds Unique system generated identifier of the wallet (optional)
      * @param chainIds The blockchain network on which the transaction takes place. (optional)
      * @param tokenIds The tokenId involved in the transaction. (optional)
      * @param assetIds The assetId involved in the transaction. (optional)
@@ -226,7 +227,6 @@ public class TransactionsApi {
      * @param status The status of the transaction. (optional)
      * @param cursor A cursor value for pagination purposes. (optional)
      * @param limit The number of records to return default: 20 (optional)
-     * @param walletIds Unique system generated identifier of the wallet (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -240,7 +240,7 @@ public class TransactionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1TransactionsListCall(List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, List<String> walletIds, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1TransactionsListCall(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -264,6 +264,10 @@ public class TransactionsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (walletIds != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "wallet_ids", walletIds));
+        }
 
         if (chainIds != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "chain_ids", chainIds));
@@ -293,10 +297,6 @@ public class TransactionsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
-        if (walletIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "wallet_ids", walletIds));
-        }
-
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -317,14 +317,15 @@ public class TransactionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1TransactionsListValidateBeforeCall(List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, List<String> walletIds, final ApiCallback _callback) throws ApiException {
-        return v1TransactionsListCall(chainIds, tokenIds, assetIds, hash, status, cursor, limit, walletIds, _callback);
+    private okhttp3.Call v1TransactionsListValidateBeforeCall(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        return v1TransactionsListCall(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _callback);
 
     }
 
     /**
      * List transactions
      * List transactions
+     * @param walletIds Unique system generated identifier of the wallet (optional)
      * @param chainIds The blockchain network on which the transaction takes place. (optional)
      * @param tokenIds The tokenId involved in the transaction. (optional)
      * @param assetIds The assetId involved in the transaction. (optional)
@@ -332,7 +333,6 @@ public class TransactionsApi {
      * @param status The status of the transaction. (optional)
      * @param cursor A cursor value for pagination purposes. (optional)
      * @param limit The number of records to return default: 20 (optional)
-     * @param walletIds Unique system generated identifier of the wallet (optional)
      * @return CursorPageTransaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -345,14 +345,15 @@ public class TransactionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CursorPageTransaction v1TransactionsList(List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, List<String> walletIds) throws ApiException {
-        ApiResponse<CursorPageTransaction> localVarResp = v1TransactionsListWithHttpInfo(chainIds, tokenIds, assetIds, hash, status, cursor, limit, walletIds);
+    public CursorPageTransaction v1TransactionsList(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit) throws ApiException {
+        ApiResponse<CursorPageTransaction> localVarResp = v1TransactionsListWithHttpInfo(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit);
         return localVarResp.getData();
     }
 
     /**
      * List transactions
      * List transactions
+     * @param walletIds Unique system generated identifier of the wallet (optional)
      * @param chainIds The blockchain network on which the transaction takes place. (optional)
      * @param tokenIds The tokenId involved in the transaction. (optional)
      * @param assetIds The assetId involved in the transaction. (optional)
@@ -360,7 +361,6 @@ public class TransactionsApi {
      * @param status The status of the transaction. (optional)
      * @param cursor A cursor value for pagination purposes. (optional)
      * @param limit The number of records to return default: 20 (optional)
-     * @param walletIds Unique system generated identifier of the wallet (optional)
      * @return ApiResponse&lt;CursorPageTransaction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -373,8 +373,8 @@ public class TransactionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CursorPageTransaction> v1TransactionsListWithHttpInfo(List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, List<String> walletIds) throws ApiException {
-        okhttp3.Call localVarCall = v1TransactionsListValidateBeforeCall(chainIds, tokenIds, assetIds, hash, status, cursor, limit, walletIds, null);
+    public ApiResponse<CursorPageTransaction> v1TransactionsListWithHttpInfo(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = v1TransactionsListValidateBeforeCall(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, null);
         Type localVarReturnType = new TypeToken<CursorPageTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -382,6 +382,7 @@ public class TransactionsApi {
     /**
      * List transactions (asynchronously)
      * List transactions
+     * @param walletIds Unique system generated identifier of the wallet (optional)
      * @param chainIds The blockchain network on which the transaction takes place. (optional)
      * @param tokenIds The tokenId involved in the transaction. (optional)
      * @param assetIds The assetId involved in the transaction. (optional)
@@ -389,7 +390,6 @@ public class TransactionsApi {
      * @param status The status of the transaction. (optional)
      * @param cursor A cursor value for pagination purposes. (optional)
      * @param limit The number of records to return default: 20 (optional)
-     * @param walletIds Unique system generated identifier of the wallet (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -403,9 +403,9 @@ public class TransactionsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1TransactionsListAsync(List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, List<String> walletIds, final ApiCallback<CursorPageTransaction> _callback) throws ApiException {
+    public okhttp3.Call v1TransactionsListAsync(List<String> walletIds, List<String> chainIds, List<String> tokenIds, List<String> assetIds, String hash, String status, String cursor, Integer limit, final ApiCallback<CursorPageTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1TransactionsListValidateBeforeCall(chainIds, tokenIds, assetIds, hash, status, cursor, limit, walletIds, _callback);
+        okhttp3.Call localVarCall = v1TransactionsListValidateBeforeCall(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _callback);
         Type localVarReturnType = new TypeToken<CursorPageTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

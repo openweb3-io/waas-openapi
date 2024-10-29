@@ -218,7 +218,6 @@ public class WalletsApi {
     /**
      * Build call for v1WalletsDelete
      * @param walletId Wallet ID (required)
-     * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -232,7 +231,7 @@ public class WalletsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsDeleteCall(String walletId, Object body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1WalletsDeleteCall(String walletId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -246,7 +245,7 @@ public class WalletsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = body;
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/v1/wallets/{walletId}"
@@ -267,7 +266,6 @@ public class WalletsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -279,13 +277,13 @@ public class WalletsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WalletsDeleteValidateBeforeCall(String walletId, Object body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call v1WalletsDeleteValidateBeforeCall(String walletId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletId' is set
         if (walletId == null) {
             throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsDelete(Async)");
         }
 
-        return v1WalletsDeleteCall(walletId, body, _callback);
+        return v1WalletsDeleteCall(walletId, _callback);
 
     }
 
@@ -293,7 +291,6 @@ public class WalletsApi {
      * Delete wallet
      * Delete a Wallet
      * @param walletId Wallet ID (required)
-     * @param body  (optional)
      * @return Wallet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -306,8 +303,8 @@ public class WalletsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Wallet v1WalletsDelete(String walletId, Object body) throws ApiException {
-        ApiResponse<Wallet> localVarResp = v1WalletsDeleteWithHttpInfo(walletId, body);
+    public Wallet v1WalletsDelete(String walletId) throws ApiException {
+        ApiResponse<Wallet> localVarResp = v1WalletsDeleteWithHttpInfo(walletId);
         return localVarResp.getData();
     }
 
@@ -315,7 +312,6 @@ public class WalletsApi {
      * Delete wallet
      * Delete a Wallet
      * @param walletId Wallet ID (required)
-     * @param body  (optional)
      * @return ApiResponse&lt;Wallet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -328,8 +324,8 @@ public class WalletsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wallet> v1WalletsDeleteWithHttpInfo(String walletId, Object body) throws ApiException {
-        okhttp3.Call localVarCall = v1WalletsDeleteValidateBeforeCall(walletId, body, null);
+    public ApiResponse<Wallet> v1WalletsDeleteWithHttpInfo(String walletId) throws ApiException {
+        okhttp3.Call localVarCall = v1WalletsDeleteValidateBeforeCall(walletId, null);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -338,7 +334,6 @@ public class WalletsApi {
      * Delete wallet (asynchronously)
      * Delete a Wallet
      * @param walletId Wallet ID (required)
-     * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -352,9 +347,9 @@ public class WalletsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsDeleteAsync(String walletId, Object body, final ApiCallback<Wallet> _callback) throws ApiException {
+    public okhttp3.Call v1WalletsDeleteAsync(String walletId, final ApiCallback<Wallet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WalletsDeleteValidateBeforeCall(walletId, body, _callback);
+        okhttp3.Call localVarCall = v1WalletsDeleteValidateBeforeCall(walletId, _callback);
         Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

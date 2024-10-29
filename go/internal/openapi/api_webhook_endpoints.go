@@ -180,12 +180,6 @@ type ApiV1WebhooksDeleteRequest struct {
 	ctx context.Context
 	ApiService *WebhookEndpointsAPIService
 	endpointId string
-	body *map[string]interface{}
-}
-
-func (r ApiV1WebhooksDeleteRequest) Body(body map[string]interface{}) ApiV1WebhooksDeleteRequest {
-	r.body = &body
-	return r
 }
 
 func (r ApiV1WebhooksDeleteRequest) Execute() (*Endpoint, *http.Response, error) {
@@ -232,7 +226,7 @@ func (a *WebhookEndpointsAPIService) V1WebhooksDeleteExecute(r ApiV1WebhooksDele
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -248,8 +242,6 @@ func (a *WebhookEndpointsAPIService) V1WebhooksDeleteExecute(r ApiV1WebhooksDele
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

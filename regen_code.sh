@@ -11,6 +11,10 @@ rm -rf go/internal/openapi/test
 rm -fr java/lib/src/main/java/io/openweb3/waas/internal
 rm -fr java/lib/src/main/java/io/openweb3/waas/models
 yarn openapi-generator-cli generate -i openapi.json -g java -o java/lib -c java/openapi-generator-config.json -t java/templates
+rm -rf java/lib/src/test/java/io/openweb3/waas/internal
+rm -rf java/lib/src/test/java/io/openweb3/waas/models
+cp -f java/templates/pom.xml java/lib/
+cp -f java/templates/build.gradle java/lib/
 
 rm -fr javascript/src/openapi/src
 rm -fr javascript/src/openapi/test

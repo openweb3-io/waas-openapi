@@ -210,7 +210,6 @@ public class WebhookEndpointsApi {
     /**
      * Build call for v1WebhooksDelete
      * @param endpointId Endpoint ID (required)
-     * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -222,7 +221,7 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WebhooksDeleteCall(String endpointId, Object body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1WebhooksDeleteCall(String endpointId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -236,7 +235,7 @@ public class WebhookEndpointsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = body;
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/v1/webhooks/endpoints/{endpointId}"
@@ -257,7 +256,6 @@ public class WebhookEndpointsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -269,13 +267,13 @@ public class WebhookEndpointsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WebhooksDeleteValidateBeforeCall(String endpointId, Object body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call v1WebhooksDeleteValidateBeforeCall(String endpointId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'endpointId' is set
         if (endpointId == null) {
             throw new ApiException("Missing the required parameter 'endpointId' when calling v1WebhooksDelete(Async)");
         }
 
-        return v1WebhooksDeleteCall(endpointId, body, _callback);
+        return v1WebhooksDeleteCall(endpointId, _callback);
 
     }
 
@@ -283,7 +281,6 @@ public class WebhookEndpointsApi {
      * Delete webhook endpoint
      * Delete specific webhook endpoint
      * @param endpointId Endpoint ID (required)
-     * @param body  (optional)
      * @return Endpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -294,8 +291,8 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint v1WebhooksDelete(String endpointId, Object body) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = v1WebhooksDeleteWithHttpInfo(endpointId, body);
+    public Endpoint v1WebhooksDelete(String endpointId) throws ApiException {
+        ApiResponse<Endpoint> localVarResp = v1WebhooksDeleteWithHttpInfo(endpointId);
         return localVarResp.getData();
     }
 
@@ -303,7 +300,6 @@ public class WebhookEndpointsApi {
      * Delete webhook endpoint
      * Delete specific webhook endpoint
      * @param endpointId Endpoint ID (required)
-     * @param body  (optional)
      * @return ApiResponse&lt;Endpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -314,8 +310,8 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> v1WebhooksDeleteWithHttpInfo(String endpointId, Object body) throws ApiException {
-        okhttp3.Call localVarCall = v1WebhooksDeleteValidateBeforeCall(endpointId, body, null);
+    public ApiResponse<Endpoint> v1WebhooksDeleteWithHttpInfo(String endpointId) throws ApiException {
+        okhttp3.Call localVarCall = v1WebhooksDeleteValidateBeforeCall(endpointId, null);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -324,7 +320,6 @@ public class WebhookEndpointsApi {
      * Delete webhook endpoint (asynchronously)
      * Delete specific webhook endpoint
      * @param endpointId Endpoint ID (required)
-     * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -336,9 +331,9 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WebhooksDeleteAsync(String endpointId, Object body, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call v1WebhooksDeleteAsync(String endpointId, final ApiCallback<Endpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WebhooksDeleteValidateBeforeCall(endpointId, body, _callback);
+        okhttp3.Call localVarCall = v1WebhooksDeleteValidateBeforeCall(endpointId, _callback);
         Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
