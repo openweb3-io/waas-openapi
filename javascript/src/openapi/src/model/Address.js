@@ -67,6 +67,9 @@ class Address {
             if (data.hasOwnProperty('path')) {
                 obj['path'] = ApiClient.convertToType(data['path'], 'String');
             }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
+            }
             if (data.hasOwnProperty('updated_at')) {
                 obj['updated_at'] = ApiClient.convertToType(data['updated_at'], 'String');
             }
@@ -112,6 +115,10 @@ class Address {
         // ensure the json data is a string
         if (data['path'] && !(typeof data['path'] === 'string' || data['path'] instanceof String)) {
             throw new Error("Expected the field `path` to be a primitive type in the JSON string but got " + data['path']);
+        }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
         }
         // ensure the json data is a string
         if (data['updated_at'] && !(typeof data['updated_at'] === 'string' || data['updated_at'] instanceof String)) {
@@ -165,6 +172,12 @@ Address.prototype['memo'] = undefined;
  * @member {String} path
  */
 Address.prototype['path'] = undefined;
+
+/**
+ * Address Type
+ * @member {String} type
+ */
+Address.prototype['type'] = undefined;
 
 /**
  * Updated time

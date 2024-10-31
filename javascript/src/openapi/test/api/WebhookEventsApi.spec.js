@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WaaSOpenApiDocumentation.CreateAddressRequest();
+    instance = new WaaSOpenApiDocumentation.WebhookEventsApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,25 +47,17 @@
       object[property] = value;
   }
 
-  describe('CreateAddressRequest', function() {
-    it('should create an instance of CreateAddressRequest', function() {
-      // uncomment below and update the code to test CreateAddressRequest
-      //var instance = new WaaSOpenApiDocumentation.CreateAddressRequest();
-      //expect(instance).to.be.a(WaaSOpenApiDocumentation.CreateAddressRequest);
+  describe('WebhookEventsApi', function() {
+    describe('v1WebhooksEventsList', function() {
+      it('should call v1WebhooksEventsList successfully', function(done) {
+        //uncomment below and update the code to test v1WebhooksEventsList
+        //instance.v1WebhooksEventsList(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
     });
-
-    it('should have the property chainId (base name: "chain_id")', function() {
-      // uncomment below and update the code to test the property chainId
-      //var instance = new WaaSOpenApiDocumentation.CreateAddressRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instance = new WaaSOpenApiDocumentation.CreateAddressRequest();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));

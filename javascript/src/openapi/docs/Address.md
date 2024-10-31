@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **createdAt** | **String** | Created time | [optional] 
 **memo** | **String** | The memo | [optional] 
 **path** | **String** | Derivation path | [optional] 
+**type** | **String** | Address Type | [optional] 
 **updatedAt** | **String** | Updated time | [optional] 
 **walletId** | **String** | Chain ID | [optional] 
 

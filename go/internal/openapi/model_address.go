@@ -33,6 +33,8 @@ type Address struct {
 	Memo *string `json:"memo,omitempty"`
 	// Derivation path
 	Path *string `json:"path,omitempty"`
+	// Address Type
+	Type *string `json:"type,omitempty"`
 	// Updated time
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	// Chain ID
@@ -243,6 +245,38 @@ func (o *Address) SetPath(v string) {
 	o.Path = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Address) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Address) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *Address) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Address) SetType(v string) {
+	o.Type = &v
+}
+
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *Address) GetUpdatedAt() string {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -332,6 +366,9 @@ func (o Address) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Path) {
 		toSerialize["path"] = o.Path
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt

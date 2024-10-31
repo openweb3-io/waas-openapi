@@ -1482,6 +1482,7 @@ components:
         updated_at: updated_at
         created_at: created_at
         memo: memo
+        type: type
       properties:
         address:
           description: Blockchain address
@@ -1500,6 +1501,9 @@ components:
           type: string
         path:
           description: Derivation path
+          type: string
+        type:
+          description: Address Type
           type: string
         updated_at:
           description: Updated time
@@ -1559,12 +1563,20 @@ components:
     CreateAddressRequest:
       example:
         chain_id: chain_id
+        type: DEPOSIT
       properties:
         chain_id:
           description: Chain ID
           type: string
+        type:
+          description: Address Type
+          enum:
+          - DEPOSIT
+          - HOT
+          type: string
       required:
       - chain_id
+      - type
     CreateEndpoint:
       example:
         uid: uid
@@ -1689,6 +1701,7 @@ components:
           updated_at: updated_at
           created_at: created_at
           memo: memo
+          type: type
         - path: path
           chain: chain
           wallet_id: wallet_id
@@ -1697,6 +1710,7 @@ components:
           updated_at: updated_at
           created_at: created_at
           memo: memo
+          type: type
       properties:
         has_next:
           type: boolean

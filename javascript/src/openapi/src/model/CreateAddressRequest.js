@@ -23,10 +23,11 @@ class CreateAddressRequest {
      * Constructs a new <code>CreateAddressRequest</code>.
      * @alias module:model/CreateAddressRequest
      * @param chainId {String} Chain ID
+     * @param type {module:model/CreateAddressRequest.TypeEnum} Address Type
      */
-    constructor(chainId) { 
+    constructor(chainId, type) { 
         
-        CreateAddressRequest.initialize(this, chainId);
+        CreateAddressRequest.initialize(this, chainId, type);
     }
 
     /**
@@ -34,8 +35,9 @@ class CreateAddressRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, chainId) { 
+    static initialize(obj, chainId, type) { 
         obj['chain_id'] = chainId;
+        obj['type'] = type;
     }
 
     /**
@@ -51,6 +53,9 @@ class CreateAddressRequest {
 
             if (data.hasOwnProperty('chain_id')) {
                 obj['chain_id'] = ApiClient.convertToType(data['chain_id'], 'String');
+            }
+            if (data.hasOwnProperty('type')) {
+                obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
         }
         return obj;
@@ -72,6 +77,10 @@ class CreateAddressRequest {
         if (data['chain_id'] && !(typeof data['chain_id'] === 'string' || data['chain_id'] instanceof String)) {
             throw new Error("Expected the field `chain_id` to be a primitive type in the JSON string but got " + data['chain_id']);
         }
+        // ensure the json data is a string
+        if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
+            throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
 
         return true;
     }
@@ -79,7 +88,7 @@ class CreateAddressRequest {
 
 }
 
-CreateAddressRequest.RequiredProperties = ["chain_id"];
+CreateAddressRequest.RequiredProperties = ["chain_id", "type"];
 
 /**
  * Chain ID
@@ -87,8 +96,35 @@ CreateAddressRequest.RequiredProperties = ["chain_id"];
  */
 CreateAddressRequest.prototype['chain_id'] = undefined;
 
+/**
+ * Address Type
+ * @member {module:model/CreateAddressRequest.TypeEnum} type
+ */
+CreateAddressRequest.prototype['type'] = undefined;
 
 
+
+
+
+/**
+ * Allowed values for the <code>type</code> property.
+ * @enum {String}
+ * @readonly
+ */
+CreateAddressRequest['TypeEnum'] = {
+
+    /**
+     * value: "DEPOSIT"
+     * @const
+     */
+    "DEPOSIT": "DEPOSIT",
+
+    /**
+     * value: "HOT"
+     * @const
+     */
+    "HOT": "HOT"
+};
 
 
 

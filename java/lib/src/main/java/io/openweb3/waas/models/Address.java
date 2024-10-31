@@ -74,6 +74,10 @@ public class Address {
   @SerializedName(SERIALIZED_NAME_PATH)
   private String path;
 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private String updatedAt;
@@ -199,6 +203,25 @@ public class Address {
   }
 
 
+  public Address type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Address Type
+   * @return type
+   */
+  @javax.annotation.Nullable
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
   public Address updatedAt(String updatedAt) {
     this.updatedAt = updatedAt;
     return this;
@@ -253,13 +276,14 @@ public class Address {
         Objects.equals(this.createdAt, address.createdAt) &&
         Objects.equals(this.memo, address.memo) &&
         Objects.equals(this.path, address.path) &&
+        Objects.equals(this.type, address.type) &&
         Objects.equals(this.updatedAt, address.updatedAt) &&
         Objects.equals(this.walletId, address.walletId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, chain, chainId, createdAt, memo, path, updatedAt, walletId);
+    return Objects.hash(address, chain, chainId, createdAt, memo, path, type, updatedAt, walletId);
   }
 
   @Override
@@ -272,6 +296,7 @@ public class Address {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
     sb.append("}");
@@ -302,6 +327,7 @@ public class Address {
     openapiFields.add("created_at");
     openapiFields.add("memo");
     openapiFields.add("path");
+    openapiFields.add("type");
     openapiFields.add("updated_at");
     openapiFields.add("wallet_id");
 
@@ -355,6 +381,9 @@ public class Address {
       }
       if ((jsonObj.get("path") != null && !jsonObj.get("path").isJsonNull()) && !jsonObj.get("path").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("path").toString()));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       if ((jsonObj.get("updated_at") != null && !jsonObj.get("updated_at").isJsonNull()) && !jsonObj.get("updated_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updated_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated_at").toString()));

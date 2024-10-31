@@ -54,6 +54,62 @@ public class CreateAddressRequest {
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)
   private String chainId;
 
+  /**
+   * Address Type
+   */
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    DEPOSIT("DEPOSIT"),
+    
+    HOT("HOT");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TypeEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TypeEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
+
   public CreateAddressRequest() {
   }
 
@@ -76,6 +132,25 @@ public class CreateAddressRequest {
   }
 
 
+  public CreateAddressRequest type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Address Type
+   * @return type
+   */
+  @javax.annotation.Nonnull
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -86,12 +161,13 @@ public class CreateAddressRequest {
       return false;
     }
     CreateAddressRequest createAddressRequest = (CreateAddressRequest) o;
-    return Objects.equals(this.chainId, createAddressRequest.chainId);
+    return Objects.equals(this.chainId, createAddressRequest.chainId) &&
+        Objects.equals(this.type, createAddressRequest.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(chainId);
+    return Objects.hash(chainId, type);
   }
 
   @Override
@@ -99,6 +175,7 @@ public class CreateAddressRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAddressRequest {\n");
     sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,10 +199,12 @@ public class CreateAddressRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("chain_id");
+    openapiFields.add("type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("chain_id");
+    openapiRequiredFields.add("type");
   }
 
   /**
@@ -159,6 +238,11 @@ public class CreateAddressRequest {
       if (!jsonObj.get("chain_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chain_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain_id").toString()));
       }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      // validate the required field `type`
+      TypeEnum.validateJsonElement(jsonObj.get("type"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

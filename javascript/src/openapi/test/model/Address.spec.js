@@ -90,6 +90,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property type (base name: "type")', function() {
+      // uncomment below and update the code to test the property type
+      //var instance = new WaaSOpenApiDocumentation.Address();
+      //expect(instance).to.be();
+    });
+
     it('should have the property updatedAt (base name: "updated_at")', function() {
       // uncomment below and update the code to test the property updatedAt
       //var instance = new WaaSOpenApiDocumentation.Address();

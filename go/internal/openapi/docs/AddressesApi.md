@@ -105,7 +105,7 @@ import (
 
 func main() {
 	walletId := "walletId_example" // string | Wallet ID
-	createAddressRequest := *openapiclient.NewCreateAddressRequest("ChainId_example") // CreateAddressRequest | Request Body
+	createAddressRequest := *openapiclient.NewCreateAddressRequest("ChainId_example", "Type_example") // CreateAddressRequest | Request Body
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
