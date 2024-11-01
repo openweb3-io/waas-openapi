@@ -198,20 +198,18 @@ func (s *apiClientTestSuite) TestTransaction_EstimateFee() {
 }
 
 func (s *apiClientTestSuite) TestTransaction_Transfer() {
+	source := TransferSourceAddress{
+		Address:  testSourceAddress,
+		WalletId: testWalletId,
+	}
+	destination := TransferDestinationAddress{
+		Address: testDestinationAddress,
+	}
 	reply, err := s.client.Transaction.Transfer(context.Background(), &TransferIn{
-		Source: openapi.CreateTransferRequestSource{
-			TransferSourceAddress: &openapi.TransferSourceAddress{
-				Address:  testSourceAddress,
-				WalletId: testWalletId,
-			},
-		},
-		Destination: openapi.CreateTransferRequestDestination{
-			TransferDestinationAddress: &openapi.TransferDestinationAddress{
-				Address: testDestinationAddress,
-			},
-		},
-		Amount:  testAmount,
-		TokenId: testToken,
+		Source:      source,
+		Destination: destination,
+		Amount:      testAmount,
+		TokenId:     testToken,
 	})
 	if err != nil {
 		s.T().Error(err)

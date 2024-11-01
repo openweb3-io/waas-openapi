@@ -9,7 +9,6 @@ import (
 type (
 	TransactionOut             = openapi.Transaction
 	CursorPageTransactionOut   = openapi.CursorPageTransaction
-	TransferIn                 = openapi.CreateTransferRequest
 	TransferSourceAddress      = openapi.TransferSourceAddress
 	TransferDestinationAddress = openapi.TransferDestinationAddress
 	TransferFee                = openapi.Fee
@@ -20,6 +19,16 @@ type (
 
 type Transaction struct {
 	api *openapi.APIClient
+}
+
+type TransferIn struct {
+	Source      TransferSourceAddress
+	Destination TransferDestinationAddress
+	Amount      string
+	TokenId     string
+	Fee         *TransferFee
+	Extra       *string
+	Memo        *string
 }
 
 type ListTransactionOptions struct {
@@ -78,7 +87,19 @@ func (e *Transaction) Retrieve(ctx context.Context, transactionId string) (*Tran
 }
 func (e *Transaction) Transfer(ctx context.Context, transferIn *TransferIn) (*TransferOut, error) {
 	req := e.api.TransactionsAPI.V1TransactionsTransfer(ctx)
-	req = req.CreateTransferRequest(*transferIn)
+	req = req.CreateTransferRequest(openapi.CreateTransferRequest{
+		Source: openapi.CreateTransferRequestSource{
+			TransferSourceAddress: &transferIn.Source,
+		},
+		Destination: openapi.CreateTransferRequestDestination{
+			TransferDestinationAddress: &transferIn.Destination,
+		},
+		Amount:  transferIn.Amount,
+		TokenId: transferIn.TokenId,
+		Extra:   transferIn.Extra,
+		Fee:     transferIn.Fee,
+		Memo:    transferIn.Memo,
+	})
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
