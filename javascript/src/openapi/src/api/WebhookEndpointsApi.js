@@ -14,7 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import CreateEndpoint from '../model/CreateEndpoint';
-import CursorPageEndpoint from '../model/CursorPageEndpoint';
+import CursorIteratorEndpoint from '../model/CursorIteratorEndpoint';
 import Endpoint from '../model/Endpoint';
 import Error from '../model/Error';
 import UpdateEndpoint from '../model/UpdateEndpoint';
@@ -127,7 +127,7 @@ export default class WebhookEndpointsApi {
      * Callback function to receive the result of the v1WebhooksEndpointList operation.
      * @callback module:api/WebhookEndpointsApi~v1WebhooksEndpointListCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CursorPageEndpoint} data The data returned by the service call.
+     * @param {module:model/CursorIteratorEndpoint} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -138,7 +138,7 @@ export default class WebhookEndpointsApi {
      * @param {String} [cursor] 
      * @param {Number} [limit] The number of records to return default: 20
      * @param {module:api/WebhookEndpointsApi~v1WebhooksEndpointListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CursorPageEndpoint}
+     * data is of type: {@link module:model/CursorIteratorEndpoint}
      */
     v1WebhooksEndpointList(opts, callback) {
       opts = opts || {};
@@ -158,7 +158,7 @@ export default class WebhookEndpointsApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CursorPageEndpoint;
+      let returnType = CursorIteratorEndpoint;
       return this.apiClient.callApi(
         '/api/v1/webhooks/endpoints', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

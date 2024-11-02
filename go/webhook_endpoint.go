@@ -7,11 +7,11 @@ import (
 )
 
 type (
-	CursorPageEndpointOut = openapi.CursorPageEndpoint
-	EndpointOut           = openapi.Endpoint
-	CreateEndpointIn      = openapi.CreateEndpoint
-	UpdateEndpointIn      = openapi.UpdateEndpoint
-	DeleteEndpointIn      = openapi.ApiV1WebhooksEndpointDeleteRequest
+	CursorIteratorEndpointOut = openapi.CursorIteratorEndpoint
+	EndpointOut               = openapi.Endpoint
+	CreateEndpointIn          = openapi.CreateEndpoint
+	UpdateEndpointIn          = openapi.UpdateEndpoint
+	DeleteEndpointIn          = openapi.ApiV1WebhooksEndpointDeleteRequest
 )
 
 type WebhookEndpoint struct {
@@ -23,7 +23,7 @@ type ListEndpointOptions struct {
 	Limit  int
 }
 
-func (e *WebhookEndpoint) List(ctx context.Context, options *ListEndpointOptions) (*CursorPageEndpointOut, error) {
+func (e *WebhookEndpoint) List(ctx context.Context, options *ListEndpointOptions) (*CursorIteratorEndpointOut, error) {
 	req := e.api.WebhookEndpointsAPI.V1WebhooksEndpointList(ctx)
 	if options.Cursor != nil {
 		req = req.Cursor(*options.Cursor)
@@ -36,8 +36,8 @@ func (e *WebhookEndpoint) List(ctx context.Context, options *ListEndpointOptions
 	return out, nil
 }
 
-func (e *WebhookEndpoint) Retrieve(ctx context.Context, walletId string) (*EndpointOut, error) {
-	req := e.api.WebhookEndpointsAPI.V1WebhooksEndpointRetrieve(ctx, walletId)
+func (e *WebhookEndpoint) Retrieve(ctx context.Context, endpointId string) (*EndpointOut, error) {
+	req := e.api.WebhookEndpointsAPI.V1WebhooksEndpointRetrieve(ctx, endpointId)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
@@ -55,8 +55,8 @@ func (e *WebhookEndpoint) Create(ctx context.Context, createEndpointIn *CreateEn
 	return out, nil
 }
 
-func (e *WebhookEndpoint) Update(ctx context.Context, walletId string, updateEndpointIn *UpdateEndpointIn) (*EndpointOut, error) {
-	req := e.api.WebhookEndpointsAPI.V1WebhooksEndpointUpdate(ctx, walletId)
+func (e *WebhookEndpoint) Update(ctx context.Context, endpointId string, updateEndpointIn *UpdateEndpointIn) (*EndpointOut, error) {
+	req := e.api.WebhookEndpointsAPI.V1WebhooksEndpointUpdate(ctx, endpointId)
 	req = req.UpdateEndpoint(*updateEndpointIn)
 	out, res, err := req.Execute()
 	if err != nil {
@@ -65,11 +65,11 @@ func (e *WebhookEndpoint) Update(ctx context.Context, walletId string, updateEnd
 	return out, nil
 }
 
-func (e *WebhookEndpoint) Delete(ctx context.Context, walletId string) (*EndpointOut, error) {
-	req := e.api.WebhookEndpointsAPI.V1WebhooksEndpointDelete(ctx, walletId)
-	out, res, err := req.Execute()
+func (e *WebhookEndpoint) Delete(ctx context.Context, endpointId string) error {
+	req := e.api.WebhookEndpointsAPI.V1WebhooksEndpointDelete(ctx, endpointId)
+	_, res, err := req.Execute()
 	if err != nil {
-		return nil, wrapError(err, res)
+		return wrapError(err, res)
 	}
-	return out, nil
+	return nil
 }

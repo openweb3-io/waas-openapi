@@ -49,10 +49,14 @@ import java.util.Set;
 import io.openweb3.waas.internal.JSON;
 
 /**
- * CursorPageEventType
+ * CursorIteratorEventType
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class CursorPageEventType {
+public class CursorIteratorEventType {
+  public static final String SERIALIZED_NAME_DONE = "done";
+  @SerializedName(SERIALIZED_NAME_DONE)
+  private Boolean done;
+
   public static final String SERIALIZED_NAME_HAS_NEXT = "has_next";
   @SerializedName(SERIALIZED_NAME_HAS_NEXT)
   private Boolean hasNext;
@@ -73,14 +77,29 @@ public class CursorPageEventType {
   @SerializedName(SERIALIZED_NAME_PREV_CURSOR)
   private String prevCursor;
 
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
-  private Integer total;
-
-  public CursorPageEventType() {
+  public CursorIteratorEventType() {
   }
 
-  public CursorPageEventType hasNext(Boolean hasNext) {
+  public CursorIteratorEventType done(Boolean done) {
+    this.done = done;
+    return this;
+  }
+
+  /**
+   * Get done
+   * @return done
+   */
+  @javax.annotation.Nonnull
+  public Boolean getDone() {
+    return done;
+  }
+
+  public void setDone(Boolean done) {
+    this.done = done;
+  }
+
+
+  public CursorIteratorEventType hasNext(Boolean hasNext) {
     this.hasNext = hasNext;
     return this;
   }
@@ -99,7 +118,7 @@ public class CursorPageEventType {
   }
 
 
-  public CursorPageEventType hasPrev(Boolean hasPrev) {
+  public CursorIteratorEventType hasPrev(Boolean hasPrev) {
     this.hasPrev = hasPrev;
     return this;
   }
@@ -118,12 +137,12 @@ public class CursorPageEventType {
   }
 
 
-  public CursorPageEventType items(List<EventType> items) {
+  public CursorIteratorEventType items(List<EventType> items) {
     this.items = items;
     return this;
   }
 
-  public CursorPageEventType addItemsItem(EventType itemsItem) {
+  public CursorIteratorEventType addItemsItem(EventType itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -145,7 +164,7 @@ public class CursorPageEventType {
   }
 
 
-  public CursorPageEventType nextCursor(String nextCursor) {
+  public CursorIteratorEventType nextCursor(String nextCursor) {
     this.nextCursor = nextCursor;
     return this;
   }
@@ -164,7 +183,7 @@ public class CursorPageEventType {
   }
 
 
-  public CursorPageEventType prevCursor(String prevCursor) {
+  public CursorIteratorEventType prevCursor(String prevCursor) {
     this.prevCursor = prevCursor;
     return this;
   }
@@ -183,25 +202,6 @@ public class CursorPageEventType {
   }
 
 
-  public CursorPageEventType total(Integer total) {
-    this.total = total;
-    return this;
-  }
-
-  /**
-   * Get total
-   * @return total
-   */
-  @javax.annotation.Nonnull
-  public Integer getTotal() {
-    return total;
-  }
-
-  public void setTotal(Integer total) {
-    this.total = total;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -211,30 +211,30 @@ public class CursorPageEventType {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CursorPageEventType cursorPageEventType = (CursorPageEventType) o;
-    return Objects.equals(this.hasNext, cursorPageEventType.hasNext) &&
-        Objects.equals(this.hasPrev, cursorPageEventType.hasPrev) &&
-        Objects.equals(this.items, cursorPageEventType.items) &&
-        Objects.equals(this.nextCursor, cursorPageEventType.nextCursor) &&
-        Objects.equals(this.prevCursor, cursorPageEventType.prevCursor) &&
-        Objects.equals(this.total, cursorPageEventType.total);
+    CursorIteratorEventType cursorIteratorEventType = (CursorIteratorEventType) o;
+    return Objects.equals(this.done, cursorIteratorEventType.done) &&
+        Objects.equals(this.hasNext, cursorIteratorEventType.hasNext) &&
+        Objects.equals(this.hasPrev, cursorIteratorEventType.hasPrev) &&
+        Objects.equals(this.items, cursorIteratorEventType.items) &&
+        Objects.equals(this.nextCursor, cursorIteratorEventType.nextCursor) &&
+        Objects.equals(this.prevCursor, cursorIteratorEventType.prevCursor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasNext, hasPrev, items, nextCursor, prevCursor, total);
+    return Objects.hash(done, hasNext, hasPrev, items, nextCursor, prevCursor);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CursorPageEventType {\n");
+    sb.append("class CursorIteratorEventType {\n");
+    sb.append("    done: ").append(toIndentedString(done)).append("\n");
     sb.append("    hasNext: ").append(toIndentedString(hasNext)).append("\n");
     sb.append("    hasPrev: ").append(toIndentedString(hasPrev)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    nextCursor: ").append(toIndentedString(nextCursor)).append("\n");
     sb.append("    prevCursor: ").append(toIndentedString(prevCursor)).append("\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -257,44 +257,44 @@ public class CursorPageEventType {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("done");
     openapiFields.add("has_next");
     openapiFields.add("has_prev");
     openapiFields.add("items");
     openapiFields.add("next_cursor");
     openapiFields.add("prev_cursor");
-    openapiFields.add("total");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("done");
     openapiRequiredFields.add("has_next");
     openapiRequiredFields.add("has_prev");
     openapiRequiredFields.add("items");
-    openapiRequiredFields.add("total");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CursorPageEventType
+   * @throws IOException if the JSON Element is invalid with respect to CursorIteratorEventType
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CursorPageEventType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CursorPageEventType is not found in the empty JSON string", CursorPageEventType.openapiRequiredFields.toString()));
+        if (!CursorIteratorEventType.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CursorIteratorEventType is not found in the empty JSON string", CursorIteratorEventType.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CursorPageEventType.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CursorPageEventType` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CursorIteratorEventType.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CursorIteratorEventType` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CursorPageEventType.openapiRequiredFields) {
+      for (String requiredField : CursorIteratorEventType.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -322,22 +322,22 @@ public class CursorPageEventType {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CursorPageEventType.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CursorPageEventType' and its subtypes
+       if (!CursorIteratorEventType.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CursorIteratorEventType' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CursorPageEventType> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CursorPageEventType.class));
+       final TypeAdapter<CursorIteratorEventType> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CursorIteratorEventType.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CursorPageEventType>() {
+       return (TypeAdapter<T>) new TypeAdapter<CursorIteratorEventType>() {
            @Override
-           public void write(JsonWriter out, CursorPageEventType value) throws IOException {
+           public void write(JsonWriter out, CursorIteratorEventType value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CursorPageEventType read(JsonReader in) throws IOException {
+           public CursorIteratorEventType read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -348,18 +348,18 @@ public class CursorPageEventType {
   }
 
   /**
-   * Create an instance of CursorPageEventType given an JSON string
+   * Create an instance of CursorIteratorEventType given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CursorPageEventType
-   * @throws IOException if the JSON string is invalid with respect to CursorPageEventType
+   * @return An instance of CursorIteratorEventType
+   * @throws IOException if the JSON string is invalid with respect to CursorIteratorEventType
    */
-  public static CursorPageEventType fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CursorPageEventType.class);
+  public static CursorIteratorEventType fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CursorIteratorEventType.class);
   }
 
   /**
-   * Convert an instance of CursorPageEventType to an JSON string
+   * Convert an instance of CursorIteratorEventType to an JSON string
    *
    * @return JSON string
    */

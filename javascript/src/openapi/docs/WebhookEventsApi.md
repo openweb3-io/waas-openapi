@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## v1WebhooksEventsList
 
-> CursorPageEventType v1WebhooksEventsList(opts)
+> CursorIteratorEventType v1WebhooksEventsList(opts)
 
 List webhook event types
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CursorPageEventType**](CursorPageEventType.md)
+[**CursorIteratorEventType**](CursorIteratorEventType.md)
 
 ### Authorization
 

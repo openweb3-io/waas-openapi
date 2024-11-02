@@ -47,8 +47,10 @@ type apiClientTestSuite struct {
 	suite.Suite
 	client *ApiClient
 
-	lastWallet  string
-	lastAddress string
+	lastWallet          string
+	lastAddress         string
+	lastWebhookEndpoint string
+	lastWebhookEvent    string
 }
 
 func (s *apiClientTestSuite) SetupSuite() {
@@ -315,6 +317,96 @@ func (s *apiClientTestSuite) TestWallet_7_Delete() {
 	s.NotEmpty(reply.Id)
 	s.NotEmpty(reply.Name)
 	s.NotEmpty(reply.CreatedAt)
+}
+
+func (s *apiClientTestSuite) TestWebhookEndpoint_0_ListEvent() {
+	reply, err := s.client.WebhookEvent.List(context.Background(), &ListEventTypeOptions{
+		Limit: 100,
+	})
+	if err != nil {
+		s.T().Error(err)
+	}
+
+	s.NotEmpty(reply.Items)
+	if len(reply.Items) > 0 {
+		s.NotEmpty(reply.Items[0].Name)
+
+		s.lastWebhookEvent = *reply.Items[0].Name
+	}
+}
+
+func (s *apiClientTestSuite) TestWebhookEndpoint_1_Create() {
+	event := "test"
+	if s.lastWebhookEvent != "" {
+		event = s.lastWebhookEvent
+	}
+
+	endpointUrl := "https://openweb3.io"
+	reply, err := s.client.WebhookEndpoint.Create(context.Background(), &CreateEndpointIn{
+		Url:        endpointUrl,
+		EventTypes: []string{event},
+	})
+	if err != nil {
+		s.T().Error(err)
+	}
+
+	s.NotEmpty(reply.Id)
+	s.Equal(endpointUrl, reply.Url)
+
+	s.lastWebhookEndpoint = reply.Id
+}
+
+func (s *apiClientTestSuite) TestWebhookEndpoint_2_Retrieve() {
+	reply, err := s.client.WebhookEndpoint.Retrieve(context.Background(), s.lastWebhookEndpoint)
+	if err != nil {
+		s.T().Error(err)
+	}
+
+	s.NotEmpty(reply.Id)
+	s.NotEmpty(reply.Url)
+	s.Equal(1, len(reply.EventTypes))
+}
+
+func (s *apiClientTestSuite) TestWebhookEndpoint_3_List() {
+	reply, err := s.client.WebhookEndpoint.List(context.Background(), &ListEndpointOptions{
+		Limit: 10,
+	})
+	if err != nil {
+		s.T().Error(err)
+	}
+
+	s.NotEmpty(reply.Items)
+	s.GreaterOrEqual(1, len(reply.Items))
+	s.NotEmpty(reply.Items[0].Id)
+	s.NotEmpty(reply.Items[0].Url)
+}
+
+func (s *apiClientTestSuite) TestWebhookEndpoint_4_Update() {
+	event := "test"
+	if s.lastWebhookEvent != "" {
+		event = s.lastWebhookEvent
+	}
+
+	endpointUrl := "https://openweb3.io"
+	reply, err := s.client.WebhookEndpoint.Update(context.Background(), s.lastWebhookEndpoint, &UpdateEndpointIn{
+		Url:        &endpointUrl,
+		EventTypes: []string{event},
+	})
+	if err != nil {
+		s.T().Error(err)
+	}
+
+	s.NotEmpty(reply.Id)
+	s.Equal(endpointUrl, reply.Url)
+}
+
+func (s *apiClientTestSuite) TestWebhookEndpoint_5_Delete() {
+	err := s.client.WebhookEndpoint.Delete(context.Background(), s.lastWebhookEndpoint)
+	if err != nil {
+		s.T().Error(err)
+	}
+
+	s.NoError(err)
 }
 
 func TestApiClientSuite(t *testing.T) {

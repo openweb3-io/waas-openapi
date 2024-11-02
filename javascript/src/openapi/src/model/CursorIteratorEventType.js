@@ -15,22 +15,22 @@ import ApiClient from '../ApiClient';
 import EventType from './EventType';
 
 /**
- * The CursorPageEventType model module.
- * @module model/CursorPageEventType
+ * The CursorIteratorEventType model module.
+ * @module model/CursorIteratorEventType
  * @version 1.0
  */
-class CursorPageEventType {
+class CursorIteratorEventType {
     /**
-     * Constructs a new <code>CursorPageEventType</code>.
-     * @alias module:model/CursorPageEventType
+     * Constructs a new <code>CursorIteratorEventType</code>.
+     * @alias module:model/CursorIteratorEventType
+     * @param done {Boolean} 
      * @param hasNext {Boolean} 
      * @param hasPrev {Boolean} 
      * @param items {Array.<module:model/EventType>} 
-     * @param total {Number} 
      */
-    constructor(hasNext, hasPrev, items, total) { 
+    constructor(done, hasNext, hasPrev, items) { 
         
-        CursorPageEventType.initialize(this, hasNext, hasPrev, items, total);
+        CursorIteratorEventType.initialize(this, done, hasNext, hasPrev, items);
     }
 
     /**
@@ -38,24 +38,27 @@ class CursorPageEventType {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, hasNext, hasPrev, items, total) { 
+    static initialize(obj, done, hasNext, hasPrev, items) { 
+        obj['done'] = done;
         obj['has_next'] = hasNext;
         obj['has_prev'] = hasPrev;
         obj['items'] = items;
-        obj['total'] = total;
     }
 
     /**
-     * Constructs a <code>CursorPageEventType</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>CursorIteratorEventType</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/CursorPageEventType} obj Optional instance to populate.
-     * @return {module:model/CursorPageEventType} The populated <code>CursorPageEventType</code> instance.
+     * @param {module:model/CursorIteratorEventType} obj Optional instance to populate.
+     * @return {module:model/CursorIteratorEventType} The populated <code>CursorIteratorEventType</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new CursorPageEventType();
+            obj = obj || new CursorIteratorEventType();
 
+            if (data.hasOwnProperty('done')) {
+                obj['done'] = ApiClient.convertToType(data['done'], 'Boolean');
+            }
             if (data.hasOwnProperty('has_next')) {
                 obj['has_next'] = ApiClient.convertToType(data['has_next'], 'Boolean');
             }
@@ -71,21 +74,18 @@ class CursorPageEventType {
             if (data.hasOwnProperty('prev_cursor')) {
                 obj['prev_cursor'] = ApiClient.convertToType(data['prev_cursor'], 'String');
             }
-            if (data.hasOwnProperty('total')) {
-                obj['total'] = ApiClient.convertToType(data['total'], 'Number');
-            }
         }
         return obj;
     }
 
     /**
-     * Validates the JSON data with respect to <code>CursorPageEventType</code>.
+     * Validates the JSON data with respect to <code>CursorIteratorEventType</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CursorPageEventType</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>CursorIteratorEventType</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of CursorPageEventType.RequiredProperties) {
+        for (const property of CursorIteratorEventType.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
@@ -115,42 +115,42 @@ class CursorPageEventType {
 
 }
 
-CursorPageEventType.RequiredProperties = ["has_next", "has_prev", "items", "total"];
+CursorIteratorEventType.RequiredProperties = ["done", "has_next", "has_prev", "items"];
+
+/**
+ * @member {Boolean} done
+ */
+CursorIteratorEventType.prototype['done'] = undefined;
 
 /**
  * @member {Boolean} has_next
  */
-CursorPageEventType.prototype['has_next'] = undefined;
+CursorIteratorEventType.prototype['has_next'] = undefined;
 
 /**
  * @member {Boolean} has_prev
  */
-CursorPageEventType.prototype['has_prev'] = undefined;
+CursorIteratorEventType.prototype['has_prev'] = undefined;
 
 /**
  * @member {Array.<module:model/EventType>} items
  */
-CursorPageEventType.prototype['items'] = undefined;
+CursorIteratorEventType.prototype['items'] = undefined;
 
 /**
  * @member {String} next_cursor
  */
-CursorPageEventType.prototype['next_cursor'] = undefined;
+CursorIteratorEventType.prototype['next_cursor'] = undefined;
 
 /**
  * @member {String} prev_cursor
  */
-CursorPageEventType.prototype['prev_cursor'] = undefined;
-
-/**
- * @member {Number} total
- */
-CursorPageEventType.prototype['total'] = undefined;
+CursorIteratorEventType.prototype['prev_cursor'] = undefined;
 
 
 
 
 
 
-export default CursorPageEventType;
+export default CursorIteratorEventType;
 

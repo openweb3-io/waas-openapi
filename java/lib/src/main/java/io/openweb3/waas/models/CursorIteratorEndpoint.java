@@ -49,10 +49,14 @@ import java.util.Set;
 import io.openweb3.waas.internal.JSON;
 
 /**
- * CursorPageEndpoint
+ * CursorIteratorEndpoint
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class CursorPageEndpoint {
+public class CursorIteratorEndpoint {
+  public static final String SERIALIZED_NAME_DONE = "done";
+  @SerializedName(SERIALIZED_NAME_DONE)
+  private Boolean done;
+
   public static final String SERIALIZED_NAME_HAS_NEXT = "has_next";
   @SerializedName(SERIALIZED_NAME_HAS_NEXT)
   private Boolean hasNext;
@@ -73,14 +77,29 @@ public class CursorPageEndpoint {
   @SerializedName(SERIALIZED_NAME_PREV_CURSOR)
   private String prevCursor;
 
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
-  private Integer total;
-
-  public CursorPageEndpoint() {
+  public CursorIteratorEndpoint() {
   }
 
-  public CursorPageEndpoint hasNext(Boolean hasNext) {
+  public CursorIteratorEndpoint done(Boolean done) {
+    this.done = done;
+    return this;
+  }
+
+  /**
+   * Get done
+   * @return done
+   */
+  @javax.annotation.Nonnull
+  public Boolean getDone() {
+    return done;
+  }
+
+  public void setDone(Boolean done) {
+    this.done = done;
+  }
+
+
+  public CursorIteratorEndpoint hasNext(Boolean hasNext) {
     this.hasNext = hasNext;
     return this;
   }
@@ -99,7 +118,7 @@ public class CursorPageEndpoint {
   }
 
 
-  public CursorPageEndpoint hasPrev(Boolean hasPrev) {
+  public CursorIteratorEndpoint hasPrev(Boolean hasPrev) {
     this.hasPrev = hasPrev;
     return this;
   }
@@ -118,12 +137,12 @@ public class CursorPageEndpoint {
   }
 
 
-  public CursorPageEndpoint items(List<Endpoint> items) {
+  public CursorIteratorEndpoint items(List<Endpoint> items) {
     this.items = items;
     return this;
   }
 
-  public CursorPageEndpoint addItemsItem(Endpoint itemsItem) {
+  public CursorIteratorEndpoint addItemsItem(Endpoint itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -145,7 +164,7 @@ public class CursorPageEndpoint {
   }
 
 
-  public CursorPageEndpoint nextCursor(String nextCursor) {
+  public CursorIteratorEndpoint nextCursor(String nextCursor) {
     this.nextCursor = nextCursor;
     return this;
   }
@@ -164,7 +183,7 @@ public class CursorPageEndpoint {
   }
 
 
-  public CursorPageEndpoint prevCursor(String prevCursor) {
+  public CursorIteratorEndpoint prevCursor(String prevCursor) {
     this.prevCursor = prevCursor;
     return this;
   }
@@ -183,25 +202,6 @@ public class CursorPageEndpoint {
   }
 
 
-  public CursorPageEndpoint total(Integer total) {
-    this.total = total;
-    return this;
-  }
-
-  /**
-   * Get total
-   * @return total
-   */
-  @javax.annotation.Nonnull
-  public Integer getTotal() {
-    return total;
-  }
-
-  public void setTotal(Integer total) {
-    this.total = total;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -211,30 +211,30 @@ public class CursorPageEndpoint {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CursorPageEndpoint cursorPageEndpoint = (CursorPageEndpoint) o;
-    return Objects.equals(this.hasNext, cursorPageEndpoint.hasNext) &&
-        Objects.equals(this.hasPrev, cursorPageEndpoint.hasPrev) &&
-        Objects.equals(this.items, cursorPageEndpoint.items) &&
-        Objects.equals(this.nextCursor, cursorPageEndpoint.nextCursor) &&
-        Objects.equals(this.prevCursor, cursorPageEndpoint.prevCursor) &&
-        Objects.equals(this.total, cursorPageEndpoint.total);
+    CursorIteratorEndpoint cursorIteratorEndpoint = (CursorIteratorEndpoint) o;
+    return Objects.equals(this.done, cursorIteratorEndpoint.done) &&
+        Objects.equals(this.hasNext, cursorIteratorEndpoint.hasNext) &&
+        Objects.equals(this.hasPrev, cursorIteratorEndpoint.hasPrev) &&
+        Objects.equals(this.items, cursorIteratorEndpoint.items) &&
+        Objects.equals(this.nextCursor, cursorIteratorEndpoint.nextCursor) &&
+        Objects.equals(this.prevCursor, cursorIteratorEndpoint.prevCursor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasNext, hasPrev, items, nextCursor, prevCursor, total);
+    return Objects.hash(done, hasNext, hasPrev, items, nextCursor, prevCursor);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CursorPageEndpoint {\n");
+    sb.append("class CursorIteratorEndpoint {\n");
+    sb.append("    done: ").append(toIndentedString(done)).append("\n");
     sb.append("    hasNext: ").append(toIndentedString(hasNext)).append("\n");
     sb.append("    hasPrev: ").append(toIndentedString(hasPrev)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    nextCursor: ").append(toIndentedString(nextCursor)).append("\n");
     sb.append("    prevCursor: ").append(toIndentedString(prevCursor)).append("\n");
-    sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -257,44 +257,44 @@ public class CursorPageEndpoint {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("done");
     openapiFields.add("has_next");
     openapiFields.add("has_prev");
     openapiFields.add("items");
     openapiFields.add("next_cursor");
     openapiFields.add("prev_cursor");
-    openapiFields.add("total");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("done");
     openapiRequiredFields.add("has_next");
     openapiRequiredFields.add("has_prev");
     openapiRequiredFields.add("items");
-    openapiRequiredFields.add("total");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CursorPageEndpoint
+   * @throws IOException if the JSON Element is invalid with respect to CursorIteratorEndpoint
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CursorPageEndpoint.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in CursorPageEndpoint is not found in the empty JSON string", CursorPageEndpoint.openapiRequiredFields.toString()));
+        if (!CursorIteratorEndpoint.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CursorIteratorEndpoint is not found in the empty JSON string", CursorIteratorEndpoint.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CursorPageEndpoint.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CursorPageEndpoint` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CursorIteratorEndpoint.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CursorIteratorEndpoint` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CursorPageEndpoint.openapiRequiredFields) {
+      for (String requiredField : CursorIteratorEndpoint.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -322,22 +322,22 @@ public class CursorPageEndpoint {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CursorPageEndpoint.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CursorPageEndpoint' and its subtypes
+       if (!CursorIteratorEndpoint.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CursorIteratorEndpoint' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CursorPageEndpoint> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CursorPageEndpoint.class));
+       final TypeAdapter<CursorIteratorEndpoint> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CursorIteratorEndpoint.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CursorPageEndpoint>() {
+       return (TypeAdapter<T>) new TypeAdapter<CursorIteratorEndpoint>() {
            @Override
-           public void write(JsonWriter out, CursorPageEndpoint value) throws IOException {
+           public void write(JsonWriter out, CursorIteratorEndpoint value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CursorPageEndpoint read(JsonReader in) throws IOException {
+           public CursorIteratorEndpoint read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -348,18 +348,18 @@ public class CursorPageEndpoint {
   }
 
   /**
-   * Create an instance of CursorPageEndpoint given an JSON string
+   * Create an instance of CursorIteratorEndpoint given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CursorPageEndpoint
-   * @throws IOException if the JSON string is invalid with respect to CursorPageEndpoint
+   * @return An instance of CursorIteratorEndpoint
+   * @throws IOException if the JSON string is invalid with respect to CursorIteratorEndpoint
    */
-  public static CursorPageEndpoint fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CursorPageEndpoint.class);
+  public static CursorIteratorEndpoint fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CursorIteratorEndpoint.class);
   }
 
   /**
-   * Convert an instance of CursorPageEndpoint to an JSON string
+   * Convert an instance of CursorIteratorEndpoint to an JSON string
    *
    * @return JSON string
    */

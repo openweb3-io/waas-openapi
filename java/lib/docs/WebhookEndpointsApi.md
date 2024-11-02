@@ -155,7 +155,7 @@ public class Example {
 
 <a id="v1WebhooksEndpointList"></a>
 # **v1WebhooksEndpointList**
-> CursorPageEndpoint v1WebhooksEndpointList(cursor, limit)
+> CursorIteratorEndpoint v1WebhooksEndpointList(cursor, limit)
 
 List webhook endpoints
 
@@ -186,7 +186,7 @@ public class Example {
     String cursor = "cursor_example"; // String | 
     Integer limit = 56; // Integer | The number of records to return default: 20
     try {
-      CursorPageEndpoint result = apiInstance.v1WebhooksEndpointList(cursor, limit);
+      CursorIteratorEndpoint result = apiInstance.v1WebhooksEndpointList(cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhookEndpointsApi#v1WebhooksEndpointList");
@@ -208,7 +208,7 @@ public class Example {
 
 ### Return type
 
-[**CursorPageEndpoint**](CursorPageEndpoint.md)
+[**CursorIteratorEndpoint**](CursorIteratorEndpoint.md)
 
 ### Authorization
 

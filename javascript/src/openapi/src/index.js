@@ -23,10 +23,10 @@ import CreateTransferRequestDestination from './model/CreateTransferRequestDesti
 import CreateTransferRequestSource from './model/CreateTransferRequestSource';
 import CreateTransferResponse from './model/CreateTransferResponse';
 import CreateWalletRequest from './model/CreateWalletRequest';
+import CursorIteratorEndpoint from './model/CursorIteratorEndpoint';
+import CursorIteratorEventType from './model/CursorIteratorEventType';
 import CursorPageAddress from './model/CursorPageAddress';
 import CursorPageChain from './model/CursorPageChain';
-import CursorPageEndpoint from './model/CursorPageEndpoint';
-import CursorPageEventType from './model/CursorPageEventType';
 import CursorPageToken from './model/CursorPageToken';
 import CursorPageTransaction from './model/CursorPageTransaction';
 import CursorPageWallet from './model/CursorPageWallet';
@@ -153,6 +153,18 @@ export {
     CreateWalletRequest,
 
     /**
+     * The CursorIteratorEndpoint model constructor.
+     * @property {module:model/CursorIteratorEndpoint}
+     */
+    CursorIteratorEndpoint,
+
+    /**
+     * The CursorIteratorEventType model constructor.
+     * @property {module:model/CursorIteratorEventType}
+     */
+    CursorIteratorEventType,
+
+    /**
      * The CursorPageAddress model constructor.
      * @property {module:model/CursorPageAddress}
      */
@@ -163,18 +175,6 @@ export {
      * @property {module:model/CursorPageChain}
      */
     CursorPageChain,
-
-    /**
-     * The CursorPageEndpoint model constructor.
-     * @property {module:model/CursorPageEndpoint}
-     */
-    CursorPageEndpoint,
-
-    /**
-     * The CursorPageEventType model constructor.
-     * @property {module:model/CursorPageEventType}
-     */
-    CursorPageEventType,
 
     /**
      * The CursorPageToken model constructor.

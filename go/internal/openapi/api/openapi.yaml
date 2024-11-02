@@ -1195,7 +1195,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CursorPage-Endpoint'
+                $ref: '#/components/schemas/CursorIterator-Endpoint'
           description: OK
         "400":
           content:
@@ -1391,7 +1391,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CursorPage-EventType'
+                $ref: '#/components/schemas/CursorIterator-EventType'
           description: OK
         "400":
           content:
@@ -1626,6 +1626,88 @@ components:
           type: string
       required:
       - name
+    CursorIterator-Endpoint:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        has_next: true
+        has_prev: true
+        done: true
+        items:
+        - filter: filter
+          createdAt: createdAt
+          uid: uid
+          description: description
+          disabled: true
+          id: id
+          eventTypes:
+          - eventTypes
+          - eventTypes
+          url: url
+        - filter: filter
+          createdAt: createdAt
+          uid: uid
+          description: description
+          disabled: true
+          id: id
+          eventTypes:
+          - eventTypes
+          - eventTypes
+          url: url
+      properties:
+        done:
+          type: boolean
+        has_next:
+          type: boolean
+        has_prev:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/Endpoint'
+          type: array
+          uniqueItems: false
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+      required:
+      - done
+      - has_next
+      - has_prev
+      - items
+    CursorIterator-EventType:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        has_next: true
+        has_prev: true
+        done: true
+        items:
+        - name: name
+          description: description
+        - name: name
+          description: description
+      properties:
+        done:
+          type: boolean
+        has_next:
+          type: boolean
+        has_prev:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/EventType'
+          type: array
+          uniqueItems: false
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+      required:
+      - done
+      - has_next
+      - has_prev
+      - items
     CursorPage-Address:
       example:
         prev_cursor: prev_cursor
@@ -1711,88 +1793,6 @@ components:
         items:
           items:
             $ref: '#/components/schemas/Chain'
-          type: array
-          uniqueItems: false
-        next_cursor:
-          type: string
-        prev_cursor:
-          type: string
-        total:
-          type: integer
-      required:
-      - has_next
-      - has_prev
-      - items
-      - total
-    CursorPage-Endpoint:
-      example:
-        prev_cursor: prev_cursor
-        next_cursor: next_cursor
-        total: 0
-        has_next: true
-        has_prev: true
-        items:
-        - filter: filter
-          createdAt: createdAt
-          uid: uid
-          description: description
-          disabled: true
-          id: id
-          eventTypes:
-          - eventTypes
-          - eventTypes
-          url: url
-        - filter: filter
-          createdAt: createdAt
-          uid: uid
-          description: description
-          disabled: true
-          id: id
-          eventTypes:
-          - eventTypes
-          - eventTypes
-          url: url
-      properties:
-        has_next:
-          type: boolean
-        has_prev:
-          type: boolean
-        items:
-          items:
-            $ref: '#/components/schemas/Endpoint'
-          type: array
-          uniqueItems: false
-        next_cursor:
-          type: string
-        prev_cursor:
-          type: string
-        total:
-          type: integer
-      required:
-      - has_next
-      - has_prev
-      - items
-      - total
-    CursorPage-EventType:
-      example:
-        prev_cursor: prev_cursor
-        next_cursor: next_cursor
-        total: 0
-        has_next: true
-        has_prev: true
-        items:
-        - name: name
-          description: description
-        - name: name
-          description: description
-      properties:
-        has_next:
-          type: boolean
-        has_prev:
-          type: boolean
-        items:
-          items:
-            $ref: '#/components/schemas/EventType'
           type: array
           uniqueItems: false
         next_cursor:

@@ -242,6 +242,72 @@
         ],
         "type": "object"
       },
+      "CursorIterator-Endpoint": {
+        "properties": {
+          "done": {
+            "type": "boolean"
+          },
+          "has_next": {
+            "type": "boolean"
+          },
+          "has_prev": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Endpoint"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "next_cursor": {
+            "type": "string"
+          },
+          "prev_cursor": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "done",
+          "has_next",
+          "has_prev",
+          "items"
+        ],
+        "type": "object"
+      },
+      "CursorIterator-EventType": {
+        "properties": {
+          "done": {
+            "type": "boolean"
+          },
+          "has_next": {
+            "type": "boolean"
+          },
+          "has_prev": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/EventType"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "next_cursor": {
+            "type": "string"
+          },
+          "prev_cursor": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "done",
+          "has_next",
+          "has_prev",
+          "items"
+        ],
+        "type": "object"
+      },
       "CursorPage-Address": {
         "properties": {
           "has_next": {
@@ -286,72 +352,6 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/Chain"
-            },
-            "type": "array",
-            "uniqueItems": false
-          },
-          "next_cursor": {
-            "type": "string"
-          },
-          "prev_cursor": {
-            "type": "string"
-          },
-          "total": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "has_next",
-          "has_prev",
-          "items",
-          "total"
-        ],
-        "type": "object"
-      },
-      "CursorPage-Endpoint": {
-        "properties": {
-          "has_next": {
-            "type": "boolean"
-          },
-          "has_prev": {
-            "type": "boolean"
-          },
-          "items": {
-            "items": {
-              "$ref": "#/components/schemas/Endpoint"
-            },
-            "type": "array",
-            "uniqueItems": false
-          },
-          "next_cursor": {
-            "type": "string"
-          },
-          "prev_cursor": {
-            "type": "string"
-          },
-          "total": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "has_next",
-          "has_prev",
-          "items",
-          "total"
-        ],
-        "type": "object"
-      },
-      "CursorPage-EventType": {
-        "properties": {
-          "has_next": {
-            "type": "boolean"
-          },
-          "has_prev": {
-            "type": "boolean"
-          },
-          "items": {
-            "items": {
-              "$ref": "#/components/schemas/EventType"
             },
             "type": "array",
             "uniqueItems": false
@@ -2743,7 +2743,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CursorPage-Endpoint"
+                  "$ref": "#/components/schemas/CursorIterator-Endpoint"
                 }
               }
             },
@@ -3052,7 +3052,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CursorPage-EventType"
+                  "$ref": "#/components/schemas/CursorIterator-EventType"
                 }
               }
             },

@@ -13,7 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
-import CursorPageEventType from '../model/CursorPageEventType';
+import CursorIteratorEventType from '../model/CursorIteratorEventType';
 import Error from '../model/Error';
 
 /**
@@ -39,7 +39,7 @@ export default class WebhookEventsApi {
      * Callback function to receive the result of the v1WebhooksEventsList operation.
      * @callback module:api/WebhookEventsApi~v1WebhooksEventsListCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CursorPageEventType} data The data returned by the service call.
+     * @param {module:model/CursorIteratorEventType} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -50,7 +50,7 @@ export default class WebhookEventsApi {
      * @param {String} [cursor] 
      * @param {Number} [limit] The number of records to return default: 100
      * @param {module:api/WebhookEventsApi~v1WebhooksEventsListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CursorPageEventType}
+     * data is of type: {@link module:model/CursorIteratorEventType}
      */
     v1WebhooksEventsList(opts, callback) {
       opts = opts || {};
@@ -70,7 +70,7 @@ export default class WebhookEventsApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = CursorPageEventType;
+      let returnType = CursorIteratorEventType;
       return this.apiClient.callApi(
         '/api/v1/webhooks/events', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

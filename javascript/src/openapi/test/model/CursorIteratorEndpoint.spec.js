@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WaaSOpenApiDocumentation.CursorPageEventType();
+    instance = new WaaSOpenApiDocumentation.CursorIteratorEndpoint();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,46 +47,46 @@
       object[property] = value;
   }
 
-  describe('CursorPageEventType', function() {
-    it('should create an instance of CursorPageEventType', function() {
-      // uncomment below and update the code to test CursorPageEventType
-      //var instance = new WaaSOpenApiDocumentation.CursorPageEventType();
-      //expect(instance).to.be.a(WaaSOpenApiDocumentation.CursorPageEventType);
+  describe('CursorIteratorEndpoint', function() {
+    it('should create an instance of CursorIteratorEndpoint', function() {
+      // uncomment below and update the code to test CursorIteratorEndpoint
+      //var instance = new WaaSOpenApiDocumentation.CursorIteratorEndpoint();
+      //expect(instance).to.be.a(WaaSOpenApiDocumentation.CursorIteratorEndpoint);
+    });
+
+    it('should have the property done (base name: "done")', function() {
+      // uncomment below and update the code to test the property done
+      //var instance = new WaaSOpenApiDocumentation.CursorIteratorEndpoint();
+      //expect(instance).to.be();
     });
 
     it('should have the property hasNext (base name: "has_next")', function() {
       // uncomment below and update the code to test the property hasNext
-      //var instance = new WaaSOpenApiDocumentation.CursorPageEventType();
+      //var instance = new WaaSOpenApiDocumentation.CursorIteratorEndpoint();
       //expect(instance).to.be();
     });
 
     it('should have the property hasPrev (base name: "has_prev")', function() {
       // uncomment below and update the code to test the property hasPrev
-      //var instance = new WaaSOpenApiDocumentation.CursorPageEventType();
+      //var instance = new WaaSOpenApiDocumentation.CursorIteratorEndpoint();
       //expect(instance).to.be();
     });
 
     it('should have the property items (base name: "items")', function() {
       // uncomment below and update the code to test the property items
-      //var instance = new WaaSOpenApiDocumentation.CursorPageEventType();
+      //var instance = new WaaSOpenApiDocumentation.CursorIteratorEndpoint();
       //expect(instance).to.be();
     });
 
     it('should have the property nextCursor (base name: "next_cursor")', function() {
       // uncomment below and update the code to test the property nextCursor
-      //var instance = new WaaSOpenApiDocumentation.CursorPageEventType();
+      //var instance = new WaaSOpenApiDocumentation.CursorIteratorEndpoint();
       //expect(instance).to.be();
     });
 
     it('should have the property prevCursor (base name: "prev_cursor")', function() {
       // uncomment below and update the code to test the property prevCursor
-      //var instance = new WaaSOpenApiDocumentation.CursorPageEventType();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property total (base name: "total")', function() {
-      // uncomment below and update the code to test the property total
-      //var instance = new WaaSOpenApiDocumentation.CursorPageEventType();
+      //var instance = new WaaSOpenApiDocumentation.CursorIteratorEndpoint();
       //expect(instance).to.be();
     });
 

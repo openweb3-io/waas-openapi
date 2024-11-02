@@ -339,7 +339,7 @@ func (r ApiV1WebhooksEndpointListRequest) Limit(limit int32) ApiV1WebhooksEndpoi
 	return r
 }
 
-func (r ApiV1WebhooksEndpointListRequest) Execute() (*CursorPageEndpoint, *http.Response, error) {
+func (r ApiV1WebhooksEndpointListRequest) Execute() (*CursorIteratorEndpoint, *http.Response, error) {
 	return r.ApiService.V1WebhooksEndpointListExecute(r)
 }
 
@@ -359,13 +359,13 @@ func (a *WebhookEndpointsAPIService) V1WebhooksEndpointList(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return CursorPageEndpoint
-func (a *WebhookEndpointsAPIService) V1WebhooksEndpointListExecute(r ApiV1WebhooksEndpointListRequest) (*CursorPageEndpoint, *http.Response, error) {
+//  @return CursorIteratorEndpoint
+func (a *WebhookEndpointsAPIService) V1WebhooksEndpointListExecute(r ApiV1WebhooksEndpointListRequest) (*CursorIteratorEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CursorPageEndpoint
+		localVarReturnValue  *CursorIteratorEndpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhookEndpointsAPIService.V1WebhooksEndpointList")

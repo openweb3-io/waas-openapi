@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ## v1WebhooksEndpointList
 
-> CursorPageEndpoint v1WebhooksEndpointList(opts)
+> CursorIteratorEndpoint v1WebhooksEndpointList(opts)
 
 List webhook endpoints
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CursorPageEndpoint**](CursorPageEndpoint.md)
+[**CursorIteratorEndpoint**](CursorIteratorEndpoint.md)
 
 ### Authorization
 

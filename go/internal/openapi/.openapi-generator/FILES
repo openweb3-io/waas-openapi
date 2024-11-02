@@ -24,10 +24,10 @@ docs/CreateTransferRequestDestination.md
 docs/CreateTransferRequestSource.md
 docs/CreateTransferResponse.md
 docs/CreateWalletRequest.md
+docs/CursorIteratorEndpoint.md
+docs/CursorIteratorEventType.md
 docs/CursorPageAddress.md
 docs/CursorPageChain.md
-docs/CursorPageEndpoint.md
-docs/CursorPageEventType.md
 docs/CursorPageToken.md
 docs/CursorPageTransaction.md
 docs/CursorPageWallet.md
@@ -64,10 +64,10 @@ model_create_transfer_request_destination.go
 model_create_transfer_request_source.go
 model_create_transfer_response.go
 model_create_wallet_request.go
+model_cursor_iterator_endpoint.go
+model_cursor_iterator_event_type.go
 model_cursor_page_address.go
 model_cursor_page_chain.go
-model_cursor_page_endpoint.go
-model_cursor_page_event_type.go
 model_cursor_page_token.go
 model_cursor_page_transaction.go
 model_cursor_page_wallet.go

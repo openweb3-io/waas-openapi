@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ## V1WebhooksEndpointList
 
-> CursorPageEndpoint V1WebhooksEndpointList(ctx).Cursor(cursor).Limit(limit).Execute()
+> CursorIteratorEndpoint V1WebhooksEndpointList(ctx).Cursor(cursor).Limit(limit).Execute()
 
 List webhook endpoints
 
@@ -179,7 +179,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEndpointsAPI.V1WebhooksEndpointList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1WebhooksEndpointList`: CursorPageEndpoint
+	// response from `V1WebhooksEndpointList`: CursorIteratorEndpoint
 	fmt.Fprintf(os.Stdout, "Response from `WebhookEndpointsAPI.V1WebhooksEndpointList`: %v\n", resp)
 }
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CursorPageEndpoint**](CursorPageEndpoint.md)
+[**CursorIteratorEndpoint**](CursorIteratorEndpoint.md)
 
 ### Authorization
 
