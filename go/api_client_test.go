@@ -2,6 +2,7 @@ package waas
 
 import (
 	"context"
+	"github.com/google/uuid"
 	"github.com/joho/godotenv"
 	"github.com/openweb3-io/waas-openapi/go/internal/openapi"
 	"github.com/stretchr/testify/suite"
@@ -20,6 +21,7 @@ var (
 	testDestinationAddress string
 	testWalletId           string
 	testAmount             string
+	testChain              string
 	testToken              string
 )
 
@@ -37,6 +39,7 @@ func init() {
 	testDestinationAddress = os.Getenv("TEST_DESTINATION_ADDRESS")
 	testWalletId = os.Getenv("TEST_WALLET_ID")
 	testAmount = os.Getenv("TEST_AMOUNT")
+	testChain = os.Getenv("TEST_CHAIN")
 	testToken = os.Getenv("TEST_TOKEN")
 }
 
@@ -102,7 +105,7 @@ func (s *apiClientTestSuite) TestChain_List() {
 }
 
 func (s *apiClientTestSuite) TestChain_Retrieve() {
-	reply, err := s.client.Chain.Retrieve(context.Background(), "TON")
+	reply, err := s.client.Chain.Retrieve(context.Background(), testChain)
 	if err != nil {
 		s.T().Error(err)
 	}
@@ -138,7 +141,7 @@ func (s *apiClientTestSuite) TestToken_List() {
 }
 
 func (s *apiClientTestSuite) TestToken_Retrieve() {
-	reply, err := s.client.Token.Retrieve(context.Background(), "TON")
+	reply, err := s.client.Token.Retrieve(context.Background(), testToken)
 	if err != nil {
 		s.T().Error(err)
 	}
@@ -187,7 +190,7 @@ func (s *apiClientTestSuite) TestTransaction_EstimateFee() {
 			},
 		},
 		Amount:  testAmount,
-		TokenId: testToken,
+		TokenId: testChain,
 	})
 	if err != nil {
 		s.T().Error(err)
@@ -209,7 +212,7 @@ func (s *apiClientTestSuite) TestTransaction_Transfer() {
 		Source:      source,
 		Destination: destination,
 		Amount:      testAmount,
-		TokenId:     testToken,
+		TokenId:     testChain,
 	})
 	if err != nil {
 		s.T().Error(err)
@@ -220,7 +223,7 @@ func (s *apiClientTestSuite) TestTransaction_Transfer() {
 
 func (s *apiClientTestSuite) TestWallet_1_Create() {
 	reply, err := s.client.Wallet.Create(context.Background(), &CreateWalletIn{
-		Name: "test1",
+		Name: uuid.NewString(),
 	})
 	if err != nil {
 		s.T().Error(err)
@@ -264,8 +267,8 @@ func (s *apiClientTestSuite) TestWallet_3_List() {
 }
 
 func (s *apiClientTestSuite) TestWallet_4_CreateAddress() {
-	reply, err := s.client.Wallet.CreateAddress(context.Background(), "test1", &CreateAddressIn{
-		ChainId: "TON",
+	reply, err := s.client.Wallet.CreateAddress(context.Background(), s.lastWallet, &CreateAddressIn{
+		ChainId: testChain,
 		Type:    "DEPOSIT",
 	})
 	if err != nil {
@@ -278,7 +281,7 @@ func (s *apiClientTestSuite) TestWallet_4_CreateAddress() {
 }
 
 func (s *apiClientTestSuite) TestWallet_5_GetAddress() {
-	reply, err := s.client.Wallet.GetAddress(context.Background(), "test1", s.lastAddress)
+	reply, err := s.client.Wallet.GetAddress(context.Background(), s.lastWallet, s.lastAddress)
 	if err != nil {
 		s.T().Error(err)
 	}
@@ -287,7 +290,7 @@ func (s *apiClientTestSuite) TestWallet_5_GetAddress() {
 }
 
 func (s *apiClientTestSuite) TestWallet_6_ListAddress() {
-	reply, err := s.client.Wallet.ListAddresses(context.Background(), "test1", &ListAddressOptions{
+	reply, err := s.client.Wallet.ListAddresses(context.Background(), s.lastWallet, &ListAddressOptions{
 		Limit: 10,
 	})
 	if err != nil {
@@ -304,7 +307,7 @@ func (s *apiClientTestSuite) TestWallet_6_ListAddress() {
 }
 
 func (s *apiClientTestSuite) TestWallet_7_Delete() {
-	reply, err := s.client.Wallet.Delete(context.Background(), "test1")
+	reply, err := s.client.Wallet.Delete(context.Background(), s.lastWallet)
 	if err != nil {
 		s.T().Error(err)
 	}
