@@ -9,11 +9,12 @@ import (
 type (
 	TransactionOut             = openapi.Transaction
 	CursorPageTransactionOut   = openapi.CursorPageTransaction
+	TransferSource             = openapi.CreateTransferRequestSource
+	TransferDestination        = openapi.CreateTransferRequestDestination
 	TransferSourceAddress      = openapi.TransferSourceAddress
 	TransferDestinationAddress = openapi.TransferDestinationAddress
 	TransferFee                = openapi.Fee
 	TransferOut                = openapi.CreateTransferResponse
-	EstimateFeeIn              = openapi.EstimateFeeRequest
 	EstimateFeeOut             = openapi.EstimateFeeResponse
 )
 
@@ -21,9 +22,18 @@ type Transaction struct {
 	api *openapi.APIClient
 }
 
+type EstimateFeeIn struct {
+	Source      TransferSource
+	Destination TransferDestination
+	Amount      string
+	TokenId     string
+	Extra       *string
+	Memo        *string
+}
+
 type TransferIn struct {
-	Source      TransferSourceAddress
-	Destination TransferDestinationAddress
+	Source      TransferSource
+	Destination TransferDestination
 	Amount      string
 	TokenId     string
 	Fee         *TransferFee
@@ -43,6 +53,18 @@ type ListTransactionOptions struct {
 	Status    *string
 	Cursor    *string
 	Limit     int
+}
+
+func TransferSourceAddressAsTransferSource(v *TransferSourceAddress) TransferSource {
+	return TransferSource{
+		TransferSourceAddress: v,
+	}
+}
+
+func TransferDestinationAddressAsTransferDestination(v *TransferDestinationAddress) TransferDestination {
+	return TransferDestination{
+		TransferDestinationAddress: v,
+	}
 }
 
 func (e *Transaction) List(ctx context.Context, options *ListTransactionOptions) (*CursorPageTransactionOut, error) {
@@ -85,21 +107,20 @@ func (e *Transaction) Retrieve(ctx context.Context, transactionId string) (*Tran
 	}
 	return out, nil
 }
+
 func (e *Transaction) Transfer(ctx context.Context, transferIn *TransferIn) (*TransferOut, error) {
 	req := e.api.TransactionsAPI.V1TransactionsTransfer(ctx)
-	req = req.CreateTransferRequest(openapi.CreateTransferRequest{
-		Source: openapi.CreateTransferRequestSource{
-			TransferSourceAddress: &transferIn.Source,
+	req = req.CreateTransferRequest(
+		openapi.CreateTransferRequest{
+			Source:      transferIn.Source,
+			Destination: transferIn.Destination,
+			Amount:      transferIn.Amount,
+			TokenId:     transferIn.TokenId,
+			Extra:       transferIn.Extra,
+			Fee:         transferIn.Fee,
+			Memo:        transferIn.Memo,
 		},
-		Destination: openapi.CreateTransferRequestDestination{
-			TransferDestinationAddress: &transferIn.Destination,
-		},
-		Amount:  transferIn.Amount,
-		TokenId: transferIn.TokenId,
-		Extra:   transferIn.Extra,
-		Fee:     transferIn.Fee,
-		Memo:    transferIn.Memo,
-	})
+	)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
@@ -107,9 +128,20 @@ func (e *Transaction) Transfer(ctx context.Context, transferIn *TransferIn) (*Tr
 	return out, nil
 }
 
-func (e *Transaction) EstimateFee(ctx context.Context, estimateFeeIn *EstimateFeeIn) (*EstimateFeeOut, error) {
+func (e *Transaction) EstimateFee(
+	ctx context.Context,
+	estimateFeeIn *EstimateFeeIn,
+) (*EstimateFeeOut, error) {
 	req := e.api.TransactionsAPI.V1TransactionsEstimateFee(ctx)
-	req = req.EstimateFeeRequest(*estimateFeeIn)
+	req = req.EstimateFeeRequest(openapi.EstimateFeeRequest{
+		Source:      estimateFeeIn.Source,
+		Destination: estimateFeeIn.Destination,
+		Amount:      estimateFeeIn.Amount,
+		TokenId:     estimateFeeIn.TokenId,
+		Extra:       estimateFeeIn.Extra,
+		Memo:        estimateFeeIn.Memo,
+	})
+
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)

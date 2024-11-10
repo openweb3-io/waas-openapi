@@ -2,14 +2,14 @@ package waas
 
 import (
 	"context"
-	"github.com/google/uuid"
-	"github.com/joho/godotenv"
-	"github.com/openweb3-io/waas-openapi/go/internal/openapi"
-	"github.com/stretchr/testify/suite"
 	"log"
 	"net/url"
 	"os"
 	"testing"
+
+	"github.com/google/uuid"
+	"github.com/joho/godotenv"
+	"github.com/stretchr/testify/suite"
 )
 
 var (
@@ -179,21 +179,21 @@ func (s *apiClientTestSuite) TestTransaction_List() {
 }
 
 func (s *apiClientTestSuite) TestTransaction_EstimateFee() {
-	reply, err := s.client.Transaction.EstimateFee(context.Background(), &EstimateFeeIn{
-		Source: openapi.CreateTransferRequestSource{
-			TransferSourceAddress: &openapi.TransferSourceAddress{
+	reply, err := s.client.Transaction.EstimateFee(
+		context.Background(),
+		&EstimateFeeIn{
+			Source: TransferSourceAddressAsTransferSource(&TransferSourceAddress{
 				Address:  testSourceAddress,
 				WalletId: testWalletId,
-			},
-		},
-		Destination: openapi.CreateTransferRequestDestination{
-			TransferDestinationAddress: &openapi.TransferDestinationAddress{
-				Address: testDestinationAddress,
-			},
-		},
-		Amount:  testAmount,
-		TokenId: testChain,
-	})
+			}),
+			Destination: TransferDestinationAddressAsTransferDestination(
+				&TransferDestinationAddress{
+					Address: testDestinationAddress,
+				},
+			),
+			Amount:  testAmount,
+			TokenId: testChain,
+		})
 	if err != nil {
 		s.T().Error(err)
 	}
@@ -210,12 +210,14 @@ func (s *apiClientTestSuite) TestTransaction_Transfer() {
 	destination := TransferDestinationAddress{
 		Address: testDestinationAddress,
 	}
-	reply, err := s.client.Transaction.Transfer(context.Background(), &TransferIn{
-		Source:      source,
-		Destination: destination,
-		Amount:      testAmount,
-		TokenId:     testChain,
-	})
+	reply, err := s.client.Transaction.Transfer(
+		context.Background(),
+		&TransferIn{
+			Source:      TransferSourceAddressAsTransferSource(&source),
+			Destination: TransferDestinationAddressAsTransferDestination(&destination),
+			Amount:      testAmount,
+			TokenId:     testChain,
+		})
 	if err != nil {
 		s.T().Error(err)
 	}
