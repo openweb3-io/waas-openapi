@@ -30,8 +30,8 @@ func (e Error) Status() int {
 
 // a simple function convert openapi errors to exposed wallet.Error
 func wrapError(err error, res *http.Response) error {
-	if openapiError, ok := err.(openapi.GenericOpenAPIError); ok {
-		e := &Error{
+	if openapiError, ok := err.(*openapi.GenericOpenAPIError); ok {
+		e := Error{
 			body:  openapiError.Body(),
 			error: openapiError.Error(),
 		}
