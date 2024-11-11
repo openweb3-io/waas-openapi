@@ -39,6 +39,7 @@ type TransferIn struct {
 	Fee         *TransferFee
 	Extra       *string
 	Memo        *string
+	Uid         *string
 }
 
 type ListTransactionOptions struct {
@@ -112,6 +113,7 @@ func (e *Transaction) Transfer(ctx context.Context, transferIn *TransferIn) (*Tr
 	req := e.api.TransactionsAPI.V1TransactionsTransfer(ctx)
 	req = req.CreateTransferRequest(
 		openapi.CreateTransferRequest{
+			Uid:         transferIn.Uid,
 			Source:      transferIn.Source,
 			Destination: transferIn.Destination,
 			Amount:      transferIn.Amount,

@@ -1562,6 +1562,7 @@ components:
           type: string
     CreateTransferRequest:
       example:
+        uid: uid
         amount: amount
         token_id: token_id
         extra: extra
@@ -1593,6 +1594,9 @@ components:
           $ref: '#/components/schemas/CreateTransferRequest_source'
         token_id:
           description: The tokenId to be transferred
+          type: string
+        uid:
+          description: The custom unique transaction identifier
           type: string
       required:
       - amount
@@ -1901,6 +1905,7 @@ components:
             type: type
           type: type
           createdAt: createdAt
+          uid: uid
           chainId: chainId
           assetId: assetId
           extra:
@@ -1932,6 +1937,7 @@ components:
             type: type
           type: type
           createdAt: createdAt
+          uid: uid
           chainId: chainId
           assetId: assetId
           extra:
@@ -2235,6 +2241,7 @@ components:
           type: type
         type: type
         createdAt: createdAt
+        uid: uid
         chainId: chainId
         assetId: assetId
         extra:
@@ -2297,6 +2304,9 @@ components:
           - TransactionType_Unknown
           - TransactionType_Deposit
           - TransactionType_Withdraw
+        uid:
+          description: The custom unique transaction identifier
+          type: string
         updatedAt:
           description: Updated time
           type: string

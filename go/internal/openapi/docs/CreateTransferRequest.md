@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Memo** | Pointer to **string** | Memo | [optional] 
 **Source** | [**CreateTransferRequestSource**](CreateTransferRequestSource.md) |  | 
 **TokenId** | **string** | The tokenId to be transferred | 
+**Uid** | Pointer to **string** | The custom unique transaction identifier | [optional] 
 
 ## Methods
 
@@ -185,6 +186,31 @@ and a boolean to check if the value has been set.
 
 SetTokenId sets TokenId field to given value.
 
+
+### GetUid
+
+`func (o *CreateTransferRequest) GetUid() string`
+
+GetUid returns the Uid field if non-nil, zero value otherwise.
+
+### GetUidOk
+
+`func (o *CreateTransferRequest) GetUidOk() (*string, bool)`
+
+GetUidOk returns a tuple with the Uid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUid
+
+`func (o *CreateTransferRequest) SetUid(v string)`
+
+SetUid sets Uid field to given value.
+
+### HasUid
+
+`func (o *CreateTransferRequest) HasUid() bool`
+
+HasUid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

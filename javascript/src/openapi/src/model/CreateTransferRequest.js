@@ -79,6 +79,9 @@ class CreateTransferRequest {
             if (data.hasOwnProperty('token_id')) {
                 obj['token_id'] = ApiClient.convertToType(data['token_id'], 'String');
             }
+            if (data.hasOwnProperty('uid')) {
+                obj['uid'] = ApiClient.convertToType(data['uid'], 'String');
+            }
         }
         return obj;
     }
@@ -122,6 +125,10 @@ class CreateTransferRequest {
         // ensure the json data is a string
         if (data['token_id'] && !(typeof data['token_id'] === 'string' || data['token_id'] instanceof String)) {
             throw new Error("Expected the field `token_id` to be a primitive type in the JSON string but got " + data['token_id']);
+        }
+        // ensure the json data is a string
+        if (data['uid'] && !(typeof data['uid'] === 'string' || data['uid'] instanceof String)) {
+            throw new Error("Expected the field `uid` to be a primitive type in the JSON string but got " + data['uid']);
         }
 
         return true;
@@ -170,6 +177,12 @@ CreateTransferRequest.prototype['source'] = undefined;
  * @member {String} token_id
  */
 CreateTransferRequest.prototype['token_id'] = undefined;
+
+/**
+ * The custom unique transaction identifier
+ * @member {String} uid
+ */
+CreateTransferRequest.prototype['uid'] = undefined;
 
 
 

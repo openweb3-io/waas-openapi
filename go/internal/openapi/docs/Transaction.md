@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to **string** | Transaction status | [optional] 
 **TokenId** | Pointer to **string** | Token ID | [optional] 
 **Type** | Pointer to **string** | Transaction type | [optional] 
+**Uid** | Pointer to **string** | The custom unique transaction identifier | [optional] 
 **UpdatedAt** | Pointer to **string** | Updated time | [optional] 
 **WalletId** | Pointer to **string** | Wallet ID | [optional] 
 
@@ -467,6 +468,31 @@ SetType sets Type field to given value.
 `func (o *Transaction) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetUid
+
+`func (o *Transaction) GetUid() string`
+
+GetUid returns the Uid field if non-nil, zero value otherwise.
+
+### GetUidOk
+
+`func (o *Transaction) GetUidOk() (*string, bool)`
+
+GetUidOk returns a tuple with the Uid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUid
+
+`func (o *Transaction) SetUid(v string)`
+
+SetUid sets Uid field to given value.
+
+### HasUid
+
+`func (o *Transaction) HasUid() bool`
+
+HasUid returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

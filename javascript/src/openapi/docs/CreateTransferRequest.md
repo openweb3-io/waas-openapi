@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **memo** | **String** | Memo | [optional] 
 **source** | [**CreateTransferRequestSource**](CreateTransferRequestSource.md) |  | 
 **tokenId** | **String** | The tokenId to be transferred | 
+**uid** | **String** | The custom unique transaction identifier | [optional] 
 
 

@@ -81,6 +81,10 @@ public class CreateTransferRequest {
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
   private String tokenId;
 
+  public static final String SERIALIZED_NAME_UID = "uid";
+  @SerializedName(SERIALIZED_NAME_UID)
+  private String uid;
+
   public CreateTransferRequest() {
   }
 
@@ -217,6 +221,25 @@ public class CreateTransferRequest {
   }
 
 
+  public CreateTransferRequest uid(String uid) {
+    this.uid = uid;
+    return this;
+  }
+
+  /**
+   * The custom unique transaction identifier
+   * @return uid
+   */
+  @javax.annotation.Nullable
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -233,12 +256,13 @@ public class CreateTransferRequest {
         Objects.equals(this.fee, createTransferRequest.fee) &&
         Objects.equals(this.memo, createTransferRequest.memo) &&
         Objects.equals(this.source, createTransferRequest.source) &&
-        Objects.equals(this.tokenId, createTransferRequest.tokenId);
+        Objects.equals(this.tokenId, createTransferRequest.tokenId) &&
+        Objects.equals(this.uid, createTransferRequest.uid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, destination, extra, fee, memo, source, tokenId);
+    return Objects.hash(amount, destination, extra, fee, memo, source, tokenId, uid);
   }
 
   @Override
@@ -252,6 +276,7 @@ public class CreateTransferRequest {
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
+    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -281,6 +306,7 @@ public class CreateTransferRequest {
     openapiFields.add("memo");
     openapiFields.add("source");
     openapiFields.add("token_id");
+    openapiFields.add("uid");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -337,6 +363,9 @@ public class CreateTransferRequest {
       CreateTransferRequestSource.validateJsonElement(jsonObj.get("source"));
       if (!jsonObj.get("token_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("token_id").toString()));
+      }
+      if ((jsonObj.get("uid") != null && !jsonObj.get("uid").isJsonNull()) && !jsonObj.get("uid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uid").toString()));
       }
   }
 

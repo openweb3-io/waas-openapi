@@ -100,6 +100,9 @@ class Transaction {
             if (data.hasOwnProperty('type')) {
                 obj['type'] = ApiClient.convertToType(data['type'], 'String');
             }
+            if (data.hasOwnProperty('uid')) {
+                obj['uid'] = ApiClient.convertToType(data['uid'], 'String');
+            }
             if (data.hasOwnProperty('updatedAt')) {
                 obj['updatedAt'] = ApiClient.convertToType(data['updatedAt'], 'String');
             }
@@ -175,6 +178,10 @@ class Transaction {
         // ensure the json data is a string
         if (data['type'] && !(typeof data['type'] === 'string' || data['type'] instanceof String)) {
             throw new Error("Expected the field `type` to be a primitive type in the JSON string but got " + data['type']);
+        }
+        // ensure the json data is a string
+        if (data['uid'] && !(typeof data['uid'] === 'string' || data['uid'] instanceof String)) {
+            throw new Error("Expected the field `uid` to be a primitive type in the JSON string but got " + data['uid']);
         }
         // ensure the json data is a string
         if (data['updatedAt'] && !(typeof data['updatedAt'] === 'string' || data['updatedAt'] instanceof String)) {
@@ -291,6 +298,12 @@ Transaction.prototype['tokenId'] = undefined;
  * @member {String} type
  */
 Transaction.prototype['type'] = undefined;
+
+/**
+ * The custom unique transaction identifier
+ * @member {String} uid
+ */
+Transaction.prototype['uid'] = undefined;
 
 /**
  * Updated time

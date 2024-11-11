@@ -32,6 +32,8 @@ type CreateTransferRequest struct {
 	Source CreateTransferRequestSource `json:"source"`
 	// The tokenId to be transferred
 	TokenId string `json:"token_id"`
+	// The custom unique transaction identifier
+	Uid *string `json:"uid,omitempty"`
 }
 
 type _CreateTransferRequest CreateTransferRequest
@@ -249,6 +251,38 @@ func (o *CreateTransferRequest) SetTokenId(v string) {
 	o.TokenId = v
 }
 
+// GetUid returns the Uid field value if set, zero value otherwise.
+func (o *CreateTransferRequest) GetUid() string {
+	if o == nil || IsNil(o.Uid) {
+		var ret string
+		return ret
+	}
+	return *o.Uid
+}
+
+// GetUidOk returns a tuple with the Uid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateTransferRequest) GetUidOk() (*string, bool) {
+	if o == nil || IsNil(o.Uid) {
+		return nil, false
+	}
+	return o.Uid, true
+}
+
+// HasUid returns a boolean if a field has been set.
+func (o *CreateTransferRequest) HasUid() bool {
+	if o != nil && !IsNil(o.Uid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUid gets a reference to the given string and assigns it to the Uid field.
+func (o *CreateTransferRequest) SetUid(v string) {
+	o.Uid = &v
+}
+
 func (o CreateTransferRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -272,6 +306,9 @@ func (o CreateTransferRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["source"] = o.Source
 	toSerialize["token_id"] = o.TokenId
+	if !IsNil(o.Uid) {
+		toSerialize["uid"] = o.Uid
+	}
 	return toSerialize, nil
 }
 

@@ -199,6 +199,10 @@
           "token_id": {
             "description": "The tokenId to be transferred",
             "type": "string"
+          },
+          "uid": {
+            "description": "The custom unique transaction identifier",
+            "type": "string"
           }
         },
         "required": [
@@ -776,6 +780,10 @@
           },
           "type": {
             "$ref": "#/components/schemas/TransactionType"
+          },
+          "uid": {
+            "description": "The custom unique transaction identifier",
+            "type": "string"
           },
           "updatedAt": {
             "description": "Updated time",

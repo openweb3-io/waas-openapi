@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **status** | **String** | Transaction status | [optional] 
 **tokenId** | **String** | Token ID | [optional] 
 **type** | **String** | Transaction type | [optional] 
+**uid** | **String** | The custom unique transaction identifier | [optional] 
 **updatedAt** | **String** | Updated time | [optional] 
 **walletId** | **String** | Wallet ID | [optional] 
 

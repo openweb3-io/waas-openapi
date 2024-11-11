@@ -122,6 +122,10 @@ public class Transaction {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public static final String SERIALIZED_NAME_UID = "uid";
+  @SerializedName(SERIALIZED_NAME_UID)
+  private String uid;
+
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private String updatedAt;
@@ -464,6 +468,25 @@ public class Transaction {
   }
 
 
+  public Transaction uid(String uid) {
+    this.uid = uid;
+    return this;
+  }
+
+  /**
+   * The custom unique transaction identifier
+   * @return uid
+   */
+  @javax.annotation.Nullable
+  public String getUid() {
+    return uid;
+  }
+
+  public void setUid(String uid) {
+    this.uid = uid;
+  }
+
+
   public Transaction updatedAt(String updatedAt) {
     this.updatedAt = updatedAt;
     return this;
@@ -529,13 +552,14 @@ public class Transaction {
         Objects.equals(this.status, transaction.status) &&
         Objects.equals(this.tokenId, transaction.tokenId) &&
         Objects.equals(this.type, transaction.type) &&
+        Objects.equals(this.uid, transaction.uid) &&
         Objects.equals(this.updatedAt, transaction.updatedAt) &&
         Objects.equals(this.walletId, transaction.walletId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetId, chain, chainId, confirmedNum, createdAt, description, destination, extra, failedReason, fee, hash, id, signature, source, status, tokenId, type, updatedAt, walletId);
+    return Objects.hash(assetId, chain, chainId, confirmedNum, createdAt, description, destination, extra, failedReason, fee, hash, id, signature, source, status, tokenId, type, uid, updatedAt, walletId);
   }
 
   @Override
@@ -559,6 +583,7 @@ public class Transaction {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
     sb.append("}");
@@ -600,6 +625,7 @@ public class Transaction {
     openapiFields.add("status");
     openapiFields.add("tokenId");
     openapiFields.add("type");
+    openapiFields.add("uid");
     openapiFields.add("updatedAt");
     openapiFields.add("walletId");
 
@@ -675,6 +701,9 @@ public class Transaction {
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if ((jsonObj.get("uid") != null && !jsonObj.get("uid").isJsonNull()) && !jsonObj.get("uid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `uid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uid").toString()));
       }
       if ((jsonObj.get("updatedAt") != null && !jsonObj.get("updatedAt").isJsonNull()) && !jsonObj.get("updatedAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updatedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updatedAt").toString()));

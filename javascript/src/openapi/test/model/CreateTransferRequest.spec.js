@@ -96,6 +96,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property uid (base name: "uid")', function() {
+      // uncomment below and update the code to test the property uid
+      //var instance = new WaaSOpenApiDocumentation.CreateTransferRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
