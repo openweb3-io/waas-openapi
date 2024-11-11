@@ -238,7 +238,7 @@ public class AddressesApi {
     }
     /**
      * Build call for v1WalletsCreateAddress
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param createAddressRequest Request Body (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -318,7 +318,7 @@ public class AddressesApi {
     /**
      * Create address
      * Create address for wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param createAddressRequest Request Body (required)
      * @return Address
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -340,7 +340,7 @@ public class AddressesApi {
     /**
      * Create address
      * Create address for wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param createAddressRequest Request Body (required)
      * @return ApiResponse&lt;Address&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -363,7 +363,7 @@ public class AddressesApi {
     /**
      * Create address (asynchronously)
      * Create address for wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param createAddressRequest Request Body (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -387,7 +387,7 @@ public class AddressesApi {
     }
     /**
      * Build call for v1WalletsGetAddress
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param address Address (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -467,7 +467,7 @@ public class AddressesApi {
     /**
      * Get address information
      * Get specific address information in wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param address Address (required)
      * @return Address
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -489,7 +489,7 @@ public class AddressesApi {
     /**
      * Get address information
      * Get specific address information in wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param address Address (required)
      * @return ApiResponse&lt;Address&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -512,7 +512,7 @@ public class AddressesApi {
     /**
      * Get address information (asynchronously)
      * Get specific address information in wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param address Address (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -536,7 +536,7 @@ public class AddressesApi {
     }
     /**
      * Build call for v1WalletsListAddresses
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param chainIds chain ids (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
@@ -624,7 +624,7 @@ public class AddressesApi {
     /**
      * List wallet addresses
      * List addresses in wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param chainIds chain ids (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
@@ -648,7 +648,7 @@ public class AddressesApi {
     /**
      * List wallet addresses
      * List addresses in wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param chainIds chain ids (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
@@ -673,7 +673,7 @@ public class AddressesApi {
     /**
      * List wallet addresses (asynchronously)
      * List addresses in wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param chainIds chain ids (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)

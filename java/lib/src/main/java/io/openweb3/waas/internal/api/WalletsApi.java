@@ -217,7 +217,7 @@ public class WalletsApi {
     }
     /**
      * Build call for v1WalletsDelete
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -290,7 +290,7 @@ public class WalletsApi {
     /**
      * Delete wallet
      * Delete a Wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @return Wallet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -311,7 +311,7 @@ public class WalletsApi {
     /**
      * Delete wallet
      * Delete a Wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @return ApiResponse&lt;Wallet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -333,7 +333,7 @@ public class WalletsApi {
     /**
      * Delete wallet (asynchronously)
      * Delete a Wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -501,7 +501,7 @@ public class WalletsApi {
     }
     /**
      * Build call for v1WalletsRetrieve
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -574,7 +574,7 @@ public class WalletsApi {
     /**
      * Get wallet
      * Get a wallet by ID
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @return Wallet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -595,7 +595,7 @@ public class WalletsApi {
     /**
      * Get wallet
      * Get a wallet by ID
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @return ApiResponse&lt;Wallet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -617,7 +617,7 @@ public class WalletsApi {
     /**
      * Get wallet (asynchronously)
      * Get a wallet by ID
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -640,7 +640,7 @@ public class WalletsApi {
     }
     /**
      * Build call for v1WalletsUpdate
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param updateWalletRequest Request body (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -720,7 +720,7 @@ public class WalletsApi {
     /**
      * Update wallet
      * Update a Wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param updateWalletRequest Request body (required)
      * @return Wallet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -742,7 +742,7 @@ public class WalletsApi {
     /**
      * Update wallet
      * Update a Wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param updateWalletRequest Request body (required)
      * @return ApiResponse&lt;Wallet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -765,7 +765,7 @@ public class WalletsApi {
     /**
      * Update wallet (asynchronously)
      * Update a Wallet
-     * @param walletId Wallet ID (required)
+     * @param walletId Wallet id or uid (required)
      * @param updateWalletRequest Request body (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

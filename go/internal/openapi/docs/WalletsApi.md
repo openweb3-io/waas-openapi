@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-	walletId := "walletId_example" // string | Wallet ID
+	walletId := "walletId_example" // string | Wallet id or uid
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -119,7 +119,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**walletId** | **string** | Wallet ID | 
+**walletId** | **string** | Wallet id or uid | 
 
 ### Other Parameters
 
@@ -237,7 +237,7 @@ import (
 )
 
 func main() {
-	walletId := "walletId_example" // string | Wallet ID
+	walletId := "walletId_example" // string | Wallet id or uid
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -257,7 +257,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**walletId** | **string** | Wallet ID | 
+**walletId** | **string** | Wallet id or uid | 
 
 ### Other Parameters
 
@@ -307,7 +307,7 @@ import (
 )
 
 func main() {
-	walletId := "walletId_example" // string | Wallet ID
+	walletId := "walletId_example" // string | Wallet id or uid
 	updateWalletRequest := *openapiclient.NewUpdateWalletRequest() // UpdateWalletRequest | Request body
 
 	configuration := openapiclient.NewConfiguration()
@@ -328,7 +328,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**walletId** | **string** | Wallet ID | 
+**walletId** | **string** | Wallet id or uid | 
 
 ### Other Parameters
 

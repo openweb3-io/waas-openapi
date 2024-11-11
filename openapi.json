@@ -2175,7 +2175,7 @@
         "operationId": "v1.wallets.delete",
         "parameters": [
           {
-            "description": "Wallet ID",
+            "description": "Wallet id or uid",
             "in": "path",
             "name": "walletId",
             "required": true,
@@ -2254,7 +2254,7 @@
         "operationId": "v1.wallets.retrieve",
         "parameters": [
           {
-            "description": "Wallet ID",
+            "description": "Wallet id or uid",
             "in": "path",
             "name": "walletId",
             "required": true,
@@ -2333,7 +2333,7 @@
         "operationId": "v1.wallets.update",
         "parameters": [
           {
-            "description": "Wallet ID",
+            "description": "Wallet id or uid",
             "in": "path",
             "name": "walletId",
             "required": true,
@@ -2425,7 +2425,7 @@
         "operationId": "v1.wallets.listAddresses",
         "parameters": [
           {
-            "description": "Wallet ID",
+            "description": "Wallet id or uid",
             "in": "path",
             "name": "walletId",
             "required": true,
@@ -2538,7 +2538,7 @@
         "operationId": "v1.wallets.createAddress",
         "parameters": [
           {
-            "description": "Wallet ID",
+            "description": "Wallet id or uid",
             "in": "path",
             "name": "walletId",
             "required": true,
@@ -2630,7 +2630,7 @@
         "operationId": "v1.wallets.getAddress",
         "parameters": [
           {
-            "description": "Wallet ID",
+            "description": "Wallet id or uid",
             "in": "path",
             "name": "walletId",
             "required": true,

@@ -91,7 +91,7 @@ export default class WalletsApi {
     /**
      * Delete wallet
      * Delete a Wallet
-     * @param {String} walletId Wallet ID
+     * @param {String} walletId Wallet id or uid
      * @param {module:api/WalletsApi~v1WalletsDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Wallet}
      */
@@ -177,7 +177,7 @@ export default class WalletsApi {
     /**
      * Get wallet
      * Get a wallet by ID
-     * @param {String} walletId Wallet ID
+     * @param {String} walletId Wallet id or uid
      * @param {module:api/WalletsApi~v1WalletsRetrieveCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Wallet}
      */
@@ -220,7 +220,7 @@ export default class WalletsApi {
     /**
      * Update wallet
      * Update a Wallet
-     * @param {String} walletId Wallet ID
+     * @param {String} walletId Wallet id or uid
      * @param {module:model/UpdateWalletRequest} updateWalletRequest Request body
      * @param {module:api/WalletsApi~v1WalletsUpdateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Wallet}

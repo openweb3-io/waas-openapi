@@ -820,7 +820,7 @@ paths:
       description: Delete a Wallet
       operationId: v1.wallets.delete
       parameters:
-      - description: Wallet ID
+      - description: Wallet id or uid
         explode: false
         in: path
         name: walletId
@@ -869,7 +869,7 @@ paths:
       description: Get a wallet by ID
       operationId: v1.wallets.retrieve
       parameters:
-      - description: Wallet ID
+      - description: Wallet id or uid
         explode: false
         in: path
         name: walletId
@@ -918,7 +918,7 @@ paths:
       description: Update a Wallet
       operationId: v1.wallets.update
       parameters:
-      - description: Wallet ID
+      - description: Wallet id or uid
         explode: false
         in: path
         name: walletId
@@ -975,7 +975,7 @@ paths:
       description: List addresses in wallet
       operationId: v1.wallets.listAddresses
       parameters:
-      - description: Wallet ID
+      - description: Wallet id or uid
         explode: false
         in: path
         name: walletId
@@ -1057,7 +1057,7 @@ paths:
       description: Create address for wallet
       operationId: v1.wallets.createAddress
       parameters:
-      - description: Wallet ID
+      - description: Wallet id or uid
         explode: false
         in: path
         name: walletId
@@ -1114,7 +1114,7 @@ paths:
       description: Get specific address information in wallet
       operationId: v1.wallets.getAddress
       parameters:
-      - description: Wallet ID
+      - description: Wallet id or uid
         explode: false
         in: path
         name: walletId

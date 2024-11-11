@@ -90,7 +90,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.AddressesApi();
-let walletId = "walletId_example"; // String | Wallet ID
+let walletId = "walletId_example"; // String | Wallet id or uid
 let createAddressRequest = new WaaSOpenApiDocumentation.CreateAddressRequest(); // CreateAddressRequest | Request Body
 apiInstance.v1WalletsCreateAddress(walletId, createAddressRequest, (error, data, response) => {
   if (error) {
@@ -106,7 +106,7 @@ apiInstance.v1WalletsCreateAddress(walletId, createAddressRequest, (error, data,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID | 
+ **walletId** | **String**| Wallet id or uid | 
  **createAddressRequest** | [**CreateAddressRequest**](CreateAddressRequest.md)| Request Body | 
 
 ### Return type
@@ -143,7 +143,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.AddressesApi();
-let walletId = "walletId_example"; // String | Wallet ID
+let walletId = "walletId_example"; // String | Wallet id or uid
 let address = "address_example"; // String | Address
 apiInstance.v1WalletsGetAddress(walletId, address, (error, data, response) => {
   if (error) {
@@ -159,7 +159,7 @@ apiInstance.v1WalletsGetAddress(walletId, address, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID | 
+ **walletId** | **String**| Wallet id or uid | 
  **address** | **String**| Address | 
 
 ### Return type
@@ -196,7 +196,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.AddressesApi();
-let walletId = "walletId_example"; // String | Wallet ID
+let walletId = "walletId_example"; // String | Wallet id or uid
 let opts = {
   'chainIds': ["null"], // [String] | chain ids
   'cursor': "cursor_example", // String | Cursor
@@ -216,7 +216,7 @@ apiInstance.v1WalletsListAddresses(walletId, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID | 
+ **walletId** | **String**| Wallet id or uid | 
  **chainIds** | [**[String]**](String.md)| chain ids | [optional] 
  **cursor** | **String**| Cursor | [optional] 
  **limit** | **Number**| Limit, default is 20 | [optional] 

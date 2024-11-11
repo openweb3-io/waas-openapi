@@ -119,7 +119,7 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
-    String walletId = "walletId_example"; // String | Wallet ID
+    String walletId = "walletId_example"; // String | Wallet id or uid
     CreateAddressRequest createAddressRequest = new CreateAddressRequest(); // CreateAddressRequest | Request Body
     try {
       Address result = apiInstance.v1WalletsCreateAddress(walletId, createAddressRequest);
@@ -139,7 +139,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **walletId** | **String**| Wallet ID | |
+| **walletId** | **String**| Wallet id or uid | |
 | **createAddressRequest** | [**CreateAddressRequest**](CreateAddressRequest.md)| Request Body | |
 
 ### Return type
@@ -194,7 +194,7 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
-    String walletId = "walletId_example"; // String | Wallet ID
+    String walletId = "walletId_example"; // String | Wallet id or uid
     String address = "address_example"; // String | Address
     try {
       Address result = apiInstance.v1WalletsGetAddress(walletId, address);
@@ -214,7 +214,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **walletId** | **String**| Wallet ID | |
+| **walletId** | **String**| Wallet id or uid | |
 | **address** | **String**| Address | |
 
 ### Return type
@@ -269,7 +269,7 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
-    String walletId = "walletId_example"; // String | Wallet ID
+    String walletId = "walletId_example"; // String | Wallet id or uid
     List<String> chainIds = Arrays.asList(); // List<String> | chain ids
     String cursor = "cursor_example"; // String | Cursor
     Integer limit = 56; // Integer | Limit, default is 20
@@ -291,7 +291,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **walletId** | **String**| Wallet ID | |
+| **walletId** | **String**| Wallet id or uid | |
 | **chainIds** | [**List&lt;String&gt;**](String.md)| chain ids | [optional] |
 | **cursor** | **String**| Cursor | [optional] |
 | **limit** | **Integer**| Limit, default is 20 | [optional] |

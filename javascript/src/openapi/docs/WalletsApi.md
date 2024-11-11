@@ -83,7 +83,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
-let walletId = "walletId_example"; // String | Wallet ID
+let walletId = "walletId_example"; // String | Wallet id or uid
 apiInstance.v1WalletsDelete(walletId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -98,7 +98,7 @@ apiInstance.v1WalletsDelete(walletId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID | 
+ **walletId** | **String**| Wallet id or uid | 
 
 ### Return type
 
@@ -189,7 +189,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
-let walletId = "walletId_example"; // String | Wallet ID
+let walletId = "walletId_example"; // String | Wallet id or uid
 apiInstance.v1WalletsRetrieve(walletId, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -204,7 +204,7 @@ apiInstance.v1WalletsRetrieve(walletId, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID | 
+ **walletId** | **String**| Wallet id or uid | 
 
 ### Return type
 
@@ -240,7 +240,7 @@ ApiKeyAuth.apiKey = 'YOUR API KEY';
 //ApiKeyAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new WaaSOpenApiDocumentation.WalletsApi();
-let walletId = "walletId_example"; // String | Wallet ID
+let walletId = "walletId_example"; // String | Wallet id or uid
 let updateWalletRequest = new WaaSOpenApiDocumentation.UpdateWalletRequest(); // UpdateWalletRequest | Request body
 apiInstance.v1WalletsUpdate(walletId, updateWalletRequest, (error, data, response) => {
   if (error) {
@@ -256,7 +256,7 @@ apiInstance.v1WalletsUpdate(walletId, updateWalletRequest, (error, data, respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **walletId** | **String**| Wallet ID | 
+ **walletId** | **String**| Wallet id or uid | 
  **updateWalletRequest** | [**UpdateWalletRequest**](UpdateWalletRequest.md)| Request body | 
 
 ### Return type

@@ -114,7 +114,7 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     WalletsApi apiInstance = new WalletsApi(defaultClient);
-    String walletId = "walletId_example"; // String | Wallet ID
+    String walletId = "walletId_example"; // String | Wallet id or uid
     try {
       Wallet result = apiInstance.v1WalletsDelete(walletId);
       System.out.println(result);
@@ -133,7 +133,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **walletId** | **String**| Wallet ID | |
+| **walletId** | **String**| Wallet id or uid | |
 
 ### Return type
 
@@ -262,7 +262,7 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     WalletsApi apiInstance = new WalletsApi(defaultClient);
-    String walletId = "walletId_example"; // String | Wallet ID
+    String walletId = "walletId_example"; // String | Wallet id or uid
     try {
       Wallet result = apiInstance.v1WalletsRetrieve(walletId);
       System.out.println(result);
@@ -281,7 +281,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **walletId** | **String**| Wallet ID | |
+| **walletId** | **String**| Wallet id or uid | |
 
 ### Return type
 
@@ -335,7 +335,7 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     WalletsApi apiInstance = new WalletsApi(defaultClient);
-    String walletId = "walletId_example"; // String | Wallet ID
+    String walletId = "walletId_example"; // String | Wallet id or uid
     UpdateWalletRequest updateWalletRequest = new UpdateWalletRequest(); // UpdateWalletRequest | Request body
     try {
       Wallet result = apiInstance.v1WalletsUpdate(walletId, updateWalletRequest);
@@ -355,7 +355,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **walletId** | **String**| Wallet ID | |
+| **walletId** | **String**| Wallet id or uid | |
 | **updateWalletRequest** | [**UpdateWalletRequest**](UpdateWalletRequest.md)| Request body | |
 
 ### Return type

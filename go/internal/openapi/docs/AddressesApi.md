@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-	walletId := "walletId_example" // string | Wallet ID
+	walletId := "walletId_example" // string | Wallet id or uid
 	createAddressRequest := *openapiclient.NewCreateAddressRequest("ChainId_example", "Type_example") // CreateAddressRequest | Request Body
 
 	configuration := openapiclient.NewConfiguration()
@@ -125,7 +125,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**walletId** | **string** | Wallet ID | 
+**walletId** | **string** | Wallet id or uid | 
 
 ### Other Parameters
 
@@ -176,7 +176,7 @@ import (
 )
 
 func main() {
-	walletId := "walletId_example" // string | Wallet ID
+	walletId := "walletId_example" // string | Wallet id or uid
 	address := "address_example" // string | Address
 
 	configuration := openapiclient.NewConfiguration()
@@ -197,7 +197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**walletId** | **string** | Wallet ID | 
+**walletId** | **string** | Wallet id or uid | 
 **address** | **string** | Address | 
 
 ### Other Parameters
@@ -249,7 +249,7 @@ import (
 )
 
 func main() {
-	walletId := "walletId_example" // string | Wallet ID
+	walletId := "walletId_example" // string | Wallet id or uid
 	chainIds := []string{"Inner_example"} // []string | chain ids (optional)
 	cursor := "cursor_example" // string | Cursor (optional)
 	limit := int32(56) // int32 | Limit, default is 20 (optional)
@@ -272,7 +272,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**walletId** | **string** | Wallet ID | 
+**walletId** | **string** | Wallet id or uid | 
 
 ### Other Parameters
 

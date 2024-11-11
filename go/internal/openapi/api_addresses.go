@@ -16,21 +16,20 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 	"reflect"
+	"strings"
 )
-
 
 // AddressesAPIService AddressesAPI service
 type AddressesAPIService service
 
 type ApiV1AddressesListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AddressesAPIService
-	walletIds *[]string
-	chainIds *[]string
-	cursor *string
-	limit *int32
+	walletIds  *[]string
+	chainIds   *[]string
+	cursor     *string
+	limit      *int32
 }
 
 // Unique system generated identifier of the wallet
@@ -66,24 +65,25 @@ V1AddressesList List all addresses
 
 List of all available addresses.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AddressesListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AddressesListRequest
 */
 func (a *AddressesAPIService) V1AddressesList(ctx context.Context) ApiV1AddressesListRequest {
 	return ApiV1AddressesListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CursorPageAddress
+//
+//	@return CursorPageAddress
 func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest) (*CursorPageAddress, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CursorPageAddress
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CursorPageAddress
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1AddressesList")
@@ -192,8 +192,8 @@ func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -203,8 +203,8 @@ func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -214,8 +214,8 @@ func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -225,8 +225,8 @@ func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -244,9 +244,9 @@ func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest
 }
 
 type ApiV1WalletsCreateAddressRequest struct {
-	ctx context.Context
-	ApiService *AddressesAPIService
-	walletId string
+	ctx                  context.Context
+	ApiService           *AddressesAPIService
+	walletId             string
 	createAddressRequest *CreateAddressRequest
 }
 
@@ -265,26 +265,27 @@ V1WalletsCreateAddress Create address
 
 Create address for wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet ID
- @return ApiV1WalletsCreateAddressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param walletId Wallet id or uid
+	@return ApiV1WalletsCreateAddressRequest
 */
 func (a *AddressesAPIService) V1WalletsCreateAddress(ctx context.Context, walletId string) ApiV1WalletsCreateAddressRequest {
 	return ApiV1WalletsCreateAddressRequest{
 		ApiService: a,
-		ctx: ctx,
-		walletId: walletId,
+		ctx:        ctx,
+		walletId:   walletId,
 	}
 }
 
 // Execute executes the request
-//  @return Address
+//
+//	@return Address
 func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreateAddressRequest) (*Address, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Address
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Address
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1WalletsCreateAddress")
@@ -371,8 +372,8 @@ func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -382,8 +383,8 @@ func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -393,8 +394,8 @@ func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -404,8 +405,8 @@ func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -423,10 +424,10 @@ func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 }
 
 type ApiV1WalletsGetAddressRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AddressesAPIService
-	walletId string
-	address string
+	walletId   string
+	address    string
 }
 
 func (r ApiV1WalletsGetAddressRequest) Execute() (*Address, *http.Response, error) {
@@ -438,28 +439,29 @@ V1WalletsGetAddress Get address information
 
 Get specific address information in wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet ID
- @param address Address
- @return ApiV1WalletsGetAddressRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param walletId Wallet id or uid
+	@param address Address
+	@return ApiV1WalletsGetAddressRequest
 */
 func (a *AddressesAPIService) V1WalletsGetAddress(ctx context.Context, walletId string, address string) ApiV1WalletsGetAddressRequest {
 	return ApiV1WalletsGetAddressRequest{
 		ApiService: a,
-		ctx: ctx,
-		walletId: walletId,
-		address: address,
+		ctx:        ctx,
+		walletId:   walletId,
+		address:    address,
 	}
 }
 
 // Execute executes the request
-//  @return Address
+//
+//	@return Address
 func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddressRequest) (*Address, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Address
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Address
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1WalletsGetAddress")
@@ -542,8 +544,8 @@ func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddres
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -553,8 +555,8 @@ func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddres
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -564,8 +566,8 @@ func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddres
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -575,8 +577,8 @@ func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddres
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -594,12 +596,12 @@ func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddres
 }
 
 type ApiV1WalletsListAddressesRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *AddressesAPIService
-	walletId string
-	chainIds *[]string
-	cursor *string
-	limit *int32
+	walletId   string
+	chainIds   *[]string
+	cursor     *string
+	limit      *int32
 }
 
 // chain ids
@@ -629,26 +631,27 @@ V1WalletsListAddresses List wallet addresses
 
 List addresses in wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet ID
- @return ApiV1WalletsListAddressesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param walletId Wallet id or uid
+	@return ApiV1WalletsListAddressesRequest
 */
 func (a *AddressesAPIService) V1WalletsListAddresses(ctx context.Context, walletId string) ApiV1WalletsListAddressesRequest {
 	return ApiV1WalletsListAddressesRequest{
 		ApiService: a,
-		ctx: ctx,
-		walletId: walletId,
+		ctx:        ctx,
+		walletId:   walletId,
 	}
 }
 
 // Execute executes the request
-//  @return CursorPageAddress
+//
+//	@return CursorPageAddress
 func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAddressesRequest) (*CursorPageAddress, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CursorPageAddress
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CursorPageAddress
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1WalletsListAddresses")
@@ -747,8 +750,8 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -758,8 +761,8 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -769,8 +772,8 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -780,8 +783,8 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

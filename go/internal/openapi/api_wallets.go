@@ -19,13 +19,12 @@ import (
 	"strings"
 )
 
-
 // WalletsAPIService WalletsAPI service
 type WalletsAPIService service
 
 type ApiV1WalletsCreateRequest struct {
-	ctx context.Context
-	ApiService *WalletsAPIService
+	ctx                 context.Context
+	ApiService          *WalletsAPIService
 	createWalletRequest *CreateWalletRequest
 }
 
@@ -44,24 +43,25 @@ V1WalletsCreate Create wallet
 
 Create a Wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1WalletsCreateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1WalletsCreateRequest
 */
 func (a *WalletsAPIService) V1WalletsCreate(ctx context.Context) ApiV1WalletsCreateRequest {
 	return ApiV1WalletsCreateRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Wallet
+//
+//	@return Wallet
 func (a *WalletsAPIService) V1WalletsCreateExecute(r ApiV1WalletsCreateRequest) (*Wallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Wallet
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Wallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WalletsAPIService.V1WalletsCreate")
@@ -147,8 +147,8 @@ func (a *WalletsAPIService) V1WalletsCreateExecute(r ApiV1WalletsCreateRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -158,8 +158,8 @@ func (a *WalletsAPIService) V1WalletsCreateExecute(r ApiV1WalletsCreateRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -169,8 +169,8 @@ func (a *WalletsAPIService) V1WalletsCreateExecute(r ApiV1WalletsCreateRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -180,8 +180,8 @@ func (a *WalletsAPIService) V1WalletsCreateExecute(r ApiV1WalletsCreateRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -199,9 +199,9 @@ func (a *WalletsAPIService) V1WalletsCreateExecute(r ApiV1WalletsCreateRequest) 
 }
 
 type ApiV1WalletsDeleteRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *WalletsAPIService
-	walletId string
+	walletId   string
 }
 
 func (r ApiV1WalletsDeleteRequest) Execute() (*Wallet, *http.Response, error) {
@@ -213,26 +213,27 @@ V1WalletsDelete Delete wallet
 
 Delete a Wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet ID
- @return ApiV1WalletsDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param walletId Wallet id or uid
+	@return ApiV1WalletsDeleteRequest
 */
 func (a *WalletsAPIService) V1WalletsDelete(ctx context.Context, walletId string) ApiV1WalletsDeleteRequest {
 	return ApiV1WalletsDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		walletId: walletId,
+		ctx:        ctx,
+		walletId:   walletId,
 	}
 }
 
 // Execute executes the request
-//  @return Wallet
+//
+//	@return Wallet
 func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) (*Wallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Wallet
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Wallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WalletsAPIService.V1WalletsDelete")
@@ -314,8 +315,8 @@ func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -325,8 +326,8 @@ func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -336,8 +337,8 @@ func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -347,8 +348,8 @@ func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -366,10 +367,10 @@ func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) 
 }
 
 type ApiV1WalletsListRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *WalletsAPIService
-	cursor *string
-	limit *int32
+	cursor     *string
+	limit      *int32
 }
 
 // Cursor
@@ -393,24 +394,25 @@ V1WalletsList List wallets
 
 List all wallets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1WalletsListRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1WalletsListRequest
 */
 func (a *WalletsAPIService) V1WalletsList(ctx context.Context) ApiV1WalletsListRequest {
 	return ApiV1WalletsListRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CursorPageWallet
+//
+//	@return CursorPageWallet
 func (a *WalletsAPIService) V1WalletsListExecute(r ApiV1WalletsListRequest) (*CursorPageWallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CursorPageWallet
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CursorPageWallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WalletsAPIService.V1WalletsList")
@@ -497,8 +499,8 @@ func (a *WalletsAPIService) V1WalletsListExecute(r ApiV1WalletsListRequest) (*Cu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -508,8 +510,8 @@ func (a *WalletsAPIService) V1WalletsListExecute(r ApiV1WalletsListRequest) (*Cu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -519,8 +521,8 @@ func (a *WalletsAPIService) V1WalletsListExecute(r ApiV1WalletsListRequest) (*Cu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -530,8 +532,8 @@ func (a *WalletsAPIService) V1WalletsListExecute(r ApiV1WalletsListRequest) (*Cu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -549,9 +551,9 @@ func (a *WalletsAPIService) V1WalletsListExecute(r ApiV1WalletsListRequest) (*Cu
 }
 
 type ApiV1WalletsRetrieveRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *WalletsAPIService
-	walletId string
+	walletId   string
 }
 
 func (r ApiV1WalletsRetrieveRequest) Execute() (*Wallet, *http.Response, error) {
@@ -563,26 +565,27 @@ V1WalletsRetrieve Get wallet
 
 Get a wallet by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet ID
- @return ApiV1WalletsRetrieveRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param walletId Wallet id or uid
+	@return ApiV1WalletsRetrieveRequest
 */
 func (a *WalletsAPIService) V1WalletsRetrieve(ctx context.Context, walletId string) ApiV1WalletsRetrieveRequest {
 	return ApiV1WalletsRetrieveRequest{
 		ApiService: a,
-		ctx: ctx,
-		walletId: walletId,
+		ctx:        ctx,
+		walletId:   walletId,
 	}
 }
 
 // Execute executes the request
-//  @return Wallet
+//
+//	@return Wallet
 func (a *WalletsAPIService) V1WalletsRetrieveExecute(r ApiV1WalletsRetrieveRequest) (*Wallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Wallet
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Wallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WalletsAPIService.V1WalletsRetrieve")
@@ -664,8 +667,8 @@ func (a *WalletsAPIService) V1WalletsRetrieveExecute(r ApiV1WalletsRetrieveReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -675,8 +678,8 @@ func (a *WalletsAPIService) V1WalletsRetrieveExecute(r ApiV1WalletsRetrieveReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -686,8 +689,8 @@ func (a *WalletsAPIService) V1WalletsRetrieveExecute(r ApiV1WalletsRetrieveReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -697,8 +700,8 @@ func (a *WalletsAPIService) V1WalletsRetrieveExecute(r ApiV1WalletsRetrieveReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -716,9 +719,9 @@ func (a *WalletsAPIService) V1WalletsRetrieveExecute(r ApiV1WalletsRetrieveReque
 }
 
 type ApiV1WalletsUpdateRequest struct {
-	ctx context.Context
-	ApiService *WalletsAPIService
-	walletId string
+	ctx                 context.Context
+	ApiService          *WalletsAPIService
+	walletId            string
 	updateWalletRequest *UpdateWalletRequest
 }
 
@@ -737,26 +740,27 @@ V1WalletsUpdate Update wallet
 
 Update a Wallet
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet ID
- @return ApiV1WalletsUpdateRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param walletId Wallet id or uid
+	@return ApiV1WalletsUpdateRequest
 */
 func (a *WalletsAPIService) V1WalletsUpdate(ctx context.Context, walletId string) ApiV1WalletsUpdateRequest {
 	return ApiV1WalletsUpdateRequest{
 		ApiService: a,
-		ctx: ctx,
-		walletId: walletId,
+		ctx:        ctx,
+		walletId:   walletId,
 	}
 }
 
 // Execute executes the request
-//  @return Wallet
+//
+//	@return Wallet
 func (a *WalletsAPIService) V1WalletsUpdateExecute(r ApiV1WalletsUpdateRequest) (*Wallet, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Wallet
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Wallet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WalletsAPIService.V1WalletsUpdate")
@@ -843,8 +847,8 @@ func (a *WalletsAPIService) V1WalletsUpdateExecute(r ApiV1WalletsUpdateRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -854,8 +858,8 @@ func (a *WalletsAPIService) V1WalletsUpdateExecute(r ApiV1WalletsUpdateRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -865,8 +869,8 @@ func (a *WalletsAPIService) V1WalletsUpdateExecute(r ApiV1WalletsUpdateRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -876,8 +880,8 @@ func (a *WalletsAPIService) V1WalletsUpdateExecute(r ApiV1WalletsUpdateRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

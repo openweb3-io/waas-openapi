@@ -95,7 +95,7 @@ export default class AddressesApi {
     /**
      * Create address
      * Create address for wallet
-     * @param {String} walletId Wallet ID
+     * @param {String} walletId Wallet id or uid
      * @param {module:model/CreateAddressRequest} createAddressRequest Request Body
      * @param {module:api/AddressesApi~v1WalletsCreateAddressCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Address}
@@ -143,7 +143,7 @@ export default class AddressesApi {
     /**
      * Get address information
      * Get specific address information in wallet
-     * @param {String} walletId Wallet ID
+     * @param {String} walletId Wallet id or uid
      * @param {String} address Address
      * @param {module:api/AddressesApi~v1WalletsGetAddressCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Address}
@@ -192,7 +192,7 @@ export default class AddressesApi {
     /**
      * List wallet addresses
      * List addresses in wallet
-     * @param {String} walletId Wallet ID
+     * @param {String} walletId Wallet id or uid
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} [chainIds] chain ids
      * @param {String} [cursor] Cursor
