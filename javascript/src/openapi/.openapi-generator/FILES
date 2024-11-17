@@ -3,6 +3,7 @@
 .travis.yml
 README.md
 docs/Address.md
+docs/AddressValidityItem.md
 docs/AddressesApi.md
 docs/Chain.md
 docs/ChainsApi.md
@@ -37,6 +38,7 @@ docs/TransferSourceAddress.md
 docs/UpdateEndpoint.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
+docs/ValidateAddressesReply.md
 docs/Wallet.md
 docs/WalletsApi.md
 docs/WebhookEndpointsApi.md
@@ -54,6 +56,7 @@ src/api/WebhookEndpointsApi.js
 src/api/WebhookEventsApi.js
 src/index.js
 src/model/Address.js
+src/model/AddressValidityItem.js
 src/model/Chain.js
 src/model/CreateAddressRequest.js
 src/model/CreateEndpoint.js
@@ -84,6 +87,7 @@ src/model/TransferSourceAddress.js
 src/model/UpdateEndpoint.js
 src/model/UpdateTokenRequest.js
 src/model/UpdateWalletRequest.js
+src/model/ValidateAddressesReply.js
 src/model/Wallet.js
 test/api/AddressesApi.spec.js
 test/api/ChainsApi.spec.js
@@ -93,6 +97,7 @@ test/api/WalletsApi.spec.js
 test/api/WebhookEndpointsApi.spec.js
 test/api/WebhookEventsApi.spec.js
 test/model/Address.spec.js
+test/model/AddressValidityItem.spec.js
 test/model/Chain.spec.js
 test/model/CreateAddressRequest.spec.js
 test/model/CreateEndpoint.spec.js
@@ -123,4 +128,5 @@ test/model/TransferSourceAddress.spec.js
 test/model/UpdateEndpoint.spec.js
 test/model/UpdateTokenRequest.spec.js
 test/model/UpdateWalletRequest.spec.js
+test/model/ValidateAddressesReply.spec.js
 test/model/Wallet.spec.js

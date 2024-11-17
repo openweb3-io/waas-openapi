@@ -58,6 +58,16 @@
         done();
       });
     });
+    describe('v1AddressesValidate', function() {
+      it('should call v1AddressesValidate successfully', function(done) {
+        //uncomment below and update the code to test v1AddressesValidate
+        //instance.v1AddressesValidate(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('v1WalletsCreateAddress', function() {
       it('should call v1WalletsCreateAddress successfully', function(done) {
         //uncomment below and update the code to test v1WalletsCreateAddress

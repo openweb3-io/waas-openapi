@@ -14,6 +14,7 @@
 
 import ApiClient from './ApiClient';
 import Address from './model/Address';
+import AddressValidityItem from './model/AddressValidityItem';
 import Chain from './model/Chain';
 import CreateAddressRequest from './model/CreateAddressRequest';
 import CreateEndpoint from './model/CreateEndpoint';
@@ -44,6 +45,7 @@ import TransferSourceAddress from './model/TransferSourceAddress';
 import UpdateEndpoint from './model/UpdateEndpoint';
 import UpdateTokenRequest from './model/UpdateTokenRequest';
 import UpdateWalletRequest from './model/UpdateWalletRequest';
+import ValidateAddressesReply from './model/ValidateAddressesReply';
 import Wallet from './model/Wallet';
 import AddressesApi from './api/AddressesApi';
 import ChainsApi from './api/ChainsApi';
@@ -97,6 +99,12 @@ export {
      * @property {module:model/Address}
      */
     Address,
+
+    /**
+     * The AddressValidityItem model constructor.
+     * @property {module:model/AddressValidityItem}
+     */
+    AddressValidityItem,
 
     /**
      * The Chain model constructor.
@@ -277,6 +285,12 @@ export {
      * @property {module:model/UpdateWalletRequest}
      */
     UpdateWalletRequest,
+
+    /**
+     * The ValidateAddressesReply model constructor.
+     * @property {module:model/ValidateAddressesReply}
+     */
+    ValidateAddressesReply,
 
     /**
      * The Wallet model constructor.

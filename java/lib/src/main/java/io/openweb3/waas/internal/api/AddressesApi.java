@@ -31,6 +31,7 @@ import io.openweb3.waas.models.Address;
 import io.openweb3.waas.models.CreateAddressRequest;
 import io.openweb3.waas.models.CursorPageAddress;
 import io.openweb3.waas.models.Error;
+import io.openweb3.waas.models.ValidateAddressesReply;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -233,6 +234,157 @@ public class AddressesApi {
 
         okhttp3.Call localVarCall = v1AddressesListValidateBeforeCall(walletIds, chainIds, cursor, limit, _callback);
         Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for v1AddressesValidate
+     * @param chainId Chain ID (required)
+     * @param addresses Addresses (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call v1AddressesValidateCall(String chainId, List<String> addresses, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/addresses/validate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (chainId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("chain_id", chainId));
+        }
+
+        if (addresses != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "addresses", addresses));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call v1AddressesValidateValidateBeforeCall(String chainId, List<String> addresses, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'chainId' is set
+        if (chainId == null) {
+            throw new ApiException("Missing the required parameter 'chainId' when calling v1AddressesValidate(Async)");
+        }
+
+        // verify the required parameter 'addresses' is set
+        if (addresses == null) {
+            throw new ApiException("Missing the required parameter 'addresses' when calling v1AddressesValidate(Async)");
+        }
+
+        return v1AddressesValidateCall(chainId, addresses, _callback);
+
+    }
+
+    /**
+     * Validate addresses
+     * Validate addresses
+     * @param chainId Chain ID (required)
+     * @param addresses Addresses (required)
+     * @return ValidateAddressesReply
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ValidateAddressesReply v1AddressesValidate(String chainId, List<String> addresses) throws ApiException {
+        ApiResponse<ValidateAddressesReply> localVarResp = v1AddressesValidateWithHttpInfo(chainId, addresses);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Validate addresses
+     * Validate addresses
+     * @param chainId Chain ID (required)
+     * @param addresses Addresses (required)
+     * @return ApiResponse&lt;ValidateAddressesReply&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ValidateAddressesReply> v1AddressesValidateWithHttpInfo(String chainId, List<String> addresses) throws ApiException {
+        okhttp3.Call localVarCall = v1AddressesValidateValidateBeforeCall(chainId, addresses, null);
+        Type localVarReturnType = new TypeToken<ValidateAddressesReply>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Validate addresses (asynchronously)
+     * Validate addresses
+     * @param chainId Chain ID (required)
+     * @param addresses Addresses (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call v1AddressesValidateAsync(String chainId, List<String> addresses, final ApiCallback<ValidateAddressesReply> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = v1AddressesValidateValidateBeforeCall(chainId, addresses, _callback);
+        Type localVarReturnType = new TypeToken<ValidateAddressesReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

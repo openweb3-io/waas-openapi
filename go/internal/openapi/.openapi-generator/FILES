@@ -13,6 +13,7 @@ api_webhook_events.go
 client.go
 configuration.go
 docs/Address.md
+docs/AddressValidityItem.md
 docs/AddressesAPI.md
 docs/Chain.md
 docs/ChainsAPI.md
@@ -47,6 +48,7 @@ docs/TransferSourceAddress.md
 docs/UpdateEndpoint.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
+docs/ValidateAddressesReply.md
 docs/Wallet.md
 docs/WalletsAPI.md
 docs/WebhookEndpointsAPI.md
@@ -55,6 +57,7 @@ git_push.sh
 go.mod
 go.sum
 model_address.go
+model_address_validity_item.go
 model_chain.go
 model_create_address_request.go
 model_create_endpoint.go
@@ -85,6 +88,7 @@ model_transfer_source_address.go
 model_update_endpoint.go
 model_update_token_request.go
 model_update_wallet_request.go
+model_validate_addresses_reply.go
 model_wallet.go
 response.go
 test/api_addresses_test.go

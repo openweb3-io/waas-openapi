@@ -94,6 +94,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.Address.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.AddressValidityItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.Chain.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateAddressRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateEndpoint.CustomTypeAdapterFactory());
@@ -124,6 +125,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.UpdateEndpoint.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.UpdateTokenRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.UpdateWalletRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.ValidateAddressesReply.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.Wallet.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();
     }

@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1AddressesList**](AddressesAPI.md#V1AddressesList) | **Get** /api/v1/addresses | List all addresses
+[**V1AddressesValidate**](AddressesAPI.md#V1AddressesValidate) | **Get** /api/v1/addresses/validate | Validate addresses
 [**V1WalletsCreateAddress**](AddressesAPI.md#V1WalletsCreateAddress) | **Post** /api/v1/wallets/{walletId}/addresses | Create address
 [**V1WalletsGetAddress**](AddressesAPI.md#V1WalletsGetAddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
 [**V1WalletsListAddresses**](AddressesAPI.md#V1WalletsListAddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List wallet addresses
@@ -68,6 +69,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CursorPageAddress**](CursorPageAddress.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1AddressesValidate
+
+> ValidateAddressesReply V1AddressesValidate(ctx).ChainId(chainId).Addresses(addresses).Execute()
+
+Validate addresses
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
+)
+
+func main() {
+	chainId := "chainId_example" // string | Chain ID
+	addresses := []string{"Inner_example"} // []string | Addresses
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AddressesAPI.V1AddressesValidate(context.Background()).ChainId(chainId).Addresses(addresses).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AddressesAPI.V1AddressesValidate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AddressesValidate`: ValidateAddressesReply
+	fmt.Fprintf(os.Stdout, "Response from `AddressesAPI.V1AddressesValidate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1AddressesValidateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **string** | Chain ID | 
+ **addresses** | **[]string** | Addresses | 
+
+### Return type
+
+[**ValidateAddressesReply**](ValidateAddressesReply.md)
 
 ### Authorization
 

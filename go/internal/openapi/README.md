@@ -79,6 +79,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AddressesAPI* | [**V1AddressesList**](docs/AddressesAPI.md#v1addresseslist) | **Get** /api/v1/addresses | List all addresses
+*AddressesAPI* | [**V1AddressesValidate**](docs/AddressesAPI.md#v1addressesvalidate) | **Get** /api/v1/addresses/validate | Validate addresses
 *AddressesAPI* | [**V1WalletsCreateAddress**](docs/AddressesAPI.md#v1walletscreateaddress) | **Post** /api/v1/wallets/{walletId}/addresses | Create address
 *AddressesAPI* | [**V1WalletsGetAddress**](docs/AddressesAPI.md#v1walletsgetaddress) | **Get** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
 *AddressesAPI* | [**V1WalletsListAddresses**](docs/AddressesAPI.md#v1walletslistaddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List wallet addresses
@@ -108,6 +109,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Address](docs/Address.md)
+ - [AddressValidityItem](docs/AddressValidityItem.md)
  - [Chain](docs/Chain.md)
  - [CreateAddressRequest](docs/CreateAddressRequest.md)
  - [CreateEndpoint](docs/CreateEndpoint.md)
@@ -138,6 +140,7 @@ Class | Method | HTTP request | Description
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)
+ - [ValidateAddressesReply](docs/ValidateAddressesReply.md)
  - [Wallet](docs/Wallet.md)
 
 

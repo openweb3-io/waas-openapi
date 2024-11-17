@@ -133,6 +133,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1AddressesList**](docs/AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
+*WaaSOpenApiDocumentation.AddressesApi* | [**v1AddressesValidate**](docs/AddressesApi.md#v1AddressesValidate) | **GET** /api/v1/addresses/validate | Validate addresses
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsCreateAddress**](docs/AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsGetAddress**](docs/AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsListAddresses**](docs/AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
@@ -162,6 +163,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [WaaSOpenApiDocumentation.Address](docs/Address.md)
+ - [WaaSOpenApiDocumentation.AddressValidityItem](docs/AddressValidityItem.md)
  - [WaaSOpenApiDocumentation.Chain](docs/Chain.md)
  - [WaaSOpenApiDocumentation.CreateAddressRequest](docs/CreateAddressRequest.md)
  - [WaaSOpenApiDocumentation.CreateEndpoint](docs/CreateEndpoint.md)
@@ -192,6 +194,7 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.UpdateEndpoint](docs/UpdateEndpoint.md)
  - [WaaSOpenApiDocumentation.UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [WaaSOpenApiDocumentation.UpdateWalletRequest](docs/UpdateWalletRequest.md)
+ - [WaaSOpenApiDocumentation.ValidateAddressesReply](docs/ValidateAddressesReply.md)
  - [WaaSOpenApiDocumentation.Wallet](docs/Wallet.md)
 
 

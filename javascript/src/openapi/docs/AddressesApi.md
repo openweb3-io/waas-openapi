@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**v1AddressesList**](AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses
+[**v1AddressesValidate**](AddressesApi.md#v1AddressesValidate) | **GET** /api/v1/addresses/validate | Validate addresses
 [**v1WalletsCreateAddress**](AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address
 [**v1WalletsGetAddress**](AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information
 [**v1WalletsListAddresses**](AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
@@ -59,6 +60,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CursorPageAddress**](CursorPageAddress.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## v1AddressesValidate
+
+> ValidateAddressesReply v1AddressesValidate(chainId, addresses)
+
+Validate addresses
+
+Validate addresses
+
+### Example
+
+```javascript
+import WaaSOpenApiDocumentation from 'waa_s_open_api_documentation';
+let defaultClient = WaaSOpenApiDocumentation.ApiClient.instance;
+// Configure API key authorization: ApiKeyAuth
+let ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
+ApiKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//ApiKeyAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new WaaSOpenApiDocumentation.AddressesApi();
+let chainId = "chainId_example"; // String | Chain ID
+let addresses = ["null"]; // [String] | Addresses
+apiInstance.v1AddressesValidate(chainId, addresses, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chainId** | **String**| Chain ID | 
+ **addresses** | [**[String]**](String.md)| Addresses | 
+
+### Return type
+
+[**ValidateAddressesReply**](ValidateAddressesReply.md)
 
 ### Authorization
 

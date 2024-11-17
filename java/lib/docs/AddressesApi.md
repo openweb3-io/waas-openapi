@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**v1AddressesList**](AddressesApi.md#v1AddressesList) | **GET** /api/v1/addresses | List all addresses |
+| [**v1AddressesValidate**](AddressesApi.md#v1AddressesValidate) | **GET** /api/v1/addresses/validate | Validate addresses |
 | [**v1WalletsCreateAddress**](AddressesApi.md#v1WalletsCreateAddress) | **POST** /api/v1/wallets/{walletId}/addresses | Create address |
 | [**v1WalletsGetAddress**](AddressesApi.md#v1WalletsGetAddress) | **GET** /api/v1/wallets/{walletId}/addresses/{address} | Get address information |
 | [**v1WalletsListAddresses**](AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses |
@@ -87,6 +88,80 @@ public class Example {
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
 | **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+<a id="v1AddressesValidate"></a>
+# **v1AddressesValidate**
+> ValidateAddressesReply v1AddressesValidate(chainId, addresses)
+
+Validate addresses
+
+Validate addresses
+
+### Example
+```java
+// Import classes:
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.AddressesApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    AddressesApi apiInstance = new AddressesApi(defaultClient);
+    String chainId = "chainId_example"; // String | Chain ID
+    List<String> addresses = Arrays.asList(); // List<String> | Addresses
+    try {
+      ValidateAddressesReply result = apiInstance.v1AddressesValidate(chainId, addresses);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AddressesApi#v1AddressesValidate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **chainId** | **String**| Chain ID | |
+| **addresses** | [**List&lt;String&gt;**](String.md)| Addresses | |
+
+### Return type
+
+[**ValidateAddressesReply**](ValidateAddressesReply.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
 | **500** | Internal Server Error |  -  |
 
 <a id="v1WalletsCreateAddress"></a>

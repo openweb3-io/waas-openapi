@@ -45,6 +45,19 @@
         ],
         "type": "object"
       },
+      "AddressValidityItem": {
+        "properties": {
+          "address": {
+            "description": "Address",
+            "type": "string"
+          },
+          "validity": {
+            "description": "Validity",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
       "Chain": {
         "properties": {
           "confirm_num": {
@@ -910,6 +923,19 @@
         },
         "type": "object"
       },
+      "ValidateAddressesReply": {
+        "properties": {
+          "items": {
+            "description": "Address validity items",
+            "items": {
+              "$ref": "#/components/schemas/AddressValidityItem"
+            },
+            "type": "array",
+            "uniqueItems": false
+          }
+        },
+        "type": "object"
+      },
       "Wallet": {
         "properties": {
           "created_at": {
@@ -1075,6 +1101,92 @@
           }
         ],
         "summary": "List all addresses",
+        "tags": [
+          "Addresses"
+        ]
+      }
+    },
+    "/api/v1/addresses/validate": {
+      "get": {
+        "description": "Validate addresses",
+        "operationId": "v1.addresses.validate",
+        "parameters": [
+          {
+            "description": "Chain ID",
+            "in": "query",
+            "name": "chain_id",
+            "required": true,
+            "schema": {
+              "description": "Chain ID",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Addresses",
+            "in": "query",
+            "name": "addresses",
+            "required": true,
+            "schema": {
+              "description": "Addresses",
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "uniqueItems": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidateAddressesReply"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {
+            "SignatureAuth": []
+          }
+        ],
+        "summary": "Validate addresses",
         "tags": [
           "Addresses"
         ]

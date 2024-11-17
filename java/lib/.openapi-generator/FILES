@@ -6,6 +6,7 @@ api/openapi.yaml
 build.gradle
 build.sbt
 docs/Address.md
+docs/AddressValidityItem.md
 docs/AddressesApi.md
 docs/Chain.md
 docs/ChainsApi.md
@@ -40,6 +41,7 @@ docs/TransferSourceAddress.md
 docs/UpdateEndpoint.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
+docs/ValidateAddressesReply.md
 docs/Wallet.md
 docs/WalletsApi.md
 docs/WebhookEndpointsApi.md
@@ -79,6 +81,7 @@ src/main/java/io/openweb3/waas/internal/auth/HttpBasicAuth.java
 src/main/java/io/openweb3/waas/internal/auth/HttpBearerAuth.java
 src/main/java/io/openweb3/waas/models/AbstractOpenApiSchema.java
 src/main/java/io/openweb3/waas/models/Address.java
+src/main/java/io/openweb3/waas/models/AddressValidityItem.java
 src/main/java/io/openweb3/waas/models/Chain.java
 src/main/java/io/openweb3/waas/models/CreateAddressRequest.java
 src/main/java/io/openweb3/waas/models/CreateEndpoint.java
@@ -109,6 +112,7 @@ src/main/java/io/openweb3/waas/models/TransferSourceAddress.java
 src/main/java/io/openweb3/waas/models/UpdateEndpoint.java
 src/main/java/io/openweb3/waas/models/UpdateTokenRequest.java
 src/main/java/io/openweb3/waas/models/UpdateWalletRequest.java
+src/main/java/io/openweb3/waas/models/ValidateAddressesReply.java
 src/main/java/io/openweb3/waas/models/Wallet.java
 src/test/java/io/openweb3/waas/internal/api/AddressesApiTest.java
 src/test/java/io/openweb3/waas/internal/api/ChainsApiTest.java
@@ -118,6 +122,7 @@ src/test/java/io/openweb3/waas/internal/api/WalletsApiTest.java
 src/test/java/io/openweb3/waas/internal/api/WebhookEndpointsApiTest.java
 src/test/java/io/openweb3/waas/internal/api/WebhookEventsApiTest.java
 src/test/java/io/openweb3/waas/models/AddressTest.java
+src/test/java/io/openweb3/waas/models/AddressValidityItemTest.java
 src/test/java/io/openweb3/waas/models/ChainTest.java
 src/test/java/io/openweb3/waas/models/CreateAddressRequestTest.java
 src/test/java/io/openweb3/waas/models/CreateEndpointTest.java
@@ -148,4 +153,5 @@ src/test/java/io/openweb3/waas/models/TransferSourceAddressTest.java
 src/test/java/io/openweb3/waas/models/UpdateEndpointTest.java
 src/test/java/io/openweb3/waas/models/UpdateTokenRequestTest.java
 src/test/java/io/openweb3/waas/models/UpdateWalletRequestTest.java
+src/test/java/io/openweb3/waas/models/ValidateAddressesReplyTest.java
 src/test/java/io/openweb3/waas/models/WalletTest.java

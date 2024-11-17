@@ -17,6 +17,7 @@ import Address from '../model/Address';
 import CreateAddressRequest from '../model/CreateAddressRequest';
 import CursorPageAddress from '../model/CursorPageAddress';
 import Error from '../model/Error';
+import ValidateAddressesReply from '../model/ValidateAddressesReply';
 
 /**
 * Addresses service.
@@ -79,6 +80,55 @@ export default class AddressesApi {
       let returnType = CursorPageAddress;
       return this.apiClient.callApi(
         '/api/v1/addresses', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the v1AddressesValidate operation.
+     * @callback module:api/AddressesApi~v1AddressesValidateCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ValidateAddressesReply} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Validate addresses
+     * Validate addresses
+     * @param {String} chainId Chain ID
+     * @param {Array.<String>} addresses Addresses
+     * @param {module:api/AddressesApi~v1AddressesValidateCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ValidateAddressesReply}
+     */
+    v1AddressesValidate(chainId, addresses, callback) {
+      let postBody = null;
+      // verify the required parameter 'chainId' is set
+      if (chainId === undefined || chainId === null) {
+        throw new Error("Missing the required parameter 'chainId' when calling v1AddressesValidate");
+      }
+      // verify the required parameter 'addresses' is set
+      if (addresses === undefined || addresses === null) {
+        throw new Error("Missing the required parameter 'addresses' when calling v1AddressesValidate");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'chain_id': chainId,
+        'addresses': this.apiClient.buildCollectionParam(addresses, 'multi')
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['ApiKeyAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ValidateAddressesReply;
+      return this.apiClient.callApi(
+        '/api/v1/addresses/validate', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

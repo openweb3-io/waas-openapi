@@ -99,6 +99,65 @@ paths:
       - Addresses
       x-accepts:
       - application/json
+  /api/v1/addresses/validate:
+    get:
+      description: Validate addresses
+      operationId: v1.addresses.validate
+      parameters:
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
+        style: form
+      - description: Addresses
+        explode: true
+        in: query
+        name: addresses
+        required: true
+        schema:
+          description: Addresses
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateAddressesReply'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Validate addresses
+      tags:
+      - Addresses
+      x-accepts:
+      - application/json
   /api/v1/chains:
     get:
       description: List of all available chains.
@@ -1513,6 +1572,17 @@ components:
           type: string
       required:
       - address
+    AddressValidityItem:
+      example:
+        address: address
+        validity: true
+      properties:
+        address:
+          description: Address
+          type: string
+        validity:
+          description: Validity
+          type: boolean
     Chain:
       example:
         icon_url: icon_url
@@ -2471,6 +2541,20 @@ components:
         uid:
           description: Custom ID
           type: string
+    ValidateAddressesReply:
+      example:
+        items:
+        - address: address
+          validity: true
+        - address: address
+          validity: true
+      properties:
+        items:
+          description: Address validity items
+          items:
+            $ref: '#/components/schemas/AddressValidityItem'
+          type: array
+          uniqueItems: false
     Wallet:
       example:
         uid: uid

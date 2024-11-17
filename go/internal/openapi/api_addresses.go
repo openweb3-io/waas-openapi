@@ -243,6 +243,190 @@ func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiV1AddressesValidateRequest struct {
+	ctx context.Context
+	ApiService *AddressesAPIService
+	chainId *string
+	addresses *[]string
+}
+
+// Chain ID
+func (r ApiV1AddressesValidateRequest) ChainId(chainId string) ApiV1AddressesValidateRequest {
+	r.chainId = &chainId
+	return r
+}
+
+// Addresses
+func (r ApiV1AddressesValidateRequest) Addresses(addresses []string) ApiV1AddressesValidateRequest {
+	r.addresses = &addresses
+	return r
+}
+
+func (r ApiV1AddressesValidateRequest) Execute() (*ValidateAddressesReply, *http.Response, error) {
+	return r.ApiService.V1AddressesValidateExecute(r)
+}
+
+/*
+V1AddressesValidate Validate addresses
+
+Validate addresses
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiV1AddressesValidateRequest
+*/
+func (a *AddressesAPIService) V1AddressesValidate(ctx context.Context) ApiV1AddressesValidateRequest {
+	return ApiV1AddressesValidateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ValidateAddressesReply
+func (a *AddressesAPIService) V1AddressesValidateExecute(r ApiV1AddressesValidateRequest) (*ValidateAddressesReply, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ValidateAddressesReply
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1AddressesValidate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/addresses/validate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.chainId == nil {
+		return localVarReturnValue, nil, reportError("chainId is required and must be specified")
+	}
+	if r.addresses == nil {
+		return localVarReturnValue, nil, reportError("addresses is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "chain_id", r.chainId, "form", "")
+	{
+		t := *r.addresses
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "addresses", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "addresses", t, "form", "multi")
+		}
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Signature"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if a.client.cfg.ResponseMiddleware != nil {
+		err = a.client.cfg.ResponseMiddleware(localVarHTTPResponse, localVarBody)
+		if err != nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiV1WalletsCreateAddressRequest struct {
 	ctx context.Context
 	ApiService *AddressesAPIService
