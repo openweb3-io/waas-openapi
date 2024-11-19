@@ -20,6 +20,7 @@ public final class APIClient {
     private final WalletsAPI wallet;
     private final WebhookEndpointsAPI webhookEndpoint;
     private final WebhookEventsAPI webhookEvent;
+    private final SweepAPI sweep;
 
     public APIClient(final String apikey, final String privateKeyPath) throws Exception {
         this(new APIClientOptions().apiKey(apikey).secret(privateKeyPath));
@@ -140,5 +141,9 @@ public final class APIClient {
 
     public WebhookEventsAPI getEvent() {
         return webhookEvent;
+    }
+
+    public SweepAPI getSweep() {
+        return sweep;
     }
 }

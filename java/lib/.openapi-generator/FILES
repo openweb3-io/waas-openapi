@@ -31,6 +31,8 @@ docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
+docs/SweepAddressRequest.md
+docs/SweepsApi.md
 docs/Token.md
 docs/TokensApi.md
 docs/Transaction.md
@@ -70,6 +72,7 @@ src/main/java/io/openweb3/waas/internal/ServerVariable.java
 src/main/java/io/openweb3/waas/internal/StringUtil.java
 src/main/java/io/openweb3/waas/internal/api/AddressesApi.java
 src/main/java/io/openweb3/waas/internal/api/ChainsApi.java
+src/main/java/io/openweb3/waas/internal/api/SweepsApi.java
 src/main/java/io/openweb3/waas/internal/api/TokensApi.java
 src/main/java/io/openweb3/waas/internal/api/TransactionsApi.java
 src/main/java/io/openweb3/waas/internal/api/WalletsApi.java
@@ -104,6 +107,7 @@ src/main/java/io/openweb3/waas/models/EstimateFeeRequest.java
 src/main/java/io/openweb3/waas/models/EstimateFeeResponse.java
 src/main/java/io/openweb3/waas/models/EventType.java
 src/main/java/io/openweb3/waas/models/Fee.java
+src/main/java/io/openweb3/waas/models/SweepAddressRequest.java
 src/main/java/io/openweb3/waas/models/Token.java
 src/main/java/io/openweb3/waas/models/Transaction.java
 src/main/java/io/openweb3/waas/models/TransactionEndpoint.java
@@ -116,6 +120,7 @@ src/main/java/io/openweb3/waas/models/ValidateAddressesReply.java
 src/main/java/io/openweb3/waas/models/Wallet.java
 src/test/java/io/openweb3/waas/internal/api/AddressesApiTest.java
 src/test/java/io/openweb3/waas/internal/api/ChainsApiTest.java
+src/test/java/io/openweb3/waas/internal/api/SweepsApiTest.java
 src/test/java/io/openweb3/waas/internal/api/TokensApiTest.java
 src/test/java/io/openweb3/waas/internal/api/TransactionsApiTest.java
 src/test/java/io/openweb3/waas/internal/api/WalletsApiTest.java
@@ -145,6 +150,7 @@ src/test/java/io/openweb3/waas/models/EstimateFeeRequestTest.java
 src/test/java/io/openweb3/waas/models/EstimateFeeResponseTest.java
 src/test/java/io/openweb3/waas/models/EventTypeTest.java
 src/test/java/io/openweb3/waas/models/FeeTest.java
+src/test/java/io/openweb3/waas/models/SweepAddressRequestTest.java
 src/test/java/io/openweb3/waas/models/TokenTest.java
 src/test/java/io/openweb3/waas/models/TransactionEndpointTest.java
 src/test/java/io/openweb3/waas/models/TransactionTest.java

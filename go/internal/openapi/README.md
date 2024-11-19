@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *AddressesAPI* | [**V1WalletsListAddresses**](docs/AddressesAPI.md#v1walletslistaddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 *ChainsAPI* | [**V1ChainsList**](docs/ChainsAPI.md#v1chainslist) | **Get** /api/v1/chains | List all chains
 *ChainsAPI* | [**V1ChainsRetrieve**](docs/ChainsAPI.md#v1chainsretrieve) | **Get** /api/v1/chains/{chainId} | Retrieve chain
+*SweepsAPI* | [**V1SweepsAddress**](docs/SweepsAPI.md#v1sweepsaddress) | **Post** /api/v1/sweeps/address/{address} | Sweep address
 *TokensAPI* | [**V1TokensCreate**](docs/TokensAPI.md#v1tokenscreate) | **Post** /api/v1/tokens | Create token
 *TokensAPI* | [**V1TokensList**](docs/TokensAPI.md#v1tokenslist) | **Get** /api/v1/tokens | List tokens
 *TokensAPI* | [**V1TokensRetrieve**](docs/TokensAPI.md#v1tokensretrieve) | **Get** /api/v1/tokens/{tokenId} | Get Token
@@ -132,6 +133,7 @@ Class | Method | HTTP request | Description
  - [EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [EventType](docs/EventType.md)
  - [Fee](docs/Fee.md)
+ - [SweepAddressRequest](docs/SweepAddressRequest.md)
  - [Token](docs/Token.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionEndpoint](docs/TransactionEndpoint.md)

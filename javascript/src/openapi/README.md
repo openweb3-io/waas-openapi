@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
 *WaaSOpenApiDocumentation.AddressesApi* | [**v1WalletsListAddresses**](docs/AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 *WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsList**](docs/ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
 *WaaSOpenApiDocumentation.ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{chainId} | Retrieve chain
+*WaaSOpenApiDocumentation.SweepsApi* | [**v1SweepsAddress**](docs/SweepsApi.md#v1SweepsAddress) | **POST** /api/v1/sweeps/address/{address} | Sweep address
 *WaaSOpenApiDocumentation.TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
 *WaaSOpenApiDocumentation.TokensApi* | [**v1TokensList**](docs/TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
 *WaaSOpenApiDocumentation.TokensApi* | [**v1TokensRetrieve**](docs/TokensApi.md#v1TokensRetrieve) | **GET** /api/v1/tokens/{tokenId} | Get Token
@@ -186,6 +187,7 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [WaaSOpenApiDocumentation.EventType](docs/EventType.md)
  - [WaaSOpenApiDocumentation.Fee](docs/Fee.md)
+ - [WaaSOpenApiDocumentation.SweepAddressRequest](docs/SweepAddressRequest.md)
  - [WaaSOpenApiDocumentation.Token](docs/Token.md)
  - [WaaSOpenApiDocumentation.Transaction](docs/Transaction.md)
  - [WaaSOpenApiDocumentation.TransactionEndpoint](docs/TransactionEndpoint.md)

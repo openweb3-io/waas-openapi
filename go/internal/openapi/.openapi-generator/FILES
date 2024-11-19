@@ -5,6 +5,7 @@ README.md
 api/openapi.yaml
 api_addresses.go
 api_chains.go
+api_sweeps.go
 api_tokens.go
 api_transactions.go
 api_wallets.go
@@ -38,6 +39,8 @@ docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
+docs/SweepAddressRequest.md
+docs/SweepsAPI.md
 docs/Token.md
 docs/TokensAPI.md
 docs/Transaction.md
@@ -80,6 +83,7 @@ model_estimate_fee_request.go
 model_estimate_fee_response.go
 model_event_type.go
 model_fee.go
+model_sweep_address_request.go
 model_token.go
 model_transaction.go
 model_transaction_endpoint.go
@@ -93,6 +97,7 @@ model_wallet.go
 response.go
 test/api_addresses_test.go
 test/api_chains_test.go
+test/api_sweeps_test.go
 test/api_tokens_test.go
 test/api_transactions_test.go
 test/api_wallets_test.go

@@ -4,13 +4,14 @@ import (
 	"bytes"
 	"encoding/hex"
 	"fmt"
-	"github.com/openweb3-io/waas-openapi/go/internal/signature"
 	"io"
 	"log"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
+
+	"github.com/openweb3-io/waas-openapi/go/internal/signature"
 
 	"github.com/openweb3-io/waas-openapi/go/internal/openapi"
 	"github.com/openweb3-io/waas-openapi/go/internal/version"
@@ -35,6 +36,7 @@ type (
 		Wallet          *Wallet
 		WebhookEndpoint *WebhookEndpoint
 		WebhookEvent    *WebhookEvent
+		Sweep           *Sweep
 	}
 )
 
@@ -118,6 +120,9 @@ func New(options *ApiClientOptions) *ApiClient {
 			api: apiClient,
 		},
 		WebhookEvent: &WebhookEvent{
+			api: apiClient,
+		},
+		Sweep: &Sweep{
 			api: apiClient,
 		},
 	}

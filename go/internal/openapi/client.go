@@ -53,6 +53,8 @@ type APIClient struct {
 
 	ChainsAPI *ChainsAPIService
 
+	SweepsAPI *SweepsAPIService
+
 	TokensAPI *TokensAPIService
 
 	TransactionsAPI *TransactionsAPIService
@@ -82,6 +84,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AddressesAPI = (*AddressesAPIService)(&c.common)
 	c.ChainsAPI = (*ChainsAPIService)(&c.common)
+	c.SweepsAPI = (*SweepsAPIService)(&c.common)
 	c.TokensAPI = (*TokensAPIService)(&c.common)
 	c.TransactionsAPI = (*TransactionsAPIService)(&c.common)
 	c.WalletsAPI = (*WalletsAPIService)(&c.common)

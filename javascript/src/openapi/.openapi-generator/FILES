@@ -28,6 +28,8 @@ docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
+docs/SweepAddressRequest.md
+docs/SweepsApi.md
 docs/Token.md
 docs/TokensApi.md
 docs/Transaction.md
@@ -49,6 +51,7 @@ package.json
 src/ApiClient.js
 src/api/AddressesApi.js
 src/api/ChainsApi.js
+src/api/SweepsApi.js
 src/api/TokensApi.js
 src/api/TransactionsApi.js
 src/api/WalletsApi.js
@@ -79,6 +82,7 @@ src/model/EstimateFeeRequest.js
 src/model/EstimateFeeResponse.js
 src/model/EventType.js
 src/model/Fee.js
+src/model/SweepAddressRequest.js
 src/model/Token.js
 src/model/Transaction.js
 src/model/TransactionEndpoint.js
@@ -91,6 +95,7 @@ src/model/ValidateAddressesReply.js
 src/model/Wallet.js
 test/api/AddressesApi.spec.js
 test/api/ChainsApi.spec.js
+test/api/SweepsApi.spec.js
 test/api/TokensApi.spec.js
 test/api/TransactionsApi.spec.js
 test/api/WalletsApi.spec.js
@@ -120,6 +125,7 @@ test/model/EstimateFeeRequest.spec.js
 test/model/EstimateFeeResponse.spec.js
 test/model/EventType.spec.js
 test/model/Fee.spec.js
+test/model/SweepAddressRequest.spec.js
 test/model/Token.spec.js
 test/model/Transaction.spec.js
 test/model/TransactionEndpoint.spec.js

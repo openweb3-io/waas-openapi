@@ -274,6 +274,66 @@ paths:
       - Chains
       x-accepts:
       - application/json
+  /api/v1/sweeps/address/{address}:
+    post:
+      description: Sweep funds from a single address
+      operationId: v1.sweeps.address
+      parameters:
+      - description: Address that funds will be swept from
+        explode: false
+        in: path
+        name: address
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SweepAddressRequest'
+        description: Request
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SweepAddressResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      - SignatureAuth: []
+      summary: Sweep address
+      tags:
+      - Sweeps
+      x-content-type: application/json
+      x-accepts:
+      - application/json
   /api/v1/tokens:
     get:
       description: Retrieve a list of all tokens.
@@ -2273,6 +2333,35 @@ components:
       type: integer
       x-enum-varnames:
       - Fixed
+    SweepAddressRequest:
+      example:
+        min_collect_amount: min_collect_amount
+        fee_address: fee_address
+        token_id: token_id
+        max_fee_limit: max_fee_limit
+        to_address: to_address
+      properties:
+        fee_address:
+          description: address to pay the fee
+          type: string
+        max_fee_limit:
+          description: max fee limit
+          type: string
+        min_collect_amount:
+          description: min collect amount
+          type: string
+        to_address:
+          description: address to sweep to
+          type: string
+        token_id:
+          description: token id to sweep
+          type: string
+      required:
+      - fee_address
+      - to_address
+      - token_id
+    SweepAddressResponse:
+      type: object
     Token:
       example:
         icon_url: icon_url

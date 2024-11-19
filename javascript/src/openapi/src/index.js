@@ -37,6 +37,7 @@ import EstimateFeeRequest from './model/EstimateFeeRequest';
 import EstimateFeeResponse from './model/EstimateFeeResponse';
 import EventType from './model/EventType';
 import Fee from './model/Fee';
+import SweepAddressRequest from './model/SweepAddressRequest';
 import Token from './model/Token';
 import Transaction from './model/Transaction';
 import TransactionEndpoint from './model/TransactionEndpoint';
@@ -49,6 +50,7 @@ import ValidateAddressesReply from './model/ValidateAddressesReply';
 import Wallet from './model/Wallet';
 import AddressesApi from './api/AddressesApi';
 import ChainsApi from './api/ChainsApi';
+import SweepsApi from './api/SweepsApi';
 import TokensApi from './api/TokensApi';
 import TransactionsApi from './api/TransactionsApi';
 import WalletsApi from './api/WalletsApi';
@@ -239,6 +241,12 @@ export {
     Fee,
 
     /**
+     * The SweepAddressRequest model constructor.
+     * @property {module:model/SweepAddressRequest}
+     */
+    SweepAddressRequest,
+
+    /**
      * The Token model constructor.
      * @property {module:model/Token}
      */
@@ -309,6 +317,12 @@ export {
     * @property {module:api/ChainsApi}
     */
     ChainsApi,
+
+    /**
+    * The SweepsApi service constructor.
+    * @property {module:api/SweepsApi}
+    */
+    SweepsApi,
 
     /**
     * The TokensApi service constructor.

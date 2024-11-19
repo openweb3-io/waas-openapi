@@ -651,6 +651,39 @@
           "Fixed"
         ]
       },
+      "SweepAddressRequest": {
+        "properties": {
+          "fee_address": {
+            "description": "address to pay the fee",
+            "type": "string"
+          },
+          "max_fee_limit": {
+            "description": "max fee limit",
+            "type": "string"
+          },
+          "min_collect_amount": {
+            "description": "min collect amount",
+            "type": "string"
+          },
+          "to_address": {
+            "description": "address to sweep to",
+            "type": "string"
+          },
+          "token_id": {
+            "description": "token id to sweep",
+            "type": "string"
+          }
+        },
+        "required": [
+          "fee_address",
+          "to_address",
+          "token_id"
+        ],
+        "type": "object"
+      },
+      "SweepAddressResponse": {
+        "type": "object"
+      },
       "Token": {
         "properties": {
           "can_deposit": {
@@ -1362,6 +1395,98 @@
         "summary": "Retrieve chain",
         "tags": [
           "Chains"
+        ]
+      }
+    },
+    "/api/v1/sweeps/address/{address}": {
+      "post": {
+        "description": "Sweep funds from a single address",
+        "operationId": "v1.sweeps.address",
+        "parameters": [
+          {
+            "description": "Address that funds will be swept from",
+            "in": "path",
+            "name": "address",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SweepAddressRequest"
+              }
+            }
+          },
+          "description": "Request",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SweepAddressResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          },
+          {
+            "SignatureAuth": []
+          }
+        ],
+        "summary": "Sweep address",
+        "tags": [
+          "Sweeps"
         ]
       }
     },
