@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## V1SweepsAddress
 
-> map[string]interface{} V1SweepsAddress(ctx, address).SweepAddressRequest(sweepAddressRequest).Execute()
+> SweepAddressResponse V1SweepsAddress(ctx, address).SweepAddressRequest(sweepAddressRequest).Execute()
 
 Sweep address
 
@@ -39,7 +39,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SweepsAPI.V1SweepsAddress``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1SweepsAddress`: map[string]interface{}
+	// response from `V1SweepsAddress`: SweepAddressResponse
 	fmt.Fprintf(os.Stdout, "Response from `SweepsAPI.V1SweepsAddress`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**SweepAddressResponse**](SweepAddressResponse.md)
 
 ### Authorization
 

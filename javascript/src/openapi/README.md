@@ -188,6 +188,7 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.EventType](docs/EventType.md)
  - [WaaSOpenApiDocumentation.Fee](docs/Fee.md)
  - [WaaSOpenApiDocumentation.SweepAddressRequest](docs/SweepAddressRequest.md)
+ - [WaaSOpenApiDocumentation.SweepAddressResponse](docs/SweepAddressResponse.md)
  - [WaaSOpenApiDocumentation.Token](docs/Token.md)
  - [WaaSOpenApiDocumentation.Transaction](docs/Transaction.md)
  - [WaaSOpenApiDocumentation.TransactionEndpoint](docs/TransactionEndpoint.md)

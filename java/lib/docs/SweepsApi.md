@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 
 <a id="v1SweepsAddress"></a>
 # **v1SweepsAddress**
-> Object v1SweepsAddress(address, sweepAddressRequest)
+> SweepAddressResponse v1SweepsAddress(address, sweepAddressRequest)
 
 Sweep address
 
@@ -40,7 +40,7 @@ public class Example {
     String address = "address_example"; // String | Address that funds will be swept from
     SweepAddressRequest sweepAddressRequest = new SweepAddressRequest(); // SweepAddressRequest | Request
     try {
-      Object result = apiInstance.v1SweepsAddress(address, sweepAddressRequest);
+      SweepAddressResponse result = apiInstance.v1SweepsAddress(address, sweepAddressRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SweepsApi#v1SweepsAddress");
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-**Object**
+[**SweepAddressResponse**](SweepAddressResponse.md)
 
 ### Authorization
 

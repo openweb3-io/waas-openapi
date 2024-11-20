@@ -2361,7 +2361,11 @@ components:
       - to_address
       - token_id
     SweepAddressResponse:
-      type: object
+      example:
+        tx_id: tx_id
+      properties:
+        tx_id:
+          type: string
     Token:
       example:
         icon_url: icon_url

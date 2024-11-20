@@ -40,6 +40,7 @@ docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
 docs/SweepAddressRequest.md
+docs/SweepAddressResponse.md
 docs/SweepsAPI.md
 docs/Token.md
 docs/TokensAPI.md
@@ -84,6 +85,7 @@ model_estimate_fee_response.go
 model_event_type.go
 model_fee.go
 model_sweep_address_request.go
+model_sweep_address_response.go
 model_token.go
 model_transaction.go
 model_transaction_endpoint.go

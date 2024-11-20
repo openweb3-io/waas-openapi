@@ -15,6 +15,7 @@
 import ApiClient from "../ApiClient";
 import Error from '../model/Error';
 import SweepAddressRequest from '../model/SweepAddressRequest';
+import SweepAddressResponse from '../model/SweepAddressResponse';
 
 /**
 * Sweeps service.
@@ -39,7 +40,7 @@ export default class SweepsApi {
      * Callback function to receive the result of the v1SweepsAddress operation.
      * @callback module:api/SweepsApi~v1SweepsAddressCallback
      * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
+     * @param {module:model/SweepAddressResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -49,7 +50,7 @@ export default class SweepsApi {
      * @param {String} address Address that funds will be swept from
      * @param {module:model/SweepAddressRequest} sweepAddressRequest Request
      * @param {module:api/SweepsApi~v1SweepsAddressCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
+     * data is of type: {@link module:model/SweepAddressResponse}
      */
     v1SweepsAddress(address, sweepAddressRequest, callback) {
       let postBody = sweepAddressRequest;
@@ -75,7 +76,7 @@ export default class SweepsApi {
       let authNames = ['ApiKeyAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = Object;
+      let returnType = SweepAddressResponse;
       return this.apiClient.callApi(
         '/api/v1/sweeps/address/{address}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

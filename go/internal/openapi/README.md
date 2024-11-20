@@ -134,6 +134,7 @@ Class | Method | HTTP request | Description
  - [EventType](docs/EventType.md)
  - [Fee](docs/Fee.md)
  - [SweepAddressRequest](docs/SweepAddressRequest.md)
+ - [SweepAddressResponse](docs/SweepAddressResponse.md)
  - [Token](docs/Token.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionEndpoint](docs/TransactionEndpoint.md)

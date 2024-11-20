@@ -682,6 +682,11 @@
         "type": "object"
       },
       "SweepAddressResponse": {
+        "properties": {
+          "tx_id": {
+            "type": "string"
+          }
+        },
         "type": "object"
       },
       "Token": {

@@ -29,6 +29,7 @@ docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
 docs/SweepAddressRequest.md
+docs/SweepAddressResponse.md
 docs/SweepsApi.md
 docs/Token.md
 docs/TokensApi.md
@@ -83,6 +84,7 @@ src/model/EstimateFeeResponse.js
 src/model/EventType.js
 src/model/Fee.js
 src/model/SweepAddressRequest.js
+src/model/SweepAddressResponse.js
 src/model/Token.js
 src/model/Transaction.js
 src/model/TransactionEndpoint.js
@@ -126,6 +128,7 @@ test/model/EstimateFeeResponse.spec.js
 test/model/EventType.spec.js
 test/model/Fee.spec.js
 test/model/SweepAddressRequest.spec.js
+test/model/SweepAddressResponse.spec.js
 test/model/Token.spec.js
 test/model/Transaction.spec.js
 test/model/TransactionEndpoint.spec.js

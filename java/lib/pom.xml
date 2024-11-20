@@ -241,7 +241,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.2.1</version>
+                        <version>3.2.7</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -322,6 +322,12 @@
             <artifactId>junit-platform-runner</artifactId>
             <version>${junit-platform-runner.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio-jvm</artifactId>
+            <version>3.6.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <properties>

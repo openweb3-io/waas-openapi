@@ -95,6 +95,7 @@ public final class APIClient {
         this.wallet = new WalletsAPI();
         this.webhookEndpoint = new WebhookEndpointsAPI();
         this.webhookEvent = new WebhookEventsAPI();
+        this.sweep = new SweepAPI();
     }
 
     private Interceptor getProgressInterceptor() {

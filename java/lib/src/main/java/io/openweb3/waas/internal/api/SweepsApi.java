@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import io.openweb3.waas.models.Error;
 import io.openweb3.waas.models.SweepAddressRequest;
+import io.openweb3.waas.models.SweepAddressResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -157,7 +158,7 @@ public class SweepsApi {
      * Sweep funds from a single address
      * @param address Address that funds will be swept from (required)
      * @param sweepAddressRequest Request (required)
-     * @return Object
+     * @return SweepAddressResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -169,8 +170,8 @@ public class SweepsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Object v1SweepsAddress(String address, SweepAddressRequest sweepAddressRequest) throws ApiException {
-        ApiResponse<Object> localVarResp = v1SweepsAddressWithHttpInfo(address, sweepAddressRequest);
+    public SweepAddressResponse v1SweepsAddress(String address, SweepAddressRequest sweepAddressRequest) throws ApiException {
+        ApiResponse<SweepAddressResponse> localVarResp = v1SweepsAddressWithHttpInfo(address, sweepAddressRequest);
         return localVarResp.getData();
     }
 
@@ -179,7 +180,7 @@ public class SweepsApi {
      * Sweep funds from a single address
      * @param address Address that funds will be swept from (required)
      * @param sweepAddressRequest Request (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;SweepAddressResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -191,9 +192,9 @@ public class SweepsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> v1SweepsAddressWithHttpInfo(String address, SweepAddressRequest sweepAddressRequest) throws ApiException {
+    public ApiResponse<SweepAddressResponse> v1SweepsAddressWithHttpInfo(String address, SweepAddressRequest sweepAddressRequest) throws ApiException {
         okhttp3.Call localVarCall = v1SweepsAddressValidateBeforeCall(address, sweepAddressRequest, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<SweepAddressResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -215,10 +216,10 @@ public class SweepsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1SweepsAddressAsync(String address, SweepAddressRequest sweepAddressRequest, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call v1SweepsAddressAsync(String address, SweepAddressRequest sweepAddressRequest, final ApiCallback<SweepAddressResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = v1SweepsAddressValidateBeforeCall(address, sweepAddressRequest, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<SweepAddressResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

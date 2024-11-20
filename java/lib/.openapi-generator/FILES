@@ -32,6 +32,7 @@ docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
 docs/SweepAddressRequest.md
+docs/SweepAddressResponse.md
 docs/SweepsApi.md
 docs/Token.md
 docs/TokensApi.md
@@ -108,6 +109,7 @@ src/main/java/io/openweb3/waas/models/EstimateFeeResponse.java
 src/main/java/io/openweb3/waas/models/EventType.java
 src/main/java/io/openweb3/waas/models/Fee.java
 src/main/java/io/openweb3/waas/models/SweepAddressRequest.java
+src/main/java/io/openweb3/waas/models/SweepAddressResponse.java
 src/main/java/io/openweb3/waas/models/Token.java
 src/main/java/io/openweb3/waas/models/Transaction.java
 src/main/java/io/openweb3/waas/models/TransactionEndpoint.java
@@ -151,6 +153,7 @@ src/test/java/io/openweb3/waas/models/EstimateFeeResponseTest.java
 src/test/java/io/openweb3/waas/models/EventTypeTest.java
 src/test/java/io/openweb3/waas/models/FeeTest.java
 src/test/java/io/openweb3/waas/models/SweepAddressRequestTest.java
+src/test/java/io/openweb3/waas/models/SweepAddressResponseTest.java
 src/test/java/io/openweb3/waas/models/TokenTest.java
 src/test/java/io/openweb3/waas/models/TransactionEndpointTest.java
 src/test/java/io/openweb3/waas/models/TransactionTest.java

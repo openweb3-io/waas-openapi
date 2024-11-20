@@ -38,6 +38,7 @@ import EstimateFeeResponse from './model/EstimateFeeResponse';
 import EventType from './model/EventType';
 import Fee from './model/Fee';
 import SweepAddressRequest from './model/SweepAddressRequest';
+import SweepAddressResponse from './model/SweepAddressResponse';
 import Token from './model/Token';
 import Transaction from './model/Transaction';
 import TransactionEndpoint from './model/TransactionEndpoint';
@@ -245,6 +246,12 @@ export {
      * @property {module:model/SweepAddressRequest}
      */
     SweepAddressRequest,
+
+    /**
+     * The SweepAddressResponse model constructor.
+     * @property {module:model/SweepAddressResponse}
+     */
+    SweepAddressResponse,
 
     /**
      * The Token model constructor.

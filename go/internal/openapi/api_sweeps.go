@@ -36,7 +36,7 @@ func (r ApiV1SweepsAddressRequest) SweepAddressRequest(sweepAddressRequest Sweep
 	return r
 }
 
-func (r ApiV1SweepsAddressRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiV1SweepsAddressRequest) Execute() (*SweepAddressResponse, *http.Response, error) {
 	return r.ApiService.V1SweepsAddressExecute(r)
 }
 
@@ -58,13 +58,13 @@ func (a *SweepsAPIService) V1SweepsAddress(ctx context.Context, address string) 
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *SweepsAPIService) V1SweepsAddressExecute(r ApiV1SweepsAddressRequest) (map[string]interface{}, *http.Response, error) {
+//  @return SweepAddressResponse
+func (a *SweepsAPIService) V1SweepsAddressExecute(r ApiV1SweepsAddressRequest) (*SweepAddressResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *SweepAddressResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SweepsAPIService.V1SweepsAddress")

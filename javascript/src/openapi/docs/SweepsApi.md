@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## v1SweepsAddress
 
-> Object v1SweepsAddress(address, sweepAddressRequest)
+> SweepAddressResponse v1SweepsAddress(address, sweepAddressRequest)
 
 Sweep address
 
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**SweepAddressResponse**](SweepAddressResponse.md)
 
 ### Authorization
 

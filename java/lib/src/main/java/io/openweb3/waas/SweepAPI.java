@@ -1,9 +1,9 @@
 package io.openweb3.waas;
 
 import io.openweb3.waas.exceptions.ApiException;
-import io.openweb3.waas.internal.api.TokensApi;
-import io.openweb3.waas.models.CursorPageToken;
-import io.openweb3.waas.models.Token;
+import io.openweb3.waas.internal.api.SweepsApi;
+import io.openweb3.waas.models.SweepAddressRequest;
+import io.openweb3.waas.models.SweepAddressResponse;
 
 
 public final class SweepAPI {
@@ -13,9 +13,10 @@ public final class SweepAPI {
         api = new SweepsApi();
     }
 
-    public void sweepAddress(final String address, final SweepAddressRequest in) throws ApiException {
+    public SweepAddressResponse sweepAddress(final String address, final SweepAddressRequest in) throws ApiException {
         try {
-            api.v1SweepsAddress(address, in);
+            SweepAddressResponse out = api.v1SweepsAddress(address, in);
+            return out;
         } catch (io.openweb3.waas.internal.ApiException e) {
             throw Utils.WrapInternalApiException(e);
         }
