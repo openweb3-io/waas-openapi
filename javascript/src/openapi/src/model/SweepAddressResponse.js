@@ -22,10 +22,11 @@ class SweepAddressResponse {
     /**
      * Constructs a new <code>SweepAddressResponse</code>.
      * @alias module:model/SweepAddressResponse
+     * @param txId {String} 
      */
-    constructor() { 
+    constructor(txId) { 
         
-        SweepAddressResponse.initialize(this);
+        SweepAddressResponse.initialize(this, txId);
     }
 
     /**
@@ -33,7 +34,8 @@ class SweepAddressResponse {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, txId) { 
+        obj['tx_id'] = txId;
     }
 
     /**
@@ -60,6 +62,12 @@ class SweepAddressResponse {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>SweepAddressResponse</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of SweepAddressResponse.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
         if (data['tx_id'] && !(typeof data['tx_id'] === 'string' || data['tx_id'] instanceof String)) {
             throw new Error("Expected the field `tx_id` to be a primitive type in the JSON string but got " + data['tx_id']);
@@ -71,7 +79,7 @@ class SweepAddressResponse {
 
 }
 
-
+SweepAddressResponse.RequiredProperties = ["tx_id"];
 
 /**
  * @member {String} tx_id

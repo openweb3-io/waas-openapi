@@ -66,7 +66,7 @@ public class SweepAddressResponse {
    * Get txId
    * @return txId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getTxId() {
     return txId;
   }
@@ -125,6 +125,7 @@ public class SweepAddressResponse {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("tx_id");
   }
 
   /**
@@ -147,8 +148,15 @@ public class SweepAddressResponse {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SweepAddressResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : SweepAddressResponse.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("tx_id") != null && !jsonObj.get("tx_id").isJsonNull()) && !jsonObj.get("tx_id").isJsonPrimitive()) {
+      if (!jsonObj.get("tx_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tx_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tx_id").toString()));
       }
   }

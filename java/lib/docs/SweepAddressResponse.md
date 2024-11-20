@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**txId** | **String** |  |  [optional] |
+|**txId** | **String** |  |  |
 
 
 

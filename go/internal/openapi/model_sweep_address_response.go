@@ -12,6 +12,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SweepAddressResponse type satisfies the MappedNullable interface at compile time
@@ -19,15 +21,18 @@ var _ MappedNullable = &SweepAddressResponse{}
 
 // SweepAddressResponse struct for SweepAddressResponse
 type SweepAddressResponse struct {
-	TxId *string `json:"tx_id,omitempty"`
+	TxId string `json:"tx_id"`
 }
+
+type _SweepAddressResponse SweepAddressResponse
 
 // NewSweepAddressResponse instantiates a new SweepAddressResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSweepAddressResponse() *SweepAddressResponse {
+func NewSweepAddressResponse(txId string) *SweepAddressResponse {
 	this := SweepAddressResponse{}
+	this.TxId = txId
 	return &this
 }
 
@@ -39,36 +44,28 @@ func NewSweepAddressResponseWithDefaults() *SweepAddressResponse {
 	return &this
 }
 
-// GetTxId returns the TxId field value if set, zero value otherwise.
+// GetTxId returns the TxId field value
 func (o *SweepAddressResponse) GetTxId() string {
-	if o == nil || IsNil(o.TxId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TxId
+
+	return o.TxId
 }
 
-// GetTxIdOk returns a tuple with the TxId field value if set, nil otherwise
+// GetTxIdOk returns a tuple with the TxId field value
 // and a boolean to check if the value has been set.
 func (o *SweepAddressResponse) GetTxIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TxId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TxId, true
+	return &o.TxId, true
 }
 
-// HasTxId returns a boolean if a field has been set.
-func (o *SweepAddressResponse) HasTxId() bool {
-	if o != nil && !IsNil(o.TxId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTxId gets a reference to the given string and assigns it to the TxId field.
+// SetTxId sets field value
 func (o *SweepAddressResponse) SetTxId(v string) {
-	o.TxId = &v
+	o.TxId = v
 }
 
 func (o SweepAddressResponse) MarshalJSON() ([]byte, error) {
@@ -81,10 +78,45 @@ func (o SweepAddressResponse) MarshalJSON() ([]byte, error) {
 
 func (o SweepAddressResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TxId) {
-		toSerialize["tx_id"] = o.TxId
-	}
+	toSerialize["tx_id"] = o.TxId
 	return toSerialize, nil
+}
+
+func (o *SweepAddressResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"tx_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSweepAddressResponse := _SweepAddressResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSweepAddressResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SweepAddressResponse(varSweepAddressResponse)
+
+	return err
 }
 
 type NullableSweepAddressResponse struct {

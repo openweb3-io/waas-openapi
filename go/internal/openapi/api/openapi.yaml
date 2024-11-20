@@ -2302,6 +2302,8 @@ components:
       properties:
         tx_id:
           type: string
+      required:
+      - tx_id
     Token:
       example:
         icon_url: icon_url
