@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | **string** | Address | 
+**SourceType** | **string** | source type | 
 **WalletId** | **string** | Wallet ID | 
 
 ## Methods
 
 ### NewCreateTransferRequestSource
 
-`func NewCreateTransferRequestSource(address string, walletId string, ) *CreateTransferRequestSource`
+`func NewCreateTransferRequestSource(sourceType string, walletId string, ) *CreateTransferRequestSource`
 
 NewCreateTransferRequestSource instantiates a new CreateTransferRequestSource object
 This constructor will assign default values to properties that have it defined,
@@ -26,24 +26,24 @@ NewCreateTransferRequestSourceWithDefaults instantiates a new CreateTransferRequ
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAddress
+### GetSourceType
 
-`func (o *CreateTransferRequestSource) GetAddress() string`
+`func (o *CreateTransferRequestSource) GetSourceType() string`
 
-GetAddress returns the Address field if non-nil, zero value otherwise.
+GetSourceType returns the SourceType field if non-nil, zero value otherwise.
 
-### GetAddressOk
+### GetSourceTypeOk
 
-`func (o *CreateTransferRequestSource) GetAddressOk() (*string, bool)`
+`func (o *CreateTransferRequestSource) GetSourceTypeOk() (*string, bool)`
 
-GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
+GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAddress
+### SetSourceType
 
-`func (o *CreateTransferRequestSource) SetAddress(v string)`
+`func (o *CreateTransferRequestSource) SetSourceType(v string)`
 
-SetAddress sets Address field to given value.
+SetSourceType sets SourceType field to given value.
 
 
 ### GetWalletId

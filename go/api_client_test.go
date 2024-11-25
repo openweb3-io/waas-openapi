@@ -182,13 +182,14 @@ func (s *apiClientTestSuite) TestTransaction_EstimateFee() {
 	reply, err := s.client.Transaction.EstimateFee(
 		context.Background(),
 		&EstimateFeeIn{
-			Source: TransferSourceAddressAsTransferSource(&TransferSourceAddress{
-				Address:  testSourceAddress,
-				WalletId: testWalletId,
+			Source: TransferSourceAssetAsTransferSource(&TransferSourceAsset{
+				SourceType: "Asset",
+				WalletId:   testWalletId,
 			}),
 			Destination: TransferDestinationAddressAsTransferDestination(
 				&TransferDestinationAddress{
-					Address: testDestinationAddress,
+					DestinationType: "Address",
+					Address:         testDestinationAddress,
 				},
 			),
 			Amount:  testAmount,
@@ -203,17 +204,18 @@ func (s *apiClientTestSuite) TestTransaction_EstimateFee() {
 }
 
 func (s *apiClientTestSuite) TestTransaction_Transfer() {
-	source := TransferSourceAddress{
-		Address:  testSourceAddress,
-		WalletId: testWalletId,
+	source := TransferSourceAsset{
+		SourceType: "Asset",
+		WalletId:   testWalletId,
 	}
 	destination := TransferDestinationAddress{
-		Address: testDestinationAddress,
+		DestinationType: "Address",
+		Address:         testDestinationAddress,
 	}
 	reply, err := s.client.Transaction.Transfer(
 		context.Background(),
 		&TransferIn{
-			Source:      TransferSourceAddressAsTransferSource(&source),
+			Source:      TransferSourceAssetAsTransferSource(&source),
 			Destination: TransferDestinationAddressAsTransferDestination(&destination),
 			Amount:      testAmount,
 			TokenId:     testChain,

@@ -185,7 +185,7 @@ Class | Method | HTTP request | Description
  - [Transaction](docs/Transaction.md)
  - [TransactionEndpoint](docs/TransactionEndpoint.md)
  - [TransferDestinationAddress](docs/TransferDestinationAddress.md)
- - [TransferSourceAddress](docs/TransferSourceAddress.md)
+ - [TransferSourceAsset](docs/TransferSourceAsset.md)
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)

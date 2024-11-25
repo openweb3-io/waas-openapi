@@ -11,7 +11,7 @@ type (
 	CursorPageTransactionOut   = openapi.CursorPageTransaction
 	TransferSource             = openapi.CreateTransferRequestSource
 	TransferDestination        = openapi.CreateTransferRequestDestination
-	TransferSourceAddress      = openapi.TransferSourceAddress
+	TransferSourceAsset        = openapi.TransferSourceAsset
 	TransferDestinationAddress = openapi.TransferDestinationAddress
 	TransferFee                = openapi.Fee
 	TransferOut                = openapi.CreateTransferResponse
@@ -56,16 +56,12 @@ type ListTransactionOptions struct {
 	Limit     int
 }
 
-func TransferSourceAddressAsTransferSource(v *TransferSourceAddress) TransferSource {
-	return TransferSource{
-		TransferSourceAddress: v,
-	}
+func TransferSourceAssetAsTransferSource(v *TransferSourceAsset) TransferSource {
+	return openapi.TransferSourceAssetAsCreateTransferRequestSource(v)
 }
 
 func TransferDestinationAddressAsTransferDestination(v *TransferDestinationAddress) TransferDestination {
-	return TransferDestination{
-		TransferDestinationAddress: v,
-	}
+	return openapi.TransferDestinationAddressAsCreateTransferRequestDestination(v)
 }
 
 func (e *Transaction) List(ctx context.Context, options *ListTransactionOptions) (*CursorPageTransactionOut, error) {

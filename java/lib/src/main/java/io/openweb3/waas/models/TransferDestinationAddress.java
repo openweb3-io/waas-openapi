@@ -54,6 +54,10 @@ public class TransferDestinationAddress {
   @SerializedName(SERIALIZED_NAME_ADDRESS)
   private String address;
 
+  public static final String SERIALIZED_NAME_DESTINATION_TYPE = "destination_type";
+  @SerializedName(SERIALIZED_NAME_DESTINATION_TYPE)
+  private String destinationType;
+
   public TransferDestinationAddress() {
   }
 
@@ -76,6 +80,25 @@ public class TransferDestinationAddress {
   }
 
 
+  public TransferDestinationAddress destinationType(String destinationType) {
+    this.destinationType = destinationType;
+    return this;
+  }
+
+  /**
+   * destination type
+   * @return destinationType
+   */
+  @javax.annotation.Nonnull
+  public String getDestinationType() {
+    return destinationType;
+  }
+
+  public void setDestinationType(String destinationType) {
+    this.destinationType = destinationType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -86,12 +109,13 @@ public class TransferDestinationAddress {
       return false;
     }
     TransferDestinationAddress transferDestinationAddress = (TransferDestinationAddress) o;
-    return Objects.equals(this.address, transferDestinationAddress.address);
+    return Objects.equals(this.address, transferDestinationAddress.address) &&
+        Objects.equals(this.destinationType, transferDestinationAddress.destinationType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address);
+    return Objects.hash(address, destinationType);
   }
 
   @Override
@@ -99,6 +123,7 @@ public class TransferDestinationAddress {
     StringBuilder sb = new StringBuilder();
     sb.append("class TransferDestinationAddress {\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    destinationType: ").append(toIndentedString(destinationType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,10 +147,12 @@ public class TransferDestinationAddress {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("address");
+    openapiFields.add("destination_type");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("address");
+    openapiRequiredFields.add("destination_type");
   }
 
   /**
@@ -158,6 +185,9 @@ public class TransferDestinationAddress {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
+      }
+      if (!jsonObj.get("destination_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `destination_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_type").toString()));
       }
   }
 

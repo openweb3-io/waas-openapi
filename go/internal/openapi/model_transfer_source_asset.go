@@ -16,64 +16,64 @@ import (
 	"fmt"
 )
 
-// checks if the TransferSourceAddress type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TransferSourceAddress{}
+// checks if the TransferSourceAsset type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransferSourceAsset{}
 
-// TransferSourceAddress struct for TransferSourceAddress
-type TransferSourceAddress struct {
-	// Address
-	Address string `json:"address"`
+// TransferSourceAsset struct for TransferSourceAsset
+type TransferSourceAsset struct {
+	// source type
+	SourceType string `json:"source_type"`
 	// Wallet ID
 	WalletId string `json:"wallet_id"`
 }
 
-type _TransferSourceAddress TransferSourceAddress
+type _TransferSourceAsset TransferSourceAsset
 
-// NewTransferSourceAddress instantiates a new TransferSourceAddress object
+// NewTransferSourceAsset instantiates a new TransferSourceAsset object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferSourceAddress(address string, walletId string) *TransferSourceAddress {
-	this := TransferSourceAddress{}
-	this.Address = address
+func NewTransferSourceAsset(sourceType string, walletId string) *TransferSourceAsset {
+	this := TransferSourceAsset{}
+	this.SourceType = sourceType
 	this.WalletId = walletId
 	return &this
 }
 
-// NewTransferSourceAddressWithDefaults instantiates a new TransferSourceAddress object
+// NewTransferSourceAssetWithDefaults instantiates a new TransferSourceAsset object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTransferSourceAddressWithDefaults() *TransferSourceAddress {
-	this := TransferSourceAddress{}
+func NewTransferSourceAssetWithDefaults() *TransferSourceAsset {
+	this := TransferSourceAsset{}
 	return &this
 }
 
-// GetAddress returns the Address field value
-func (o *TransferSourceAddress) GetAddress() string {
+// GetSourceType returns the SourceType field value
+func (o *TransferSourceAsset) GetSourceType() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Address
+	return o.SourceType
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetSourceTypeOk returns a tuple with the SourceType field value
 // and a boolean to check if the value has been set.
-func (o *TransferSourceAddress) GetAddressOk() (*string, bool) {
+func (o *TransferSourceAsset) GetSourceTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Address, true
+	return &o.SourceType, true
 }
 
-// SetAddress sets field value
-func (o *TransferSourceAddress) SetAddress(v string) {
-	o.Address = v
+// SetSourceType sets field value
+func (o *TransferSourceAsset) SetSourceType(v string) {
+	o.SourceType = v
 }
 
 // GetWalletId returns the WalletId field value
-func (o *TransferSourceAddress) GetWalletId() string {
+func (o *TransferSourceAsset) GetWalletId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *TransferSourceAddress) GetWalletId() string {
 
 // GetWalletIdOk returns a tuple with the WalletId field value
 // and a boolean to check if the value has been set.
-func (o *TransferSourceAddress) GetWalletIdOk() (*string, bool) {
+func (o *TransferSourceAsset) GetWalletIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,11 +92,11 @@ func (o *TransferSourceAddress) GetWalletIdOk() (*string, bool) {
 }
 
 // SetWalletId sets field value
-func (o *TransferSourceAddress) SetWalletId(v string) {
+func (o *TransferSourceAsset) SetWalletId(v string) {
 	o.WalletId = v
 }
 
-func (o TransferSourceAddress) MarshalJSON() ([]byte, error) {
+func (o TransferSourceAsset) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -104,19 +104,19 @@ func (o TransferSourceAddress) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TransferSourceAddress) ToMap() (map[string]interface{}, error) {
+func (o TransferSourceAsset) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["address"] = o.Address
+	toSerialize["source_type"] = o.SourceType
 	toSerialize["wallet_id"] = o.WalletId
 	return toSerialize, nil
 }
 
-func (o *TransferSourceAddress) UnmarshalJSON(data []byte) (err error) {
+func (o *TransferSourceAsset) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"address",
+		"source_type",
 		"wallet_id",
 	}
 
@@ -134,53 +134,53 @@ func (o *TransferSourceAddress) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varTransferSourceAddress := _TransferSourceAddress{}
+	varTransferSourceAsset := _TransferSourceAsset{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransferSourceAddress)
+	err = decoder.Decode(&varTransferSourceAsset)
 
 	if err != nil {
 		return err
 	}
 
-	*o = TransferSourceAddress(varTransferSourceAddress)
+	*o = TransferSourceAsset(varTransferSourceAsset)
 
 	return err
 }
 
-type NullableTransferSourceAddress struct {
-	value *TransferSourceAddress
+type NullableTransferSourceAsset struct {
+	value *TransferSourceAsset
 	isSet bool
 }
 
-func (v NullableTransferSourceAddress) Get() *TransferSourceAddress {
+func (v NullableTransferSourceAsset) Get() *TransferSourceAsset {
 	return v.value
 }
 
-func (v *NullableTransferSourceAddress) Set(val *TransferSourceAddress) {
+func (v *NullableTransferSourceAsset) Set(val *TransferSourceAsset) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTransferSourceAddress) IsSet() bool {
+func (v NullableTransferSourceAsset) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTransferSourceAddress) Unset() {
+func (v *NullableTransferSourceAsset) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTransferSourceAddress(val *TransferSourceAddress) *NullableTransferSourceAddress {
-	return &NullableTransferSourceAddress{value: val, isSet: true}
+func NewNullableTransferSourceAsset(val *TransferSourceAsset) *NullableTransferSourceAsset {
+	return &NullableTransferSourceAsset{value: val, isSet: true}
 }
 
-func (v NullableTransferSourceAddress) MarshalJSON() ([]byte, error) {
+func (v NullableTransferSourceAsset) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTransferSourceAddress) UnmarshalJSON(src []byte) error {
+func (v *NullableTransferSourceAsset) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

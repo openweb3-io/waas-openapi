@@ -46,41 +46,41 @@ import java.util.Set;
 import io.openweb3.waas.internal.JSON;
 
 /**
- * TransferSourceAddress
+ * TransferSourceAsset
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class TransferSourceAddress {
-  public static final String SERIALIZED_NAME_ADDRESS = "address";
-  @SerializedName(SERIALIZED_NAME_ADDRESS)
-  private String address;
+public class TransferSourceAsset {
+  public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
+  @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
+  private String sourceType;
 
   public static final String SERIALIZED_NAME_WALLET_ID = "wallet_id";
   @SerializedName(SERIALIZED_NAME_WALLET_ID)
   private String walletId;
 
-  public TransferSourceAddress() {
+  public TransferSourceAsset() {
   }
 
-  public TransferSourceAddress address(String address) {
-    this.address = address;
+  public TransferSourceAsset sourceType(String sourceType) {
+    this.sourceType = sourceType;
     return this;
   }
 
   /**
-   * Address
-   * @return address
+   * source type
+   * @return sourceType
    */
   @javax.annotation.Nonnull
-  public String getAddress() {
-    return address;
+  public String getSourceType() {
+    return sourceType;
   }
 
-  public void setAddress(String address) {
-    this.address = address;
+  public void setSourceType(String sourceType) {
+    this.sourceType = sourceType;
   }
 
 
-  public TransferSourceAddress walletId(String walletId) {
+  public TransferSourceAsset walletId(String walletId) {
     this.walletId = walletId;
     return this;
   }
@@ -108,21 +108,21 @@ public class TransferSourceAddress {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TransferSourceAddress transferSourceAddress = (TransferSourceAddress) o;
-    return Objects.equals(this.address, transferSourceAddress.address) &&
-        Objects.equals(this.walletId, transferSourceAddress.walletId);
+    TransferSourceAsset transferSourceAsset = (TransferSourceAsset) o;
+    return Objects.equals(this.sourceType, transferSourceAsset.sourceType) &&
+        Objects.equals(this.walletId, transferSourceAsset.walletId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, walletId);
+    return Objects.hash(sourceType, walletId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TransferSourceAddress {\n");
-    sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("class TransferSourceAsset {\n");
+    sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    walletId: ").append(toIndentedString(walletId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -146,12 +146,12 @@ public class TransferSourceAddress {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("address");
+    openapiFields.add("source_type");
     openapiFields.add("wallet_id");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("address");
+    openapiRequiredFields.add("source_type");
     openapiRequiredFields.add("wallet_id");
   }
 
@@ -159,32 +159,32 @@ public class TransferSourceAddress {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to TransferSourceAddress
+   * @throws IOException if the JSON Element is invalid with respect to TransferSourceAsset
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!TransferSourceAddress.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in TransferSourceAddress is not found in the empty JSON string", TransferSourceAddress.openapiRequiredFields.toString()));
+        if (!TransferSourceAsset.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TransferSourceAsset is not found in the empty JSON string", TransferSourceAsset.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!TransferSourceAddress.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransferSourceAddress` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!TransferSourceAsset.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TransferSourceAsset` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : TransferSourceAddress.openapiRequiredFields) {
+      for (String requiredField : TransferSourceAsset.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("address").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
+      if (!jsonObj.get("source_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_type").toString()));
       }
       if (!jsonObj.get("wallet_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `wallet_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("wallet_id").toString()));
@@ -195,22 +195,22 @@ public class TransferSourceAddress {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!TransferSourceAddress.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'TransferSourceAddress' and its subtypes
+       if (!TransferSourceAsset.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TransferSourceAsset' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<TransferSourceAddress> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(TransferSourceAddress.class));
+       final TypeAdapter<TransferSourceAsset> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TransferSourceAsset.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<TransferSourceAddress>() {
+       return (TypeAdapter<T>) new TypeAdapter<TransferSourceAsset>() {
            @Override
-           public void write(JsonWriter out, TransferSourceAddress value) throws IOException {
+           public void write(JsonWriter out, TransferSourceAsset value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public TransferSourceAddress read(JsonReader in) throws IOException {
+           public TransferSourceAsset read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -221,18 +221,18 @@ public class TransferSourceAddress {
   }
 
   /**
-   * Create an instance of TransferSourceAddress given an JSON string
+   * Create an instance of TransferSourceAsset given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of TransferSourceAddress
-   * @throws IOException if the JSON string is invalid with respect to TransferSourceAddress
+   * @return An instance of TransferSourceAsset
+   * @throws IOException if the JSON string is invalid with respect to TransferSourceAsset
    */
-  public static TransferSourceAddress fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, TransferSourceAddress.class);
+  public static TransferSourceAsset fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TransferSourceAsset.class);
   }
 
   /**
-   * Convert an instance of TransferSourceAddress to an JSON string
+   * Convert an instance of TransferSourceAsset to an JSON string
    *
    * @return JSON string
    */

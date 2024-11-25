@@ -111,6 +111,12 @@ class CreateTransferRequestDestination {
  */
 CreateTransferRequestDestination.prototype['address'] = undefined;
 
+/**
+ * destination type
+ * @member {String} destination_type
+ */
+CreateTransferRequestDestination.prototype['destination_type'] = undefined;
+
 
 CreateTransferRequestDestination.OneOf = ["TransferDestinationAddress"];
 

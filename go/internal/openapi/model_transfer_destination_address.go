@@ -23,6 +23,8 @@ var _ MappedNullable = &TransferDestinationAddress{}
 type TransferDestinationAddress struct {
 	// Address
 	Address string `json:"address"`
+	// destination type
+	DestinationType string `json:"destination_type"`
 }
 
 type _TransferDestinationAddress TransferDestinationAddress
@@ -31,9 +33,10 @@ type _TransferDestinationAddress TransferDestinationAddress
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferDestinationAddress(address string) *TransferDestinationAddress {
+func NewTransferDestinationAddress(address string, destinationType string) *TransferDestinationAddress {
 	this := TransferDestinationAddress{}
 	this.Address = address
+	this.DestinationType = destinationType
 	return &this
 }
 
@@ -69,6 +72,30 @@ func (o *TransferDestinationAddress) SetAddress(v string) {
 	o.Address = v
 }
 
+// GetDestinationType returns the DestinationType field value
+func (o *TransferDestinationAddress) GetDestinationType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DestinationType
+}
+
+// GetDestinationTypeOk returns a tuple with the DestinationType field value
+// and a boolean to check if the value has been set.
+func (o *TransferDestinationAddress) GetDestinationTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DestinationType, true
+}
+
+// SetDestinationType sets field value
+func (o *TransferDestinationAddress) SetDestinationType(v string) {
+	o.DestinationType = v
+}
+
 func (o TransferDestinationAddress) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -80,6 +107,7 @@ func (o TransferDestinationAddress) MarshalJSON() ([]byte, error) {
 func (o TransferDestinationAddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["address"] = o.Address
+	toSerialize["destination_type"] = o.DestinationType
 	return toSerialize, nil
 }
 
@@ -89,6 +117,7 @@ func (o *TransferDestinationAddress) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"address",
+		"destination_type",
 	}
 
 	allProperties := make(map[string]interface{})

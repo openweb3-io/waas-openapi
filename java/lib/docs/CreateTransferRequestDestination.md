@@ -9,6 +9,7 @@ The ID of the wallet to which the transfer will be made
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**address** | **String** | Address |  |
+|**destinationType** | **String** | destination type |  |
 
 
 

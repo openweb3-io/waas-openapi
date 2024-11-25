@@ -1696,11 +1696,12 @@ components:
           tokenId: tokenId
           type: 6
         destination:
+          destination_type: destination_type
           address: address
         memo: memo
         source:
           wallet_id: wallet_id
-          address: address
+          source_type: source_type
       properties:
         amount:
           description: The amount to be transferred
@@ -2192,11 +2193,12 @@ components:
         token_id: token_id
         extra: extra
         destination:
+          destination_type: destination_type
           address: address
         memo: memo
         source:
           wallet_id: wallet_id
-          address: address
+          source_type: source_type
       properties:
         amount:
           description: Amount
@@ -2502,27 +2504,46 @@ components:
       - TransactionType_Withdraw
     TransferDestinationAddress:
       example:
+        destination_type: destination_type
         address: address
       properties:
         address:
           description: Address
           type: string
+        destination_type:
+          description: destination type
+          type: string
+          x-enum-varnames:
+          - TransferDestinationType_Address
       required:
       - address
-    TransferSourceAddress:
+      - destination_type
+    TransferDestinationType:
+      description: destination type
+      type: string
+      x-enum-varnames:
+      - TransferDestinationType_Address
+    TransferSourceAsset:
       example:
         wallet_id: wallet_id
-        address: address
+        source_type: source_type
       properties:
-        address:
-          description: Address
+        source_type:
+          description: source type
           type: string
+          x-enum-varnames:
+          - TransferSourceType_Asset
         wallet_id:
           description: Wallet ID
           type: string
       required:
-      - address
+      - source_type
       - wallet_id
+    TransferSourceType:
+      description: source type
+      type: string
+      x-enum-varnames:
+      - TransferSourceType_Asset
     UpdateEndpoint:
       example:
         uid: uid
@@ -2620,7 +2641,7 @@ components:
     CreateTransferRequest_source:
       description: The ID of the wallet from which the transfer will be made
       oneOf:
-      - $ref: '#/components/schemas/TransferSourceAddress'
+      - $ref: '#/components/schemas/TransferSourceAsset'
   securitySchemes:
     ApiKeyAuth:
       in: header

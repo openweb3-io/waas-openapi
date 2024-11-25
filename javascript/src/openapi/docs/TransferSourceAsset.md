@@ -1,10 +1,10 @@
-# WaaSOpenApiDocumentation.TransferSourceAddress
+# WaaSOpenApiDocumentation.TransferSourceAsset
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | **String** | Address | 
+**sourceType** | **String** | source type | 
 **walletId** | **String** | Wallet ID | 
 
 

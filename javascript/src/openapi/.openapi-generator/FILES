@@ -37,7 +37,7 @@ docs/Transaction.md
 docs/TransactionEndpoint.md
 docs/TransactionsApi.md
 docs/TransferDestinationAddress.md
-docs/TransferSourceAddress.md
+docs/TransferSourceAsset.md
 docs/UpdateEndpoint.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
@@ -89,7 +89,7 @@ src/model/Token.js
 src/model/Transaction.js
 src/model/TransactionEndpoint.js
 src/model/TransferDestinationAddress.js
-src/model/TransferSourceAddress.js
+src/model/TransferSourceAsset.js
 src/model/UpdateEndpoint.js
 src/model/UpdateTokenRequest.js
 src/model/UpdateWalletRequest.js
@@ -133,7 +133,7 @@ test/model/Token.spec.js
 test/model/Transaction.spec.js
 test/model/TransactionEndpoint.spec.js
 test/model/TransferDestinationAddress.spec.js
-test/model/TransferSourceAddress.spec.js
+test/model/TransferSourceAsset.spec.js
 test/model/UpdateEndpoint.spec.js
 test/model/UpdateTokenRequest.spec.js
 test/model/UpdateWalletRequest.spec.js

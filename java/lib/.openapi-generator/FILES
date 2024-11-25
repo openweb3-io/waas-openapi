@@ -40,7 +40,7 @@ docs/Transaction.md
 docs/TransactionEndpoint.md
 docs/TransactionsApi.md
 docs/TransferDestinationAddress.md
-docs/TransferSourceAddress.md
+docs/TransferSourceAsset.md
 docs/UpdateEndpoint.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
@@ -114,7 +114,7 @@ src/main/java/io/openweb3/waas/models/Token.java
 src/main/java/io/openweb3/waas/models/Transaction.java
 src/main/java/io/openweb3/waas/models/TransactionEndpoint.java
 src/main/java/io/openweb3/waas/models/TransferDestinationAddress.java
-src/main/java/io/openweb3/waas/models/TransferSourceAddress.java
+src/main/java/io/openweb3/waas/models/TransferSourceAsset.java
 src/main/java/io/openweb3/waas/models/UpdateEndpoint.java
 src/main/java/io/openweb3/waas/models/UpdateTokenRequest.java
 src/main/java/io/openweb3/waas/models/UpdateWalletRequest.java
@@ -158,7 +158,7 @@ src/test/java/io/openweb3/waas/models/TokenTest.java
 src/test/java/io/openweb3/waas/models/TransactionEndpointTest.java
 src/test/java/io/openweb3/waas/models/TransactionTest.java
 src/test/java/io/openweb3/waas/models/TransferDestinationAddressTest.java
-src/test/java/io/openweb3/waas/models/TransferSourceAddressTest.java
+src/test/java/io/openweb3/waas/models/TransferSourceAssetTest.java
 src/test/java/io/openweb3/waas/models/UpdateEndpointTest.java
 src/test/java/io/openweb3/waas/models/UpdateTokenRequestTest.java
 src/test/java/io/openweb3/waas/models/UpdateWalletRequestTest.java

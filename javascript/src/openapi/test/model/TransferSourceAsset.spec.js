@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new WaaSOpenApiDocumentation.TransferSourceAddress();
+    instance = new WaaSOpenApiDocumentation.TransferSourceAsset();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,22 +47,22 @@
       object[property] = value;
   }
 
-  describe('TransferSourceAddress', function() {
-    it('should create an instance of TransferSourceAddress', function() {
-      // uncomment below and update the code to test TransferSourceAddress
-      //var instance = new WaaSOpenApiDocumentation.TransferSourceAddress();
-      //expect(instance).to.be.a(WaaSOpenApiDocumentation.TransferSourceAddress);
+  describe('TransferSourceAsset', function() {
+    it('should create an instance of TransferSourceAsset', function() {
+      // uncomment below and update the code to test TransferSourceAsset
+      //var instance = new WaaSOpenApiDocumentation.TransferSourceAsset();
+      //expect(instance).to.be.a(WaaSOpenApiDocumentation.TransferSourceAsset);
     });
 
-    it('should have the property address (base name: "address")', function() {
-      // uncomment below and update the code to test the property address
-      //var instance = new WaaSOpenApiDocumentation.TransferSourceAddress();
+    it('should have the property sourceType (base name: "source_type")', function() {
+      // uncomment below and update the code to test the property sourceType
+      //var instance = new WaaSOpenApiDocumentation.TransferSourceAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property walletId (base name: "wallet_id")', function() {
       // uncomment below and update the code to test the property walletId
-      //var instance = new WaaSOpenApiDocumentation.TransferSourceAddress();
+      //var instance = new WaaSOpenApiDocumentation.TransferSourceAsset();
       //expect(instance).to.be();
     });
 

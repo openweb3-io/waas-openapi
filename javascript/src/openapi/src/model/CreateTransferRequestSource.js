@@ -12,7 +12,7 @@
  */
 
 import ApiClient from '../ApiClient';
-import TransferSourceAddress from './TransferSourceAddress';
+import TransferSourceAsset from './TransferSourceAsset';
 
 /**
  * The CreateTransferRequestSource model module.
@@ -24,7 +24,7 @@ class CreateTransferRequestSource {
      * Constructs a new <code>CreateTransferRequestSource</code>.
      * The ID of the wallet from which the transfer will be made
      * @alias module:model/CreateTransferRequestSource
-     * @param {(module:model/TransferSourceAddress)} instance The actual instance to initialize CreateTransferRequestSource.
+     * @param {(module:model/TransferSourceAsset)} instance The actual instance to initialize CreateTransferRequestSource.
      */
     constructor(instance = null) {
         if (instance === null) {
@@ -34,26 +34,26 @@ class CreateTransferRequestSource {
         var match = 0;
         var errorMessages = [];
         try {
-            if (typeof instance === "TransferSourceAddress") {
+            if (typeof instance === "TransferSourceAsset") {
                 this.actualInstance = instance;
             } else {
                 // plain JS object
                 // validate the object
-                TransferSourceAddress.validateJSON(instance); // throw an exception if no match
-                // create TransferSourceAddress from JS object
-                this.actualInstance = TransferSourceAddress.constructFromObject(instance);
+                TransferSourceAsset.validateJSON(instance); // throw an exception if no match
+                // create TransferSourceAsset from JS object
+                this.actualInstance = TransferSourceAsset.constructFromObject(instance);
             }
             match++;
         } catch(err) {
-            // json data failed to deserialize into TransferSourceAddress
-            errorMessages.push("Failed to construct TransferSourceAddress: " + err)
+            // json data failed to deserialize into TransferSourceAsset
+            errorMessages.push("Failed to construct TransferSourceAsset: " + err)
         }
 
         if (match > 1) {
-            throw new Error("Multiple matches found constructing `CreateTransferRequestSource` with oneOf schemas TransferSourceAddress. Input: " + JSON.stringify(instance));
+            throw new Error("Multiple matches found constructing `CreateTransferRequestSource` with oneOf schemas TransferSourceAsset. Input: " + JSON.stringify(instance));
         } else if (match === 0) {
             this.actualInstance = null; // clear the actual instance in case there are multiple matches
-            throw new Error("No match found constructing `CreateTransferRequestSource` with oneOf schemas TransferSourceAddress. Details: " +
+            throw new Error("No match found constructing `CreateTransferRequestSource` with oneOf schemas TransferSourceAsset. Details: " +
                             errorMessages.join(", "));
         } else { // only 1 match
             // the input is valid
@@ -72,16 +72,16 @@ class CreateTransferRequestSource {
     }
 
     /**
-     * Gets the actual instance, which can be <code>TransferSourceAddress</code>.
-     * @return {(module:model/TransferSourceAddress)} The actual instance.
+     * Gets the actual instance, which can be <code>TransferSourceAsset</code>.
+     * @return {(module:model/TransferSourceAsset)} The actual instance.
      */
     getActualInstance() {
         return this.actualInstance;
     }
 
     /**
-     * Sets the actual instance, which can be <code>TransferSourceAddress</code>.
-     * @param {(module:model/TransferSourceAddress)} obj The actual instance.
+     * Sets the actual instance, which can be <code>TransferSourceAsset</code>.
+     * @param {(module:model/TransferSourceAsset)} obj The actual instance.
      */
     setActualInstance(obj) {
        this.actualInstance = CreateTransferRequestSource.constructFromObject(obj).getActualInstance();
@@ -106,10 +106,10 @@ class CreateTransferRequestSource {
 }
 
 /**
- * Address
- * @member {String} address
+ * source type
+ * @member {String} source_type
  */
-CreateTransferRequestSource.prototype['address'] = undefined;
+CreateTransferRequestSource.prototype['source_type'] = undefined;
 
 /**
  * Wallet ID
@@ -118,7 +118,7 @@ CreateTransferRequestSource.prototype['address'] = undefined;
 CreateTransferRequestSource.prototype['wallet_id'] = undefined;
 
 
-CreateTransferRequestSource.OneOf = ["TransferSourceAddress"];
+CreateTransferRequestSource.OneOf = ["TransferSourceAsset"];
 
 export default CreateTransferRequestSource;
 

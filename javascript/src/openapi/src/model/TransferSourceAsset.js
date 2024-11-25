@@ -14,20 +14,20 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The TransferSourceAddress model module.
- * @module model/TransferSourceAddress
+ * The TransferSourceAsset model module.
+ * @module model/TransferSourceAsset
  * @version 1.0
  */
-class TransferSourceAddress {
+class TransferSourceAsset {
     /**
-     * Constructs a new <code>TransferSourceAddress</code>.
-     * @alias module:model/TransferSourceAddress
-     * @param address {String} Address
+     * Constructs a new <code>TransferSourceAsset</code>.
+     * @alias module:model/TransferSourceAsset
+     * @param sourceType {String} source type
      * @param walletId {String} Wallet ID
      */
-    constructor(address, walletId) { 
+    constructor(sourceType, walletId) { 
         
-        TransferSourceAddress.initialize(this, address, walletId);
+        TransferSourceAsset.initialize(this, sourceType, walletId);
     }
 
     /**
@@ -35,24 +35,24 @@ class TransferSourceAddress {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, address, walletId) { 
-        obj['address'] = address;
+    static initialize(obj, sourceType, walletId) { 
+        obj['source_type'] = sourceType;
         obj['wallet_id'] = walletId;
     }
 
     /**
-     * Constructs a <code>TransferSourceAddress</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>TransferSourceAsset</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/TransferSourceAddress} obj Optional instance to populate.
-     * @return {module:model/TransferSourceAddress} The populated <code>TransferSourceAddress</code> instance.
+     * @param {module:model/TransferSourceAsset} obj Optional instance to populate.
+     * @return {module:model/TransferSourceAsset} The populated <code>TransferSourceAsset</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new TransferSourceAddress();
+            obj = obj || new TransferSourceAsset();
 
-            if (data.hasOwnProperty('address')) {
-                obj['address'] = ApiClient.convertToType(data['address'], 'String');
+            if (data.hasOwnProperty('source_type')) {
+                obj['source_type'] = ApiClient.convertToType(data['source_type'], 'String');
             }
             if (data.hasOwnProperty('wallet_id')) {
                 obj['wallet_id'] = ApiClient.convertToType(data['wallet_id'], 'String');
@@ -62,20 +62,20 @@ class TransferSourceAddress {
     }
 
     /**
-     * Validates the JSON data with respect to <code>TransferSourceAddress</code>.
+     * Validates the JSON data with respect to <code>TransferSourceAsset</code>.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TransferSourceAddress</code>.
+     * @return {boolean} to indicate whether the JSON data is valid with respect to <code>TransferSourceAsset</code>.
      */
     static validateJSON(data) {
         // check to make sure all required properties are present in the JSON string
-        for (const property of TransferSourceAddress.RequiredProperties) {
+        for (const property of TransferSourceAsset.RequiredProperties) {
             if (!data.hasOwnProperty(property)) {
                 throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
             }
         }
         // ensure the json data is a string
-        if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
-            throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
+        if (data['source_type'] && !(typeof data['source_type'] === 'string' || data['source_type'] instanceof String)) {
+            throw new Error("Expected the field `source_type` to be a primitive type in the JSON string but got " + data['source_type']);
         }
         // ensure the json data is a string
         if (data['wallet_id'] && !(typeof data['wallet_id'] === 'string' || data['wallet_id'] instanceof String)) {
@@ -88,24 +88,24 @@ class TransferSourceAddress {
 
 }
 
-TransferSourceAddress.RequiredProperties = ["address", "wallet_id"];
+TransferSourceAsset.RequiredProperties = ["source_type", "wallet_id"];
 
 /**
- * Address
- * @member {String} address
+ * source type
+ * @member {String} source_type
  */
-TransferSourceAddress.prototype['address'] = undefined;
+TransferSourceAsset.prototype['source_type'] = undefined;
 
 /**
  * Wallet ID
  * @member {String} wallet_id
  */
-TransferSourceAddress.prototype['wallet_id'] = undefined;
+TransferSourceAsset.prototype['wallet_id'] = undefined;
 
 
 
 
 
 
-export default TransferSourceAddress;
+export default TransferSourceAsset;
 

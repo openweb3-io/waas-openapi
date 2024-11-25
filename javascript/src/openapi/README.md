@@ -193,7 +193,7 @@ Class | Method | HTTP request | Description
  - [WaaSOpenApiDocumentation.Transaction](docs/Transaction.md)
  - [WaaSOpenApiDocumentation.TransactionEndpoint](docs/TransactionEndpoint.md)
  - [WaaSOpenApiDocumentation.TransferDestinationAddress](docs/TransferDestinationAddress.md)
- - [WaaSOpenApiDocumentation.TransferSourceAddress](docs/TransferSourceAddress.md)
+ - [WaaSOpenApiDocumentation.TransferSourceAsset](docs/TransferSourceAsset.md)
  - [WaaSOpenApiDocumentation.UpdateEndpoint](docs/UpdateEndpoint.md)
  - [WaaSOpenApiDocumentation.UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [WaaSOpenApiDocumentation.UpdateWalletRequest](docs/UpdateWalletRequest.md)

@@ -43,7 +43,7 @@ import Token from './model/Token';
 import Transaction from './model/Transaction';
 import TransactionEndpoint from './model/TransactionEndpoint';
 import TransferDestinationAddress from './model/TransferDestinationAddress';
-import TransferSourceAddress from './model/TransferSourceAddress';
+import TransferSourceAsset from './model/TransferSourceAsset';
 import UpdateEndpoint from './model/UpdateEndpoint';
 import UpdateTokenRequest from './model/UpdateTokenRequest';
 import UpdateWalletRequest from './model/UpdateWalletRequest';
@@ -278,10 +278,10 @@ export {
     TransferDestinationAddress,
 
     /**
-     * The TransferSourceAddress model constructor.
-     * @property {module:model/TransferSourceAddress}
+     * The TransferSourceAsset model constructor.
+     * @property {module:model/TransferSourceAsset}
      */
-    TransferSourceAddress,
+    TransferSourceAsset,
 
     /**
      * The UpdateEndpoint model constructor.

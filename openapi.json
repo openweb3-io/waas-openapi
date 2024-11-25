@@ -204,7 +204,7 @@
             "description": "The ID of the wallet from which the transfer will be made",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/TransferSourceAddress"
+                "$ref": "#/components/schemas/TransferSourceAsset"
               }
             ],
             "type": "object"
@@ -576,7 +576,7 @@
             "description": "The ID of the wallet from which the transfer will be made",
             "oneOf": [
               {
-                "$ref": "#/components/schemas/TransferSourceAddress"
+                "$ref": "#/components/schemas/TransferSourceAsset"
               }
             ],
             "type": "object"
@@ -886,18 +886,28 @@
           "address": {
             "description": "Address",
             "type": "string"
+          },
+          "destination_type": {
+            "$ref": "#/components/schemas/TransferDestinationType"
           }
         },
         "required": [
-          "address"
+          "address",
+          "destination_type"
         ],
         "type": "object"
       },
-      "TransferSourceAddress": {
+      "TransferDestinationType": {
+        "description": "destination type",
+        "type": "string",
+        "x-enum-varnames": [
+          "TransferDestinationType_Address"
+        ]
+      },
+      "TransferSourceAsset": {
         "properties": {
-          "address": {
-            "description": "Address",
-            "type": "string"
+          "source_type": {
+            "$ref": "#/components/schemas/TransferSourceType"
           },
           "wallet_id": {
             "description": "Wallet ID",
@@ -905,10 +915,17 @@
           }
         },
         "required": [
-          "address",
+          "source_type",
           "wallet_id"
         ],
         "type": "object"
+      },
+      "TransferSourceType": {
+        "description": "source type",
+        "type": "string",
+        "x-enum-varnames": [
+          "TransferSourceType_Asset"
+        ]
       },
       "UpdateEndpoint": {
         "properties": {

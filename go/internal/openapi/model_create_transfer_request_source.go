@@ -18,13 +18,13 @@ import (
 
 // CreateTransferRequestSource - The ID of the wallet from which the transfer will be made
 type CreateTransferRequestSource struct {
-	TransferSourceAddress *TransferSourceAddress
+	TransferSourceAsset *TransferSourceAsset
 }
 
-// TransferSourceAddressAsCreateTransferRequestSource is a convenience function that returns TransferSourceAddress wrapped in CreateTransferRequestSource
-func TransferSourceAddressAsCreateTransferRequestSource(v *TransferSourceAddress) CreateTransferRequestSource {
+// TransferSourceAssetAsCreateTransferRequestSource is a convenience function that returns TransferSourceAsset wrapped in CreateTransferRequestSource
+func TransferSourceAssetAsCreateTransferRequestSource(v *TransferSourceAsset) CreateTransferRequestSource {
 	return CreateTransferRequestSource{
-		TransferSourceAddress: v,
+		TransferSourceAsset: v,
 	}
 }
 
@@ -33,26 +33,26 @@ func TransferSourceAddressAsCreateTransferRequestSource(v *TransferSourceAddress
 func (dst *CreateTransferRequestSource) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into TransferSourceAddress
-	err = newStrictDecoder(data).Decode(&dst.TransferSourceAddress)
+	// try to unmarshal data into TransferSourceAsset
+	err = newStrictDecoder(data).Decode(&dst.TransferSourceAsset)
 	if err == nil {
-		jsonTransferSourceAddress, _ := json.Marshal(dst.TransferSourceAddress)
-		if string(jsonTransferSourceAddress) == "{}" { // empty struct
-			dst.TransferSourceAddress = nil
+		jsonTransferSourceAsset, _ := json.Marshal(dst.TransferSourceAsset)
+		if string(jsonTransferSourceAsset) == "{}" { // empty struct
+			dst.TransferSourceAsset = nil
 		} else {
-			if err = validator.Validate(dst.TransferSourceAddress); err != nil {
-				dst.TransferSourceAddress = nil
+			if err = validator.Validate(dst.TransferSourceAsset); err != nil {
+				dst.TransferSourceAsset = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.TransferSourceAddress = nil
+		dst.TransferSourceAsset = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.TransferSourceAddress = nil
+		dst.TransferSourceAsset = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(CreateTransferRequestSource)")
 	} else if match == 1 {
@@ -64,8 +64,8 @@ func (dst *CreateTransferRequestSource) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CreateTransferRequestSource) MarshalJSON() ([]byte, error) {
-	if src.TransferSourceAddress != nil {
-		return json.Marshal(&src.TransferSourceAddress)
+	if src.TransferSourceAsset != nil {
+		return json.Marshal(&src.TransferSourceAsset)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -76,8 +76,8 @@ func (obj *CreateTransferRequestSource) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.TransferSourceAddress != nil {
-		return obj.TransferSourceAddress
+	if obj.TransferSourceAsset != nil {
+		return obj.TransferSourceAsset
 	}
 
 	// all schemas are nil

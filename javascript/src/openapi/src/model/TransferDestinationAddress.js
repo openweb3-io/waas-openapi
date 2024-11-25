@@ -23,10 +23,11 @@ class TransferDestinationAddress {
      * Constructs a new <code>TransferDestinationAddress</code>.
      * @alias module:model/TransferDestinationAddress
      * @param address {String} Address
+     * @param destinationType {String} destination type
      */
-    constructor(address) { 
+    constructor(address, destinationType) { 
         
-        TransferDestinationAddress.initialize(this, address);
+        TransferDestinationAddress.initialize(this, address, destinationType);
     }
 
     /**
@@ -34,8 +35,9 @@ class TransferDestinationAddress {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, address) { 
+    static initialize(obj, address, destinationType) { 
         obj['address'] = address;
+        obj['destination_type'] = destinationType;
     }
 
     /**
@@ -51,6 +53,9 @@ class TransferDestinationAddress {
 
             if (data.hasOwnProperty('address')) {
                 obj['address'] = ApiClient.convertToType(data['address'], 'String');
+            }
+            if (data.hasOwnProperty('destination_type')) {
+                obj['destination_type'] = ApiClient.convertToType(data['destination_type'], 'String');
             }
         }
         return obj;
@@ -72,6 +77,10 @@ class TransferDestinationAddress {
         if (data['address'] && !(typeof data['address'] === 'string' || data['address'] instanceof String)) {
             throw new Error("Expected the field `address` to be a primitive type in the JSON string but got " + data['address']);
         }
+        // ensure the json data is a string
+        if (data['destination_type'] && !(typeof data['destination_type'] === 'string' || data['destination_type'] instanceof String)) {
+            throw new Error("Expected the field `destination_type` to be a primitive type in the JSON string but got " + data['destination_type']);
+        }
 
         return true;
     }
@@ -79,13 +88,19 @@ class TransferDestinationAddress {
 
 }
 
-TransferDestinationAddress.RequiredProperties = ["address"];
+TransferDestinationAddress.RequiredProperties = ["address", "destination_type"];
 
 /**
  * Address
  * @member {String} address
  */
 TransferDestinationAddress.prototype['address'] = undefined;
+
+/**
+ * destination type
+ * @member {String} destination_type
+ */
+TransferDestinationAddress.prototype['destination_type'] = undefined;
 
 
 

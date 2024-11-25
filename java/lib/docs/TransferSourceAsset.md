@@ -1,8 +1,7 @@
 
 
-# CreateTransferRequestSource
+# TransferSourceAsset
 
-The ID of the wallet from which the transfer will be made
 
 ## Properties
 

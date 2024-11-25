@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property destinationType (base name: "destination_type")', function() {
+      // uncomment below and update the code to test the property destinationType
+      //var instance = new WaaSOpenApiDocumentation.TransferDestinationAddress();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));
