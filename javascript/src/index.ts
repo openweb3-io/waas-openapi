@@ -4,7 +4,6 @@ import {
   createConfiguration,
   AddressesApi,
   ValidateAddressesReply,
-
   ChainsApi,
   SweepsApi,
   TokensApi,
@@ -12,7 +11,6 @@ import {
   WalletsApi,
   WebhookEndpointsApi,
   WebhookEventsApi,
-
   Middleware,
   RequestContext,
   ResponseContext,
@@ -103,7 +101,7 @@ export interface WaaSOptions {
 
 export class WaaS {
   public readonly _configuration: Configuration;
-  public readonly Addresses: Addresses; 
+  public readonly Addresses: Addresses;
   public readonly Chains: Chains;
   public readonly Sweeps: Sweeps;
   public readonly Tokens: Tokens;
@@ -166,15 +164,24 @@ class Addresses {
     return await this.api.v1AddressesList({ ...options });
   }
 
-  public async listByWallet(walletId: string, options?: ListAddressesByWalletOptions): Promise<CursorPageAddress> {
+  public async listByWallet(
+    walletId: string,
+    options?: ListAddressesByWalletOptions
+  ): Promise<CursorPageAddress> {
     return await this.api.v1WalletsListAddresses({ walletId, ...options });
   }
 
-  public async validateAddresses(chainId: string, addresses: string[]): Promise<ValidateAddressesReply> {
+  public async validateAddresses(
+    chainId: string,
+    addresses: string[]
+  ): Promise<ValidateAddressesReply> {
     return await this.api.v1AddressesValidate({ chainId, addresses });
   }
 
-  public async create(walletId: string, createAddressRequest: CreateAddressRequest): Promise<Address> {
+  public async create(
+    walletId: string,
+    createAddressRequest: CreateAddressRequest
+  ): Promise<Address> {
     return await this.api.v1WalletsCreateAddress({ walletId, createAddressRequest });
   }
 
@@ -206,10 +213,13 @@ class Sweeps {
 
   public constructor(config: Configuration) {
     this.api = new SweepsApi(config);
-  } 
+  }
 
   // sweep address
-  public async sweepAddress(address: string, sweepAddressRequest: SweepAddressRequest): Promise<SweepAddressResponse> {
+  public async sweepAddress(
+    address: string,
+    sweepAddressRequest: SweepAddressRequest
+  ): Promise<SweepAddressResponse> {
     return await this.api.v1SweepsAddress({ address, sweepAddressRequest });
   }
 }
@@ -234,10 +244,13 @@ class Tokens {
   // retrieve token
   public async retrieve(tokenId: string): Promise<Token> {
     return await this.api.v1TokensRetrieve({ tokenId });
-  } 
+  }
 
   // update token
-  public async update(tokenId: string, updateTokenRequest: UpdateTokenRequest): Promise<Token> {
+  public async update(
+    tokenId: string,
+    updateTokenRequest: UpdateTokenRequest
+  ): Promise<Token> {
     return await this.api.v1TokensUpdate({ tokenId, updateTokenRequest });
   }
 }
@@ -265,12 +278,16 @@ class Transactions {
   }
 
   // estimate fee
-  public async estimateFee(estimateFeeRequest: EstimateFeeRequest): Promise<EstimateFeeResponse> {
+  public async estimateFee(
+    estimateFeeRequest: EstimateFeeRequest
+  ): Promise<EstimateFeeResponse> {
     return await this.api.v1TransactionsEstimateFee({ estimateFeeRequest });
   }
 
   // transfer token
-  public async transferToken(createTransferRequest: CreateTransferRequest): Promise<CreateTransferResponse> {
+  public async transferToken(
+    createTransferRequest: CreateTransferRequest
+  ): Promise<CreateTransferResponse> {
     return await this.api.v1TransactionsTransfer({ createTransferRequest });
   }
 
@@ -280,11 +297,12 @@ class Transactions {
   }
 
   // sign message
-  public async signMessage(signMessageRequest: SignMessageRequest): Promise<SignMessageResponse> {
+  public async signMessage(
+    signMessageRequest: SignMessageRequest
+  ): Promise<SignMessageResponse> {
     return await this.api.v1TransactionsSignMessage({ signMessageRequest });
   }
 }
-
 
 class Wallets {
   private readonly api: WalletsApi;
@@ -314,10 +332,13 @@ class Wallets {
   }
 
   // update wallet
-  public async update(walletId: string, updateWalletRequest: UpdateWalletRequest): Promise<Wallet> {
+  public async update(
+    walletId: string,
+    updateWalletRequest: UpdateWalletRequest
+  ): Promise<Wallet> {
     return await this.api.v1WalletsUpdate({ walletId, updateWalletRequest });
   }
-} 
+}
 
 // webhook endpoints
 class WebhookEndpoints {
@@ -330,7 +351,7 @@ class WebhookEndpoints {
   // list webhook endpoints
   public async list(options?: CursorPageOptions): Promise<CursorIteratorEndpoint> {
     return await this.api.v1WebhooksEndpointList({ ...options });
-  } 
+  }
 
   // Create webhook endpoint
   public async create(createEndpoint: CreateEndpoint): Promise<Endpoint> {
@@ -348,7 +369,10 @@ class WebhookEndpoints {
   }
 
   // Update webhook endpoint
-  public async update(endpointId: string, updateEndpoint: UpdateEndpoint): Promise<Endpoint> {
+  public async update(
+    endpointId: string,
+    updateEndpoint: UpdateEndpoint
+  ): Promise<Endpoint> {
     return await this.api.v1WebhooksEndpointUpdate({ endpointId, updateEndpoint });
   }
 }

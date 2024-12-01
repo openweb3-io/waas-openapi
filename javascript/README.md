@@ -1,23 +1,23 @@
 <h1 align="center">
     <a style="text-decoration: none" href="https://pay.openweb3.io">
       <img width="120" src="" />
-      <p align="center">pay - Wallet Pay as a service</p>
+      <p align="center">WaaS - Wallet as a Service</p>
     </a>
 </h1>
 <h2 align="center">
-  <a href="https://pay.openweb3.io">Website</a> | <a href="https://docs.pay.openweb3.io">Documentation</a> | <a href="https://pay.openweb3.io/slack">Community Slack</a>
+  <a href="https://waas.openweb3.io">Website</a> | <a href="https://docs.waas.openweb3.io">Documentation</a> | <a href="https://pay.openweb3.io/slack">Community Slack</a>
 <h2>
 
-Typescript/Javascript library for interacting with the pay API and verifying pay signatures
+Typescript/Javascript library for interacting with the WaaS API and verifying WaaS signatures
 
-![GitHub tag](https://img.shields.io/github/tag/pay/WaaS.svg)
-[![NPM version](https://img.shields.io/npm/v/pay.svg)](https://www.npmjs.com/package/pay)
+![GitHub tag](https://img.shields.io/github/tag/waas/WaaS.svg)
+[![NPM version](https://img.shields.io/npm/v/waas.svg)](https://www.npmjs.com/package/waas)
 
-[![Join our slack](https://img.shields.io/badge/Slack-join%20the%20community-blue?logo=slack&style=social)](https://pay.openweb3.io/slack/)
+[![Join our slack](https://img.shields.io/badge/Slack-join%20the%20community-blue?logo=slack&style=social)](https://waas.openweb3.io/slack/)
 
 # Usage Documentation
 
-You can find general usage documentation at <https://docs.pay.openweb3.io>. For complete API documentation with code examples for each endpoint in all of our official client libraries head over to our API documentation site at <https://api.waas.openweb3.io>.
+You can find general usage documentation at <https://docs.waas.openweb3.io>. For complete API documentation with code examples for each endpoint in all of our official client libraries head over to our API documentation site at <https://api.waas.openweb3.io>.
 
 # Language Support
 
@@ -54,8 +54,8 @@ yarn add @openweb3-io/waas
 ```js
 import { WaaS } from "@openweb3-io/waas";
 
-const WaaS = new WaaS("API-KEY", "PRIVATE KEY");
-const order = await WaaS.Order.create({ currency: "ton", amount: "1000000000" });
+const waas = new WaaS("API-KEY", "PRIVATE KEY");
+const chains = await waas.chains.list({ limit: 20 });
 ```
 
 # Development
