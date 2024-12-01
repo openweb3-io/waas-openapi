@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *TransactionsAPI* | [**V1TransactionsEstimateFee**](docs/TransactionsAPI.md#v1transactionsestimatefee) | **Post** /api/v1/transactions/estimate_fee | Estimate fee
 *TransactionsAPI* | [**V1TransactionsList**](docs/TransactionsAPI.md#v1transactionslist) | **Get** /api/v1/transactions | List transactions
 *TransactionsAPI* | [**V1TransactionsRetrieve**](docs/TransactionsAPI.md#v1transactionsretrieve) | **Get** /api/v1/transactions/{transactionId} | Get transaction
+*TransactionsAPI* | [**V1TransactionsSignMessage**](docs/TransactionsAPI.md#v1transactionssignmessage) | **Post** /api/v1/transactions/sign_message | Sign message
 *TransactionsAPI* | [**V1TransactionsTransfer**](docs/TransactionsAPI.md#v1transactionstransfer) | **Post** /api/v1/transactions/transfer | Transfer token
 *WalletsAPI* | [**V1WalletsCreate**](docs/WalletsAPI.md#v1walletscreate) | **Post** /api/v1/wallets | Create wallet
 *WalletsAPI* | [**V1WalletsDelete**](docs/WalletsAPI.md#v1walletsdelete) | **Delete** /api/v1/wallets/{walletId} | Delete wallet
@@ -133,6 +134,9 @@ Class | Method | HTTP request | Description
  - [EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [EventType](docs/EventType.md)
  - [Fee](docs/Fee.md)
+ - [SignMessageRequest](docs/SignMessageRequest.md)
+ - [SignMessageRequestSource](docs/SignMessageRequestSource.md)
+ - [SignMessageResponse](docs/SignMessageResponse.md)
  - [SweepAddressRequest](docs/SweepAddressRequest.md)
  - [SweepAddressResponse](docs/SweepAddressResponse.md)
  - [Token](docs/Token.md)
@@ -140,6 +144,7 @@ Class | Method | HTTP request | Description
  - [TransactionEndpoint](docs/TransactionEndpoint.md)
  - [TransferDestinationAddress](docs/TransferDestinationAddress.md)
  - [TransferSourceAsset](docs/TransferSourceAsset.md)
+ - [TransferSourceWeb3](docs/TransferSourceWeb3.md)
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)

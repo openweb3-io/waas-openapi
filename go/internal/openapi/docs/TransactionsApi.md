@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**V1TransactionsEstimateFee**](TransactionsAPI.md#V1TransactionsEstimateFee) | **Post** /api/v1/transactions/estimate_fee | Estimate fee
 [**V1TransactionsList**](TransactionsAPI.md#V1TransactionsList) | **Get** /api/v1/transactions | List transactions
 [**V1TransactionsRetrieve**](TransactionsAPI.md#V1TransactionsRetrieve) | **Get** /api/v1/transactions/{transactionId} | Get transaction
+[**V1TransactionsSignMessage**](TransactionsAPI.md#V1TransactionsSignMessage) | **Post** /api/v1/transactions/sign_message | Sign message
 [**V1TransactionsTransfer**](TransactionsAPI.md#V1TransactionsTransfer) | **Post** /api/v1/transactions/transfer | Transfer token
 
 
@@ -220,6 +221,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1TransactionsSignMessage
+
+> SignMessageResponse V1TransactionsSignMessage(ctx).SignMessageRequest(signMessageRequest).Execute()
+
+Sign message
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID/openapi"
+)
+
+func main() {
+	signMessageRequest := *openapiclient.NewSignMessageRequest("ChainId_example", "Message_example", openapiclient.SignMessageRequest_source{TransferSourceWeb3: openapiclient.NewTransferSourceWeb3("Address_example", "SourceType_example", "WalletId_example")}) // SignMessageRequest | Request Body
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TransactionsAPI.V1TransactionsSignMessage(context.Background()).SignMessageRequest(signMessageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TransactionsAPI.V1TransactionsSignMessage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TransactionsSignMessage`: SignMessageResponse
+	fmt.Fprintf(os.Stdout, "Response from `TransactionsAPI.V1TransactionsSignMessage`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1TransactionsSignMessageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **signMessageRequest** | [**SignMessageRequest**](SignMessageRequest.md) | Request Body | 
+
+### Return type
+
+[**SignMessageResponse**](SignMessageResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

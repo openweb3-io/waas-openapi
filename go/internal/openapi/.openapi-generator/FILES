@@ -39,6 +39,9 @@ docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
+docs/SignMessageRequest.md
+docs/SignMessageRequestSource.md
+docs/SignMessageResponse.md
 docs/SweepAddressRequest.md
 docs/SweepAddressResponse.md
 docs/SweepsAPI.md
@@ -49,6 +52,7 @@ docs/TransactionEndpoint.md
 docs/TransactionsAPI.md
 docs/TransferDestinationAddress.md
 docs/TransferSourceAsset.md
+docs/TransferSourceWeb3.md
 docs/UpdateEndpoint.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
@@ -84,6 +88,9 @@ model_estimate_fee_request.go
 model_estimate_fee_response.go
 model_event_type.go
 model_fee.go
+model_sign_message_request.go
+model_sign_message_request_source.go
+model_sign_message_response.go
 model_sweep_address_request.go
 model_sweep_address_response.go
 model_token.go
@@ -91,6 +98,7 @@ model_transaction.go
 model_transaction_endpoint.go
 model_transfer_destination_address.go
 model_transfer_source_asset.go
+model_transfer_source_web3.go
 model_update_endpoint.go
 model_update_token_request.go
 model_update_wallet_request.go

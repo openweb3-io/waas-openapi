@@ -12,10 +12,14 @@ type (
 	TransferSource             = openapi.CreateTransferRequestSource
 	TransferDestination        = openapi.CreateTransferRequestDestination
 	TransferSourceAsset        = openapi.TransferSourceAsset
+	TransferSourceWeb3         = openapi.TransferSourceWeb3
 	TransferDestinationAddress = openapi.TransferDestinationAddress
 	TransferFee                = openapi.Fee
 	TransferOut                = openapi.CreateTransferResponse
 	EstimateFeeOut             = openapi.EstimateFeeResponse
+	SignMessageIn              = openapi.SignMessageRequest
+	SignMessageOut             = openapi.SignMessageResponse
+	SignMessageRequestSource   = openapi.SignMessageRequestSource
 )
 
 type Transaction struct {
@@ -58,6 +62,10 @@ type ListTransactionOptions struct {
 
 func TransferSourceAssetAsTransferSource(v *TransferSourceAsset) TransferSource {
 	return openapi.TransferSourceAssetAsCreateTransferRequestSource(v)
+}
+
+func TransferSourceWeb3AsSignMessageRequestSource(v *TransferSourceWeb3) SignMessageRequestSource {
+	return openapi.TransferSourceWeb3AsSignMessageRequestSource(v)
 }
 
 func TransferDestinationAddressAsTransferDestination(v *TransferDestinationAddress) TransferDestination {
@@ -140,6 +148,20 @@ func (e *Transaction) EstimateFee(
 		Memo:        estimateFeeIn.Memo,
 	})
 
+	out, res, err := req.Execute()
+	if err != nil {
+		return nil, wrapError(err, res)
+	}
+	return out, nil
+}
+
+func (e *Transaction) SignMessage(ctx context.Context, in *SignMessageIn) (*SignMessageOut, error) {
+	req := e.api.TransactionsAPI.V1TransactionsSignMessage(ctx)
+	req = req.SignMessageRequest(openapi.SignMessageRequest{
+		Source:  in.Source,
+		Message: in.Message,
+		ChainId: in.ChainId,
+	})
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)

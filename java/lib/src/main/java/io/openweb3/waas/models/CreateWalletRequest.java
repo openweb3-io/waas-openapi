@@ -54,6 +54,14 @@ public class CreateWalletRequest {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_SUB_TYPE = "sub_type";
+  @SerializedName(SERIALIZED_NAME_SUB_TYPE)
+  private String subType;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
   private String uid;
@@ -77,6 +85,44 @@ public class CreateWalletRequest {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public CreateWalletRequest subType(String subType) {
+    this.subType = subType;
+    return this;
+  }
+
+  /**
+   * Wallet sub type
+   * @return subType
+   */
+  @javax.annotation.Nonnull
+  public String getSubType() {
+    return subType;
+  }
+
+  public void setSubType(String subType) {
+    this.subType = subType;
+  }
+
+
+  public CreateWalletRequest type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Wallet type
+   * @return type
+   */
+  @javax.annotation.Nonnull
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -110,12 +156,14 @@ public class CreateWalletRequest {
     }
     CreateWalletRequest createWalletRequest = (CreateWalletRequest) o;
     return Objects.equals(this.name, createWalletRequest.name) &&
+        Objects.equals(this.subType, createWalletRequest.subType) &&
+        Objects.equals(this.type, createWalletRequest.type) &&
         Objects.equals(this.uid, createWalletRequest.uid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, uid);
+    return Objects.hash(name, subType, type, uid);
   }
 
   @Override
@@ -123,6 +171,8 @@ public class CreateWalletRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateWalletRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    subType: ").append(toIndentedString(subType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -147,11 +197,15 @@ public class CreateWalletRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("name");
+    openapiFields.add("sub_type");
+    openapiFields.add("type");
     openapiFields.add("uid");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("sub_type");
+    openapiRequiredFields.add("type");
   }
 
   /**
@@ -184,6 +238,12 @@ public class CreateWalletRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("sub_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sub_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sub_type").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       if ((jsonObj.get("uid") != null && !jsonObj.get("uid").isJsonNull()) && !jsonObj.get("uid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uid").toString()));

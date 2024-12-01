@@ -227,6 +227,22 @@ func (s *apiClientTestSuite) TestTransaction_Transfer() {
 	s.NotNil(reply.TransactionId)
 }
 
+func (s *apiClientTestSuite) TestTransaction_SignMessage() {
+	reply, err := s.client.Transaction.SignMessage(context.Background(), &SignMessageIn{
+		Source: TransferSourceWeb3AsSignMessageRequestSource(&TransferSourceWeb3{
+			SourceType: "Web3",
+			Address:    testSourceAddress,
+		}),
+		Message: "test",
+		ChainId: testChain,
+	})
+	if err != nil {
+		s.T().Error(err)
+	}
+
+	s.NotNil(reply.Signature)
+}
+
 func (s *apiClientTestSuite) TestWallet_1_Create() {
 	reply, err := s.client.Wallet.Create(context.Background(), &CreateWalletIn{
 		Name: uuid.NewString(),

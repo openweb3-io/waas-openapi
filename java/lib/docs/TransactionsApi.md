@@ -7,6 +7,7 @@ All URIs are relative to *http://localhost*
 | [**v1TransactionsEstimateFee**](TransactionsApi.md#v1TransactionsEstimateFee) | **POST** /api/v1/transactions/estimate_fee | Estimate fee |
 | [**v1TransactionsList**](TransactionsApi.md#v1TransactionsList) | **GET** /api/v1/transactions | List transactions |
 | [**v1TransactionsRetrieve**](TransactionsApi.md#v1TransactionsRetrieve) | **GET** /api/v1/transactions/{transactionId} | Get transaction |
+| [**v1TransactionsSignMessage**](TransactionsApi.md#v1TransactionsSignMessage) | **POST** /api/v1/transactions/sign_message | Sign message |
 | [**v1TransactionsTransfer**](TransactionsApi.md#v1TransactionsTransfer) | **POST** /api/v1/transactions/transfer | Transfer token |
 
 
@@ -232,6 +233,79 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+<a id="v1TransactionsSignMessage"></a>
+# **v1TransactionsSignMessage**
+> SignMessageResponse v1TransactionsSignMessage(signMessageRequest)
+
+Sign message
+
+Sign message
+
+### Example
+```java
+// Import classes:
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.TransactionsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    TransactionsApi apiInstance = new TransactionsApi(defaultClient);
+    SignMessageRequest signMessageRequest = new SignMessageRequest(); // SignMessageRequest | Request Body
+    try {
+      SignMessageResponse result = apiInstance.v1TransactionsSignMessage(signMessageRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TransactionsApi#v1TransactionsSignMessage");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **signMessageRequest** | [**SignMessageRequest**](SignMessageRequest.md)| Request Body | |
+
+### Return type
+
+[**SignMessageResponse**](SignMessageResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

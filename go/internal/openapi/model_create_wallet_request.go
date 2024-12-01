@@ -23,6 +23,10 @@ var _ MappedNullable = &CreateWalletRequest{}
 type CreateWalletRequest struct {
 	// Wallet name
 	Name string `json:"name"`
+	// Wallet sub type
+	SubType string `json:"sub_type"`
+	// Wallet type
+	Type string `json:"type"`
 	// Custom ID
 	Uid *string `json:"uid,omitempty"`
 }
@@ -33,9 +37,11 @@ type _CreateWalletRequest CreateWalletRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateWalletRequest(name string) *CreateWalletRequest {
+func NewCreateWalletRequest(name string, subType string, type_ string) *CreateWalletRequest {
 	this := CreateWalletRequest{}
 	this.Name = name
+	this.SubType = subType
+	this.Type = type_
 	return &this
 }
 
@@ -69,6 +75,54 @@ func (o *CreateWalletRequest) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateWalletRequest) SetName(v string) {
 	o.Name = v
+}
+
+// GetSubType returns the SubType field value
+func (o *CreateWalletRequest) GetSubType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SubType
+}
+
+// GetSubTypeOk returns a tuple with the SubType field value
+// and a boolean to check if the value has been set.
+func (o *CreateWalletRequest) GetSubTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SubType, true
+}
+
+// SetSubType sets field value
+func (o *CreateWalletRequest) SetSubType(v string) {
+	o.SubType = v
+}
+
+// GetType returns the Type field value
+func (o *CreateWalletRequest) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *CreateWalletRequest) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *CreateWalletRequest) SetType(v string) {
+	o.Type = v
 }
 
 // GetUid returns the Uid field value if set, zero value otherwise.
@@ -114,6 +168,8 @@ func (o CreateWalletRequest) MarshalJSON() ([]byte, error) {
 func (o CreateWalletRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	toSerialize["sub_type"] = o.SubType
+	toSerialize["type"] = o.Type
 	if !IsNil(o.Uid) {
 		toSerialize["uid"] = o.Uid
 	}
@@ -126,6 +182,8 @@ func (o *CreateWalletRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
+		"sub_type",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

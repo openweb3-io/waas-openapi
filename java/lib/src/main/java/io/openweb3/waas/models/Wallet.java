@@ -62,6 +62,14 @@ public class Wallet {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_SUB_TYPE = "sub_type";
+  @SerializedName(SERIALIZED_NAME_SUB_TYPE)
+  private String subType;
+
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
   private String uid;
@@ -130,6 +138,44 @@ public class Wallet {
   }
 
 
+  public Wallet subType(String subType) {
+    this.subType = subType;
+    return this;
+  }
+
+  /**
+   * Wallet sub type
+   * @return subType
+   */
+  @javax.annotation.Nonnull
+  public String getSubType() {
+    return subType;
+  }
+
+  public void setSubType(String subType) {
+    this.subType = subType;
+  }
+
+
+  public Wallet type(String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Wallet type
+   * @return type
+   */
+  @javax.annotation.Nonnull
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
   public Wallet uid(String uid) {
     this.uid = uid;
     return this;
@@ -181,13 +227,15 @@ public class Wallet {
     return Objects.equals(this.createdAt, wallet.createdAt) &&
         Objects.equals(this.id, wallet.id) &&
         Objects.equals(this.name, wallet.name) &&
+        Objects.equals(this.subType, wallet.subType) &&
+        Objects.equals(this.type, wallet.type) &&
         Objects.equals(this.uid, wallet.uid) &&
         Objects.equals(this.updatedAt, wallet.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, id, name, uid, updatedAt);
+    return Objects.hash(createdAt, id, name, subType, type, uid, updatedAt);
   }
 
   @Override
@@ -197,6 +245,8 @@ public class Wallet {
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    subType: ").append(toIndentedString(subType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
@@ -224,6 +274,8 @@ public class Wallet {
     openapiFields.add("created_at");
     openapiFields.add("id");
     openapiFields.add("name");
+    openapiFields.add("sub_type");
+    openapiFields.add("type");
     openapiFields.add("uid");
     openapiFields.add("updatedAt");
 
@@ -231,6 +283,8 @@ public class Wallet {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("name");
+    openapiRequiredFields.add("sub_type");
+    openapiRequiredFields.add("type");
     openapiRequiredFields.add("uid");
   }
 
@@ -270,6 +324,12 @@ public class Wallet {
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if (!jsonObj.get("sub_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sub_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sub_type").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       if (!jsonObj.get("uid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uid").toString()));

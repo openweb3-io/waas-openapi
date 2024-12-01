@@ -36,7 +36,7 @@ type Token struct {
 	// Max withdraw amount
 	MaxWithdrawAmount *string `json:"max_withdraw_amount,omitempty"`
 	// Extended metadata
-	Metadata map[string]string `json:"metadata,omitempty"`
+	Metadata *map[string]string `json:"metadata,omitempty"`
 	// Min deposit amount
 	MinDepositAmount *string `json:"min_deposit_amount,omitempty"`
 	// Min withdraw amount
@@ -334,14 +334,14 @@ func (o *Token) GetMetadata() map[string]string {
 		var ret map[string]string
 		return ret
 	}
-	return o.Metadata
+	return *o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Token) GetMetadataOk() (map[string]string, bool) {
+func (o *Token) GetMetadataOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return map[string]string{}, false
+		return nil, false
 	}
 	return o.Metadata, true
 }
@@ -357,7 +357,7 @@ func (o *Token) HasMetadata() bool {
 
 // SetMetadata gets a reference to the given map[string]string and assigns it to the Metadata field.
 func (o *Token) SetMetadata(v map[string]string) {
-	o.Metadata = v
+	o.Metadata = &v
 }
 
 // GetMinDepositAmount returns the MinDepositAmount field value if set, zero value otherwise.

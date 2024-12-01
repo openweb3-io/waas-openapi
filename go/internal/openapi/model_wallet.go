@@ -27,6 +27,10 @@ type Wallet struct {
 	Id string `json:"id"`
 	// Wallet name
 	Name string `json:"name"`
+	// Wallet sub type
+	SubType string `json:"sub_type"`
+	// Wallet type
+	Type string `json:"type"`
 	// External unique ID
 	Uid string `json:"uid"`
 	// Updated time
@@ -39,10 +43,12 @@ type _Wallet Wallet
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWallet(id string, name string, uid string) *Wallet {
+func NewWallet(id string, name string, subType string, type_ string, uid string) *Wallet {
 	this := Wallet{}
 	this.Id = id
 	this.Name = name
+	this.SubType = subType
+	this.Type = type_
 	this.Uid = uid
 	return &this
 }
@@ -135,6 +141,54 @@ func (o *Wallet) SetName(v string) {
 	o.Name = v
 }
 
+// GetSubType returns the SubType field value
+func (o *Wallet) GetSubType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.SubType
+}
+
+// GetSubTypeOk returns a tuple with the SubType field value
+// and a boolean to check if the value has been set.
+func (o *Wallet) GetSubTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SubType, true
+}
+
+// SetSubType sets field value
+func (o *Wallet) SetSubType(v string) {
+	o.SubType = v
+}
+
+// GetType returns the Type field value
+func (o *Wallet) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *Wallet) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *Wallet) SetType(v string) {
+	o.Type = v
+}
+
 // GetUid returns the Uid field value
 func (o *Wallet) GetUid() string {
 	if o == nil {
@@ -206,6 +260,8 @@ func (o Wallet) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
+	toSerialize["sub_type"] = o.SubType
+	toSerialize["type"] = o.Type
 	toSerialize["uid"] = o.Uid
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updatedAt"] = o.UpdatedAt
@@ -220,6 +276,8 @@ func (o *Wallet) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
+		"sub_type",
+		"type",
 		"uid",
 	}
 
