@@ -13,10 +13,10 @@ import { CreateTransferRequestDestination } from '../models/CreateTransferReques
 import { CreateTransferRequestSource } from '../models/CreateTransferRequestSource';
 import { CreateTransferResponse } from '../models/CreateTransferResponse';
 import { CreateWalletRequest } from '../models/CreateWalletRequest';
-import { CursorIteratorEndpoint } from '../models/CursorIteratorEndpoint';
-import { CursorIteratorEventType } from '../models/CursorIteratorEventType';
 import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
+import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
+import { CursorPageEventType } from '../models/CursorPageEventType';
 import { CursorPageToken } from '../models/CursorPageToken';
 import { CursorPageTransaction } from '../models/CursorPageTransaction';
 import { CursorPageWallet } from '../models/CursorPageWallet';
@@ -1009,7 +1009,7 @@ export class ObservableWebhookEndpointsApi {
      * @param [cursor]
      * @param [limit] The number of records to return default: 20
      */
-    public v1WebhooksEndpointListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorIteratorEndpoint>> {
+    public v1WebhooksEndpointListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageEndpoint>> {
         const requestContextPromise = this.requestFactory.v1WebhooksEndpointList(cursor, limit, _options);
 
         // build promise chain
@@ -1034,8 +1034,8 @@ export class ObservableWebhookEndpointsApi {
      * @param [cursor]
      * @param [limit] The number of records to return default: 20
      */
-    public v1WebhooksEndpointList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorIteratorEndpoint> {
-        return this.v1WebhooksEndpointListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorIteratorEndpoint>) => apiResponse.data));
+    public v1WebhooksEndpointList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageEndpoint> {
+        return this.v1WebhooksEndpointListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageEndpoint>) => apiResponse.data));
     }
 
     /**
@@ -1130,7 +1130,7 @@ export class ObservableWebhookEventsApi {
      * @param [cursor]
      * @param [limit] The number of records to return default: 100
      */
-    public v1WebhooksEventsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorIteratorEventType>> {
+    public v1WebhooksEventsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageEventType>> {
         const requestContextPromise = this.requestFactory.v1WebhooksEventsList(cursor, limit, _options);
 
         // build promise chain
@@ -1155,8 +1155,8 @@ export class ObservableWebhookEventsApi {
      * @param [cursor]
      * @param [limit] The number of records to return default: 100
      */
-    public v1WebhooksEventsList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorIteratorEventType> {
-        return this.v1WebhooksEventsListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorIteratorEventType>) => apiResponse.data));
+    public v1WebhooksEventsList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageEventType> {
+        return this.v1WebhooksEventsListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageEventType>) => apiResponse.data));
     }
 
 }

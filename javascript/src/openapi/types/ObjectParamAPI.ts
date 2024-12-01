@@ -12,10 +12,10 @@ import { CreateTransferRequestDestination } from '../models/CreateTransferReques
 import { CreateTransferRequestSource } from '../models/CreateTransferRequestSource';
 import { CreateTransferResponse } from '../models/CreateTransferResponse';
 import { CreateWalletRequest } from '../models/CreateWalletRequest';
-import { CursorIteratorEndpoint } from '../models/CursorIteratorEndpoint';
-import { CursorIteratorEventType } from '../models/CursorIteratorEventType';
 import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
+import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
+import { CursorPageEventType } from '../models/CursorPageEventType';
 import { CursorPageToken } from '../models/CursorPageToken';
 import { CursorPageTransaction } from '../models/CursorPageTransaction';
 import { CursorPageWallet } from '../models/CursorPageWallet';
@@ -988,7 +988,7 @@ export class ObjectWebhookEndpointsApi {
      * List webhook endpoints
      * @param param the request object
      */
-    public v1WebhooksEndpointListWithHttpInfo(param: WebhookEndpointsApiV1WebhooksEndpointListRequest = {}, options?: Configuration): Promise<HttpInfo<CursorIteratorEndpoint>> {
+    public v1WebhooksEndpointListWithHttpInfo(param: WebhookEndpointsApiV1WebhooksEndpointListRequest = {}, options?: Configuration): Promise<HttpInfo<CursorPageEndpoint>> {
         return this.api.v1WebhooksEndpointListWithHttpInfo(param.cursor, param.limit,  options).toPromise();
     }
 
@@ -997,7 +997,7 @@ export class ObjectWebhookEndpointsApi {
      * List webhook endpoints
      * @param param the request object
      */
-    public v1WebhooksEndpointList(param: WebhookEndpointsApiV1WebhooksEndpointListRequest = {}, options?: Configuration): Promise<CursorIteratorEndpoint> {
+    public v1WebhooksEndpointList(param: WebhookEndpointsApiV1WebhooksEndpointListRequest = {}, options?: Configuration): Promise<CursorPageEndpoint> {
         return this.api.v1WebhooksEndpointList(param.cursor, param.limit,  options).toPromise();
     }
 
@@ -1071,7 +1071,7 @@ export class ObjectWebhookEventsApi {
      * List webhook event types
      * @param param the request object
      */
-    public v1WebhooksEventsListWithHttpInfo(param: WebhookEventsApiV1WebhooksEventsListRequest = {}, options?: Configuration): Promise<HttpInfo<CursorIteratorEventType>> {
+    public v1WebhooksEventsListWithHttpInfo(param: WebhookEventsApiV1WebhooksEventsListRequest = {}, options?: Configuration): Promise<HttpInfo<CursorPageEventType>> {
         return this.api.v1WebhooksEventsListWithHttpInfo(param.cursor, param.limit,  options).toPromise();
     }
 
@@ -1080,7 +1080,7 @@ export class ObjectWebhookEventsApi {
      * List webhook event types
      * @param param the request object
      */
-    public v1WebhooksEventsList(param: WebhookEventsApiV1WebhooksEventsListRequest = {}, options?: Configuration): Promise<CursorIteratorEventType> {
+    public v1WebhooksEventsList(param: WebhookEventsApiV1WebhooksEventsListRequest = {}, options?: Configuration): Promise<CursorPageEventType> {
         return this.api.v1WebhooksEventsList(param.cursor, param.limit,  options).toPromise();
     }
 

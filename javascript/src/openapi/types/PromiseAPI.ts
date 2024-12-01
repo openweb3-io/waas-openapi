@@ -12,10 +12,10 @@ import { CreateTransferRequestDestination } from '../models/CreateTransferReques
 import { CreateTransferRequestSource } from '../models/CreateTransferRequestSource';
 import { CreateTransferResponse } from '../models/CreateTransferResponse';
 import { CreateWalletRequest } from '../models/CreateWalletRequest';
-import { CursorIteratorEndpoint } from '../models/CursorIteratorEndpoint';
-import { CursorIteratorEventType } from '../models/CursorIteratorEventType';
 import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
+import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
+import { CursorPageEventType } from '../models/CursorPageEventType';
 import { CursorPageToken } from '../models/CursorPageToken';
 import { CursorPageTransaction } from '../models/CursorPageTransaction';
 import { CursorPageWallet } from '../models/CursorPageWallet';
@@ -699,7 +699,7 @@ export class PromiseWebhookEndpointsApi {
      * @param [cursor]
      * @param [limit] The number of records to return default: 20
      */
-    public v1WebhooksEndpointListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorIteratorEndpoint>> {
+    public v1WebhooksEndpointListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageEndpoint>> {
         const result = this.api.v1WebhooksEndpointListWithHttpInfo(cursor, limit, _options);
         return result.toPromise();
     }
@@ -710,7 +710,7 @@ export class PromiseWebhookEndpointsApi {
      * @param [cursor]
      * @param [limit] The number of records to return default: 20
      */
-    public v1WebhooksEndpointList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorIteratorEndpoint> {
+    public v1WebhooksEndpointList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageEndpoint> {
         const result = this.api.v1WebhooksEndpointList(cursor, limit, _options);
         return result.toPromise();
     }
@@ -782,7 +782,7 @@ export class PromiseWebhookEventsApi {
      * @param [cursor]
      * @param [limit] The number of records to return default: 100
      */
-    public v1WebhooksEventsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorIteratorEventType>> {
+    public v1WebhooksEventsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageEventType>> {
         const result = this.api.v1WebhooksEventsListWithHttpInfo(cursor, limit, _options);
         return result.toPromise();
     }
@@ -793,7 +793,7 @@ export class PromiseWebhookEventsApi {
      * @param [cursor]
      * @param [limit] The number of records to return default: 100
      */
-    public v1WebhooksEventsList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorIteratorEventType> {
+    public v1WebhooksEventsList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageEventType> {
         const result = this.api.v1WebhooksEventsList(cursor, limit, _options);
         return result.toPromise();
     }

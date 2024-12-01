@@ -8,7 +8,7 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { CursorIteratorEventType } from '../models/CursorIteratorEventType';
+import { CursorPageEventType } from '../models/CursorPageEventType';
 
 /**
  * no description
@@ -70,13 +70,13 @@ export class WebhookEventsApiResponseProcessor {
      * @params response Response returned by the server for a request to v1WebhooksEventsList
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v1WebhooksEventsListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CursorIteratorEventType >> {
+     public async v1WebhooksEventsListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CursorPageEventType >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: CursorIteratorEventType = ObjectSerializer.deserialize(
+            const body: CursorPageEventType = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "CursorIteratorEventType", ""
-            ) as CursorIteratorEventType;
+                "CursorPageEventType", ""
+            ) as CursorPageEventType;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -96,10 +96,10 @@ export class WebhookEventsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: CursorIteratorEventType = ObjectSerializer.deserialize(
+            const body: CursorPageEventType = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "CursorIteratorEventType", ""
-            ) as CursorIteratorEventType;
+                "CursorPageEventType", ""
+            ) as CursorPageEventType;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

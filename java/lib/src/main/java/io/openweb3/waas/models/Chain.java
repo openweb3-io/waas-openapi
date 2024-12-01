@@ -50,6 +50,10 @@ import io.openweb3.waas.internal.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class Chain {
+  public static final String SERIALIZED_NAME_CHAIN = "chain";
+  @SerializedName(SERIALIZED_NAME_CHAIN)
+  private String chain;
+
   public static final String SERIALIZED_NAME_CONFIRM_NUM = "confirm_num";
   @SerializedName(SERIALIZED_NAME_CONFIRM_NUM)
   private Integer confirmNum;
@@ -86,6 +90,10 @@ public class Chain {
   @SerializedName(SERIALIZED_NAME_NEED_MEMO)
   private Boolean needMemo;
 
+  public static final String SERIALIZED_NAME_NETWORK = "network";
+  @SerializedName(SERIALIZED_NAME_NETWORK)
+  private String network;
+
   public static final String SERIALIZED_NAME_SYMBOL = "symbol";
   @SerializedName(SERIALIZED_NAME_SYMBOL)
   private String symbol;
@@ -96,6 +104,25 @@ public class Chain {
 
   public Chain() {
   }
+
+  public Chain chain(String chain) {
+    this.chain = chain;
+    return this;
+  }
+
+  /**
+   * Chain
+   * @return chain
+   */
+  @javax.annotation.Nullable
+  public String getChain() {
+    return chain;
+  }
+
+  public void setChain(String chain) {
+    this.chain = chain;
+  }
+
 
   public Chain confirmNum(Integer confirmNum) {
     this.confirmNum = confirmNum;
@@ -268,6 +295,25 @@ public class Chain {
   }
 
 
+  public Chain network(String network) {
+    this.network = network;
+    return this;
+  }
+
+  /**
+   * Chain network
+   * @return network
+   */
+  @javax.annotation.Nullable
+  public String getNetwork() {
+    return network;
+  }
+
+  public void setNetwork(String network) {
+    this.network = network;
+  }
+
+
   public Chain symbol(String symbol) {
     this.symbol = symbol;
     return this;
@@ -316,7 +362,8 @@ public class Chain {
       return false;
     }
     Chain chain = (Chain) o;
-    return Objects.equals(this.confirmNum, chain.confirmNum) &&
+    return Objects.equals(this.chain, chain.chain) &&
+        Objects.equals(this.confirmNum, chain.confirmNum) &&
         Objects.equals(this.createdAt, chain.createdAt) &&
         Objects.equals(this.explorerAddressUrl, chain.explorerAddressUrl) &&
         Objects.equals(this.explorerBlockUrl, chain.explorerBlockUrl) &&
@@ -325,19 +372,21 @@ public class Chain {
         Objects.equals(this.id, chain.id) &&
         Objects.equals(this.name, chain.name) &&
         Objects.equals(this.needMemo, chain.needMemo) &&
+        Objects.equals(this.network, chain.network) &&
         Objects.equals(this.symbol, chain.symbol) &&
         Objects.equals(this.updatedAt, chain.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(confirmNum, createdAt, explorerAddressUrl, explorerBlockUrl, explorerTxUrl, iconUrl, id, name, needMemo, symbol, updatedAt);
+    return Objects.hash(chain, confirmNum, createdAt, explorerAddressUrl, explorerBlockUrl, explorerTxUrl, iconUrl, id, name, needMemo, network, symbol, updatedAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Chain {\n");
+    sb.append("    chain: ").append(toIndentedString(chain)).append("\n");
     sb.append("    confirmNum: ").append(toIndentedString(confirmNum)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    explorerAddressUrl: ").append(toIndentedString(explorerAddressUrl)).append("\n");
@@ -347,6 +396,7 @@ public class Chain {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    needMemo: ").append(toIndentedString(needMemo)).append("\n");
+    sb.append("    network: ").append(toIndentedString(network)).append("\n");
     sb.append("    symbol: ").append(toIndentedString(symbol)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
@@ -371,6 +421,7 @@ public class Chain {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("chain");
     openapiFields.add("confirm_num");
     openapiFields.add("created_at");
     openapiFields.add("explorer_address_url");
@@ -380,6 +431,7 @@ public class Chain {
     openapiFields.add("id");
     openapiFields.add("name");
     openapiFields.add("need_memo");
+    openapiFields.add("network");
     openapiFields.add("symbol");
     openapiFields.add("updated_at");
 
@@ -408,6 +460,9 @@ public class Chain {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("chain") != null && !jsonObj.get("chain").isJsonNull()) && !jsonObj.get("chain").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `chain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain").toString()));
+      }
       if ((jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) && !jsonObj.get("created_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `created_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_at").toString()));
       }
@@ -428,6 +483,9 @@ public class Chain {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) && !jsonObj.get("network").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `network` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network").toString()));
       }
       if ((jsonObj.get("symbol") != null && !jsonObj.get("symbol").isJsonNull()) && !jsonObj.get("symbol").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol").toString()));

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## V1WebhooksEventsList
 
-> CursorIteratorEventType V1WebhooksEventsList(ctx).Cursor(cursor).Limit(limit).Execute()
+> CursorPageEventType V1WebhooksEventsList(ctx).Cursor(cursor).Limit(limit).Execute()
 
 List webhook event types
 
@@ -39,7 +39,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookEventsAPI.V1WebhooksEventsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1WebhooksEventsList`: CursorIteratorEventType
+	// response from `V1WebhooksEventsList`: CursorPageEventType
 	fmt.Fprintf(os.Stdout, "Response from `WebhookEventsAPI.V1WebhooksEventsList`: %v\n", resp)
 }
 ```
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CursorIteratorEventType**](CursorIteratorEventType.md)
+[**CursorPageEventType**](CursorPageEventType.md)
 
 ### Authorization
 

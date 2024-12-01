@@ -1410,7 +1410,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CursorIterator-Endpoint'
+                $ref: '#/components/schemas/CursorPage-Endpoint'
           description: OK
         "400":
           content:
@@ -1618,7 +1618,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CursorIterator-EventType'
+                $ref: '#/components/schemas/CursorPage-EventType'
           description: OK
         "400":
           content:
@@ -1700,16 +1700,21 @@ components:
       example:
         icon_url: icon_url
         symbol: symbol
-        updated_at: updated_at
+        chain: chain
         need_memo: true
-        name: name
         created_at: created_at
-        explorer_block_url: explorer_block_url
         confirm_num: 0
-        id: id
         explorer_tx_url: explorer_tx_url
+        network: network
+        updated_at: updated_at
+        name: name
+        explorer_block_url: explorer_block_url
+        id: id
         explorer_address_url: explorer_address_url
       properties:
+        chain:
+          description: Chain
+          type: string
         confirm_num:
           description: Confirmation number
           type: integer
@@ -1737,6 +1742,9 @@ components:
         need_memo:
           description: Need memo
           type: boolean
+        network:
+          description: Chain network
+          type: string
         symbol:
           description: Chain symbol
           type: string
@@ -1895,90 +1903,6 @@ components:
       - sub_type
       - type
       type: object
-    CursorIterator-Endpoint:
-      example:
-        prev_cursor: prev_cursor
-        next_cursor: next_cursor
-        has_next: true
-        has_prev: true
-        done: true
-        items:
-        - filter: filter
-          createdAt: createdAt
-          uid: uid
-          description: description
-          disabled: true
-          id: id
-          eventTypes:
-          - eventTypes
-          - eventTypes
-          url: url
-        - filter: filter
-          createdAt: createdAt
-          uid: uid
-          description: description
-          disabled: true
-          id: id
-          eventTypes:
-          - eventTypes
-          - eventTypes
-          url: url
-      properties:
-        done:
-          type: boolean
-        has_next:
-          type: boolean
-        has_prev:
-          type: boolean
-        items:
-          items:
-            $ref: '#/components/schemas/Endpoint'
-          type: array
-          uniqueItems: false
-        next_cursor:
-          type: string
-        prev_cursor:
-          type: string
-      required:
-      - done
-      - has_next
-      - has_prev
-      - items
-      type: object
-    CursorIterator-EventType:
-      example:
-        prev_cursor: prev_cursor
-        next_cursor: next_cursor
-        has_next: true
-        has_prev: true
-        done: true
-        items:
-        - name: name
-          description: description
-        - name: name
-          description: description
-      properties:
-        done:
-          type: boolean
-        has_next:
-          type: boolean
-        has_prev:
-          type: boolean
-        items:
-          items:
-            $ref: '#/components/schemas/EventType'
-          type: array
-          uniqueItems: false
-        next_cursor:
-          type: string
-        prev_cursor:
-          type: string
-      required:
-      - done
-      - has_next
-      - has_prev
-      - items
-      type: object
     CursorPage-Address:
       example:
         prev_cursor: prev_cursor
@@ -2037,25 +1961,29 @@ components:
         items:
         - icon_url: icon_url
           symbol: symbol
-          updated_at: updated_at
+          chain: chain
           need_memo: true
-          name: name
           created_at: created_at
-          explorer_block_url: explorer_block_url
           confirm_num: 0
-          id: id
           explorer_tx_url: explorer_tx_url
+          network: network
+          updated_at: updated_at
+          name: name
+          explorer_block_url: explorer_block_url
+          id: id
           explorer_address_url: explorer_address_url
         - icon_url: icon_url
           symbol: symbol
-          updated_at: updated_at
+          chain: chain
           need_memo: true
-          name: name
           created_at: created_at
-          explorer_block_url: explorer_block_url
           confirm_num: 0
-          id: id
           explorer_tx_url: explorer_tx_url
+          network: network
+          updated_at: updated_at
+          name: name
+          explorer_block_url: explorer_block_url
+          id: id
           explorer_address_url: explorer_address_url
       properties:
         has_next:
@@ -2065,6 +1993,90 @@ components:
         items:
           items:
             $ref: '#/components/schemas/Chain'
+          type: array
+          uniqueItems: false
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+        total:
+          type: integer
+      required:
+      - has_next
+      - has_prev
+      - items
+      - total
+      type: object
+    CursorPage-Endpoint:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        total: 0
+        has_next: true
+        has_prev: true
+        items:
+        - filter: filter
+          createdAt: createdAt
+          uid: uid
+          description: description
+          disabled: true
+          id: id
+          eventTypes:
+          - eventTypes
+          - eventTypes
+          url: url
+        - filter: filter
+          createdAt: createdAt
+          uid: uid
+          description: description
+          disabled: true
+          id: id
+          eventTypes:
+          - eventTypes
+          - eventTypes
+          url: url
+      properties:
+        has_next:
+          type: boolean
+        has_prev:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/Endpoint'
+          type: array
+          uniqueItems: false
+        next_cursor:
+          type: string
+        prev_cursor:
+          type: string
+        total:
+          type: integer
+      required:
+      - has_next
+      - has_prev
+      - items
+      - total
+      type: object
+    CursorPage-EventType:
+      example:
+        prev_cursor: prev_cursor
+        next_cursor: next_cursor
+        total: 0
+        has_next: true
+        has_prev: true
+        items:
+        - name: name
+          description: description
+        - name: name
+          description: description
+      properties:
+        has_next:
+          type: boolean
+        has_prev:
+          type: boolean
+        items:
+          items:
+            $ref: '#/components/schemas/EventType'
           type: array
           uniqueItems: false
         next_cursor:

@@ -9,10 +9,10 @@ export * from '../models/CreateTransferRequestDestination';
 export * from '../models/CreateTransferRequestSource';
 export * from '../models/CreateTransferResponse';
 export * from '../models/CreateWalletRequest';
-export * from '../models/CursorIteratorEndpoint';
-export * from '../models/CursorIteratorEventType';
 export * from '../models/CursorPageAddress';
 export * from '../models/CursorPageChain';
+export * from '../models/CursorPageEndpoint';
+export * from '../models/CursorPageEventType';
 export * from '../models/CursorPageToken';
 export * from '../models/CursorPageTransaction';
 export * from '../models/CursorPageWallet';
@@ -50,10 +50,10 @@ import { CreateTransferRequestDestinationClass } from '../models/CreateTransferR
 import { CreateTransferRequestSourceClass } from '../models/CreateTransferRequestSource';
 import { CreateTransferResponse } from '../models/CreateTransferResponse';
 import { CreateWalletRequest } from '../models/CreateWalletRequest';
-import { CursorIteratorEndpoint } from '../models/CursorIteratorEndpoint';
-import { CursorIteratorEventType } from '../models/CursorIteratorEventType';
 import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
+import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
+import { CursorPageEventType } from '../models/CursorPageEventType';
 import { CursorPageToken } from '../models/CursorPageToken';
 import { CursorPageTransaction } from '../models/CursorPageTransaction';
 import { CursorPageWallet } from '../models/CursorPageWallet';
@@ -108,10 +108,10 @@ let typeMap: {[index: string]: any} = {
     "CreateTransferRequestSource": CreateTransferRequestSourceClass,
     "CreateTransferResponse": CreateTransferResponse,
     "CreateWalletRequest": CreateWalletRequest,
-    "CursorIteratorEndpoint": CursorIteratorEndpoint,
-    "CursorIteratorEventType": CursorIteratorEventType,
     "CursorPageAddress": CursorPageAddress,
     "CursorPageChain": CursorPageChain,
+    "CursorPageEndpoint": CursorPageEndpoint,
+    "CursorPageEventType": CursorPageEventType,
     "CursorPageToken": CursorPageToken,
     "CursorPageTransaction": CursorPageTransaction,
     "CursorPageWallet": CursorPageWallet,

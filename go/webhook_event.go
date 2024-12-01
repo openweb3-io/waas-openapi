@@ -7,8 +7,8 @@ import (
 )
 
 type (
-	EventTypeOut               = openapi.EventType
-	CursorIteratorEventTypeOut = openapi.CursorIteratorEventType
+	EventTypeOut           = openapi.EventType
+	CursorPageEventTypeOut = openapi.CursorPageEventType
 )
 
 type WebhookEvent struct {
@@ -20,7 +20,7 @@ type ListEventTypeOptions struct {
 	Limit  int
 }
 
-func (e *WebhookEvent) List(ctx context.Context, options *ListEventTypeOptions) (*CursorIteratorEventTypeOut, error) {
+func (e *WebhookEvent) List(ctx context.Context, options *ListEventTypeOptions) (*CursorPageEventTypeOut, error) {
 	req := e.api.WebhookEventsAPI.V1WebhooksEventsList(ctx)
 	if options.Cursor != nil {
 		req = req.Cursor(*options.Cursor)

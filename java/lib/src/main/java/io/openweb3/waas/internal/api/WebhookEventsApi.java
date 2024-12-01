@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.openweb3.waas.models.CursorIteratorEventType;
+import io.openweb3.waas.models.CursorPageEventType;
 import io.openweb3.waas.models.Error;
 
 import java.lang.reflect.Type;
@@ -151,7 +151,7 @@ public class WebhookEventsApi {
      * List webhook event types
      * @param cursor  (optional)
      * @param limit The number of records to return default: 100 (optional)
-     * @return CursorIteratorEventType
+     * @return CursorPageEventType
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -161,8 +161,8 @@ public class WebhookEventsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CursorIteratorEventType v1WebhooksEventsList(String cursor, Integer limit) throws ApiException {
-        ApiResponse<CursorIteratorEventType> localVarResp = v1WebhooksEventsListWithHttpInfo(cursor, limit);
+    public CursorPageEventType v1WebhooksEventsList(String cursor, Integer limit) throws ApiException {
+        ApiResponse<CursorPageEventType> localVarResp = v1WebhooksEventsListWithHttpInfo(cursor, limit);
         return localVarResp.getData();
     }
 
@@ -171,7 +171,7 @@ public class WebhookEventsApi {
      * List webhook event types
      * @param cursor  (optional)
      * @param limit The number of records to return default: 100 (optional)
-     * @return ApiResponse&lt;CursorIteratorEventType&gt;
+     * @return ApiResponse&lt;CursorPageEventType&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -181,9 +181,9 @@ public class WebhookEventsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CursorIteratorEventType> v1WebhooksEventsListWithHttpInfo(String cursor, Integer limit) throws ApiException {
+    public ApiResponse<CursorPageEventType> v1WebhooksEventsListWithHttpInfo(String cursor, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = v1WebhooksEventsListValidateBeforeCall(cursor, limit, null);
-        Type localVarReturnType = new TypeToken<CursorIteratorEventType>(){}.getType();
+        Type localVarReturnType = new TypeToken<CursorPageEventType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -203,10 +203,10 @@ public class WebhookEventsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WebhooksEventsListAsync(String cursor, Integer limit, final ApiCallback<CursorIteratorEventType> _callback) throws ApiException {
+    public okhttp3.Call v1WebhooksEventsListAsync(String cursor, Integer limit, final ApiCallback<CursorPageEventType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = v1WebhooksEventsListValidateBeforeCall(cursor, limit, _callback);
-        Type localVarReturnType = new TypeToken<CursorIteratorEventType>(){}.getType();
+        Type localVarReturnType = new TypeToken<CursorPageEventType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

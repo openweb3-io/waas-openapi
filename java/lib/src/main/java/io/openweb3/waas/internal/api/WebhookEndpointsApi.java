@@ -28,7 +28,7 @@ import java.io.IOException;
 
 
 import io.openweb3.waas.models.CreateEndpoint;
-import io.openweb3.waas.models.CursorIteratorEndpoint;
+import io.openweb3.waas.models.CursorPageEndpoint;
 import io.openweb3.waas.models.Endpoint;
 import io.openweb3.waas.models.Error;
 import io.openweb3.waas.models.UpdateEndpoint;
@@ -416,7 +416,7 @@ public class WebhookEndpointsApi {
      * List webhook endpoints
      * @param cursor  (optional)
      * @param limit The number of records to return default: 20 (optional)
-     * @return CursorIteratorEndpoint
+     * @return CursorPageEndpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -426,8 +426,8 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CursorIteratorEndpoint v1WebhooksEndpointList(String cursor, Integer limit) throws ApiException {
-        ApiResponse<CursorIteratorEndpoint> localVarResp = v1WebhooksEndpointListWithHttpInfo(cursor, limit);
+    public CursorPageEndpoint v1WebhooksEndpointList(String cursor, Integer limit) throws ApiException {
+        ApiResponse<CursorPageEndpoint> localVarResp = v1WebhooksEndpointListWithHttpInfo(cursor, limit);
         return localVarResp.getData();
     }
 
@@ -436,7 +436,7 @@ public class WebhookEndpointsApi {
      * List webhook endpoints
      * @param cursor  (optional)
      * @param limit The number of records to return default: 20 (optional)
-     * @return ApiResponse&lt;CursorIteratorEndpoint&gt;
+     * @return ApiResponse&lt;CursorPageEndpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -446,9 +446,9 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CursorIteratorEndpoint> v1WebhooksEndpointListWithHttpInfo(String cursor, Integer limit) throws ApiException {
+    public ApiResponse<CursorPageEndpoint> v1WebhooksEndpointListWithHttpInfo(String cursor, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = v1WebhooksEndpointListValidateBeforeCall(cursor, limit, null);
-        Type localVarReturnType = new TypeToken<CursorIteratorEndpoint>(){}.getType();
+        Type localVarReturnType = new TypeToken<CursorPageEndpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -468,10 +468,10 @@ public class WebhookEndpointsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WebhooksEndpointListAsync(String cursor, Integer limit, final ApiCallback<CursorIteratorEndpoint> _callback) throws ApiException {
+    public okhttp3.Call v1WebhooksEndpointListAsync(String cursor, Integer limit, final ApiCallback<CursorPageEndpoint> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = v1WebhooksEndpointListValidateBeforeCall(cursor, limit, _callback);
-        Type localVarReturnType = new TypeToken<CursorIteratorEndpoint>(){}.getType();
+        Type localVarReturnType = new TypeToken<CursorPageEndpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

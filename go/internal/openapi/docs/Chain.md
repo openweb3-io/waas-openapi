@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Chain** | Pointer to **string** | Chain | [optional] 
 **ConfirmNum** | Pointer to **int32** | Confirmation number | [optional] 
 **CreatedAt** | Pointer to **string** | Created time | [optional] 
 **ExplorerAddressUrl** | Pointer to **string** | Explorer address URL | [optional] 
@@ -13,6 +14,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Chain ID | [optional] 
 **Name** | Pointer to **string** | Chain name | [optional] 
 **NeedMemo** | Pointer to **bool** | Need memo | [optional] 
+**Network** | Pointer to **string** | Chain network | [optional] 
 **Symbol** | Pointer to **string** | Chain symbol | [optional] 
 **UpdatedAt** | Pointer to **string** | Updated time | [optional] 
 
@@ -34,6 +36,31 @@ will change when the set of required properties is changed
 NewChainWithDefaults instantiates a new Chain object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetChain
+
+`func (o *Chain) GetChain() string`
+
+GetChain returns the Chain field if non-nil, zero value otherwise.
+
+### GetChainOk
+
+`func (o *Chain) GetChainOk() (*string, bool)`
+
+GetChainOk returns a tuple with the Chain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChain
+
+`func (o *Chain) SetChain(v string)`
+
+SetChain sets Chain field to given value.
+
+### HasChain
+
+`func (o *Chain) HasChain() bool`
+
+HasChain returns a boolean if a field has been set.
 
 ### GetConfirmNum
 
@@ -259,6 +286,31 @@ SetNeedMemo sets NeedMemo field to given value.
 `func (o *Chain) HasNeedMemo() bool`
 
 HasNeedMemo returns a boolean if a field has been set.
+
+### GetNetwork
+
+`func (o *Chain) GetNetwork() string`
+
+GetNetwork returns the Network field if non-nil, zero value otherwise.
+
+### GetNetworkOk
+
+`func (o *Chain) GetNetworkOk() (*string, bool)`
+
+GetNetworkOk returns a tuple with the Network field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetwork
+
+`func (o *Chain) SetNetwork(v string)`
+
+SetNetwork sets Network field to given value.
+
+### HasNetwork
+
+`func (o *Chain) HasNetwork() bool`
+
+HasNetwork returns a boolean if a field has been set.
 
 ### GetSymbol
 

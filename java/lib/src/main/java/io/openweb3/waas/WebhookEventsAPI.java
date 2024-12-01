@@ -12,7 +12,7 @@ public final class WebhookEventsAPI {
         api = new WebhookEventsApi();
     }
 
-    public CursorIteratorEventType list(final ListWebhookEventOptions options) throws ApiException {
+    public CursorPageEventType list(final ListWebhookEventOptions options) throws ApiException {
         try {
             return api.v1WebhooksEventsList(options.getCursor(), options.getLimit());
         } catch (io.openweb3.waas.internal.ApiException e) {

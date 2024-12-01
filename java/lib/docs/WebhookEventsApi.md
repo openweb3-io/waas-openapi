@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 
 <a id="v1WebhooksEventsList"></a>
 # **v1WebhooksEventsList**
-> CursorIteratorEventType v1WebhooksEventsList(cursor, limit)
+> CursorPageEventType v1WebhooksEventsList(cursor, limit)
 
 List webhook event types
 
@@ -40,7 +40,7 @@ public class Example {
     String cursor = "cursor_example"; // String | 
     Integer limit = 56; // Integer | The number of records to return default: 100
     try {
-      CursorIteratorEventType result = apiInstance.v1WebhooksEventsList(cursor, limit);
+      CursorPageEventType result = apiInstance.v1WebhooksEventsList(cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhookEventsApi#v1WebhooksEventsList");
@@ -62,7 +62,7 @@ public class Example {
 
 ### Return type
 
-[**CursorIteratorEventType**](CursorIteratorEventType.md)
+[**CursorPageEventType**](CursorPageEventType.md)
 
 ### Authorization
 

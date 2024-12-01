@@ -7,11 +7,11 @@ import (
 )
 
 type (
-	CursorIteratorEndpointOut = openapi.CursorIteratorEndpoint
-	EndpointOut               = openapi.Endpoint
-	CreateEndpointIn          = openapi.CreateEndpoint
-	UpdateEndpointIn          = openapi.UpdateEndpoint
-	DeleteEndpointIn          = openapi.ApiV1WebhooksEndpointDeleteRequest
+	CursorPageEndpointOut = openapi.CursorPageEndpoint
+	EndpointOut           = openapi.Endpoint
+	CreateEndpointIn      = openapi.CreateEndpoint
+	UpdateEndpointIn      = openapi.UpdateEndpoint
+	DeleteEndpointIn      = openapi.ApiV1WebhooksEndpointDeleteRequest
 )
 
 type WebhookEndpoint struct {
@@ -23,7 +23,7 @@ type ListEndpointOptions struct {
 	Limit  int
 }
 
-func (e *WebhookEndpoint) List(ctx context.Context, options *ListEndpointOptions) (*CursorIteratorEndpointOut, error) {
+func (e *WebhookEndpoint) List(ctx context.Context, options *ListEndpointOptions) (*CursorPageEndpointOut, error) {
 	req := e.api.WebhookEndpointsAPI.V1WebhooksEndpointList(ctx)
 	if options.Cursor != nil {
 		req = req.Cursor(*options.Cursor)

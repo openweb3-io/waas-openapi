@@ -34,11 +34,11 @@ import {
   Wallet,
   CursorPageWallet,
   UpdateWalletRequest,
-  CursorIteratorEndpoint,
+  CursorPageEndpoint,
   Endpoint,
   CreateEndpoint,
   UpdateEndpoint,
-  CursorIteratorEventType,
+  CursorPageEventType,
   SignMessageRequest,
   SignMessageResponse,
 } from "./openapi/index";
@@ -349,7 +349,7 @@ class WebhookEndpoints {
   }
 
   // list webhook endpoints
-  public async list(options?: CursorPageOptions): Promise<CursorIteratorEndpoint> {
+  public async list(options?: CursorPageOptions): Promise<CursorPageEndpoint> {
     return await this.api.v1WebhooksEndpointList({ ...options });
   }
 
@@ -386,7 +386,7 @@ class WebhookEvents {
   }
 
   // list webhook events
-  public async list(options?: CursorPageOptions): Promise<CursorIteratorEventType> {
+  public async list(options?: CursorPageOptions): Promise<CursorPageEventType> {
     return await this.api.v1WebhooksEventsList({ ...options });
   }
 }

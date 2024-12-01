@@ -40,7 +40,7 @@ func (r ApiV1WebhooksEventsListRequest) Limit(limit int32) ApiV1WebhooksEventsLi
 	return r
 }
 
-func (r ApiV1WebhooksEventsListRequest) Execute() (*CursorIteratorEventType, *http.Response, error) {
+func (r ApiV1WebhooksEventsListRequest) Execute() (*CursorPageEventType, *http.Response, error) {
 	return r.ApiService.V1WebhooksEventsListExecute(r)
 }
 
@@ -60,13 +60,13 @@ func (a *WebhookEventsAPIService) V1WebhooksEventsList(ctx context.Context) ApiV
 }
 
 // Execute executes the request
-//  @return CursorIteratorEventType
-func (a *WebhookEventsAPIService) V1WebhooksEventsListExecute(r ApiV1WebhooksEventsListRequest) (*CursorIteratorEventType, *http.Response, error) {
+//  @return CursorPageEventType
+func (a *WebhookEventsAPIService) V1WebhooksEventsListExecute(r ApiV1WebhooksEventsListRequest) (*CursorPageEventType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CursorIteratorEventType
+		localVarReturnValue  *CursorPageEventType
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WebhookEventsAPIService.V1WebhooksEventsList")

@@ -16,68 +16,44 @@ import (
 	"fmt"
 )
 
-// checks if the CursorIteratorEndpoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CursorIteratorEndpoint{}
+// checks if the CursorPageEventType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CursorPageEventType{}
 
-// CursorIteratorEndpoint struct for CursorIteratorEndpoint
-type CursorIteratorEndpoint struct {
-	Done bool `json:"done"`
+// CursorPageEventType struct for CursorPageEventType
+type CursorPageEventType struct {
 	HasNext bool `json:"has_next"`
 	HasPrev bool `json:"has_prev"`
-	Items []Endpoint `json:"items"`
+	Items []EventType `json:"items"`
 	NextCursor *string `json:"next_cursor,omitempty"`
 	PrevCursor *string `json:"prev_cursor,omitempty"`
+	Total int32 `json:"total"`
 }
 
-type _CursorIteratorEndpoint CursorIteratorEndpoint
+type _CursorPageEventType CursorPageEventType
 
-// NewCursorIteratorEndpoint instantiates a new CursorIteratorEndpoint object
+// NewCursorPageEventType instantiates a new CursorPageEventType object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCursorIteratorEndpoint(done bool, hasNext bool, hasPrev bool, items []Endpoint) *CursorIteratorEndpoint {
-	this := CursorIteratorEndpoint{}
-	this.Done = done
+func NewCursorPageEventType(hasNext bool, hasPrev bool, items []EventType, total int32) *CursorPageEventType {
+	this := CursorPageEventType{}
 	this.HasNext = hasNext
 	this.HasPrev = hasPrev
 	this.Items = items
+	this.Total = total
 	return &this
 }
 
-// NewCursorIteratorEndpointWithDefaults instantiates a new CursorIteratorEndpoint object
+// NewCursorPageEventTypeWithDefaults instantiates a new CursorPageEventType object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCursorIteratorEndpointWithDefaults() *CursorIteratorEndpoint {
-	this := CursorIteratorEndpoint{}
+func NewCursorPageEventTypeWithDefaults() *CursorPageEventType {
+	this := CursorPageEventType{}
 	return &this
-}
-
-// GetDone returns the Done field value
-func (o *CursorIteratorEndpoint) GetDone() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Done
-}
-
-// GetDoneOk returns a tuple with the Done field value
-// and a boolean to check if the value has been set.
-func (o *CursorIteratorEndpoint) GetDoneOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Done, true
-}
-
-// SetDone sets field value
-func (o *CursorIteratorEndpoint) SetDone(v bool) {
-	o.Done = v
 }
 
 // GetHasNext returns the HasNext field value
-func (o *CursorIteratorEndpoint) GetHasNext() bool {
+func (o *CursorPageEventType) GetHasNext() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -88,7 +64,7 @@ func (o *CursorIteratorEndpoint) GetHasNext() bool {
 
 // GetHasNextOk returns a tuple with the HasNext field value
 // and a boolean to check if the value has been set.
-func (o *CursorIteratorEndpoint) GetHasNextOk() (*bool, bool) {
+func (o *CursorPageEventType) GetHasNextOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,12 +72,12 @@ func (o *CursorIteratorEndpoint) GetHasNextOk() (*bool, bool) {
 }
 
 // SetHasNext sets field value
-func (o *CursorIteratorEndpoint) SetHasNext(v bool) {
+func (o *CursorPageEventType) SetHasNext(v bool) {
 	o.HasNext = v
 }
 
 // GetHasPrev returns the HasPrev field value
-func (o *CursorIteratorEndpoint) GetHasPrev() bool {
+func (o *CursorPageEventType) GetHasPrev() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -112,7 +88,7 @@ func (o *CursorIteratorEndpoint) GetHasPrev() bool {
 
 // GetHasPrevOk returns a tuple with the HasPrev field value
 // and a boolean to check if the value has been set.
-func (o *CursorIteratorEndpoint) GetHasPrevOk() (*bool, bool) {
+func (o *CursorPageEventType) GetHasPrevOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,14 +96,14 @@ func (o *CursorIteratorEndpoint) GetHasPrevOk() (*bool, bool) {
 }
 
 // SetHasPrev sets field value
-func (o *CursorIteratorEndpoint) SetHasPrev(v bool) {
+func (o *CursorPageEventType) SetHasPrev(v bool) {
 	o.HasPrev = v
 }
 
 // GetItems returns the Items field value
-func (o *CursorIteratorEndpoint) GetItems() []Endpoint {
+func (o *CursorPageEventType) GetItems() []EventType {
 	if o == nil {
-		var ret []Endpoint
+		var ret []EventType
 		return ret
 	}
 
@@ -136,7 +112,7 @@ func (o *CursorIteratorEndpoint) GetItems() []Endpoint {
 
 // GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
-func (o *CursorIteratorEndpoint) GetItemsOk() ([]Endpoint, bool) {
+func (o *CursorPageEventType) GetItemsOk() ([]EventType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,12 +120,12 @@ func (o *CursorIteratorEndpoint) GetItemsOk() ([]Endpoint, bool) {
 }
 
 // SetItems sets field value
-func (o *CursorIteratorEndpoint) SetItems(v []Endpoint) {
+func (o *CursorPageEventType) SetItems(v []EventType) {
 	o.Items = v
 }
 
 // GetNextCursor returns the NextCursor field value if set, zero value otherwise.
-func (o *CursorIteratorEndpoint) GetNextCursor() string {
+func (o *CursorPageEventType) GetNextCursor() string {
 	if o == nil || IsNil(o.NextCursor) {
 		var ret string
 		return ret
@@ -159,7 +135,7 @@ func (o *CursorIteratorEndpoint) GetNextCursor() string {
 
 // GetNextCursorOk returns a tuple with the NextCursor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CursorIteratorEndpoint) GetNextCursorOk() (*string, bool) {
+func (o *CursorPageEventType) GetNextCursorOk() (*string, bool) {
 	if o == nil || IsNil(o.NextCursor) {
 		return nil, false
 	}
@@ -167,7 +143,7 @@ func (o *CursorIteratorEndpoint) GetNextCursorOk() (*string, bool) {
 }
 
 // HasNextCursor returns a boolean if a field has been set.
-func (o *CursorIteratorEndpoint) HasNextCursor() bool {
+func (o *CursorPageEventType) HasNextCursor() bool {
 	if o != nil && !IsNil(o.NextCursor) {
 		return true
 	}
@@ -176,12 +152,12 @@ func (o *CursorIteratorEndpoint) HasNextCursor() bool {
 }
 
 // SetNextCursor gets a reference to the given string and assigns it to the NextCursor field.
-func (o *CursorIteratorEndpoint) SetNextCursor(v string) {
+func (o *CursorPageEventType) SetNextCursor(v string) {
 	o.NextCursor = &v
 }
 
 // GetPrevCursor returns the PrevCursor field value if set, zero value otherwise.
-func (o *CursorIteratorEndpoint) GetPrevCursor() string {
+func (o *CursorPageEventType) GetPrevCursor() string {
 	if o == nil || IsNil(o.PrevCursor) {
 		var ret string
 		return ret
@@ -191,7 +167,7 @@ func (o *CursorIteratorEndpoint) GetPrevCursor() string {
 
 // GetPrevCursorOk returns a tuple with the PrevCursor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CursorIteratorEndpoint) GetPrevCursorOk() (*string, bool) {
+func (o *CursorPageEventType) GetPrevCursorOk() (*string, bool) {
 	if o == nil || IsNil(o.PrevCursor) {
 		return nil, false
 	}
@@ -199,7 +175,7 @@ func (o *CursorIteratorEndpoint) GetPrevCursorOk() (*string, bool) {
 }
 
 // HasPrevCursor returns a boolean if a field has been set.
-func (o *CursorIteratorEndpoint) HasPrevCursor() bool {
+func (o *CursorPageEventType) HasPrevCursor() bool {
 	if o != nil && !IsNil(o.PrevCursor) {
 		return true
 	}
@@ -208,11 +184,35 @@ func (o *CursorIteratorEndpoint) HasPrevCursor() bool {
 }
 
 // SetPrevCursor gets a reference to the given string and assigns it to the PrevCursor field.
-func (o *CursorIteratorEndpoint) SetPrevCursor(v string) {
+func (o *CursorPageEventType) SetPrevCursor(v string) {
 	o.PrevCursor = &v
 }
 
-func (o CursorIteratorEndpoint) MarshalJSON() ([]byte, error) {
+// GetTotal returns the Total field value
+func (o *CursorPageEventType) GetTotal() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Total
+}
+
+// GetTotalOk returns a tuple with the Total field value
+// and a boolean to check if the value has been set.
+func (o *CursorPageEventType) GetTotalOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Total, true
+}
+
+// SetTotal sets field value
+func (o *CursorPageEventType) SetTotal(v int32) {
+	o.Total = v
+}
+
+func (o CursorPageEventType) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -220,9 +220,8 @@ func (o CursorIteratorEndpoint) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CursorIteratorEndpoint) ToMap() (map[string]interface{}, error) {
+func (o CursorPageEventType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["done"] = o.Done
 	toSerialize["has_next"] = o.HasNext
 	toSerialize["has_prev"] = o.HasPrev
 	toSerialize["items"] = o.Items
@@ -232,18 +231,19 @@ func (o CursorIteratorEndpoint) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PrevCursor) {
 		toSerialize["prev_cursor"] = o.PrevCursor
 	}
+	toSerialize["total"] = o.Total
 	return toSerialize, nil
 }
 
-func (o *CursorIteratorEndpoint) UnmarshalJSON(data []byte) (err error) {
+func (o *CursorPageEventType) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"done",
 		"has_next",
 		"has_prev",
 		"items",
+		"total",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -260,53 +260,53 @@ func (o *CursorIteratorEndpoint) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varCursorIteratorEndpoint := _CursorIteratorEndpoint{}
+	varCursorPageEventType := _CursorPageEventType{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCursorIteratorEndpoint)
+	err = decoder.Decode(&varCursorPageEventType)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CursorIteratorEndpoint(varCursorIteratorEndpoint)
+	*o = CursorPageEventType(varCursorPageEventType)
 
 	return err
 }
 
-type NullableCursorIteratorEndpoint struct {
-	value *CursorIteratorEndpoint
+type NullableCursorPageEventType struct {
+	value *CursorPageEventType
 	isSet bool
 }
 
-func (v NullableCursorIteratorEndpoint) Get() *CursorIteratorEndpoint {
+func (v NullableCursorPageEventType) Get() *CursorPageEventType {
 	return v.value
 }
 
-func (v *NullableCursorIteratorEndpoint) Set(val *CursorIteratorEndpoint) {
+func (v *NullableCursorPageEventType) Set(val *CursorPageEventType) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCursorIteratorEndpoint) IsSet() bool {
+func (v NullableCursorPageEventType) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCursorIteratorEndpoint) Unset() {
+func (v *NullableCursorPageEventType) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCursorIteratorEndpoint(val *CursorIteratorEndpoint) *NullableCursorIteratorEndpoint {
-	return &NullableCursorIteratorEndpoint{value: val, isSet: true}
+func NewNullableCursorPageEventType(val *CursorPageEventType) *NullableCursorPageEventType {
+	return &NullableCursorPageEventType{value: val, isSet: true}
 }
 
-func (v NullableCursorIteratorEndpoint) MarshalJSON() ([]byte, error) {
+func (v NullableCursorPageEventType) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCursorIteratorEndpoint) UnmarshalJSON(src []byte) error {
+func (v *NullableCursorPageEventType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

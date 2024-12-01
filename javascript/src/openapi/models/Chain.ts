@@ -14,6 +14,10 @@ import { HttpFile } from '../http/http';
 
 export class Chain {
     /**
+    * Chain
+    */
+    'chain'?: string;
+    /**
     * Confirmation number
     */
     'confirmNum'?: number;
@@ -50,6 +54,10 @@ export class Chain {
     */
     'needMemo'?: boolean;
     /**
+    * Chain network
+    */
+    'network'?: string;
+    /**
     * Chain symbol
     */
     'symbol'?: string;
@@ -63,6 +71,12 @@ export class Chain {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "chain",
+            "baseName": "chain",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "confirmNum",
             "baseName": "confirm_num",
@@ -115,6 +129,12 @@ export class Chain {
             "name": "needMemo",
             "baseName": "need_memo",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "network",
+            "baseName": "network",
+            "type": "string",
             "format": ""
         },
         {

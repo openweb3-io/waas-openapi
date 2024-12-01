@@ -9,7 +9,7 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { CreateEndpoint } from '../models/CreateEndpoint';
-import { CursorIteratorEndpoint } from '../models/CursorIteratorEndpoint';
+import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
 import { Endpoint } from '../models/Endpoint';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
 
@@ -339,13 +339,13 @@ export class WebhookEndpointsApiResponseProcessor {
      * @params response Response returned by the server for a request to v1WebhooksEndpointList
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v1WebhooksEndpointListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CursorIteratorEndpoint >> {
+     public async v1WebhooksEndpointListWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CursorPageEndpoint >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: CursorIteratorEndpoint = ObjectSerializer.deserialize(
+            const body: CursorPageEndpoint = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "CursorIteratorEndpoint", ""
-            ) as CursorIteratorEndpoint;
+                "CursorPageEndpoint", ""
+            ) as CursorPageEndpoint;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -365,10 +365,10 @@ export class WebhookEndpointsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: CursorIteratorEndpoint = ObjectSerializer.deserialize(
+            const body: CursorPageEndpoint = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "CursorIteratorEndpoint", ""
-            ) as CursorIteratorEndpoint;
+                "CursorPageEndpoint", ""
+            ) as CursorPageEndpoint;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

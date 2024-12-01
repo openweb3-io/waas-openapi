@@ -19,6 +19,8 @@ var _ MappedNullable = &Chain{}
 
 // Chain struct for Chain
 type Chain struct {
+	// Chain
+	Chain *string `json:"chain,omitempty"`
 	// Confirmation number
 	ConfirmNum *int32 `json:"confirm_num,omitempty"`
 	// Created time
@@ -37,6 +39,8 @@ type Chain struct {
 	Name *string `json:"name,omitempty"`
 	// Need memo
 	NeedMemo *bool `json:"need_memo,omitempty"`
+	// Chain network
+	Network *string `json:"network,omitempty"`
 	// Chain symbol
 	Symbol *string `json:"symbol,omitempty"`
 	// Updated time
@@ -58,6 +62,38 @@ func NewChain() *Chain {
 func NewChainWithDefaults() *Chain {
 	this := Chain{}
 	return &this
+}
+
+// GetChain returns the Chain field value if set, zero value otherwise.
+func (o *Chain) GetChain() string {
+	if o == nil || IsNil(o.Chain) {
+		var ret string
+		return ret
+	}
+	return *o.Chain
+}
+
+// GetChainOk returns a tuple with the Chain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Chain) GetChainOk() (*string, bool) {
+	if o == nil || IsNil(o.Chain) {
+		return nil, false
+	}
+	return o.Chain, true
+}
+
+// HasChain returns a boolean if a field has been set.
+func (o *Chain) HasChain() bool {
+	if o != nil && !IsNil(o.Chain) {
+		return true
+	}
+
+	return false
+}
+
+// SetChain gets a reference to the given string and assigns it to the Chain field.
+func (o *Chain) SetChain(v string) {
+	o.Chain = &v
 }
 
 // GetConfirmNum returns the ConfirmNum field value if set, zero value otherwise.
@@ -348,6 +384,38 @@ func (o *Chain) SetNeedMemo(v bool) {
 	o.NeedMemo = &v
 }
 
+// GetNetwork returns the Network field value if set, zero value otherwise.
+func (o *Chain) GetNetwork() string {
+	if o == nil || IsNil(o.Network) {
+		var ret string
+		return ret
+	}
+	return *o.Network
+}
+
+// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Chain) GetNetworkOk() (*string, bool) {
+	if o == nil || IsNil(o.Network) {
+		return nil, false
+	}
+	return o.Network, true
+}
+
+// HasNetwork returns a boolean if a field has been set.
+func (o *Chain) HasNetwork() bool {
+	if o != nil && !IsNil(o.Network) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetwork gets a reference to the given string and assigns it to the Network field.
+func (o *Chain) SetNetwork(v string) {
+	o.Network = &v
+}
+
 // GetSymbol returns the Symbol field value if set, zero value otherwise.
 func (o *Chain) GetSymbol() string {
 	if o == nil || IsNil(o.Symbol) {
@@ -422,6 +490,9 @@ func (o Chain) MarshalJSON() ([]byte, error) {
 
 func (o Chain) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Chain) {
+		toSerialize["chain"] = o.Chain
+	}
 	if !IsNil(o.ConfirmNum) {
 		toSerialize["confirm_num"] = o.ConfirmNum
 	}
@@ -448,6 +519,9 @@ func (o Chain) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NeedMemo) {
 		toSerialize["need_memo"] = o.NeedMemo
+	}
+	if !IsNil(o.Network) {
+		toSerialize["network"] = o.Network
 	}
 	if !IsNil(o.Symbol) {
 		toSerialize["symbol"] = o.Symbol

@@ -37,10 +37,10 @@ models/CreateTransferRequestDestination.ts
 models/CreateTransferRequestSource.ts
 models/CreateTransferResponse.ts
 models/CreateWalletRequest.ts
-models/CursorIteratorEndpoint.ts
-models/CursorIteratorEventType.ts
 models/CursorPageAddress.ts
 models/CursorPageChain.ts
+models/CursorPageEndpoint.ts
+models/CursorPageEventType.ts
 models/CursorPageToken.ts
 models/CursorPageTransaction.ts
 models/CursorPageWallet.ts
