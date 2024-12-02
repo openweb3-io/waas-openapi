@@ -1,15 +1,14 @@
 {
   "name": "@openweb3-io/waas",
-  "version": "0.2.0",
-  "description": "Wallet Pay API client and wallet pay verification library",
+  "version": "0.1.0",
+  "description": "WaaS API client and WaaS verification library",
   "author": "waas",
   "repository": "https://github.com/waas/waas-libs",
   "type": "commonjs",
   "keywords": [
     "openweb3",
-    "pay",
+    "waas",
     "diahook",
-    "pay",
     "typescript"
   ],
   "license": "MIT",
