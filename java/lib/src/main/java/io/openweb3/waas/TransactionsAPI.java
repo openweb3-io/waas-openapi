@@ -57,4 +57,13 @@ public final class TransactionsAPI {
             throw Utils.WrapInternalApiException(e);
         }
     }
+
+    // sign message
+    public SignMessageResponse signMessage(final SignMessageRequest req) throws ApiException {
+        try {
+            return api.v1TransactionsSignMessage(req);
+        } catch (io.openweb3.waas.internal.ApiException e) {
+            throw Utils.WrapInternalApiException(e);
+        }
+    }
 }

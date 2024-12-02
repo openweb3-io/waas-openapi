@@ -107,7 +107,7 @@ func (a *TokensAPIService) V1TokensCreateExecute(r ApiV1TokensCreateRequest) (*T
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -290,7 +290,7 @@ func (a *TokensAPIService) V1TokensListExecute(r ApiV1TokensListRequest) (*Curso
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -457,7 +457,7 @@ func (a *TokensAPIService) V1TokensRetrieveExecute(r ApiV1TokensRetrieveRequest)
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -636,7 +636,7 @@ func (a *TokensAPIService) V1TokensUpdateExecute(r ApiV1TokensUpdateRequest) (*T
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}

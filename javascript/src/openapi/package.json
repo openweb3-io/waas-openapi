@@ -1,6 +1,6 @@
 {
   "name": "waas",
-  "version": "0.0.1",
+  "version": "1.0",
   "description": "OpenAPI client for waas",
   "author": "OpenAPI-Generator Contributors",
   "repository": {

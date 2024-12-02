@@ -93,7 +93,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: List all addresses
       tags:
       - Addresses
@@ -152,7 +151,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Validate addresses
       tags:
       - Addresses
@@ -216,7 +214,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: List all chains
       tags:
       - Chains
@@ -268,7 +265,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Retrieve chain
       tags:
       - Chains
@@ -327,7 +323,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Sweep address
       tags:
       - Sweeps
@@ -392,7 +387,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: List tokens
       tags:
       - Tokens
@@ -441,7 +435,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Create token
       tags:
       - Tokens
@@ -494,7 +487,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Get Token
       tags:
       - Tokens
@@ -552,7 +544,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Update token
       tags:
       - Tokens
@@ -691,7 +682,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: List transactions
       tags:
       - Transactions
@@ -741,7 +731,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Estimate fee
       tags:
       - Transactions
@@ -792,7 +781,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Sign message
       tags:
       - Transactions
@@ -843,7 +831,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Transfer token
       tags:
       - Transactions
@@ -896,7 +883,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Get transaction
       tags:
       - Transactions
@@ -960,7 +946,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: List wallets
       tags:
       - Wallets
@@ -1009,7 +994,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Create wallet
       tags:
       - Wallets
@@ -1062,7 +1046,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Delete wallet
       tags:
       - Wallets
@@ -1113,7 +1096,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Get wallet
       tags:
       - Wallets
@@ -1171,7 +1153,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Update wallet
       tags:
       - Wallets
@@ -1257,7 +1238,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: List wallet addresses
       tags:
       - Addresses
@@ -1315,7 +1295,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Create address
       tags:
       - Addresses
@@ -1376,7 +1355,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Get address information
       tags:
       - Addresses
@@ -1426,7 +1404,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: List webhook endpoints
       tags:
       - Webhook endpoints
@@ -1463,7 +1440,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Create webhook endpoint
       tags:
       - Webhook endpoints
@@ -1504,7 +1480,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Delete webhook endpoint
       tags:
       - Webhook endpoints
@@ -1549,7 +1524,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Get webhook endpoint
       tags:
       - Webhook endpoints
@@ -1583,7 +1557,6 @@ paths:
           description: OK
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: Update webhook endpoint
       tags:
       - Webhook endpoints
@@ -1634,7 +1607,6 @@ paths:
           description: Internal Server Error
       security:
       - ApiKeyAuth: []
-      - SignatureAuth: []
       summary: List webhook event types
       tags:
       - Webhook events
@@ -2917,6 +2889,6 @@ components:
   securitySchemes:
     ApiKeyAuth:
       in: header
-      name: X-Signature
+      name: X-Api-Key
       type: apiKey
 

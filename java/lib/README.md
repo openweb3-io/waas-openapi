@@ -207,7 +207,7 @@ Authentication schemes defined for the API:
 ### ApiKeyAuth
 
 - **Type**: API key
-- **API key parameter name**: X-Signature
+- **API key parameter name**: X-Api-Key
 - **Location**: HTTP header
 
 

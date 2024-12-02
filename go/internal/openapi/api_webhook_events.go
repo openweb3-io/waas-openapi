@@ -113,7 +113,7 @@ func (a *WebhookEventsAPIService) V1WebhooksEventsListExecute(r ApiV1WebhooksEve
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}

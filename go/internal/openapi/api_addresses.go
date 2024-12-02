@@ -152,7 +152,7 @@ func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -347,7 +347,7 @@ func (a *AddressesAPIService) V1AddressesValidateExecute(r ApiV1AddressesValidat
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -515,7 +515,7 @@ func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -686,7 +686,7 @@ func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddres
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -891,7 +891,7 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}

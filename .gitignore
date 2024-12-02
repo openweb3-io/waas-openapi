@@ -3,6 +3,7 @@ vendor
 .idea
 node_modules
 examples/
+__tests__
 
 .vscode
 .DS_Store

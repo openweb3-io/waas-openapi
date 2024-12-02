@@ -107,7 +107,7 @@ func (a *WalletsAPIService) V1WalletsCreateExecute(r ApiV1WalletsCreateRequest) 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -274,7 +274,7 @@ func (a *WalletsAPIService) V1WalletsDeleteExecute(r ApiV1WalletsDeleteRequest) 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -457,7 +457,7 @@ func (a *WalletsAPIService) V1WalletsListExecute(r ApiV1WalletsListRequest) (*Cu
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -624,7 +624,7 @@ func (a *WalletsAPIService) V1WalletsRetrieveExecute(r ApiV1WalletsRetrieveReque
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -803,7 +803,7 @@ func (a *WalletsAPIService) V1WalletsUpdateExecute(r ApiV1WalletsUpdateRequest) 
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}

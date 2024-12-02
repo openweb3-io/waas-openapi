@@ -111,7 +111,7 @@ func (a *SweepsAPIService) V1SweepsAddressExecute(r ApiV1SweepsAddressRequest) (
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}

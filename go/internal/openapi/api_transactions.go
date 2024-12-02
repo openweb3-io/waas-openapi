@@ -108,7 +108,7 @@ func (a *TransactionsAPIService) V1TransactionsEstimateFeeExecute(r ApiV1Transac
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -383,7 +383,7 @@ func (a *TransactionsAPIService) V1TransactionsListExecute(r ApiV1TransactionsLi
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -550,7 +550,7 @@ func (a *TransactionsAPIService) V1TransactionsRetrieveExecute(r ApiV1Transactio
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -725,7 +725,7 @@ func (a *TransactionsAPIService) V1TransactionsSignMessageExecute(r ApiV1Transac
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -900,7 +900,7 @@ func (a *TransactionsAPIService) V1TransactionsTransferExecute(r ApiV1Transactio
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}

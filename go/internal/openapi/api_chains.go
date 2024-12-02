@@ -115,7 +115,7 @@ func (a *ChainsAPIService) V1ChainsListExecute(r ApiV1ChainsListRequest) (*Curso
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -282,7 +282,7 @@ func (a *ChainsAPIService) V1ChainsRetrieveExecute(r ApiV1ChainsRetrieveRequest)
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}

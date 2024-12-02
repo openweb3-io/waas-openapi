@@ -107,7 +107,7 @@ func (a *WebhookEndpointsAPIService) V1WebhooksEndpointCreateExecute(r ApiV1Webh
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -252,7 +252,7 @@ func (a *WebhookEndpointsAPIService) V1WebhooksEndpointDeleteExecute(r ApiV1Webh
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -412,7 +412,7 @@ func (a *WebhookEndpointsAPIService) V1WebhooksEndpointListExecute(r ApiV1Webhoo
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -557,7 +557,7 @@ func (a *WebhookEndpointsAPIService) V1WebhooksEndpointRetrieveExecute(r ApiV1We
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
@@ -725,7 +725,7 @@ func (a *WebhookEndpointsAPIService) V1WebhooksEndpointUpdateExecute(r ApiV1Webh
 				} else {
 					key = apiKey.Key
 				}
-				localVarHeaderParams["X-Signature"] = key
+				localVarHeaderParams["X-Api-Key"] = key
 			}
 		}
 	}
