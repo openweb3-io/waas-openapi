@@ -115,7 +115,7 @@ export class GasStation {
         },
         {
             "name": "updatedAt",
-            "baseName": "updatedAt",
+            "baseName": "updated_at",
             "type": "string",
             "format": ""
         }    ];

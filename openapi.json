@@ -779,7 +779,7 @@
             "description": "Organization ID",
             "type": "string"
           },
-          "updatedAt": {
+          "updated_at": {
             "description": "Updated time",
             "type": "string"
           }

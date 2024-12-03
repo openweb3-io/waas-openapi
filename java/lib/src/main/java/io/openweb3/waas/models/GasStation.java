@@ -86,7 +86,7 @@ public class GasStation {
   @SerializedName(SERIALIZED_NAME_ORG_ID)
   private String orgId;
 
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+  public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private String updatedAt;
 
@@ -355,7 +355,7 @@ public class GasStation {
     openapiFields.add("id");
     openapiFields.add("max_fee_limit");
     openapiFields.add("org_id");
-    openapiFields.add("updatedAt");
+    openapiFields.add("updated_at");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -421,8 +421,8 @@ public class GasStation {
       if (!jsonObj.get("org_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `org_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org_id").toString()));
       }
-      if ((jsonObj.get("updatedAt") != null && !jsonObj.get("updatedAt").isJsonNull()) && !jsonObj.get("updatedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `updatedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updatedAt").toString()));
+      if ((jsonObj.get("updated_at") != null && !jsonObj.get("updated_at").isJsonNull()) && !jsonObj.get("updated_at").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `updated_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated_at").toString()));
       }
   }
 

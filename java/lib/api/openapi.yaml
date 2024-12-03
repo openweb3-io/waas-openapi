@@ -2424,6 +2424,7 @@ components:
         items:
         - gas_threshold: gas_threshold
           chain_id: chain_id
+          updated_at: updated_at
           org_id: org_id
           created_at: created_at
           gas_capacity: gas_capacity
@@ -2431,9 +2432,9 @@ components:
           disabled: true
           id: id
           app_id: app_id
-          updatedAt: updatedAt
         - gas_threshold: gas_threshold
           chain_id: chain_id
+          updated_at: updated_at
           org_id: org_id
           created_at: created_at
           gas_capacity: gas_capacity
@@ -2441,7 +2442,6 @@ components:
           disabled: true
           id: id
           app_id: app_id
-          updatedAt: updatedAt
       properties:
         has_next:
           type: boolean
@@ -2816,6 +2816,7 @@ components:
       example:
         gas_threshold: gas_threshold
         chain_id: chain_id
+        updated_at: updated_at
         org_id: org_id
         created_at: created_at
         gas_capacity: gas_capacity
@@ -2823,7 +2824,6 @@ components:
         disabled: true
         id: id
         app_id: app_id
-        updatedAt: updatedAt
       properties:
         app_id:
           description: Application ID
@@ -2852,7 +2852,7 @@ components:
         org_id:
           description: Organization ID
           type: string
-        updatedAt:
+        updated_at:
           description: Updated time
           type: string
       required:

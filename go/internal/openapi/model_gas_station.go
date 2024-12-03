@@ -40,7 +40,7 @@ type GasStation struct {
 	// Organization ID
 	OrgId string `json:"org_id"`
 	// Updated time
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt *string `json:"updated_at,omitempty"`
 }
 
 type _GasStation GasStation
@@ -348,7 +348,7 @@ func (o GasStation) ToMap() (map[string]interface{}, error) {
 	toSerialize["max_fee_limit"] = o.MaxFeeLimit
 	toSerialize["org_id"] = o.OrgId
 	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return toSerialize, nil
 }
