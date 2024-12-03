@@ -37,6 +37,7 @@ type (
 		WebhookEndpoint *WebhookEndpoint
 		WebhookEvent    *WebhookEvent
 		Sweep           *Sweep
+		GasStation      *GasStation
 	}
 )
 
@@ -123,6 +124,9 @@ func New(options *ApiClientOptions) *ApiClient {
 			api: apiClient,
 		},
 		Sweep: &Sweep{
+			api: apiClient,
+		},
+		GasStation: &GasStation{
 			api: apiClient,
 		},
 	}

@@ -57,4 +57,13 @@ public final class GasStationAPI {
             throw Utils.WrapInternalApiException(e);
         }
     }
+
+    // get or create deposit address
+    public String getOrCreateDepositAddress(final GetGasStationDepositAddressRequest req) throws ApiException {
+        try {
+            return api.v1GasStationsGetOrCreateDepositAddress(req);
+        } catch (io.openweb3.waas.internal.ApiException e) {
+            throw Utils.WrapInternalApiException(e);
+        }
+    }
 }

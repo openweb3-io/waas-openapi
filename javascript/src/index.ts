@@ -46,6 +46,7 @@ import {
   CursorPageGasStation,
   UpdateGasStationRequest,
   GasStation,
+  GetGasStationDepositAddressRequest,
 } from "./openapi/index";
 export * from "./openapi/models/all";
 export * from "./openapi/apis/exception";
@@ -114,6 +115,7 @@ export class WaaS {
   public readonly Wallets: Wallets;
   public readonly WebhookEndpoints: WebhookEndpoints;
   public readonly WebhookEvents: WebhookEvents;
+  public readonly GasStations: GasStations;
 
   public constructor(apikey: string, privateKey: string, options: WaaSOptions = {}) {
     const baseUrl: string = options.serverUrl ?? "https://api.waas.openweb3.io";
@@ -137,6 +139,7 @@ export class WaaS {
     this.Wallets = new Wallets(config);
     this.WebhookEndpoints = new WebhookEndpoints(config);
     this.WebhookEvents = new WebhookEvents(config);
+    this.GasStations = new GasStations(config);
   }
 }
 export interface PostOptions {
@@ -430,5 +433,13 @@ class GasStations {
   // delete gas station
   public async delete(gasStationId: string): Promise<void> {
     await this.api.v1GasStationsDelete({ gasStationId });
+  }
+
+  public async getOrCreateDepositAddress(
+    getGasStationDepositAddressRequest: GetGasStationDepositAddressRequest
+  ): Promise<string> {
+    return await this.api.v1GasStationsGetOrCreateDepositAddress({
+      getGasStationDepositAddressRequest,
+    });
   }
 }
