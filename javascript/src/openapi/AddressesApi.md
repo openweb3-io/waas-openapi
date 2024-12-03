@@ -97,12 +97,12 @@ const configuration = createConfiguration();
 const apiInstance = new AddressesApi(configuration);
 
 const request: AddressesApiV1AddressesValidateRequest = {
-    // Chain ID
-  chainId: "chain_id_example",
     // Addresses
   addresses: [
     "addresses_example",
   ],
+    // Chain ID
+  chainId: "chain_id_example",
 };
 
 const data = await apiInstance.v1AddressesValidate(request);
@@ -114,8 +114,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chainId** | [**string**] | Chain ID | defaults to undefined
  **addresses** | **Array&lt;string&gt;** | Addresses | defaults to undefined
+ **chainId** | [**string**] | Chain ID | defaults to undefined
 
 
 ### Return type

@@ -17,473 +17,65 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"reflect"
 )
 
 
-// AddressesAPIService AddressesAPI service
-type AddressesAPIService service
+// GasStationsAPIService GasStationsAPI service
+type GasStationsAPIService service
 
-type ApiV1AddressesListRequest struct {
+type ApiV1GasStationsCreateRequest struct {
 	ctx context.Context
-	ApiService *AddressesAPIService
-	walletIds *[]string
-	chainIds *[]string
-	cursor *string
-	limit *int32
+	ApiService *GasStationsAPIService
+	createGasStationRequest *CreateGasStationRequest
 }
 
-// Unique system generated identifier of the wallet
-func (r ApiV1AddressesListRequest) WalletIds(walletIds []string) ApiV1AddressesListRequest {
-	r.walletIds = &walletIds
+// Request body
+func (r ApiV1GasStationsCreateRequest) CreateGasStationRequest(createGasStationRequest CreateGasStationRequest) ApiV1GasStationsCreateRequest {
+	r.createGasStationRequest = &createGasStationRequest
 	return r
 }
 
-// The chain ids.
-func (r ApiV1AddressesListRequest) ChainIds(chainIds []string) ApiV1AddressesListRequest {
-	r.chainIds = &chainIds
-	return r
-}
-
-// The cursor to use for pagination.
-func (r ApiV1AddressesListRequest) Cursor(cursor string) ApiV1AddressesListRequest {
-	r.cursor = &cursor
-	return r
-}
-
-// The number of records to return default: 20
-func (r ApiV1AddressesListRequest) Limit(limit int32) ApiV1AddressesListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiV1AddressesListRequest) Execute() (*CursorPageAddress, *http.Response, error) {
-	return r.ApiService.V1AddressesListExecute(r)
+func (r ApiV1GasStationsCreateRequest) Execute() (*GasStation, *http.Response, error) {
+	return r.ApiService.V1GasStationsCreateExecute(r)
 }
 
 /*
-V1AddressesList List all addresses
+V1GasStationsCreate Create gas station
 
-List of all available addresses.
+Create a Gas Station
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AddressesListRequest
+ @return ApiV1GasStationsCreateRequest
 */
-func (a *AddressesAPIService) V1AddressesList(ctx context.Context) ApiV1AddressesListRequest {
-	return ApiV1AddressesListRequest{
+func (a *GasStationsAPIService) V1GasStationsCreate(ctx context.Context) ApiV1GasStationsCreateRequest {
+	return ApiV1GasStationsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CursorPageAddress
-func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest) (*CursorPageAddress, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CursorPageAddress
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1AddressesList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/addresses"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.walletIds != nil {
-		t := *r.walletIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "wallet_ids", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "wallet_ids", t, "form", "multi")
-		}
-	}
-	if r.chainIds != nil {
-		t := *r.chainIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "chain_ids", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "chain_ids", t, "form", "multi")
-		}
-	}
-	if r.cursor != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Api-Key"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if a.client.cfg.ResponseMiddleware != nil {
-		err = a.client.cfg.ResponseMiddleware(localVarHTTPResponse, localVarBody)
-		if err != nil {
-			return localVarReturnValue, localVarHTTPResponse, err
-		}
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1AddressesValidateRequest struct {
-	ctx context.Context
-	ApiService *AddressesAPIService
-	addresses *[]string
-	chainId *string
-}
-
-// Addresses
-func (r ApiV1AddressesValidateRequest) Addresses(addresses []string) ApiV1AddressesValidateRequest {
-	r.addresses = &addresses
-	return r
-}
-
-// Chain ID
-func (r ApiV1AddressesValidateRequest) ChainId(chainId string) ApiV1AddressesValidateRequest {
-	r.chainId = &chainId
-	return r
-}
-
-func (r ApiV1AddressesValidateRequest) Execute() (*ValidateAddressesReply, *http.Response, error) {
-	return r.ApiService.V1AddressesValidateExecute(r)
-}
-
-/*
-V1AddressesValidate Validate addresses
-
-Validate addresses
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AddressesValidateRequest
-*/
-func (a *AddressesAPIService) V1AddressesValidate(ctx context.Context) ApiV1AddressesValidateRequest {
-	return ApiV1AddressesValidateRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return ValidateAddressesReply
-func (a *AddressesAPIService) V1AddressesValidateExecute(r ApiV1AddressesValidateRequest) (*ValidateAddressesReply, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ValidateAddressesReply
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1AddressesValidate")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/addresses/validate"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.addresses == nil {
-		return localVarReturnValue, nil, reportError("addresses is required and must be specified")
-	}
-	if r.chainId == nil {
-		return localVarReturnValue, nil, reportError("chainId is required and must be specified")
-	}
-
-	{
-		t := *r.addresses
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "addresses", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "addresses", t, "form", "multi")
-		}
-	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "chain_id", r.chainId, "form", "")
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Api-Key"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if a.client.cfg.ResponseMiddleware != nil {
-		err = a.client.cfg.ResponseMiddleware(localVarHTTPResponse, localVarBody)
-		if err != nil {
-			return localVarReturnValue, localVarHTTPResponse, err
-		}
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1WalletsCreateAddressRequest struct {
-	ctx context.Context
-	ApiService *AddressesAPIService
-	walletId string
-	createAddressRequest *CreateAddressRequest
-}
-
-// Request Body
-func (r ApiV1WalletsCreateAddressRequest) CreateAddressRequest(createAddressRequest CreateAddressRequest) ApiV1WalletsCreateAddressRequest {
-	r.createAddressRequest = &createAddressRequest
-	return r
-}
-
-func (r ApiV1WalletsCreateAddressRequest) Execute() (*Address, *http.Response, error) {
-	return r.ApiService.V1WalletsCreateAddressExecute(r)
-}
-
-/*
-V1WalletsCreateAddress Create address
-
-Create address for wallet
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet id or uid
- @return ApiV1WalletsCreateAddressRequest
-*/
-func (a *AddressesAPIService) V1WalletsCreateAddress(ctx context.Context, walletId string) ApiV1WalletsCreateAddressRequest {
-	return ApiV1WalletsCreateAddressRequest{
-		ApiService: a,
-		ctx: ctx,
-		walletId: walletId,
-	}
-}
-
-// Execute executes the request
-//  @return Address
-func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreateAddressRequest) (*Address, *http.Response, error) {
+//  @return GasStation
+func (a *GasStationsAPIService) V1GasStationsCreateExecute(r ApiV1GasStationsCreateRequest) (*GasStation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Address
+		localVarReturnValue  *GasStation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1WalletsCreateAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GasStationsAPIService.V1GasStationsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/wallets/{walletId}/addresses"
-	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterValueToString(r.walletId, "walletId")), -1)
+	localVarPath := localBasePath + "/api/v1/gas-stations"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createAddressRequest == nil {
-		return localVarReturnValue, nil, reportError("createAddressRequest is required and must be specified")
+	if r.createGasStationRequest == nil {
+		return localVarReturnValue, nil, reportError("createGasStationRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -504,7 +96,7 @@ func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createAddressRequest
+	localVarPostBody = r.createGasStationRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -606,54 +198,50 @@ func (a *AddressesAPIService) V1WalletsCreateAddressExecute(r ApiV1WalletsCreate
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1WalletsGetAddressRequest struct {
+type ApiV1GasStationsDeleteRequest struct {
 	ctx context.Context
-	ApiService *AddressesAPIService
-	walletId string
-	address string
+	ApiService *GasStationsAPIService
+	gasStationId string
 }
 
-func (r ApiV1WalletsGetAddressRequest) Execute() (*Address, *http.Response, error) {
-	return r.ApiService.V1WalletsGetAddressExecute(r)
+func (r ApiV1GasStationsDeleteRequest) Execute() (*GasStation, *http.Response, error) {
+	return r.ApiService.V1GasStationsDeleteExecute(r)
 }
 
 /*
-V1WalletsGetAddress Get address information
+V1GasStationsDelete Delete gas station
 
-Get specific address information in wallet
+Delete a Gas Station
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet id or uid
- @param address Address
- @return ApiV1WalletsGetAddressRequest
+ @param gasStationId Gas Station ID
+ @return ApiV1GasStationsDeleteRequest
 */
-func (a *AddressesAPIService) V1WalletsGetAddress(ctx context.Context, walletId string, address string) ApiV1WalletsGetAddressRequest {
-	return ApiV1WalletsGetAddressRequest{
+func (a *GasStationsAPIService) V1GasStationsDelete(ctx context.Context, gasStationId string) ApiV1GasStationsDeleteRequest {
+	return ApiV1GasStationsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
-		walletId: walletId,
-		address: address,
+		gasStationId: gasStationId,
 	}
 }
 
 // Execute executes the request
-//  @return Address
-func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddressRequest) (*Address, *http.Response, error) {
+//  @return GasStation
+func (a *GasStationsAPIService) V1GasStationsDeleteExecute(r ApiV1GasStationsDeleteRequest) (*GasStation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Address
+		localVarReturnValue  *GasStation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1WalletsGetAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GasStationsAPIService.V1GasStationsDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/wallets/{walletId}/addresses/{address}"
-	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterValueToString(r.walletId, "walletId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"address"+"}", url.PathEscape(parameterValueToString(r.address, "address")), -1)
+	localVarPath := localBasePath + "/api/v1/gas-stations/{gasStationId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"gasStationId"+"}", url.PathEscape(parameterValueToString(r.gasStationId, "gasStationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -777,87 +365,65 @@ func (a *AddressesAPIService) V1WalletsGetAddressExecute(r ApiV1WalletsGetAddres
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1WalletsListAddressesRequest struct {
+type ApiV1GasStationsListRequest struct {
 	ctx context.Context
-	ApiService *AddressesAPIService
-	walletId string
-	chainIds *[]string
+	ApiService *GasStationsAPIService
 	cursor *string
 	limit *int32
 }
 
-// chain ids
-func (r ApiV1WalletsListAddressesRequest) ChainIds(chainIds []string) ApiV1WalletsListAddressesRequest {
-	r.chainIds = &chainIds
-	return r
-}
-
 // Cursor
-func (r ApiV1WalletsListAddressesRequest) Cursor(cursor string) ApiV1WalletsListAddressesRequest {
+func (r ApiV1GasStationsListRequest) Cursor(cursor string) ApiV1GasStationsListRequest {
 	r.cursor = &cursor
 	return r
 }
 
-// Limit, default is 20
-func (r ApiV1WalletsListAddressesRequest) Limit(limit int32) ApiV1WalletsListAddressesRequest {
+// The number of records to return default: 20
+func (r ApiV1GasStationsListRequest) Limit(limit int32) ApiV1GasStationsListRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiV1WalletsListAddressesRequest) Execute() (*CursorPageAddress, *http.Response, error) {
-	return r.ApiService.V1WalletsListAddressesExecute(r)
+func (r ApiV1GasStationsListRequest) Execute() (*CursorPageGasStation, *http.Response, error) {
+	return r.ApiService.V1GasStationsListExecute(r)
 }
 
 /*
-V1WalletsListAddresses List wallet addresses
+V1GasStationsList List gas stations
 
-List addresses in wallet
+List all gas stations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param walletId Wallet id or uid
- @return ApiV1WalletsListAddressesRequest
+ @return ApiV1GasStationsListRequest
 */
-func (a *AddressesAPIService) V1WalletsListAddresses(ctx context.Context, walletId string) ApiV1WalletsListAddressesRequest {
-	return ApiV1WalletsListAddressesRequest{
+func (a *GasStationsAPIService) V1GasStationsList(ctx context.Context) ApiV1GasStationsListRequest {
+	return ApiV1GasStationsListRequest{
 		ApiService: a,
 		ctx: ctx,
-		walletId: walletId,
 	}
 }
 
 // Execute executes the request
-//  @return CursorPageAddress
-func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAddressesRequest) (*CursorPageAddress, *http.Response, error) {
+//  @return CursorPageGasStation
+func (a *GasStationsAPIService) V1GasStationsListExecute(r ApiV1GasStationsListRequest) (*CursorPageGasStation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CursorPageAddress
+		localVarReturnValue  *CursorPageGasStation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AddressesAPIService.V1WalletsListAddresses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GasStationsAPIService.V1GasStationsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/wallets/{walletId}/addresses"
-	localVarPath = strings.Replace(localVarPath, "{"+"walletId"+"}", url.PathEscape(parameterValueToString(r.walletId, "walletId")), -1)
+	localVarPath := localBasePath + "/api/v1/gas-stations"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.chainIds != nil {
-		t := *r.chainIds
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "chain_ids", s.Index(i).Interface(), "form", "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "chain_ids", t, "form", "multi")
-		}
-	}
 	if r.cursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")
 	}
@@ -881,6 +447,352 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Api-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if a.client.cfg.ResponseMiddleware != nil {
+		err = a.client.cfg.ResponseMiddleware(localVarHTTPResponse, localVarBody)
+		if err != nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1GasStationsRetrieveRequest struct {
+	ctx context.Context
+	ApiService *GasStationsAPIService
+	gasStationId string
+}
+
+func (r ApiV1GasStationsRetrieveRequest) Execute() (*GasStation, *http.Response, error) {
+	return r.ApiService.V1GasStationsRetrieveExecute(r)
+}
+
+/*
+V1GasStationsRetrieve Get gas station
+
+Get a gas station by ID
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gasStationId Gas Station ID
+ @return ApiV1GasStationsRetrieveRequest
+*/
+func (a *GasStationsAPIService) V1GasStationsRetrieve(ctx context.Context, gasStationId string) ApiV1GasStationsRetrieveRequest {
+	return ApiV1GasStationsRetrieveRequest{
+		ApiService: a,
+		ctx: ctx,
+		gasStationId: gasStationId,
+	}
+}
+
+// Execute executes the request
+//  @return GasStation
+func (a *GasStationsAPIService) V1GasStationsRetrieveExecute(r ApiV1GasStationsRetrieveRequest) (*GasStation, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GasStation
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GasStationsAPIService.V1GasStationsRetrieve")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/gas-stations/{gasStationId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"gasStationId"+"}", url.PathEscape(parameterValueToString(r.gasStationId, "gasStationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Api-Key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if a.client.cfg.ResponseMiddleware != nil {
+		err = a.client.cfg.ResponseMiddleware(localVarHTTPResponse, localVarBody)
+		if err != nil {
+			return localVarReturnValue, localVarHTTPResponse, err
+		}
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiV1GasStationsUpdateRequest struct {
+	ctx context.Context
+	ApiService *GasStationsAPIService
+	gasStationId string
+	updateGasStationRequest *UpdateGasStationRequest
+}
+
+// Request body
+func (r ApiV1GasStationsUpdateRequest) UpdateGasStationRequest(updateGasStationRequest UpdateGasStationRequest) ApiV1GasStationsUpdateRequest {
+	r.updateGasStationRequest = &updateGasStationRequest
+	return r
+}
+
+func (r ApiV1GasStationsUpdateRequest) Execute() (*GasStation, *http.Response, error) {
+	return r.ApiService.V1GasStationsUpdateExecute(r)
+}
+
+/*
+V1GasStationsUpdate Update gas station
+
+Update a Gas Station
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param gasStationId Gas Station ID
+ @return ApiV1GasStationsUpdateRequest
+*/
+func (a *GasStationsAPIService) V1GasStationsUpdate(ctx context.Context, gasStationId string) ApiV1GasStationsUpdateRequest {
+	return ApiV1GasStationsUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+		gasStationId: gasStationId,
+	}
+}
+
+// Execute executes the request
+//  @return GasStation
+func (a *GasStationsAPIService) V1GasStationsUpdateExecute(r ApiV1GasStationsUpdateRequest) (*GasStation, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GasStation
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GasStationsAPIService.V1GasStationsUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/gas-stations/{gasStationId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"gasStationId"+"}", url.PathEscape(parameterValueToString(r.gasStationId, "gasStationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.updateGasStationRequest == nil {
+		return localVarReturnValue, nil, reportError("updateGasStationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateGasStationRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

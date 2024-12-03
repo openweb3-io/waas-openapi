@@ -7,6 +7,7 @@ import { AddressValidityItem } from '../models/AddressValidityItem';
 import { Chain } from '../models/Chain';
 import { CreateAddressRequest } from '../models/CreateAddressRequest';
 import { CreateEndpoint } from '../models/CreateEndpoint';
+import { CreateGasStationRequest } from '../models/CreateGasStationRequest';
 import { CreateTokenRequest } from '../models/CreateTokenRequest';
 import { CreateTransferRequest } from '../models/CreateTransferRequest';
 import { CreateTransferRequestDestination } from '../models/CreateTransferRequestDestination';
@@ -17,6 +18,7 @@ import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
 import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
 import { CursorPageEventType } from '../models/CursorPageEventType';
+import { CursorPageGasStation } from '../models/CursorPageGasStation';
 import { CursorPageToken } from '../models/CursorPageToken';
 import { CursorPageTransaction } from '../models/CursorPageTransaction';
 import { CursorPageWallet } from '../models/CursorPageWallet';
@@ -25,6 +27,7 @@ import { EstimateFeeRequest } from '../models/EstimateFeeRequest';
 import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
+import { GasStation } from '../models/GasStation';
 import { ModelError } from '../models/ModelError';
 import { SignMessageRequest } from '../models/SignMessageRequest';
 import { SignMessageRequestSource } from '../models/SignMessageRequestSource';
@@ -38,6 +41,7 @@ import { TransferDestinationAddress } from '../models/TransferDestinationAddress
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
+import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
 import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
@@ -101,11 +105,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
-        const requestContextPromise = this.requestFactory.v1AddressesValidate(chainId, addresses, _options);
+    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
+        const requestContextPromise = this.requestFactory.v1AddressesValidate(addresses, chainId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -126,11 +130,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<ValidateAddressesReply> {
-        return this.v1AddressesValidateWithHttpInfo(chainId, addresses, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
+    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<ValidateAddressesReply> {
+        return this.v1AddressesValidateWithHttpInfo(addresses, chainId, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
     }
 
     /**
@@ -326,6 +330,193 @@ export class ObservableChainsApi {
      */
     public v1ChainsRetrieve(chainId: string, _options?: Configuration): Observable<Chain> {
         return this.v1ChainsRetrieveWithHttpInfo(chainId, _options).pipe(map((apiResponse: HttpInfo<Chain>) => apiResponse.data));
+    }
+
+}
+
+import { GasStationsApiRequestFactory, GasStationsApiResponseProcessor} from "../apis/GasStationsApi";
+export class ObservableGasStationsApi {
+    private requestFactory: GasStationsApiRequestFactory;
+    private responseProcessor: GasStationsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: GasStationsApiRequestFactory,
+        responseProcessor?: GasStationsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new GasStationsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new GasStationsApiResponseProcessor();
+    }
+
+    /**
+     * Create a Gas Station
+     * Create gas station
+     * @param createGasStationRequest Request body
+     */
+    public v1GasStationsCreateWithHttpInfo(createGasStationRequest: CreateGasStationRequest, _options?: Configuration): Observable<HttpInfo<GasStation>> {
+        const requestContextPromise = this.requestFactory.v1GasStationsCreate(createGasStationRequest, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsCreateWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Create a Gas Station
+     * Create gas station
+     * @param createGasStationRequest Request body
+     */
+    public v1GasStationsCreate(createGasStationRequest: CreateGasStationRequest, _options?: Configuration): Observable<GasStation> {
+        return this.v1GasStationsCreateWithHttpInfo(createGasStationRequest, _options).pipe(map((apiResponse: HttpInfo<GasStation>) => apiResponse.data));
+    }
+
+    /**
+     * Delete a Gas Station
+     * Delete gas station
+     * @param gasStationId Gas Station ID
+     */
+    public v1GasStationsDeleteWithHttpInfo(gasStationId: string, _options?: Configuration): Observable<HttpInfo<GasStation>> {
+        const requestContextPromise = this.requestFactory.v1GasStationsDelete(gasStationId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsDeleteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Delete a Gas Station
+     * Delete gas station
+     * @param gasStationId Gas Station ID
+     */
+    public v1GasStationsDelete(gasStationId: string, _options?: Configuration): Observable<GasStation> {
+        return this.v1GasStationsDeleteWithHttpInfo(gasStationId, _options).pipe(map((apiResponse: HttpInfo<GasStation>) => apiResponse.data));
+    }
+
+    /**
+     * List all gas stations
+     * List gas stations
+     * @param [cursor] Cursor
+     * @param [limit] The number of records to return default: 20
+     */
+    public v1GasStationsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageGasStation>> {
+        const requestContextPromise = this.requestFactory.v1GasStationsList(cursor, limit, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsListWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * List all gas stations
+     * List gas stations
+     * @param [cursor] Cursor
+     * @param [limit] The number of records to return default: 20
+     */
+    public v1GasStationsList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageGasStation> {
+        return this.v1GasStationsListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageGasStation>) => apiResponse.data));
+    }
+
+    /**
+     * Get a gas station by ID
+     * Get gas station
+     * @param gasStationId Gas Station ID
+     */
+    public v1GasStationsRetrieveWithHttpInfo(gasStationId: string, _options?: Configuration): Observable<HttpInfo<GasStation>> {
+        const requestContextPromise = this.requestFactory.v1GasStationsRetrieve(gasStationId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsRetrieveWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Get a gas station by ID
+     * Get gas station
+     * @param gasStationId Gas Station ID
+     */
+    public v1GasStationsRetrieve(gasStationId: string, _options?: Configuration): Observable<GasStation> {
+        return this.v1GasStationsRetrieveWithHttpInfo(gasStationId, _options).pipe(map((apiResponse: HttpInfo<GasStation>) => apiResponse.data));
+    }
+
+    /**
+     * Update a Gas Station
+     * Update gas station
+     * @param gasStationId Gas Station ID
+     * @param updateGasStationRequest Request body
+     */
+    public v1GasStationsUpdateWithHttpInfo(gasStationId: string, updateGasStationRequest: UpdateGasStationRequest, _options?: Configuration): Observable<HttpInfo<GasStation>> {
+        const requestContextPromise = this.requestFactory.v1GasStationsUpdate(gasStationId, updateGasStationRequest, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsUpdateWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Update a Gas Station
+     * Update gas station
+     * @param gasStationId Gas Station ID
+     * @param updateGasStationRequest Request body
+     */
+    public v1GasStationsUpdate(gasStationId: string, updateGasStationRequest: UpdateGasStationRequest, _options?: Configuration): Observable<GasStation> {
+        return this.v1GasStationsUpdateWithHttpInfo(gasStationId, updateGasStationRequest, _options).pipe(map((apiResponse: HttpInfo<GasStation>) => apiResponse.data));
     }
 
 }

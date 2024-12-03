@@ -41,6 +41,11 @@ import {
   CursorPageEventType,
   SignMessageRequest,
   SignMessageResponse,
+  GasStationsApi,
+  CreateGasStationRequest,
+  CursorPageGasStation,
+  UpdateGasStationRequest,
+  GasStation,
 } from "./openapi/index";
 export * from "./openapi/models/all";
 export * from "./openapi/apis/exception";
@@ -388,5 +393,42 @@ class WebhookEvents {
   // list webhook events
   public async list(options?: CursorPageOptions): Promise<CursorPageEventType> {
     return await this.api.v1WebhooksEventsList({ ...options });
+  }
+}
+
+// gas stations
+class GasStations {
+  private readonly api: GasStationsApi;
+
+  public constructor(config: Configuration) { 
+    this.api = new GasStationsApi(config);
+  }
+
+  // list gas stations
+  public async list(options?: CursorPageOptions): Promise<CursorPageGasStation> {
+    return await this.api.v1GasStationsList({ ...options });
+  }
+
+  // create gas station
+  public async create(createGasStationRequest: CreateGasStationRequest): Promise<GasStation> {
+    return await this.api.v1GasStationsCreate({ createGasStationRequest });
+  }
+
+  // get gas station
+  public async get(gasStationId: string): Promise<GasStation> {
+    return await this.api.v1GasStationsRetrieve({ gasStationId });
+  }
+
+  // update gas station
+  public async update(
+    gasStationId: string,
+    updateGasStationRequest: UpdateGasStationRequest
+  ): Promise<GasStation> {
+    return await this.api.v1GasStationsUpdate({ gasStationId, updateGasStationRequest });
+  }
+
+  // delete gas station
+  public async delete(gasStationId: string): Promise<void> {
+    await this.api.v1GasStationsDelete({ gasStationId });
   }
 }

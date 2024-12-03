@@ -169,6 +169,38 @@
         ],
         "type": "object"
       },
+      "CreateGasStationRequest": {
+        "properties": {
+          "chain_id": {
+            "description": "Chain ID",
+            "type": "string"
+          },
+          "disabled": {
+            "description": "Disabled",
+            "type": "boolean"
+          },
+          "gas_capacity": {
+            "description": "Gas Capacity",
+            "type": "string"
+          },
+          "gas_threshold": {
+            "description": "Gas Threshold",
+            "type": "string"
+          },
+          "max_fee_limit": {
+            "description": "Max Fee Limit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "chain_id",
+          "disabled",
+          "gas_capacity",
+          "gas_threshold",
+          "max_fee_limit"
+        ],
+        "type": "object"
+      },
       "CreateTokenRequest": {
         "properties": {
           "name": {
@@ -394,6 +426,39 @@
           "items": {
             "items": {
               "$ref": "#/components/schemas/EventType"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "next_cursor": {
+            "type": "string"
+          },
+          "prev_cursor": {
+            "type": "string"
+          },
+          "total": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "has_next",
+          "has_prev",
+          "items",
+          "total"
+        ],
+        "type": "object"
+      },
+      "CursorPage-GasStation": {
+        "properties": {
+          "has_next": {
+            "type": "boolean"
+          },
+          "has_prev": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/GasStation"
             },
             "type": "array",
             "uniqueItems": false
@@ -675,6 +740,61 @@
         "x-enum-varnames": [
           "Fixed"
         ]
+      },
+      "GasStation": {
+        "properties": {
+          "app_id": {
+            "description": "Application ID",
+            "type": "string"
+          },
+          "chain_id": {
+            "description": "Chain ID",
+            "type": "string"
+          },
+          "created_at": {
+            "description": "Created time",
+            "type": "string"
+          },
+          "disabled": {
+            "description": "Disabled",
+            "type": "boolean"
+          },
+          "gas_capacity": {
+            "description": "Gas Capacity",
+            "type": "string"
+          },
+          "gas_threshold": {
+            "description": "Gas Threshold",
+            "type": "string"
+          },
+          "id": {
+            "description": "Gas Station ID",
+            "type": "string"
+          },
+          "max_fee_limit": {
+            "description": "Max Fee Limit",
+            "type": "string"
+          },
+          "org_id": {
+            "description": "Organization ID",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "app_id",
+          "chain_id",
+          "disabled",
+          "gas_capacity",
+          "gas_threshold",
+          "id",
+          "max_fee_limit",
+          "org_id"
+        ],
+        "type": "object"
       },
       "SignMessageRequest": {
         "properties": {
@@ -1042,6 +1162,27 @@
         },
         "type": "object"
       },
+      "UpdateGasStationRequest": {
+        "properties": {
+          "disabled": {
+            "description": "Disabled",
+            "type": "boolean"
+          },
+          "gas_capacity": {
+            "description": "Gas Capacity",
+            "type": "string"
+          },
+          "gas_threshold": {
+            "description": "Gas Threshold",
+            "type": "string"
+          },
+          "max_fee_limit": {
+            "description": "Max Fee Limit",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "UpdateTokenRequest": {
         "properties": {
           "id": {
@@ -1281,16 +1422,6 @@
         "operationId": "v1.addresses.validate",
         "parameters": [
           {
-            "description": "Chain ID",
-            "in": "query",
-            "name": "chain_id",
-            "required": true,
-            "schema": {
-              "description": "Chain ID",
-              "type": "string"
-            }
-          },
-          {
             "description": "Addresses",
             "in": "query",
             "name": "addresses",
@@ -1302,6 +1433,16 @@
               },
               "type": "array",
               "uniqueItems": false
+            }
+          },
+          {
+            "description": "Chain ID",
+            "in": "query",
+            "name": "chain_id",
+            "required": true,
+            "schema": {
+              "description": "Chain ID",
+              "type": "string"
             }
           }
         ],
@@ -1522,6 +1663,412 @@
         "summary": "Retrieve chain",
         "tags": [
           "Chains"
+        ]
+      }
+    },
+    "/api/v1/gas-stations": {
+      "get": {
+        "description": "List all gas stations",
+        "operationId": "v1.gas_stations.list",
+        "parameters": [
+          {
+            "description": "Cursor",
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "description": "Cursor",
+              "type": "string",
+              "x-order": "1"
+            }
+          },
+          {
+            "description": "The number of records to return default: 20",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "description": "The number of records to return default: 20",
+              "type": "integer",
+              "x-order": "2"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CursorPage-GasStation"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "List gas stations",
+        "tags": [
+          "Gas Stations"
+        ]
+      },
+      "post": {
+        "description": "Create a Gas Station",
+        "operationId": "v1.gas_stations.create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGasStationRequest"
+              }
+            }
+          },
+          "description": "Request body",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GasStation"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Create gas station",
+        "tags": [
+          "Gas Stations"
+        ]
+      }
+    },
+    "/api/v1/gas-stations/{gasStationId}": {
+      "delete": {
+        "description": "Delete a Gas Station",
+        "operationId": "v1.gas_stations.delete",
+        "parameters": [
+          {
+            "description": "Gas Station ID",
+            "in": "path",
+            "name": "gasStationId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GasStation"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Delete gas station",
+        "tags": [
+          "Gas Stations"
+        ]
+      },
+      "get": {
+        "description": "Get a gas station by ID",
+        "operationId": "v1.gas_stations.retrieve",
+        "parameters": [
+          {
+            "description": "Gas Station ID",
+            "in": "path",
+            "name": "gasStationId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GasStation"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get gas station",
+        "tags": [
+          "Gas Stations"
+        ]
+      },
+      "patch": {
+        "description": "Update a Gas Station",
+        "operationId": "v1.gas_stations.update",
+        "parameters": [
+          {
+            "description": "Gas Station ID",
+            "in": "path",
+            "name": "gasStationId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGasStationRequest"
+              }
+            }
+          },
+          "description": "Request body",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GasStation"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Update gas station",
+        "tags": [
+          "Gas Stations"
         ]
       }
     },

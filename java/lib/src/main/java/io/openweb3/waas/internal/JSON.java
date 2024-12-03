@@ -98,6 +98,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.Chain.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateAddressRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateEndpoint.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateGasStationRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateTokenRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateTransferRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CreateTransferRequestDestination.CustomTypeAdapterFactory());
@@ -108,6 +109,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CursorPageChain.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CursorPageEndpoint.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CursorPageEventType.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CursorPageGasStation.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CursorPageToken.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CursorPageTransaction.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.CursorPageWallet.CustomTypeAdapterFactory());
@@ -117,6 +119,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.EstimateFeeResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.EventType.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.Fee.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.GasStation.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.SignMessageRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.SignMessageRequestSource.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.SignMessageResponse.CustomTypeAdapterFactory());
@@ -129,6 +132,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.TransferSourceAsset.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.TransferSourceWeb3.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.UpdateEndpoint.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.UpdateGasStationRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.UpdateTokenRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.UpdateWalletRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.ValidateAddressesReply.CustomTypeAdapterFactory());

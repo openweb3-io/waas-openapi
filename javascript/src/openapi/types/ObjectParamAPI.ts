@@ -6,6 +6,7 @@ import { AddressValidityItem } from '../models/AddressValidityItem';
 import { Chain } from '../models/Chain';
 import { CreateAddressRequest } from '../models/CreateAddressRequest';
 import { CreateEndpoint } from '../models/CreateEndpoint';
+import { CreateGasStationRequest } from '../models/CreateGasStationRequest';
 import { CreateTokenRequest } from '../models/CreateTokenRequest';
 import { CreateTransferRequest } from '../models/CreateTransferRequest';
 import { CreateTransferRequestDestination } from '../models/CreateTransferRequestDestination';
@@ -16,6 +17,7 @@ import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
 import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
 import { CursorPageEventType } from '../models/CursorPageEventType';
+import { CursorPageGasStation } from '../models/CursorPageGasStation';
 import { CursorPageToken } from '../models/CursorPageToken';
 import { CursorPageTransaction } from '../models/CursorPageTransaction';
 import { CursorPageWallet } from '../models/CursorPageWallet';
@@ -24,6 +26,7 @@ import { EstimateFeeRequest } from '../models/EstimateFeeRequest';
 import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
+import { GasStation } from '../models/GasStation';
 import { ModelError } from '../models/ModelError';
 import { SignMessageRequest } from '../models/SignMessageRequest';
 import { SignMessageRequestSource } from '../models/SignMessageRequestSource';
@@ -37,6 +40,7 @@ import { TransferDestinationAddress } from '../models/TransferDestinationAddress
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
+import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
 import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
@@ -78,19 +82,19 @@ export interface AddressesApiV1AddressesListRequest {
 
 export interface AddressesApiV1AddressesValidateRequest {
     /**
-     * Chain ID
-     * Defaults to: undefined
-     * @type string
-     * @memberof AddressesApiv1AddressesValidate
-     */
-    chainId: string
-    /**
      * Addresses
      * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof AddressesApiv1AddressesValidate
      */
     addresses: Array<string>
+    /**
+     * Chain ID
+     * Defaults to: undefined
+     * @type string
+     * @memberof AddressesApiv1AddressesValidate
+     */
+    chainId: string
 }
 
 export interface AddressesApiV1WalletsCreateAddressRequest {
@@ -188,7 +192,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidateWithHttpInfo(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        return this.api.v1AddressesValidateWithHttpInfo(param.chainId, param.addresses,  options).toPromise();
+        return this.api.v1AddressesValidateWithHttpInfo(param.addresses, param.chainId,  options).toPromise();
     }
 
     /**
@@ -197,7 +201,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidate(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<ValidateAddressesReply> {
-        return this.api.v1AddressesValidate(param.chainId, param.addresses,  options).toPromise();
+        return this.api.v1AddressesValidate(param.addresses, param.chainId,  options).toPromise();
     }
 
     /**
@@ -327,6 +331,170 @@ export class ObjectChainsApi {
      */
     public v1ChainsRetrieve(param: ChainsApiV1ChainsRetrieveRequest, options?: Configuration): Promise<Chain> {
         return this.api.v1ChainsRetrieve(param.chainId,  options).toPromise();
+    }
+
+}
+
+import { ObservableGasStationsApi } from "./ObservableAPI";
+import { GasStationsApiRequestFactory, GasStationsApiResponseProcessor} from "../apis/GasStationsApi";
+
+export interface GasStationsApiV1GasStationsCreateRequest {
+    /**
+     * Request body
+     * @type CreateGasStationRequest
+     * @memberof GasStationsApiv1GasStationsCreate
+     */
+    createGasStationRequest: CreateGasStationRequest
+}
+
+export interface GasStationsApiV1GasStationsDeleteRequest {
+    /**
+     * Gas Station ID
+     * Defaults to: undefined
+     * @type string
+     * @memberof GasStationsApiv1GasStationsDelete
+     */
+    gasStationId: string
+}
+
+export interface GasStationsApiV1GasStationsListRequest {
+    /**
+     * Cursor
+     * Defaults to: undefined
+     * @type string
+     * @memberof GasStationsApiv1GasStationsList
+     */
+    cursor?: string
+    /**
+     * The number of records to return default: 20
+     * Defaults to: undefined
+     * @type number
+     * @memberof GasStationsApiv1GasStationsList
+     */
+    limit?: number
+}
+
+export interface GasStationsApiV1GasStationsRetrieveRequest {
+    /**
+     * Gas Station ID
+     * Defaults to: undefined
+     * @type string
+     * @memberof GasStationsApiv1GasStationsRetrieve
+     */
+    gasStationId: string
+}
+
+export interface GasStationsApiV1GasStationsUpdateRequest {
+    /**
+     * Gas Station ID
+     * Defaults to: undefined
+     * @type string
+     * @memberof GasStationsApiv1GasStationsUpdate
+     */
+    gasStationId: string
+    /**
+     * Request body
+     * @type UpdateGasStationRequest
+     * @memberof GasStationsApiv1GasStationsUpdate
+     */
+    updateGasStationRequest: UpdateGasStationRequest
+}
+
+export class ObjectGasStationsApi {
+    private api: ObservableGasStationsApi
+
+    public constructor(configuration: Configuration, requestFactory?: GasStationsApiRequestFactory, responseProcessor?: GasStationsApiResponseProcessor) {
+        this.api = new ObservableGasStationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Create a Gas Station
+     * Create gas station
+     * @param param the request object
+     */
+    public v1GasStationsCreateWithHttpInfo(param: GasStationsApiV1GasStationsCreateRequest, options?: Configuration): Promise<HttpInfo<GasStation>> {
+        return this.api.v1GasStationsCreateWithHttpInfo(param.createGasStationRequest,  options).toPromise();
+    }
+
+    /**
+     * Create a Gas Station
+     * Create gas station
+     * @param param the request object
+     */
+    public v1GasStationsCreate(param: GasStationsApiV1GasStationsCreateRequest, options?: Configuration): Promise<GasStation> {
+        return this.api.v1GasStationsCreate(param.createGasStationRequest,  options).toPromise();
+    }
+
+    /**
+     * Delete a Gas Station
+     * Delete gas station
+     * @param param the request object
+     */
+    public v1GasStationsDeleteWithHttpInfo(param: GasStationsApiV1GasStationsDeleteRequest, options?: Configuration): Promise<HttpInfo<GasStation>> {
+        return this.api.v1GasStationsDeleteWithHttpInfo(param.gasStationId,  options).toPromise();
+    }
+
+    /**
+     * Delete a Gas Station
+     * Delete gas station
+     * @param param the request object
+     */
+    public v1GasStationsDelete(param: GasStationsApiV1GasStationsDeleteRequest, options?: Configuration): Promise<GasStation> {
+        return this.api.v1GasStationsDelete(param.gasStationId,  options).toPromise();
+    }
+
+    /**
+     * List all gas stations
+     * List gas stations
+     * @param param the request object
+     */
+    public v1GasStationsListWithHttpInfo(param: GasStationsApiV1GasStationsListRequest = {}, options?: Configuration): Promise<HttpInfo<CursorPageGasStation>> {
+        return this.api.v1GasStationsListWithHttpInfo(param.cursor, param.limit,  options).toPromise();
+    }
+
+    /**
+     * List all gas stations
+     * List gas stations
+     * @param param the request object
+     */
+    public v1GasStationsList(param: GasStationsApiV1GasStationsListRequest = {}, options?: Configuration): Promise<CursorPageGasStation> {
+        return this.api.v1GasStationsList(param.cursor, param.limit,  options).toPromise();
+    }
+
+    /**
+     * Get a gas station by ID
+     * Get gas station
+     * @param param the request object
+     */
+    public v1GasStationsRetrieveWithHttpInfo(param: GasStationsApiV1GasStationsRetrieveRequest, options?: Configuration): Promise<HttpInfo<GasStation>> {
+        return this.api.v1GasStationsRetrieveWithHttpInfo(param.gasStationId,  options).toPromise();
+    }
+
+    /**
+     * Get a gas station by ID
+     * Get gas station
+     * @param param the request object
+     */
+    public v1GasStationsRetrieve(param: GasStationsApiV1GasStationsRetrieveRequest, options?: Configuration): Promise<GasStation> {
+        return this.api.v1GasStationsRetrieve(param.gasStationId,  options).toPromise();
+    }
+
+    /**
+     * Update a Gas Station
+     * Update gas station
+     * @param param the request object
+     */
+    public v1GasStationsUpdateWithHttpInfo(param: GasStationsApiV1GasStationsUpdateRequest, options?: Configuration): Promise<HttpInfo<GasStation>> {
+        return this.api.v1GasStationsUpdateWithHttpInfo(param.gasStationId, param.updateGasStationRequest,  options).toPromise();
+    }
+
+    /**
+     * Update a Gas Station
+     * Update gas station
+     * @param param the request object
+     */
+    public v1GasStationsUpdate(param: GasStationsApiV1GasStationsUpdateRequest, options?: Configuration): Promise<GasStation> {
+        return this.api.v1GasStationsUpdate(param.gasStationId, param.updateGasStationRequest,  options).toPromise();
     }
 
 }

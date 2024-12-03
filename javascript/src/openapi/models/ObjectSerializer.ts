@@ -3,6 +3,7 @@ export * from '../models/AddressValidityItem';
 export * from '../models/Chain';
 export * from '../models/CreateAddressRequest';
 export * from '../models/CreateEndpoint';
+export * from '../models/CreateGasStationRequest';
 export * from '../models/CreateTokenRequest';
 export * from '../models/CreateTransferRequest';
 export * from '../models/CreateTransferRequestDestination';
@@ -13,6 +14,7 @@ export * from '../models/CursorPageAddress';
 export * from '../models/CursorPageChain';
 export * from '../models/CursorPageEndpoint';
 export * from '../models/CursorPageEventType';
+export * from '../models/CursorPageGasStation';
 export * from '../models/CursorPageToken';
 export * from '../models/CursorPageTransaction';
 export * from '../models/CursorPageWallet';
@@ -21,6 +23,7 @@ export * from '../models/EstimateFeeRequest';
 export * from '../models/EstimateFeeResponse';
 export * from '../models/EventType';
 export * from '../models/Fee';
+export * from '../models/GasStation';
 export * from '../models/ModelError';
 export * from '../models/SignMessageRequest';
 export * from '../models/SignMessageRequestSource';
@@ -34,6 +37,7 @@ export * from '../models/TransferDestinationAddress';
 export * from '../models/TransferSourceAsset';
 export * from '../models/TransferSourceWeb3';
 export * from '../models/UpdateEndpoint';
+export * from '../models/UpdateGasStationRequest';
 export * from '../models/UpdateTokenRequest';
 export * from '../models/UpdateWalletRequest';
 export * from '../models/ValidateAddressesReply';
@@ -44,6 +48,7 @@ import { AddressValidityItem } from '../models/AddressValidityItem';
 import { Chain } from '../models/Chain';
 import { CreateAddressRequest , CreateAddressRequestTypeEnum   } from '../models/CreateAddressRequest';
 import { CreateEndpoint } from '../models/CreateEndpoint';
+import { CreateGasStationRequest } from '../models/CreateGasStationRequest';
 import { CreateTokenRequest } from '../models/CreateTokenRequest';
 import { CreateTransferRequest } from '../models/CreateTransferRequest';
 import { CreateTransferRequestDestinationClass } from '../models/CreateTransferRequestDestination';
@@ -54,6 +59,7 @@ import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
 import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
 import { CursorPageEventType } from '../models/CursorPageEventType';
+import { CursorPageGasStation } from '../models/CursorPageGasStation';
 import { CursorPageToken } from '../models/CursorPageToken';
 import { CursorPageTransaction } from '../models/CursorPageTransaction';
 import { CursorPageWallet } from '../models/CursorPageWallet';
@@ -62,6 +68,7 @@ import { EstimateFeeRequest } from '../models/EstimateFeeRequest';
 import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
+import { GasStation } from '../models/GasStation';
 import { ModelError } from '../models/ModelError';
 import { SignMessageRequest } from '../models/SignMessageRequest';
 import { SignMessageRequestSourceClass } from '../models/SignMessageRequestSource';
@@ -75,6 +82,7 @@ import { TransferDestinationAddress } from '../models/TransferDestinationAddress
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
+import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
 import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
@@ -102,6 +110,7 @@ let typeMap: {[index: string]: any} = {
     "Chain": Chain,
     "CreateAddressRequest": CreateAddressRequest,
     "CreateEndpoint": CreateEndpoint,
+    "CreateGasStationRequest": CreateGasStationRequest,
     "CreateTokenRequest": CreateTokenRequest,
     "CreateTransferRequest": CreateTransferRequest,
     "CreateTransferRequestDestination": CreateTransferRequestDestinationClass,
@@ -112,6 +121,7 @@ let typeMap: {[index: string]: any} = {
     "CursorPageChain": CursorPageChain,
     "CursorPageEndpoint": CursorPageEndpoint,
     "CursorPageEventType": CursorPageEventType,
+    "CursorPageGasStation": CursorPageGasStation,
     "CursorPageToken": CursorPageToken,
     "CursorPageTransaction": CursorPageTransaction,
     "CursorPageWallet": CursorPageWallet,
@@ -120,6 +130,7 @@ let typeMap: {[index: string]: any} = {
     "EstimateFeeResponse": EstimateFeeResponse,
     "EventType": EventType,
     "Fee": Fee,
+    "GasStation": GasStation,
     "ModelError": ModelError,
     "SignMessageRequest": SignMessageRequest,
     "SignMessageRequestSource": SignMessageRequestSourceClass,
@@ -133,6 +144,7 @@ let typeMap: {[index: string]: any} = {
     "TransferSourceAsset": TransferSourceAsset,
     "TransferSourceWeb3": TransferSourceWeb3,
     "UpdateEndpoint": UpdateEndpoint,
+    "UpdateGasStationRequest": UpdateGasStationRequest,
     "UpdateTokenRequest": UpdateTokenRequest,
     "UpdateWalletRequest": UpdateWalletRequest,
     "ValidateAddressesReply": ValidateAddressesReply,

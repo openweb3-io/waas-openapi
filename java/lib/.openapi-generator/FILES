@@ -12,6 +12,7 @@ docs/Chain.md
 docs/ChainsApi.md
 docs/CreateAddressRequest.md
 docs/CreateEndpoint.md
+docs/CreateGasStationRequest.md
 docs/CreateTokenRequest.md
 docs/CreateTransferRequest.md
 docs/CreateTransferRequestDestination.md
@@ -22,6 +23,7 @@ docs/CursorPageAddress.md
 docs/CursorPageChain.md
 docs/CursorPageEndpoint.md
 docs/CursorPageEventType.md
+docs/CursorPageGasStation.md
 docs/CursorPageToken.md
 docs/CursorPageTransaction.md
 docs/CursorPageWallet.md
@@ -31,6 +33,8 @@ docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
+docs/GasStation.md
+docs/GasStationsApi.md
 docs/SignMessageRequest.md
 docs/SignMessageRequestSource.md
 docs/SignMessageResponse.md
@@ -46,6 +50,7 @@ docs/TransferDestinationAddress.md
 docs/TransferSourceAsset.md
 docs/TransferSourceWeb3.md
 docs/UpdateEndpoint.md
+docs/UpdateGasStationRequest.md
 docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
 docs/ValidateAddressesReply.md
@@ -77,6 +82,7 @@ src/main/java/io/openweb3/waas/internal/ServerVariable.java
 src/main/java/io/openweb3/waas/internal/StringUtil.java
 src/main/java/io/openweb3/waas/internal/api/AddressesApi.java
 src/main/java/io/openweb3/waas/internal/api/ChainsApi.java
+src/main/java/io/openweb3/waas/internal/api/GasStationsApi.java
 src/main/java/io/openweb3/waas/internal/api/SweepsApi.java
 src/main/java/io/openweb3/waas/internal/api/TokensApi.java
 src/main/java/io/openweb3/waas/internal/api/TransactionsApi.java
@@ -93,6 +99,7 @@ src/main/java/io/openweb3/waas/models/AddressValidityItem.java
 src/main/java/io/openweb3/waas/models/Chain.java
 src/main/java/io/openweb3/waas/models/CreateAddressRequest.java
 src/main/java/io/openweb3/waas/models/CreateEndpoint.java
+src/main/java/io/openweb3/waas/models/CreateGasStationRequest.java
 src/main/java/io/openweb3/waas/models/CreateTokenRequest.java
 src/main/java/io/openweb3/waas/models/CreateTransferRequest.java
 src/main/java/io/openweb3/waas/models/CreateTransferRequestDestination.java
@@ -103,6 +110,7 @@ src/main/java/io/openweb3/waas/models/CursorPageAddress.java
 src/main/java/io/openweb3/waas/models/CursorPageChain.java
 src/main/java/io/openweb3/waas/models/CursorPageEndpoint.java
 src/main/java/io/openweb3/waas/models/CursorPageEventType.java
+src/main/java/io/openweb3/waas/models/CursorPageGasStation.java
 src/main/java/io/openweb3/waas/models/CursorPageToken.java
 src/main/java/io/openweb3/waas/models/CursorPageTransaction.java
 src/main/java/io/openweb3/waas/models/CursorPageWallet.java
@@ -112,6 +120,7 @@ src/main/java/io/openweb3/waas/models/EstimateFeeRequest.java
 src/main/java/io/openweb3/waas/models/EstimateFeeResponse.java
 src/main/java/io/openweb3/waas/models/EventType.java
 src/main/java/io/openweb3/waas/models/Fee.java
+src/main/java/io/openweb3/waas/models/GasStation.java
 src/main/java/io/openweb3/waas/models/SignMessageRequest.java
 src/main/java/io/openweb3/waas/models/SignMessageRequestSource.java
 src/main/java/io/openweb3/waas/models/SignMessageResponse.java
@@ -124,12 +133,14 @@ src/main/java/io/openweb3/waas/models/TransferDestinationAddress.java
 src/main/java/io/openweb3/waas/models/TransferSourceAsset.java
 src/main/java/io/openweb3/waas/models/TransferSourceWeb3.java
 src/main/java/io/openweb3/waas/models/UpdateEndpoint.java
+src/main/java/io/openweb3/waas/models/UpdateGasStationRequest.java
 src/main/java/io/openweb3/waas/models/UpdateTokenRequest.java
 src/main/java/io/openweb3/waas/models/UpdateWalletRequest.java
 src/main/java/io/openweb3/waas/models/ValidateAddressesReply.java
 src/main/java/io/openweb3/waas/models/Wallet.java
 src/test/java/io/openweb3/waas/internal/api/AddressesApiTest.java
 src/test/java/io/openweb3/waas/internal/api/ChainsApiTest.java
+src/test/java/io/openweb3/waas/internal/api/GasStationsApiTest.java
 src/test/java/io/openweb3/waas/internal/api/SweepsApiTest.java
 src/test/java/io/openweb3/waas/internal/api/TokensApiTest.java
 src/test/java/io/openweb3/waas/internal/api/TransactionsApiTest.java
@@ -141,6 +152,7 @@ src/test/java/io/openweb3/waas/models/AddressValidityItemTest.java
 src/test/java/io/openweb3/waas/models/ChainTest.java
 src/test/java/io/openweb3/waas/models/CreateAddressRequestTest.java
 src/test/java/io/openweb3/waas/models/CreateEndpointTest.java
+src/test/java/io/openweb3/waas/models/CreateGasStationRequestTest.java
 src/test/java/io/openweb3/waas/models/CreateTokenRequestTest.java
 src/test/java/io/openweb3/waas/models/CreateTransferRequestDestinationTest.java
 src/test/java/io/openweb3/waas/models/CreateTransferRequestSourceTest.java
@@ -151,6 +163,7 @@ src/test/java/io/openweb3/waas/models/CursorPageAddressTest.java
 src/test/java/io/openweb3/waas/models/CursorPageChainTest.java
 src/test/java/io/openweb3/waas/models/CursorPageEndpointTest.java
 src/test/java/io/openweb3/waas/models/CursorPageEventTypeTest.java
+src/test/java/io/openweb3/waas/models/CursorPageGasStationTest.java
 src/test/java/io/openweb3/waas/models/CursorPageTokenTest.java
 src/test/java/io/openweb3/waas/models/CursorPageTransactionTest.java
 src/test/java/io/openweb3/waas/models/CursorPageWalletTest.java
@@ -160,6 +173,7 @@ src/test/java/io/openweb3/waas/models/EstimateFeeRequestTest.java
 src/test/java/io/openweb3/waas/models/EstimateFeeResponseTest.java
 src/test/java/io/openweb3/waas/models/EventTypeTest.java
 src/test/java/io/openweb3/waas/models/FeeTest.java
+src/test/java/io/openweb3/waas/models/GasStationTest.java
 src/test/java/io/openweb3/waas/models/SignMessageRequestSourceTest.java
 src/test/java/io/openweb3/waas/models/SignMessageRequestTest.java
 src/test/java/io/openweb3/waas/models/SignMessageResponseTest.java
@@ -172,6 +186,7 @@ src/test/java/io/openweb3/waas/models/TransferDestinationAddressTest.java
 src/test/java/io/openweb3/waas/models/TransferSourceAssetTest.java
 src/test/java/io/openweb3/waas/models/TransferSourceWeb3Test.java
 src/test/java/io/openweb3/waas/models/UpdateEndpointTest.java
+src/test/java/io/openweb3/waas/models/UpdateGasStationRequestTest.java
 src/test/java/io/openweb3/waas/models/UpdateTokenRequestTest.java
 src/test/java/io/openweb3/waas/models/UpdateWalletRequestTest.java
 src/test/java/io/openweb3/waas/models/ValidateAddressesReplyTest.java

@@ -2,6 +2,7 @@
 .gitignore
 AddressesApi.md
 ChainsApi.md
+GasStationsApi.md
 README.md
 SweepsApi.md
 TokensApi.md
@@ -11,6 +12,7 @@ WebhookEndpointsApi.md
 WebhookEventsApi.md
 apis/AddressesApi.ts
 apis/ChainsApi.ts
+apis/GasStationsApi.ts
 apis/SweepsApi.ts
 apis/TokensApi.ts
 apis/TransactionsApi.ts
@@ -31,6 +33,7 @@ models/AddressValidityItem.ts
 models/Chain.ts
 models/CreateAddressRequest.ts
 models/CreateEndpoint.ts
+models/CreateGasStationRequest.ts
 models/CreateTokenRequest.ts
 models/CreateTransferRequest.ts
 models/CreateTransferRequestDestination.ts
@@ -41,6 +44,7 @@ models/CursorPageAddress.ts
 models/CursorPageChain.ts
 models/CursorPageEndpoint.ts
 models/CursorPageEventType.ts
+models/CursorPageGasStation.ts
 models/CursorPageToken.ts
 models/CursorPageTransaction.ts
 models/CursorPageWallet.ts
@@ -49,6 +53,7 @@ models/EstimateFeeRequest.ts
 models/EstimateFeeResponse.ts
 models/EventType.ts
 models/Fee.ts
+models/GasStation.ts
 models/ModelError.ts
 models/ObjectSerializer.ts
 models/SignMessageRequest.ts
@@ -63,6 +68,7 @@ models/TransferDestinationAddress.ts
 models/TransferSourceAsset.ts
 models/TransferSourceWeb3.ts
 models/UpdateEndpoint.ts
+models/UpdateGasStationRequest.ts
 models/UpdateTokenRequest.ts
 models/UpdateWalletRequest.ts
 models/ValidateAddressesReply.ts

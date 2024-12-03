@@ -27,11 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.openweb3.waas.models.Address;
-import io.openweb3.waas.models.CreateAddressRequest;
-import io.openweb3.waas.models.CursorPageAddress;
+import io.openweb3.waas.models.CreateGasStationRequest;
+import io.openweb3.waas.models.CursorPageGasStation;
 import io.openweb3.waas.models.Error;
-import io.openweb3.waas.models.ValidateAddressesReply;
+import io.openweb3.waas.models.GasStation;
+import io.openweb3.waas.models.UpdateGasStationRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -39,16 +39,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddressesApi {
+public class GasStationsApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public AddressesApi() {
+    public GasStationsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public AddressesApi(ApiClient apiClient) {
+    public GasStationsApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -77,11 +77,8 @@ public class AddressesApi {
     }
 
     /**
-     * Build call for v1AddressesList
-     * @param walletIds Unique system generated identifier of the wallet (optional)
-     * @param chainIds The chain ids. (optional)
-     * @param cursor The cursor to use for pagination. (optional)
-     * @param limit The number of records to return default: 20 (optional)
+     * Build call for v1GasStationsCreate
+     * @param createGasStationRequest Request body (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -95,7 +92,7 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1AddressesListCall(List<String> walletIds, List<String> chainIds, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1GasStationsCreateCall(CreateGasStationRequest createGasStationRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -109,321 +106,10 @@ public class AddressesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = createGasStationRequest;
 
         // create path and map variables
-        String localVarPath = "/api/v1/addresses";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (walletIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "wallet_ids", walletIds));
-        }
-
-        if (chainIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "chain_ids", chainIds));
-        }
-
-        if (cursor != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
-        }
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1AddressesListValidateBeforeCall(List<String> walletIds, List<String> chainIds, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
-        return v1AddressesListCall(walletIds, chainIds, cursor, limit, _callback);
-
-    }
-
-    /**
-     * List all addresses
-     * List of all available addresses.
-     * @param walletIds Unique system generated identifier of the wallet (optional)
-     * @param chainIds The chain ids. (optional)
-     * @param cursor The cursor to use for pagination. (optional)
-     * @param limit The number of records to return default: 20 (optional)
-     * @return CursorPageAddress
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public CursorPageAddress v1AddressesList(List<String> walletIds, List<String> chainIds, String cursor, Integer limit) throws ApiException {
-        ApiResponse<CursorPageAddress> localVarResp = v1AddressesListWithHttpInfo(walletIds, chainIds, cursor, limit);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List all addresses
-     * List of all available addresses.
-     * @param walletIds Unique system generated identifier of the wallet (optional)
-     * @param chainIds The chain ids. (optional)
-     * @param cursor The cursor to use for pagination. (optional)
-     * @param limit The number of records to return default: 20 (optional)
-     * @return ApiResponse&lt;CursorPageAddress&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<CursorPageAddress> v1AddressesListWithHttpInfo(List<String> walletIds, List<String> chainIds, String cursor, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = v1AddressesListValidateBeforeCall(walletIds, chainIds, cursor, limit, null);
-        Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List all addresses (asynchronously)
-     * List of all available addresses.
-     * @param walletIds Unique system generated identifier of the wallet (optional)
-     * @param chainIds The chain ids. (optional)
-     * @param cursor The cursor to use for pagination. (optional)
-     * @param limit The number of records to return default: 20 (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call v1AddressesListAsync(List<String> walletIds, List<String> chainIds, String cursor, Integer limit, final ApiCallback<CursorPageAddress> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = v1AddressesListValidateBeforeCall(walletIds, chainIds, cursor, limit, _callback);
-        Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for v1AddressesValidate
-     * @param addresses Addresses (required)
-     * @param chainId Chain ID (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call v1AddressesValidateCall(List<String> addresses, String chainId, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/api/v1/addresses/validate";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (addresses != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "addresses", addresses));
-        }
-
-        if (chainId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("chain_id", chainId));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1AddressesValidateValidateBeforeCall(List<String> addresses, String chainId, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'addresses' is set
-        if (addresses == null) {
-            throw new ApiException("Missing the required parameter 'addresses' when calling v1AddressesValidate(Async)");
-        }
-
-        // verify the required parameter 'chainId' is set
-        if (chainId == null) {
-            throw new ApiException("Missing the required parameter 'chainId' when calling v1AddressesValidate(Async)");
-        }
-
-        return v1AddressesValidateCall(addresses, chainId, _callback);
-
-    }
-
-    /**
-     * Validate addresses
-     * Validate addresses
-     * @param addresses Addresses (required)
-     * @param chainId Chain ID (required)
-     * @return ValidateAddressesReply
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ValidateAddressesReply v1AddressesValidate(List<String> addresses, String chainId) throws ApiException {
-        ApiResponse<ValidateAddressesReply> localVarResp = v1AddressesValidateWithHttpInfo(addresses, chainId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Validate addresses
-     * Validate addresses
-     * @param addresses Addresses (required)
-     * @param chainId Chain ID (required)
-     * @return ApiResponse&lt;ValidateAddressesReply&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ValidateAddressesReply> v1AddressesValidateWithHttpInfo(List<String> addresses, String chainId) throws ApiException {
-        okhttp3.Call localVarCall = v1AddressesValidateValidateBeforeCall(addresses, chainId, null);
-        Type localVarReturnType = new TypeToken<ValidateAddressesReply>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Validate addresses (asynchronously)
-     * Validate addresses
-     * @param addresses Addresses (required)
-     * @param chainId Chain ID (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call v1AddressesValidateAsync(List<String> addresses, String chainId, final ApiCallback<ValidateAddressesReply> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = v1AddressesValidateValidateBeforeCall(addresses, chainId, _callback);
-        Type localVarReturnType = new TypeToken<ValidateAddressesReply>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for v1WalletsCreateAddress
-     * @param walletId Wallet id or uid (required)
-     * @param createAddressRequest Request Body (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call v1WalletsCreateAddressCall(String walletId, CreateAddressRequest createAddressRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = createAddressRequest;
-
-        // create path and map variables
-        String localVarPath = "/api/v1/wallets/{walletId}/addresses"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
+        String localVarPath = "/api/v1/gas-stations";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -452,27 +138,21 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WalletsCreateAddressValidateBeforeCall(String walletId, CreateAddressRequest createAddressRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsCreateAddress(Async)");
+    private okhttp3.Call v1GasStationsCreateValidateBeforeCall(CreateGasStationRequest createGasStationRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'createGasStationRequest' is set
+        if (createGasStationRequest == null) {
+            throw new ApiException("Missing the required parameter 'createGasStationRequest' when calling v1GasStationsCreate(Async)");
         }
 
-        // verify the required parameter 'createAddressRequest' is set
-        if (createAddressRequest == null) {
-            throw new ApiException("Missing the required parameter 'createAddressRequest' when calling v1WalletsCreateAddress(Async)");
-        }
-
-        return v1WalletsCreateAddressCall(walletId, createAddressRequest, _callback);
+        return v1GasStationsCreateCall(createGasStationRequest, _callback);
 
     }
 
     /**
-     * Create address
-     * Create address for wallet
-     * @param walletId Wallet id or uid (required)
-     * @param createAddressRequest Request Body (required)
-     * @return Address
+     * Create gas station
+     * Create a Gas Station
+     * @param createGasStationRequest Request body (required)
+     * @return GasStation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -484,17 +164,16 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Address v1WalletsCreateAddress(String walletId, CreateAddressRequest createAddressRequest) throws ApiException {
-        ApiResponse<Address> localVarResp = v1WalletsCreateAddressWithHttpInfo(walletId, createAddressRequest);
+    public GasStation v1GasStationsCreate(CreateGasStationRequest createGasStationRequest) throws ApiException {
+        ApiResponse<GasStation> localVarResp = v1GasStationsCreateWithHttpInfo(createGasStationRequest);
         return localVarResp.getData();
     }
 
     /**
-     * Create address
-     * Create address for wallet
-     * @param walletId Wallet id or uid (required)
-     * @param createAddressRequest Request Body (required)
-     * @return ApiResponse&lt;Address&gt;
+     * Create gas station
+     * Create a Gas Station
+     * @param createGasStationRequest Request body (required)
+     * @return ApiResponse&lt;GasStation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -506,17 +185,16 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Address> v1WalletsCreateAddressWithHttpInfo(String walletId, CreateAddressRequest createAddressRequest) throws ApiException {
-        okhttp3.Call localVarCall = v1WalletsCreateAddressValidateBeforeCall(walletId, createAddressRequest, null);
-        Type localVarReturnType = new TypeToken<Address>(){}.getType();
+    public ApiResponse<GasStation> v1GasStationsCreateWithHttpInfo(CreateGasStationRequest createGasStationRequest) throws ApiException {
+        okhttp3.Call localVarCall = v1GasStationsCreateValidateBeforeCall(createGasStationRequest, null);
+        Type localVarReturnType = new TypeToken<GasStation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create address (asynchronously)
-     * Create address for wallet
-     * @param walletId Wallet id or uid (required)
-     * @param createAddressRequest Request Body (required)
+     * Create gas station (asynchronously)
+     * Create a Gas Station
+     * @param createGasStationRequest Request body (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -530,17 +208,16 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsCreateAddressAsync(String walletId, CreateAddressRequest createAddressRequest, final ApiCallback<Address> _callback) throws ApiException {
+    public okhttp3.Call v1GasStationsCreateAsync(CreateGasStationRequest createGasStationRequest, final ApiCallback<GasStation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WalletsCreateAddressValidateBeforeCall(walletId, createAddressRequest, _callback);
-        Type localVarReturnType = new TypeToken<Address>(){}.getType();
+        okhttp3.Call localVarCall = v1GasStationsCreateValidateBeforeCall(createGasStationRequest, _callback);
+        Type localVarReturnType = new TypeToken<GasStation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for v1WalletsGetAddress
-     * @param walletId Wallet id or uid (required)
-     * @param address Address (required)
+     * Build call for v1GasStationsDelete
+     * @param gasStationId Gas Station ID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -554,7 +231,7 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsGetAddressCall(String walletId, String address, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1GasStationsDeleteCall(String gasStationId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -571,9 +248,8 @@ public class AddressesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/wallets/{walletId}/addresses/{address}"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()))
-            .replace("{" + "address" + "}", localVarApiClient.escapeString(address.toString()));
+        String localVarPath = "/api/v1/gas-stations/{gasStationId}"
+            .replace("{" + "gasStationId" + "}", localVarApiClient.escapeString(gasStationId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -597,31 +273,25 @@ public class AddressesApi {
         }
 
         String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WalletsGetAddressValidateBeforeCall(String walletId, String address, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsGetAddress(Async)");
+    private okhttp3.Call v1GasStationsDeleteValidateBeforeCall(String gasStationId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'gasStationId' is set
+        if (gasStationId == null) {
+            throw new ApiException("Missing the required parameter 'gasStationId' when calling v1GasStationsDelete(Async)");
         }
 
-        // verify the required parameter 'address' is set
-        if (address == null) {
-            throw new ApiException("Missing the required parameter 'address' when calling v1WalletsGetAddress(Async)");
-        }
-
-        return v1WalletsGetAddressCall(walletId, address, _callback);
+        return v1GasStationsDeleteCall(gasStationId, _callback);
 
     }
 
     /**
-     * Get address information
-     * Get specific address information in wallet
-     * @param walletId Wallet id or uid (required)
-     * @param address Address (required)
-     * @return Address
+     * Delete gas station
+     * Delete a Gas Station
+     * @param gasStationId Gas Station ID (required)
+     * @return GasStation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -633,17 +303,16 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Address v1WalletsGetAddress(String walletId, String address) throws ApiException {
-        ApiResponse<Address> localVarResp = v1WalletsGetAddressWithHttpInfo(walletId, address);
+    public GasStation v1GasStationsDelete(String gasStationId) throws ApiException {
+        ApiResponse<GasStation> localVarResp = v1GasStationsDeleteWithHttpInfo(gasStationId);
         return localVarResp.getData();
     }
 
     /**
-     * Get address information
-     * Get specific address information in wallet
-     * @param walletId Wallet id or uid (required)
-     * @param address Address (required)
-     * @return ApiResponse&lt;Address&gt;
+     * Delete gas station
+     * Delete a Gas Station
+     * @param gasStationId Gas Station ID (required)
+     * @return ApiResponse&lt;GasStation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -655,17 +324,16 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Address> v1WalletsGetAddressWithHttpInfo(String walletId, String address) throws ApiException {
-        okhttp3.Call localVarCall = v1WalletsGetAddressValidateBeforeCall(walletId, address, null);
-        Type localVarReturnType = new TypeToken<Address>(){}.getType();
+    public ApiResponse<GasStation> v1GasStationsDeleteWithHttpInfo(String gasStationId) throws ApiException {
+        okhttp3.Call localVarCall = v1GasStationsDeleteValidateBeforeCall(gasStationId, null);
+        Type localVarReturnType = new TypeToken<GasStation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get address information (asynchronously)
-     * Get specific address information in wallet
-     * @param walletId Wallet id or uid (required)
-     * @param address Address (required)
+     * Delete gas station (asynchronously)
+     * Delete a Gas Station
+     * @param gasStationId Gas Station ID (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -679,19 +347,17 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsGetAddressAsync(String walletId, String address, final ApiCallback<Address> _callback) throws ApiException {
+    public okhttp3.Call v1GasStationsDeleteAsync(String gasStationId, final ApiCallback<GasStation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WalletsGetAddressValidateBeforeCall(walletId, address, _callback);
-        Type localVarReturnType = new TypeToken<Address>(){}.getType();
+        okhttp3.Call localVarCall = v1GasStationsDeleteValidateBeforeCall(gasStationId, _callback);
+        Type localVarReturnType = new TypeToken<GasStation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for v1WalletsListAddresses
-     * @param walletId Wallet id or uid (required)
-     * @param chainIds chain ids (optional)
+     * Build call for v1GasStationsList
      * @param cursor Cursor (optional)
-     * @param limit Limit, default is 20 (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -705,7 +371,7 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsListAddressesCall(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1GasStationsListCall(String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -722,18 +388,13 @@ public class AddressesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/v1/wallets/{walletId}/addresses"
-            .replace("{" + "walletId" + "}", localVarApiClient.escapeString(walletId.toString()));
+        String localVarPath = "/api/v1/gas-stations";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (chainIds != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "chain_ids", chainIds));
-        }
 
         if (cursor != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
@@ -763,24 +424,17 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WalletsListAddressesValidateBeforeCall(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'walletId' is set
-        if (walletId == null) {
-            throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsListAddresses(Async)");
-        }
-
-        return v1WalletsListAddressesCall(walletId, chainIds, cursor, limit, _callback);
+    private okhttp3.Call v1GasStationsListValidateBeforeCall(String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+        return v1GasStationsListCall(cursor, limit, _callback);
 
     }
 
     /**
-     * List wallet addresses
-     * List addresses in wallet
-     * @param walletId Wallet id or uid (required)
-     * @param chainIds chain ids (optional)
+     * List gas stations
+     * List all gas stations
      * @param cursor Cursor (optional)
-     * @param limit Limit, default is 20 (optional)
-     * @return CursorPageAddress
+     * @param limit The number of records to return default: 20 (optional)
+     * @return CursorPageGasStation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -792,19 +446,17 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CursorPageAddress v1WalletsListAddresses(String walletId, List<String> chainIds, String cursor, Integer limit) throws ApiException {
-        ApiResponse<CursorPageAddress> localVarResp = v1WalletsListAddressesWithHttpInfo(walletId, chainIds, cursor, limit);
+    public CursorPageGasStation v1GasStationsList(String cursor, Integer limit) throws ApiException {
+        ApiResponse<CursorPageGasStation> localVarResp = v1GasStationsListWithHttpInfo(cursor, limit);
         return localVarResp.getData();
     }
 
     /**
-     * List wallet addresses
-     * List addresses in wallet
-     * @param walletId Wallet id or uid (required)
-     * @param chainIds chain ids (optional)
+     * List gas stations
+     * List all gas stations
      * @param cursor Cursor (optional)
-     * @param limit Limit, default is 20 (optional)
-     * @return ApiResponse&lt;CursorPageAddress&gt;
+     * @param limit The number of records to return default: 20 (optional)
+     * @return ApiResponse&lt;CursorPageGasStation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -816,19 +468,17 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CursorPageAddress> v1WalletsListAddressesWithHttpInfo(String walletId, List<String> chainIds, String cursor, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, chainIds, cursor, limit, null);
-        Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
+    public ApiResponse<CursorPageGasStation> v1GasStationsListWithHttpInfo(String cursor, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = v1GasStationsListValidateBeforeCall(cursor, limit, null);
+        Type localVarReturnType = new TypeToken<CursorPageGasStation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List wallet addresses (asynchronously)
-     * List addresses in wallet
-     * @param walletId Wallet id or uid (required)
-     * @param chainIds chain ids (optional)
+     * List gas stations (asynchronously)
+     * List all gas stations
      * @param cursor Cursor (optional)
-     * @param limit Limit, default is 20 (optional)
+     * @param limit The number of records to return default: 20 (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -842,10 +492,298 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsListAddressesAsync(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback<CursorPageAddress> _callback) throws ApiException {
+    public okhttp3.Call v1GasStationsListAsync(String cursor, Integer limit, final ApiCallback<CursorPageGasStation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, chainIds, cursor, limit, _callback);
-        Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
+        okhttp3.Call localVarCall = v1GasStationsListValidateBeforeCall(cursor, limit, _callback);
+        Type localVarReturnType = new TypeToken<CursorPageGasStation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for v1GasStationsRetrieve
+     * @param gasStationId Gas Station ID (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call v1GasStationsRetrieveCall(String gasStationId, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/gas-stations/{gasStationId}"
+            .replace("{" + "gasStationId" + "}", localVarApiClient.escapeString(gasStationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call v1GasStationsRetrieveValidateBeforeCall(String gasStationId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'gasStationId' is set
+        if (gasStationId == null) {
+            throw new ApiException("Missing the required parameter 'gasStationId' when calling v1GasStationsRetrieve(Async)");
+        }
+
+        return v1GasStationsRetrieveCall(gasStationId, _callback);
+
+    }
+
+    /**
+     * Get gas station
+     * Get a gas station by ID
+     * @param gasStationId Gas Station ID (required)
+     * @return GasStation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GasStation v1GasStationsRetrieve(String gasStationId) throws ApiException {
+        ApiResponse<GasStation> localVarResp = v1GasStationsRetrieveWithHttpInfo(gasStationId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get gas station
+     * Get a gas station by ID
+     * @param gasStationId Gas Station ID (required)
+     * @return ApiResponse&lt;GasStation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GasStation> v1GasStationsRetrieveWithHttpInfo(String gasStationId) throws ApiException {
+        okhttp3.Call localVarCall = v1GasStationsRetrieveValidateBeforeCall(gasStationId, null);
+        Type localVarReturnType = new TypeToken<GasStation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get gas station (asynchronously)
+     * Get a gas station by ID
+     * @param gasStationId Gas Station ID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call v1GasStationsRetrieveAsync(String gasStationId, final ApiCallback<GasStation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = v1GasStationsRetrieveValidateBeforeCall(gasStationId, _callback);
+        Type localVarReturnType = new TypeToken<GasStation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for v1GasStationsUpdate
+     * @param gasStationId Gas Station ID (required)
+     * @param updateGasStationRequest Request body (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call v1GasStationsUpdateCall(String gasStationId, UpdateGasStationRequest updateGasStationRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = updateGasStationRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/v1/gas-stations/{gasStationId}"
+            .replace("{" + "gasStationId" + "}", localVarApiClient.escapeString(gasStationId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call v1GasStationsUpdateValidateBeforeCall(String gasStationId, UpdateGasStationRequest updateGasStationRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'gasStationId' is set
+        if (gasStationId == null) {
+            throw new ApiException("Missing the required parameter 'gasStationId' when calling v1GasStationsUpdate(Async)");
+        }
+
+        // verify the required parameter 'updateGasStationRequest' is set
+        if (updateGasStationRequest == null) {
+            throw new ApiException("Missing the required parameter 'updateGasStationRequest' when calling v1GasStationsUpdate(Async)");
+        }
+
+        return v1GasStationsUpdateCall(gasStationId, updateGasStationRequest, _callback);
+
+    }
+
+    /**
+     * Update gas station
+     * Update a Gas Station
+     * @param gasStationId Gas Station ID (required)
+     * @param updateGasStationRequest Request body (required)
+     * @return GasStation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GasStation v1GasStationsUpdate(String gasStationId, UpdateGasStationRequest updateGasStationRequest) throws ApiException {
+        ApiResponse<GasStation> localVarResp = v1GasStationsUpdateWithHttpInfo(gasStationId, updateGasStationRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update gas station
+     * Update a Gas Station
+     * @param gasStationId Gas Station ID (required)
+     * @param updateGasStationRequest Request body (required)
+     * @return ApiResponse&lt;GasStation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GasStation> v1GasStationsUpdateWithHttpInfo(String gasStationId, UpdateGasStationRequest updateGasStationRequest) throws ApiException {
+        okhttp3.Call localVarCall = v1GasStationsUpdateValidateBeforeCall(gasStationId, updateGasStationRequest, null);
+        Type localVarReturnType = new TypeToken<GasStation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update gas station (asynchronously)
+     * Update a Gas Station
+     * @param gasStationId Gas Station ID (required)
+     * @param updateGasStationRequest Request body (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Unauthorized </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call v1GasStationsUpdateAsync(String gasStationId, UpdateGasStationRequest updateGasStationRequest, final ApiCallback<GasStation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = v1GasStationsUpdateValidateBeforeCall(gasStationId, updateGasStationRequest, _callback);
+        Type localVarReturnType = new TypeToken<GasStation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

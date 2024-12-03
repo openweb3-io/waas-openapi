@@ -85,6 +85,11 @@ Class | Method | HTTP request | Description
 *AddressesAPI* | [**V1WalletsListAddresses**](docs/AddressesAPI.md#v1walletslistaddresses) | **Get** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 *ChainsAPI* | [**V1ChainsList**](docs/ChainsAPI.md#v1chainslist) | **Get** /api/v1/chains | List all chains
 *ChainsAPI* | [**V1ChainsRetrieve**](docs/ChainsAPI.md#v1chainsretrieve) | **Get** /api/v1/chains/{chainId} | Retrieve chain
+*GasStationsAPI* | [**V1GasStationsCreate**](docs/GasStationsAPI.md#v1gasstationscreate) | **Post** /api/v1/gas-stations | Create gas station
+*GasStationsAPI* | [**V1GasStationsDelete**](docs/GasStationsAPI.md#v1gasstationsdelete) | **Delete** /api/v1/gas-stations/{gasStationId} | Delete gas station
+*GasStationsAPI* | [**V1GasStationsList**](docs/GasStationsAPI.md#v1gasstationslist) | **Get** /api/v1/gas-stations | List gas stations
+*GasStationsAPI* | [**V1GasStationsRetrieve**](docs/GasStationsAPI.md#v1gasstationsretrieve) | **Get** /api/v1/gas-stations/{gasStationId} | Get gas station
+*GasStationsAPI* | [**V1GasStationsUpdate**](docs/GasStationsAPI.md#v1gasstationsupdate) | **Patch** /api/v1/gas-stations/{gasStationId} | Update gas station
 *SweepsAPI* | [**V1SweepsAddress**](docs/SweepsAPI.md#v1sweepsaddress) | **Post** /api/v1/sweeps/address/{address} | Sweep address
 *TokensAPI* | [**V1TokensCreate**](docs/TokensAPI.md#v1tokenscreate) | **Post** /api/v1/tokens | Create token
 *TokensAPI* | [**V1TokensList**](docs/TokensAPI.md#v1tokenslist) | **Get** /api/v1/tokens | List tokens
@@ -115,6 +120,7 @@ Class | Method | HTTP request | Description
  - [Chain](docs/Chain.md)
  - [CreateAddressRequest](docs/CreateAddressRequest.md)
  - [CreateEndpoint](docs/CreateEndpoint.md)
+ - [CreateGasStationRequest](docs/CreateGasStationRequest.md)
  - [CreateTokenRequest](docs/CreateTokenRequest.md)
  - [CreateTransferRequest](docs/CreateTransferRequest.md)
  - [CreateTransferRequestDestination](docs/CreateTransferRequestDestination.md)
@@ -125,6 +131,7 @@ Class | Method | HTTP request | Description
  - [CursorPageChain](docs/CursorPageChain.md)
  - [CursorPageEndpoint](docs/CursorPageEndpoint.md)
  - [CursorPageEventType](docs/CursorPageEventType.md)
+ - [CursorPageGasStation](docs/CursorPageGasStation.md)
  - [CursorPageToken](docs/CursorPageToken.md)
  - [CursorPageTransaction](docs/CursorPageTransaction.md)
  - [CursorPageWallet](docs/CursorPageWallet.md)
@@ -134,6 +141,7 @@ Class | Method | HTTP request | Description
  - [EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [EventType](docs/EventType.md)
  - [Fee](docs/Fee.md)
+ - [GasStation](docs/GasStation.md)
  - [SignMessageRequest](docs/SignMessageRequest.md)
  - [SignMessageRequestSource](docs/SignMessageRequestSource.md)
  - [SignMessageResponse](docs/SignMessageResponse.md)
@@ -146,6 +154,7 @@ Class | Method | HTTP request | Description
  - [TransferSourceAsset](docs/TransferSourceAsset.md)
  - [TransferSourceWeb3](docs/TransferSourceWeb3.md)
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
+ - [UpdateGasStationRequest](docs/UpdateGasStationRequest.md)
  - [UpdateTokenRequest](docs/UpdateTokenRequest.md)
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)
  - [ValidateAddressesReply](docs/ValidateAddressesReply.md)
