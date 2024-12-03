@@ -101,6 +101,15 @@ paths:
       description: Validate addresses
       operationId: v1.addresses.validate
       parameters:
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
+        style: form
       - description: Addresses
         explode: true
         in: query
@@ -112,15 +121,6 @@ paths:
             type: string
           type: array
           uniqueItems: false
-        style: form
-      - description: Chain ID
-        explode: true
-        in: query
-        name: chain_id
-        required: true
-        schema:
-          description: Chain ID
-          type: string
         style: form
       responses:
         "200":
@@ -262,7 +262,7 @@ paths:
       summary: Retrieve chain
       tags:
       - Chains
-  /api/v1/gas-stations:
+  /api/v1/gas_stations:
     get:
       description: List all gas stations
       operationId: v1.gas_stations.list
@@ -369,7 +369,54 @@ paths:
       summary: Create gas station
       tags:
       - Gas Stations
-  /api/v1/gas-stations/{gasStationId}:
+  /api/v1/gas_stations/deposit_address:
+    post:
+      description: Get or create a deposit address for a gas station
+      operationId: v1.gas_stations.get_or_create_deposit_address
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetGasStationDepositAddressRequest'
+        description: Request body
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Unauthorized
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Internal Server Error
+      security:
+      - ApiKeyAuth: []
+      summary: Get or create deposit address
+      tags:
+      - Gas Stations
+  /api/v1/gas_stations/{gasStationId}:
     delete:
       description: Delete a Gas Station
       operationId: v1.gas_stations.delete
@@ -2735,6 +2782,20 @@ components:
       - id
       - max_fee_limit
       - org_id
+      type: object
+    GetGasStationDepositAddressRequest:
+      example:
+        wallet_id: wallet_id
+        chain_id: chain_id
+      properties:
+        chain_id:
+          description: Chain ID
+          type: string
+        wallet_id:
+          description: Wallet ID
+          type: string
+      required:
+      - chain_id
       type: object
     SignMessageRequest:
       example:

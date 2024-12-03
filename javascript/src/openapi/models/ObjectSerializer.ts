@@ -24,6 +24,7 @@ export * from '../models/EstimateFeeResponse';
 export * from '../models/EventType';
 export * from '../models/Fee';
 export * from '../models/GasStation';
+export * from '../models/GetGasStationDepositAddressRequest';
 export * from '../models/ModelError';
 export * from '../models/SignMessageRequest';
 export * from '../models/SignMessageRequestSource';
@@ -69,6 +70,7 @@ import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
 import { GasStation } from '../models/GasStation';
+import { GetGasStationDepositAddressRequest } from '../models/GetGasStationDepositAddressRequest';
 import { ModelError } from '../models/ModelError';
 import { SignMessageRequest } from '../models/SignMessageRequest';
 import { SignMessageRequestSourceClass } from '../models/SignMessageRequestSource';
@@ -131,6 +133,7 @@ let typeMap: {[index: string]: any} = {
     "EventType": EventType,
     "Fee": Fee,
     "GasStation": GasStation,
+    "GetGasStationDepositAddressRequest": GetGasStationDepositAddressRequest,
     "ModelError": ModelError,
     "SignMessageRequest": SignMessageRequest,
     "SignMessageRequestSource": SignMessageRequestSourceClass,

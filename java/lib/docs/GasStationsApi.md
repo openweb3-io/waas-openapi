@@ -4,11 +4,12 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**v1GasStationsCreate**](GasStationsApi.md#v1GasStationsCreate) | **POST** /api/v1/gas-stations | Create gas station |
-| [**v1GasStationsDelete**](GasStationsApi.md#v1GasStationsDelete) | **DELETE** /api/v1/gas-stations/{gasStationId} | Delete gas station |
-| [**v1GasStationsList**](GasStationsApi.md#v1GasStationsList) | **GET** /api/v1/gas-stations | List gas stations |
-| [**v1GasStationsRetrieve**](GasStationsApi.md#v1GasStationsRetrieve) | **GET** /api/v1/gas-stations/{gasStationId} | Get gas station |
-| [**v1GasStationsUpdate**](GasStationsApi.md#v1GasStationsUpdate) | **PATCH** /api/v1/gas-stations/{gasStationId} | Update gas station |
+| [**v1GasStationsCreate**](GasStationsApi.md#v1GasStationsCreate) | **POST** /api/v1/gas_stations | Create gas station |
+| [**v1GasStationsDelete**](GasStationsApi.md#v1GasStationsDelete) | **DELETE** /api/v1/gas_stations/{gasStationId} | Delete gas station |
+| [**v1GasStationsGetOrCreateDepositAddress**](GasStationsApi.md#v1GasStationsGetOrCreateDepositAddress) | **POST** /api/v1/gas_stations/deposit_address | Get or create deposit address |
+| [**v1GasStationsList**](GasStationsApi.md#v1GasStationsList) | **GET** /api/v1/gas_stations | List gas stations |
+| [**v1GasStationsRetrieve**](GasStationsApi.md#v1GasStationsRetrieve) | **GET** /api/v1/gas_stations/{gasStationId} | Get gas station |
+| [**v1GasStationsUpdate**](GasStationsApi.md#v1GasStationsUpdate) | **PATCH** /api/v1/gas_stations/{gasStationId} | Update gas station |
 
 
 <a id="v1GasStationsCreate"></a>
@@ -146,6 +147,79 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **404** | Not Found |  -  |
+| **500** | Internal Server Error |  -  |
+
+<a id="v1GasStationsGetOrCreateDepositAddress"></a>
+# **v1GasStationsGetOrCreateDepositAddress**
+> String v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest)
+
+Get or create deposit address
+
+Get or create a deposit address for a gas station
+
+### Example
+```java
+// Import classes:
+import io.openweb3.waas.internal.ApiClient;
+import io.openweb3.waas.internal.ApiException;
+import io.openweb3.waas.internal.Configuration;
+import io.openweb3.waas.internal.auth.*;
+import io.openweb3.waas.internal.models.*;
+import io.openweb3.waas.internal.api.GasStationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure API key authorization: ApiKeyAuth
+    ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    ApiKeyAuth.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //ApiKeyAuth.setApiKeyPrefix("Token");
+
+    GasStationsApi apiInstance = new GasStationsApi(defaultClient);
+    GetGasStationDepositAddressRequest getGasStationDepositAddressRequest = new GetGasStationDepositAddressRequest(); // GetGasStationDepositAddressRequest | Request body
+    try {
+      String result = apiInstance.v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling GasStationsApi#v1GasStationsGetOrCreateDepositAddress");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **getGasStationDepositAddressRequest** | [**GetGasStationDepositAddressRequest**](GetGasStationDepositAddressRequest.md)| Request body | |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

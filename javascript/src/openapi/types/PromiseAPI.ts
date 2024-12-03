@@ -27,6 +27,7 @@ import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
 import { GasStation } from '../models/GasStation';
+import { GetGasStationDepositAddressRequest } from '../models/GetGasStationDepositAddressRequest';
 import { ModelError } from '../models/ModelError';
 import { SignMessageRequest } from '../models/SignMessageRequest';
 import { SignMessageRequestSource } from '../models/SignMessageRequestSource';
@@ -88,22 +89,22 @@ export class PromiseAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param addresses Addresses
      * @param chainId Chain ID
+     * @param addresses Addresses
      */
-    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        const result = this.api.v1AddressesValidateWithHttpInfo(addresses, chainId, _options);
+    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
+        const result = this.api.v1AddressesValidateWithHttpInfo(chainId, addresses, _options);
         return result.toPromise();
     }
 
     /**
      * Validate addresses
      * Validate addresses
-     * @param addresses Addresses
      * @param chainId Chain ID
+     * @param addresses Addresses
      */
-    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<ValidateAddressesReply> {
-        const result = this.api.v1AddressesValidate(addresses, chainId, _options);
+    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<ValidateAddressesReply> {
+        const result = this.api.v1AddressesValidate(chainId, addresses, _options);
         return result.toPromise();
     }
 
@@ -294,6 +295,26 @@ export class PromiseGasStationsApi {
      */
     public v1GasStationsDelete(gasStationId: string, _options?: Configuration): Promise<GasStation> {
         const result = this.api.v1GasStationsDelete(gasStationId, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Get or create a deposit address for a gas station
+     * Get or create deposit address
+     * @param getGasStationDepositAddressRequest Request body
+     */
+    public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(getGasStationDepositAddressRequest: GetGasStationDepositAddressRequest, _options?: Configuration): Promise<HttpInfo<string>> {
+        const result = this.api.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(getGasStationDepositAddressRequest, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * Get or create a deposit address for a gas station
+     * Get or create deposit address
+     * @param getGasStationDepositAddressRequest Request body
+     */
+    public v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest: GetGasStationDepositAddressRequest, _options?: Configuration): Promise<string> {
+        const result = this.api.v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest, _options);
         return result.toPromise();
     }
 

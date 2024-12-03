@@ -28,6 +28,7 @@ import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
 import { GasStation } from '../models/GasStation';
+import { GetGasStationDepositAddressRequest } from '../models/GetGasStationDepositAddressRequest';
 import { ModelError } from '../models/ModelError';
 import { SignMessageRequest } from '../models/SignMessageRequest';
 import { SignMessageRequestSource } from '../models/SignMessageRequestSource';
@@ -105,11 +106,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param addresses Addresses
      * @param chainId Chain ID
+     * @param addresses Addresses
      */
-    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
-        const requestContextPromise = this.requestFactory.v1AddressesValidate(addresses, chainId, _options);
+    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
+        const requestContextPromise = this.requestFactory.v1AddressesValidate(chainId, addresses, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -130,11 +131,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param addresses Addresses
      * @param chainId Chain ID
+     * @param addresses Addresses
      */
-    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<ValidateAddressesReply> {
-        return this.v1AddressesValidateWithHttpInfo(addresses, chainId, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
+    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<ValidateAddressesReply> {
+        return this.v1AddressesValidateWithHttpInfo(chainId, addresses, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
     }
 
     /**
@@ -414,6 +415,39 @@ export class ObservableGasStationsApi {
      */
     public v1GasStationsDelete(gasStationId: string, _options?: Configuration): Observable<GasStation> {
         return this.v1GasStationsDeleteWithHttpInfo(gasStationId, _options).pipe(map((apiResponse: HttpInfo<GasStation>) => apiResponse.data));
+    }
+
+    /**
+     * Get or create a deposit address for a gas station
+     * Get or create deposit address
+     * @param getGasStationDepositAddressRequest Request body
+     */
+    public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(getGasStationDepositAddressRequest: GetGasStationDepositAddressRequest, _options?: Configuration): Observable<HttpInfo<string>> {
+        const requestContextPromise = this.requestFactory.v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Get or create a deposit address for a gas station
+     * Get or create deposit address
+     * @param getGasStationDepositAddressRequest Request body
+     */
+    public v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest: GetGasStationDepositAddressRequest, _options?: Configuration): Observable<string> {
+        return this.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(getGasStationDepositAddressRequest, _options).pipe(map((apiResponse: HttpInfo<string>) => apiResponse.data));
     }
 
     /**

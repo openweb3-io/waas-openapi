@@ -4,11 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1GasStationsCreate**](GasStationsApi.md#v1GasStationsCreate) | **POST** /api/v1/gas-stations | Create gas station
-[**v1GasStationsDelete**](GasStationsApi.md#v1GasStationsDelete) | **DELETE** /api/v1/gas-stations/{gasStationId} | Delete gas station
-[**v1GasStationsList**](GasStationsApi.md#v1GasStationsList) | **GET** /api/v1/gas-stations | List gas stations
-[**v1GasStationsRetrieve**](GasStationsApi.md#v1GasStationsRetrieve) | **GET** /api/v1/gas-stations/{gasStationId} | Get gas station
-[**v1GasStationsUpdate**](GasStationsApi.md#v1GasStationsUpdate) | **PATCH** /api/v1/gas-stations/{gasStationId} | Update gas station
+[**v1GasStationsCreate**](GasStationsApi.md#v1GasStationsCreate) | **POST** /api/v1/gas_stations | Create gas station
+[**v1GasStationsDelete**](GasStationsApi.md#v1GasStationsDelete) | **DELETE** /api/v1/gas_stations/{gasStationId} | Delete gas station
+[**v1GasStationsGetOrCreateDepositAddress**](GasStationsApi.md#v1GasStationsGetOrCreateDepositAddress) | **POST** /api/v1/gas_stations/deposit_address | Get or create deposit address
+[**v1GasStationsList**](GasStationsApi.md#v1GasStationsList) | **GET** /api/v1/gas_stations | List gas stations
+[**v1GasStationsRetrieve**](GasStationsApi.md#v1GasStationsRetrieve) | **GET** /api/v1/gas_stations/{gasStationId} | Get gas station
+[**v1GasStationsUpdate**](GasStationsApi.md#v1GasStationsUpdate) | **PATCH** /api/v1/gas_stations/{gasStationId} | Update gas station
 
 
 # **v1GasStationsCreate**
@@ -117,6 +118,66 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v1GasStationsGetOrCreateDepositAddress**
+> string v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest)
+
+Get or create a deposit address for a gas station
+
+### Example
+
+
+```typescript
+import { createConfiguration, GasStationsApi } from '';
+import type { GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new GasStationsApi(configuration);
+
+const request: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest = {
+    // Request body
+  getGasStationDepositAddressRequest: {
+    chainId: "chainId_example",
+    walletId: "walletId_example",
+  },
+};
+
+const data = await apiInstance.v1GasStationsGetOrCreateDepositAddress(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **getGasStationDepositAddressRequest** | **GetGasStationDepositAddressRequest**| Request body |
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[ApiKeyAuth](README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

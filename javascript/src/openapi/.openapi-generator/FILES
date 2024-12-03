@@ -54,6 +54,7 @@ models/EstimateFeeResponse.ts
 models/EventType.ts
 models/Fee.ts
 models/GasStation.ts
+models/GetGasStationDepositAddressRequest.ts
 models/ModelError.ts
 models/ObjectSerializer.ts
 models/SignMessageRequest.ts

@@ -120,6 +120,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.EventType.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.Fee.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.GasStation.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.GetGasStationDepositAddressRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.SignMessageRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.SignMessageRequestSource.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new io.openweb3.waas.models.SignMessageResponse.CustomTypeAdapterFactory());

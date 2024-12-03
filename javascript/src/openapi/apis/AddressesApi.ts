@@ -85,21 +85,21 @@ export class AddressesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Validate addresses
      * Validate addresses
-     * @param addresses Addresses
      * @param chainId Chain ID
+     * @param addresses Addresses
      */
-    public async v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<RequestContext> {
+    public async v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
-
-        // verify required parameter 'addresses' is not null or undefined
-        if (addresses === null || addresses === undefined) {
-            throw new RequiredError("AddressesApi", "v1AddressesValidate", "addresses");
-        }
-
 
         // verify required parameter 'chainId' is not null or undefined
         if (chainId === null || chainId === undefined) {
             throw new RequiredError("AddressesApi", "v1AddressesValidate", "chainId");
+        }
+
+
+        // verify required parameter 'addresses' is not null or undefined
+        if (addresses === null || addresses === undefined) {
+            throw new RequiredError("AddressesApi", "v1AddressesValidate", "addresses");
         }
 
 
@@ -111,16 +111,16 @@ export class AddressesApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
         // Query Params
+        if (chainId !== undefined) {
+            requestContext.setQueryParam("chain_id", ObjectSerializer.serialize(chainId, "string", ""));
+        }
+
+        // Query Params
         if (addresses !== undefined) {
             const serializedParams = ObjectSerializer.serialize(addresses, "Array<string>", "");
             for (const serializedParam of serializedParams) {
                 requestContext.appendQueryParam("addresses", serializedParam);
             }
-        }
-
-        // Query Params
-        if (chainId !== undefined) {
-            requestContext.setQueryParam("chain_id", ObjectSerializer.serialize(chainId, "string", ""));
         }
 
 

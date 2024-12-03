@@ -131,11 +131,12 @@ Class | Method | HTTP request | Description
 *AddressesApi* | [**v1WalletsListAddresses**](docs/AddressesApi.md#v1WalletsListAddresses) | **GET** /api/v1/wallets/{walletId}/addresses | List wallet addresses
 *ChainsApi* | [**v1ChainsList**](docs/ChainsApi.md#v1ChainsList) | **GET** /api/v1/chains | List all chains
 *ChainsApi* | [**v1ChainsRetrieve**](docs/ChainsApi.md#v1ChainsRetrieve) | **GET** /api/v1/chains/{chainId} | Retrieve chain
-*GasStationsApi* | [**v1GasStationsCreate**](docs/GasStationsApi.md#v1GasStationsCreate) | **POST** /api/v1/gas-stations | Create gas station
-*GasStationsApi* | [**v1GasStationsDelete**](docs/GasStationsApi.md#v1GasStationsDelete) | **DELETE** /api/v1/gas-stations/{gasStationId} | Delete gas station
-*GasStationsApi* | [**v1GasStationsList**](docs/GasStationsApi.md#v1GasStationsList) | **GET** /api/v1/gas-stations | List gas stations
-*GasStationsApi* | [**v1GasStationsRetrieve**](docs/GasStationsApi.md#v1GasStationsRetrieve) | **GET** /api/v1/gas-stations/{gasStationId} | Get gas station
-*GasStationsApi* | [**v1GasStationsUpdate**](docs/GasStationsApi.md#v1GasStationsUpdate) | **PATCH** /api/v1/gas-stations/{gasStationId} | Update gas station
+*GasStationsApi* | [**v1GasStationsCreate**](docs/GasStationsApi.md#v1GasStationsCreate) | **POST** /api/v1/gas_stations | Create gas station
+*GasStationsApi* | [**v1GasStationsDelete**](docs/GasStationsApi.md#v1GasStationsDelete) | **DELETE** /api/v1/gas_stations/{gasStationId} | Delete gas station
+*GasStationsApi* | [**v1GasStationsGetOrCreateDepositAddress**](docs/GasStationsApi.md#v1GasStationsGetOrCreateDepositAddress) | **POST** /api/v1/gas_stations/deposit_address | Get or create deposit address
+*GasStationsApi* | [**v1GasStationsList**](docs/GasStationsApi.md#v1GasStationsList) | **GET** /api/v1/gas_stations | List gas stations
+*GasStationsApi* | [**v1GasStationsRetrieve**](docs/GasStationsApi.md#v1GasStationsRetrieve) | **GET** /api/v1/gas_stations/{gasStationId} | Get gas station
+*GasStationsApi* | [**v1GasStationsUpdate**](docs/GasStationsApi.md#v1GasStationsUpdate) | **PATCH** /api/v1/gas_stations/{gasStationId} | Update gas station
 *SweepsApi* | [**v1SweepsAddress**](docs/SweepsApi.md#v1SweepsAddress) | **POST** /api/v1/sweeps/address/{address} | Sweep address
 *TokensApi* | [**v1TokensCreate**](docs/TokensApi.md#v1TokensCreate) | **POST** /api/v1/tokens | Create token
 *TokensApi* | [**v1TokensList**](docs/TokensApi.md#v1TokensList) | **GET** /api/v1/tokens | List tokens
@@ -188,6 +189,7 @@ Class | Method | HTTP request | Description
  - [EventType](docs/EventType.md)
  - [Fee](docs/Fee.md)
  - [GasStation](docs/GasStation.md)
+ - [GetGasStationDepositAddressRequest](docs/GetGasStationDepositAddressRequest.md)
  - [SignMessageRequest](docs/SignMessageRequest.md)
  - [SignMessageRequestSource](docs/SignMessageRequestSource.md)
  - [SignMessageResponse](docs/SignMessageResponse.md)
