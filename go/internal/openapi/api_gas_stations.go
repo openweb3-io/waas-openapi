@@ -400,7 +400,7 @@ func (a *GasStationsAPIService) V1GasStationsGetOrCreateDepositAddress(ctx conte
 //  @return string
 func (a *GasStationsAPIService) V1GasStationsGetOrCreateDepositAddressExecute(r ApiV1GasStationsGetOrCreateDepositAddressRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  string

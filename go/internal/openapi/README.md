@@ -87,7 +87,7 @@ Class | Method | HTTP request | Description
 *ChainsAPI* | [**V1ChainsRetrieve**](docs/ChainsAPI.md#v1chainsretrieve) | **Get** /api/v1/chains/{chainId} | Retrieve chain
 *GasStationsAPI* | [**V1GasStationsCreate**](docs/GasStationsAPI.md#v1gasstationscreate) | **Post** /api/v1/gas_stations | Create gas station
 *GasStationsAPI* | [**V1GasStationsDelete**](docs/GasStationsAPI.md#v1gasstationsdelete) | **Delete** /api/v1/gas_stations/{gasStationId} | Delete gas station
-*GasStationsAPI* | [**V1GasStationsGetOrCreateDepositAddress**](docs/GasStationsAPI.md#v1gasstationsgetorcreatedepositaddress) | **Post** /api/v1/gas_stations/deposit_address | Get or create deposit address
+*GasStationsAPI* | [**V1GasStationsGetOrCreateDepositAddress**](docs/GasStationsAPI.md#v1gasstationsgetorcreatedepositaddress) | **Get** /api/v1/gas_stations/deposit_address | Get or create deposit address
 *GasStationsAPI* | [**V1GasStationsList**](docs/GasStationsAPI.md#v1gasstationslist) | **Get** /api/v1/gas_stations | List gas stations
 *GasStationsAPI* | [**V1GasStationsRetrieve**](docs/GasStationsAPI.md#v1gasstationsretrieve) | **Get** /api/v1/gas_stations/{gasStationId} | Get gas station
 *GasStationsAPI* | [**V1GasStationsUpdate**](docs/GasStationsAPI.md#v1gasstationsupdate) | **Patch** /api/v1/gas_stations/{gasStationId} | Update gas station

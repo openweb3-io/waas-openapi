@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1AddressesValidate
 
-> ValidateAddressesReply V1AddressesValidate(ctx).ChainId(chainId).Addresses(addresses).Execute()
+> ValidateAddressesReply V1AddressesValidate(ctx).Addresses(addresses).ChainId(chainId).Execute()
 
 Validate addresses
 
@@ -105,12 +105,12 @@ import (
 )
 
 func main() {
-	chainId := "chainId_example" // string | Chain ID
 	addresses := []string{"Inner_example"} // []string | Addresses
+	chainId := "chainId_example" // string | Chain ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AddressesAPI.V1AddressesValidate(context.Background()).ChainId(chainId).Addresses(addresses).Execute()
+	resp, r, err := apiClient.AddressesAPI.V1AddressesValidate(context.Background()).Addresses(addresses).ChainId(chainId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressesAPI.V1AddressesValidate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,8 +131,8 @@ Other parameters are passed through a pointer to a apiV1AddressesValidateRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chainId** | **string** | Chain ID | 
  **addresses** | **[]string** | Addresses | 
+ **chainId** | **string** | Chain ID | 
 
 ### Return type
 

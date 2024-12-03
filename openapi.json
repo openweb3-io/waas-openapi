@@ -1438,16 +1438,6 @@
         "operationId": "v1.addresses.validate",
         "parameters": [
           {
-            "description": "Chain ID",
-            "in": "query",
-            "name": "chain_id",
-            "required": true,
-            "schema": {
-              "description": "Chain ID",
-              "type": "string"
-            }
-          },
-          {
             "description": "Addresses",
             "in": "query",
             "name": "addresses",
@@ -1459,6 +1449,16 @@
               },
               "type": "array",
               "uniqueItems": false
+            }
+          },
+          {
+            "description": "Chain ID",
+            "in": "query",
+            "name": "chain_id",
+            "required": true,
+            "schema": {
+              "description": "Chain ID",
+              "type": "string"
             }
           }
         ],
@@ -1848,7 +1848,7 @@
       }
     },
     "/api/v1/gas_stations/deposit_address": {
-      "post": {
+      "get": {
         "description": "Get or create a deposit address for a gas station",
         "operationId": "v1.gas_stations.get_or_create_deposit_address",
         "requestBody": {

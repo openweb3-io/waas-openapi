@@ -89,22 +89,22 @@ export class PromiseAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        const result = this.api.v1AddressesValidateWithHttpInfo(chainId, addresses, _options);
+    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
+        const result = this.api.v1AddressesValidateWithHttpInfo(addresses, chainId, _options);
         return result.toPromise();
     }
 
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<ValidateAddressesReply> {
-        const result = this.api.v1AddressesValidate(chainId, addresses, _options);
+    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<ValidateAddressesReply> {
+        const result = this.api.v1AddressesValidate(addresses, chainId, _options);
         return result.toPromise();
     }
 

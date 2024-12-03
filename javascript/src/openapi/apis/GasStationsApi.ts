@@ -123,7 +123,7 @@ export class GasStationsApiRequestFactory extends BaseAPIRequestFactory {
         const localVarPath = '/api/v1/gas_stations/deposit_address';
 
         // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 

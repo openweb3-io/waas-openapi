@@ -92,7 +92,7 @@ public class Example {
 
 <a id="v1AddressesValidate"></a>
 # **v1AddressesValidate**
-> ValidateAddressesReply v1AddressesValidate(chainId, addresses)
+> ValidateAddressesReply v1AddressesValidate(addresses, chainId)
 
 Validate addresses
 
@@ -120,10 +120,10 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
-    String chainId = "chainId_example"; // String | Chain ID
     List<String> addresses = Arrays.asList(); // List<String> | Addresses
+    String chainId = "chainId_example"; // String | Chain ID
     try {
-      ValidateAddressesReply result = apiInstance.v1AddressesValidate(chainId, addresses);
+      ValidateAddressesReply result = apiInstance.v1AddressesValidate(addresses, chainId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressesApi#v1AddressesValidate");
@@ -140,8 +140,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **chainId** | **String**| Chain ID | |
 | **addresses** | [**List&lt;String&gt;**](String.md)| Addresses | |
+| **chainId** | **String**| Chain ID | |
 
 ### Return type
 

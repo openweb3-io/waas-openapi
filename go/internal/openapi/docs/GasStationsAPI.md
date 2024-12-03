@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1GasStationsCreate**](GasStationsAPI.md#V1GasStationsCreate) | **Post** /api/v1/gas_stations | Create gas station
 [**V1GasStationsDelete**](GasStationsAPI.md#V1GasStationsDelete) | **Delete** /api/v1/gas_stations/{gasStationId} | Delete gas station
-[**V1GasStationsGetOrCreateDepositAddress**](GasStationsAPI.md#V1GasStationsGetOrCreateDepositAddress) | **Post** /api/v1/gas_stations/deposit_address | Get or create deposit address
+[**V1GasStationsGetOrCreateDepositAddress**](GasStationsAPI.md#V1GasStationsGetOrCreateDepositAddress) | **Get** /api/v1/gas_stations/deposit_address | Get or create deposit address
 [**V1GasStationsList**](GasStationsAPI.md#V1GasStationsList) | **Get** /api/v1/gas_stations | List gas stations
 [**V1GasStationsRetrieve**](GasStationsAPI.md#V1GasStationsRetrieve) | **Get** /api/v1/gas_stations/{gasStationId} | Get gas station
 [**V1GasStationsUpdate**](GasStationsAPI.md#V1GasStationsUpdate) | **Patch** /api/v1/gas_stations/{gasStationId} | Update gas station

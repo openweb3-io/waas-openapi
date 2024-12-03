@@ -106,11 +106,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
-        const requestContextPromise = this.requestFactory.v1AddressesValidate(chainId, addresses, _options);
+    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
+        const requestContextPromise = this.requestFactory.v1AddressesValidate(addresses, chainId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -131,11 +131,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<ValidateAddressesReply> {
-        return this.v1AddressesValidateWithHttpInfo(chainId, addresses, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
+    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<ValidateAddressesReply> {
+        return this.v1AddressesValidateWithHttpInfo(addresses, chainId, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
     }
 
     /**

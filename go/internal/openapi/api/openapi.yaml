@@ -101,15 +101,6 @@ paths:
       description: Validate addresses
       operationId: v1.addresses.validate
       parameters:
-      - description: Chain ID
-        explode: true
-        in: query
-        name: chain_id
-        required: true
-        schema:
-          description: Chain ID
-          type: string
-        style: form
       - description: Addresses
         explode: true
         in: query
@@ -121,6 +112,15 @@ paths:
             type: string
           type: array
           uniqueItems: false
+        style: form
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
         style: form
       responses:
         "200":
@@ -370,7 +370,7 @@ paths:
       tags:
       - Gas Stations
   /api/v1/gas_stations/deposit_address:
-    post:
+    get:
       description: Get or create a deposit address for a gas station
       operationId: v1.gas_stations.get_or_create_deposit_address
       requestBody:
