@@ -796,20 +796,17 @@
         ],
         "type": "object"
       },
-      "GetGasStationDepositAddressRequest": {
+      "GetGasStationDepositAddressReply": {
         "properties": {
-          "chain_id": {
-            "description": "Chain ID",
-            "type": "string"
-          },
-          "wallet_id": {
-            "description": "Wallet ID",
-            "type": "string"
+          "addresses": {
+            "description": "Deposit Addresses",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": false
           }
         },
-        "required": [
-          "chain_id"
-        ],
         "type": "object"
       },
       "SignMessageRequest": {
@@ -1438,6 +1435,16 @@
         "operationId": "v1.addresses.validate",
         "parameters": [
           {
+            "description": "Chain ID",
+            "in": "query",
+            "name": "chain_id",
+            "required": true,
+            "schema": {
+              "description": "Chain ID",
+              "type": "string"
+            }
+          },
+          {
             "description": "Addresses",
             "in": "query",
             "name": "addresses",
@@ -1449,16 +1456,6 @@
               },
               "type": "array",
               "uniqueItems": false
-            }
-          },
-          {
-            "description": "Chain ID",
-            "in": "query",
-            "name": "chain_id",
-            "required": true,
-            "schema": {
-              "description": "Chain ID",
-              "type": "string"
             }
           }
         ],
@@ -1851,23 +1848,42 @@
       "get": {
         "description": "Get or create a deposit address for a gas station",
         "operationId": "v1.gas_stations.get_or_create_deposit_address",
+        "parameters": [
+          {
+            "description": "Chain ID",
+            "in": "query",
+            "name": "chain_id",
+            "required": true,
+            "schema": {
+              "description": "Chain ID",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Wallet ID",
+            "in": "query",
+            "name": "wallet_id",
+            "schema": {
+              "description": "Wallet ID",
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetGasStationDepositAddressRequest"
+                "type": "object"
               }
             }
-          },
-          "description": "Request body",
-          "required": true
+          }
         },
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/GetGasStationDepositAddressReply"
                 }
               }
             },

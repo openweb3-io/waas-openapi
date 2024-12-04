@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## V1GasStationsGetOrCreateDepositAddress
 
-> string V1GasStationsGetOrCreateDepositAddress(ctx).GetGasStationDepositAddressRequest(getGasStationDepositAddressRequest).Execute()
+> GetGasStationDepositAddressReply V1GasStationsGetOrCreateDepositAddress(ctx).ChainId(chainId).WalletId(walletId).Body(body).Execute()
 
 Get or create deposit address
 
@@ -170,16 +170,18 @@ import (
 )
 
 func main() {
-	getGasStationDepositAddressRequest := *openapiclient.NewGetGasStationDepositAddressRequest("ChainId_example") // GetGasStationDepositAddressRequest | Request body
+	chainId := "chainId_example" // string | Chain ID
+	walletId := "walletId_example" // string | Wallet ID (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GasStationsAPI.V1GasStationsGetOrCreateDepositAddress(context.Background()).GetGasStationDepositAddressRequest(getGasStationDepositAddressRequest).Execute()
+	resp, r, err := apiClient.GasStationsAPI.V1GasStationsGetOrCreateDepositAddress(context.Background()).ChainId(chainId).WalletId(walletId).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GasStationsAPI.V1GasStationsGetOrCreateDepositAddress``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `V1GasStationsGetOrCreateDepositAddress`: string
+	// response from `V1GasStationsGetOrCreateDepositAddress`: GetGasStationDepositAddressReply
 	fmt.Fprintf(os.Stdout, "Response from `GasStationsAPI.V1GasStationsGetOrCreateDepositAddress`: %v\n", resp)
 }
 ```
@@ -195,11 +197,13 @@ Other parameters are passed through a pointer to a apiV1GasStationsGetOrCreateDe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **getGasStationDepositAddressRequest** | [**GetGasStationDepositAddressRequest**](GetGasStationDepositAddressRequest.md) | Request body | 
+ **chainId** | **string** | Chain ID | 
+ **walletId** | **string** | Wallet ID | 
+ **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
-**string**
+[**GetGasStationDepositAddressReply**](GetGasStationDepositAddressReply.md)
 
 ### Authorization
 

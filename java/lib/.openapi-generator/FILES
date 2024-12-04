@@ -35,7 +35,7 @@ docs/EventType.md
 docs/Fee.md
 docs/GasStation.md
 docs/GasStationsApi.md
-docs/GetGasStationDepositAddressRequest.md
+docs/GetGasStationDepositAddressReply.md
 docs/SignMessageRequest.md
 docs/SignMessageRequestSource.md
 docs/SignMessageResponse.md
@@ -122,7 +122,7 @@ src/main/java/io/openweb3/waas/models/EstimateFeeResponse.java
 src/main/java/io/openweb3/waas/models/EventType.java
 src/main/java/io/openweb3/waas/models/Fee.java
 src/main/java/io/openweb3/waas/models/GasStation.java
-src/main/java/io/openweb3/waas/models/GetGasStationDepositAddressRequest.java
+src/main/java/io/openweb3/waas/models/GetGasStationDepositAddressReply.java
 src/main/java/io/openweb3/waas/models/SignMessageRequest.java
 src/main/java/io/openweb3/waas/models/SignMessageRequestSource.java
 src/main/java/io/openweb3/waas/models/SignMessageResponse.java
@@ -176,7 +176,7 @@ src/test/java/io/openweb3/waas/models/EstimateFeeResponseTest.java
 src/test/java/io/openweb3/waas/models/EventTypeTest.java
 src/test/java/io/openweb3/waas/models/FeeTest.java
 src/test/java/io/openweb3/waas/models/GasStationTest.java
-src/test/java/io/openweb3/waas/models/GetGasStationDepositAddressRequestTest.java
+src/test/java/io/openweb3/waas/models/GetGasStationDepositAddressReplyTest.java
 src/test/java/io/openweb3/waas/models/SignMessageRequestSourceTest.java
 src/test/java/io/openweb3/waas/models/SignMessageRequestTest.java
 src/test/java/io/openweb3/waas/models/SignMessageResponseTest.java

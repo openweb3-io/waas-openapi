@@ -143,7 +143,7 @@ Class | Method | HTTP request | Description
  - [EventType](docs/EventType.md)
  - [Fee](docs/Fee.md)
  - [GasStation](docs/GasStation.md)
- - [GetGasStationDepositAddressRequest](docs/GetGasStationDepositAddressRequest.md)
+ - [GetGasStationDepositAddressReply](docs/GetGasStationDepositAddressReply.md)
  - [SignMessageRequest](docs/SignMessageRequest.md)
  - [SignMessageRequestSource](docs/SignMessageRequestSource.md)
  - [SignMessageResponse](docs/SignMessageResponse.md)

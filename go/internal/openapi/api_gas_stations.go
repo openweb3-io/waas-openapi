@@ -368,16 +368,29 @@ func (a *GasStationsAPIService) V1GasStationsDeleteExecute(r ApiV1GasStationsDel
 type ApiV1GasStationsGetOrCreateDepositAddressRequest struct {
 	ctx context.Context
 	ApiService *GasStationsAPIService
-	getGasStationDepositAddressRequest *GetGasStationDepositAddressRequest
+	chainId *string
+	walletId *string
+	body *map[string]interface{}
 }
 
-// Request body
-func (r ApiV1GasStationsGetOrCreateDepositAddressRequest) GetGasStationDepositAddressRequest(getGasStationDepositAddressRequest GetGasStationDepositAddressRequest) ApiV1GasStationsGetOrCreateDepositAddressRequest {
-	r.getGasStationDepositAddressRequest = &getGasStationDepositAddressRequest
+// Chain ID
+func (r ApiV1GasStationsGetOrCreateDepositAddressRequest) ChainId(chainId string) ApiV1GasStationsGetOrCreateDepositAddressRequest {
+	r.chainId = &chainId
 	return r
 }
 
-func (r ApiV1GasStationsGetOrCreateDepositAddressRequest) Execute() (string, *http.Response, error) {
+// Wallet ID
+func (r ApiV1GasStationsGetOrCreateDepositAddressRequest) WalletId(walletId string) ApiV1GasStationsGetOrCreateDepositAddressRequest {
+	r.walletId = &walletId
+	return r
+}
+
+func (r ApiV1GasStationsGetOrCreateDepositAddressRequest) Body(body map[string]interface{}) ApiV1GasStationsGetOrCreateDepositAddressRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiV1GasStationsGetOrCreateDepositAddressRequest) Execute() (*GetGasStationDepositAddressReply, *http.Response, error) {
 	return r.ApiService.V1GasStationsGetOrCreateDepositAddressExecute(r)
 }
 
@@ -397,13 +410,13 @@ func (a *GasStationsAPIService) V1GasStationsGetOrCreateDepositAddress(ctx conte
 }
 
 // Execute executes the request
-//  @return string
-func (a *GasStationsAPIService) V1GasStationsGetOrCreateDepositAddressExecute(r ApiV1GasStationsGetOrCreateDepositAddressRequest) (string, *http.Response, error) {
+//  @return GetGasStationDepositAddressReply
+func (a *GasStationsAPIService) V1GasStationsGetOrCreateDepositAddressExecute(r ApiV1GasStationsGetOrCreateDepositAddressRequest) (*GetGasStationDepositAddressReply, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  string
+		localVarReturnValue  *GetGasStationDepositAddressReply
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GasStationsAPIService.V1GasStationsGetOrCreateDepositAddress")
@@ -416,10 +429,14 @@ func (a *GasStationsAPIService) V1GasStationsGetOrCreateDepositAddressExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.getGasStationDepositAddressRequest == nil {
-		return localVarReturnValue, nil, reportError("getGasStationDepositAddressRequest is required and must be specified")
+	if r.chainId == nil {
+		return localVarReturnValue, nil, reportError("chainId is required and must be specified")
 	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "chain_id", r.chainId, "form", "")
+	if r.walletId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "wallet_id", r.walletId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -438,7 +455,7 @@ func (a *GasStationsAPIService) V1GasStationsGetOrCreateDepositAddressExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.getGasStationDepositAddressRequest
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

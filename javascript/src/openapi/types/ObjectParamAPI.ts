@@ -27,7 +27,7 @@ import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
 import { GasStation } from '../models/GasStation';
-import { GetGasStationDepositAddressRequest } from '../models/GetGasStationDepositAddressRequest';
+import { GetGasStationDepositAddressReply } from '../models/GetGasStationDepositAddressReply';
 import { ModelError } from '../models/ModelError';
 import { SignMessageRequest } from '../models/SignMessageRequest';
 import { SignMessageRequestSource } from '../models/SignMessageRequestSource';
@@ -83,19 +83,19 @@ export interface AddressesApiV1AddressesListRequest {
 
 export interface AddressesApiV1AddressesValidateRequest {
     /**
-     * Addresses
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof AddressesApiv1AddressesValidate
-     */
-    addresses: Array<string>
-    /**
      * Chain ID
      * Defaults to: undefined
      * @type string
      * @memberof AddressesApiv1AddressesValidate
      */
     chainId: string
+    /**
+     * Addresses
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof AddressesApiv1AddressesValidate
+     */
+    addresses: Array<string>
 }
 
 export interface AddressesApiV1WalletsCreateAddressRequest {
@@ -193,7 +193,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidateWithHttpInfo(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        return this.api.v1AddressesValidateWithHttpInfo(param.addresses, param.chainId,  options).toPromise();
+        return this.api.v1AddressesValidateWithHttpInfo(param.chainId, param.addresses,  options).toPromise();
     }
 
     /**
@@ -202,7 +202,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidate(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<ValidateAddressesReply> {
-        return this.api.v1AddressesValidate(param.addresses, param.chainId,  options).toPromise();
+        return this.api.v1AddressesValidate(param.chainId, param.addresses,  options).toPromise();
     }
 
     /**
@@ -360,11 +360,25 @@ export interface GasStationsApiV1GasStationsDeleteRequest {
 
 export interface GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest {
     /**
-     * Request body
-     * @type GetGasStationDepositAddressRequest
+     * Chain ID
+     * Defaults to: undefined
+     * @type string
      * @memberof GasStationsApiv1GasStationsGetOrCreateDepositAddress
      */
-    getGasStationDepositAddressRequest: GetGasStationDepositAddressRequest
+    chainId: string
+    /**
+     * Wallet ID
+     * Defaults to: undefined
+     * @type string
+     * @memberof GasStationsApiv1GasStationsGetOrCreateDepositAddress
+     */
+    walletId?: string
+    /**
+     * 
+     * @type any
+     * @memberof GasStationsApiv1GasStationsGetOrCreateDepositAddress
+     */
+    body?: any
 }
 
 export interface GasStationsApiV1GasStationsListRequest {
@@ -458,8 +472,8 @@ export class ObjectGasStationsApi {
      * Get or create deposit address
      * @param param the request object
      */
-    public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(param: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest, options?: Configuration): Promise<HttpInfo<string>> {
-        return this.api.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(param.getGasStationDepositAddressRequest,  options).toPromise();
+    public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(param: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest, options?: Configuration): Promise<HttpInfo<GetGasStationDepositAddressReply>> {
+        return this.api.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(param.chainId, param.walletId, param.body,  options).toPromise();
     }
 
     /**
@@ -467,8 +481,8 @@ export class ObjectGasStationsApi {
      * Get or create deposit address
      * @param param the request object
      */
-    public v1GasStationsGetOrCreateDepositAddress(param: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest, options?: Configuration): Promise<string> {
-        return this.api.v1GasStationsGetOrCreateDepositAddress(param.getGasStationDepositAddressRequest,  options).toPromise();
+    public v1GasStationsGetOrCreateDepositAddress(param: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest, options?: Configuration): Promise<GetGasStationDepositAddressReply> {
+        return this.api.v1GasStationsGetOrCreateDepositAddress(param.chainId, param.walletId, param.body,  options).toPromise();
     }
 
     /**

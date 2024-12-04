@@ -101,6 +101,15 @@ paths:
       description: Validate addresses
       operationId: v1.addresses.validate
       parameters:
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
+        style: form
       - description: Addresses
         explode: true
         in: query
@@ -112,15 +121,6 @@ paths:
             type: string
           type: array
           uniqueItems: false
-        style: form
-      - description: Chain ID
-        explode: true
-        in: query
-        name: chain_id
-        required: true
-        schema:
-          description: Chain ID
-          type: string
         style: form
       responses:
         "200":
@@ -373,19 +373,36 @@ paths:
     get:
       description: Get or create a deposit address for a gas station
       operationId: v1.gas_stations.get_or_create_deposit_address
+      parameters:
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
+        style: form
+      - description: Wallet ID
+        explode: true
+        in: query
+        name: wallet_id
+        required: false
+        schema:
+          description: Wallet ID
+          type: string
+        style: form
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/GetGasStationDepositAddressRequest'
-        description: Request body
-        required: true
+              type: object
       responses:
         "200":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/GetGasStationDepositAddressReply'
           description: OK
         "400":
           content:
@@ -2783,19 +2800,18 @@ components:
       - max_fee_limit
       - org_id
       type: object
-    GetGasStationDepositAddressRequest:
+    GetGasStationDepositAddressReply:
       example:
-        wallet_id: wallet_id
-        chain_id: chain_id
+        addresses:
+        - addresses
+        - addresses
       properties:
-        chain_id:
-          description: Chain ID
-          type: string
-        wallet_id:
-          description: Wallet ID
-          type: string
-      required:
-      - chain_id
+        addresses:
+          description: Deposit Addresses
+          items:
+            type: string
+          type: array
+          uniqueItems: false
       type: object
     SignMessageRequest:
       example:

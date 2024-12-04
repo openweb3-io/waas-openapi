@@ -44,7 +44,7 @@ docs/EventType.md
 docs/Fee.md
 docs/GasStation.md
 docs/GasStationsAPI.md
-docs/GetGasStationDepositAddressRequest.md
+docs/GetGasStationDepositAddressReply.md
 docs/SignMessageRequest.md
 docs/SignMessageRequestSource.md
 docs/SignMessageResponse.md
@@ -98,7 +98,7 @@ model_estimate_fee_response.go
 model_event_type.go
 model_fee.go
 model_gas_station.go
-model_get_gas_station_deposit_address_request.go
+model_get_gas_station_deposit_address_reply.go
 model_sign_message_request.go
 model_sign_message_request_source.go
 model_sign_message_response.go

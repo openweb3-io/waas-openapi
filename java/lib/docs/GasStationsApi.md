@@ -160,7 +160,7 @@ public class Example {
 
 <a id="v1GasStationsGetOrCreateDepositAddress"></a>
 # **v1GasStationsGetOrCreateDepositAddress**
-> String v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest)
+> GetGasStationDepositAddressReply v1GasStationsGetOrCreateDepositAddress(chainId, walletId, body)
 
 Get or create deposit address
 
@@ -188,9 +188,11 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     GasStationsApi apiInstance = new GasStationsApi(defaultClient);
-    GetGasStationDepositAddressRequest getGasStationDepositAddressRequest = new GetGasStationDepositAddressRequest(); // GetGasStationDepositAddressRequest | Request body
+    String chainId = "chainId_example"; // String | Chain ID
+    String walletId = "walletId_example"; // String | Wallet ID
+    Object body = null; // Object | 
     try {
-      String result = apiInstance.v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest);
+      GetGasStationDepositAddressReply result = apiInstance.v1GasStationsGetOrCreateDepositAddress(chainId, walletId, body);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling GasStationsApi#v1GasStationsGetOrCreateDepositAddress");
@@ -207,11 +209,13 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **getGasStationDepositAddressRequest** | [**GetGasStationDepositAddressRequest**](GetGasStationDepositAddressRequest.md)| Request body | |
+| **chainId** | **String**| Chain ID | |
+| **walletId** | **String**| Wallet ID | [optional] |
+| **body** | **Object**|  | [optional] |
 
 ### Return type
 
-**String**
+[**GetGasStationDepositAddressReply**](GetGasStationDepositAddressReply.md)
 
 ### Authorization
 

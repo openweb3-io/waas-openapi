@@ -11,7 +11,7 @@ import {SecurityAuthentication} from '../auth/auth';
 import { CreateGasStationRequest } from '../models/CreateGasStationRequest';
 import { CursorPageGasStation } from '../models/CursorPageGasStation';
 import { GasStation } from '../models/GasStation';
-import { GetGasStationDepositAddressRequest } from '../models/GetGasStationDepositAddressRequest';
+import { GetGasStationDepositAddressReply } from '../models/GetGasStationDepositAddressReply';
 import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
 
 /**
@@ -108,15 +108,19 @@ export class GasStationsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Get or create a deposit address for a gas station
      * Get or create deposit address
-     * @param getGasStationDepositAddressRequest Request body
+     * @param chainId Chain ID
+     * @param walletId Wallet ID
+     * @param body 
      */
-    public async v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest: GetGasStationDepositAddressRequest, _options?: Configuration): Promise<RequestContext> {
+    public async v1GasStationsGetOrCreateDepositAddress(chainId: string, walletId?: string, body?: any, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'getGasStationDepositAddressRequest' is not null or undefined
-        if (getGasStationDepositAddressRequest === null || getGasStationDepositAddressRequest === undefined) {
-            throw new RequiredError("GasStationsApi", "v1GasStationsGetOrCreateDepositAddress", "getGasStationDepositAddressRequest");
+        // verify required parameter 'chainId' is not null or undefined
+        if (chainId === null || chainId === undefined) {
+            throw new RequiredError("GasStationsApi", "v1GasStationsGetOrCreateDepositAddress", "chainId");
         }
+
+
 
 
         // Path Params
@@ -126,6 +130,16 @@ export class GasStationsApiRequestFactory extends BaseAPIRequestFactory {
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
+        // Query Params
+        if (chainId !== undefined) {
+            requestContext.setQueryParam("chain_id", ObjectSerializer.serialize(chainId, "string", ""));
+        }
+
+        // Query Params
+        if (walletId !== undefined) {
+            requestContext.setQueryParam("wallet_id", ObjectSerializer.serialize(walletId, "string", ""));
+        }
+
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
@@ -133,7 +147,7 @@ export class GasStationsApiRequestFactory extends BaseAPIRequestFactory {
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(getGasStationDepositAddressRequest, "GetGasStationDepositAddressRequest", ""),
+            ObjectSerializer.serialize(body, "any", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -416,13 +430,13 @@ export class GasStationsApiResponseProcessor {
      * @params response Response returned by the server for a request to v1GasStationsGetOrCreateDepositAddress
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v1GasStationsGetOrCreateDepositAddressWithHttpInfo(response: ResponseContext): Promise<HttpInfo<string >> {
+     public async v1GasStationsGetOrCreateDepositAddressWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetGasStationDepositAddressReply >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: string = ObjectSerializer.deserialize(
+            const body: GetGasStationDepositAddressReply = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "string", ""
-            ) as string;
+                "GetGasStationDepositAddressReply", ""
+            ) as GetGasStationDepositAddressReply;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -456,10 +470,10 @@ export class GasStationsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: string = ObjectSerializer.deserialize(
+            const body: GetGasStationDepositAddressReply = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "string", ""
-            ) as string;
+                "GetGasStationDepositAddressReply", ""
+            ) as GetGasStationDepositAddressReply;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

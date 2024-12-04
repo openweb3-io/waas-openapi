@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **v1GasStationsGetOrCreateDepositAddress**
-> string v1GasStationsGetOrCreateDepositAddress(getGasStationDepositAddressRequest)
+> GetGasStationDepositAddressReply v1GasStationsGetOrCreateDepositAddress()
 
 Get or create a deposit address for a gas station
 
@@ -148,11 +148,12 @@ const configuration = createConfiguration();
 const apiInstance = new GasStationsApi(configuration);
 
 const request: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest = {
-    // Request body
-  getGasStationDepositAddressRequest: {
-    chainId: "chainId_example",
-    walletId: "walletId_example",
-  },
+    // Chain ID
+  chainId: "chain_id_example",
+    // Wallet ID (optional)
+  walletId: "wallet_id_example",
+  
+  body: {},
 };
 
 const data = await apiInstance.v1GasStationsGetOrCreateDepositAddress(request);
@@ -164,12 +165,14 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **getGasStationDepositAddressRequest** | **GetGasStationDepositAddressRequest**| Request body |
+ **body** | **any**|  |
+ **chainId** | [**string**] | Chain ID | defaults to undefined
+ **walletId** | [**string**] | Wallet ID | (optional) defaults to undefined
 
 
 ### Return type
 
-**string**
+**GetGasStationDepositAddressReply**
 
 ### Authorization
 
