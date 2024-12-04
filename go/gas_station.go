@@ -7,12 +7,12 @@ import (
 )
 
 type (
-	CursorPageGasStationOut       = openapi.CursorPageGasStation
-	GasStationOut                 = openapi.GasStation
-	CreateGasStationIn            = openapi.CreateGasStationRequest
-	UpdateGasStationIn            = openapi.UpdateGasStationRequest
-	DeleteGasStationIn            = openapi.ApiV1GasStationsDeleteRequest
-	GetGasStationDepositAddressIn = openapi.GetGasStationDepositAddressRequest
+	CursorPageGasStationOut        = openapi.CursorPageGasStation
+	GasStationOut                  = openapi.GasStation
+	CreateGasStationIn             = openapi.CreateGasStationRequest
+	UpdateGasStationIn             = openapi.UpdateGasStationRequest
+	DeleteGasStationIn             = openapi.ApiV1GasStationsDeleteRequest
+	GetGasStationDepositAddressOut = openapi.GetGasStationDepositAddressReply
 )
 
 type GasStation struct {
@@ -75,12 +75,13 @@ func (e *GasStation) Delete(ctx context.Context, gasStationId string) (*GasStati
 	return out, nil
 }
 
-func (e *GasStation) GetOrCreateDepositAddress(ctx context.Context, getGasStationDepositAddressIn *GetGasStationDepositAddressIn) (*string, error) {
+func (e *GasStation) GetOrCreateDepositAddress(ctx context.Context, chainId string, walletId string) (*GetGasStationDepositAddressOut, error) {
 	req := e.api.GasStationsAPI.V1GasStationsGetOrCreateDepositAddress(ctx)
-	req = req.GetGasStationDepositAddressRequest(*getGasStationDepositAddressIn)
+	req = req.ChainId(chainId)
+	req = req.WalletId(walletId)
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)
 	}
-	return &out, nil
+	return out, nil
 }
