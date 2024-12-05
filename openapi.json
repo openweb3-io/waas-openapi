@@ -29,7 +29,11 @@
           },
           "type": {
             "description": "Address Type",
-            "type": "string"
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": false
           },
           "updated_at": {
             "description": "Updated time",

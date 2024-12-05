@@ -1880,7 +1880,9 @@ components:
         updated_at: updated_at
         created_at: created_at
         memo: memo
-        type: type
+        type:
+        - type
+        - type
       properties:
         address:
           description: Blockchain address
@@ -1902,7 +1904,10 @@ components:
           type: string
         type:
           description: Address Type
-          type: string
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         updated_at:
           description: Updated time
           type: string
@@ -2177,7 +2182,9 @@ components:
           updated_at: updated_at
           created_at: created_at
           memo: memo
-          type: type
+          type:
+          - type
+          - type
         - path: path
           chain: chain
           wallet_id: wallet_id
@@ -2186,7 +2193,9 @@ components:
           updated_at: updated_at
           created_at: created_at
           memo: memo
-          type: type
+          type:
+          - type
+          - type
       properties:
         has_next:
           type: boolean

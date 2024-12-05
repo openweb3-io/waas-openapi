@@ -11,8 +11,8 @@ API version: 1.0
 package openapi
 
 import (
-	"encoding/json"
 	"bytes"
+	"encoding/json"
 	"fmt"
 )
 
@@ -34,7 +34,7 @@ type Address struct {
 	// Derivation path
 	Path *string `json:"path,omitempty"`
 	// Address Type
-	Type *string `json:"type,omitempty"`
+	Type []string `json:"type,omitempty"`
 	// Updated time
 	UpdatedAt *string `json:"updated_at,omitempty"`
 	// Chain ID
@@ -246,17 +246,17 @@ func (o *Address) SetPath(v string) {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Address) GetType() string {
+func (o *Address) GetType() []string {
 	if o == nil || IsNil(o.Type) {
-		var ret string
+		var ret []string
 		return ret
 	}
-	return *o.Type
+	return o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Address) GetTypeOk() (*string, bool) {
+func (o *Address) GetTypeOk() ([]string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -272,9 +272,9 @@ func (o *Address) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Address) SetType(v string) {
-	o.Type = &v
+// SetType gets a reference to the given []string and assigns it to the Type field.
+func (o *Address) SetType(v []string) {
+	o.Type = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
@@ -342,7 +342,7 @@ func (o *Address) SetWalletId(v string) {
 }
 
 func (o Address) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -392,10 +392,10 @@ func (o *Address) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err;
+		return err
 	}
 
-	for _, requiredProperty := range(requiredProperties) {
+	for _, requiredProperty := range requiredProperties {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -451,5 +451,3 @@ func (v *NullableAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

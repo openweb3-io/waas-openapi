@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | Created time | [optional] 
 **Memo** | Pointer to **string** | The memo | [optional] 
 **Path** | Pointer to **string** | Derivation path | [optional] 
-**Type** | Pointer to **string** | Address Type | [optional] 
+**Type** | Pointer to **[]string** | Address Type | [optional] 
 **UpdatedAt** | Pointer to **string** | Updated time | [optional] 
 **WalletId** | Pointer to **string** | Chain ID | [optional] 
 
@@ -180,20 +180,20 @@ HasPath returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Address) GetType() string`
+`func (o *Address) GetType() []string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Address) GetTypeOk() (*string, bool)`
+`func (o *Address) GetTypeOk() (*[]string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Address) SetType(v string)`
+`func (o *Address) SetType(v []string)`
 
 SetType sets Type field to given value.
 

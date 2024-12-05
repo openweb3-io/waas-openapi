@@ -40,7 +40,7 @@ export class Address {
     /**
     * Address Type
     */
-    'type'?: string;
+    'type'?: Array<string>;
     /**
     * Updated time
     */
@@ -94,7 +94,7 @@ export class Address {
         {
             "name": "type",
             "baseName": "type",
-            "type": "string",
+            "type": "Array<string>",
             "format": ""
         },
         {
