@@ -2,6 +2,7 @@ package waas
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"net/url"
 	"os"
@@ -312,8 +313,11 @@ func (s *apiClientTestSuite) TestWallet_5_GetAddress() {
 }
 
 func (s *apiClientTestSuite) TestWallet_6_ListAddress() {
-	reply, err := s.client.Wallet.ListAddresses(context.Background(), s.lastWallet, &ListAddressOptions{
-		Limit: 10,
+	addressType := "HOT"
+	reply, err := s.client.Wallet.ListAddresses(context.Background(), testWalletId, &ListWalletAddressesOptions{
+		ChainIds:    []string{"TON", testChain},
+		AddressType: &addressType,
+		Limit:       10,
 	})
 	if err != nil {
 		s.T().Error(err)
@@ -326,6 +330,9 @@ func (s *apiClientTestSuite) TestWallet_6_ListAddress() {
 		s.NotEmpty(reply.Items[0].Address)
 		s.NotEmpty(reply.Items[0].CreatedAt)
 	}
+
+	buf, _ := json.MarshalIndent(reply, "", "  ")
+	log.Println(string(buf))
 }
 
 func (s *apiClientTestSuite) TestWallet_7_Delete() {

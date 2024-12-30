@@ -295,6 +295,9 @@
           },
           "sub_type": {
             "description": "Wallet sub type",
+            "enum": [
+              "Asset"
+            ],
             "type": "string",
             "x-enum-varnames": [
               "WalletSubType_Custodial_Asset",
@@ -303,6 +306,9 @@
           },
           "type": {
             "description": "Wallet type",
+            "enum": [
+              "Custodial"
+            ],
             "type": "string",
             "x-enum-varnames": [
               "WalletType_Custodial"
@@ -1439,16 +1445,6 @@
         "operationId": "v1.addresses.validate",
         "parameters": [
           {
-            "description": "Chain ID",
-            "in": "query",
-            "name": "chain_id",
-            "required": true,
-            "schema": {
-              "description": "Chain ID",
-              "type": "string"
-            }
-          },
-          {
             "description": "Addresses",
             "in": "query",
             "name": "addresses",
@@ -1460,6 +1456,16 @@
               },
               "type": "array",
               "uniqueItems": false
+            }
+          },
+          {
+            "description": "Chain ID",
+            "in": "query",
+            "name": "chain_id",
+            "required": true,
+            "schema": {
+              "description": "Chain ID",
+              "type": "string"
             }
           }
         ],
@@ -3517,13 +3523,27 @@
             }
           },
           {
+            "description": "address type",
+            "in": "query",
+            "name": "address_type",
+            "schema": {
+              "description": "address type",
+              "enum": [
+                "DEPOSIT",
+                "HOT"
+              ],
+              "type": "string",
+              "x-order": "2"
+            }
+          },
+          {
             "description": "Cursor",
             "in": "query",
             "name": "cursor",
             "schema": {
               "description": "Cursor",
               "type": "string",
-              "x-order": "2"
+              "x-order": "3"
             }
           },
           {
@@ -3533,7 +3553,7 @@
             "schema": {
               "description": "Limit, default is 20",
               "type": "integer",
-              "x-order": "3"
+              "x-order": "4"
             }
           }
         ],
@@ -4135,5 +4155,11 @@
         ]
       }
     }
-  }
+  },
+  "servers": [
+    {
+      "description": "WaaS API Server",
+      "url": "https://api.waas.openweb3.io"
+    }
+  ]
 }

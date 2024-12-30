@@ -33,8 +33,6 @@ export class HttpException extends Error {
  */
 export type RequestBody = undefined | string | FormData | URLSearchParams;
 
-type Headers = Record<string, string>;
-
 function ensureAbsoluteUrl(url: string) {
     if (url.startsWith("http://") || url.startsWith("https://")) {
         return url;
@@ -46,7 +44,7 @@ function ensureAbsoluteUrl(url: string) {
  * Represents an HTTP request context
  */
 export class RequestContext {
-    private headers: Headers = {};
+    private headers: { [key: string]: string } = {};
     private body: RequestBody = undefined;
     private url: URL;
 
@@ -95,7 +93,7 @@ export class RequestContext {
         return this.httpMethod;
     }
 
-    public getHeaders(): Headers {
+    public getHeaders(): { [key: string]: string } {
         return this.headers;
     }
 
@@ -105,10 +103,6 @@ export class RequestContext {
 
     public setQueryParam(name: string, value: string) {
         this.url.searchParams.set(name, value);
-    }
-
-    public appendQueryParam(name: string, value: string) {
-        this.url.searchParams.append(name, value);
     }
 
     /**
@@ -162,7 +156,7 @@ export class SelfDecodingBody implements ResponseBody {
 export class ResponseContext {
     public constructor(
         public httpStatusCode: number,
-        public headers: Headers,
+        public headers: { [key: string]: string },
         public body: ResponseBody
     ) {}
 
@@ -173,8 +167,8 @@ export class ResponseContext {
      * Parameter names are converted to lower case
      * The first parameter is returned with the key `""`
      */
-    public getParsedHeader(headerName: string): Headers {
-        const result: Headers = {};
+    public getParsedHeader(headerName: string): { [parameter: string]: string } {
+        const result: { [parameter: string]: string } = {};
         if (!this.headers[headerName]) {
             return result;
         }
@@ -247,7 +241,7 @@ export function wrapHttpLibrary(promiseHttpLibrary: PromiseHttpLibrary): HttpLib
 export class HttpInfo<T> extends ResponseContext {
     public constructor(
         public httpStatusCode: number,
-        public headers: Headers,
+        public headers: { [key: string]: string },
         public body: ResponseBody,
         public data: T,
     ) {

@@ -48,7 +48,7 @@ import io.openweb3.waas.internal.JSON;
 /**
  * SweepAddressRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class SweepAddressRequest {
   public static final String SERIALIZED_NAME_FEE_ADDRESS = "fee_address";
   @SerializedName(SERIALIZED_NAME_FEE_ADDRESS)

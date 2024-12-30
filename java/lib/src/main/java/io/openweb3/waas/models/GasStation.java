@@ -48,7 +48,7 @@ import io.openweb3.waas.internal.JSON;
 /**
  * GasStation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class GasStation {
   public static final String SERIALIZED_NAME_APP_ID = "app_id";
   @SerializedName(SERIALIZED_NAME_APP_ID)

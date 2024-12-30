@@ -53,28 +53,24 @@ import { AddressesApiRequestFactory, AddressesApiResponseProcessor} from "../api
 export interface AddressesApiV1AddressesListRequest {
     /**
      * Unique system generated identifier of the wallet
-     * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof AddressesApiv1AddressesList
      */
     walletIds?: Array<string>
     /**
      * The chain ids.
-     * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof AddressesApiv1AddressesList
      */
     chainIds?: Array<string>
     /**
      * The cursor to use for pagination.
-     * Defaults to: undefined
      * @type string
      * @memberof AddressesApiv1AddressesList
      */
     cursor?: string
     /**
      * The number of records to return default: 20
-     * Defaults to: undefined
      * @type number
      * @memberof AddressesApiv1AddressesList
      */
@@ -83,25 +79,22 @@ export interface AddressesApiV1AddressesListRequest {
 
 export interface AddressesApiV1AddressesValidateRequest {
     /**
-     * Chain ID
-     * Defaults to: undefined
-     * @type string
-     * @memberof AddressesApiv1AddressesValidate
-     */
-    chainId: string
-    /**
      * Addresses
-     * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof AddressesApiv1AddressesValidate
      */
     addresses: Array<string>
+    /**
+     * Chain ID
+     * @type string
+     * @memberof AddressesApiv1AddressesValidate
+     */
+    chainId: string
 }
 
 export interface AddressesApiV1WalletsCreateAddressRequest {
     /**
      * Wallet id or uid
-     * Defaults to: undefined
      * @type string
      * @memberof AddressesApiv1WalletsCreateAddress
      */
@@ -117,14 +110,12 @@ export interface AddressesApiV1WalletsCreateAddressRequest {
 export interface AddressesApiV1WalletsGetAddressRequest {
     /**
      * Wallet id or uid
-     * Defaults to: undefined
      * @type string
      * @memberof AddressesApiv1WalletsGetAddress
      */
     walletId: string
     /**
      * Address
-     * Defaults to: undefined
      * @type string
      * @memberof AddressesApiv1WalletsGetAddress
      */
@@ -134,28 +125,30 @@ export interface AddressesApiV1WalletsGetAddressRequest {
 export interface AddressesApiV1WalletsListAddressesRequest {
     /**
      * Wallet id or uid
-     * Defaults to: undefined
      * @type string
      * @memberof AddressesApiv1WalletsListAddresses
      */
     walletId: string
     /**
      * chain ids
-     * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof AddressesApiv1WalletsListAddresses
      */
     chainIds?: Array<string>
     /**
+     * address type
+     * @type &#39;DEPOSIT&#39; | &#39;HOT&#39;
+     * @memberof AddressesApiv1WalletsListAddresses
+     */
+    addressType?: 'DEPOSIT' | 'HOT'
+    /**
      * Cursor
-     * Defaults to: undefined
      * @type string
      * @memberof AddressesApiv1WalletsListAddresses
      */
     cursor?: string
     /**
      * Limit, default is 20
-     * Defaults to: undefined
      * @type number
      * @memberof AddressesApiv1WalletsListAddresses
      */
@@ -193,7 +186,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidateWithHttpInfo(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        return this.api.v1AddressesValidateWithHttpInfo(param.chainId, param.addresses,  options).toPromise();
+        return this.api.v1AddressesValidateWithHttpInfo(param.addresses, param.chainId,  options).toPromise();
     }
 
     /**
@@ -202,7 +195,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidate(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<ValidateAddressesReply> {
-        return this.api.v1AddressesValidate(param.chainId, param.addresses,  options).toPromise();
+        return this.api.v1AddressesValidate(param.addresses, param.chainId,  options).toPromise();
     }
 
     /**
@@ -247,7 +240,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1WalletsListAddressesWithHttpInfo(param: AddressesApiV1WalletsListAddressesRequest, options?: Configuration): Promise<HttpInfo<CursorPageAddress>> {
-        return this.api.v1WalletsListAddressesWithHttpInfo(param.walletId, param.chainIds, param.cursor, param.limit,  options).toPromise();
+        return this.api.v1WalletsListAddressesWithHttpInfo(param.walletId, param.chainIds, param.addressType, param.cursor, param.limit,  options).toPromise();
     }
 
     /**
@@ -256,7 +249,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1WalletsListAddresses(param: AddressesApiV1WalletsListAddressesRequest, options?: Configuration): Promise<CursorPageAddress> {
-        return this.api.v1WalletsListAddresses(param.walletId, param.chainIds, param.cursor, param.limit,  options).toPromise();
+        return this.api.v1WalletsListAddresses(param.walletId, param.chainIds, param.addressType, param.cursor, param.limit,  options).toPromise();
     }
 
 }
@@ -267,14 +260,12 @@ import { ChainsApiRequestFactory, ChainsApiResponseProcessor} from "../apis/Chai
 export interface ChainsApiV1ChainsListRequest {
     /**
      * Cursor
-     * Defaults to: undefined
      * @type string
      * @memberof ChainsApiv1ChainsList
      */
     cursor?: string
     /**
      * The number of records to return default: 20
-     * Defaults to: undefined
      * @type number
      * @memberof ChainsApiv1ChainsList
      */
@@ -284,7 +275,6 @@ export interface ChainsApiV1ChainsListRequest {
 export interface ChainsApiV1ChainsRetrieveRequest {
     /**
      * Chain ID
-     * Defaults to: undefined
      * @type string
      * @memberof ChainsApiv1ChainsRetrieve
      */
@@ -351,7 +341,6 @@ export interface GasStationsApiV1GasStationsCreateRequest {
 export interface GasStationsApiV1GasStationsDeleteRequest {
     /**
      * Gas Station ID
-     * Defaults to: undefined
      * @type string
      * @memberof GasStationsApiv1GasStationsDelete
      */
@@ -361,14 +350,12 @@ export interface GasStationsApiV1GasStationsDeleteRequest {
 export interface GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest {
     /**
      * Chain ID
-     * Defaults to: undefined
      * @type string
      * @memberof GasStationsApiv1GasStationsGetOrCreateDepositAddress
      */
     chainId: string
     /**
      * Wallet ID
-     * Defaults to: undefined
      * @type string
      * @memberof GasStationsApiv1GasStationsGetOrCreateDepositAddress
      */
@@ -384,14 +371,12 @@ export interface GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest {
 export interface GasStationsApiV1GasStationsListRequest {
     /**
      * Cursor
-     * Defaults to: undefined
      * @type string
      * @memberof GasStationsApiv1GasStationsList
      */
     cursor?: string
     /**
      * The number of records to return default: 20
-     * Defaults to: undefined
      * @type number
      * @memberof GasStationsApiv1GasStationsList
      */
@@ -401,7 +386,6 @@ export interface GasStationsApiV1GasStationsListRequest {
 export interface GasStationsApiV1GasStationsRetrieveRequest {
     /**
      * Gas Station ID
-     * Defaults to: undefined
      * @type string
      * @memberof GasStationsApiv1GasStationsRetrieve
      */
@@ -411,7 +395,6 @@ export interface GasStationsApiV1GasStationsRetrieveRequest {
 export interface GasStationsApiV1GasStationsUpdateRequest {
     /**
      * Gas Station ID
-     * Defaults to: undefined
      * @type string
      * @memberof GasStationsApiv1GasStationsUpdate
      */
@@ -547,7 +530,6 @@ import { SweepsApiRequestFactory, SweepsApiResponseProcessor} from "../apis/Swee
 export interface SweepsApiV1SweepsAddressRequest {
     /**
      * Address that funds will be swept from
-     * Defaults to: undefined
      * @type string
      * @memberof SweepsApiv1SweepsAddress
      */
@@ -602,14 +584,12 @@ export interface TokensApiV1TokensCreateRequest {
 export interface TokensApiV1TokensListRequest {
     /**
      * Cursor
-     * Defaults to: undefined
      * @type string
      * @memberof TokensApiv1TokensList
      */
     cursor?: string
     /**
      * The number of records to return default: 20
-     * Defaults to: undefined
      * @type number
      * @memberof TokensApiv1TokensList
      */
@@ -619,7 +599,6 @@ export interface TokensApiV1TokensListRequest {
 export interface TokensApiV1TokensRetrieveRequest {
     /**
      * Token ID
-     * Defaults to: undefined
      * @type string
      * @memberof TokensApiv1TokensRetrieve
      */
@@ -629,7 +608,6 @@ export interface TokensApiV1TokensRetrieveRequest {
 export interface TokensApiV1TokensUpdateRequest {
     /**
      * Token ID
-     * Defaults to: undefined
      * @type string
      * @memberof TokensApiv1TokensUpdate
      */
@@ -738,56 +716,48 @@ export interface TransactionsApiV1TransactionsEstimateFeeRequest {
 export interface TransactionsApiV1TransactionsListRequest {
     /**
      * Unique system generated identifier of the wallet
-     * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof TransactionsApiv1TransactionsList
      */
     walletIds?: Array<string>
     /**
      * The blockchain network on which the transaction takes place.
-     * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof TransactionsApiv1TransactionsList
      */
     chainIds?: Array<string>
     /**
      * The tokenId involved in the transaction.
-     * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof TransactionsApiv1TransactionsList
      */
     tokenIds?: Array<string>
     /**
      * The assetId involved in the transaction.
-     * Defaults to: undefined
      * @type Array&lt;string&gt;
      * @memberof TransactionsApiv1TransactionsList
      */
     assetIds?: Array<string>
     /**
      * The transaction hash, which uniquely identifies a transaction on the blockchain.
-     * Defaults to: undefined
      * @type string
      * @memberof TransactionsApiv1TransactionsList
      */
     hash?: string
     /**
      * The status of the transaction.
-     * Defaults to: undefined
      * @type string
      * @memberof TransactionsApiv1TransactionsList
      */
     status?: string
     /**
      * A cursor value for pagination purposes.
-     * Defaults to: undefined
      * @type string
      * @memberof TransactionsApiv1TransactionsList
      */
     cursor?: string
     /**
      * The number of records to return default: 20
-     * Defaults to: undefined
      * @type number
      * @memberof TransactionsApiv1TransactionsList
      */
@@ -797,7 +767,6 @@ export interface TransactionsApiV1TransactionsListRequest {
 export interface TransactionsApiV1TransactionsRetrieveRequest {
     /**
      * Transaction ID
-     * Defaults to: undefined
      * @type string
      * @memberof TransactionsApiv1TransactionsRetrieve
      */
@@ -936,7 +905,6 @@ export interface WalletsApiV1WalletsCreateRequest {
 export interface WalletsApiV1WalletsDeleteRequest {
     /**
      * Wallet id or uid
-     * Defaults to: undefined
      * @type string
      * @memberof WalletsApiv1WalletsDelete
      */
@@ -946,14 +914,12 @@ export interface WalletsApiV1WalletsDeleteRequest {
 export interface WalletsApiV1WalletsListRequest {
     /**
      * Cursor
-     * Defaults to: undefined
      * @type string
      * @memberof WalletsApiv1WalletsList
      */
     cursor?: string
     /**
      * The number of records to return default: 20
-     * Defaults to: undefined
      * @type number
      * @memberof WalletsApiv1WalletsList
      */
@@ -963,7 +929,6 @@ export interface WalletsApiV1WalletsListRequest {
 export interface WalletsApiV1WalletsRetrieveRequest {
     /**
      * Wallet id or uid
-     * Defaults to: undefined
      * @type string
      * @memberof WalletsApiv1WalletsRetrieve
      */
@@ -973,7 +938,6 @@ export interface WalletsApiV1WalletsRetrieveRequest {
 export interface WalletsApiV1WalletsUpdateRequest {
     /**
      * Wallet id or uid
-     * Defaults to: undefined
      * @type string
      * @memberof WalletsApiv1WalletsUpdate
      */
@@ -1100,7 +1064,6 @@ export interface WebhookEndpointsApiV1WebhooksEndpointCreateRequest {
 export interface WebhookEndpointsApiV1WebhooksEndpointDeleteRequest {
     /**
      * Endpoint ID
-     * Defaults to: undefined
      * @type string
      * @memberof WebhookEndpointsApiv1WebhooksEndpointDelete
      */
@@ -1110,14 +1073,12 @@ export interface WebhookEndpointsApiV1WebhooksEndpointDeleteRequest {
 export interface WebhookEndpointsApiV1WebhooksEndpointListRequest {
     /**
      * 
-     * Defaults to: undefined
      * @type string
      * @memberof WebhookEndpointsApiv1WebhooksEndpointList
      */
     cursor?: string
     /**
      * The number of records to return default: 20
-     * Defaults to: undefined
      * @type number
      * @memberof WebhookEndpointsApiv1WebhooksEndpointList
      */
@@ -1127,7 +1088,6 @@ export interface WebhookEndpointsApiV1WebhooksEndpointListRequest {
 export interface WebhookEndpointsApiV1WebhooksEndpointRetrieveRequest {
     /**
      * Endpoint ID
-     * Defaults to: undefined
      * @type string
      * @memberof WebhookEndpointsApiv1WebhooksEndpointRetrieve
      */
@@ -1137,7 +1097,6 @@ export interface WebhookEndpointsApiV1WebhooksEndpointRetrieveRequest {
 export interface WebhookEndpointsApiV1WebhooksEndpointUpdateRequest {
     /**
      * Endpoint ID
-     * Defaults to: undefined
      * @type string
      * @memberof WebhookEndpointsApiv1WebhooksEndpointUpdate
      */
@@ -1255,14 +1214,12 @@ import { WebhookEventsApiRequestFactory, WebhookEventsApiResponseProcessor} from
 export interface WebhookEventsApiV1WebhooksEventsListRequest {
     /**
      * 
-     * Defaults to: undefined
      * @type string
      * @memberof WebhookEventsApiv1WebhooksEventsList
      */
     cursor?: string
     /**
      * The number of records to return default: 100
-     * Defaults to: undefined
      * @type number
      * @memberof WebhookEventsApiv1WebhooksEventsList
      */

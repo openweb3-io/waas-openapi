@@ -1,6 +1,6 @@
 # .TokensApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,22 +19,23 @@ Create a tokens.
 
 
 ```typescript
-import { createConfiguration, TokensApi } from '';
-import type { TokensApiV1TokensCreateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TokensApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TokensApi(configuration);
 
-const request: TokensApiV1TokensCreateRequest = {
-    // Request Body
+let body:.TokensApiV1TokensCreateRequest = {
+  // CreateTokenRequest | Request Body
   createTokenRequest: {
     name: "name_example",
     uid: "uid_example",
   },
 };
 
-const data = await apiInstance.v1TokensCreate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TokensCreate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -79,21 +80,22 @@ Retrieve a list of all tokens.
 
 
 ```typescript
-import { createConfiguration, TokensApi } from '';
-import type { TokensApiV1TokensListRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TokensApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TokensApi(configuration);
 
-const request: TokensApiV1TokensListRequest = {
-    // Cursor (optional)
+let body:.TokensApiV1TokensListRequest = {
+  // string | Cursor (optional)
   cursor: "cursor_example",
-    // The number of records to return default: 20 (optional)
+  // number | The number of records to return default: 20 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1TokensList(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TokensList(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -139,19 +141,20 @@ Get token info by ID
 
 
 ```typescript
-import { createConfiguration, TokensApi } from '';
-import type { TokensApiV1TokensRetrieveRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TokensApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TokensApi(configuration);
 
-const request: TokensApiV1TokensRetrieveRequest = {
-    // Token ID
+let body:.TokensApiV1TokensRetrieveRequest = {
+  // string | Token ID
   tokenId: "tokenId_example",
 };
 
-const data = await apiInstance.v1TokensRetrieve(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TokensRetrieve(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -196,16 +199,16 @@ Update a tokens.
 
 
 ```typescript
-import { createConfiguration, TokensApi } from '';
-import type { TokensApiV1TokensUpdateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TokensApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TokensApi(configuration);
 
-const request: TokensApiV1TokensUpdateRequest = {
-    // Token ID
+let body:.TokensApiV1TokensUpdateRequest = {
+  // string | Token ID
   tokenId: "tokenId_example",
-    // Request Body
+  // UpdateTokenRequest | Request Body
   updateTokenRequest: {
     id: "id_example",
     name: "name_example",
@@ -213,8 +216,9 @@ const request: TokensApiV1TokensUpdateRequest = {
   },
 };
 
-const data = await apiInstance.v1TokensUpdate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TokensUpdate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 

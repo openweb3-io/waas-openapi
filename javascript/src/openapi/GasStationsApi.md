@@ -1,6 +1,6 @@
 # .GasStationsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,14 +21,14 @@ Create a Gas Station
 
 
 ```typescript
-import { createConfiguration, GasStationsApi } from '';
-import type { GasStationsApiV1GasStationsCreateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new GasStationsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .GasStationsApi(configuration);
 
-const request: GasStationsApiV1GasStationsCreateRequest = {
-    // Request body
+let body:.GasStationsApiV1GasStationsCreateRequest = {
+  // CreateGasStationRequest | Request body
   createGasStationRequest: {
     chainId: "chainId_example",
     disabled: true,
@@ -38,8 +38,9 @@ const request: GasStationsApiV1GasStationsCreateRequest = {
   },
 };
 
-const data = await apiInstance.v1GasStationsCreate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1GasStationsCreate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -84,19 +85,20 @@ Delete a Gas Station
 
 
 ```typescript
-import { createConfiguration, GasStationsApi } from '';
-import type { GasStationsApiV1GasStationsDeleteRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new GasStationsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .GasStationsApi(configuration);
 
-const request: GasStationsApiV1GasStationsDeleteRequest = {
-    // Gas Station ID
+let body:.GasStationsApiV1GasStationsDeleteRequest = {
+  // string | Gas Station ID
   gasStationId: "gasStationId_example",
 };
 
-const data = await apiInstance.v1GasStationsDelete(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1GasStationsDelete(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -141,23 +143,24 @@ Get or create a deposit address for a gas station
 
 
 ```typescript
-import { createConfiguration, GasStationsApi } from '';
-import type { GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new GasStationsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .GasStationsApi(configuration);
 
-const request: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest = {
-    // Chain ID
+let body:.GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest = {
+  // string | Chain ID
   chainId: "chain_id_example",
-    // Wallet ID (optional)
+  // string | Wallet ID (optional)
   walletId: "wallet_id_example",
-  
+  // any (optional)
   body: {},
 };
 
-const data = await apiInstance.v1GasStationsGetOrCreateDepositAddress(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1GasStationsGetOrCreateDepositAddress(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -204,21 +207,22 @@ List all gas stations
 
 
 ```typescript
-import { createConfiguration, GasStationsApi } from '';
-import type { GasStationsApiV1GasStationsListRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new GasStationsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .GasStationsApi(configuration);
 
-const request: GasStationsApiV1GasStationsListRequest = {
-    // Cursor (optional)
+let body:.GasStationsApiV1GasStationsListRequest = {
+  // string | Cursor (optional)
   cursor: "cursor_example",
-    // The number of records to return default: 20 (optional)
+  // number | The number of records to return default: 20 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1GasStationsList(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1GasStationsList(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -264,19 +268,20 @@ Get a gas station by ID
 
 
 ```typescript
-import { createConfiguration, GasStationsApi } from '';
-import type { GasStationsApiV1GasStationsRetrieveRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new GasStationsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .GasStationsApi(configuration);
 
-const request: GasStationsApiV1GasStationsRetrieveRequest = {
-    // Gas Station ID
+let body:.GasStationsApiV1GasStationsRetrieveRequest = {
+  // string | Gas Station ID
   gasStationId: "gasStationId_example",
 };
 
-const data = await apiInstance.v1GasStationsRetrieve(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1GasStationsRetrieve(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -321,16 +326,16 @@ Update a Gas Station
 
 
 ```typescript
-import { createConfiguration, GasStationsApi } from '';
-import type { GasStationsApiV1GasStationsUpdateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new GasStationsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .GasStationsApi(configuration);
 
-const request: GasStationsApiV1GasStationsUpdateRequest = {
-    // Gas Station ID
+let body:.GasStationsApiV1GasStationsUpdateRequest = {
+  // string | Gas Station ID
   gasStationId: "gasStationId_example",
-    // Request body
+  // UpdateGasStationRequest | Request body
   updateGasStationRequest: {
     disabled: true,
     gasCapacity: "gasCapacity_example",
@@ -339,8 +344,9 @@ const request: GasStationsApiV1GasStationsUpdateRequest = {
   },
 };
 
-const data = await apiInstance.v1GasStationsUpdate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1GasStationsUpdate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 

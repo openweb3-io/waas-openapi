@@ -63,10 +63,10 @@ export class PromiseAddressesApi {
     /**
      * List of all available addresses.
      * List all addresses
-     * @param [walletIds] Unique system generated identifier of the wallet
-     * @param [chainIds] The chain ids.
-     * @param [cursor] The cursor to use for pagination.
-     * @param [limit] The number of records to return default: 20
+     * @param walletIds Unique system generated identifier of the wallet
+     * @param chainIds The chain ids.
+     * @param cursor The cursor to use for pagination.
+     * @param limit The number of records to return default: 20
      */
     public v1AddressesListWithHttpInfo(walletIds?: Array<string>, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageAddress>> {
         const result = this.api.v1AddressesListWithHttpInfo(walletIds, chainIds, cursor, limit, _options);
@@ -76,10 +76,10 @@ export class PromiseAddressesApi {
     /**
      * List of all available addresses.
      * List all addresses
-     * @param [walletIds] Unique system generated identifier of the wallet
-     * @param [chainIds] The chain ids.
-     * @param [cursor] The cursor to use for pagination.
-     * @param [limit] The number of records to return default: 20
+     * @param walletIds Unique system generated identifier of the wallet
+     * @param chainIds The chain ids.
+     * @param cursor The cursor to use for pagination.
+     * @param limit The number of records to return default: 20
      */
     public v1AddressesList(walletIds?: Array<string>, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageAddress> {
         const result = this.api.v1AddressesList(walletIds, chainIds, cursor, limit, _options);
@@ -89,22 +89,22 @@ export class PromiseAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        const result = this.api.v1AddressesValidateWithHttpInfo(chainId, addresses, _options);
+    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
+        const result = this.api.v1AddressesValidateWithHttpInfo(addresses, chainId, _options);
         return result.toPromise();
     }
 
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<ValidateAddressesReply> {
-        const result = this.api.v1AddressesValidate(chainId, addresses, _options);
+    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<ValidateAddressesReply> {
+        const result = this.api.v1AddressesValidate(addresses, chainId, _options);
         return result.toPromise();
     }
 
@@ -156,12 +156,13 @@ export class PromiseAddressesApi {
      * List addresses in wallet
      * List wallet addresses
      * @param walletId Wallet id or uid
-     * @param [chainIds] chain ids
-     * @param [cursor] Cursor
-     * @param [limit] Limit, default is 20
+     * @param chainIds chain ids
+     * @param addressType address type
+     * @param cursor Cursor
+     * @param limit Limit, default is 20
      */
-    public v1WalletsListAddressesWithHttpInfo(walletId: string, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageAddress>> {
-        const result = this.api.v1WalletsListAddressesWithHttpInfo(walletId, chainIds, cursor, limit, _options);
+    public v1WalletsListAddressesWithHttpInfo(walletId: string, chainIds?: Array<string>, addressType?: 'DEPOSIT' | 'HOT', cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageAddress>> {
+        const result = this.api.v1WalletsListAddressesWithHttpInfo(walletId, chainIds, addressType, cursor, limit, _options);
         return result.toPromise();
     }
 
@@ -169,12 +170,13 @@ export class PromiseAddressesApi {
      * List addresses in wallet
      * List wallet addresses
      * @param walletId Wallet id or uid
-     * @param [chainIds] chain ids
-     * @param [cursor] Cursor
-     * @param [limit] Limit, default is 20
+     * @param chainIds chain ids
+     * @param addressType address type
+     * @param cursor Cursor
+     * @param limit Limit, default is 20
      */
-    public v1WalletsListAddresses(walletId: string, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageAddress> {
-        const result = this.api.v1WalletsListAddresses(walletId, chainIds, cursor, limit, _options);
+    public v1WalletsListAddresses(walletId: string, chainIds?: Array<string>, addressType?: 'DEPOSIT' | 'HOT', cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageAddress> {
+        const result = this.api.v1WalletsListAddresses(walletId, chainIds, addressType, cursor, limit, _options);
         return result.toPromise();
     }
 
@@ -200,8 +202,8 @@ export class PromiseChainsApi {
     /**
      * List of all available chains.
      * List all chains
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1ChainsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageChain>> {
         const result = this.api.v1ChainsListWithHttpInfo(cursor, limit, _options);
@@ -211,8 +213,8 @@ export class PromiseChainsApi {
     /**
      * List of all available chains.
      * List all chains
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1ChainsList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageChain> {
         const result = this.api.v1ChainsList(cursor, limit, _options);
@@ -302,8 +304,8 @@ export class PromiseGasStationsApi {
      * Get or create a deposit address for a gas station
      * Get or create deposit address
      * @param chainId Chain ID
-     * @param [walletId] Wallet ID
-     * @param [body]
+     * @param walletId Wallet ID
+     * @param body 
      */
     public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId: string, walletId?: string, body?: any, _options?: Configuration): Promise<HttpInfo<GetGasStationDepositAddressReply>> {
         const result = this.api.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId, walletId, body, _options);
@@ -314,8 +316,8 @@ export class PromiseGasStationsApi {
      * Get or create a deposit address for a gas station
      * Get or create deposit address
      * @param chainId Chain ID
-     * @param [walletId] Wallet ID
-     * @param [body]
+     * @param walletId Wallet ID
+     * @param body 
      */
     public v1GasStationsGetOrCreateDepositAddress(chainId: string, walletId?: string, body?: any, _options?: Configuration): Promise<GetGasStationDepositAddressReply> {
         const result = this.api.v1GasStationsGetOrCreateDepositAddress(chainId, walletId, body, _options);
@@ -325,8 +327,8 @@ export class PromiseGasStationsApi {
     /**
      * List all gas stations
      * List gas stations
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1GasStationsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageGasStation>> {
         const result = this.api.v1GasStationsListWithHttpInfo(cursor, limit, _options);
@@ -336,8 +338,8 @@ export class PromiseGasStationsApi {
     /**
      * List all gas stations
      * List gas stations
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1GasStationsList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageGasStation> {
         const result = this.api.v1GasStationsList(cursor, limit, _options);
@@ -469,8 +471,8 @@ export class PromiseTokensApi {
     /**
      * Retrieve a list of all tokens.
      * List tokens
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1TokensListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageToken>> {
         const result = this.api.v1TokensListWithHttpInfo(cursor, limit, _options);
@@ -480,8 +482,8 @@ export class PromiseTokensApi {
     /**
      * Retrieve a list of all tokens.
      * List tokens
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1TokensList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageToken> {
         const result = this.api.v1TokensList(cursor, limit, _options);
@@ -572,14 +574,14 @@ export class PromiseTransactionsApi {
     /**
      * List transactions
      * List transactions
-     * @param [walletIds] Unique system generated identifier of the wallet
-     * @param [chainIds] The blockchain network on which the transaction takes place.
-     * @param [tokenIds] The tokenId involved in the transaction.
-     * @param [assetIds] The assetId involved in the transaction.
-     * @param [hash] The transaction hash, which uniquely identifies a transaction on the blockchain.
-     * @param [status] The status of the transaction.
-     * @param [cursor] A cursor value for pagination purposes.
-     * @param [limit] The number of records to return default: 20
+     * @param walletIds Unique system generated identifier of the wallet
+     * @param chainIds The blockchain network on which the transaction takes place.
+     * @param tokenIds The tokenId involved in the transaction.
+     * @param assetIds The assetId involved in the transaction.
+     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain.
+     * @param status The status of the transaction.
+     * @param cursor A cursor value for pagination purposes.
+     * @param limit The number of records to return default: 20
      */
     public v1TransactionsListWithHttpInfo(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: string, cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageTransaction>> {
         const result = this.api.v1TransactionsListWithHttpInfo(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _options);
@@ -589,14 +591,14 @@ export class PromiseTransactionsApi {
     /**
      * List transactions
      * List transactions
-     * @param [walletIds] Unique system generated identifier of the wallet
-     * @param [chainIds] The blockchain network on which the transaction takes place.
-     * @param [tokenIds] The tokenId involved in the transaction.
-     * @param [assetIds] The assetId involved in the transaction.
-     * @param [hash] The transaction hash, which uniquely identifies a transaction on the blockchain.
-     * @param [status] The status of the transaction.
-     * @param [cursor] A cursor value for pagination purposes.
-     * @param [limit] The number of records to return default: 20
+     * @param walletIds Unique system generated identifier of the wallet
+     * @param chainIds The blockchain network on which the transaction takes place.
+     * @param tokenIds The tokenId involved in the transaction.
+     * @param assetIds The assetId involved in the transaction.
+     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain.
+     * @param status The status of the transaction.
+     * @param cursor A cursor value for pagination purposes.
+     * @param limit The number of records to return default: 20
      */
     public v1TransactionsList(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: string, cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageTransaction> {
         const result = this.api.v1TransactionsList(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _options);
@@ -725,8 +727,8 @@ export class PromiseWalletsApi {
     /**
      * List all wallets
      * List wallets
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1WalletsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageWallet>> {
         const result = this.api.v1WalletsListWithHttpInfo(cursor, limit, _options);
@@ -736,8 +738,8 @@ export class PromiseWalletsApi {
     /**
      * List all wallets
      * List wallets
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1WalletsList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageWallet> {
         const result = this.api.v1WalletsList(cursor, limit, _options);
@@ -848,8 +850,8 @@ export class PromiseWebhookEndpointsApi {
     /**
      * List webhook endpoints
      * List webhook endpoints
-     * @param [cursor]
-     * @param [limit] The number of records to return default: 20
+     * @param cursor 
+     * @param limit The number of records to return default: 20
      */
     public v1WebhooksEndpointListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageEndpoint>> {
         const result = this.api.v1WebhooksEndpointListWithHttpInfo(cursor, limit, _options);
@@ -859,8 +861,8 @@ export class PromiseWebhookEndpointsApi {
     /**
      * List webhook endpoints
      * List webhook endpoints
-     * @param [cursor]
-     * @param [limit] The number of records to return default: 20
+     * @param cursor 
+     * @param limit The number of records to return default: 20
      */
     public v1WebhooksEndpointList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageEndpoint> {
         const result = this.api.v1WebhooksEndpointList(cursor, limit, _options);
@@ -931,8 +933,8 @@ export class PromiseWebhookEventsApi {
     /**
      * List webhook event types
      * List webhook event types
-     * @param [cursor]
-     * @param [limit] The number of records to return default: 100
+     * @param cursor 
+     * @param limit The number of records to return default: 100
      */
     public v1WebhooksEventsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Promise<HttpInfo<CursorPageEventType>> {
         const result = this.api.v1WebhooksEventsListWithHttpInfo(cursor, limit, _options);
@@ -942,8 +944,8 @@ export class PromiseWebhookEventsApi {
     /**
      * List webhook event types
      * List webhook event types
-     * @param [cursor]
-     * @param [limit] The number of records to return default: 100
+     * @param cursor 
+     * @param limit The number of records to return default: 100
      */
     public v1WebhooksEventsList(cursor?: string, limit?: number, _options?: Configuration): Promise<CursorPageEventType> {
         const result = this.api.v1WebhooksEventsList(cursor, limit, _options);

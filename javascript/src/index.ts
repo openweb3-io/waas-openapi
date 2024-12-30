@@ -47,6 +47,7 @@ import {
   UpdateGasStationRequest,
   GasStation,
   GetGasStationDepositAddressRequest,
+  GetGasStationDepositAddressReply,
 } from "./openapi/index";
 export * from "./openapi/models/all";
 export * from "./openapi/apis/exception";
@@ -403,7 +404,7 @@ class WebhookEvents {
 class GasStations {
   private readonly api: GasStationsApi;
 
-  public constructor(config: Configuration) { 
+  public constructor(config: Configuration) {
     this.api = new GasStationsApi(config);
   }
 
@@ -413,7 +414,9 @@ class GasStations {
   }
 
   // create gas station
-  public async create(createGasStationRequest: CreateGasStationRequest): Promise<GasStation> {
+  public async create(
+    createGasStationRequest: CreateGasStationRequest
+  ): Promise<GasStation> {
     return await this.api.v1GasStationsCreate({ createGasStationRequest });
   }
 
@@ -437,9 +440,9 @@ class GasStations {
 
   public async getOrCreateDepositAddress(
     getGasStationDepositAddressRequest: GetGasStationDepositAddressRequest
-  ): Promise<string> {
-    return await this.api.v1GasStationsGetOrCreateDepositAddress({
-      getGasStationDepositAddressRequest,
-    });
+  ): Promise<GetGasStationDepositAddressReply> {
+    return await this.api.v1GasStationsGetOrCreateDepositAddress(
+      getGasStationDepositAddressRequest
+    );
   }
 }

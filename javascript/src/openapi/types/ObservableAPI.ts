@@ -67,24 +67,24 @@ export class ObservableAddressesApi {
     /**
      * List of all available addresses.
      * List all addresses
-     * @param [walletIds] Unique system generated identifier of the wallet
-     * @param [chainIds] The chain ids.
-     * @param [cursor] The cursor to use for pagination.
-     * @param [limit] The number of records to return default: 20
+     * @param walletIds Unique system generated identifier of the wallet
+     * @param chainIds The chain ids.
+     * @param cursor The cursor to use for pagination.
+     * @param limit The number of records to return default: 20
      */
     public v1AddressesListWithHttpInfo(walletIds?: Array<string>, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageAddress>> {
         const requestContextPromise = this.requestFactory.v1AddressesList(walletIds, chainIds, cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1AddressesListWithHttpInfo(rsp)));
@@ -94,10 +94,10 @@ export class ObservableAddressesApi {
     /**
      * List of all available addresses.
      * List all addresses
-     * @param [walletIds] Unique system generated identifier of the wallet
-     * @param [chainIds] The chain ids.
-     * @param [cursor] The cursor to use for pagination.
-     * @param [limit] The number of records to return default: 20
+     * @param walletIds Unique system generated identifier of the wallet
+     * @param chainIds The chain ids.
+     * @param cursor The cursor to use for pagination.
+     * @param limit The number of records to return default: 20
      */
     public v1AddressesList(walletIds?: Array<string>, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageAddress> {
         return this.v1AddressesListWithHttpInfo(walletIds, chainIds, cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageAddress>) => apiResponse.data));
@@ -106,22 +106,22 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
-        const requestContextPromise = this.requestFactory.v1AddressesValidate(chainId, addresses, _options);
+    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
+        const requestContextPromise = this.requestFactory.v1AddressesValidate(addresses, chainId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1AddressesValidateWithHttpInfo(rsp)));
@@ -131,11 +131,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<ValidateAddressesReply> {
-        return this.v1AddressesValidateWithHttpInfo(chainId, addresses, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
+    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<ValidateAddressesReply> {
+        return this.v1AddressesValidateWithHttpInfo(addresses, chainId, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
     }
 
     /**
@@ -149,14 +149,14 @@ export class ObservableAddressesApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WalletsCreateAddressWithHttpInfo(rsp)));
@@ -184,14 +184,14 @@ export class ObservableAddressesApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WalletsGetAddressWithHttpInfo(rsp)));
@@ -212,23 +212,24 @@ export class ObservableAddressesApi {
      * List addresses in wallet
      * List wallet addresses
      * @param walletId Wallet id or uid
-     * @param [chainIds] chain ids
-     * @param [cursor] Cursor
-     * @param [limit] Limit, default is 20
+     * @param chainIds chain ids
+     * @param addressType address type
+     * @param cursor Cursor
+     * @param limit Limit, default is 20
      */
-    public v1WalletsListAddressesWithHttpInfo(walletId: string, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageAddress>> {
-        const requestContextPromise = this.requestFactory.v1WalletsListAddresses(walletId, chainIds, cursor, limit, _options);
+    public v1WalletsListAddressesWithHttpInfo(walletId: string, chainIds?: Array<string>, addressType?: 'DEPOSIT' | 'HOT', cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageAddress>> {
+        const requestContextPromise = this.requestFactory.v1WalletsListAddresses(walletId, chainIds, addressType, cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WalletsListAddressesWithHttpInfo(rsp)));
@@ -239,12 +240,13 @@ export class ObservableAddressesApi {
      * List addresses in wallet
      * List wallet addresses
      * @param walletId Wallet id or uid
-     * @param [chainIds] chain ids
-     * @param [cursor] Cursor
-     * @param [limit] Limit, default is 20
+     * @param chainIds chain ids
+     * @param addressType address type
+     * @param cursor Cursor
+     * @param limit Limit, default is 20
      */
-    public v1WalletsListAddresses(walletId: string, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageAddress> {
-        return this.v1WalletsListAddressesWithHttpInfo(walletId, chainIds, cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageAddress>) => apiResponse.data));
+    public v1WalletsListAddresses(walletId: string, chainIds?: Array<string>, addressType?: 'DEPOSIT' | 'HOT', cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageAddress> {
+        return this.v1WalletsListAddressesWithHttpInfo(walletId, chainIds, addressType, cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageAddress>) => apiResponse.data));
     }
 
 }
@@ -268,22 +270,22 @@ export class ObservableChainsApi {
     /**
      * List of all available chains.
      * List all chains
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1ChainsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageChain>> {
         const requestContextPromise = this.requestFactory.v1ChainsList(cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1ChainsListWithHttpInfo(rsp)));
@@ -293,8 +295,8 @@ export class ObservableChainsApi {
     /**
      * List of all available chains.
      * List all chains
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1ChainsList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageChain> {
         return this.v1ChainsListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageChain>) => apiResponse.data));
@@ -310,14 +312,14 @@ export class ObservableChainsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1ChainsRetrieveWithHttpInfo(rsp)));
@@ -361,14 +363,14 @@ export class ObservableGasStationsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsCreateWithHttpInfo(rsp)));
@@ -394,14 +396,14 @@ export class ObservableGasStationsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsDeleteWithHttpInfo(rsp)));
@@ -421,22 +423,22 @@ export class ObservableGasStationsApi {
      * Get or create a deposit address for a gas station
      * Get or create deposit address
      * @param chainId Chain ID
-     * @param [walletId] Wallet ID
-     * @param [body]
+     * @param walletId Wallet ID
+     * @param body 
      */
     public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId: string, walletId?: string, body?: any, _options?: Configuration): Observable<HttpInfo<GetGasStationDepositAddressReply>> {
         const requestContextPromise = this.requestFactory.v1GasStationsGetOrCreateDepositAddress(chainId, walletId, body, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(rsp)));
@@ -447,8 +449,8 @@ export class ObservableGasStationsApi {
      * Get or create a deposit address for a gas station
      * Get or create deposit address
      * @param chainId Chain ID
-     * @param [walletId] Wallet ID
-     * @param [body]
+     * @param walletId Wallet ID
+     * @param body 
      */
     public v1GasStationsGetOrCreateDepositAddress(chainId: string, walletId?: string, body?: any, _options?: Configuration): Observable<GetGasStationDepositAddressReply> {
         return this.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId, walletId, body, _options).pipe(map((apiResponse: HttpInfo<GetGasStationDepositAddressReply>) => apiResponse.data));
@@ -457,22 +459,22 @@ export class ObservableGasStationsApi {
     /**
      * List all gas stations
      * List gas stations
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1GasStationsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageGasStation>> {
         const requestContextPromise = this.requestFactory.v1GasStationsList(cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsListWithHttpInfo(rsp)));
@@ -482,8 +484,8 @@ export class ObservableGasStationsApi {
     /**
      * List all gas stations
      * List gas stations
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1GasStationsList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageGasStation> {
         return this.v1GasStationsListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageGasStation>) => apiResponse.data));
@@ -499,14 +501,14 @@ export class ObservableGasStationsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsRetrieveWithHttpInfo(rsp)));
@@ -533,14 +535,14 @@ export class ObservableGasStationsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GasStationsUpdateWithHttpInfo(rsp)));
@@ -586,14 +588,14 @@ export class ObservableSweepsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1SweepsAddressWithHttpInfo(rsp)));
@@ -638,14 +640,14 @@ export class ObservableTokensApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TokensCreateWithHttpInfo(rsp)));
@@ -664,22 +666,22 @@ export class ObservableTokensApi {
     /**
      * Retrieve a list of all tokens.
      * List tokens
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1TokensListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageToken>> {
         const requestContextPromise = this.requestFactory.v1TokensList(cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TokensListWithHttpInfo(rsp)));
@@ -689,8 +691,8 @@ export class ObservableTokensApi {
     /**
      * Retrieve a list of all tokens.
      * List tokens
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1TokensList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageToken> {
         return this.v1TokensListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageToken>) => apiResponse.data));
@@ -706,14 +708,14 @@ export class ObservableTokensApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TokensRetrieveWithHttpInfo(rsp)));
@@ -740,14 +742,14 @@ export class ObservableTokensApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TokensUpdateWithHttpInfo(rsp)));
@@ -792,14 +794,14 @@ export class ObservableTransactionsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TransactionsEstimateFeeWithHttpInfo(rsp)));
@@ -818,28 +820,28 @@ export class ObservableTransactionsApi {
     /**
      * List transactions
      * List transactions
-     * @param [walletIds] Unique system generated identifier of the wallet
-     * @param [chainIds] The blockchain network on which the transaction takes place.
-     * @param [tokenIds] The tokenId involved in the transaction.
-     * @param [assetIds] The assetId involved in the transaction.
-     * @param [hash] The transaction hash, which uniquely identifies a transaction on the blockchain.
-     * @param [status] The status of the transaction.
-     * @param [cursor] A cursor value for pagination purposes.
-     * @param [limit] The number of records to return default: 20
+     * @param walletIds Unique system generated identifier of the wallet
+     * @param chainIds The blockchain network on which the transaction takes place.
+     * @param tokenIds The tokenId involved in the transaction.
+     * @param assetIds The assetId involved in the transaction.
+     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain.
+     * @param status The status of the transaction.
+     * @param cursor A cursor value for pagination purposes.
+     * @param limit The number of records to return default: 20
      */
     public v1TransactionsListWithHttpInfo(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: string, cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageTransaction>> {
         const requestContextPromise = this.requestFactory.v1TransactionsList(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TransactionsListWithHttpInfo(rsp)));
@@ -849,14 +851,14 @@ export class ObservableTransactionsApi {
     /**
      * List transactions
      * List transactions
-     * @param [walletIds] Unique system generated identifier of the wallet
-     * @param [chainIds] The blockchain network on which the transaction takes place.
-     * @param [tokenIds] The tokenId involved in the transaction.
-     * @param [assetIds] The assetId involved in the transaction.
-     * @param [hash] The transaction hash, which uniquely identifies a transaction on the blockchain.
-     * @param [status] The status of the transaction.
-     * @param [cursor] A cursor value for pagination purposes.
-     * @param [limit] The number of records to return default: 20
+     * @param walletIds Unique system generated identifier of the wallet
+     * @param chainIds The blockchain network on which the transaction takes place.
+     * @param tokenIds The tokenId involved in the transaction.
+     * @param assetIds The assetId involved in the transaction.
+     * @param hash The transaction hash, which uniquely identifies a transaction on the blockchain.
+     * @param status The status of the transaction.
+     * @param cursor A cursor value for pagination purposes.
+     * @param limit The number of records to return default: 20
      */
     public v1TransactionsList(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: string, cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageTransaction> {
         return this.v1TransactionsListWithHttpInfo(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageTransaction>) => apiResponse.data));
@@ -872,14 +874,14 @@ export class ObservableTransactionsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TransactionsRetrieveWithHttpInfo(rsp)));
@@ -905,14 +907,14 @@ export class ObservableTransactionsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TransactionsSignMessageWithHttpInfo(rsp)));
@@ -938,14 +940,14 @@ export class ObservableTransactionsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1TransactionsTransferWithHttpInfo(rsp)));
@@ -989,14 +991,14 @@ export class ObservableWalletsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WalletsCreateWithHttpInfo(rsp)));
@@ -1022,14 +1024,14 @@ export class ObservableWalletsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WalletsDeleteWithHttpInfo(rsp)));
@@ -1048,22 +1050,22 @@ export class ObservableWalletsApi {
     /**
      * List all wallets
      * List wallets
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1WalletsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageWallet>> {
         const requestContextPromise = this.requestFactory.v1WalletsList(cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WalletsListWithHttpInfo(rsp)));
@@ -1073,8 +1075,8 @@ export class ObservableWalletsApi {
     /**
      * List all wallets
      * List wallets
-     * @param [cursor] Cursor
-     * @param [limit] The number of records to return default: 20
+     * @param cursor Cursor
+     * @param limit The number of records to return default: 20
      */
     public v1WalletsList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageWallet> {
         return this.v1WalletsListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageWallet>) => apiResponse.data));
@@ -1090,14 +1092,14 @@ export class ObservableWalletsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WalletsRetrieveWithHttpInfo(rsp)));
@@ -1124,14 +1126,14 @@ export class ObservableWalletsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WalletsUpdateWithHttpInfo(rsp)));
@@ -1176,14 +1178,14 @@ export class ObservableWebhookEndpointsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WebhooksEndpointCreateWithHttpInfo(rsp)));
@@ -1209,14 +1211,14 @@ export class ObservableWebhookEndpointsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WebhooksEndpointDeleteWithHttpInfo(rsp)));
@@ -1235,22 +1237,22 @@ export class ObservableWebhookEndpointsApi {
     /**
      * List webhook endpoints
      * List webhook endpoints
-     * @param [cursor]
-     * @param [limit] The number of records to return default: 20
+     * @param cursor 
+     * @param limit The number of records to return default: 20
      */
     public v1WebhooksEndpointListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageEndpoint>> {
         const requestContextPromise = this.requestFactory.v1WebhooksEndpointList(cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WebhooksEndpointListWithHttpInfo(rsp)));
@@ -1260,8 +1262,8 @@ export class ObservableWebhookEndpointsApi {
     /**
      * List webhook endpoints
      * List webhook endpoints
-     * @param [cursor]
-     * @param [limit] The number of records to return default: 20
+     * @param cursor 
+     * @param limit The number of records to return default: 20
      */
     public v1WebhooksEndpointList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageEndpoint> {
         return this.v1WebhooksEndpointListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageEndpoint>) => apiResponse.data));
@@ -1277,14 +1279,14 @@ export class ObservableWebhookEndpointsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WebhooksEndpointRetrieveWithHttpInfo(rsp)));
@@ -1311,14 +1313,14 @@ export class ObservableWebhookEndpointsApi {
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WebhooksEndpointUpdateWithHttpInfo(rsp)));
@@ -1356,22 +1358,22 @@ export class ObservableWebhookEventsApi {
     /**
      * List webhook event types
      * List webhook event types
-     * @param [cursor]
-     * @param [limit] The number of records to return default: 100
+     * @param cursor 
+     * @param limit The number of records to return default: 100
      */
     public v1WebhooksEventsListWithHttpInfo(cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageEventType>> {
         const requestContextPromise = this.requestFactory.v1WebhooksEventsList(cursor, limit, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of this.configuration.middleware) {
+        for (let middleware of this.configuration.middleware) {
             middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
         }
 
         return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
             pipe(mergeMap((response: ResponseContext) => {
                 let middlewarePostObservable = of(response);
-                for (const middleware of this.configuration.middleware) {
+                for (let middleware of this.configuration.middleware) {
                     middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
                 }
                 return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1WebhooksEventsListWithHttpInfo(rsp)));
@@ -1381,8 +1383,8 @@ export class ObservableWebhookEventsApi {
     /**
      * List webhook event types
      * List webhook event types
-     * @param [cursor]
-     * @param [limit] The number of records to return default: 100
+     * @param cursor 
+     * @param limit The number of records to return default: 100
      */
     public v1WebhooksEventsList(cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageEventType> {
         return this.v1WebhooksEventsListWithHttpInfo(cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageEventType>) => apiResponse.data));

@@ -48,7 +48,7 @@ import io.openweb3.waas.internal.JSON;
 /**
  * Fee
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Fee {
   public static final String SERIALIZED_NAME_MAX_FEE_AMOUNT = "maxFeeAmount";
   @SerializedName(SERIALIZED_NAME_MAX_FEE_AMOUNT)

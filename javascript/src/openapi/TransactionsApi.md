@@ -1,6 +1,6 @@
 # .TransactionsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,14 +20,14 @@ Estimate fee for a transfer transaction
 
 
 ```typescript
-import { createConfiguration, TransactionsApi } from '';
-import type { TransactionsApiV1TransactionsEstimateFeeRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TransactionsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TransactionsApi(configuration);
 
-const request: TransactionsApiV1TransactionsEstimateFeeRequest = {
-    // Request Body
+let body:.TransactionsApiV1TransactionsEstimateFeeRequest = {
+  // EstimateFeeRequest | Request Body
   estimateFeeRequest: {
     amount: "amount_example",
     destination: {
@@ -44,8 +44,9 @@ const request: TransactionsApiV1TransactionsEstimateFeeRequest = {
   },
 };
 
-const data = await apiInstance.v1TransactionsEstimateFee(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TransactionsEstimateFee(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -90,41 +91,42 @@ List transactions
 
 
 ```typescript
-import { createConfiguration, TransactionsApi } from '';
-import type { TransactionsApiV1TransactionsListRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TransactionsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TransactionsApi(configuration);
 
-const request: TransactionsApiV1TransactionsListRequest = {
-    // Unique system generated identifier of the wallet (optional)
+let body:.TransactionsApiV1TransactionsListRequest = {
+  // Array<string> | Unique system generated identifier of the wallet (optional)
   walletIds: [
     "wallet_ids_example",
   ],
-    // The blockchain network on which the transaction takes place. (optional)
+  // Array<string> | The blockchain network on which the transaction takes place. (optional)
   chainIds: [
     "chain_ids_example",
   ],
-    // The tokenId involved in the transaction. (optional)
+  // Array<string> | The tokenId involved in the transaction. (optional)
   tokenIds: [
     "token_ids_example",
   ],
-    // The assetId involved in the transaction. (optional)
+  // Array<string> | The assetId involved in the transaction. (optional)
   assetIds: [
     "asset_ids_example",
   ],
-    // The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
+  // string | The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
   hash: "hash_example",
-    // The status of the transaction. (optional)
+  // string | The status of the transaction. (optional)
   status: "status_example",
-    // A cursor value for pagination purposes. (optional)
+  // string | A cursor value for pagination purposes. (optional)
   cursor: "cursor_example",
-    // The number of records to return default: 20 (optional)
+  // number | The number of records to return default: 20 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1TransactionsList(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TransactionsList(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -176,19 +178,20 @@ Get a transaction by ID
 
 
 ```typescript
-import { createConfiguration, TransactionsApi } from '';
-import type { TransactionsApiV1TransactionsRetrieveRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TransactionsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TransactionsApi(configuration);
 
-const request: TransactionsApiV1TransactionsRetrieveRequest = {
-    // Transaction ID
+let body:.TransactionsApiV1TransactionsRetrieveRequest = {
+  // string | Transaction ID
   transactionId: "transactionId_example",
 };
 
-const data = await apiInstance.v1TransactionsRetrieve(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TransactionsRetrieve(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -233,14 +236,14 @@ Sign message
 
 
 ```typescript
-import { createConfiguration, TransactionsApi } from '';
-import type { TransactionsApiV1TransactionsSignMessageRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TransactionsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TransactionsApi(configuration);
 
-const request: TransactionsApiV1TransactionsSignMessageRequest = {
-    // Request Body
+let body:.TransactionsApiV1TransactionsSignMessageRequest = {
+  // SignMessageRequest | Request Body
   signMessageRequest: {
     chainId: "chainId_example",
     message: "message_example",
@@ -252,8 +255,9 @@ const request: TransactionsApiV1TransactionsSignMessageRequest = {
   },
 };
 
-const data = await apiInstance.v1TransactionsSignMessage(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TransactionsSignMessage(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -298,14 +302,14 @@ Create a transfer transaction
 
 
 ```typescript
-import { createConfiguration, TransactionsApi } from '';
-import type { TransactionsApiV1TransactionsTransferRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new TransactionsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .TransactionsApi(configuration);
 
-const request: TransactionsApiV1TransactionsTransferRequest = {
-    // Request Body
+let body:.TransactionsApiV1TransactionsTransferRequest = {
+  // CreateTransferRequest | Request Body
   createTransferRequest: {
     amount: "amount_example",
     destination: {
@@ -328,8 +332,9 @@ const request: TransactionsApiV1TransactionsTransferRequest = {
   },
 };
 
-const data = await apiInstance.v1TransactionsTransfer(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1TransactionsTransfer(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 

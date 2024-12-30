@@ -1,6 +1,6 @@
 # .WalletsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,24 +20,25 @@ Create a Wallet
 
 
 ```typescript
-import { createConfiguration, WalletsApi } from '';
-import type { WalletsApiV1WalletsCreateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WalletsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WalletsApi(configuration);
 
-const request: WalletsApiV1WalletsCreateRequest = {
-    // Request body
+let body:.WalletsApiV1WalletsCreateRequest = {
+  // CreateWalletRequest | Request body
   createWalletRequest: {
     name: "name_example",
-    subType: "subType_example",
-    type: "type_example",
+    subType: "Asset",
+    type: "Custodial",
     uid: "uid_example",
   },
 };
 
-const data = await apiInstance.v1WalletsCreate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WalletsCreate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -82,19 +83,20 @@ Delete a Wallet
 
 
 ```typescript
-import { createConfiguration, WalletsApi } from '';
-import type { WalletsApiV1WalletsDeleteRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WalletsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WalletsApi(configuration);
 
-const request: WalletsApiV1WalletsDeleteRequest = {
-    // Wallet id or uid
+let body:.WalletsApiV1WalletsDeleteRequest = {
+  // string | Wallet id or uid
   walletId: "walletId_example",
 };
 
-const data = await apiInstance.v1WalletsDelete(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WalletsDelete(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -139,21 +141,22 @@ List all wallets
 
 
 ```typescript
-import { createConfiguration, WalletsApi } from '';
-import type { WalletsApiV1WalletsListRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WalletsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WalletsApi(configuration);
 
-const request: WalletsApiV1WalletsListRequest = {
-    // Cursor (optional)
+let body:.WalletsApiV1WalletsListRequest = {
+  // string | Cursor (optional)
   cursor: "cursor_example",
-    // The number of records to return default: 20 (optional)
+  // number | The number of records to return default: 20 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1WalletsList(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WalletsList(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -199,19 +202,20 @@ Get a wallet by ID
 
 
 ```typescript
-import { createConfiguration, WalletsApi } from '';
-import type { WalletsApiV1WalletsRetrieveRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WalletsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WalletsApi(configuration);
 
-const request: WalletsApiV1WalletsRetrieveRequest = {
-    // Wallet id or uid
+let body:.WalletsApiV1WalletsRetrieveRequest = {
+  // string | Wallet id or uid
   walletId: "walletId_example",
 };
 
-const data = await apiInstance.v1WalletsRetrieve(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WalletsRetrieve(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -256,24 +260,25 @@ Update a Wallet
 
 
 ```typescript
-import { createConfiguration, WalletsApi } from '';
-import type { WalletsApiV1WalletsUpdateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WalletsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WalletsApi(configuration);
 
-const request: WalletsApiV1WalletsUpdateRequest = {
-    // Wallet id or uid
+let body:.WalletsApiV1WalletsUpdateRequest = {
+  // string | Wallet id or uid
   walletId: "walletId_example",
-    // Request body
+  // UpdateWalletRequest | Request body
   updateWalletRequest: {
     name: "name_example",
     uid: "uid_example",
   },
 };
 
-const data = await apiInstance.v1WalletsUpdate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WalletsUpdate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 

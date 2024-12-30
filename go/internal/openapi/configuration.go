@@ -105,8 +105,8 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "",
-				Description: "No description provided",
+				URL: "https://api.waas.openweb3.io",
+				Description: "WaaS API Server",
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{

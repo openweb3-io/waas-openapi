@@ -1,6 +1,6 @@
 # .WebhookEndpointsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,14 +20,14 @@ Create a webhook endpoint
 
 
 ```typescript
-import { createConfiguration, WebhookEndpointsApi } from '';
-import type { WebhookEndpointsApiV1WebhooksEndpointCreateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WebhookEndpointsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WebhookEndpointsApi(configuration);
 
-const request: WebhookEndpointsApiV1WebhooksEndpointCreateRequest = {
-    // Request body
+let body:.WebhookEndpointsApiV1WebhooksEndpointCreateRequest = {
+  // CreateEndpoint | Request body
   createEndpoint: {
     description: "description_example",
     disabled: true,
@@ -39,8 +39,9 @@ const request: WebhookEndpointsApiV1WebhooksEndpointCreateRequest = {
   },
 };
 
-const data = await apiInstance.v1WebhooksEndpointCreate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WebhooksEndpointCreate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -83,19 +84,20 @@ Delete specific webhook endpoint
 
 
 ```typescript
-import { createConfiguration, WebhookEndpointsApi } from '';
-import type { WebhookEndpointsApiV1WebhooksEndpointDeleteRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WebhookEndpointsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WebhookEndpointsApi(configuration);
 
-const request: WebhookEndpointsApiV1WebhooksEndpointDeleteRequest = {
-    // Endpoint ID
+let body:.WebhookEndpointsApiV1WebhooksEndpointDeleteRequest = {
+  // string | Endpoint ID
   endpointId: "endpointId_example",
 };
 
-const data = await apiInstance.v1WebhooksEndpointDelete(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WebhooksEndpointDelete(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -138,21 +140,22 @@ List webhook endpoints
 
 
 ```typescript
-import { createConfiguration, WebhookEndpointsApi } from '';
-import type { WebhookEndpointsApiV1WebhooksEndpointListRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WebhookEndpointsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WebhookEndpointsApi(configuration);
 
-const request: WebhookEndpointsApiV1WebhooksEndpointListRequest = {
-  
+let body:.WebhookEndpointsApiV1WebhooksEndpointListRequest = {
+  // string (optional)
   cursor: "cursor_example",
-    // The number of records to return default: 20 (optional)
+  // number | The number of records to return default: 20 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1WebhooksEndpointList(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WebhooksEndpointList(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -196,19 +199,20 @@ Get specific webhook endpoint
 
 
 ```typescript
-import { createConfiguration, WebhookEndpointsApi } from '';
-import type { WebhookEndpointsApiV1WebhooksEndpointRetrieveRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WebhookEndpointsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WebhookEndpointsApi(configuration);
 
-const request: WebhookEndpointsApiV1WebhooksEndpointRetrieveRequest = {
-    // Endpoint ID
+let body:.WebhookEndpointsApiV1WebhooksEndpointRetrieveRequest = {
+  // string | Endpoint ID
   endpointId: "endpointId_example",
 };
 
-const data = await apiInstance.v1WebhooksEndpointRetrieve(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WebhooksEndpointRetrieve(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -252,16 +256,16 @@ Update specific webhook endpoint
 
 
 ```typescript
-import { createConfiguration, WebhookEndpointsApi } from '';
-import type { WebhookEndpointsApiV1WebhooksEndpointUpdateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WebhookEndpointsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WebhookEndpointsApi(configuration);
 
-const request: WebhookEndpointsApiV1WebhooksEndpointUpdateRequest = {
-    // Endpoint ID
+let body:.WebhookEndpointsApiV1WebhooksEndpointUpdateRequest = {
+  // string | Endpoint ID
   endpointId: "endpointId_example",
-    // Request body
+  // UpdateEndpoint | Request body
   updateEndpoint: {
     description: "description_example",
     disabled: true,
@@ -273,8 +277,9 @@ const request: WebhookEndpointsApiV1WebhooksEndpointUpdateRequest = {
   },
 };
 
-const data = await apiInstance.v1WebhooksEndpointUpdate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WebhooksEndpointUpdate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 

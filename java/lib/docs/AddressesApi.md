@@ -1,6 +1,6 @@
 # AddressesApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -32,7 +32,7 @@ import io.openweb3.waas.internal.api.AddressesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("https://api.waas.openweb3.io");
     
     // Configure API key authorization: ApiKeyAuth
     ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -92,7 +92,7 @@ public class Example {
 
 <a id="v1AddressesValidate"></a>
 # **v1AddressesValidate**
-> ValidateAddressesReply v1AddressesValidate(chainId, addresses)
+> ValidateAddressesReply v1AddressesValidate(addresses, chainId)
 
 Validate addresses
 
@@ -111,7 +111,7 @@ import io.openweb3.waas.internal.api.AddressesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("https://api.waas.openweb3.io");
     
     // Configure API key authorization: ApiKeyAuth
     ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -120,10 +120,10 @@ public class Example {
     //ApiKeyAuth.setApiKeyPrefix("Token");
 
     AddressesApi apiInstance = new AddressesApi(defaultClient);
-    String chainId = "chainId_example"; // String | Chain ID
     List<String> addresses = Arrays.asList(); // List<String> | Addresses
+    String chainId = "chainId_example"; // String | Chain ID
     try {
-      ValidateAddressesReply result = apiInstance.v1AddressesValidate(chainId, addresses);
+      ValidateAddressesReply result = apiInstance.v1AddressesValidate(addresses, chainId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressesApi#v1AddressesValidate");
@@ -140,8 +140,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **chainId** | **String**| Chain ID | |
 | **addresses** | [**List&lt;String&gt;**](String.md)| Addresses | |
+| **chainId** | **String**| Chain ID | |
 
 ### Return type
 
@@ -185,7 +185,7 @@ import io.openweb3.waas.internal.api.AddressesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("https://api.waas.openweb3.io");
     
     // Configure API key authorization: ApiKeyAuth
     ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -260,7 +260,7 @@ import io.openweb3.waas.internal.api.AddressesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("https://api.waas.openweb3.io");
     
     // Configure API key authorization: ApiKeyAuth
     ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -316,7 +316,7 @@ public class Example {
 
 <a id="v1WalletsListAddresses"></a>
 # **v1WalletsListAddresses**
-> CursorPageAddress v1WalletsListAddresses(walletId, chainIds, cursor, limit)
+> CursorPageAddress v1WalletsListAddresses(walletId, chainIds, addressType, cursor, limit)
 
 List wallet addresses
 
@@ -335,7 +335,7 @@ import io.openweb3.waas.internal.api.AddressesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("https://api.waas.openweb3.io");
     
     // Configure API key authorization: ApiKeyAuth
     ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -346,10 +346,11 @@ public class Example {
     AddressesApi apiInstance = new AddressesApi(defaultClient);
     String walletId = "walletId_example"; // String | Wallet id or uid
     List<String> chainIds = Arrays.asList(); // List<String> | chain ids
+    String addressType = "DEPOSIT"; // String | address type
     String cursor = "cursor_example"; // String | Cursor
     Integer limit = 56; // Integer | Limit, default is 20
     try {
-      CursorPageAddress result = apiInstance.v1WalletsListAddresses(walletId, chainIds, cursor, limit);
+      CursorPageAddress result = apiInstance.v1WalletsListAddresses(walletId, chainIds, addressType, cursor, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AddressesApi#v1WalletsListAddresses");
@@ -368,6 +369,7 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **walletId** | **String**| Wallet id or uid | |
 | **chainIds** | [**List&lt;String&gt;**](String.md)| chain ids | [optional] |
+| **addressType** | **String**| address type | [optional] [enum: DEPOSIT, HOT] |
 | **cursor** | **String**| Cursor | [optional] |
 | **limit** | **Integer**| Limit, default is 20 | [optional] |
 

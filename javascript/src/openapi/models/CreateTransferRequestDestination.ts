@@ -16,20 +16,37 @@ import { HttpFile } from '../http/http';
 /**
 * The ID of the wallet to which the transfer will be made
 */
-/**
- * @type CreateTransferRequestDestination
- * Type
- * @export
- */
-export type CreateTransferRequestDestination = TransferDestinationAddress;
+export class CreateTransferRequestDestination {
+    /**
+    * Address
+    */
+    'address': string;
+    /**
+    * destination type
+    */
+    'destinationType': string;
 
-/**
-* @type CreateTransferRequestDestinationClass
-    * The ID of the wallet to which the transfer will be made
-* @export
-*/
-export class CreateTransferRequestDestinationClass {
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly mapping: {[index: string]: string} | undefined = undefined;
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "address",
+            "baseName": "address",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "destinationType",
+            "baseName": "destination_type",
+            "type": "string",
+            "format": ""
+        }    ];
+
+    static getAttributeTypeMap() {
+        return CreateTransferRequestDestination.attributeTypeMap;
+    }
+
+    public constructor() {
+    }
 }
+

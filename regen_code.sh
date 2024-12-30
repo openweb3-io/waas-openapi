@@ -20,6 +20,8 @@ rm -fr javascript/src/openapi/src
 rm -fr javascript/src/openapi/test
 rm -fr javascript/src/openapi/docs
 yarn openapi-generator-cli generate -i openapi.json -g typescript -o javascript/src/openapi -c javascript/openapi-generator-config.json -t javascript/templates --type-mappings=set=Array
+sed -i '' 's/type //g' ./javascript/src/openapi/index.ts
+echo "export * from '../models/GetGasStationDepositAddressRequest'" >> javascript/src/openapi/models/all.ts
 
 # yarn openapi-generator-cli generate -i openapi.json -g kotlin -o kotlin/lib/generated/openapi -c kotlin/openapi-generator-config.json -t kotlin/templates
 

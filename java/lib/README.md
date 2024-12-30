@@ -2,7 +2,7 @@
 
 WaaS OpenAPI Documentation
 - API version: 1.0
-  - Generator version: 7.9.0
+  - Generator version: 7.8.0
 
 This is a WaaS OpenAPI Server.
 
@@ -84,13 +84,13 @@ import io.openweb3.waas.internal.ApiClient;
 import io.openweb3.waas.internal.ApiException;
 import io.openweb3.waas.internal.Configuration;
 import io.openweb3.waas.internal.auth.*;
-import io.openweb3.waas.models.*;
+import io.openweb3.waas.internal.models.*;
 import io.openweb3.waas.internal.api.AddressesApi;
 
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("https://api.waas.openweb3.io");
     
     // Configure API key authorization: ApiKeyAuth
     ApiKeyAuth ApiKeyAuth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -120,7 +120,7 @@ public class Example {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

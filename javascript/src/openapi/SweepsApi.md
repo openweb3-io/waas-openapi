@@ -1,6 +1,6 @@
 # .SweepsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,16 +16,16 @@ Sweep funds from a single address
 
 
 ```typescript
-import { createConfiguration, SweepsApi } from '';
-import type { SweepsApiV1SweepsAddressRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new SweepsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .SweepsApi(configuration);
 
-const request: SweepsApiV1SweepsAddressRequest = {
-    // Address that funds will be swept from
+let body:.SweepsApiV1SweepsAddressRequest = {
+  // string | Address that funds will be swept from
   address: "address_example",
-    // Request
+  // SweepAddressRequest | Request
   sweepAddressRequest: {
     feeAddress: "feeAddress_example",
     maxFeeLimit: "maxFeeLimit_example",
@@ -35,8 +35,9 @@ const request: SweepsApiV1SweepsAddressRequest = {
   },
 };
 
-const data = await apiInstance.v1SweepsAddress(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1SweepsAddress(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 

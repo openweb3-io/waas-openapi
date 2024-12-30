@@ -1,6 +1,6 @@
 # .AddressesApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,29 +20,30 @@ List of all available addresses.
 
 
 ```typescript
-import { createConfiguration, AddressesApi } from '';
-import type { AddressesApiV1AddressesListRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new AddressesApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .AddressesApi(configuration);
 
-const request: AddressesApiV1AddressesListRequest = {
-    // Unique system generated identifier of the wallet (optional)
+let body:.AddressesApiV1AddressesListRequest = {
+  // Array<string> | Unique system generated identifier of the wallet (optional)
   walletIds: [
     "wallet_ids_example",
   ],
-    // The chain ids. (optional)
+  // Array<string> | The chain ids. (optional)
   chainIds: [
     "chain_ids_example",
   ],
-    // The cursor to use for pagination. (optional)
+  // string | The cursor to use for pagination. (optional)
   cursor: "cursor_example",
-    // The number of records to return default: 20 (optional)
+  // number | The number of records to return default: 20 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1AddressesList(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1AddressesList(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -90,23 +91,24 @@ Validate addresses
 
 
 ```typescript
-import { createConfiguration, AddressesApi } from '';
-import type { AddressesApiV1AddressesValidateRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new AddressesApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .AddressesApi(configuration);
 
-const request: AddressesApiV1AddressesValidateRequest = {
-    // Chain ID
-  chainId: "chain_id_example",
-    // Addresses
+let body:.AddressesApiV1AddressesValidateRequest = {
+  // Array<string> | Addresses
   addresses: [
     "addresses_example",
   ],
+  // string | Chain ID
+  chainId: "chain_id_example",
 };
 
-const data = await apiInstance.v1AddressesValidate(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1AddressesValidate(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -114,8 +116,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chainId** | [**string**] | Chain ID | defaults to undefined
  **addresses** | **Array&lt;string&gt;** | Addresses | defaults to undefined
+ **chainId** | [**string**] | Chain ID | defaults to undefined
 
 
 ### Return type
@@ -151,24 +153,25 @@ Create address for wallet
 
 
 ```typescript
-import { createConfiguration, AddressesApi } from '';
-import type { AddressesApiV1WalletsCreateAddressRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new AddressesApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .AddressesApi(configuration);
 
-const request: AddressesApiV1WalletsCreateAddressRequest = {
-    // Wallet id or uid
+let body:.AddressesApiV1WalletsCreateAddressRequest = {
+  // string | Wallet id or uid
   walletId: "walletId_example",
-    // Request Body
+  // CreateAddressRequest | Request Body
   createAddressRequest: {
     chainId: "chainId_example",
     type: "DEPOSIT",
   },
 };
 
-const data = await apiInstance.v1WalletsCreateAddress(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WalletsCreateAddress(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -214,21 +217,22 @@ Get specific address information in wallet
 
 
 ```typescript
-import { createConfiguration, AddressesApi } from '';
-import type { AddressesApiV1WalletsGetAddressRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new AddressesApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .AddressesApi(configuration);
 
-const request: AddressesApiV1WalletsGetAddressRequest = {
-    // Wallet id or uid
+let body:.AddressesApiV1WalletsGetAddressRequest = {
+  // string | Wallet id or uid
   walletId: "walletId_example",
-    // Address
+  // string | Address
   address: "address_example",
 };
 
-const data = await apiInstance.v1WalletsGetAddress(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WalletsGetAddress(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -274,27 +278,30 @@ List addresses in wallet
 
 
 ```typescript
-import { createConfiguration, AddressesApi } from '';
-import type { AddressesApiV1WalletsListAddressesRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new AddressesApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .AddressesApi(configuration);
 
-const request: AddressesApiV1WalletsListAddressesRequest = {
-    // Wallet id or uid
+let body:.AddressesApiV1WalletsListAddressesRequest = {
+  // string | Wallet id or uid
   walletId: "walletId_example",
-    // chain ids (optional)
+  // Array<string> | chain ids (optional)
   chainIds: [
     "chain_ids_example",
   ],
-    // Cursor (optional)
+  // 'DEPOSIT' | 'HOT' | address type (optional)
+  addressType: "DEPOSIT",
+  // string | Cursor (optional)
   cursor: "cursor_example",
-    // Limit, default is 20 (optional)
+  // number | Limit, default is 20 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1WalletsListAddresses(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WalletsListAddresses(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -304,6 +311,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | [**string**] | Wallet id or uid | defaults to undefined
  **chainIds** | **Array&lt;string&gt;** | chain ids | (optional) defaults to undefined
+ **addressType** | [**&#39;DEPOSIT&#39; | &#39;HOT&#39;**]**Array<&#39;DEPOSIT&#39; &#124; &#39;HOT&#39;>** | address type | (optional) defaults to undefined
  **cursor** | [**string**] | Cursor | (optional) defaults to undefined
  **limit** | [**number**] | Limit, default is 20 | (optional) defaults to undefined
 

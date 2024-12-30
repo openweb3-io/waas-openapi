@@ -1,6 +1,6 @@
 # \AddressesAPI
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## V1AddressesValidate
 
-> ValidateAddressesReply V1AddressesValidate(ctx).ChainId(chainId).Addresses(addresses).Execute()
+> ValidateAddressesReply V1AddressesValidate(ctx).Addresses(addresses).ChainId(chainId).Execute()
 
 Validate addresses
 
@@ -105,12 +105,12 @@ import (
 )
 
 func main() {
-	chainId := "chainId_example" // string | Chain ID
 	addresses := []string{"Inner_example"} // []string | Addresses
+	chainId := "chainId_example" // string | Chain ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AddressesAPI.V1AddressesValidate(context.Background()).ChainId(chainId).Addresses(addresses).Execute()
+	resp, r, err := apiClient.AddressesAPI.V1AddressesValidate(context.Background()).Addresses(addresses).ChainId(chainId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressesAPI.V1AddressesValidate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,8 +131,8 @@ Other parameters are passed through a pointer to a apiV1AddressesValidateRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chainId** | **string** | Chain ID | 
  **addresses** | **[]string** | Addresses | 
+ **chainId** | **string** | Chain ID | 
 
 ### Return type
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## V1WalletsListAddresses
 
-> CursorPageAddress V1WalletsListAddresses(ctx, walletId).ChainIds(chainIds).Cursor(cursor).Limit(limit).Execute()
+> CursorPageAddress V1WalletsListAddresses(ctx, walletId).ChainIds(chainIds).AddressType(addressType).Cursor(cursor).Limit(limit).Execute()
 
 List wallet addresses
 
@@ -320,12 +320,13 @@ import (
 func main() {
 	walletId := "walletId_example" // string | Wallet id or uid
 	chainIds := []string{"Inner_example"} // []string | chain ids (optional)
+	addressType := "addressType_example" // string | address type (optional)
 	cursor := "cursor_example" // string | Cursor (optional)
 	limit := int32(56) // int32 | Limit, default is 20 (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AddressesAPI.V1WalletsListAddresses(context.Background(), walletId).ChainIds(chainIds).Cursor(cursor).Limit(limit).Execute()
+	resp, r, err := apiClient.AddressesAPI.V1WalletsListAddresses(context.Background(), walletId).ChainIds(chainIds).AddressType(addressType).Cursor(cursor).Limit(limit).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AddressesAPI.V1WalletsListAddresses``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -352,6 +353,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **chainIds** | **[]string** | chain ids | 
+ **addressType** | **string** | address type | 
  **cursor** | **string** | Cursor | 
  **limit** | **int32** | Limit, default is 20 | 
 

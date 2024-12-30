@@ -7,7 +7,8 @@ externalDocs:
   description: ""
   url: ""
 servers:
-- url: /
+- description: WaaS API Server
+  url: https://api.waas.openweb3.io
 paths:
   /api/v1/addresses:
     get:
@@ -103,15 +104,6 @@ paths:
       description: Validate addresses
       operationId: v1.addresses.validate
       parameters:
-      - description: Chain ID
-        explode: true
-        in: query
-        name: chain_id
-        required: true
-        schema:
-          description: Chain ID
-          type: string
-        style: form
       - description: Addresses
         explode: true
         in: query
@@ -123,6 +115,15 @@ paths:
             type: string
           type: array
           uniqueItems: false
+        style: form
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
         style: form
       responses:
         "200":
@@ -1523,6 +1524,19 @@ paths:
           uniqueItems: false
           x-order: "1"
         style: form
+      - description: address type
+        explode: true
+        in: query
+        name: address_type
+        required: false
+        schema:
+          description: address type
+          enum:
+          - DEPOSIT
+          - HOT
+          type: string
+          x-order: "2"
+        style: form
       - description: Cursor
         explode: true
         in: query
@@ -1531,7 +1545,7 @@ paths:
         schema:
           description: Cursor
           type: string
-          x-order: "2"
+          x-order: "3"
         style: form
       - description: "Limit, default is 20"
         explode: true
@@ -1541,7 +1555,7 @@ paths:
         schema:
           description: "Limit, default is 20"
           type: integer
-          x-order: "3"
+          x-order: "4"
         style: form
       responses:
         "200":
@@ -2222,21 +2236,25 @@ components:
     CreateWalletRequest:
       example:
         uid: uid
-        sub_type: sub_type
+        sub_type: Asset
         name: name
-        type: type
+        type: Custodial
       properties:
         name:
           description: Wallet name
           type: string
         sub_type:
           description: Wallet sub type
+          enum:
+          - Asset
           type: string
           x-enum-varnames:
           - WalletSubType_Custodial_Asset
           - WalletSubType_Custodial_Web3
         type:
           description: Wallet type
+          enum:
+          - Custodial
           type: string
           x-enum-varnames:
           - WalletType_Custodial

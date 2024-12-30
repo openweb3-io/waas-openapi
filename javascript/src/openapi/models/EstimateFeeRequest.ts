@@ -36,8 +36,6 @@ export class EstimateFeeRequest {
 
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly mapping: {[index: string]: string} | undefined = undefined;
-
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
             "name": "amount",
@@ -83,3 +81,4 @@ export class EstimateFeeRequest {
     public constructor() {
     }
 }
+

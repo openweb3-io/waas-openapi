@@ -16,20 +16,47 @@ import { HttpFile } from '../http/http';
 /**
 * The ID of the wallet from which the transfer will be made
 */
-/**
- * @type SignMessageRequestSource
- * Type
- * @export
- */
-export type SignMessageRequestSource = TransferSourceWeb3;
+export class SignMessageRequestSource {
+    /**
+    * Address
+    */
+    'address': string;
+    /**
+    * source type
+    */
+    'sourceType': string;
+    /**
+    * Wallet ID
+    */
+    'walletId': string;
 
-/**
-* @type SignMessageRequestSourceClass
-    * The ID of the wallet from which the transfer will be made
-* @export
-*/
-export class SignMessageRequestSourceClass {
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly mapping: {[index: string]: string} | undefined = undefined;
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "address",
+            "baseName": "address",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sourceType",
+            "baseName": "source_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "walletId",
+            "baseName": "wallet_id",
+            "type": "string",
+            "format": ""
+        }    ];
+
+    static getAttributeTypeMap() {
+        return SignMessageRequestSource.attributeTypeMap;
+    }
+
+    public constructor() {
+    }
 }
+

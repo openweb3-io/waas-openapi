@@ -1,6 +1,6 @@
 # .WebhookEventsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,21 +16,22 @@ List webhook event types
 
 
 ```typescript
-import { createConfiguration, WebhookEventsApi } from '';
-import type { WebhookEventsApiV1WebhooksEventsListRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new WebhookEventsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .WebhookEventsApi(configuration);
 
-const request: WebhookEventsApiV1WebhooksEventsListRequest = {
-  
+let body:.WebhookEventsApiV1WebhooksEventsListRequest = {
+  // string (optional)
   cursor: "cursor_example",
-    // The number of records to return default: 100 (optional)
+  // number | The number of records to return default: 100 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1WebhooksEventsList(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1WebhooksEventsList(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 

@@ -16,20 +16,37 @@ import { HttpFile } from '../http/http';
 /**
 * The ID of the wallet from which the transfer will be made
 */
-/**
- * @type CreateTransferRequestSource
- * Type
- * @export
- */
-export type CreateTransferRequestSource = TransferSourceAsset;
+export class CreateTransferRequestSource {
+    /**
+    * source type
+    */
+    'sourceType': string;
+    /**
+    * Wallet ID
+    */
+    'walletId': string;
 
-/**
-* @type CreateTransferRequestSourceClass
-    * The ID of the wallet from which the transfer will be made
-* @export
-*/
-export class CreateTransferRequestSourceClass {
     static readonly discriminator: string | undefined = undefined;
 
-    static readonly mapping: {[index: string]: string} | undefined = undefined;
+    static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "sourceType",
+            "baseName": "source_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "walletId",
+            "baseName": "wallet_id",
+            "type": "string",
+            "format": ""
+        }    ];
+
+    static getAttributeTypeMap() {
+        return CreateTransferRequestSource.attributeTypeMap;
+    }
+
+    public constructor() {
+    }
 }
+

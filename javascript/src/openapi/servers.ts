@@ -50,6 +50,6 @@ export class ServerConfiguration<T extends { [key: string]: string }> implements
     }
 }
 
-export const server1 = new ServerConfiguration<{  }>("", {  })
+export const server1 = new ServerConfiguration<{  }>("https://api.waas.openweb3.io", {  })
 
 export const servers = [server1];

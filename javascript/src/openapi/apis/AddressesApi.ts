@@ -42,18 +42,12 @@ export class AddressesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (walletIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(walletIds, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("wallet_ids", serializedParam);
-            }
+            requestContext.setQueryParam("wallet_ids", ObjectSerializer.serialize(walletIds, "Array<string>", ""));
         }
 
         // Query Params
         if (chainIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(chainIds, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("chain_ids", serializedParam);
-            }
+            requestContext.setQueryParam("chain_ids", ObjectSerializer.serialize(chainIds, "Array<string>", ""));
         }
 
         // Query Params
@@ -85,21 +79,21 @@ export class AddressesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public async v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<RequestContext> {
+    public async v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
-
-        // verify required parameter 'chainId' is not null or undefined
-        if (chainId === null || chainId === undefined) {
-            throw new RequiredError("AddressesApi", "v1AddressesValidate", "chainId");
-        }
-
 
         // verify required parameter 'addresses' is not null or undefined
         if (addresses === null || addresses === undefined) {
             throw new RequiredError("AddressesApi", "v1AddressesValidate", "addresses");
+        }
+
+
+        // verify required parameter 'chainId' is not null or undefined
+        if (chainId === null || chainId === undefined) {
+            throw new RequiredError("AddressesApi", "v1AddressesValidate", "chainId");
         }
 
 
@@ -111,16 +105,13 @@ export class AddressesApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
         // Query Params
-        if (chainId !== undefined) {
-            requestContext.setQueryParam("chain_id", ObjectSerializer.serialize(chainId, "string", ""));
+        if (addresses !== undefined) {
+            requestContext.setQueryParam("addresses", ObjectSerializer.serialize(addresses, "Array<string>", ""));
         }
 
         // Query Params
-        if (addresses !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(addresses, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("addresses", serializedParam);
-            }
+        if (chainId !== undefined) {
+            requestContext.setQueryParam("chain_id", ObjectSerializer.serialize(chainId, "string", ""));
         }
 
 
@@ -246,16 +237,18 @@ export class AddressesApiRequestFactory extends BaseAPIRequestFactory {
      * List wallet addresses
      * @param walletId Wallet id or uid
      * @param chainIds chain ids
+     * @param addressType address type
      * @param cursor Cursor
      * @param limit Limit, default is 20
      */
-    public async v1WalletsListAddresses(walletId: string, chainIds?: Array<string>, cursor?: string, limit?: number, _options?: Configuration): Promise<RequestContext> {
+    public async v1WalletsListAddresses(walletId: string, chainIds?: Array<string>, addressType?: 'DEPOSIT' | 'HOT', cursor?: string, limit?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'walletId' is not null or undefined
         if (walletId === null || walletId === undefined) {
             throw new RequiredError("AddressesApi", "v1WalletsListAddresses", "walletId");
         }
+
 
 
 
@@ -271,10 +264,12 @@ export class AddressesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (chainIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(chainIds, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("chain_ids", serializedParam);
-            }
+            requestContext.setQueryParam("chain_ids", ObjectSerializer.serialize(chainIds, "Array<string>", ""));
+        }
+
+        // Query Params
+        if (addressType !== undefined) {
+            requestContext.setQueryParam("address_type", ObjectSerializer.serialize(addressType, "'DEPOSIT' | 'HOT'", ""));
         }
 
         // Query Params

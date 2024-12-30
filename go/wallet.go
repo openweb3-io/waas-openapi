@@ -25,6 +25,13 @@ type ListWalletOptions struct {
 	Limit  int
 }
 
+type ListWalletAddressesOptions struct {
+	Cursor      *string
+	Limit       int
+	ChainIds    []string
+	AddressType *string
+}
+
 func (e *Wallet) List(ctx context.Context, options *ListWalletOptions) (*CursorPageWalletOut, error) {
 	req := e.api.WalletsAPI.V1WalletsList(ctx)
 	if options.Cursor != nil {
@@ -76,12 +83,18 @@ func (e *Wallet) Delete(ctx context.Context, walletId string) (*WalletOut, error
 	return out, nil
 }
 
-func (e *Wallet) ListAddresses(ctx context.Context, walletId string, options *ListAddressOptions) (*CursorAddressPageOut, error) {
+func (e *Wallet) ListAddresses(ctx context.Context, walletId string, options *ListWalletAddressesOptions) (*CursorAddressPageOut, error) {
 	req := e.api.AddressesAPI.V1WalletsListAddresses(ctx, walletId)
 	if options.Cursor != nil {
 		req = req.Cursor(*options.Cursor)
 	}
 	req = req.Limit(int32(options.Limit))
+	if options.AddressType != nil {
+		req = req.AddressType(*options.AddressType)
+	}
+	if options.ChainIds != nil {
+		req = req.ChainIds(options.ChainIds)
+	}
 	out, res, err := req.Execute()
 	if err != nil {
 		return nil, wrapError(err, res)

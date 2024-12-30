@@ -239,8 +239,8 @@ public class AddressesApi {
     }
     /**
      * Build call for v1AddressesValidate
-     * @param chainId Chain ID (required)
      * @param addresses Addresses (required)
+     * @param chainId Chain ID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -253,7 +253,7 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1AddressesValidateCall(String chainId, List<String> addresses, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1AddressesValidateCall(List<String> addresses, String chainId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -278,12 +278,12 @@ public class AddressesApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (chainId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("chain_id", chainId));
-        }
-
         if (addresses != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "addresses", addresses));
+        }
+
+        if (chainId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("chain_id", chainId));
         }
 
         final String[] localVarAccepts = {
@@ -306,26 +306,26 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1AddressesValidateValidateBeforeCall(String chainId, List<String> addresses, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'chainId' is set
-        if (chainId == null) {
-            throw new ApiException("Missing the required parameter 'chainId' when calling v1AddressesValidate(Async)");
-        }
-
+    private okhttp3.Call v1AddressesValidateValidateBeforeCall(List<String> addresses, String chainId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'addresses' is set
         if (addresses == null) {
             throw new ApiException("Missing the required parameter 'addresses' when calling v1AddressesValidate(Async)");
         }
 
-        return v1AddressesValidateCall(chainId, addresses, _callback);
+        // verify the required parameter 'chainId' is set
+        if (chainId == null) {
+            throw new ApiException("Missing the required parameter 'chainId' when calling v1AddressesValidate(Async)");
+        }
+
+        return v1AddressesValidateCall(addresses, chainId, _callback);
 
     }
 
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID (required)
      * @param addresses Addresses (required)
+     * @param chainId Chain ID (required)
      * @return ValidateAddressesReply
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -337,16 +337,16 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ValidateAddressesReply v1AddressesValidate(String chainId, List<String> addresses) throws ApiException {
-        ApiResponse<ValidateAddressesReply> localVarResp = v1AddressesValidateWithHttpInfo(chainId, addresses);
+    public ValidateAddressesReply v1AddressesValidate(List<String> addresses, String chainId) throws ApiException {
+        ApiResponse<ValidateAddressesReply> localVarResp = v1AddressesValidateWithHttpInfo(addresses, chainId);
         return localVarResp.getData();
     }
 
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID (required)
      * @param addresses Addresses (required)
+     * @param chainId Chain ID (required)
      * @return ApiResponse&lt;ValidateAddressesReply&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -358,8 +358,8 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValidateAddressesReply> v1AddressesValidateWithHttpInfo(String chainId, List<String> addresses) throws ApiException {
-        okhttp3.Call localVarCall = v1AddressesValidateValidateBeforeCall(chainId, addresses, null);
+    public ApiResponse<ValidateAddressesReply> v1AddressesValidateWithHttpInfo(List<String> addresses, String chainId) throws ApiException {
+        okhttp3.Call localVarCall = v1AddressesValidateValidateBeforeCall(addresses, chainId, null);
         Type localVarReturnType = new TypeToken<ValidateAddressesReply>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -367,8 +367,8 @@ public class AddressesApi {
     /**
      * Validate addresses (asynchronously)
      * Validate addresses
-     * @param chainId Chain ID (required)
      * @param addresses Addresses (required)
+     * @param chainId Chain ID (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -381,9 +381,9 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1AddressesValidateAsync(String chainId, List<String> addresses, final ApiCallback<ValidateAddressesReply> _callback) throws ApiException {
+    public okhttp3.Call v1AddressesValidateAsync(List<String> addresses, String chainId, final ApiCallback<ValidateAddressesReply> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1AddressesValidateValidateBeforeCall(chainId, addresses, _callback);
+        okhttp3.Call localVarCall = v1AddressesValidateValidateBeforeCall(addresses, chainId, _callback);
         Type localVarReturnType = new TypeToken<ValidateAddressesReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -690,6 +690,7 @@ public class AddressesApi {
      * Build call for v1WalletsListAddresses
      * @param walletId Wallet id or uid (required)
      * @param chainIds chain ids (optional)
+     * @param addressType address type (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
      * @param _callback Callback for upload/download progress
@@ -705,7 +706,7 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsListAddressesCall(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1WalletsListAddressesCall(String walletId, List<String> chainIds, String addressType, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -733,6 +734,10 @@ public class AddressesApi {
 
         if (chainIds != null) {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "chain_ids", chainIds));
+        }
+
+        if (addressType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("address_type", addressType));
         }
 
         if (cursor != null) {
@@ -763,13 +768,13 @@ public class AddressesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1WalletsListAddressesValidateBeforeCall(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call v1WalletsListAddressesValidateBeforeCall(String walletId, List<String> chainIds, String addressType, String cursor, Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'walletId' is set
         if (walletId == null) {
             throw new ApiException("Missing the required parameter 'walletId' when calling v1WalletsListAddresses(Async)");
         }
 
-        return v1WalletsListAddressesCall(walletId, chainIds, cursor, limit, _callback);
+        return v1WalletsListAddressesCall(walletId, chainIds, addressType, cursor, limit, _callback);
 
     }
 
@@ -778,6 +783,7 @@ public class AddressesApi {
      * List addresses in wallet
      * @param walletId Wallet id or uid (required)
      * @param chainIds chain ids (optional)
+     * @param addressType address type (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
      * @return CursorPageAddress
@@ -792,8 +798,8 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public CursorPageAddress v1WalletsListAddresses(String walletId, List<String> chainIds, String cursor, Integer limit) throws ApiException {
-        ApiResponse<CursorPageAddress> localVarResp = v1WalletsListAddressesWithHttpInfo(walletId, chainIds, cursor, limit);
+    public CursorPageAddress v1WalletsListAddresses(String walletId, List<String> chainIds, String addressType, String cursor, Integer limit) throws ApiException {
+        ApiResponse<CursorPageAddress> localVarResp = v1WalletsListAddressesWithHttpInfo(walletId, chainIds, addressType, cursor, limit);
         return localVarResp.getData();
     }
 
@@ -802,6 +808,7 @@ public class AddressesApi {
      * List addresses in wallet
      * @param walletId Wallet id or uid (required)
      * @param chainIds chain ids (optional)
+     * @param addressType address type (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
      * @return ApiResponse&lt;CursorPageAddress&gt;
@@ -816,8 +823,8 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CursorPageAddress> v1WalletsListAddressesWithHttpInfo(String walletId, List<String> chainIds, String cursor, Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, chainIds, cursor, limit, null);
+    public ApiResponse<CursorPageAddress> v1WalletsListAddressesWithHttpInfo(String walletId, List<String> chainIds, String addressType, String cursor, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, chainIds, addressType, cursor, limit, null);
         Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -827,6 +834,7 @@ public class AddressesApi {
      * List addresses in wallet
      * @param walletId Wallet id or uid (required)
      * @param chainIds chain ids (optional)
+     * @param addressType address type (optional)
      * @param cursor Cursor (optional)
      * @param limit Limit, default is 20 (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -842,9 +850,9 @@ public class AddressesApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1WalletsListAddressesAsync(String walletId, List<String> chainIds, String cursor, Integer limit, final ApiCallback<CursorPageAddress> _callback) throws ApiException {
+    public okhttp3.Call v1WalletsListAddressesAsync(String walletId, List<String> chainIds, String addressType, String cursor, Integer limit, final ApiCallback<CursorPageAddress> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, chainIds, cursor, limit, _callback);
+        okhttp3.Call localVarCall = v1WalletsListAddressesValidateBeforeCall(walletId, chainIds, addressType, cursor, limit, _callback);
         Type localVarReturnType = new TypeToken<CursorPageAddress>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

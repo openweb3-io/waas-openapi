@@ -246,19 +246,19 @@ func (a *AddressesAPIService) V1AddressesListExecute(r ApiV1AddressesListRequest
 type ApiV1AddressesValidateRequest struct {
 	ctx context.Context
 	ApiService *AddressesAPIService
-	chainId *string
 	addresses *[]string
-}
-
-// Chain ID
-func (r ApiV1AddressesValidateRequest) ChainId(chainId string) ApiV1AddressesValidateRequest {
-	r.chainId = &chainId
-	return r
+	chainId *string
 }
 
 // Addresses
 func (r ApiV1AddressesValidateRequest) Addresses(addresses []string) ApiV1AddressesValidateRequest {
 	r.addresses = &addresses
+	return r
+}
+
+// Chain ID
+func (r ApiV1AddressesValidateRequest) ChainId(chainId string) ApiV1AddressesValidateRequest {
+	r.chainId = &chainId
 	return r
 }
 
@@ -301,14 +301,13 @@ func (a *AddressesAPIService) V1AddressesValidateExecute(r ApiV1AddressesValidat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.chainId == nil {
-		return localVarReturnValue, nil, reportError("chainId is required and must be specified")
-	}
 	if r.addresses == nil {
 		return localVarReturnValue, nil, reportError("addresses is required and must be specified")
 	}
+	if r.chainId == nil {
+		return localVarReturnValue, nil, reportError("chainId is required and must be specified")
+	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "chain_id", r.chainId, "form", "")
 	{
 		t := *r.addresses
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
@@ -320,6 +319,7 @@ func (a *AddressesAPIService) V1AddressesValidateExecute(r ApiV1AddressesValidat
 			parameterAddToHeaderOrQuery(localVarQueryParams, "addresses", t, "form", "multi")
 		}
 	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "chain_id", r.chainId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -782,6 +782,7 @@ type ApiV1WalletsListAddressesRequest struct {
 	ApiService *AddressesAPIService
 	walletId string
 	chainIds *[]string
+	addressType *string
 	cursor *string
 	limit *int32
 }
@@ -789,6 +790,12 @@ type ApiV1WalletsListAddressesRequest struct {
 // chain ids
 func (r ApiV1WalletsListAddressesRequest) ChainIds(chainIds []string) ApiV1WalletsListAddressesRequest {
 	r.chainIds = &chainIds
+	return r
+}
+
+// address type
+func (r ApiV1WalletsListAddressesRequest) AddressType(addressType string) ApiV1WalletsListAddressesRequest {
+	r.addressType = &addressType
 	return r
 }
 
@@ -857,6 +864,9 @@ func (a *AddressesAPIService) V1WalletsListAddressesExecute(r ApiV1WalletsListAd
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "chain_ids", t, "form", "multi")
 		}
+	}
+	if r.addressType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "address_type", r.addressType, "form", "")
 	}
 	if r.cursor != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "cursor", r.cursor, "form", "")

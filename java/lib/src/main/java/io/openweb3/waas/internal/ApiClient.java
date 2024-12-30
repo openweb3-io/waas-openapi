@@ -61,11 +61,11 @@ import io.openweb3.waas.internal.auth.ApiKeyAuth;
  */
 public class ApiClient {
 
-    private String basePath = "http://localhost";
+    private String basePath = "https://api.waas.openweb3.io";
     protected List<ServerConfiguration> servers = new ArrayList<ServerConfiguration>(Arrays.asList(
     new ServerConfiguration(
-      "",
-      "No description provided",
+      "https://api.waas.openweb3.io",
+      "WaaS API Server",
       new HashMap<String, ServerVariable>()
     )
   ));
@@ -158,7 +158,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://localhost
+     * @param basePath Base path of the URL (e.g https://api.waas.openweb3.io
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {

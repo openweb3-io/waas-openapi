@@ -1,6 +1,6 @@
 # .ChainsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.waas.openweb3.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,21 +17,22 @@ List of all available chains.
 
 
 ```typescript
-import { createConfiguration, ChainsApi } from '';
-import type { ChainsApiV1ChainsListRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new ChainsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .ChainsApi(configuration);
 
-const request: ChainsApiV1ChainsListRequest = {
-    // Cursor (optional)
+let body:.ChainsApiV1ChainsListRequest = {
+  // string | Cursor (optional)
   cursor: "cursor_example",
-    // The number of records to return default: 20 (optional)
+  // number | The number of records to return default: 20 (optional)
   limit: 1,
 };
 
-const data = await apiInstance.v1ChainsList(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1ChainsList(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 
@@ -77,19 +78,20 @@ Retrieve chain information.
 
 
 ```typescript
-import { createConfiguration, ChainsApi } from '';
-import type { ChainsApiV1ChainsRetrieveRequest } from '';
+import {  } from '';
+import * as fs from 'fs';
 
-const configuration = createConfiguration();
-const apiInstance = new ChainsApi(configuration);
+const configuration = .createConfiguration();
+const apiInstance = new .ChainsApi(configuration);
 
-const request: ChainsApiV1ChainsRetrieveRequest = {
-    // Chain ID
+let body:.ChainsApiV1ChainsRetrieveRequest = {
+  // string | Chain ID
   chainId: "chainId_example",
 };
 
-const data = await apiInstance.v1ChainsRetrieve(request);
-console.log('API called successfully. Returned data:', data);
+apiInstance.v1ChainsRetrieve(body).then((data:any) => {
+  console.log('API called successfully. Returned data: ' + data);
+}).catch((error:any) => console.error(error));
 ```
 
 

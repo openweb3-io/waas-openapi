@@ -102,34 +102,22 @@ export class TransactionsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (walletIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(walletIds, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("wallet_ids", serializedParam);
-            }
+            requestContext.setQueryParam("wallet_ids", ObjectSerializer.serialize(walletIds, "Array<string>", ""));
         }
 
         // Query Params
         if (chainIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(chainIds, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("chain_ids", serializedParam);
-            }
+            requestContext.setQueryParam("chain_ids", ObjectSerializer.serialize(chainIds, "Array<string>", ""));
         }
 
         // Query Params
         if (tokenIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(tokenIds, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("token_ids", serializedParam);
-            }
+            requestContext.setQueryParam("token_ids", ObjectSerializer.serialize(tokenIds, "Array<string>", ""));
         }
 
         // Query Params
         if (assetIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(assetIds, "Array<string>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("asset_ids", serializedParam);
-            }
+            requestContext.setQueryParam("asset_ids", ObjectSerializer.serialize(assetIds, "Array<string>", ""));
         }
 
         // Query Params

@@ -20,19 +20,17 @@ export class CreateWalletRequest {
     /**
     * Wallet sub type
     */
-    'subType': string;
+    'subType': CreateWalletRequestSubTypeEnum;
     /**
     * Wallet type
     */
-    'type': string;
+    'type': CreateWalletRequestTypeEnum;
     /**
     * Custom ID
     */
     'uid'?: string;
 
     static readonly discriminator: string | undefined = undefined;
-
-    static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
@@ -44,13 +42,13 @@ export class CreateWalletRequest {
         {
             "name": "subType",
             "baseName": "sub_type",
-            "type": "string",
+            "type": "CreateWalletRequestSubTypeEnum",
             "format": ""
         },
         {
             "name": "type",
             "baseName": "type",
-            "type": "string",
+            "type": "CreateWalletRequestTypeEnum",
             "format": ""
         },
         {
@@ -67,3 +65,12 @@ export class CreateWalletRequest {
     public constructor() {
     }
 }
+
+
+export enum CreateWalletRequestSubTypeEnum {
+    WalletSubType_Custodial_Asset = 'Asset'
+}
+export enum CreateWalletRequestTypeEnum {
+    WalletType_Custodial = 'Custodial'
+}
+
