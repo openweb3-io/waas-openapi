@@ -42,6 +42,7 @@ docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
+docs/FeeType.md
 docs/GasStation.md
 docs/GasStationsAPI.md
 docs/GetGasStationDepositAddressReply.md
@@ -57,7 +58,9 @@ docs/Transaction.md
 docs/TransactionEndpoint.md
 docs/TransactionsAPI.md
 docs/TransferDestinationAddress.md
+docs/TransferDestinationType.md
 docs/TransferSourceAsset.md
+docs/TransferSourceType.md
 docs/TransferSourceWeb3.md
 docs/UpdateEndpoint.md
 docs/UpdateGasStationRequest.md
@@ -99,6 +102,7 @@ model_estimate_fee_request.go
 model_estimate_fee_response.go
 model_event_type.go
 model_fee.go
+model_fee_type.go
 model_gas_station.go
 model_get_gas_station_deposit_address_reply.go
 model_sign_message_request.go
@@ -110,7 +114,9 @@ model_token.go
 model_transaction.go
 model_transaction_endpoint.go
 model_transfer_destination_address.go
+model_transfer_destination_type.go
 model_transfer_source_asset.go
+model_transfer_source_type.go
 model_transfer_source_web3.go
 model_update_endpoint.go
 model_update_gas_station_request.go

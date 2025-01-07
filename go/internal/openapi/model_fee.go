@@ -25,8 +25,7 @@ type Fee struct {
 	MaxFeeAmount string `json:"maxFeeAmount"`
 	// Token ID
 	TokenId string `json:"tokenId"`
-	// Fee type
-	Type int32 `json:"type"`
+	Type FeeType `json:"type"`
 }
 
 type _Fee Fee
@@ -35,7 +34,7 @@ type _Fee Fee
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFee(maxFeeAmount string, tokenId string, type_ int32) *Fee {
+func NewFee(maxFeeAmount string, tokenId string, type_ FeeType) *Fee {
 	this := Fee{}
 	this.MaxFeeAmount = maxFeeAmount
 	this.TokenId = tokenId
@@ -100,9 +99,9 @@ func (o *Fee) SetTokenId(v string) {
 }
 
 // GetType returns the Type field value
-func (o *Fee) GetType() int32 {
+func (o *Fee) GetType() FeeType {
 	if o == nil {
-		var ret int32
+		var ret FeeType
 		return ret
 	}
 
@@ -111,7 +110,7 @@ func (o *Fee) GetType() int32 {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Fee) GetTypeOk() (*int32, bool) {
+func (o *Fee) GetTypeOk() (*FeeType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,7 +118,7 @@ func (o *Fee) GetTypeOk() (*int32, bool) {
 }
 
 // SetType sets field value
-func (o *Fee) SetType(v int32) {
+func (o *Fee) SetType(v FeeType) {
 	o.Type = v
 }
 

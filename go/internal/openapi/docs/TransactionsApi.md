@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	estimateFeeRequest := *openapiclient.NewEstimateFeeRequest("Amount_example", openapiclient.CreateTransferRequest_destination{TransferDestinationAddress: openapiclient.NewTransferDestinationAddress("Address_example", "DestinationType_example")}, openapiclient.CreateTransferRequest_source{TransferSourceAsset: openapiclient.NewTransferSourceAsset("SourceType_example", "WalletId_example")}, "TokenId_example") // EstimateFeeRequest | Request Body
+	estimateFeeRequest := *openapiclient.NewEstimateFeeRequest("Amount_example", openapiclient.CreateTransferRequest_destination{TransferDestinationAddress: openapiclient.NewTransferDestinationAddress("Address_example", openapiclient.TransferDestinationType("Address"))}, openapiclient.CreateTransferRequest_source{TransferSourceAsset: openapiclient.NewTransferSourceAsset(openapiclient.TransferSourceType("Asset"), "WalletId_example")}, "TokenId_example") // EstimateFeeRequest | Request Body
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -249,7 +249,7 @@ import (
 )
 
 func main() {
-	signMessageRequest := *openapiclient.NewSignMessageRequest("ChainId_example", "Message_example", openapiclient.SignMessageRequest_source{TransferSourceWeb3: openapiclient.NewTransferSourceWeb3("Address_example", "SourceType_example", "WalletId_example")}) // SignMessageRequest | Request Body
+	signMessageRequest := *openapiclient.NewSignMessageRequest("ChainId_example", "Message_example", openapiclient.SignMessageRequest_source{TransferSourceWeb3: openapiclient.NewTransferSourceWeb3("Address_example", openapiclient.TransferSourceType("Asset"), "WalletId_example")}) // SignMessageRequest | Request Body
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -315,7 +315,7 @@ import (
 )
 
 func main() {
-	createTransferRequest := *openapiclient.NewCreateTransferRequest("Amount_example", openapiclient.CreateTransferRequest_destination{TransferDestinationAddress: openapiclient.NewTransferDestinationAddress("Address_example", "DestinationType_example")}, openapiclient.CreateTransferRequest_source{TransferSourceAsset: openapiclient.NewTransferSourceAsset("SourceType_example", "WalletId_example")}, "TokenId_example") // CreateTransferRequest | Request Body
+	createTransferRequest := *openapiclient.NewCreateTransferRequest("Amount_example", openapiclient.CreateTransferRequest_destination{TransferDestinationAddress: openapiclient.NewTransferDestinationAddress("Address_example", openapiclient.TransferDestinationType("Address"))}, openapiclient.CreateTransferRequest_source{TransferSourceAsset: openapiclient.NewTransferSourceAsset(openapiclient.TransferSourceType("Asset"), "WalletId_example")}, "TokenId_example") // CreateTransferRequest | Request Body
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

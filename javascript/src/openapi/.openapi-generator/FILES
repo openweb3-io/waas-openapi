@@ -52,6 +52,7 @@ models/EstimateFeeRequest.ts
 models/EstimateFeeResponse.ts
 models/EventType.ts
 models/Fee.ts
+models/FeeType.ts
 models/GasStation.ts
 models/GetGasStationDepositAddressReply.ts
 models/ModelError.ts
@@ -65,7 +66,9 @@ models/Token.ts
 models/Transaction.ts
 models/TransactionEndpoint.ts
 models/TransferDestinationAddress.ts
+models/TransferDestinationType.ts
 models/TransferSourceAsset.ts
+models/TransferSourceType.ts
 models/TransferSourceWeb3.ts
 models/UpdateEndpoint.ts
 models/UpdateGasStationRequest.ts

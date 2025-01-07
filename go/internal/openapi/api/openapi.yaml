@@ -2094,12 +2094,12 @@ components:
           tokenId: tokenId
           type: 6
         destination:
-          destination_type: destination_type
+          destination_type: Address
           address: address
         memo: memo
         source:
           wallet_id: wallet_id
-          source_type: source_type
+          source_type: Asset
       properties:
         amount:
           description: The amount to be transferred
@@ -2673,12 +2673,12 @@ components:
         token_id: token_id
         extra: extra
         destination:
-          destination_type: destination_type
+          destination_type: Address
           address: address
         memo: memo
         source:
           wallet_id: wallet_id
-          source_type: source_type
+          source_type: Asset
       properties:
         amount:
           description: Amount
@@ -2741,10 +2741,7 @@ components:
           description: Token ID
           type: string
         type:
-          description: Fee type
-          type: integer
-          x-enum-varnames:
-          - Fixed
+          $ref: '#/components/schemas/FeeType'
       required:
       - maxFeeAmount
       - tokenId
@@ -2752,9 +2749,11 @@ components:
       type: object
     FeeType:
       description: Fee type
+      enum:
+      - 0
       type: integer
       x-enum-varnames:
-      - Fixed
+      - FeeType_Fixed
     GasStation:
       example:
         gas_threshold: gas_threshold
@@ -2827,7 +2826,7 @@ components:
         source:
           wallet_id: wallet_id
           address: address
-          source_type: source_type
+          source_type: Asset
         message: message
       properties:
         chain_id:
@@ -3093,37 +3092,32 @@ components:
       - TransactionType_Withdraw
     TransferDestinationAddress:
       example:
-        destination_type: destination_type
+        destination_type: Address
         address: address
       properties:
         address:
           description: Address
           type: string
         destination_type:
-          description: destination type
-          type: string
-          x-enum-varnames:
-          - TransferDestinationType_Address
+          $ref: '#/components/schemas/TransferDestinationType'
       required:
       - address
       - destination_type
       type: object
     TransferDestinationType:
       description: destination type
+      enum:
+      - Address
       type: string
       x-enum-varnames:
       - TransferDestinationType_Address
     TransferSourceAsset:
       example:
         wallet_id: wallet_id
-        source_type: source_type
+        source_type: Asset
       properties:
         source_type:
-          description: source type
-          type: string
-          x-enum-varnames:
-          - TransferSourceType_Asset
-          - TransferSourceType_Web3
+          $ref: '#/components/schemas/TransferSourceType'
         wallet_id:
           description: Wallet ID
           type: string
@@ -3133,6 +3127,9 @@ components:
       type: object
     TransferSourceType:
       description: source type
+      enum:
+      - Asset
+      - Web3
       type: string
       x-enum-varnames:
       - TransferSourceType_Asset
@@ -3141,17 +3138,13 @@ components:
       example:
         wallet_id: wallet_id
         address: address
-        source_type: source_type
+        source_type: Asset
       properties:
         address:
           description: Address
           type: string
         source_type:
-          description: source type
-          type: string
-          x-enum-varnames:
-          - TransferSourceType_Asset
-          - TransferSourceType_Web3
+          $ref: '#/components/schemas/TransferSourceType'
         wallet_id:
           description: Wallet ID
           type: string

@@ -731,8 +731,11 @@
       "FeeType": {
         "description": "Fee type",
         "type": "integer",
+        "enum": [
+          0
+        ],
         "x-enum-varnames": [
-          "Fixed"
+          "FeeType_Fixed"
         ]
       },
       "GasStation": {
@@ -1091,6 +1094,9 @@
       "TransferDestinationType": {
         "description": "destination type",
         "type": "string",
+        "enum": [
+          "Address"
+        ],
         "x-enum-varnames": [
           "TransferDestinationType_Address"
         ]
@@ -1114,6 +1120,10 @@
       "TransferSourceType": {
         "description": "source type",
         "type": "string",
+        "enum": [
+          "Asset",
+          "Web3"
+        ],
         "x-enum-varnames": [
           "TransferSourceType_Asset",
           "TransferSourceType_Web3"
@@ -1127,11 +1137,7 @@
           },
           "source_type": {
             "description": "source type",
-            "type": "string",
-            "x-enum-varnames": [
-              "TransferSourceType_Asset",
-              "TransferSourceType_Web3"
-            ]
+            "$ref": "#/components/schemas/TransferSourceType"
           },
           "wallet_id": {
             "description": "Wallet ID",

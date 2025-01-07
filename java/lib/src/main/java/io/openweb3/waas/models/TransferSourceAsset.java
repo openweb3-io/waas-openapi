@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.openweb3.waas.models.TransferSourceType;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -52,7 +53,7 @@ import io.openweb3.waas.internal.JSON;
 public class TransferSourceAsset {
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
-  private String sourceType;
+  private TransferSourceType sourceType;
 
   public static final String SERIALIZED_NAME_WALLET_ID = "wallet_id";
   @SerializedName(SERIALIZED_NAME_WALLET_ID)
@@ -61,21 +62,21 @@ public class TransferSourceAsset {
   public TransferSourceAsset() {
   }
 
-  public TransferSourceAsset sourceType(String sourceType) {
+  public TransferSourceAsset sourceType(TransferSourceType sourceType) {
     this.sourceType = sourceType;
     return this;
   }
 
   /**
-   * source type
+   * Get sourceType
    * @return sourceType
    */
   @javax.annotation.Nonnull
-  public String getSourceType() {
+  public TransferSourceType getSourceType() {
     return sourceType;
   }
 
-  public void setSourceType(String sourceType) {
+  public void setSourceType(TransferSourceType sourceType) {
     this.sourceType = sourceType;
   }
 
@@ -183,9 +184,8 @@ public class TransferSourceAsset {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("source_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_type").toString()));
-      }
+      // validate the required field `source_type`
+      TransferSourceType.validateJsonElement(jsonObj.get("source_type"));
       if (!jsonObj.get("wallet_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `wallet_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("wallet_id").toString()));
       }

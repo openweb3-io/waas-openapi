@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.openweb3.waas.models.FeeType;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -60,7 +61,7 @@ public class Fee {
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private Integer type;
+  private FeeType type;
 
   public Fee() {
   }
@@ -103,21 +104,21 @@ public class Fee {
   }
 
 
-  public Fee type(Integer type) {
+  public Fee type(FeeType type) {
     this.type = type;
     return this;
   }
 
   /**
-   * Fee type
+   * Get type
    * @return type
    */
   @javax.annotation.Nonnull
-  public Integer getType() {
+  public FeeType getType() {
     return type;
   }
 
-  public void setType(Integer type) {
+  public void setType(FeeType type) {
     this.type = type;
   }
 
@@ -216,6 +217,8 @@ public class Fee {
       if (!jsonObj.get("tokenId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tokenId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tokenId").toString()));
       }
+      // validate the required field `type`
+      FeeType.validateJsonElement(jsonObj.get("type"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
