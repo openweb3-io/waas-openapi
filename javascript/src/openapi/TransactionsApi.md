@@ -320,7 +320,7 @@ let body:.TransactionsApiV1TransactionsTransferRequest = {
     fee: {
       maxFeeAmount: "maxFeeAmount_example",
       tokenId: "tokenId_example",
-      type: 0,
+      type: 1,
     },
     memo: "memo_example",
     source: {

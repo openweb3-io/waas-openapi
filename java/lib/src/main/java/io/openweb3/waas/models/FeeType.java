@@ -29,7 +29,7 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(FeeType.Adapter.class)
 public enum FeeType {
   
-  FeeType_Fixed(0);
+  FeeType_Fixed(1);
 
   private Integer value;
 

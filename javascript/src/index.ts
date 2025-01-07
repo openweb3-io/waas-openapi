@@ -294,7 +294,7 @@ class Transactions {
   }
 
   // transfer token
-  public async transferToken(
+  public async transfer(
     createTransferRequest: CreateTransferRequest
   ): Promise<CreateTransferResponse> {
     return await this.api.v1TransactionsTransfer({ createTransferRequest });

@@ -16,5 +16,5 @@ import { HttpFile } from '../http/http';
 * Fee type
 */
 export enum FeeType {
-    FeeType_Fixed = 0
+    FeeType_Fixed = 1
 }

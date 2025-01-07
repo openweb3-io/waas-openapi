@@ -20,12 +20,12 @@ type FeeType int32
 
 // List of FeeType
 const (
-	FeeType_Fixed FeeType = 0
+	FeeType_Fixed FeeType = 1
 )
 
 // All allowed values of FeeType enum
 var AllowedFeeTypeEnumValues = []FeeType{
-	0,
+	1,
 }
 
 func (v *FeeType) UnmarshalJSON(src []byte) error {

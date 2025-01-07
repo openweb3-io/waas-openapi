@@ -5,7 +5,7 @@
 ## Enum
 
 
-* `FeeType_Fixed` (value: `0`)
+* `FeeType_Fixed` (value: `1`)
 
 
 

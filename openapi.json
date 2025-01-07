@@ -732,7 +732,7 @@
         "description": "Fee type",
         "type": "integer",
         "enum": [
-          0
+          1
         ],
         "x-enum-varnames": [
           "FeeType_Fixed"

@@ -2750,7 +2750,7 @@ components:
     FeeType:
       description: Fee type
       enum:
-      - 0
+      - 1
       type: integer
       x-enum-varnames:
       - FeeType_Fixed
