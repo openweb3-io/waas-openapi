@@ -5,7 +5,9 @@
 ## Enum
 
 
-* `TransferSourceType_Address` (value: `"Address"`)
+* `TransferSourceType_Asset` (value: `"Asset"`)
+
+* `TransferSourceType_Web3` (value: `"Web3"`)
 
 
 

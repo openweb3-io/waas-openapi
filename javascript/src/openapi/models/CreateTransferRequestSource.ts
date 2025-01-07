@@ -11,6 +11,7 @@
  */
 
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
+import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { HttpFile } from '../http/http';
 
 /**
@@ -25,6 +26,10 @@ export class CreateTransferRequestSource {
     * Wallet ID
     */
     'walletId': string;
+    /**
+    * Address
+    */
+    'address': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -38,6 +43,12 @@ export class CreateTransferRequestSource {
         {
             "name": "walletId",
             "baseName": "wallet_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "address",
+            "baseName": "address",
             "type": "string",
             "format": ""
         }    ];

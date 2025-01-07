@@ -13,8 +13,9 @@
 import { HttpFile } from '../http/http';
 
 /**
-* Wallet type
+* source type
 */
-export enum WalletType {
-    WalletType_Custodial = 'Custodial'
+export enum TransferSourceType {
+    TransferSourceType_Asset = 'Asset',
+    TransferSourceType_Web3 = 'Web3'
 }

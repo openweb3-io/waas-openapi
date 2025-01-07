@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// WalletType swagger:enum Custodial
+// WalletType Wallet type
 type WalletType string
 
 // List of WalletType

@@ -5,7 +5,7 @@
 ## Enum
 
 
-* `TransactionType_Unknown` (value: `"Unkown"`)
+* `TransactionType_Unknown` (value: `"Unknown"`)
 
 * `TransactionType_Deposit` (value: `"Deposit"`)
 

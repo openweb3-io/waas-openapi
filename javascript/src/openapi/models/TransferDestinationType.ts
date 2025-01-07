@@ -13,8 +13,8 @@
 import { HttpFile } from '../http/http';
 
 /**
-* Wallet type
+* destination type
 */
-export enum WalletType {
-    WalletType_Custodial = 'Custodial'
+export enum TransferDestinationType {
+    TransferDestinationType_Address = 'Address'
 }

@@ -13,8 +13,10 @@
 import { HttpFile } from '../http/http';
 
 /**
-* Wallet type
+* Transaction type
 */
-export enum WalletType {
-    WalletType_Custodial = 'Custodial'
+export enum TransactionType {
+    TransactionType_Unknown = 'Unknown',
+    TransactionType_Deposit = 'Deposit',
+    TransactionType_Withdraw = 'Withdraw'
 }

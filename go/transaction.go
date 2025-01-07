@@ -22,6 +22,15 @@ type (
 	SignMessageRequestSource   = openapi.SignMessageRequestSource
 )
 
+const (
+	TransferSourceTypeAsset = openapi.TransferSourceType_Asset
+	TransferSourceTypeWeb3  = openapi.TransferSourceType_Web3
+
+	TransferDestinationTypeAddress = openapi.TransferDestinationType_Address
+
+	TransferFeeTypeFixed = openapi.FeeType_Fixed
+)
+
 type Transaction struct {
 	api *openapi.APIClient
 }
@@ -64,8 +73,8 @@ func TransferSourceAssetAsTransferSource(v *TransferSourceAsset) TransferSource 
 	return openapi.TransferSourceAssetAsCreateTransferRequestSource(v)
 }
 
-func TransferSourceWeb3AsSignMessageRequestSource(v *TransferSourceWeb3) SignMessageRequestSource {
-	return openapi.TransferSourceWeb3AsSignMessageRequestSource(v)
+func TransferSourceWeb3AsTransferSource(v *TransferSourceWeb3) TransferSource {
+	return openapi.TransferSourceWeb3AsCreateTransferRequestSource(v)
 }
 
 func TransferDestinationAddressAsTransferDestination(v *TransferDestinationAddress) TransferDestination {
@@ -153,6 +162,10 @@ func (e *Transaction) EstimateFee(
 		return nil, wrapError(err, res)
 	}
 	return out, nil
+}
+
+func TransferSourceWeb3AsSignMessageRequestSource(v *TransferSourceWeb3) SignMessageRequestSource {
+	return openapi.TransferSourceWeb3AsSignMessageRequestSource(v)
 }
 
 func (e *Transaction) SignMessage(ctx context.Context, in *SignMessageIn) (*SignMessageOut, error) {

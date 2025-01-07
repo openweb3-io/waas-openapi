@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SourceType** | **string** | source type | 
 **WalletId** | **string** | Wallet ID | 
+**Address** | **string** | Address | 
 
 ## Methods
 
 ### NewCreateTransferRequestSource
 
-`func NewCreateTransferRequestSource(sourceType string, walletId string, ) *CreateTransferRequestSource`
+`func NewCreateTransferRequestSource(sourceType string, walletId string, address string, ) *CreateTransferRequestSource`
 
 NewCreateTransferRequestSource instantiates a new CreateTransferRequestSource object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *CreateTransferRequestSource) SetWalletId(v string)`
 
 SetWalletId sets WalletId field to given value.
+
+
+### GetAddress
+
+`func (o *CreateTransferRequestSource) GetAddress() string`
+
+GetAddress returns the Address field if non-nil, zero value otherwise.
+
+### GetAddressOk
+
+`func (o *CreateTransferRequestSource) GetAddressOk() (*string, bool)`
+
+GetAddressOk returns a tuple with the Address field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAddress
+
+`func (o *CreateTransferRequestSource) SetAddress(v string)`
+
+SetAddress sets Address field to given value.
 
 
 

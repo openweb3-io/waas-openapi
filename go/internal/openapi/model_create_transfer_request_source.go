@@ -19,12 +19,20 @@ import (
 // CreateTransferRequestSource - The ID of the wallet from which the transfer will be made
 type CreateTransferRequestSource struct {
 	TransferSourceAsset *TransferSourceAsset
+	TransferSourceWeb3 *TransferSourceWeb3
 }
 
 // TransferSourceAssetAsCreateTransferRequestSource is a convenience function that returns TransferSourceAsset wrapped in CreateTransferRequestSource
 func TransferSourceAssetAsCreateTransferRequestSource(v *TransferSourceAsset) CreateTransferRequestSource {
 	return CreateTransferRequestSource{
 		TransferSourceAsset: v,
+	}
+}
+
+// TransferSourceWeb3AsCreateTransferRequestSource is a convenience function that returns TransferSourceWeb3 wrapped in CreateTransferRequestSource
+func TransferSourceWeb3AsCreateTransferRequestSource(v *TransferSourceWeb3) CreateTransferRequestSource {
+	return CreateTransferRequestSource{
+		TransferSourceWeb3: v,
 	}
 }
 
@@ -50,9 +58,27 @@ func (dst *CreateTransferRequestSource) UnmarshalJSON(data []byte) error {
 		dst.TransferSourceAsset = nil
 	}
 
+	// try to unmarshal data into TransferSourceWeb3
+	err = newStrictDecoder(data).Decode(&dst.TransferSourceWeb3)
+	if err == nil {
+		jsonTransferSourceWeb3, _ := json.Marshal(dst.TransferSourceWeb3)
+		if string(jsonTransferSourceWeb3) == "{}" { // empty struct
+			dst.TransferSourceWeb3 = nil
+		} else {
+			if err = validator.Validate(dst.TransferSourceWeb3); err != nil {
+				dst.TransferSourceWeb3 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.TransferSourceWeb3 = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.TransferSourceAsset = nil
+		dst.TransferSourceWeb3 = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(CreateTransferRequestSource)")
 	} else if match == 1 {
@@ -68,6 +94,10 @@ func (src CreateTransferRequestSource) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.TransferSourceAsset)
 	}
 
+	if src.TransferSourceWeb3 != nil {
+		return json.Marshal(&src.TransferSourceWeb3)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -78,6 +108,10 @@ func (obj *CreateTransferRequestSource) GetActualInstance() (interface{}) {
 	}
 	if obj.TransferSourceAsset != nil {
 		return obj.TransferSourceAsset
+	}
+
+	if obj.TransferSourceWeb3 != nil {
+		return obj.TransferSourceWeb3
 	}
 
 	// all schemas are nil

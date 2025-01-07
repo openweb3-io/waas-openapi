@@ -3375,7 +3375,7 @@ components:
       - WalletSubType_Custodial_Asset
       - WalletSubType_Custodial_Web3
     WalletType:
-      description: swagger:enum Custodial
+      description: Wallet type
       enum:
       - Custodial
       type: string
@@ -3390,6 +3390,7 @@ components:
       description: The ID of the wallet from which the transfer will be made
       oneOf:
       - $ref: '#/components/schemas/TransferSourceAsset'
+      - $ref: '#/components/schemas/TransferSourceWeb3'
       type: object
     SignMessageRequest_source:
       description: The ID of the wallet from which the transfer will be made

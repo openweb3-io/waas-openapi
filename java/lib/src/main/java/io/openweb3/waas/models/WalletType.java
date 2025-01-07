@@ -24,7 +24,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * swagger:enum Custodial
+ * Wallet type
  */
 @JsonAdapter(WalletType.Adapter.class)
 public enum WalletType {

@@ -13,8 +13,8 @@
 import { HttpFile } from '../http/http';
 
 /**
-* Wallet type
+* Fee type
 */
-export enum WalletType {
-    WalletType_Custodial = 'Custodial'
+export enum FeeType {
+    FeeType_Fixed = 0
 }

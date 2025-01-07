@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.openweb3.waas.models.TransferSourceAsset;
+import io.openweb3.waas.models.TransferSourceWeb3;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -71,6 +72,7 @@ public class CreateTransferRequestSource extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<TransferSourceAsset> adapterTransferSourceAsset = gson.getDelegateAdapter(this, TypeToken.get(TransferSourceAsset.class));
+            final TypeAdapter<TransferSourceWeb3> adapterTransferSourceWeb3 = gson.getDelegateAdapter(this, TypeToken.get(TransferSourceWeb3.class));
 
             return (TypeAdapter<T>) new TypeAdapter<CreateTransferRequestSource>() {
                 @Override
@@ -86,7 +88,13 @@ public class CreateTransferRequestSource extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: TransferSourceAsset");
+                    // check if the actual instance is of the type `TransferSourceWeb3`
+                    if (value.getActualInstance() instanceof TransferSourceWeb3) {
+                        JsonElement element = adapterTransferSourceWeb3.toJsonTree((TransferSourceWeb3)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: TransferSourceAsset, TransferSourceWeb3");
                 }
 
                 @Override
@@ -109,6 +117,18 @@ public class CreateTransferRequestSource extends AbstractOpenApiSchema {
                         // deserialization failed, continue
                         errorMessages.add(String.format("Deserialization for TransferSourceAsset failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'TransferSourceAsset'", e);
+                    }
+                    // deserialize TransferSourceWeb3
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        TransferSourceWeb3.validateJsonElement(jsonElement);
+                        actualAdapter = adapterTransferSourceWeb3;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'TransferSourceWeb3'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for TransferSourceWeb3 failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'TransferSourceWeb3'", e);
                     }
 
                     if (match == 1) {
@@ -137,6 +157,7 @@ public class CreateTransferRequestSource extends AbstractOpenApiSchema {
 
     static {
         schemas.put("TransferSourceAsset", TransferSourceAsset.class);
+        schemas.put("TransferSourceWeb3", TransferSourceWeb3.class);
     }
 
     @Override
@@ -147,7 +168,7 @@ public class CreateTransferRequestSource extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * TransferSourceAsset
+     * TransferSourceAsset, TransferSourceWeb3
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -158,14 +179,19 @@ public class CreateTransferRequestSource extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be TransferSourceAsset");
+        if (instance instanceof TransferSourceWeb3) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be TransferSourceAsset, TransferSourceWeb3");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * TransferSourceAsset
+     * TransferSourceAsset, TransferSourceWeb3
      *
-     * @return The actual instance (TransferSourceAsset)
+     * @return The actual instance (TransferSourceAsset, TransferSourceWeb3)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -182,6 +208,16 @@ public class CreateTransferRequestSource extends AbstractOpenApiSchema {
      */
     public TransferSourceAsset getTransferSourceAsset() throws ClassCastException {
         return (TransferSourceAsset)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `TransferSourceWeb3`. If the actual instance is not `TransferSourceWeb3`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `TransferSourceWeb3`
+     * @throws ClassCastException if the instance is not `TransferSourceWeb3`
+     */
+    public TransferSourceWeb3 getTransferSourceWeb3() throws ClassCastException {
+        return (TransferSourceWeb3)super.getActualInstance();
     }
 
     /**
@@ -202,8 +238,16 @@ public class CreateTransferRequestSource extends AbstractOpenApiSchema {
             errorMessages.add(String.format("Deserialization for TransferSourceAsset failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
+        // validate the json string with TransferSourceWeb3
+        try {
+            TransferSourceWeb3.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for TransferSourceWeb3 failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for CreateTransferRequestSource with oneOf schemas: TransferSourceAsset. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for CreateTransferRequestSource with oneOf schemas: TransferSourceAsset, TransferSourceWeb3. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

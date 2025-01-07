@@ -240,6 +240,9 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/TransferSourceAsset"
+              },
+              {
+                "$ref": "#/components/schemas/TransferSourceWeb3"
               }
             ],
             "type": "object"
@@ -655,6 +658,9 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/TransferSourceAsset"
+              },
+              {
+                "$ref": "#/components/schemas/TransferSourceWeb3"
               }
             ],
             "type": "object"
@@ -1278,7 +1284,7 @@
         ]
       },
       "WalletType": {
-        "description": "swagger:enum Custodial",
+        "description": "Wallet type",
         "type": "string",
         "enum": [
           "Custodial"
