@@ -17,10 +17,6 @@ export class CreateAddressRequest {
     * Chain ID
     */
     'chainId': string;
-    /**
-    * Address Type
-    */
-    'type': CreateAddressRequestTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -30,12 +26,6 @@ export class CreateAddressRequest {
             "baseName": "chain_id",
             "type": "string",
             "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "CreateAddressRequestTypeEnum",
-            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
@@ -44,11 +34,5 @@ export class CreateAddressRequest {
 
     public constructor() {
     }
-}
-
-
-export enum CreateAddressRequestTypeEnum {
-    Deposit = 'DEPOSIT',
-    Hot = 'HOT'
 }
 

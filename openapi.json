@@ -124,19 +124,10 @@
           "chain_id": {
             "description": "Chain ID",
             "type": "string"
-          },
-          "type": {
-            "description": "Address Type",
-            "enum": [
-              "DEPOSIT",
-              "HOT"
-            ],
-            "type": "string"
           }
         },
         "required": [
-          "chain_id",
-          "type"
+          "chain_id"
         ],
         "type": "object"
       },
@@ -295,24 +286,11 @@
           },
           "sub_type": {
             "description": "Wallet sub type",
-            "enum": [
-              "Asset"
-            ],
-            "type": "string",
-            "x-enum-varnames": [
-              "WalletSubType_Custodial_Asset",
-              "WalletSubType_Custodial_Web3"
-            ]
+            "$ref": "#/components/schemas/WalletSubType"
           },
           "type": {
             "description": "Wallet type",
-            "enum": [
-              "Custodial"
-            ],
-            "type": "string",
-            "x-enum-varnames": [
-              "WalletType_Custodial"
-            ]
+            "$ref": "#/components/schemas/WalletType"
           },
           "uid": {
             "description": "Custom ID",
@@ -1290,14 +1268,21 @@
       "WalletSubType": {
         "description": "Wallet sub type",
         "type": "string",
+        "enum": [
+          "Asset",
+          "Web3"
+        ],
         "x-enum-varnames": [
           "WalletSubType_Custodial_Asset",
           "WalletSubType_Custodial_Web3"
         ]
       },
       "WalletType": {
-        "description": "Wallet type",
+        "description": "swagger:enum Custodial",
         "type": "string",
+        "enum": [
+          "Custodial"
+        ],
         "x-enum-varnames": [
           "WalletType_Custodial"
         ]
@@ -1445,6 +1430,16 @@
         "operationId": "v1.addresses.validate",
         "parameters": [
           {
+            "description": "Chain ID",
+            "in": "query",
+            "name": "chain_id",
+            "required": true,
+            "schema": {
+              "description": "Chain ID",
+              "type": "string"
+            }
+          },
+          {
             "description": "Addresses",
             "in": "query",
             "name": "addresses",
@@ -1456,16 +1451,6 @@
               },
               "type": "array",
               "uniqueItems": false
-            }
-          },
-          {
-            "description": "Chain ID",
-            "in": "query",
-            "name": "chain_id",
-            "required": true,
-            "schema": {
-              "description": "Chain ID",
-              "type": "string"
             }
           }
         ],

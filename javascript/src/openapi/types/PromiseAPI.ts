@@ -46,6 +46,8 @@ import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
 import { Wallet } from '../models/Wallet';
+import { WalletSubType } from '../models/WalletSubType';
+import { WalletType } from '../models/WalletType';
 import { ObservableAddressesApi } from './ObservableAPI';
 
 import { AddressesApiRequestFactory, AddressesApiResponseProcessor} from "../apis/AddressesApi";
@@ -89,22 +91,22 @@ export class PromiseAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param addresses Addresses
      * @param chainId Chain ID
+     * @param addresses Addresses
      */
-    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        const result = this.api.v1AddressesValidateWithHttpInfo(addresses, chainId, _options);
+    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
+        const result = this.api.v1AddressesValidateWithHttpInfo(chainId, addresses, _options);
         return result.toPromise();
     }
 
     /**
      * Validate addresses
      * Validate addresses
-     * @param addresses Addresses
      * @param chainId Chain ID
+     * @param addresses Addresses
      */
-    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Promise<ValidateAddressesReply> {
-        const result = this.api.v1AddressesValidate(addresses, chainId, _options);
+    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Promise<ValidateAddressesReply> {
+        const result = this.api.v1AddressesValidate(chainId, addresses, _options);
         return result.toPromise();
     }
 

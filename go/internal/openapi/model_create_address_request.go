@@ -23,8 +23,6 @@ var _ MappedNullable = &CreateAddressRequest{}
 type CreateAddressRequest struct {
 	// Chain ID
 	ChainId string `json:"chain_id"`
-	// Address Type
-	Type string `json:"type"`
 }
 
 type _CreateAddressRequest CreateAddressRequest
@@ -33,10 +31,9 @@ type _CreateAddressRequest CreateAddressRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAddressRequest(chainId string, type_ string) *CreateAddressRequest {
+func NewCreateAddressRequest(chainId string) *CreateAddressRequest {
 	this := CreateAddressRequest{}
 	this.ChainId = chainId
-	this.Type = type_
 	return &this
 }
 
@@ -72,30 +69,6 @@ func (o *CreateAddressRequest) SetChainId(v string) {
 	o.ChainId = v
 }
 
-// GetType returns the Type field value
-func (o *CreateAddressRequest) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *CreateAddressRequest) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *CreateAddressRequest) SetType(v string) {
-	o.Type = v
-}
-
 func (o CreateAddressRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -107,7 +80,6 @@ func (o CreateAddressRequest) MarshalJSON() ([]byte, error) {
 func (o CreateAddressRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["chain_id"] = o.ChainId
-	toSerialize["type"] = o.Type
 	return toSerialize, nil
 }
 
@@ -117,7 +89,6 @@ func (o *CreateAddressRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"chain_id",
-		"type",
 	}
 
 	allProperties := make(map[string]interface{})

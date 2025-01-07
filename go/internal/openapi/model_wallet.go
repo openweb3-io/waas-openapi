@@ -27,10 +27,8 @@ type Wallet struct {
 	Id string `json:"id"`
 	// Wallet name
 	Name string `json:"name"`
-	// Wallet sub type
-	SubType string `json:"sub_type"`
-	// Wallet type
-	Type string `json:"type"`
+	SubType WalletSubType `json:"sub_type"`
+	Type WalletType `json:"type"`
 	// External unique ID
 	Uid string `json:"uid"`
 	// Updated time
@@ -43,7 +41,7 @@ type _Wallet Wallet
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWallet(id string, name string, subType string, type_ string, uid string) *Wallet {
+func NewWallet(id string, name string, subType WalletSubType, type_ WalletType, uid string) *Wallet {
 	this := Wallet{}
 	this.Id = id
 	this.Name = name
@@ -142,9 +140,9 @@ func (o *Wallet) SetName(v string) {
 }
 
 // GetSubType returns the SubType field value
-func (o *Wallet) GetSubType() string {
+func (o *Wallet) GetSubType() WalletSubType {
 	if o == nil {
-		var ret string
+		var ret WalletSubType
 		return ret
 	}
 
@@ -153,7 +151,7 @@ func (o *Wallet) GetSubType() string {
 
 // GetSubTypeOk returns a tuple with the SubType field value
 // and a boolean to check if the value has been set.
-func (o *Wallet) GetSubTypeOk() (*string, bool) {
+func (o *Wallet) GetSubTypeOk() (*WalletSubType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -161,14 +159,14 @@ func (o *Wallet) GetSubTypeOk() (*string, bool) {
 }
 
 // SetSubType sets field value
-func (o *Wallet) SetSubType(v string) {
+func (o *Wallet) SetSubType(v WalletSubType) {
 	o.SubType = v
 }
 
 // GetType returns the Type field value
-func (o *Wallet) GetType() string {
+func (o *Wallet) GetType() WalletType {
 	if o == nil {
-		var ret string
+		var ret WalletType
 		return ret
 	}
 
@@ -177,7 +175,7 @@ func (o *Wallet) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Wallet) GetTypeOk() (*string, bool) {
+func (o *Wallet) GetTypeOk() (*WalletType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -185,7 +183,7 @@ func (o *Wallet) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *Wallet) SetType(v string) {
+func (o *Wallet) SetType(v WalletType) {
 	o.Type = v
 }
 

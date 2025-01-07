@@ -292,7 +292,6 @@ func (s *apiClientTestSuite) TestWallet_3_List() {
 func (s *apiClientTestSuite) TestWallet_4_CreateAddress() {
 	reply, err := s.client.Wallet.CreateAddress(context.Background(), s.lastWallet, &CreateAddressIn{
 		ChainId: testChain,
-		Type:    "DEPOSIT",
 	})
 	if err != nil {
 		s.T().Error(err)

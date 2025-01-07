@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Wallet name | 
-**SubType** | **string** | Wallet sub type | 
-**Type** | **string** | Wallet type | 
+**SubType** | [**WalletSubType**](WalletSubType.md) |  | 
+**Type** | [**WalletType**](WalletType.md) |  | 
 **Uid** | Pointer to **string** | Custom ID | [optional] 
 
 ## Methods
 
 ### NewCreateWalletRequest
 
-`func NewCreateWalletRequest(name string, subType string, type_ string, ) *CreateWalletRequest`
+`func NewCreateWalletRequest(name string, subType WalletSubType, type_ WalletType, ) *CreateWalletRequest`
 
 NewCreateWalletRequest instantiates a new CreateWalletRequest object
 This constructor will assign default values to properties that have it defined,
@@ -50,40 +50,40 @@ SetName sets Name field to given value.
 
 ### GetSubType
 
-`func (o *CreateWalletRequest) GetSubType() string`
+`func (o *CreateWalletRequest) GetSubType() WalletSubType`
 
 GetSubType returns the SubType field if non-nil, zero value otherwise.
 
 ### GetSubTypeOk
 
-`func (o *CreateWalletRequest) GetSubTypeOk() (*string, bool)`
+`func (o *CreateWalletRequest) GetSubTypeOk() (*WalletSubType, bool)`
 
 GetSubTypeOk returns a tuple with the SubType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubType
 
-`func (o *CreateWalletRequest) SetSubType(v string)`
+`func (o *CreateWalletRequest) SetSubType(v WalletSubType)`
 
 SetSubType sets SubType field to given value.
 
 
 ### GetType
 
-`func (o *CreateWalletRequest) GetType() string`
+`func (o *CreateWalletRequest) GetType() WalletType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CreateWalletRequest) GetTypeOk() (*string, bool)`
+`func (o *CreateWalletRequest) GetTypeOk() (*WalletType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CreateWalletRequest) SetType(v string)`
+`func (o *CreateWalletRequest) SetType(v WalletType)`
 
 SetType sets Type field to given value.
 

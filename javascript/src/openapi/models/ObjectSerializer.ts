@@ -43,11 +43,13 @@ export * from '../models/UpdateTokenRequest';
 export * from '../models/UpdateWalletRequest';
 export * from '../models/ValidateAddressesReply';
 export * from '../models/Wallet';
+export * from '../models/WalletSubType';
+export * from '../models/WalletType';
 
 import { Address } from '../models/Address';
 import { AddressValidityItem } from '../models/AddressValidityItem';
 import { Chain } from '../models/Chain';
-import { CreateAddressRequest , CreateAddressRequestTypeEnum   } from '../models/CreateAddressRequest';
+import { CreateAddressRequest } from '../models/CreateAddressRequest';
 import { CreateEndpoint } from '../models/CreateEndpoint';
 import { CreateGasStationRequest } from '../models/CreateGasStationRequest';
 import { CreateTokenRequest } from '../models/CreateTokenRequest';
@@ -55,7 +57,7 @@ import { CreateTransferRequest } from '../models/CreateTransferRequest';
 import { CreateTransferRequestDestination } from '../models/CreateTransferRequestDestination';
 import { CreateTransferRequestSource } from '../models/CreateTransferRequestSource';
 import { CreateTransferResponse } from '../models/CreateTransferResponse';
-import { CreateWalletRequest , CreateWalletRequestSubTypeEnum  , CreateWalletRequestTypeEnum    } from '../models/CreateWalletRequest';
+import { CreateWalletRequest     } from '../models/CreateWalletRequest';
 import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
 import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
@@ -88,7 +90,9 @@ import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
 import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
-import { Wallet } from '../models/Wallet';
+import { Wallet        } from '../models/Wallet';
+import { WalletSubType } from '../models/WalletSubType';
+import { WalletType } from '../models/WalletType';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -103,9 +107,8 @@ let primitives = [
                  ];
 
 let enumsMap: Set<string> = new Set<string>([
-    "CreateAddressRequestTypeEnum",
-    "CreateWalletRequestSubTypeEnum",
-    "CreateWalletRequestTypeEnum",
+    "WalletSubType",
+    "WalletType",
 ]);
 
 let typeMap: {[index: string]: any} = {

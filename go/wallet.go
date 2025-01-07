@@ -14,6 +14,15 @@ type (
 	DeleteWalletIn       = openapi.ApiV1WalletsDeleteRequest
 	CreateAddressIn      = openapi.CreateAddressRequest
 	CursorAddressPageOut = openapi.CursorPageAddress
+	WalletType           = openapi.WalletType
+	WalletSubType        = openapi.WalletSubType
+)
+
+const (
+	WalletTypeCustodial = openapi.WalletType_Custodial
+
+	WalletSubTypeAsset = openapi.WalletSubType_Custodial_Asset
+	WalletSubTypeWeb3  = openapi.WalletSubType_Custodial_Web3
 )
 
 type Wallet struct {

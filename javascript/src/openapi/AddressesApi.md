@@ -98,12 +98,12 @@ const configuration = .createConfiguration();
 const apiInstance = new .AddressesApi(configuration);
 
 let body:.AddressesApiV1AddressesValidateRequest = {
+  // string | Chain ID
+  chainId: "chain_id_example",
   // Array<string> | Addresses
   addresses: [
     "addresses_example",
   ],
-  // string | Chain ID
-  chainId: "chain_id_example",
 };
 
 apiInstance.v1AddressesValidate(body).then((data:any) => {
@@ -116,8 +116,8 @@ apiInstance.v1AddressesValidate(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addresses** | **Array&lt;string&gt;** | Addresses | defaults to undefined
  **chainId** | [**string**] | Chain ID | defaults to undefined
+ **addresses** | **Array&lt;string&gt;** | Addresses | defaults to undefined
 
 
 ### Return type
@@ -165,7 +165,6 @@ let body:.AddressesApiV1WalletsCreateAddressRequest = {
   // CreateAddressRequest | Request Body
   createAddressRequest: {
     chainId: "chainId_example",
-    type: "DEPOSIT",
   },
 };
 

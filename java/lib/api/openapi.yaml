@@ -104,6 +104,15 @@ paths:
       description: Validate addresses
       operationId: v1.addresses.validate
       parameters:
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
+        style: form
       - description: Addresses
         explode: true
         in: query
@@ -115,15 +124,6 @@ paths:
             type: string
           type: array
           uniqueItems: false
-        style: form
-      - description: Chain ID
-        explode: true
-        in: query
-        name: chain_id
-        required: true
-        schema:
-          description: Chain ID
-          type: string
         style: form
       responses:
         "200":
@@ -2084,20 +2084,12 @@ components:
     CreateAddressRequest:
       example:
         chain_id: chain_id
-        type: DEPOSIT
       properties:
         chain_id:
           description: Chain ID
           type: string
-        type:
-          description: Address Type
-          enum:
-          - DEPOSIT
-          - HOT
-          type: string
       required:
       - chain_id
-      - type
       type: object
     CreateEndpoint:
       example:
@@ -2244,20 +2236,9 @@ components:
           description: Wallet name
           type: string
         sub_type:
-          description: Wallet sub type
-          enum:
-          - Asset
-          type: string
-          x-enum-varnames:
-          - WalletSubType_Custodial_Asset
-          - WalletSubType_Custodial_Web3
+          $ref: '#/components/schemas/WalletSubType'
         type:
-          description: Wallet type
-          enum:
-          - Custodial
-          type: string
-          x-enum-varnames:
-          - WalletType_Custodial
+          $ref: '#/components/schemas/WalletType'
         uid:
           description: Custom ID
           type: string
@@ -2677,18 +2658,18 @@ components:
         has_prev: true
         items:
         - uid: uid
-          sub_type: sub_type
+          sub_type: Asset
           name: name
           created_at: created_at
           id: id
-          type: type
+          type: Custodial
           updatedAt: updatedAt
         - uid: uid
-          sub_type: sub_type
+          sub_type: Asset
           name: name
           created_at: created_at
           id: id
-          type: type
+          type: Custodial
           updatedAt: updatedAt
       properties:
         has_next:
@@ -3351,11 +3332,11 @@ components:
     Wallet:
       example:
         uid: uid
-        sub_type: sub_type
+        sub_type: Asset
         name: name
         created_at: created_at
         id: id
-        type: type
+        type: Custodial
         updatedAt: updatedAt
       properties:
         created_at:
@@ -3368,16 +3349,9 @@ components:
           description: Wallet name
           type: string
         sub_type:
-          description: Wallet sub type
-          type: string
-          x-enum-varnames:
-          - WalletSubType_Custodial_Asset
-          - WalletSubType_Custodial_Web3
+          $ref: '#/components/schemas/WalletSubType'
         type:
-          description: Wallet type
-          type: string
-          x-enum-varnames:
-          - WalletType_Custodial
+          $ref: '#/components/schemas/WalletType'
         uid:
           description: External unique ID
           type: string
@@ -3393,12 +3367,17 @@ components:
       type: object
     WalletSubType:
       description: Wallet sub type
+      enum:
+      - Asset
+      - Web3
       type: string
       x-enum-varnames:
       - WalletSubType_Custodial_Asset
       - WalletSubType_Custodial_Web3
     WalletType:
-      description: Wallet type
+      description: swagger:enum Custodial
+      enum:
+      - Custodial
       type: string
       x-enum-varnames:
       - WalletType_Custodial

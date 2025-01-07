@@ -65,6 +65,8 @@ docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
 docs/ValidateAddressesReply.md
 docs/Wallet.md
+docs/WalletSubType.md
+docs/WalletType.md
 docs/WalletsAPI.md
 docs/WebhookEndpointsAPI.md
 docs/WebhookEventsAPI.md
@@ -116,6 +118,8 @@ model_update_token_request.go
 model_update_wallet_request.go
 model_validate_addresses_reply.go
 model_wallet.go
+model_wallet_sub_type.go
+model_wallet_type.go
 response.go
 test/api_addresses_test.go
 test/api_chains_test.go

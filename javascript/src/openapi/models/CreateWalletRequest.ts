@@ -10,6 +10,8 @@
  * Do not edit the class manually.
  */
 
+import { WalletSubType } from '../models/WalletSubType';
+import { WalletType } from '../models/WalletType';
 import { HttpFile } from '../http/http';
 
 export class CreateWalletRequest {
@@ -17,14 +19,8 @@ export class CreateWalletRequest {
     * Wallet name
     */
     'name': string;
-    /**
-    * Wallet sub type
-    */
-    'subType': CreateWalletRequestSubTypeEnum;
-    /**
-    * Wallet type
-    */
-    'type': CreateWalletRequestTypeEnum;
+    'subType': WalletSubType;
+    'type': WalletType;
     /**
     * Custom ID
     */
@@ -42,13 +38,13 @@ export class CreateWalletRequest {
         {
             "name": "subType",
             "baseName": "sub_type",
-            "type": "CreateWalletRequestSubTypeEnum",
+            "type": "WalletSubType",
             "format": ""
         },
         {
             "name": "type",
             "baseName": "type",
-            "type": "CreateWalletRequestTypeEnum",
+            "type": "WalletType",
             "format": ""
         },
         {
@@ -67,10 +63,4 @@ export class CreateWalletRequest {
 }
 
 
-export enum CreateWalletRequestSubTypeEnum {
-    WalletSubType_Custodial_Asset = 'Asset'
-}
-export enum CreateWalletRequestTypeEnum {
-    WalletType_Custodial = 'Custodial'
-}
 

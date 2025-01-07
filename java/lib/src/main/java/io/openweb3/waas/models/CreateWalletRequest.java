@@ -19,6 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.openweb3.waas.models.WalletSubType;
+import io.openweb3.waas.models.WalletType;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -54,113 +56,13 @@ public class CreateWalletRequest {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  /**
-   * Wallet sub type
-   */
-  @JsonAdapter(SubTypeEnum.Adapter.class)
-  public enum SubTypeEnum {
-    WalletSubType_Custodial_Asset("Asset");
-
-    private String value;
-
-    SubTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SubTypeEnum fromValue(String value) {
-      for (SubTypeEnum b : SubTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<SubTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SubTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SubTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return SubTypeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      SubTypeEnum.fromValue(value);
-    }
-  }
-
   public static final String SERIALIZED_NAME_SUB_TYPE = "sub_type";
   @SerializedName(SERIALIZED_NAME_SUB_TYPE)
-  private SubTypeEnum subType;
-
-  /**
-   * Wallet type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    WalletType_Custodial("Custodial");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      TypeEnum.fromValue(value);
-    }
-  }
+  private WalletSubType subType;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private TypeEnum type;
+  private WalletType type;
 
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
@@ -188,40 +90,40 @@ public class CreateWalletRequest {
   }
 
 
-  public CreateWalletRequest subType(SubTypeEnum subType) {
+  public CreateWalletRequest subType(WalletSubType subType) {
     this.subType = subType;
     return this;
   }
 
   /**
-   * Wallet sub type
+   * Get subType
    * @return subType
    */
   @javax.annotation.Nonnull
-  public SubTypeEnum getSubType() {
+  public WalletSubType getSubType() {
     return subType;
   }
 
-  public void setSubType(SubTypeEnum subType) {
+  public void setSubType(WalletSubType subType) {
     this.subType = subType;
   }
 
 
-  public CreateWalletRequest type(TypeEnum type) {
+  public CreateWalletRequest type(WalletType type) {
     this.type = type;
     return this;
   }
 
   /**
-   * Wallet type
+   * Get type
    * @return type
    */
   @javax.annotation.Nonnull
-  public TypeEnum getType() {
+  public WalletType getType() {
     return type;
   }
 
-  public void setType(TypeEnum type) {
+  public void setType(WalletType type) {
     this.type = type;
   }
 
@@ -339,16 +241,10 @@ public class CreateWalletRequest {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if (!jsonObj.get("sub_type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sub_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sub_type").toString()));
-      }
       // validate the required field `sub_type`
-      SubTypeEnum.validateJsonElement(jsonObj.get("sub_type"));
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
+      WalletSubType.validateJsonElement(jsonObj.get("sub_type"));
       // validate the required field `type`
-      TypeEnum.validateJsonElement(jsonObj.get("type"));
+      WalletType.validateJsonElement(jsonObj.get("type"));
       if ((jsonObj.get("uid") != null && !jsonObj.get("uid").isJsonNull()) && !jsonObj.get("uid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uid").toString()));
       }

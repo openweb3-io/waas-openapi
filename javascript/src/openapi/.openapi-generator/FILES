@@ -73,6 +73,8 @@ models/UpdateTokenRequest.ts
 models/UpdateWalletRequest.ts
 models/ValidateAddressesReply.ts
 models/Wallet.ts
+models/WalletSubType.ts
+models/WalletType.ts
 models/all.ts
 package.json
 rxjsStub.ts

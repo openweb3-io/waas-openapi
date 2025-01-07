@@ -161,6 +161,8 @@ Class | Method | HTTP request | Description
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)
  - [ValidateAddressesReply](docs/ValidateAddressesReply.md)
  - [Wallet](docs/Wallet.md)
+ - [WalletSubType](docs/WalletSubType.md)
+ - [WalletType](docs/WalletType.md)
 
 
 ## Documentation For Authorization

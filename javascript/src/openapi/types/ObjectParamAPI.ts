@@ -46,6 +46,8 @@ import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
 import { Wallet } from '../models/Wallet';
+import { WalletSubType } from '../models/WalletSubType';
+import { WalletType } from '../models/WalletType';
 
 import { ObservableAddressesApi } from "./ObservableAPI";
 import { AddressesApiRequestFactory, AddressesApiResponseProcessor} from "../apis/AddressesApi";
@@ -79,17 +81,17 @@ export interface AddressesApiV1AddressesListRequest {
 
 export interface AddressesApiV1AddressesValidateRequest {
     /**
-     * Addresses
-     * @type Array&lt;string&gt;
-     * @memberof AddressesApiv1AddressesValidate
-     */
-    addresses: Array<string>
-    /**
      * Chain ID
      * @type string
      * @memberof AddressesApiv1AddressesValidate
      */
     chainId: string
+    /**
+     * Addresses
+     * @type Array&lt;string&gt;
+     * @memberof AddressesApiv1AddressesValidate
+     */
+    addresses: Array<string>
 }
 
 export interface AddressesApiV1WalletsCreateAddressRequest {
@@ -186,7 +188,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidateWithHttpInfo(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        return this.api.v1AddressesValidateWithHttpInfo(param.addresses, param.chainId,  options).toPromise();
+        return this.api.v1AddressesValidateWithHttpInfo(param.chainId, param.addresses,  options).toPromise();
     }
 
     /**
@@ -195,7 +197,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidate(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<ValidateAddressesReply> {
-        return this.api.v1AddressesValidate(param.addresses, param.chainId,  options).toPromise();
+        return this.api.v1AddressesValidate(param.chainId, param.addresses,  options).toPromise();
     }
 
     /**
