@@ -28,6 +28,9 @@ public final class APIClient {
     }
 
     public APIClient(final APIClientOptions options) throws Exception {
+        if (options == null) {  
+            throw new IllegalArgumentException("options is required");
+        }
         if (options.getApiKey() == null || options.getSecret() == null) {
             throw new IllegalArgumentException("ApiKey and Secret are required");
         }

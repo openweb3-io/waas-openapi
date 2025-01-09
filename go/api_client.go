@@ -46,6 +46,17 @@ var defaultHTTPClient = &http.Client{
 }
 
 func New(options *ApiClientOptions) *ApiClient {
+	if options == nil {
+		panic("options is required")
+	}
+
+	if len(options.ApiKey) == 0 {
+		panic("apiKey is required")
+	}
+	if len(options.Secret) == 0 {
+		panic("secret is required")
+	}
+
 	conf := openapi.NewConfiguration()
 	conf.Scheme = "https"
 	conf.Host = "api.waas.openweb3.io"
@@ -87,15 +98,13 @@ func New(options *ApiClientOptions) *ApiClient {
 		req.Header.Set("X-Signature", signData)
 	}
 
-	if options != nil {
-		conf.Debug = options.Debug
-		if options.ServerUrl != nil {
-			conf.Scheme = options.ServerUrl.Scheme
-			conf.Host = options.ServerUrl.Host
-		}
-		if options.HTTPClient != nil {
-			conf.HTTPClient = options.HTTPClient
-		}
+	conf.Debug = options.Debug
+	if options.ServerUrl != nil {
+		conf.Scheme = options.ServerUrl.Scheme
+		conf.Host = options.ServerUrl.Host
+	}
+	if options.HTTPClient != nil {
+		conf.HTTPClient = options.HTTPClient
 	}
 	conf.AddDefaultHeader("X-Api-Key", options.ApiKey)
 	conf.UserAgent = fmt.Sprintf("waas-openapi/%s/go", version.Version)

@@ -1,6 +1,6 @@
 {
   "name": "@openweb3-io/waas",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "WaaS API client and WaaS verification library",
   "author": "waas",
   "repository": "https://github.com/waas/waas-libs",

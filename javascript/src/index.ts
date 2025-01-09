@@ -119,6 +119,13 @@ export class WaaS {
   public readonly GasStations: GasStations;
 
   public constructor(apikey: string, privateKey: string, options: WaaSOptions = {}) {
+    if (apikey === "") {
+      throw new Error("API key is required");
+    }
+    if (privateKey === "") {
+      throw new Error("Private key is required");
+    }
+
     const baseUrl: string = options.serverUrl ?? "https://api.waas.openweb3.io";
 
     const baseServer = new ServerConfiguration<any>(baseUrl, {});
