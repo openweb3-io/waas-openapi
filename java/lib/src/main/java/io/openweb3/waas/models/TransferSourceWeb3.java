@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.openweb3.waas.models.TransferSourceType;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -57,7 +56,7 @@ public class TransferSourceWeb3 {
 
   public static final String SERIALIZED_NAME_SOURCE_TYPE = "source_type";
   @SerializedName(SERIALIZED_NAME_SOURCE_TYPE)
-  private TransferSourceType sourceType;
+  private String sourceType;
 
   public static final String SERIALIZED_NAME_WALLET_ID = "wallet_id";
   @SerializedName(SERIALIZED_NAME_WALLET_ID)
@@ -85,21 +84,21 @@ public class TransferSourceWeb3 {
   }
 
 
-  public TransferSourceWeb3 sourceType(TransferSourceType sourceType) {
+  public TransferSourceWeb3 sourceType(String sourceType) {
     this.sourceType = sourceType;
     return this;
   }
 
   /**
-   * Get sourceType
+   * source type
    * @return sourceType
    */
   @javax.annotation.Nonnull
-  public TransferSourceType getSourceType() {
+  public String getSourceType() {
     return sourceType;
   }
 
-  public void setSourceType(TransferSourceType sourceType) {
+  public void setSourceType(String sourceType) {
     this.sourceType = sourceType;
   }
 
@@ -214,8 +213,9 @@ public class TransferSourceWeb3 {
       if (!jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
-      // validate the required field `source_type`
-      TransferSourceType.validateJsonElement(jsonObj.get("source_type"));
+      if (!jsonObj.get("source_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_type").toString()));
+      }
       if (!jsonObj.get("wallet_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `wallet_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("wallet_id").toString()));
       }

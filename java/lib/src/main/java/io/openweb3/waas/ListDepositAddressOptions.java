@@ -3,6 +3,7 @@ package io.openweb3.waas;
 public final class ListDepositAddressOptions extends ListOptions<ListDepositAddressOptions> {
     private String currency;
     private String network;
+    private String addressType;
 
     public ListDepositAddressOptions currency(final String currency) {
         this.currency = currency;
@@ -11,6 +12,11 @@ public final class ListDepositAddressOptions extends ListOptions<ListDepositAddr
 
     public ListDepositAddressOptions network(final String network) {
         this.network = network;
+        return this;
+    }
+
+    public ListDepositAddressOptions addressType(final String addressType) {
+        this.addressType = addressType;
         return this;
     }
 
@@ -28,5 +34,9 @@ public final class ListDepositAddressOptions extends ListOptions<ListDepositAddr
 
     public String getNetwork() {
         return network;
+    }
+
+    public String getAddressType() {
+        return addressType;
     }
 }

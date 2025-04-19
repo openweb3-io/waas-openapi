@@ -9,7 +9,7 @@ The ID of the wallet from which the transfer will be made
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**address** | **String** | Address |  |
-|**sourceType** | **TransferSourceType** |  |  |
+|**sourceType** | **String** | source type |  |
 |**walletId** | **String** | Wallet ID |  |
 
 

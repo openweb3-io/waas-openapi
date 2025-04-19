@@ -110,16 +110,14 @@ export class GasStationsApiRequestFactory extends BaseAPIRequestFactory {
      * Get or create deposit address
      * @param chainId Chain ID
      * @param walletId Wallet ID
-     * @param body 
      */
-    public async v1GasStationsGetOrCreateDepositAddress(chainId: string, walletId?: string, body?: any, _options?: Configuration): Promise<RequestContext> {
+    public async v1GasStationsGetOrCreateDepositAddress(chainId: string, walletId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'chainId' is not null or undefined
         if (chainId === null || chainId === undefined) {
             throw new RequiredError("GasStationsApi", "v1GasStationsGetOrCreateDepositAddress", "chainId");
         }
-
 
 
 
@@ -131,26 +129,15 @@ export class GasStationsApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
         // Query Params
-        if (chainId !== undefined) {
-            requestContext.setQueryParam("chain_id", ObjectSerializer.serialize(chainId, "string", ""));
-        }
-
-        // Query Params
         if (walletId !== undefined) {
             requestContext.setQueryParam("wallet_id", ObjectSerializer.serialize(walletId, "string", ""));
         }
 
+        // Query Params
+        if (chainId !== undefined) {
+            requestContext.setQueryParam("chain_id", ObjectSerializer.serialize(chainId, "string", ""));
+        }
 
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(body, "any", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods

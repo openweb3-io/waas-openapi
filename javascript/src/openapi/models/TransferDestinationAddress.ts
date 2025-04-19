@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { TransferDestinationType } from '../models/TransferDestinationType';
 import { HttpFile } from '../http/http';
 
 export class TransferDestinationAddress {
@@ -18,7 +17,10 @@ export class TransferDestinationAddress {
     * Address
     */
     'address': string;
-    'destinationType': TransferDestinationType;
+    /**
+    * destination type
+    */
+    'destinationType': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -32,7 +34,7 @@ export class TransferDestinationAddress {
         {
             "name": "destinationType",
             "baseName": "destination_type",
-            "type": "TransferDestinationType",
+            "type": "string",
             "format": ""
         }    ];
 
@@ -43,6 +45,4 @@ export class TransferDestinationAddress {
     public constructor() {
     }
 }
-
-
 

@@ -52,10 +52,10 @@ yarn add @openweb3-io/waas
 # Usage
 
 ```js
-import { WaaS } from "@openweb3-io/waas";
+import { ApiClient } from "@openweb3-io/waas";
 
-const waas = new WaaS("API-KEY", "PRIVATE KEY");
-const chains = await waas.chains.list({ limit: 20 });
+const apiClient = new ApiClient("API-KEY", "PRIVATE KEY");
+const chains = await apiClient.chains.list({ limit: 20 });
 ```
 
 # Development

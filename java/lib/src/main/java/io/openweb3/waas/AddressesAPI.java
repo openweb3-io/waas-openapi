@@ -16,24 +16,6 @@ public final class AddressesAPI {
         api = new AddressesApi();
     }
 
-    // get deposit address
-    public Address getDeposit(final String walletId, final String address) throws ApiException {
-        try {
-            return api.v1WalletsGetAddress(walletId, address);
-        } catch (io.openweb3.waas.internal.ApiException e) {
-            throw Utils.WrapInternalApiException(e);
-        }
-    }
-
-    // list deposit addresses
-    public CursorPageAddress listDeposit(final String walletId, final String[] chainIds, final ListDepositAddressOptions options) throws ApiException {
-        try {
-            return api.v1WalletsListAddresses(walletId, Arrays.asList(chainIds), options.getCursor(), options.getLimit());
-        } catch (io.openweb3.waas.internal.ApiException e) {
-            throw Utils.WrapInternalApiException(e);
-        }
-    }
-
     // list all addresses
     public CursorPageAddress list(final String[] chainIds, final String[] walletIds, final ListAddressOptions options) throws ApiException {
         try {

@@ -10,8 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { WalletSubType } from '../models/WalletSubType';
-import { WalletType } from '../models/WalletType';
 import { HttpFile } from '../http/http';
 
 export class CreateWalletRequest {
@@ -19,8 +17,14 @@ export class CreateWalletRequest {
     * Wallet name
     */
     'name': string;
-    'subType': WalletSubType;
-    'type': WalletType;
+    /**
+    * Wallet sub type
+    */
+    'subType': string;
+    /**
+    * Wallet type
+    */
+    'type': string;
     /**
     * Custom ID
     */
@@ -38,13 +42,13 @@ export class CreateWalletRequest {
         {
             "name": "subType",
             "baseName": "sub_type",
-            "type": "WalletSubType",
+            "type": "string",
             "format": ""
         },
         {
             "name": "type",
             "baseName": "type",
-            "type": "WalletType",
+            "type": "string",
             "format": ""
         },
         {
@@ -61,6 +65,4 @@ export class CreateWalletRequest {
     public constructor() {
     }
 }
-
-
 

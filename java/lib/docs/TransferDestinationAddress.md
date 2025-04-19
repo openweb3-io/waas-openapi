@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**address** | **String** | Address |  |
-|**destinationType** | **TransferDestinationType** |  |  |
+|**destinationType** | **String** | destination type |  |
 
 
 

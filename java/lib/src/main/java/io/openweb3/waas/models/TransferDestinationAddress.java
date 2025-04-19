@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.openweb3.waas.models.TransferDestinationType;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -57,7 +56,7 @@ public class TransferDestinationAddress {
 
   public static final String SERIALIZED_NAME_DESTINATION_TYPE = "destination_type";
   @SerializedName(SERIALIZED_NAME_DESTINATION_TYPE)
-  private TransferDestinationType destinationType;
+  private String destinationType;
 
   public TransferDestinationAddress() {
   }
@@ -81,21 +80,21 @@ public class TransferDestinationAddress {
   }
 
 
-  public TransferDestinationAddress destinationType(TransferDestinationType destinationType) {
+  public TransferDestinationAddress destinationType(String destinationType) {
     this.destinationType = destinationType;
     return this;
   }
 
   /**
-   * Get destinationType
+   * destination type
    * @return destinationType
    */
   @javax.annotation.Nonnull
-  public TransferDestinationType getDestinationType() {
+  public String getDestinationType() {
     return destinationType;
   }
 
-  public void setDestinationType(TransferDestinationType destinationType) {
+  public void setDestinationType(String destinationType) {
     this.destinationType = destinationType;
   }
 
@@ -187,8 +186,9 @@ public class TransferDestinationAddress {
       if (!jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
-      // validate the required field `destination_type`
-      TransferDestinationType.validateJsonElement(jsonObj.get("destination_type"));
+      if (!jsonObj.get("destination_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `destination_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("destination_type").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -289,11 +289,18 @@
           },
           "sub_type": {
             "description": "Wallet sub type",
-            "$ref": "#/components/schemas/WalletSubType"
+            "type": "string",
+            "x-enum-varnames": [
+              "WalletSubType_Custodial_Asset",
+              "WalletSubType_Custodial_Web3"
+            ]
           },
           "type": {
             "description": "Wallet type",
-            "$ref": "#/components/schemas/WalletType"
+            "type": "string",
+            "x-enum-varnames": [
+              "WalletType_Custodial"
+            ]
           },
           "uid": {
             "description": "Custom ID",
@@ -731,11 +738,8 @@
       "FeeType": {
         "description": "Fee type",
         "type": "integer",
-        "enum": [
-          1
-        ],
         "x-enum-varnames": [
-          "FeeType_Fixed"
+          "Fixed"
         ]
       },
       "GasStation": {
@@ -1094,9 +1098,6 @@
       "TransferDestinationType": {
         "description": "destination type",
         "type": "string",
-        "enum": [
-          "Address"
-        ],
         "x-enum-varnames": [
           "TransferDestinationType_Address"
         ]
@@ -1120,10 +1121,6 @@
       "TransferSourceType": {
         "description": "source type",
         "type": "string",
-        "enum": [
-          "Asset",
-          "Web3"
-        ],
         "x-enum-varnames": [
           "TransferSourceType_Asset",
           "TransferSourceType_Web3"
@@ -1137,7 +1134,11 @@
           },
           "source_type": {
             "description": "source type",
-            "$ref": "#/components/schemas/TransferSourceType"
+            "type": "string",
+            "x-enum-varnames": [
+              "TransferSourceType_Asset",
+              "TransferSourceType_Web3"
+            ]
           },
           "wallet_id": {
             "description": "Wallet ID",
@@ -1280,10 +1281,6 @@
       "WalletSubType": {
         "description": "Wallet sub type",
         "type": "string",
-        "enum": [
-          "Asset",
-          "Web3"
-        ],
         "x-enum-varnames": [
           "WalletSubType_Custodial_Asset",
           "WalletSubType_Custodial_Web3"
@@ -1292,9 +1289,6 @@
       "WalletType": {
         "description": "Wallet type",
         "type": "string",
-        "enum": [
-          "Custodial"
-        ],
         "x-enum-varnames": [
           "WalletType_Custodial"
         ]
@@ -1857,6 +1851,15 @@
         "operationId": "v1.gas_stations.get_or_create_deposit_address",
         "parameters": [
           {
+            "description": "Wallet ID",
+            "in": "query",
+            "name": "wallet_id",
+            "schema": {
+              "description": "Wallet ID",
+              "type": "string"
+            }
+          },
+          {
             "description": "Chain ID",
             "in": "query",
             "name": "chain_id",
@@ -1865,26 +1868,8 @@
               "description": "Chain ID",
               "type": "string"
             }
-          },
-          {
-            "description": "Wallet ID",
-            "in": "query",
-            "name": "wallet_id",
-            "schema": {
-              "description": "Wallet ID",
-              "type": "string"
-            }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "content": {

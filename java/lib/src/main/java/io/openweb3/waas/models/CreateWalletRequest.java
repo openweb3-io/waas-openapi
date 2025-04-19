@@ -19,8 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.openweb3.waas.models.WalletSubType;
-import io.openweb3.waas.models.WalletType;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -58,11 +56,11 @@ public class CreateWalletRequest {
 
   public static final String SERIALIZED_NAME_SUB_TYPE = "sub_type";
   @SerializedName(SERIALIZED_NAME_SUB_TYPE)
-  private WalletSubType subType;
+  private String subType;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private WalletType type;
+  private String type;
 
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
@@ -90,40 +88,40 @@ public class CreateWalletRequest {
   }
 
 
-  public CreateWalletRequest subType(WalletSubType subType) {
+  public CreateWalletRequest subType(String subType) {
     this.subType = subType;
     return this;
   }
 
   /**
-   * Get subType
+   * Wallet sub type
    * @return subType
    */
   @javax.annotation.Nonnull
-  public WalletSubType getSubType() {
+  public String getSubType() {
     return subType;
   }
 
-  public void setSubType(WalletSubType subType) {
+  public void setSubType(String subType) {
     this.subType = subType;
   }
 
 
-  public CreateWalletRequest type(WalletType type) {
+  public CreateWalletRequest type(String type) {
     this.type = type;
     return this;
   }
 
   /**
-   * Get type
+   * Wallet type
    * @return type
    */
   @javax.annotation.Nonnull
-  public WalletType getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(WalletType type) {
+  public void setType(String type) {
     this.type = type;
   }
 
@@ -241,10 +239,12 @@ public class CreateWalletRequest {
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      // validate the required field `sub_type`
-      WalletSubType.validateJsonElement(jsonObj.get("sub_type"));
-      // validate the required field `type`
-      WalletType.validateJsonElement(jsonObj.get("type"));
+      if (!jsonObj.get("sub_type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sub_type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sub_type").toString()));
+      }
+      if (!jsonObj.get("type").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
       if ((jsonObj.get("uid") != null && !jsonObj.get("uid").isJsonNull()) && !jsonObj.get("uid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uid").toString()));
       }

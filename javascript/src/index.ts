@@ -51,7 +51,7 @@ import {
 } from "./openapi/index";
 export * from "./openapi/models/all";
 export * from "./openapi/apis/exception";
-import { createHash } from "crypto";
+import { constants, createHash, createVerify } from "crypto";
 import * as nacl from "tweetnacl";
 
 const VERSION = "0.2.0";
@@ -78,14 +78,24 @@ function signEd25519(data: string, privateKey: string): string {
 }
 
 class SignatureMiddleware implements Middleware {
-  public constructor(private privateKey: string) {}
+  public constructor(private readonly privateKey: string) {}
 
   public pre(context: RequestContext): Promise<RequestContext> {
     const timestamp = new Date().getTime().toString();
     context.setHeaderParam("x-request-time", timestamp);
 
     let source = "";
-    source += context.getBody()?.toString() || "";
+    const body = context.getBody();
+    let bodyStr = "";
+    if (body) {
+      if (typeof body === "object") {
+        bodyStr = JSON.stringify(body);
+      } else {
+        bodyStr = String(body);
+      }
+    }
+    source += bodyStr;
+
     const url = new URL(context.getUrl());
     source += url.pathname + url.search;
     source += timestamp;
@@ -101,24 +111,24 @@ class SignatureMiddleware implements Middleware {
   }
 }
 
-export interface WaaSOptions {
+export interface ApiClientOptions {
   debug?: boolean;
   serverUrl?: string;
 }
 
-export class WaaS {
+export class ApiClient {
   public readonly _configuration: Configuration;
-  public readonly Addresses: Addresses;
-  public readonly Chains: Chains;
-  public readonly Sweeps: Sweeps;
-  public readonly Tokens: Tokens;
-  public readonly Transactions: Transactions;
-  public readonly Wallets: Wallets;
-  public readonly WebhookEndpoints: WebhookEndpoints;
-  public readonly WebhookEvents: WebhookEvents;
-  public readonly GasStations: GasStations;
+  public readonly addresses: Addresses;
+  public readonly chains: Chains;
+  public readonly sweeps: Sweeps;
+  public readonly tokens: Tokens;
+  public readonly transactions: Transactions;
+  public readonly wallets: Wallets;
+  public readonly webhookEndpoints: WebhookEndpoints;
+  public readonly webhookEvents: WebhookEvents;
+  public readonly gasStations: GasStations;
 
-  public constructor(apikey: string, privateKey: string, options: WaaSOptions = {}) {
+  public constructor(apikey: string, privateKey: string, options: ApiClientOptions = {}) {
     if (apikey === "") {
       throw new Error("API key is required");
     }
@@ -139,15 +149,15 @@ export class WaaS {
     });
 
     this._configuration = config;
-    this.Addresses = new Addresses(config);
-    this.Chains = new Chains(config);
-    this.Sweeps = new Sweeps(config);
-    this.Tokens = new Tokens(config);
-    this.Transactions = new Transactions(config);
-    this.Wallets = new Wallets(config);
-    this.WebhookEndpoints = new WebhookEndpoints(config);
-    this.WebhookEvents = new WebhookEvents(config);
-    this.GasStations = new GasStations(config);
+    this.addresses = new Addresses(config);
+    this.chains = new Chains(config);
+    this.sweeps = new Sweeps(config);
+    this.tokens = new Tokens(config);
+    this.transactions = new Transactions(config);
+    this.wallets = new Wallets(config);
+    this.webhookEndpoints = new WebhookEndpoints(config);
+    this.webhookEvents = new WebhookEvents(config);
+    this.gasStations = new GasStations(config);
   }
 }
 export interface PostOptions {
@@ -451,5 +461,39 @@ class GasStations {
     return await this.api.v1GasStationsGetOrCreateDepositAddress(
       getGasStationDepositAddressRequest
     );
+  }
+}
+
+export class WebhookClient {
+  private readonly publicKey: string;
+
+  public constructor(publicKey: string) {
+    this.publicKey = publicKey;
+  }
+
+  public async verify(payload: string, signature: string): Promise<boolean> {
+    try {
+      // convert payload to buffer
+      const payloadBuffer = Buffer.from(payload);
+      // convert signature to buffer
+      const signatureBuffer = Buffer.from(signature, "base64");
+      // create verify object, using pkcs#1 format public key
+      const verify = createVerify("sha256");
+      verify.update(payloadBuffer);
+
+      // verify signature
+      const isValid = verify.verify(
+        {
+          key: this.publicKey,
+          padding: constants.RSA_PKCS1_PADDING,
+        },
+        signatureBuffer
+      );
+
+      return isValid;
+    } catch (error) {
+      console.error("verify signature error:", error);
+      return false;
+    }
   }
 }

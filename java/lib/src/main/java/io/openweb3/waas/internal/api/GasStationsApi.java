@@ -359,7 +359,6 @@ public class GasStationsApi {
      * Build call for v1GasStationsGetOrCreateDepositAddress
      * @param chainId Chain ID (required)
      * @param walletId Wallet ID (optional)
-     * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -373,7 +372,7 @@ public class GasStationsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1GasStationsGetOrCreateDepositAddressCall(String chainId, String walletId, Object body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call v1GasStationsGetOrCreateDepositAddressCall(String chainId, String walletId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -387,7 +386,7 @@ public class GasStationsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = body;
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/v1/gas_stations/deposit_address";
@@ -398,12 +397,12 @@ public class GasStationsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (chainId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("chain_id", chainId));
-        }
-
         if (walletId != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("wallet_id", walletId));
+        }
+
+        if (chainId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("chain_id", chainId));
         }
 
         final String[] localVarAccepts = {
@@ -415,7 +414,6 @@ public class GasStationsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -427,13 +425,13 @@ public class GasStationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call v1GasStationsGetOrCreateDepositAddressValidateBeforeCall(String chainId, String walletId, Object body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call v1GasStationsGetOrCreateDepositAddressValidateBeforeCall(String chainId, String walletId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'chainId' is set
         if (chainId == null) {
             throw new ApiException("Missing the required parameter 'chainId' when calling v1GasStationsGetOrCreateDepositAddress(Async)");
         }
 
-        return v1GasStationsGetOrCreateDepositAddressCall(chainId, walletId, body, _callback);
+        return v1GasStationsGetOrCreateDepositAddressCall(chainId, walletId, _callback);
 
     }
 
@@ -442,7 +440,6 @@ public class GasStationsApi {
      * Get or create a deposit address for a gas station
      * @param chainId Chain ID (required)
      * @param walletId Wallet ID (optional)
-     * @param body  (optional)
      * @return GetGasStationDepositAddressReply
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -455,8 +452,8 @@ public class GasStationsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetGasStationDepositAddressReply v1GasStationsGetOrCreateDepositAddress(String chainId, String walletId, Object body) throws ApiException {
-        ApiResponse<GetGasStationDepositAddressReply> localVarResp = v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId, walletId, body);
+    public GetGasStationDepositAddressReply v1GasStationsGetOrCreateDepositAddress(String chainId, String walletId) throws ApiException {
+        ApiResponse<GetGasStationDepositAddressReply> localVarResp = v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId, walletId);
         return localVarResp.getData();
     }
 
@@ -465,7 +462,6 @@ public class GasStationsApi {
      * Get or create a deposit address for a gas station
      * @param chainId Chain ID (required)
      * @param walletId Wallet ID (optional)
-     * @param body  (optional)
      * @return ApiResponse&lt;GetGasStationDepositAddressReply&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -478,8 +474,8 @@ public class GasStationsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetGasStationDepositAddressReply> v1GasStationsGetOrCreateDepositAddressWithHttpInfo(String chainId, String walletId, Object body) throws ApiException {
-        okhttp3.Call localVarCall = v1GasStationsGetOrCreateDepositAddressValidateBeforeCall(chainId, walletId, body, null);
+    public ApiResponse<GetGasStationDepositAddressReply> v1GasStationsGetOrCreateDepositAddressWithHttpInfo(String chainId, String walletId) throws ApiException {
+        okhttp3.Call localVarCall = v1GasStationsGetOrCreateDepositAddressValidateBeforeCall(chainId, walletId, null);
         Type localVarReturnType = new TypeToken<GetGasStationDepositAddressReply>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -489,7 +485,6 @@ public class GasStationsApi {
      * Get or create a deposit address for a gas station
      * @param chainId Chain ID (required)
      * @param walletId Wallet ID (optional)
-     * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -503,9 +498,9 @@ public class GasStationsApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call v1GasStationsGetOrCreateDepositAddressAsync(String chainId, String walletId, Object body, final ApiCallback<GetGasStationDepositAddressReply> _callback) throws ApiException {
+    public okhttp3.Call v1GasStationsGetOrCreateDepositAddressAsync(String chainId, String walletId, final ApiCallback<GetGasStationDepositAddressReply> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = v1GasStationsGetOrCreateDepositAddressValidateBeforeCall(chainId, walletId, body, _callback);
+        okhttp3.Call localVarCall = v1GasStationsGetOrCreateDepositAddressValidateBeforeCall(chainId, walletId, _callback);
         Type localVarReturnType = new TypeToken<GetGasStationDepositAddressReply>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

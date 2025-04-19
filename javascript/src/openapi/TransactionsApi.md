@@ -32,12 +32,12 @@ let body:.TransactionsApiV1TransactionsEstimateFeeRequest = {
     amount: "amount_example",
     destination: {
     address: "address_example",
-    destinationType: "Address",
+    destinationType: "destinationType_example",
   },
     extra: "extra_example",
     memo: "memo_example",
     source: {
-    sourceType: "Asset",
+    sourceType: "sourceType_example",
     walletId: "walletId_example",
   },
     tokenId: "tokenId_example",
@@ -249,7 +249,7 @@ let body:.TransactionsApiV1TransactionsSignMessageRequest = {
     message: "message_example",
     source: {
     address: "address_example",
-    sourceType: "Asset",
+    sourceType: "sourceType_example",
     walletId: "walletId_example",
   },
   },
@@ -314,7 +314,7 @@ let body:.TransactionsApiV1TransactionsTransferRequest = {
     amount: "amount_example",
     destination: {
     address: "address_example",
-    destinationType: "Address",
+    destinationType: "destinationType_example",
   },
     extra: "extra_example",
     fee: {
@@ -324,7 +324,7 @@ let body:.TransactionsApiV1TransactionsTransferRequest = {
     },
     memo: "memo_example",
     source: {
-    sourceType: "Asset",
+    sourceType: "sourceType_example",
     walletId: "walletId_example",
   },
     tokenId: "tokenId_example",

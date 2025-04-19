@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | Address | 
-**SourceType** | [**TransferSourceType**](TransferSourceType.md) |  | 
+**SourceType** | **string** | source type | 
 **WalletId** | **string** | Wallet ID | 
 
 ## Methods
 
 ### NewTransferSourceWeb3
 
-`func NewTransferSourceWeb3(address string, sourceType TransferSourceType, walletId string, ) *TransferSourceWeb3`
+`func NewTransferSourceWeb3(address string, sourceType string, walletId string, ) *TransferSourceWeb3`
 
 NewTransferSourceWeb3 instantiates a new TransferSourceWeb3 object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetAddress sets Address field to given value.
 
 ### GetSourceType
 
-`func (o *TransferSourceWeb3) GetSourceType() TransferSourceType`
+`func (o *TransferSourceWeb3) GetSourceType() string`
 
 GetSourceType returns the SourceType field if non-nil, zero value otherwise.
 
 ### GetSourceTypeOk
 
-`func (o *TransferSourceWeb3) GetSourceTypeOk() (*TransferSourceType, bool)`
+`func (o *TransferSourceWeb3) GetSourceTypeOk() (*string, bool)`
 
 GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceType
 
-`func (o *TransferSourceWeb3) SetSourceType(v TransferSourceType)`
+`func (o *TransferSourceWeb3) SetSourceType(v string)`
 
 SetSourceType sets SourceType field to given value.
 

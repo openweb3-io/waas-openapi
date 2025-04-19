@@ -154,8 +154,6 @@ let body:.GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest = {
   chainId: "chain_id_example",
   // string | Wallet ID (optional)
   walletId: "wallet_id_example",
-  // any (optional)
-  body: {},
 };
 
 apiInstance.v1GasStationsGetOrCreateDepositAddress(body).then((data:any) => {
@@ -168,7 +166,6 @@ apiInstance.v1GasStationsGetOrCreateDepositAddress(body).then((data:any) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **any**|  |
  **chainId** | [**string**] | Chain ID | defaults to undefined
  **walletId** | [**string**] | Wallet ID | (optional) defaults to undefined
 
@@ -183,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

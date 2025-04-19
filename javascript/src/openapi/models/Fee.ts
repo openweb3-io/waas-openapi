@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { FeeType } from '../models/FeeType';
 import { HttpFile } from '../http/http';
 
 /**
@@ -25,7 +24,10 @@ export class Fee {
     * Token ID
     */
     'tokenId': string;
-    'type': FeeType;
+    /**
+    * Fee type
+    */
+    'type': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -45,7 +47,7 @@ export class Fee {
         {
             "name": "type",
             "baseName": "type",
-            "type": "FeeType",
+            "type": "number",
             "format": ""
         }    ];
 
@@ -56,6 +58,4 @@ export class Fee {
     public constructor() {
     }
 }
-
-
 

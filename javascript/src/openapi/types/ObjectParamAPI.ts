@@ -26,7 +26,6 @@ import { EstimateFeeRequest } from '../models/EstimateFeeRequest';
 import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
-import { FeeType } from '../models/FeeType';
 import { GasStation } from '../models/GasStation';
 import { GetGasStationDepositAddressReply } from '../models/GetGasStationDepositAddressReply';
 import { ModelError } from '../models/ModelError';
@@ -39,9 +38,7 @@ import { Token } from '../models/Token';
 import { Transaction } from '../models/Transaction';
 import { TransactionEndpoint } from '../models/TransactionEndpoint';
 import { TransferDestinationAddress } from '../models/TransferDestinationAddress';
-import { TransferDestinationType } from '../models/TransferDestinationType';
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
-import { TransferSourceType } from '../models/TransferSourceType';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
 import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
@@ -49,8 +46,6 @@ import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
 import { Wallet } from '../models/Wallet';
-import { WalletSubType } from '../models/WalletSubType';
-import { WalletType } from '../models/WalletType';
 
 import { ObservableAddressesApi } from "./ObservableAPI";
 import { AddressesApiRequestFactory, AddressesApiResponseProcessor} from "../apis/AddressesApi";
@@ -365,12 +360,6 @@ export interface GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest {
      * @memberof GasStationsApiv1GasStationsGetOrCreateDepositAddress
      */
     walletId?: string
-    /**
-     * 
-     * @type any
-     * @memberof GasStationsApiv1GasStationsGetOrCreateDepositAddress
-     */
-    body?: any
 }
 
 export interface GasStationsApiV1GasStationsListRequest {
@@ -461,7 +450,7 @@ export class ObjectGasStationsApi {
      * @param param the request object
      */
     public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(param: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest, options?: Configuration): Promise<HttpInfo<GetGasStationDepositAddressReply>> {
-        return this.api.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(param.chainId, param.walletId, param.body,  options).toPromise();
+        return this.api.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(param.chainId, param.walletId,  options).toPromise();
     }
 
     /**
@@ -470,7 +459,7 @@ export class ObjectGasStationsApi {
      * @param param the request object
      */
     public v1GasStationsGetOrCreateDepositAddress(param: GasStationsApiV1GasStationsGetOrCreateDepositAddressRequest, options?: Configuration): Promise<GetGasStationDepositAddressReply> {
-        return this.api.v1GasStationsGetOrCreateDepositAddress(param.chainId, param.walletId, param.body,  options).toPromise();
+        return this.api.v1GasStationsGetOrCreateDepositAddress(param.chainId, param.walletId,  options).toPromise();
     }
 
     /**

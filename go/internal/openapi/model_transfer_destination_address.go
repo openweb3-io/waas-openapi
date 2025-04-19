@@ -23,7 +23,8 @@ var _ MappedNullable = &TransferDestinationAddress{}
 type TransferDestinationAddress struct {
 	// Address
 	Address string `json:"address"`
-	DestinationType TransferDestinationType `json:"destination_type"`
+	// destination type
+	DestinationType string `json:"destination_type"`
 }
 
 type _TransferDestinationAddress TransferDestinationAddress
@@ -32,7 +33,7 @@ type _TransferDestinationAddress TransferDestinationAddress
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferDestinationAddress(address string, destinationType TransferDestinationType) *TransferDestinationAddress {
+func NewTransferDestinationAddress(address string, destinationType string) *TransferDestinationAddress {
 	this := TransferDestinationAddress{}
 	this.Address = address
 	this.DestinationType = destinationType
@@ -72,9 +73,9 @@ func (o *TransferDestinationAddress) SetAddress(v string) {
 }
 
 // GetDestinationType returns the DestinationType field value
-func (o *TransferDestinationAddress) GetDestinationType() TransferDestinationType {
+func (o *TransferDestinationAddress) GetDestinationType() string {
 	if o == nil {
-		var ret TransferDestinationType
+		var ret string
 		return ret
 	}
 
@@ -83,7 +84,7 @@ func (o *TransferDestinationAddress) GetDestinationType() TransferDestinationTyp
 
 // GetDestinationTypeOk returns a tuple with the DestinationType field value
 // and a boolean to check if the value has been set.
-func (o *TransferDestinationAddress) GetDestinationTypeOk() (*TransferDestinationType, bool) {
+func (o *TransferDestinationAddress) GetDestinationTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,7 +92,7 @@ func (o *TransferDestinationAddress) GetDestinationTypeOk() (*TransferDestinatio
 }
 
 // SetDestinationType sets field value
-func (o *TransferDestinationAddress) SetDestinationType(v TransferDestinationType) {
+func (o *TransferDestinationAddress) SetDestinationType(v string) {
 	o.DestinationType = v
 }
 

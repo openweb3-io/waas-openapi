@@ -375,15 +375,6 @@ paths:
       description: Get or create a deposit address for a gas station
       operationId: v1.gas_stations.get_or_create_deposit_address
       parameters:
-      - description: Chain ID
-        explode: true
-        in: query
-        name: chain_id
-        required: true
-        schema:
-          description: Chain ID
-          type: string
-        style: form
       - description: Wallet ID
         explode: true
         in: query
@@ -393,11 +384,15 @@ paths:
           description: Wallet ID
           type: string
         style: form
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2094,12 +2089,12 @@ components:
           tokenId: tokenId
           type: 6
         destination:
-          destination_type: Address
+          destination_type: destination_type
           address: address
         memo: memo
         source:
           wallet_id: wallet_id
-          source_type: Asset
+          source_type: source_type
       properties:
         amount:
           description: The amount to be transferred
@@ -2146,17 +2141,24 @@ components:
     CreateWalletRequest:
       example:
         uid: uid
-        sub_type: Asset
+        sub_type: sub_type
         name: name
-        type: Custodial
+        type: type
       properties:
         name:
           description: Wallet name
           type: string
         sub_type:
-          $ref: '#/components/schemas/WalletSubType'
+          description: Wallet sub type
+          type: string
+          x-enum-varnames:
+          - WalletSubType_Custodial_Asset
+          - WalletSubType_Custodial_Web3
         type:
-          $ref: '#/components/schemas/WalletType'
+          description: Wallet type
+          type: string
+          x-enum-varnames:
+          - WalletType_Custodial
         uid:
           description: Custom ID
           type: string
@@ -2576,18 +2578,18 @@ components:
         has_prev: true
         items:
         - uid: uid
-          sub_type: Asset
+          sub_type: sub_type
           name: name
           created_at: created_at
           id: id
-          type: Custodial
+          type: type
           updatedAt: updatedAt
         - uid: uid
-          sub_type: Asset
+          sub_type: sub_type
           name: name
           created_at: created_at
           id: id
-          type: Custodial
+          type: type
           updatedAt: updatedAt
       properties:
         has_next:
@@ -2673,12 +2675,12 @@ components:
         token_id: token_id
         extra: extra
         destination:
-          destination_type: Address
+          destination_type: destination_type
           address: address
         memo: memo
         source:
           wallet_id: wallet_id
-          source_type: Asset
+          source_type: source_type
       properties:
         amount:
           description: Amount
@@ -2741,7 +2743,10 @@ components:
           description: Token ID
           type: string
         type:
-          $ref: '#/components/schemas/FeeType'
+          description: Fee type
+          type: integer
+          x-enum-varnames:
+          - Fixed
       required:
       - maxFeeAmount
       - tokenId
@@ -2749,11 +2754,9 @@ components:
       type: object
     FeeType:
       description: Fee type
-      enum:
-      - 1
       type: integer
       x-enum-varnames:
-      - FeeType_Fixed
+      - Fixed
     GasStation:
       example:
         gas_threshold: gas_threshold
@@ -2826,7 +2829,7 @@ components:
         source:
           wallet_id: wallet_id
           address: address
-          source_type: Asset
+          source_type: source_type
         message: message
       properties:
         chain_id:
@@ -3092,32 +3095,37 @@ components:
       - TransactionType_Withdraw
     TransferDestinationAddress:
       example:
-        destination_type: Address
+        destination_type: destination_type
         address: address
       properties:
         address:
           description: Address
           type: string
         destination_type:
-          $ref: '#/components/schemas/TransferDestinationType'
+          description: destination type
+          type: string
+          x-enum-varnames:
+          - TransferDestinationType_Address
       required:
       - address
       - destination_type
       type: object
     TransferDestinationType:
       description: destination type
-      enum:
-      - Address
       type: string
       x-enum-varnames:
       - TransferDestinationType_Address
     TransferSourceAsset:
       example:
         wallet_id: wallet_id
-        source_type: Asset
+        source_type: source_type
       properties:
         source_type:
-          $ref: '#/components/schemas/TransferSourceType'
+          description: source type
+          type: string
+          x-enum-varnames:
+          - TransferSourceType_Asset
+          - TransferSourceType_Web3
         wallet_id:
           description: Wallet ID
           type: string
@@ -3127,9 +3135,6 @@ components:
       type: object
     TransferSourceType:
       description: source type
-      enum:
-      - Asset
-      - Web3
       type: string
       x-enum-varnames:
       - TransferSourceType_Asset
@@ -3138,13 +3143,17 @@ components:
       example:
         wallet_id: wallet_id
         address: address
-        source_type: Asset
+        source_type: source_type
       properties:
         address:
           description: Address
           type: string
         source_type:
-          $ref: '#/components/schemas/TransferSourceType'
+          description: source type
+          type: string
+          x-enum-varnames:
+          - TransferSourceType_Asset
+          - TransferSourceType_Web3
         wallet_id:
           description: Wallet ID
           type: string
@@ -3243,11 +3252,11 @@ components:
     Wallet:
       example:
         uid: uid
-        sub_type: Asset
+        sub_type: sub_type
         name: name
         created_at: created_at
         id: id
-        type: Custodial
+        type: type
         updatedAt: updatedAt
       properties:
         created_at:
@@ -3260,9 +3269,16 @@ components:
           description: Wallet name
           type: string
         sub_type:
-          $ref: '#/components/schemas/WalletSubType'
+          description: Wallet sub type
+          type: string
+          x-enum-varnames:
+          - WalletSubType_Custodial_Asset
+          - WalletSubType_Custodial_Web3
         type:
-          $ref: '#/components/schemas/WalletType'
+          description: Wallet type
+          type: string
+          x-enum-varnames:
+          - WalletType_Custodial
         uid:
           description: External unique ID
           type: string
@@ -3278,17 +3294,12 @@ components:
       type: object
     WalletSubType:
       description: Wallet sub type
-      enum:
-      - Asset
-      - Web3
       type: string
       x-enum-varnames:
       - WalletSubType_Custodial_Asset
       - WalletSubType_Custodial_Web3
     WalletType:
       description: Wallet type
-      enum:
-      - Custodial
       type: string
       x-enum-varnames:
       - WalletType_Custodial

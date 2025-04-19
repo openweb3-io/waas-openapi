@@ -160,7 +160,7 @@ public class Example {
 
 <a id="v1GasStationsGetOrCreateDepositAddress"></a>
 # **v1GasStationsGetOrCreateDepositAddress**
-> GetGasStationDepositAddressReply v1GasStationsGetOrCreateDepositAddress(chainId, walletId, body)
+> GetGasStationDepositAddressReply v1GasStationsGetOrCreateDepositAddress(chainId, walletId)
 
 Get or create deposit address
 
@@ -190,9 +190,8 @@ public class Example {
     GasStationsApi apiInstance = new GasStationsApi(defaultClient);
     String chainId = "chainId_example"; // String | Chain ID
     String walletId = "walletId_example"; // String | Wallet ID
-    Object body = null; // Object | 
     try {
-      GetGasStationDepositAddressReply result = apiInstance.v1GasStationsGetOrCreateDepositAddress(chainId, walletId, body);
+      GetGasStationDepositAddressReply result = apiInstance.v1GasStationsGetOrCreateDepositAddress(chainId, walletId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling GasStationsApi#v1GasStationsGetOrCreateDepositAddress");
@@ -211,7 +210,6 @@ public class Example {
 |------------- | ------------- | ------------- | -------------|
 | **chainId** | **String**| Chain ID | |
 | **walletId** | **String**| Wallet ID | [optional] |
-| **body** | **Object**|  | [optional] |
 
 ### Return type
 
@@ -223,7 +221,7 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details

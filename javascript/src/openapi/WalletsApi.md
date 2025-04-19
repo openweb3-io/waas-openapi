@@ -30,8 +30,8 @@ let body:.WalletsApiV1WalletsCreateRequest = {
   // CreateWalletRequest | Request body
   createWalletRequest: {
     name: "name_example",
-    subType: "Asset",
-    type: "Custodial",
+    subType: "subType_example",
+    type: "type_example",
     uid: "uid_example",
   },
 };

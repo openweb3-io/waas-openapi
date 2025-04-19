@@ -27,7 +27,6 @@ import { EstimateFeeRequest } from '../models/EstimateFeeRequest';
 import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
-import { FeeType } from '../models/FeeType';
 import { GasStation } from '../models/GasStation';
 import { GetGasStationDepositAddressReply } from '../models/GetGasStationDepositAddressReply';
 import { ModelError } from '../models/ModelError';
@@ -40,9 +39,7 @@ import { Token } from '../models/Token';
 import { Transaction } from '../models/Transaction';
 import { TransactionEndpoint } from '../models/TransactionEndpoint';
 import { TransferDestinationAddress } from '../models/TransferDestinationAddress';
-import { TransferDestinationType } from '../models/TransferDestinationType';
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
-import { TransferSourceType } from '../models/TransferSourceType';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
 import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
@@ -50,8 +47,6 @@ import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
 import { Wallet } from '../models/Wallet';
-import { WalletSubType } from '../models/WalletSubType';
-import { WalletType } from '../models/WalletType';
 
 import { AddressesApiRequestFactory, AddressesApiResponseProcessor} from "../apis/AddressesApi";
 export class ObservableAddressesApi {
@@ -429,10 +424,9 @@ export class ObservableGasStationsApi {
      * Get or create deposit address
      * @param chainId Chain ID
      * @param walletId Wallet ID
-     * @param body 
      */
-    public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId: string, walletId?: string, body?: any, _options?: Configuration): Observable<HttpInfo<GetGasStationDepositAddressReply>> {
-        const requestContextPromise = this.requestFactory.v1GasStationsGetOrCreateDepositAddress(chainId, walletId, body, _options);
+    public v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId: string, walletId?: string, _options?: Configuration): Observable<HttpInfo<GetGasStationDepositAddressReply>> {
+        const requestContextPromise = this.requestFactory.v1GasStationsGetOrCreateDepositAddress(chainId, walletId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -455,10 +449,9 @@ export class ObservableGasStationsApi {
      * Get or create deposit address
      * @param chainId Chain ID
      * @param walletId Wallet ID
-     * @param body 
      */
-    public v1GasStationsGetOrCreateDepositAddress(chainId: string, walletId?: string, body?: any, _options?: Configuration): Observable<GetGasStationDepositAddressReply> {
-        return this.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId, walletId, body, _options).pipe(map((apiResponse: HttpInfo<GetGasStationDepositAddressReply>) => apiResponse.data));
+    public v1GasStationsGetOrCreateDepositAddress(chainId: string, walletId?: string, _options?: Configuration): Observable<GetGasStationDepositAddressReply> {
+        return this.v1GasStationsGetOrCreateDepositAddressWithHttpInfo(chainId, walletId, _options).pipe(map((apiResponse: HttpInfo<GetGasStationDepositAddressReply>) => apiResponse.data));
     }
 
     /**

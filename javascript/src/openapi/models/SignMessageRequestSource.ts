@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { TransferSourceType } from '../models/TransferSourceType';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { HttpFile } from '../http/http';
 
@@ -22,7 +21,10 @@ export class SignMessageRequestSource {
     * Address
     */
     'address': string;
-    'sourceType': TransferSourceType;
+    /**
+    * source type
+    */
+    'sourceType': string;
     /**
     * Wallet ID
     */
@@ -40,7 +42,7 @@ export class SignMessageRequestSource {
         {
             "name": "sourceType",
             "baseName": "source_type",
-            "type": "TransferSourceType",
+            "type": "string",
             "format": ""
         },
         {
@@ -57,6 +59,4 @@ export class SignMessageRequestSource {
     public constructor() {
     }
 }
-
-
 

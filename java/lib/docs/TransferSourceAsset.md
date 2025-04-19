@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**sourceType** | **TransferSourceType** |  |  |
+|**sourceType** | **String** | source type |  |
 |**walletId** | **String** | Wallet ID |  |
 
 

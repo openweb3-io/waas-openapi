@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **string** | Created time | [optional] 
 **Id** | **string** | Wallet ID | 
 **Name** | **string** | Wallet name | 
-**SubType** | [**WalletSubType**](WalletSubType.md) |  | 
-**Type** | [**WalletType**](WalletType.md) |  | 
+**SubType** | **string** | Wallet sub type | 
+**Type** | **string** | Wallet type | 
 **Uid** | **string** | External unique ID | 
 **UpdatedAt** | Pointer to **string** | Updated time | [optional] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewWallet
 
-`func NewWallet(id string, name string, subType WalletSubType, type_ WalletType, uid string, ) *Wallet`
+`func NewWallet(id string, name string, subType string, type_ string, uid string, ) *Wallet`
 
 NewWallet instantiates a new Wallet object
 This constructor will assign default values to properties that have it defined,
@@ -98,40 +98,40 @@ SetName sets Name field to given value.
 
 ### GetSubType
 
-`func (o *Wallet) GetSubType() WalletSubType`
+`func (o *Wallet) GetSubType() string`
 
 GetSubType returns the SubType field if non-nil, zero value otherwise.
 
 ### GetSubTypeOk
 
-`func (o *Wallet) GetSubTypeOk() (*WalletSubType, bool)`
+`func (o *Wallet) GetSubTypeOk() (*string, bool)`
 
 GetSubTypeOk returns a tuple with the SubType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSubType
 
-`func (o *Wallet) SetSubType(v WalletSubType)`
+`func (o *Wallet) SetSubType(v string)`
 
 SetSubType sets SubType field to given value.
 
 
 ### GetType
 
-`func (o *Wallet) GetType() WalletType`
+`func (o *Wallet) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Wallet) GetTypeOk() (*WalletType, bool)`
+`func (o *Wallet) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Wallet) SetType(v WalletType)`
+`func (o *Wallet) SetType(v string)`
 
 SetType sets Type field to given value.
 

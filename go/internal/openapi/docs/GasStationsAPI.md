@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ## V1GasStationsGetOrCreateDepositAddress
 
-> GetGasStationDepositAddressReply V1GasStationsGetOrCreateDepositAddress(ctx).ChainId(chainId).WalletId(walletId).Body(body).Execute()
+> GetGasStationDepositAddressReply V1GasStationsGetOrCreateDepositAddress(ctx).ChainId(chainId).WalletId(walletId).Execute()
 
 Get or create deposit address
 
@@ -172,11 +172,10 @@ import (
 func main() {
 	chainId := "chainId_example" // string | Chain ID
 	walletId := "walletId_example" // string | Wallet ID (optional)
-	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GasStationsAPI.V1GasStationsGetOrCreateDepositAddress(context.Background()).ChainId(chainId).WalletId(walletId).Body(body).Execute()
+	resp, r, err := apiClient.GasStationsAPI.V1GasStationsGetOrCreateDepositAddress(context.Background()).ChainId(chainId).WalletId(walletId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `GasStationsAPI.V1GasStationsGetOrCreateDepositAddress``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -199,7 +198,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chainId** | **string** | Chain ID | 
  **walletId** | **string** | Wallet ID | 
- **body** | **map[string]interface{}** |  | 
 
 ### Return type
 
@@ -211,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

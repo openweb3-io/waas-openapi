@@ -52,7 +52,6 @@ models/EstimateFeeRequest.ts
 models/EstimateFeeResponse.ts
 models/EventType.ts
 models/Fee.ts
-models/FeeType.ts
 models/GasStation.ts
 models/GetGasStationDepositAddressReply.ts
 models/ModelError.ts
@@ -66,9 +65,7 @@ models/Token.ts
 models/Transaction.ts
 models/TransactionEndpoint.ts
 models/TransferDestinationAddress.ts
-models/TransferDestinationType.ts
 models/TransferSourceAsset.ts
-models/TransferSourceType.ts
 models/TransferSourceWeb3.ts
 models/UpdateEndpoint.ts
 models/UpdateGasStationRequest.ts
@@ -76,8 +73,6 @@ models/UpdateTokenRequest.ts
 models/UpdateWalletRequest.ts
 models/ValidateAddressesReply.ts
 models/Wallet.ts
-models/WalletSubType.ts
-models/WalletType.ts
 models/all.ts
 package.json
 rxjsStub.ts

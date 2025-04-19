@@ -10,11 +10,13 @@
  * Do not edit the class manually.
  */
 
-import { TransferSourceType } from '../models/TransferSourceType';
 import { HttpFile } from '../http/http';
 
 export class TransferSourceAsset {
-    'sourceType': TransferSourceType;
+    /**
+    * source type
+    */
+    'sourceType': string;
     /**
     * Wallet ID
     */
@@ -26,7 +28,7 @@ export class TransferSourceAsset {
         {
             "name": "sourceType",
             "baseName": "source_type",
-            "type": "TransferSourceType",
+            "type": "string",
             "format": ""
         },
         {
@@ -43,6 +45,4 @@ export class TransferSourceAsset {
     public constructor() {
     }
 }
-
-
 

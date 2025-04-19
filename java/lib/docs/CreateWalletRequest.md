@@ -8,8 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**name** | **String** | Wallet name |  |
-|**subType** | **WalletSubType** |  |  |
-|**type** | **WalletType** |  |  |
+|**subType** | **String** | Wallet sub type |  |
+|**type** | **String** | Wallet type |  |
 |**uid** | **String** | Custom ID |  [optional] |
 
 

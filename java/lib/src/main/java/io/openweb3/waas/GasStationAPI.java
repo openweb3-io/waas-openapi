@@ -2,10 +2,7 @@ package io.openweb3.waas;
 
 import io.openweb3.waas.exceptions.ApiException;
 import io.openweb3.waas.internal.api.GasStationsApi;
-import io.openweb3.waas.models.CreateGasStationRequest;
-import io.openweb3.waas.models.CursorPageGasStation;
-import io.openweb3.waas.models.UpdateGasStationRequest;
-import io.openweb3.waas.models.GasStation;
+import io.openweb3.waas.models.*;
 
 public final class GasStationAPI {
     private final GasStationsApi api;
@@ -59,9 +56,9 @@ public final class GasStationAPI {
     }
 
     // get or create deposit address
-    public String getOrCreateDepositAddress(final GetGasStationDepositAddressRequest req) throws ApiException {
+    public GetGasStationDepositAddressReply getOrCreateDepositAddress(final String chainId, final String walletId) throws ApiException {
         try {
-            return api.v1GasStationsGetOrCreateDepositAddress(req);
+            return api.v1GasStationsGetOrCreateDepositAddress(chainId, walletId);
         } catch (io.openweb3.waas.internal.ApiException e) {
             throw Utils.WrapInternalApiException(e);
         }
