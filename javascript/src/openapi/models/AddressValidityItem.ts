@@ -16,11 +16,11 @@ export class AddressValidityItem {
     /**
     * Address
     */
-    'address'?: string;
+    'address': string;
     /**
     * Validity
     */
-    'validity'?: boolean;
+    'validity': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 

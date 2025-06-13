@@ -10,7 +10,7 @@ Fee
 |------------ | ------------- | ------------- | -------------|
 |**maxFeeAmount** | **String** | Max fee amount |  |
 |**tokenId** | **String** | Token ID |  |
-|**type** | **Integer** | Fee type |  |
+|**type** | **FeeType** |  |  |
 
 
 

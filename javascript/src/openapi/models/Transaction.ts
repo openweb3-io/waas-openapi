@@ -12,33 +12,34 @@
 
 import { Fee } from '../models/Fee';
 import { TransactionEndpoint } from '../models/TransactionEndpoint';
+import { TransactionType } from '../models/TransactionType';
 import { HttpFile } from '../http/http';
 
 export class Transaction {
     /**
     * Asset ID
     */
-    'assetId'?: string;
+    'assetId': string;
     /**
     * Chain
     */
-    'chain'?: string;
+    'chain': string;
     /**
     * Chain ID
     */
-    'chainId'?: string;
+    'chainId': string;
     /**
     * Confirmed number
     */
-    'confirmedNum'?: number;
+    'confirmedNum': number;
     /**
     * Created time
     */
-    'createdAt'?: string;
+    'createdAt': string;
     /**
     * Description
     */
-    'description'?: string;
+    'description': string;
     'destination'?: TransactionEndpoint;
     /**
     * Extra
@@ -47,33 +48,30 @@ export class Transaction {
     /**
     * Failed reason
     */
-    'failedReason'?: string;
+    'failedReason': string;
     'fee'?: Fee;
     /**
     * Transaction hash
     */
-    'hash'?: string;
+    'hash': string;
     /**
     * Transaction ID
     */
-    'id'?: string;
+    'id': string;
     /**
     * Signature
     */
-    'signature'?: string;
+    'signature': string;
     'source'?: TransactionEndpoint;
     /**
     * Transaction status
     */
-    'status'?: string;
+    'status': TransactionStatusEnum;
     /**
     * Token ID
     */
-    'tokenId'?: string;
-    /**
-    * Transaction type
-    */
-    'type'?: string;
+    'tokenId': string;
+    'type': TransactionType;
     /**
     * The custom unique transaction identifier
     */
@@ -81,11 +79,11 @@ export class Transaction {
     /**
     * Updated time
     */
-    'updatedAt'?: string;
+    'updatedAt': string;
     /**
     * Wallet ID
     */
-    'walletId'?: string;
+    'walletId': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -177,7 +175,7 @@ export class Transaction {
         {
             "name": "status",
             "baseName": "status",
-            "type": "string",
+            "type": "TransactionStatusEnum",
             "format": ""
         },
         {
@@ -189,7 +187,7 @@ export class Transaction {
         {
             "name": "type",
             "baseName": "type",
-            "type": "string",
+            "type": "TransactionType",
             "format": ""
         },
         {
@@ -217,5 +215,15 @@ export class Transaction {
 
     public constructor() {
     }
+}
+
+
+export enum TransactionStatusEnum {
+    Submitted = 'Submitted',
+    PendingSignature = 'PendingSignature',
+    Failed = 'Failed',
+    Broadcasting = 'Broadcasting',
+    Confirming = 'Confirming',
+    Completed = 'Completed'
 }
 

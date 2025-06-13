@@ -111,10 +111,10 @@ public class Chain {
   }
 
   /**
-   * Chain
+   * Chain protocol
    * @return chain
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getChain() {
     return chain;
   }
@@ -133,7 +133,7 @@ public class Chain {
    * Confirmation number
    * @return confirmNum
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getConfirmNum() {
     return confirmNum;
   }
@@ -152,7 +152,7 @@ public class Chain {
    * Created time
    * @return createdAt
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getCreatedAt() {
     return createdAt;
   }
@@ -171,7 +171,7 @@ public class Chain {
    * Explorer address URL
    * @return explorerAddressUrl
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getExplorerAddressUrl() {
     return explorerAddressUrl;
   }
@@ -190,7 +190,7 @@ public class Chain {
    * Explorer block URL
    * @return explorerBlockUrl
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getExplorerBlockUrl() {
     return explorerBlockUrl;
   }
@@ -209,7 +209,7 @@ public class Chain {
    * Explorer transaction URL
    * @return explorerTxUrl
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getExplorerTxUrl() {
     return explorerTxUrl;
   }
@@ -228,7 +228,7 @@ public class Chain {
    * Icon URL
    * @return iconUrl
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getIconUrl() {
     return iconUrl;
   }
@@ -247,7 +247,7 @@ public class Chain {
    * Chain ID
    * @return id
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
@@ -266,7 +266,7 @@ public class Chain {
    * Chain name
    * @return name
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }
@@ -285,7 +285,7 @@ public class Chain {
    * Need memo
    * @return needMemo
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Boolean getNeedMemo() {
     return needMemo;
   }
@@ -304,7 +304,7 @@ public class Chain {
    * Chain network
    * @return network
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getNetwork() {
     return network;
   }
@@ -323,7 +323,7 @@ public class Chain {
    * Chain symbol
    * @return symbol
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getSymbol() {
     return symbol;
   }
@@ -342,7 +342,7 @@ public class Chain {
    * Updated time
    * @return updatedAt
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getUpdatedAt() {
     return updatedAt;
   }
@@ -437,6 +437,19 @@ public class Chain {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("chain");
+    openapiRequiredFields.add("confirm_num");
+    openapiRequiredFields.add("created_at");
+    openapiRequiredFields.add("explorer_address_url");
+    openapiRequiredFields.add("explorer_block_url");
+    openapiRequiredFields.add("explorer_tx_url");
+    openapiRequiredFields.add("icon_url");
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("need_memo");
+    openapiRequiredFields.add("network");
+    openapiRequiredFields.add("symbol");
+    openapiRequiredFields.add("updated_at");
   }
 
   /**
@@ -459,38 +472,45 @@ public class Chain {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Chain` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Chain.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("chain") != null && !jsonObj.get("chain").isJsonNull()) && !jsonObj.get("chain").isJsonPrimitive()) {
+      if (!jsonObj.get("chain").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain").toString()));
       }
-      if ((jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) && !jsonObj.get("created_at").isJsonPrimitive()) {
+      if (!jsonObj.get("created_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `created_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_at").toString()));
       }
-      if ((jsonObj.get("explorer_address_url") != null && !jsonObj.get("explorer_address_url").isJsonNull()) && !jsonObj.get("explorer_address_url").isJsonPrimitive()) {
+      if (!jsonObj.get("explorer_address_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `explorer_address_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explorer_address_url").toString()));
       }
-      if ((jsonObj.get("explorer_block_url") != null && !jsonObj.get("explorer_block_url").isJsonNull()) && !jsonObj.get("explorer_block_url").isJsonPrimitive()) {
+      if (!jsonObj.get("explorer_block_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `explorer_block_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explorer_block_url").toString()));
       }
-      if ((jsonObj.get("explorer_tx_url") != null && !jsonObj.get("explorer_tx_url").isJsonNull()) && !jsonObj.get("explorer_tx_url").isJsonPrimitive()) {
+      if (!jsonObj.get("explorer_tx_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `explorer_tx_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explorer_tx_url").toString()));
       }
-      if ((jsonObj.get("icon_url") != null && !jsonObj.get("icon_url").isJsonNull()) && !jsonObj.get("icon_url").isJsonPrimitive()) {
+      if (!jsonObj.get("icon_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `icon_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("icon_url").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("network") != null && !jsonObj.get("network").isJsonNull()) && !jsonObj.get("network").isJsonPrimitive()) {
+      if (!jsonObj.get("network").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `network` to be a primitive type in the JSON string but got `%s`", jsonObj.get("network").toString()));
       }
-      if ((jsonObj.get("symbol") != null && !jsonObj.get("symbol").isJsonNull()) && !jsonObj.get("symbol").isJsonPrimitive()) {
+      if (!jsonObj.get("symbol").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol").toString()));
       }
-      if ((jsonObj.get("updated_at") != null && !jsonObj.get("updated_at").isJsonNull()) && !jsonObj.get("updated_at").isJsonPrimitive()) {
+      if (!jsonObj.get("updated_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updated_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated_at").toString()));
       }
   }

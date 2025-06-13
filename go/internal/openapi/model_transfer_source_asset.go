@@ -21,8 +21,7 @@ var _ MappedNullable = &TransferSourceAsset{}
 
 // TransferSourceAsset struct for TransferSourceAsset
 type TransferSourceAsset struct {
-	// source type
-	SourceType string `json:"source_type"`
+	SourceType TransferSourceType `json:"source_type"`
 	// Wallet ID
 	WalletId string `json:"wallet_id"`
 }
@@ -33,7 +32,7 @@ type _TransferSourceAsset TransferSourceAsset
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferSourceAsset(sourceType string, walletId string) *TransferSourceAsset {
+func NewTransferSourceAsset(sourceType TransferSourceType, walletId string) *TransferSourceAsset {
 	this := TransferSourceAsset{}
 	this.SourceType = sourceType
 	this.WalletId = walletId
@@ -49,9 +48,9 @@ func NewTransferSourceAssetWithDefaults() *TransferSourceAsset {
 }
 
 // GetSourceType returns the SourceType field value
-func (o *TransferSourceAsset) GetSourceType() string {
+func (o *TransferSourceAsset) GetSourceType() TransferSourceType {
 	if o == nil {
-		var ret string
+		var ret TransferSourceType
 		return ret
 	}
 
@@ -60,7 +59,7 @@ func (o *TransferSourceAsset) GetSourceType() string {
 
 // GetSourceTypeOk returns a tuple with the SourceType field value
 // and a boolean to check if the value has been set.
-func (o *TransferSourceAsset) GetSourceTypeOk() (*string, bool) {
+func (o *TransferSourceAsset) GetSourceTypeOk() (*TransferSourceType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +67,7 @@ func (o *TransferSourceAsset) GetSourceTypeOk() (*string, bool) {
 }
 
 // SetSourceType sets field value
-func (o *TransferSourceAsset) SetSourceType(v string) {
+func (o *TransferSourceAsset) SetSourceType(v TransferSourceType) {
 	o.SourceType = v
 }
 

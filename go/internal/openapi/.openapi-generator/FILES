@@ -42,6 +42,7 @@ docs/EstimateFeeRequest.md
 docs/EstimateFeeResponse.md
 docs/EventType.md
 docs/Fee.md
+docs/FeeType.md
 docs/GasStation.md
 docs/GasStationsAPI.md
 docs/GetGasStationDepositAddressReply.md
@@ -55,9 +56,12 @@ docs/Token.md
 docs/TokensAPI.md
 docs/Transaction.md
 docs/TransactionEndpoint.md
+docs/TransactionType.md
 docs/TransactionsAPI.md
 docs/TransferDestinationAddress.md
+docs/TransferDestinationType.md
 docs/TransferSourceAsset.md
+docs/TransferSourceType.md
 docs/TransferSourceWeb3.md
 docs/UpdateEndpoint.md
 docs/UpdateGasStationRequest.md
@@ -65,6 +69,8 @@ docs/UpdateTokenRequest.md
 docs/UpdateWalletRequest.md
 docs/ValidateAddressesReply.md
 docs/Wallet.md
+docs/WalletSubType.md
+docs/WalletType.md
 docs/WalletsAPI.md
 docs/WebhookEndpointsAPI.md
 docs/WebhookEventsAPI.md
@@ -97,6 +103,7 @@ model_estimate_fee_request.go
 model_estimate_fee_response.go
 model_event_type.go
 model_fee.go
+model_fee_type.go
 model_gas_station.go
 model_get_gas_station_deposit_address_reply.go
 model_sign_message_request.go
@@ -107,8 +114,11 @@ model_sweep_address_response.go
 model_token.go
 model_transaction.go
 model_transaction_endpoint.go
+model_transaction_type.go
 model_transfer_destination_address.go
+model_transfer_destination_type.go
 model_transfer_source_asset.go
+model_transfer_source_type.go
 model_transfer_source_web3.go
 model_update_endpoint.go
 model_update_gas_station_request.go
@@ -116,6 +126,8 @@ model_update_token_request.go
 model_update_wallet_request.go
 model_validate_addresses_reply.go
 model_wallet.go
+model_wallet_sub_type.go
+model_wallet_type.go
 response.go
 test/api_addresses_test.go
 test/api_chains_test.go

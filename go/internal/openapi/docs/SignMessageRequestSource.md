@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | Address | 
-**SourceType** | **string** | source type | 
+**SourceType** | [**TransferSourceType**](TransferSourceType.md) |  | 
 **WalletId** | **string** | Wallet ID | 
 
 ## Methods
 
 ### NewSignMessageRequestSource
 
-`func NewSignMessageRequestSource(address string, sourceType string, walletId string, ) *SignMessageRequestSource`
+`func NewSignMessageRequestSource(address string, sourceType TransferSourceType, walletId string, ) *SignMessageRequestSource`
 
 NewSignMessageRequestSource instantiates a new SignMessageRequestSource object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetAddress sets Address field to given value.
 
 ### GetSourceType
 
-`func (o *SignMessageRequestSource) GetSourceType() string`
+`func (o *SignMessageRequestSource) GetSourceType() TransferSourceType`
 
 GetSourceType returns the SourceType field if non-nil, zero value otherwise.
 
 ### GetSourceTypeOk
 
-`func (o *SignMessageRequestSource) GetSourceTypeOk() (*string, bool)`
+`func (o *SignMessageRequestSource) GetSourceTypeOk() (*TransferSourceType, bool)`
 
 GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceType
 
-`func (o *SignMessageRequestSource) SetSourceType(v string)`
+`func (o *SignMessageRequestSource) SetSourceType(v TransferSourceType)`
 
 SetSourceType sets SourceType field to given value.
 

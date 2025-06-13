@@ -10,13 +10,15 @@
  * Do not edit the class manually.
  */
 
+import { WalletSubType } from '../models/WalletSubType';
+import { WalletType } from '../models/WalletType';
 import { HttpFile } from '../http/http';
 
 export class Wallet {
     /**
     * Created time
     */
-    'createdAt'?: string;
+    'createdAt': string;
     /**
     * Wallet ID
     */
@@ -25,14 +27,8 @@ export class Wallet {
     * Wallet name
     */
     'name': string;
-    /**
-    * Wallet sub type
-    */
-    'subType': string;
-    /**
-    * Wallet type
-    */
-    'type': string;
+    'subType': WalletSubType;
+    'type': WalletType;
     /**
     * External unique ID
     */
@@ -40,7 +36,7 @@ export class Wallet {
     /**
     * Updated time
     */
-    'updatedAt'?: string;
+    'updatedAt': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -66,13 +62,13 @@ export class Wallet {
         {
             "name": "subType",
             "baseName": "sub_type",
-            "type": "string",
+            "type": "WalletSubType",
             "format": ""
         },
         {
             "name": "type",
             "baseName": "type",
-            "type": "string",
+            "type": "WalletType",
             "format": ""
         },
         {
@@ -95,4 +91,6 @@ export class Wallet {
     public constructor() {
     }
 }
+
+
 

@@ -237,7 +237,7 @@ import (
 
 func main() {
 	tokenId := "tokenId_example" // string | Token ID
-	updateTokenRequest := *openapiclient.NewUpdateTokenRequest() // UpdateTokenRequest | Request Body
+	updateTokenRequest := *openapiclient.NewUpdateTokenRequest("Id_example") // UpdateTokenRequest | Request Body
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

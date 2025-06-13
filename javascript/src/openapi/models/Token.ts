@@ -14,77 +14,83 @@ import { HttpFile } from '../http/http';
 
 export class Token {
     /**
+    * Asset ID
+    */
+    'assetId': string;
+    /**
     * Whether deposits are allowed
     */
-    'canDeposit'?: boolean;
+    'canDeposit': boolean;
     /**
     * Whether withdrawals are allowed
     */
-    'canWithdraw'?: boolean;
+    'canWithdraw': boolean;
+    /**
+    * Chain ID
+    */
+    'chainId': string;
     /**
     * Contract address
     */
-    'contractAddress'?: string;
+    'contractAddress': string;
     /**
     * Creation time
     */
-    'createdAt'?: string;
+    'createdAt': string;
     /**
     * Decimals
     */
-    'decimals'?: number;
+    'decimals': number;
+    /**
+    * Fee token ID
+    */
+    'feeTokenId': string;
     /**
     * Icon
     */
-    'iconUrl'?: string;
+    'iconUrl': string;
     /**
     * Token ID
     */
-    'id'?: string;
+    'id': string;
     /**
     * Max withdraw amount
     */
-    'maxWithdrawAmount'?: string;
-    /**
-    * Extended metadata
-    */
-    'metadata'?: { [key: string]: string; };
+    'maxWithdrawAmount': string;
     /**
     * Min deposit amount
     */
-    'minDepositAmount'?: string;
+    'minDepositAmount': string;
     /**
     * Min withdraw amount
     */
-    'minWithdrawAmount'?: string;
+    'minWithdrawAmount': string;
     /**
     * Name
     */
-    'name'?: string;
-    /**
-    * Whether a memo is required
-    */
-    'needMemo'?: boolean;
+    'name': string;
     /**
     * Precision
     */
-    'precision'?: number;
+    'precision': number;
     /**
     * Symbol . e.g.: BTC / ETH
     */
-    'symbol'?: string;
-    /**
-    * Total supply
-    */
-    'totalSupply'?: string;
+    'symbol': string;
     /**
     * Last updated time
     */
-    'updatedAt'?: string;
+    'updatedAt': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "assetId",
+            "baseName": "asset_id",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "canDeposit",
             "baseName": "can_deposit",
@@ -95,6 +101,12 @@ export class Token {
             "name": "canWithdraw",
             "baseName": "can_withdraw",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "chainId",
+            "baseName": "chain_id",
+            "type": "string",
             "format": ""
         },
         {
@@ -116,6 +128,12 @@ export class Token {
             "format": ""
         },
         {
+            "name": "feeTokenId",
+            "baseName": "fee_token_id",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "iconUrl",
             "baseName": "icon_url",
             "type": "string",
@@ -131,12 +149,6 @@ export class Token {
             "name": "maxWithdrawAmount",
             "baseName": "max_withdraw_amount",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "metadata",
-            "baseName": "metadata",
-            "type": "{ [key: string]: string; }",
             "format": ""
         },
         {
@@ -158,12 +170,6 @@ export class Token {
             "format": ""
         },
         {
-            "name": "needMemo",
-            "baseName": "need_memo",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "precision",
             "baseName": "precision",
             "type": "number",
@@ -172,12 +178,6 @@ export class Token {
         {
             "name": "symbol",
             "baseName": "symbol",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "totalSupply",
-            "baseName": "total_supply",
             "type": "string",
             "format": ""
         },

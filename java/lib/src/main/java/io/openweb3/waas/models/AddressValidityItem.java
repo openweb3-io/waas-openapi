@@ -70,7 +70,7 @@ public class AddressValidityItem {
    * Address
    * @return address
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getAddress() {
     return address;
   }
@@ -89,7 +89,7 @@ public class AddressValidityItem {
    * Validity
    * @return validity
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Boolean getValidity() {
     return validity;
   }
@@ -151,6 +151,8 @@ public class AddressValidityItem {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("address");
+    openapiRequiredFields.add("validity");
   }
 
   /**
@@ -173,8 +175,15 @@ public class AddressValidityItem {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AddressValidityItem` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : AddressValidityItem.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("address") != null && !jsonObj.get("address").isJsonNull()) && !jsonObj.get("address").isJsonPrimitive()) {
+      if (!jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
   }

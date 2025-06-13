@@ -82,7 +82,7 @@ export class TransactionsApiRequestFactory extends BaseAPIRequestFactory {
      * @param cursor A cursor value for pagination purposes.
      * @param limit The number of records to return default: 20
      */
-    public async v1TransactionsList(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: string, cursor?: string, limit?: number, _options?: Configuration): Promise<RequestContext> {
+    public async v1TransactionsList(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: 'Submitted' | 'PendingSignature' | 'Failed' | 'Broadcasting' | 'Confirming' | 'Completed', cursor?: string, limit?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -127,7 +127,7 @@ export class TransactionsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (status !== undefined) {
-            requestContext.setQueryParam("status", ObjectSerializer.serialize(status, "string", ""));
+            requestContext.setQueryParam("status", ObjectSerializer.serialize(status, "'Submitted' | 'PendingSignature' | 'Failed' | 'Broadcasting' | 'Confirming' | 'Completed'", ""));
         }
 
         // Query Params

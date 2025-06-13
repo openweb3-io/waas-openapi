@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Token ID | [optional] 
+**Id** | **string** | Token ID | 
 **Name** | Pointer to **string** | Token name | [optional] 
 **Uid** | Pointer to **string** | Unique ID | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewUpdateTokenRequest
 
-`func NewUpdateTokenRequest() *UpdateTokenRequest`
+`func NewUpdateTokenRequest(id string, ) *UpdateTokenRequest`
 
 NewUpdateTokenRequest instantiates a new UpdateTokenRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *UpdateTokenRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 

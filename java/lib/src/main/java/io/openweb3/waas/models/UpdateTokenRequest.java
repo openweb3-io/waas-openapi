@@ -74,7 +74,7 @@ public class UpdateTokenRequest {
    * Token ID
    * @return id
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
@@ -177,6 +177,7 @@ public class UpdateTokenRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("id");
   }
 
   /**
@@ -199,8 +200,15 @@ public class UpdateTokenRequest {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UpdateTokenRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : UpdateTokenRequest.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {

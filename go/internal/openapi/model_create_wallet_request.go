@@ -23,10 +23,8 @@ var _ MappedNullable = &CreateWalletRequest{}
 type CreateWalletRequest struct {
 	// Wallet name
 	Name string `json:"name"`
-	// Wallet sub type
-	SubType string `json:"sub_type"`
-	// Wallet type
-	Type string `json:"type"`
+	SubType WalletSubType `json:"sub_type"`
+	Type WalletType `json:"type"`
 	// Custom ID
 	Uid *string `json:"uid,omitempty"`
 }
@@ -37,7 +35,7 @@ type _CreateWalletRequest CreateWalletRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateWalletRequest(name string, subType string, type_ string) *CreateWalletRequest {
+func NewCreateWalletRequest(name string, subType WalletSubType, type_ WalletType) *CreateWalletRequest {
 	this := CreateWalletRequest{}
 	this.Name = name
 	this.SubType = subType
@@ -78,9 +76,9 @@ func (o *CreateWalletRequest) SetName(v string) {
 }
 
 // GetSubType returns the SubType field value
-func (o *CreateWalletRequest) GetSubType() string {
+func (o *CreateWalletRequest) GetSubType() WalletSubType {
 	if o == nil {
-		var ret string
+		var ret WalletSubType
 		return ret
 	}
 
@@ -89,7 +87,7 @@ func (o *CreateWalletRequest) GetSubType() string {
 
 // GetSubTypeOk returns a tuple with the SubType field value
 // and a boolean to check if the value has been set.
-func (o *CreateWalletRequest) GetSubTypeOk() (*string, bool) {
+func (o *CreateWalletRequest) GetSubTypeOk() (*WalletSubType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,14 +95,14 @@ func (o *CreateWalletRequest) GetSubTypeOk() (*string, bool) {
 }
 
 // SetSubType sets field value
-func (o *CreateWalletRequest) SetSubType(v string) {
+func (o *CreateWalletRequest) SetSubType(v WalletSubType) {
 	o.SubType = v
 }
 
 // GetType returns the Type field value
-func (o *CreateWalletRequest) GetType() string {
+func (o *CreateWalletRequest) GetType() WalletType {
 	if o == nil {
-		var ret string
+		var ret WalletType
 		return ret
 	}
 
@@ -113,7 +111,7 @@ func (o *CreateWalletRequest) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *CreateWalletRequest) GetTypeOk() (*string, bool) {
+func (o *CreateWalletRequest) GetTypeOk() (*WalletType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,7 +119,7 @@ func (o *CreateWalletRequest) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *CreateWalletRequest) SetType(v string) {
+func (o *CreateWalletRequest) SetType(v WalletType) {
 	o.Type = v
 }
 

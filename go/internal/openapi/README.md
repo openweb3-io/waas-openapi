@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
  - [EstimateFeeResponse](docs/EstimateFeeResponse.md)
  - [EventType](docs/EventType.md)
  - [Fee](docs/Fee.md)
+ - [FeeType](docs/FeeType.md)
  - [GasStation](docs/GasStation.md)
  - [GetGasStationDepositAddressReply](docs/GetGasStationDepositAddressReply.md)
  - [SignMessageRequest](docs/SignMessageRequest.md)
@@ -152,8 +153,11 @@ Class | Method | HTTP request | Description
  - [Token](docs/Token.md)
  - [Transaction](docs/Transaction.md)
  - [TransactionEndpoint](docs/TransactionEndpoint.md)
+ - [TransactionType](docs/TransactionType.md)
  - [TransferDestinationAddress](docs/TransferDestinationAddress.md)
+ - [TransferDestinationType](docs/TransferDestinationType.md)
  - [TransferSourceAsset](docs/TransferSourceAsset.md)
+ - [TransferSourceType](docs/TransferSourceType.md)
  - [TransferSourceWeb3](docs/TransferSourceWeb3.md)
  - [UpdateEndpoint](docs/UpdateEndpoint.md)
  - [UpdateGasStationRequest](docs/UpdateGasStationRequest.md)
@@ -161,6 +165,8 @@ Class | Method | HTTP request | Description
  - [UpdateWalletRequest](docs/UpdateWalletRequest.md)
  - [ValidateAddressesReply](docs/ValidateAddressesReply.md)
  - [Wallet](docs/Wallet.md)
+ - [WalletSubType](docs/WalletSubType.md)
+ - [WalletType](docs/WalletType.md)
 
 
 ## Documentation For Authorization

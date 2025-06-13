@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.openweb3.waas.models.TransferDestinationAddress;
+import io.openweb3.waas.models.TransferDestinationType;
 import java.io.IOException;
 import java.util.Arrays;
 

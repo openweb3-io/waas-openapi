@@ -12,6 +12,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ValidateAddressesReply type satisfies the MappedNullable interface at compile time
@@ -20,15 +22,18 @@ var _ MappedNullable = &ValidateAddressesReply{}
 // ValidateAddressesReply struct for ValidateAddressesReply
 type ValidateAddressesReply struct {
 	// Address validity items
-	Items []AddressValidityItem `json:"items,omitempty"`
+	Items []AddressValidityItem `json:"items"`
 }
+
+type _ValidateAddressesReply ValidateAddressesReply
 
 // NewValidateAddressesReply instantiates a new ValidateAddressesReply object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewValidateAddressesReply() *ValidateAddressesReply {
+func NewValidateAddressesReply(items []AddressValidityItem) *ValidateAddressesReply {
 	this := ValidateAddressesReply{}
+	this.Items = items
 	return &this
 }
 
@@ -40,34 +45,26 @@ func NewValidateAddressesReplyWithDefaults() *ValidateAddressesReply {
 	return &this
 }
 
-// GetItems returns the Items field value if set, zero value otherwise.
+// GetItems returns the Items field value
 func (o *ValidateAddressesReply) GetItems() []AddressValidityItem {
-	if o == nil || IsNil(o.Items) {
+	if o == nil {
 		var ret []AddressValidityItem
 		return ret
 	}
+
 	return o.Items
 }
 
-// GetItemsOk returns a tuple with the Items field value if set, nil otherwise
+// GetItemsOk returns a tuple with the Items field value
 // and a boolean to check if the value has been set.
 func (o *ValidateAddressesReply) GetItemsOk() ([]AddressValidityItem, bool) {
-	if o == nil || IsNil(o.Items) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Items, true
 }
 
-// HasItems returns a boolean if a field has been set.
-func (o *ValidateAddressesReply) HasItems() bool {
-	if o != nil && !IsNil(o.Items) {
-		return true
-	}
-
-	return false
-}
-
-// SetItems gets a reference to the given []AddressValidityItem and assigns it to the Items field.
+// SetItems sets field value
 func (o *ValidateAddressesReply) SetItems(v []AddressValidityItem) {
 	o.Items = v
 }
@@ -82,10 +79,45 @@ func (o ValidateAddressesReply) MarshalJSON() ([]byte, error) {
 
 func (o ValidateAddressesReply) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Items) {
-		toSerialize["items"] = o.Items
-	}
+	toSerialize["items"] = o.Items
 	return toSerialize, nil
+}
+
+func (o *ValidateAddressesReply) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"items",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varValidateAddressesReply := _ValidateAddressesReply{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varValidateAddressesReply)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ValidateAddressesReply(varValidateAddressesReply)
+
+	return err
 }
 
 type NullableValidateAddressesReply struct {

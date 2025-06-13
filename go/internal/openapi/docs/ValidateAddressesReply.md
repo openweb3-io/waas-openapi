@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Items** | Pointer to [**[]AddressValidityItem**](AddressValidityItem.md) | Address validity items | [optional] 
+**Items** | [**[]AddressValidityItem**](AddressValidityItem.md) | Address validity items | 
 
 ## Methods
 
 ### NewValidateAddressesReply
 
-`func NewValidateAddressesReply() *ValidateAddressesReply`
+`func NewValidateAddressesReply(items []AddressValidityItem, ) *ValidateAddressesReply`
 
 NewValidateAddressesReply instantiates a new ValidateAddressesReply object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetItems sets Items field to given value.
 
-### HasItems
-
-`func (o *ValidateAddressesReply) HasItems() bool`
-
-HasItems returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

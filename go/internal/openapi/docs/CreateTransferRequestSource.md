@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SourceType** | **string** | source type | 
+**SourceType** | [**TransferSourceType**](TransferSourceType.md) |  | 
 **WalletId** | **string** | Wallet ID | 
 **Address** | **string** | Address | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewCreateTransferRequestSource
 
-`func NewCreateTransferRequestSource(sourceType string, walletId string, address string, ) *CreateTransferRequestSource`
+`func NewCreateTransferRequestSource(sourceType TransferSourceType, walletId string, address string, ) *CreateTransferRequestSource`
 
 NewCreateTransferRequestSource instantiates a new CreateTransferRequestSource object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSourceType
 
-`func (o *CreateTransferRequestSource) GetSourceType() string`
+`func (o *CreateTransferRequestSource) GetSourceType() TransferSourceType`
 
 GetSourceType returns the SourceType field if non-nil, zero value otherwise.
 
 ### GetSourceTypeOk
 
-`func (o *CreateTransferRequestSource) GetSourceTypeOk() (*string, bool)`
+`func (o *CreateTransferRequestSource) GetSourceTypeOk() (*TransferSourceType, bool)`
 
 GetSourceTypeOk returns a tuple with the SourceType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceType
 
-`func (o *CreateTransferRequestSource) SetSourceType(v string)`
+`func (o *CreateTransferRequestSource) SetSourceType(v TransferSourceType)`
 
 SetSourceType sets SourceType field to given value.
 

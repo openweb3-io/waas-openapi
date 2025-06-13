@@ -119,7 +119,7 @@ public class Address {
    * Chain name
    * @return chain
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getChain() {
     return chain;
   }
@@ -138,7 +138,7 @@ public class Address {
    * Chain ID
    * @return chainId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getChainId() {
     return chainId;
   }
@@ -195,7 +195,7 @@ public class Address {
    * Derivation path
    * @return path
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getPath() {
     return path;
   }
@@ -222,7 +222,7 @@ public class Address {
    * Address Type
    * @return type
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public List<String> getType() {
     return type;
   }
@@ -257,7 +257,7 @@ public class Address {
   }
 
   /**
-   * Chain ID
+   * Wallet ID
    * @return walletId
    */
   @javax.annotation.Nullable
@@ -344,6 +344,10 @@ public class Address {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("address");
+    openapiRequiredFields.add("chain");
+    openapiRequiredFields.add("chain_id");
+    openapiRequiredFields.add("path");
+    openapiRequiredFields.add("type");
   }
 
   /**
@@ -377,10 +381,10 @@ public class Address {
       if (!jsonObj.get("address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("address").toString()));
       }
-      if ((jsonObj.get("chain") != null && !jsonObj.get("chain").isJsonNull()) && !jsonObj.get("chain").isJsonPrimitive()) {
+      if (!jsonObj.get("chain").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain").toString()));
       }
-      if ((jsonObj.get("chain_id") != null && !jsonObj.get("chain_id").isJsonNull()) && !jsonObj.get("chain_id").isJsonPrimitive()) {
+      if (!jsonObj.get("chain_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chain_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain_id").toString()));
       }
       if ((jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) && !jsonObj.get("created_at").isJsonPrimitive()) {
@@ -389,11 +393,13 @@ public class Address {
       if ((jsonObj.get("memo") != null && !jsonObj.get("memo").isJsonNull()) && !jsonObj.get("memo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("memo").toString()));
       }
-      if ((jsonObj.get("path") != null && !jsonObj.get("path").isJsonNull()) && !jsonObj.get("path").isJsonPrimitive()) {
+      if (!jsonObj.get("path").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("path").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull() && !jsonObj.get("type").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("type") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("type").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be an array in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       if ((jsonObj.get("updated_at") != null && !jsonObj.get("updated_at").isJsonNull()) && !jsonObj.get("updated_at").isJsonPrimitive()) {

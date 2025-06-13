@@ -22,19 +22,17 @@ var _ MappedNullable = &Wallet{}
 // Wallet struct for Wallet
 type Wallet struct {
 	// Created time
-	CreatedAt *string `json:"created_at,omitempty"`
+	CreatedAt string `json:"created_at"`
 	// Wallet ID
 	Id string `json:"id"`
 	// Wallet name
 	Name string `json:"name"`
-	// Wallet sub type
-	SubType string `json:"sub_type"`
-	// Wallet type
-	Type string `json:"type"`
+	SubType WalletSubType `json:"sub_type"`
+	Type WalletType `json:"type"`
 	// External unique ID
 	Uid string `json:"uid"`
 	// Updated time
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt string `json:"updatedAt"`
 }
 
 type _Wallet Wallet
@@ -43,13 +41,15 @@ type _Wallet Wallet
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWallet(id string, name string, subType string, type_ string, uid string) *Wallet {
+func NewWallet(createdAt string, id string, name string, subType WalletSubType, type_ WalletType, uid string, updatedAt string) *Wallet {
 	this := Wallet{}
+	this.CreatedAt = createdAt
 	this.Id = id
 	this.Name = name
 	this.SubType = subType
 	this.Type = type_
 	this.Uid = uid
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -61,36 +61,28 @@ func NewWalletWithDefaults() *Wallet {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *Wallet) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Wallet) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *Wallet) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *Wallet) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
 // GetId returns the Id field value
@@ -142,9 +134,9 @@ func (o *Wallet) SetName(v string) {
 }
 
 // GetSubType returns the SubType field value
-func (o *Wallet) GetSubType() string {
+func (o *Wallet) GetSubType() WalletSubType {
 	if o == nil {
-		var ret string
+		var ret WalletSubType
 		return ret
 	}
 
@@ -153,7 +145,7 @@ func (o *Wallet) GetSubType() string {
 
 // GetSubTypeOk returns a tuple with the SubType field value
 // and a boolean to check if the value has been set.
-func (o *Wallet) GetSubTypeOk() (*string, bool) {
+func (o *Wallet) GetSubTypeOk() (*WalletSubType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -161,14 +153,14 @@ func (o *Wallet) GetSubTypeOk() (*string, bool) {
 }
 
 // SetSubType sets field value
-func (o *Wallet) SetSubType(v string) {
+func (o *Wallet) SetSubType(v WalletSubType) {
 	o.SubType = v
 }
 
 // GetType returns the Type field value
-func (o *Wallet) GetType() string {
+func (o *Wallet) GetType() WalletType {
 	if o == nil {
-		var ret string
+		var ret WalletType
 		return ret
 	}
 
@@ -177,7 +169,7 @@ func (o *Wallet) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Wallet) GetTypeOk() (*string, bool) {
+func (o *Wallet) GetTypeOk() (*WalletType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -185,7 +177,7 @@ func (o *Wallet) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *Wallet) SetType(v string) {
+func (o *Wallet) SetType(v WalletType) {
 	o.Type = v
 }
 
@@ -213,36 +205,28 @@ func (o *Wallet) SetUid(v string) {
 	o.Uid = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+// GetUpdatedAt returns the UpdatedAt field value
 func (o *Wallet) GetUpdatedAt() string {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.UpdatedAt
+
+	return o.UpdatedAt
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Wallet) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return &o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *Wallet) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
+// SetUpdatedAt sets field value
 func (o *Wallet) SetUpdatedAt(v string) {
-	o.UpdatedAt = &v
+	o.UpdatedAt = v
 }
 
 func (o Wallet) MarshalJSON() ([]byte, error) {
@@ -255,17 +239,13 @@ func (o Wallet) MarshalJSON() ([]byte, error) {
 
 func (o Wallet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
+	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["sub_type"] = o.SubType
 	toSerialize["type"] = o.Type
 	toSerialize["uid"] = o.Uid
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
+	toSerialize["updatedAt"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
@@ -274,11 +254,13 @@ func (o *Wallet) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"created_at",
 		"id",
 		"name",
 		"sub_type",
 		"type",
 		"uid",
+		"updatedAt",
 	}
 
 	allProperties := make(map[string]interface{})

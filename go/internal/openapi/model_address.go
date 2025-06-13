@@ -24,20 +24,20 @@ type Address struct {
 	// Blockchain address
 	Address string `json:"address"`
 	// Chain name
-	Chain *string `json:"chain,omitempty"`
+	Chain string `json:"chain"`
 	// Chain ID
-	ChainId *string `json:"chain_id,omitempty"`
+	ChainId string `json:"chain_id"`
 	// Created time
 	CreatedAt *string `json:"created_at,omitempty"`
 	// The memo
 	Memo *string `json:"memo,omitempty"`
 	// Derivation path
-	Path *string `json:"path,omitempty"`
+	Path string `json:"path"`
 	// Address Type
-	Type []string `json:"type,omitempty"`
+	Type []string `json:"type"`
 	// Updated time
 	UpdatedAt *string `json:"updated_at,omitempty"`
-	// Chain ID
+	// Wallet ID
 	WalletId *string `json:"wallet_id,omitempty"`
 }
 
@@ -47,9 +47,13 @@ type _Address Address
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddress(address string) *Address {
+func NewAddress(address string, chain string, chainId string, path string, type_ []string) *Address {
 	this := Address{}
 	this.Address = address
+	this.Chain = chain
+	this.ChainId = chainId
+	this.Path = path
+	this.Type = type_
 	return &this
 }
 
@@ -85,68 +89,52 @@ func (o *Address) SetAddress(v string) {
 	o.Address = v
 }
 
-// GetChain returns the Chain field value if set, zero value otherwise.
+// GetChain returns the Chain field value
 func (o *Address) GetChain() string {
-	if o == nil || IsNil(o.Chain) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Chain
+
+	return o.Chain
 }
 
-// GetChainOk returns a tuple with the Chain field value if set, nil otherwise
+// GetChainOk returns a tuple with the Chain field value
 // and a boolean to check if the value has been set.
 func (o *Address) GetChainOk() (*string, bool) {
-	if o == nil || IsNil(o.Chain) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Chain, true
+	return &o.Chain, true
 }
 
-// HasChain returns a boolean if a field has been set.
-func (o *Address) HasChain() bool {
-	if o != nil && !IsNil(o.Chain) {
-		return true
-	}
-
-	return false
-}
-
-// SetChain gets a reference to the given string and assigns it to the Chain field.
+// SetChain sets field value
 func (o *Address) SetChain(v string) {
-	o.Chain = &v
+	o.Chain = v
 }
 
-// GetChainId returns the ChainId field value if set, zero value otherwise.
+// GetChainId returns the ChainId field value
 func (o *Address) GetChainId() string {
-	if o == nil || IsNil(o.ChainId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ChainId
+
+	return o.ChainId
 }
 
-// GetChainIdOk returns a tuple with the ChainId field value if set, nil otherwise
+// GetChainIdOk returns a tuple with the ChainId field value
 // and a boolean to check if the value has been set.
 func (o *Address) GetChainIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ChainId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ChainId, true
+	return &o.ChainId, true
 }
 
-// HasChainId returns a boolean if a field has been set.
-func (o *Address) HasChainId() bool {
-	if o != nil && !IsNil(o.ChainId) {
-		return true
-	}
-
-	return false
-}
-
-// SetChainId gets a reference to the given string and assigns it to the ChainId field.
+// SetChainId sets field value
 func (o *Address) SetChainId(v string) {
-	o.ChainId = &v
+	o.ChainId = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -213,66 +201,50 @@ func (o *Address) SetMemo(v string) {
 	o.Memo = &v
 }
 
-// GetPath returns the Path field value if set, zero value otherwise.
+// GetPath returns the Path field value
 func (o *Address) GetPath() string {
-	if o == nil || IsNil(o.Path) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Path
+
+	return o.Path
 }
 
-// GetPathOk returns a tuple with the Path field value if set, nil otherwise
+// GetPathOk returns a tuple with the Path field value
 // and a boolean to check if the value has been set.
 func (o *Address) GetPathOk() (*string, bool) {
-	if o == nil || IsNil(o.Path) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Path, true
+	return &o.Path, true
 }
 
-// HasPath returns a boolean if a field has been set.
-func (o *Address) HasPath() bool {
-	if o != nil && !IsNil(o.Path) {
-		return true
-	}
-
-	return false
-}
-
-// SetPath gets a reference to the given string and assigns it to the Path field.
+// SetPath sets field value
 func (o *Address) SetPath(v string) {
-	o.Path = &v
+	o.Path = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *Address) GetType() []string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *Address) GetTypeOk() ([]string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *Address) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given []string and assigns it to the Type field.
+// SetType sets field value
 func (o *Address) SetType(v []string) {
 	o.Type = v
 }
@@ -352,24 +324,16 @@ func (o Address) MarshalJSON() ([]byte, error) {
 func (o Address) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["address"] = o.Address
-	if !IsNil(o.Chain) {
-		toSerialize["chain"] = o.Chain
-	}
-	if !IsNil(o.ChainId) {
-		toSerialize["chain_id"] = o.ChainId
-	}
+	toSerialize["chain"] = o.Chain
+	toSerialize["chain_id"] = o.ChainId
 	if !IsNil(o.CreatedAt) {
 		toSerialize["created_at"] = o.CreatedAt
 	}
 	if !IsNil(o.Memo) {
 		toSerialize["memo"] = o.Memo
 	}
-	if !IsNil(o.Path) {
-		toSerialize["path"] = o.Path
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["path"] = o.Path
+	toSerialize["type"] = o.Type
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
@@ -385,6 +349,10 @@ func (o *Address) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"address",
+		"chain",
+		"chain_id",
+		"path",
+		"type",
 	}
 
 	allProperties := make(map[string]interface{})

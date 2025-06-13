@@ -20,11 +20,11 @@ export class Address {
     /**
     * Chain name
     */
-    'chain'?: string;
+    'chain': string;
     /**
     * Chain ID
     */
-    'chainId'?: string;
+    'chainId': string;
     /**
     * Created time
     */
@@ -36,17 +36,17 @@ export class Address {
     /**
     * Derivation path
     */
-    'path'?: string;
+    'path': string;
     /**
     * Address Type
     */
-    'type'?: Array<string>;
+    'type': Array<string>;
     /**
     * Updated time
     */
     'updatedAt'?: string;
     /**
-    * Chain ID
+    * Wallet ID
     */
     'walletId'?: string;
 

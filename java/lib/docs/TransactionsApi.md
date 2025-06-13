@@ -119,7 +119,7 @@ public class Example {
     List<String> tokenIds = Arrays.asList(); // List<String> | The tokenId involved in the transaction.
     List<String> assetIds = Arrays.asList(); // List<String> | The assetId involved in the transaction.
     String hash = "hash_example"; // String | The transaction hash, which uniquely identifies a transaction on the blockchain.
-    String status = "status_example"; // String | The status of the transaction.
+    String status = "Submitted"; // String | The status of the transaction.
     String cursor = "cursor_example"; // String | A cursor value for pagination purposes.
     Integer limit = 56; // Integer | The number of records to return default: 20
     try {
@@ -145,7 +145,7 @@ public class Example {
 | **tokenIds** | [**List&lt;String&gt;**](String.md)| The tokenId involved in the transaction. | [optional] |
 | **assetIds** | [**List&lt;String&gt;**](String.md)| The assetId involved in the transaction. | [optional] |
 | **hash** | **String**| The transaction hash, which uniquely identifies a transaction on the blockchain. | [optional] |
-| **status** | **String**| The status of the transaction. | [optional] |
+| **status** | **String**| The status of the transaction. | [optional] [enum: Submitted, PendingSignature, Failed, Broadcasting, Confirming, Completed] |
 | **cursor** | **String**| A cursor value for pagination purposes. | [optional] |
 | **limit** | **Integer**| The number of records to return default: 20 | [optional] |
 

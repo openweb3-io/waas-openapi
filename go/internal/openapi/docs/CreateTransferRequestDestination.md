@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | Address | 
-**DestinationType** | **string** | destination type | 
+**DestinationType** | [**TransferDestinationType**](TransferDestinationType.md) |  | 
 
 ## Methods
 
 ### NewCreateTransferRequestDestination
 
-`func NewCreateTransferRequestDestination(address string, destinationType string, ) *CreateTransferRequestDestination`
+`func NewCreateTransferRequestDestination(address string, destinationType TransferDestinationType, ) *CreateTransferRequestDestination`
 
 NewCreateTransferRequestDestination instantiates a new CreateTransferRequestDestination object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetAddress sets Address field to given value.
 
 ### GetDestinationType
 
-`func (o *CreateTransferRequestDestination) GetDestinationType() string`
+`func (o *CreateTransferRequestDestination) GetDestinationType() TransferDestinationType`
 
 GetDestinationType returns the DestinationType field if non-nil, zero value otherwise.
 
 ### GetDestinationTypeOk
 
-`func (o *CreateTransferRequestDestination) GetDestinationTypeOk() (*string, bool)`
+`func (o *CreateTransferRequestDestination) GetDestinationTypeOk() (*TransferDestinationType, bool)`
 
 GetDestinationTypeOk returns a tuple with the DestinationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDestinationType
 
-`func (o *CreateTransferRequestDestination) SetDestinationType(v string)`
+`func (o *CreateTransferRequestDestination) SetDestinationType(v TransferDestinationType)`
 
 SetDestinationType sets DestinationType field to given value.
 

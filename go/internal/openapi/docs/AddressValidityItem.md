@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Address** | Pointer to **string** | Address | [optional] 
-**Validity** | Pointer to **bool** | Validity | [optional] 
+**Address** | **string** | Address | 
+**Validity** | **bool** | Validity | 
 
 ## Methods
 
 ### NewAddressValidityItem
 
-`func NewAddressValidityItem() *AddressValidityItem`
+`func NewAddressValidityItem(address string, validity bool, ) *AddressValidityItem`
 
 NewAddressValidityItem instantiates a new AddressValidityItem object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetAddress sets Address field to given value.
 
-### HasAddress
-
-`func (o *AddressValidityItem) HasAddress() bool`
-
-HasAddress returns a boolean if a field has been set.
 
 ### GetValidity
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetValidity sets Validity field to given value.
 
-### HasValidity
-
-`func (o *AddressValidityItem) HasValidity() bool`
-
-HasValidity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

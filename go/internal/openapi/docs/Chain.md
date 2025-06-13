@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Chain** | Pointer to **string** | Chain | [optional] 
-**ConfirmNum** | Pointer to **int32** | Confirmation number | [optional] 
-**CreatedAt** | Pointer to **string** | Created time | [optional] 
-**ExplorerAddressUrl** | Pointer to **string** | Explorer address URL | [optional] 
-**ExplorerBlockUrl** | Pointer to **string** | Explorer block URL | [optional] 
-**ExplorerTxUrl** | Pointer to **string** | Explorer transaction URL | [optional] 
-**IconUrl** | Pointer to **string** | Icon URL | [optional] 
-**Id** | Pointer to **string** | Chain ID | [optional] 
-**Name** | Pointer to **string** | Chain name | [optional] 
-**NeedMemo** | Pointer to **bool** | Need memo | [optional] 
-**Network** | Pointer to **string** | Chain network | [optional] 
-**Symbol** | Pointer to **string** | Chain symbol | [optional] 
-**UpdatedAt** | Pointer to **string** | Updated time | [optional] 
+**Chain** | **string** | Chain protocol | 
+**ConfirmNum** | **int32** | Confirmation number | 
+**CreatedAt** | **string** | Created time | 
+**ExplorerAddressUrl** | **string** | Explorer address URL | 
+**ExplorerBlockUrl** | **string** | Explorer block URL | 
+**ExplorerTxUrl** | **string** | Explorer transaction URL | 
+**IconUrl** | **string** | Icon URL | 
+**Id** | **string** | Chain ID | 
+**Name** | **string** | Chain name | 
+**NeedMemo** | **bool** | Need memo | 
+**Network** | **string** | Chain network | 
+**Symbol** | **string** | Chain symbol | 
+**UpdatedAt** | **string** | Updated time | 
 
 ## Methods
 
 ### NewChain
 
-`func NewChain() *Chain`
+`func NewChain(chain string, confirmNum int32, createdAt string, explorerAddressUrl string, explorerBlockUrl string, explorerTxUrl string, iconUrl string, id string, name string, needMemo bool, network string, symbol string, updatedAt string, ) *Chain`
 
 NewChain instantiates a new Chain object
 This constructor will assign default values to properties that have it defined,
@@ -56,11 +56,6 @@ and a boolean to check if the value has been set.
 
 SetChain sets Chain field to given value.
 
-### HasChain
-
-`func (o *Chain) HasChain() bool`
-
-HasChain returns a boolean if a field has been set.
 
 ### GetConfirmNum
 
@@ -81,11 +76,6 @@ and a boolean to check if the value has been set.
 
 SetConfirmNum sets ConfirmNum field to given value.
 
-### HasConfirmNum
-
-`func (o *Chain) HasConfirmNum() bool`
-
-HasConfirmNum returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -106,11 +96,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *Chain) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetExplorerAddressUrl
 
@@ -131,11 +116,6 @@ and a boolean to check if the value has been set.
 
 SetExplorerAddressUrl sets ExplorerAddressUrl field to given value.
 
-### HasExplorerAddressUrl
-
-`func (o *Chain) HasExplorerAddressUrl() bool`
-
-HasExplorerAddressUrl returns a boolean if a field has been set.
 
 ### GetExplorerBlockUrl
 
@@ -156,11 +136,6 @@ and a boolean to check if the value has been set.
 
 SetExplorerBlockUrl sets ExplorerBlockUrl field to given value.
 
-### HasExplorerBlockUrl
-
-`func (o *Chain) HasExplorerBlockUrl() bool`
-
-HasExplorerBlockUrl returns a boolean if a field has been set.
 
 ### GetExplorerTxUrl
 
@@ -181,11 +156,6 @@ and a boolean to check if the value has been set.
 
 SetExplorerTxUrl sets ExplorerTxUrl field to given value.
 
-### HasExplorerTxUrl
-
-`func (o *Chain) HasExplorerTxUrl() bool`
-
-HasExplorerTxUrl returns a boolean if a field has been set.
 
 ### GetIconUrl
 
@@ -206,11 +176,6 @@ and a boolean to check if the value has been set.
 
 SetIconUrl sets IconUrl field to given value.
 
-### HasIconUrl
-
-`func (o *Chain) HasIconUrl() bool`
-
-HasIconUrl returns a boolean if a field has been set.
 
 ### GetId
 
@@ -231,11 +196,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *Chain) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetName
 
@@ -256,11 +216,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *Chain) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetNeedMemo
 
@@ -281,11 +236,6 @@ and a boolean to check if the value has been set.
 
 SetNeedMemo sets NeedMemo field to given value.
 
-### HasNeedMemo
-
-`func (o *Chain) HasNeedMemo() bool`
-
-HasNeedMemo returns a boolean if a field has been set.
 
 ### GetNetwork
 
@@ -306,11 +256,6 @@ and a boolean to check if the value has been set.
 
 SetNetwork sets Network field to given value.
 
-### HasNetwork
-
-`func (o *Chain) HasNetwork() bool`
-
-HasNetwork returns a boolean if a field has been set.
 
 ### GetSymbol
 
@@ -331,11 +276,6 @@ and a boolean to check if the value has been set.
 
 SetSymbol sets Symbol field to given value.
 
-### HasSymbol
-
-`func (o *Chain) HasSymbol() bool`
-
-HasSymbol returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -356,11 +296,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *Chain) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

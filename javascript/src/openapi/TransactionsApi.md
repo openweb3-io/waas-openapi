@@ -32,12 +32,12 @@ let body:.TransactionsApiV1TransactionsEstimateFeeRequest = {
     amount: "amount_example",
     destination: {
     address: "address_example",
-    destinationType: "destinationType_example",
+    destinationType: "Address",
   },
     extra: "extra_example",
     memo: "memo_example",
     source: {
-    sourceType: "sourceType_example",
+    sourceType: "Asset",
     walletId: "walletId_example",
   },
     tokenId: "tokenId_example",
@@ -116,8 +116,8 @@ let body:.TransactionsApiV1TransactionsListRequest = {
   ],
   // string | The transaction hash, which uniquely identifies a transaction on the blockchain. (optional)
   hash: "hash_example",
-  // string | The status of the transaction. (optional)
-  status: "status_example",
+  // 'Submitted' | 'PendingSignature' | 'Failed' | 'Broadcasting' | 'Confirming' | 'Completed' | The status of the transaction. (optional)
+  status: "Submitted",
   // string | A cursor value for pagination purposes. (optional)
   cursor: "cursor_example",
   // number | The number of records to return default: 20 (optional)
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
  **tokenIds** | **Array&lt;string&gt;** | The tokenId involved in the transaction. | (optional) defaults to undefined
  **assetIds** | **Array&lt;string&gt;** | The assetId involved in the transaction. | (optional) defaults to undefined
  **hash** | [**string**] | The transaction hash, which uniquely identifies a transaction on the blockchain. | (optional) defaults to undefined
- **status** | [**string**] | The status of the transaction. | (optional) defaults to undefined
+ **status** | [**&#39;Submitted&#39; | &#39;PendingSignature&#39; | &#39;Failed&#39; | &#39;Broadcasting&#39; | &#39;Confirming&#39; | &#39;Completed&#39;**]**Array<&#39;Submitted&#39; &#124; &#39;PendingSignature&#39; &#124; &#39;Failed&#39; &#124; &#39;Broadcasting&#39; &#124; &#39;Confirming&#39; &#124; &#39;Completed&#39;>** | The status of the transaction. | (optional) defaults to undefined
  **cursor** | [**string**] | A cursor value for pagination purposes. | (optional) defaults to undefined
  **limit** | [**number**] | The number of records to return default: 20 | (optional) defaults to undefined
 
@@ -249,7 +249,7 @@ let body:.TransactionsApiV1TransactionsSignMessageRequest = {
     message: "message_example",
     source: {
     address: "address_example",
-    sourceType: "sourceType_example",
+    sourceType: "Asset",
     walletId: "walletId_example",
   },
   },
@@ -314,7 +314,7 @@ let body:.TransactionsApiV1TransactionsTransferRequest = {
     amount: "amount_example",
     destination: {
     address: "address_example",
-    destinationType: "destinationType_example",
+    destinationType: "Address",
   },
     extra: "extra_example",
     fee: {
@@ -324,7 +324,7 @@ let body:.TransactionsApiV1TransactionsTransferRequest = {
     },
     memo: "memo_example",
     source: {
-    sourceType: "sourceType_example",
+    sourceType: "Asset",
     walletId: "walletId_example",
   },
     tokenId: "tokenId_example",

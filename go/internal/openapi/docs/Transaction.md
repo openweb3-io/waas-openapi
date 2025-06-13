@@ -4,32 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetId** | Pointer to **string** | Asset ID | [optional] 
-**Chain** | Pointer to **string** | Chain | [optional] 
-**ChainId** | Pointer to **string** | Chain ID | [optional] 
-**ConfirmedNum** | Pointer to **int32** | Confirmed number | [optional] 
-**CreatedAt** | Pointer to **string** | Created time | [optional] 
-**Description** | Pointer to **string** | Description | [optional] 
+**AssetId** | **string** | Asset ID | 
+**Chain** | **string** | Chain | 
+**ChainId** | **string** | Chain ID | 
+**ConfirmedNum** | **int32** | Confirmed number | 
+**CreatedAt** | **string** | Created time | 
+**Description** | **string** | Description | 
 **Destination** | Pointer to [**TransactionEndpoint**](TransactionEndpoint.md) |  | [optional] 
 **Extra** | Pointer to **map[string]interface{}** | Extra | [optional] 
-**FailedReason** | Pointer to **string** | Failed reason | [optional] 
+**FailedReason** | **string** | Failed reason | 
 **Fee** | Pointer to [**Fee**](Fee.md) |  | [optional] 
-**Hash** | Pointer to **string** | Transaction hash | [optional] 
-**Id** | Pointer to **string** | Transaction ID | [optional] 
-**Signature** | Pointer to **string** | Signature | [optional] 
+**Hash** | **string** | Transaction hash | 
+**Id** | **string** | Transaction ID | 
+**Signature** | **string** | Signature | 
 **Source** | Pointer to [**TransactionEndpoint**](TransactionEndpoint.md) |  | [optional] 
-**Status** | Pointer to **string** | Transaction status | [optional] 
-**TokenId** | Pointer to **string** | Token ID | [optional] 
-**Type** | Pointer to **string** | Transaction type | [optional] 
+**Status** | **string** | Transaction status | 
+**TokenId** | **string** | Token ID | 
+**Type** | [**TransactionType**](TransactionType.md) |  | 
 **Uid** | Pointer to **string** | The custom unique transaction identifier | [optional] 
-**UpdatedAt** | Pointer to **string** | Updated time | [optional] 
-**WalletId** | Pointer to **string** | Wallet ID | [optional] 
+**UpdatedAt** | **string** | Updated time | 
+**WalletId** | **string** | Wallet ID | 
 
 ## Methods
 
 ### NewTransaction
 
-`func NewTransaction() *Transaction`
+`func NewTransaction(assetId string, chain string, chainId string, confirmedNum int32, createdAt string, description string, failedReason string, hash string, id string, signature string, status string, tokenId string, type_ TransactionType, updatedAt string, walletId string, ) *Transaction`
 
 NewTransaction instantiates a new Transaction object
 This constructor will assign default values to properties that have it defined,
@@ -63,11 +63,6 @@ and a boolean to check if the value has been set.
 
 SetAssetId sets AssetId field to given value.
 
-### HasAssetId
-
-`func (o *Transaction) HasAssetId() bool`
-
-HasAssetId returns a boolean if a field has been set.
 
 ### GetChain
 
@@ -88,11 +83,6 @@ and a boolean to check if the value has been set.
 
 SetChain sets Chain field to given value.
 
-### HasChain
-
-`func (o *Transaction) HasChain() bool`
-
-HasChain returns a boolean if a field has been set.
 
 ### GetChainId
 
@@ -113,11 +103,6 @@ and a boolean to check if the value has been set.
 
 SetChainId sets ChainId field to given value.
 
-### HasChainId
-
-`func (o *Transaction) HasChainId() bool`
-
-HasChainId returns a boolean if a field has been set.
 
 ### GetConfirmedNum
 
@@ -138,11 +123,6 @@ and a boolean to check if the value has been set.
 
 SetConfirmedNum sets ConfirmedNum field to given value.
 
-### HasConfirmedNum
-
-`func (o *Transaction) HasConfirmedNum() bool`
-
-HasConfirmedNum returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -163,11 +143,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *Transaction) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -188,11 +163,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
-
-`func (o *Transaction) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetDestination
 
@@ -263,11 +233,6 @@ and a boolean to check if the value has been set.
 
 SetFailedReason sets FailedReason field to given value.
 
-### HasFailedReason
-
-`func (o *Transaction) HasFailedReason() bool`
-
-HasFailedReason returns a boolean if a field has been set.
 
 ### GetFee
 
@@ -313,11 +278,6 @@ and a boolean to check if the value has been set.
 
 SetHash sets Hash field to given value.
 
-### HasHash
-
-`func (o *Transaction) HasHash() bool`
-
-HasHash returns a boolean if a field has been set.
 
 ### GetId
 
@@ -338,11 +298,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *Transaction) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetSignature
 
@@ -363,11 +318,6 @@ and a boolean to check if the value has been set.
 
 SetSignature sets Signature field to given value.
 
-### HasSignature
-
-`func (o *Transaction) HasSignature() bool`
-
-HasSignature returns a boolean if a field has been set.
 
 ### GetSource
 
@@ -413,11 +363,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *Transaction) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetTokenId
 
@@ -438,36 +383,26 @@ and a boolean to check if the value has been set.
 
 SetTokenId sets TokenId field to given value.
 
-### HasTokenId
-
-`func (o *Transaction) HasTokenId() bool`
-
-HasTokenId returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *Transaction) GetType() string`
+`func (o *Transaction) GetType() TransactionType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Transaction) GetTypeOk() (*string, bool)`
+`func (o *Transaction) GetTypeOk() (*TransactionType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Transaction) SetType(v string)`
+`func (o *Transaction) SetType(v TransactionType)`
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *Transaction) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetUid
 
@@ -513,11 +448,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *Transaction) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetWalletId
 
@@ -538,11 +468,6 @@ and a boolean to check if the value has been set.
 
 SetWalletId sets WalletId field to given value.
 
-### HasWalletId
-
-`func (o *Transaction) HasWalletId() bool`
-
-HasWalletId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

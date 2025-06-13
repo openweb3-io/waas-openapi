@@ -12,6 +12,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the Chain type satisfies the MappedNullable interface at compile time
@@ -19,40 +21,55 @@ var _ MappedNullable = &Chain{}
 
 // Chain struct for Chain
 type Chain struct {
-	// Chain
-	Chain *string `json:"chain,omitempty"`
+	// Chain protocol
+	Chain string `json:"chain"`
 	// Confirmation number
-	ConfirmNum *int32 `json:"confirm_num,omitempty"`
+	ConfirmNum int32 `json:"confirm_num"`
 	// Created time
-	CreatedAt *string `json:"created_at,omitempty"`
+	CreatedAt string `json:"created_at"`
 	// Explorer address URL
-	ExplorerAddressUrl *string `json:"explorer_address_url,omitempty"`
+	ExplorerAddressUrl string `json:"explorer_address_url"`
 	// Explorer block URL
-	ExplorerBlockUrl *string `json:"explorer_block_url,omitempty"`
+	ExplorerBlockUrl string `json:"explorer_block_url"`
 	// Explorer transaction URL
-	ExplorerTxUrl *string `json:"explorer_tx_url,omitempty"`
+	ExplorerTxUrl string `json:"explorer_tx_url"`
 	// Icon URL
-	IconUrl *string `json:"icon_url,omitempty"`
+	IconUrl string `json:"icon_url"`
 	// Chain ID
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	// Chain name
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// Need memo
-	NeedMemo *bool `json:"need_memo,omitempty"`
+	NeedMemo bool `json:"need_memo"`
 	// Chain network
-	Network *string `json:"network,omitempty"`
+	Network string `json:"network"`
 	// Chain symbol
-	Symbol *string `json:"symbol,omitempty"`
+	Symbol string `json:"symbol"`
 	// Updated time
-	UpdatedAt *string `json:"updated_at,omitempty"`
+	UpdatedAt string `json:"updated_at"`
 }
+
+type _Chain Chain
 
 // NewChain instantiates a new Chain object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChain() *Chain {
+func NewChain(chain string, confirmNum int32, createdAt string, explorerAddressUrl string, explorerBlockUrl string, explorerTxUrl string, iconUrl string, id string, name string, needMemo bool, network string, symbol string, updatedAt string) *Chain {
 	this := Chain{}
+	this.Chain = chain
+	this.ConfirmNum = confirmNum
+	this.CreatedAt = createdAt
+	this.ExplorerAddressUrl = explorerAddressUrl
+	this.ExplorerBlockUrl = explorerBlockUrl
+	this.ExplorerTxUrl = explorerTxUrl
+	this.IconUrl = iconUrl
+	this.Id = id
+	this.Name = name
+	this.NeedMemo = needMemo
+	this.Network = network
+	this.Symbol = symbol
+	this.UpdatedAt = updatedAt
 	return &this
 }
 
@@ -64,420 +81,316 @@ func NewChainWithDefaults() *Chain {
 	return &this
 }
 
-// GetChain returns the Chain field value if set, zero value otherwise.
+// GetChain returns the Chain field value
 func (o *Chain) GetChain() string {
-	if o == nil || IsNil(o.Chain) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Chain
+
+	return o.Chain
 }
 
-// GetChainOk returns a tuple with the Chain field value if set, nil otherwise
+// GetChainOk returns a tuple with the Chain field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetChainOk() (*string, bool) {
-	if o == nil || IsNil(o.Chain) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Chain, true
+	return &o.Chain, true
 }
 
-// HasChain returns a boolean if a field has been set.
-func (o *Chain) HasChain() bool {
-	if o != nil && !IsNil(o.Chain) {
-		return true
-	}
-
-	return false
-}
-
-// SetChain gets a reference to the given string and assigns it to the Chain field.
+// SetChain sets field value
 func (o *Chain) SetChain(v string) {
-	o.Chain = &v
+	o.Chain = v
 }
 
-// GetConfirmNum returns the ConfirmNum field value if set, zero value otherwise.
+// GetConfirmNum returns the ConfirmNum field value
 func (o *Chain) GetConfirmNum() int32 {
-	if o == nil || IsNil(o.ConfirmNum) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ConfirmNum
+
+	return o.ConfirmNum
 }
 
-// GetConfirmNumOk returns a tuple with the ConfirmNum field value if set, nil otherwise
+// GetConfirmNumOk returns a tuple with the ConfirmNum field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetConfirmNumOk() (*int32, bool) {
-	if o == nil || IsNil(o.ConfirmNum) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ConfirmNum, true
+	return &o.ConfirmNum, true
 }
 
-// HasConfirmNum returns a boolean if a field has been set.
-func (o *Chain) HasConfirmNum() bool {
-	if o != nil && !IsNil(o.ConfirmNum) {
-		return true
-	}
-
-	return false
-}
-
-// SetConfirmNum gets a reference to the given int32 and assigns it to the ConfirmNum field.
+// SetConfirmNum sets field value
 func (o *Chain) SetConfirmNum(v int32) {
-	o.ConfirmNum = &v
+	o.ConfirmNum = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *Chain) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *Chain) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *Chain) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
-// GetExplorerAddressUrl returns the ExplorerAddressUrl field value if set, zero value otherwise.
+// GetExplorerAddressUrl returns the ExplorerAddressUrl field value
 func (o *Chain) GetExplorerAddressUrl() string {
-	if o == nil || IsNil(o.ExplorerAddressUrl) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ExplorerAddressUrl
+
+	return o.ExplorerAddressUrl
 }
 
-// GetExplorerAddressUrlOk returns a tuple with the ExplorerAddressUrl field value if set, nil otherwise
+// GetExplorerAddressUrlOk returns a tuple with the ExplorerAddressUrl field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetExplorerAddressUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ExplorerAddressUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExplorerAddressUrl, true
+	return &o.ExplorerAddressUrl, true
 }
 
-// HasExplorerAddressUrl returns a boolean if a field has been set.
-func (o *Chain) HasExplorerAddressUrl() bool {
-	if o != nil && !IsNil(o.ExplorerAddressUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetExplorerAddressUrl gets a reference to the given string and assigns it to the ExplorerAddressUrl field.
+// SetExplorerAddressUrl sets field value
 func (o *Chain) SetExplorerAddressUrl(v string) {
-	o.ExplorerAddressUrl = &v
+	o.ExplorerAddressUrl = v
 }
 
-// GetExplorerBlockUrl returns the ExplorerBlockUrl field value if set, zero value otherwise.
+// GetExplorerBlockUrl returns the ExplorerBlockUrl field value
 func (o *Chain) GetExplorerBlockUrl() string {
-	if o == nil || IsNil(o.ExplorerBlockUrl) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ExplorerBlockUrl
+
+	return o.ExplorerBlockUrl
 }
 
-// GetExplorerBlockUrlOk returns a tuple with the ExplorerBlockUrl field value if set, nil otherwise
+// GetExplorerBlockUrlOk returns a tuple with the ExplorerBlockUrl field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetExplorerBlockUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ExplorerBlockUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExplorerBlockUrl, true
+	return &o.ExplorerBlockUrl, true
 }
 
-// HasExplorerBlockUrl returns a boolean if a field has been set.
-func (o *Chain) HasExplorerBlockUrl() bool {
-	if o != nil && !IsNil(o.ExplorerBlockUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetExplorerBlockUrl gets a reference to the given string and assigns it to the ExplorerBlockUrl field.
+// SetExplorerBlockUrl sets field value
 func (o *Chain) SetExplorerBlockUrl(v string) {
-	o.ExplorerBlockUrl = &v
+	o.ExplorerBlockUrl = v
 }
 
-// GetExplorerTxUrl returns the ExplorerTxUrl field value if set, zero value otherwise.
+// GetExplorerTxUrl returns the ExplorerTxUrl field value
 func (o *Chain) GetExplorerTxUrl() string {
-	if o == nil || IsNil(o.ExplorerTxUrl) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ExplorerTxUrl
+
+	return o.ExplorerTxUrl
 }
 
-// GetExplorerTxUrlOk returns a tuple with the ExplorerTxUrl field value if set, nil otherwise
+// GetExplorerTxUrlOk returns a tuple with the ExplorerTxUrl field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetExplorerTxUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ExplorerTxUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExplorerTxUrl, true
+	return &o.ExplorerTxUrl, true
 }
 
-// HasExplorerTxUrl returns a boolean if a field has been set.
-func (o *Chain) HasExplorerTxUrl() bool {
-	if o != nil && !IsNil(o.ExplorerTxUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetExplorerTxUrl gets a reference to the given string and assigns it to the ExplorerTxUrl field.
+// SetExplorerTxUrl sets field value
 func (o *Chain) SetExplorerTxUrl(v string) {
-	o.ExplorerTxUrl = &v
+	o.ExplorerTxUrl = v
 }
 
-// GetIconUrl returns the IconUrl field value if set, zero value otherwise.
+// GetIconUrl returns the IconUrl field value
 func (o *Chain) GetIconUrl() string {
-	if o == nil || IsNil(o.IconUrl) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.IconUrl
+
+	return o.IconUrl
 }
 
-// GetIconUrlOk returns a tuple with the IconUrl field value if set, nil otherwise
+// GetIconUrlOk returns a tuple with the IconUrl field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetIconUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.IconUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IconUrl, true
+	return &o.IconUrl, true
 }
 
-// HasIconUrl returns a boolean if a field has been set.
-func (o *Chain) HasIconUrl() bool {
-	if o != nil && !IsNil(o.IconUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetIconUrl gets a reference to the given string and assigns it to the IconUrl field.
+// SetIconUrl sets field value
 func (o *Chain) SetIconUrl(v string) {
-	o.IconUrl = &v
+	o.IconUrl = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *Chain) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Chain) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *Chain) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *Chain) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Chain) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *Chain) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetNeedMemo returns the NeedMemo field value if set, zero value otherwise.
+// GetNeedMemo returns the NeedMemo field value
 func (o *Chain) GetNeedMemo() bool {
-	if o == nil || IsNil(o.NeedMemo) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.NeedMemo
+
+	return o.NeedMemo
 }
 
-// GetNeedMemoOk returns a tuple with the NeedMemo field value if set, nil otherwise
+// GetNeedMemoOk returns a tuple with the NeedMemo field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetNeedMemoOk() (*bool, bool) {
-	if o == nil || IsNil(o.NeedMemo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NeedMemo, true
+	return &o.NeedMemo, true
 }
 
-// HasNeedMemo returns a boolean if a field has been set.
-func (o *Chain) HasNeedMemo() bool {
-	if o != nil && !IsNil(o.NeedMemo) {
-		return true
-	}
-
-	return false
-}
-
-// SetNeedMemo gets a reference to the given bool and assigns it to the NeedMemo field.
+// SetNeedMemo sets field value
 func (o *Chain) SetNeedMemo(v bool) {
-	o.NeedMemo = &v
+	o.NeedMemo = v
 }
 
-// GetNetwork returns the Network field value if set, zero value otherwise.
+// GetNetwork returns the Network field value
 func (o *Chain) GetNetwork() string {
-	if o == nil || IsNil(o.Network) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Network
+
+	return o.Network
 }
 
-// GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
+// GetNetworkOk returns a tuple with the Network field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetNetworkOk() (*string, bool) {
-	if o == nil || IsNil(o.Network) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Network, true
+	return &o.Network, true
 }
 
-// HasNetwork returns a boolean if a field has been set.
-func (o *Chain) HasNetwork() bool {
-	if o != nil && !IsNil(o.Network) {
-		return true
-	}
-
-	return false
-}
-
-// SetNetwork gets a reference to the given string and assigns it to the Network field.
+// SetNetwork sets field value
 func (o *Chain) SetNetwork(v string) {
-	o.Network = &v
+	o.Network = v
 }
 
-// GetSymbol returns the Symbol field value if set, zero value otherwise.
+// GetSymbol returns the Symbol field value
 func (o *Chain) GetSymbol() string {
-	if o == nil || IsNil(o.Symbol) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Symbol
+
+	return o.Symbol
 }
 
-// GetSymbolOk returns a tuple with the Symbol field value if set, nil otherwise
+// GetSymbolOk returns a tuple with the Symbol field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetSymbolOk() (*string, bool) {
-	if o == nil || IsNil(o.Symbol) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Symbol, true
+	return &o.Symbol, true
 }
 
-// HasSymbol returns a boolean if a field has been set.
-func (o *Chain) HasSymbol() bool {
-	if o != nil && !IsNil(o.Symbol) {
-		return true
-	}
-
-	return false
-}
-
-// SetSymbol gets a reference to the given string and assigns it to the Symbol field.
+// SetSymbol sets field value
 func (o *Chain) SetSymbol(v string) {
-	o.Symbol = &v
+	o.Symbol = v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+// GetUpdatedAt returns the UpdatedAt field value
 func (o *Chain) GetUpdatedAt() string {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.UpdatedAt
+
+	return o.UpdatedAt
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Chain) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return &o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *Chain) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
+// SetUpdatedAt sets field value
 func (o *Chain) SetUpdatedAt(v string) {
-	o.UpdatedAt = &v
+	o.UpdatedAt = v
 }
 
 func (o Chain) MarshalJSON() ([]byte, error) {
@@ -490,46 +403,69 @@ func (o Chain) MarshalJSON() ([]byte, error) {
 
 func (o Chain) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Chain) {
-		toSerialize["chain"] = o.Chain
-	}
-	if !IsNil(o.ConfirmNum) {
-		toSerialize["confirm_num"] = o.ConfirmNum
-	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["created_at"] = o.CreatedAt
-	}
-	if !IsNil(o.ExplorerAddressUrl) {
-		toSerialize["explorer_address_url"] = o.ExplorerAddressUrl
-	}
-	if !IsNil(o.ExplorerBlockUrl) {
-		toSerialize["explorer_block_url"] = o.ExplorerBlockUrl
-	}
-	if !IsNil(o.ExplorerTxUrl) {
-		toSerialize["explorer_tx_url"] = o.ExplorerTxUrl
-	}
-	if !IsNil(o.IconUrl) {
-		toSerialize["icon_url"] = o.IconUrl
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.NeedMemo) {
-		toSerialize["need_memo"] = o.NeedMemo
-	}
-	if !IsNil(o.Network) {
-		toSerialize["network"] = o.Network
-	}
-	if !IsNil(o.Symbol) {
-		toSerialize["symbol"] = o.Symbol
-	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
+	toSerialize["chain"] = o.Chain
+	toSerialize["confirm_num"] = o.ConfirmNum
+	toSerialize["created_at"] = o.CreatedAt
+	toSerialize["explorer_address_url"] = o.ExplorerAddressUrl
+	toSerialize["explorer_block_url"] = o.ExplorerBlockUrl
+	toSerialize["explorer_tx_url"] = o.ExplorerTxUrl
+	toSerialize["icon_url"] = o.IconUrl
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["need_memo"] = o.NeedMemo
+	toSerialize["network"] = o.Network
+	toSerialize["symbol"] = o.Symbol
+	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
+}
+
+func (o *Chain) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"chain",
+		"confirm_num",
+		"created_at",
+		"explorer_address_url",
+		"explorer_block_url",
+		"explorer_tx_url",
+		"icon_url",
+		"id",
+		"name",
+		"need_memo",
+		"network",
+		"symbol",
+		"updated_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varChain := _Chain{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varChain)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Chain(varChain)
+
+	return err
 }
 
 type NullableChain struct {

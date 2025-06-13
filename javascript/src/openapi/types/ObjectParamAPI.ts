@@ -26,6 +26,7 @@ import { EstimateFeeRequest } from '../models/EstimateFeeRequest';
 import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
+import { FeeType } from '../models/FeeType';
 import { GasStation } from '../models/GasStation';
 import { GetGasStationDepositAddressReply } from '../models/GetGasStationDepositAddressReply';
 import { ModelError } from '../models/ModelError';
@@ -37,8 +38,11 @@ import { SweepAddressResponse } from '../models/SweepAddressResponse';
 import { Token } from '../models/Token';
 import { Transaction } from '../models/Transaction';
 import { TransactionEndpoint } from '../models/TransactionEndpoint';
+import { TransactionType } from '../models/TransactionType';
 import { TransferDestinationAddress } from '../models/TransferDestinationAddress';
+import { TransferDestinationType } from '../models/TransferDestinationType';
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
+import { TransferSourceType } from '../models/TransferSourceType';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
 import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
@@ -46,6 +50,8 @@ import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
 import { Wallet } from '../models/Wallet';
+import { WalletSubType } from '../models/WalletSubType';
+import { WalletType } from '../models/WalletType';
 
 import { ObservableAddressesApi } from "./ObservableAPI";
 import { AddressesApiRequestFactory, AddressesApiResponseProcessor} from "../apis/AddressesApi";
@@ -79,17 +85,17 @@ export interface AddressesApiV1AddressesListRequest {
 
 export interface AddressesApiV1AddressesValidateRequest {
     /**
-     * Chain ID
-     * @type string
-     * @memberof AddressesApiv1AddressesValidate
-     */
-    chainId: string
-    /**
      * Addresses
      * @type Array&lt;string&gt;
      * @memberof AddressesApiv1AddressesValidate
      */
     addresses: Array<string>
+    /**
+     * Chain ID
+     * @type string
+     * @memberof AddressesApiv1AddressesValidate
+     */
+    chainId: string
 }
 
 export interface AddressesApiV1WalletsCreateAddressRequest {
@@ -186,7 +192,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidateWithHttpInfo(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<HttpInfo<ValidateAddressesReply>> {
-        return this.api.v1AddressesValidateWithHttpInfo(param.chainId, param.addresses,  options).toPromise();
+        return this.api.v1AddressesValidateWithHttpInfo(param.addresses, param.chainId,  options).toPromise();
     }
 
     /**
@@ -195,7 +201,7 @@ export class ObjectAddressesApi {
      * @param param the request object
      */
     public v1AddressesValidate(param: AddressesApiV1AddressesValidateRequest, options?: Configuration): Promise<ValidateAddressesReply> {
-        return this.api.v1AddressesValidate(param.chainId, param.addresses,  options).toPromise();
+        return this.api.v1AddressesValidate(param.addresses, param.chainId,  options).toPromise();
     }
 
     /**
@@ -740,10 +746,10 @@ export interface TransactionsApiV1TransactionsListRequest {
     hash?: string
     /**
      * The status of the transaction.
-     * @type string
+     * @type &#39;Submitted&#39; | &#39;PendingSignature&#39; | &#39;Failed&#39; | &#39;Broadcasting&#39; | &#39;Confirming&#39; | &#39;Completed&#39;
      * @memberof TransactionsApiv1TransactionsList
      */
-    status?: string
+    status?: 'Submitted' | 'PendingSignature' | 'Failed' | 'Broadcasting' | 'Confirming' | 'Completed'
     /**
      * A cursor value for pagination purposes.
      * @type string

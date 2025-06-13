@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**address** | **String** | Address |  |
-|**sourceType** | **String** | source type |  |
+|**sourceType** | **TransferSourceType** |  |  |
 |**walletId** | **String** | Wallet ID |  |
 
 

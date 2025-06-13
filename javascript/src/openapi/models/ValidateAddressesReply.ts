@@ -17,7 +17,7 @@ export class ValidateAddressesReply {
     /**
     * Address validity items
     */
-    'items'?: Array<AddressValidityItem>;
+    'items': Array<AddressValidityItem>;
 
     static readonly discriminator: string | undefined = undefined;
 

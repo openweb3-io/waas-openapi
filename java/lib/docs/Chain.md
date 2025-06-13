@@ -7,19 +7,19 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**chain** | **String** | Chain |  [optional] |
-|**confirmNum** | **Integer** | Confirmation number |  [optional] |
-|**createdAt** | **String** | Created time |  [optional] |
-|**explorerAddressUrl** | **String** | Explorer address URL |  [optional] |
-|**explorerBlockUrl** | **String** | Explorer block URL |  [optional] |
-|**explorerTxUrl** | **String** | Explorer transaction URL |  [optional] |
-|**iconUrl** | **String** | Icon URL |  [optional] |
-|**id** | **String** | Chain ID |  [optional] |
-|**name** | **String** | Chain name |  [optional] |
-|**needMemo** | **Boolean** | Need memo |  [optional] |
-|**network** | **String** | Chain network |  [optional] |
-|**symbol** | **String** | Chain symbol |  [optional] |
-|**updatedAt** | **String** | Updated time |  [optional] |
+|**chain** | **String** | Chain protocol |  |
+|**confirmNum** | **Integer** | Confirmation number |  |
+|**createdAt** | **String** | Created time |  |
+|**explorerAddressUrl** | **String** | Explorer address URL |  |
+|**explorerBlockUrl** | **String** | Explorer block URL |  |
+|**explorerTxUrl** | **String** | Explorer transaction URL |  |
+|**iconUrl** | **String** | Icon URL |  |
+|**id** | **String** | Chain ID |  |
+|**name** | **String** | Chain name |  |
+|**needMemo** | **Boolean** | Need memo |  |
+|**network** | **String** | Chain network |  |
+|**symbol** | **String** | Chain symbol |  |
+|**updatedAt** | **String** | Updated time |  |
 
 
 

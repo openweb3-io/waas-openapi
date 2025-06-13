@@ -12,6 +12,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the Transaction type satisfies the MappedNullable interface at compile time
@@ -20,50 +22,66 @@ var _ MappedNullable = &Transaction{}
 // Transaction struct for Transaction
 type Transaction struct {
 	// Asset ID
-	AssetId *string `json:"assetId,omitempty"`
+	AssetId string `json:"assetId"`
 	// Chain
-	Chain *string `json:"chain,omitempty"`
+	Chain string `json:"chain"`
 	// Chain ID
-	ChainId *string `json:"chainId,omitempty"`
+	ChainId string `json:"chainId"`
 	// Confirmed number
-	ConfirmedNum *int32 `json:"confirmedNum,omitempty"`
+	ConfirmedNum int32 `json:"confirmedNum"`
 	// Created time
-	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedAt string `json:"createdAt"`
 	// Description
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description"`
 	Destination *TransactionEndpoint `json:"destination,omitempty"`
 	// Extra
 	Extra map[string]interface{} `json:"extra,omitempty"`
 	// Failed reason
-	FailedReason *string `json:"failedReason,omitempty"`
+	FailedReason string `json:"failedReason"`
 	Fee *Fee `json:"fee,omitempty"`
 	// Transaction hash
-	Hash *string `json:"hash,omitempty"`
+	Hash string `json:"hash"`
 	// Transaction ID
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	// Signature
-	Signature *string `json:"signature,omitempty"`
+	Signature string `json:"signature"`
 	Source *TransactionEndpoint `json:"source,omitempty"`
 	// Transaction status
-	Status *string `json:"status,omitempty"`
+	Status string `json:"status"`
 	// Token ID
-	TokenId *string `json:"tokenId,omitempty"`
-	// Transaction type
-	Type *string `json:"type,omitempty"`
+	TokenId string `json:"tokenId"`
+	Type TransactionType `json:"type"`
 	// The custom unique transaction identifier
 	Uid *string `json:"uid,omitempty"`
 	// Updated time
-	UpdatedAt *string `json:"updatedAt,omitempty"`
+	UpdatedAt string `json:"updatedAt"`
 	// Wallet ID
-	WalletId *string `json:"walletId,omitempty"`
+	WalletId string `json:"walletId"`
 }
+
+type _Transaction Transaction
 
 // NewTransaction instantiates a new Transaction object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransaction() *Transaction {
+func NewTransaction(assetId string, chain string, chainId string, confirmedNum int32, createdAt string, description string, failedReason string, hash string, id string, signature string, status string, tokenId string, type_ TransactionType, updatedAt string, walletId string) *Transaction {
 	this := Transaction{}
+	this.AssetId = assetId
+	this.Chain = chain
+	this.ChainId = chainId
+	this.ConfirmedNum = confirmedNum
+	this.CreatedAt = createdAt
+	this.Description = description
+	this.FailedReason = failedReason
+	this.Hash = hash
+	this.Id = id
+	this.Signature = signature
+	this.Status = status
+	this.TokenId = tokenId
+	this.Type = type_
+	this.UpdatedAt = updatedAt
+	this.WalletId = walletId
 	return &this
 }
 
@@ -75,196 +93,148 @@ func NewTransactionWithDefaults() *Transaction {
 	return &this
 }
 
-// GetAssetId returns the AssetId field value if set, zero value otherwise.
+// GetAssetId returns the AssetId field value
 func (o *Transaction) GetAssetId() string {
-	if o == nil || IsNil(o.AssetId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AssetId
+
+	return o.AssetId
 }
 
-// GetAssetIdOk returns a tuple with the AssetId field value if set, nil otherwise
+// GetAssetIdOk returns a tuple with the AssetId field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetAssetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.AssetId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AssetId, true
+	return &o.AssetId, true
 }
 
-// HasAssetId returns a boolean if a field has been set.
-func (o *Transaction) HasAssetId() bool {
-	if o != nil && !IsNil(o.AssetId) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssetId gets a reference to the given string and assigns it to the AssetId field.
+// SetAssetId sets field value
 func (o *Transaction) SetAssetId(v string) {
-	o.AssetId = &v
+	o.AssetId = v
 }
 
-// GetChain returns the Chain field value if set, zero value otherwise.
+// GetChain returns the Chain field value
 func (o *Transaction) GetChain() string {
-	if o == nil || IsNil(o.Chain) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Chain
+
+	return o.Chain
 }
 
-// GetChainOk returns a tuple with the Chain field value if set, nil otherwise
+// GetChainOk returns a tuple with the Chain field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetChainOk() (*string, bool) {
-	if o == nil || IsNil(o.Chain) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Chain, true
+	return &o.Chain, true
 }
 
-// HasChain returns a boolean if a field has been set.
-func (o *Transaction) HasChain() bool {
-	if o != nil && !IsNil(o.Chain) {
-		return true
-	}
-
-	return false
-}
-
-// SetChain gets a reference to the given string and assigns it to the Chain field.
+// SetChain sets field value
 func (o *Transaction) SetChain(v string) {
-	o.Chain = &v
+	o.Chain = v
 }
 
-// GetChainId returns the ChainId field value if set, zero value otherwise.
+// GetChainId returns the ChainId field value
 func (o *Transaction) GetChainId() string {
-	if o == nil || IsNil(o.ChainId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ChainId
+
+	return o.ChainId
 }
 
-// GetChainIdOk returns a tuple with the ChainId field value if set, nil otherwise
+// GetChainIdOk returns a tuple with the ChainId field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetChainIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ChainId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ChainId, true
+	return &o.ChainId, true
 }
 
-// HasChainId returns a boolean if a field has been set.
-func (o *Transaction) HasChainId() bool {
-	if o != nil && !IsNil(o.ChainId) {
-		return true
-	}
-
-	return false
-}
-
-// SetChainId gets a reference to the given string and assigns it to the ChainId field.
+// SetChainId sets field value
 func (o *Transaction) SetChainId(v string) {
-	o.ChainId = &v
+	o.ChainId = v
 }
 
-// GetConfirmedNum returns the ConfirmedNum field value if set, zero value otherwise.
+// GetConfirmedNum returns the ConfirmedNum field value
 func (o *Transaction) GetConfirmedNum() int32 {
-	if o == nil || IsNil(o.ConfirmedNum) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ConfirmedNum
+
+	return o.ConfirmedNum
 }
 
-// GetConfirmedNumOk returns a tuple with the ConfirmedNum field value if set, nil otherwise
+// GetConfirmedNumOk returns a tuple with the ConfirmedNum field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetConfirmedNumOk() (*int32, bool) {
-	if o == nil || IsNil(o.ConfirmedNum) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ConfirmedNum, true
+	return &o.ConfirmedNum, true
 }
 
-// HasConfirmedNum returns a boolean if a field has been set.
-func (o *Transaction) HasConfirmedNum() bool {
-	if o != nil && !IsNil(o.ConfirmedNum) {
-		return true
-	}
-
-	return false
-}
-
-// SetConfirmedNum gets a reference to the given int32 and assigns it to the ConfirmedNum field.
+// SetConfirmedNum sets field value
 func (o *Transaction) SetConfirmedNum(v int32) {
-	o.ConfirmedNum = &v
+	o.ConfirmedNum = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value
 func (o *Transaction) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *Transaction) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *Transaction) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value
 func (o *Transaction) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+
+	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return &o.Description, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *Transaction) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription sets field value
 func (o *Transaction) SetDescription(v string) {
-	o.Description = &v
+	o.Description = v
 }
 
 // GetDestination returns the Destination field value if set, zero value otherwise.
@@ -331,36 +301,28 @@ func (o *Transaction) SetExtra(v map[string]interface{}) {
 	o.Extra = v
 }
 
-// GetFailedReason returns the FailedReason field value if set, zero value otherwise.
+// GetFailedReason returns the FailedReason field value
 func (o *Transaction) GetFailedReason() string {
-	if o == nil || IsNil(o.FailedReason) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.FailedReason
+
+	return o.FailedReason
 }
 
-// GetFailedReasonOk returns a tuple with the FailedReason field value if set, nil otherwise
+// GetFailedReasonOk returns a tuple with the FailedReason field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetFailedReasonOk() (*string, bool) {
-	if o == nil || IsNil(o.FailedReason) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FailedReason, true
+	return &o.FailedReason, true
 }
 
-// HasFailedReason returns a boolean if a field has been set.
-func (o *Transaction) HasFailedReason() bool {
-	if o != nil && !IsNil(o.FailedReason) {
-		return true
-	}
-
-	return false
-}
-
-// SetFailedReason gets a reference to the given string and assigns it to the FailedReason field.
+// SetFailedReason sets field value
 func (o *Transaction) SetFailedReason(v string) {
-	o.FailedReason = &v
+	o.FailedReason = v
 }
 
 // GetFee returns the Fee field value if set, zero value otherwise.
@@ -395,100 +357,76 @@ func (o *Transaction) SetFee(v Fee) {
 	o.Fee = &v
 }
 
-// GetHash returns the Hash field value if set, zero value otherwise.
+// GetHash returns the Hash field value
 func (o *Transaction) GetHash() string {
-	if o == nil || IsNil(o.Hash) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Hash
+
+	return o.Hash
 }
 
-// GetHashOk returns a tuple with the Hash field value if set, nil otherwise
+// GetHashOk returns a tuple with the Hash field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetHashOk() (*string, bool) {
-	if o == nil || IsNil(o.Hash) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Hash, true
+	return &o.Hash, true
 }
 
-// HasHash returns a boolean if a field has been set.
-func (o *Transaction) HasHash() bool {
-	if o != nil && !IsNil(o.Hash) {
-		return true
-	}
-
-	return false
-}
-
-// SetHash gets a reference to the given string and assigns it to the Hash field.
+// SetHash sets field value
 func (o *Transaction) SetHash(v string) {
-	o.Hash = &v
+	o.Hash = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *Transaction) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Transaction) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *Transaction) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetSignature returns the Signature field value if set, zero value otherwise.
+// GetSignature returns the Signature field value
 func (o *Transaction) GetSignature() string {
-	if o == nil || IsNil(o.Signature) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Signature
+
+	return o.Signature
 }
 
-// GetSignatureOk returns a tuple with the Signature field value if set, nil otherwise
+// GetSignatureOk returns a tuple with the Signature field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetSignatureOk() (*string, bool) {
-	if o == nil || IsNil(o.Signature) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Signature, true
+	return &o.Signature, true
 }
 
-// HasSignature returns a boolean if a field has been set.
-func (o *Transaction) HasSignature() bool {
-	if o != nil && !IsNil(o.Signature) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignature gets a reference to the given string and assigns it to the Signature field.
+// SetSignature sets field value
 func (o *Transaction) SetSignature(v string) {
-	o.Signature = &v
+	o.Signature = v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -523,100 +461,76 @@ func (o *Transaction) SetSource(v TransactionEndpoint) {
 	o.Source = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *Transaction) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *Transaction) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus sets field value
 func (o *Transaction) SetStatus(v string) {
-	o.Status = &v
+	o.Status = v
 }
 
-// GetTokenId returns the TokenId field value if set, zero value otherwise.
+// GetTokenId returns the TokenId field value
 func (o *Transaction) GetTokenId() string {
-	if o == nil || IsNil(o.TokenId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TokenId
+
+	return o.TokenId
 }
 
-// GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
+// GetTokenIdOk returns a tuple with the TokenId field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetTokenIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TokenId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TokenId, true
+	return &o.TokenId, true
 }
 
-// HasTokenId returns a boolean if a field has been set.
-func (o *Transaction) HasTokenId() bool {
-	if o != nil && !IsNil(o.TokenId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
+// SetTokenId sets field value
 func (o *Transaction) SetTokenId(v string) {
-	o.TokenId = &v
+	o.TokenId = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *Transaction) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
+// GetType returns the Type field value
+func (o *Transaction) GetType() TransactionType {
+	if o == nil {
+		var ret TransactionType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Transaction) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+func (o *Transaction) GetTypeOk() (*TransactionType, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *Transaction) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *Transaction) SetType(v string) {
-	o.Type = &v
+// SetType sets field value
+func (o *Transaction) SetType(v TransactionType) {
+	o.Type = v
 }
 
 // GetUid returns the Uid field value if set, zero value otherwise.
@@ -651,68 +565,52 @@ func (o *Transaction) SetUid(v string) {
 	o.Uid = &v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+// GetUpdatedAt returns the UpdatedAt field value
 func (o *Transaction) GetUpdatedAt() string {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.UpdatedAt
+
+	return o.UpdatedAt
 }
 
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetUpdatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UpdatedAt, true
+	return &o.UpdatedAt, true
 }
 
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *Transaction) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given string and assigns it to the UpdatedAt field.
+// SetUpdatedAt sets field value
 func (o *Transaction) SetUpdatedAt(v string) {
-	o.UpdatedAt = &v
+	o.UpdatedAt = v
 }
 
-// GetWalletId returns the WalletId field value if set, zero value otherwise.
+// GetWalletId returns the WalletId field value
 func (o *Transaction) GetWalletId() string {
-	if o == nil || IsNil(o.WalletId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.WalletId
+
+	return o.WalletId
 }
 
-// GetWalletIdOk returns a tuple with the WalletId field value if set, nil otherwise
+// GetWalletIdOk returns a tuple with the WalletId field value
 // and a boolean to check if the value has been set.
 func (o *Transaction) GetWalletIdOk() (*string, bool) {
-	if o == nil || IsNil(o.WalletId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WalletId, true
+	return &o.WalletId, true
 }
 
-// HasWalletId returns a boolean if a field has been set.
-func (o *Transaction) HasWalletId() bool {
-	if o != nil && !IsNil(o.WalletId) {
-		return true
-	}
-
-	return false
-}
-
-// SetWalletId gets a reference to the given string and assigns it to the WalletId field.
+// SetWalletId sets field value
 func (o *Transaction) SetWalletId(v string) {
-	o.WalletId = &v
+	o.WalletId = v
 }
 
 func (o Transaction) MarshalJSON() ([]byte, error) {
@@ -725,67 +623,88 @@ func (o Transaction) MarshalJSON() ([]byte, error) {
 
 func (o Transaction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AssetId) {
-		toSerialize["assetId"] = o.AssetId
-	}
-	if !IsNil(o.Chain) {
-		toSerialize["chain"] = o.Chain
-	}
-	if !IsNil(o.ChainId) {
-		toSerialize["chainId"] = o.ChainId
-	}
-	if !IsNil(o.ConfirmedNum) {
-		toSerialize["confirmedNum"] = o.ConfirmedNum
-	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
+	toSerialize["assetId"] = o.AssetId
+	toSerialize["chain"] = o.Chain
+	toSerialize["chainId"] = o.ChainId
+	toSerialize["confirmedNum"] = o.ConfirmedNum
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["description"] = o.Description
 	if !IsNil(o.Destination) {
 		toSerialize["destination"] = o.Destination
 	}
 	if !IsNil(o.Extra) {
 		toSerialize["extra"] = o.Extra
 	}
-	if !IsNil(o.FailedReason) {
-		toSerialize["failedReason"] = o.FailedReason
-	}
+	toSerialize["failedReason"] = o.FailedReason
 	if !IsNil(o.Fee) {
 		toSerialize["fee"] = o.Fee
 	}
-	if !IsNil(o.Hash) {
-		toSerialize["hash"] = o.Hash
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Signature) {
-		toSerialize["signature"] = o.Signature
-	}
+	toSerialize["hash"] = o.Hash
+	toSerialize["id"] = o.Id
+	toSerialize["signature"] = o.Signature
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.TokenId) {
-		toSerialize["tokenId"] = o.TokenId
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["status"] = o.Status
+	toSerialize["tokenId"] = o.TokenId
+	toSerialize["type"] = o.Type
 	if !IsNil(o.Uid) {
 		toSerialize["uid"] = o.Uid
 	}
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
-	}
-	if !IsNil(o.WalletId) {
-		toSerialize["walletId"] = o.WalletId
-	}
+	toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize["walletId"] = o.WalletId
 	return toSerialize, nil
+}
+
+func (o *Transaction) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"assetId",
+		"chain",
+		"chainId",
+		"confirmedNum",
+		"createdAt",
+		"description",
+		"failedReason",
+		"hash",
+		"id",
+		"signature",
+		"status",
+		"tokenId",
+		"type",
+		"updatedAt",
+		"walletId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTransaction := _Transaction{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTransaction)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Transaction(varTransaction)
+
+	return err
 }
 
 type NullableTransaction struct {

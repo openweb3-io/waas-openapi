@@ -11,6 +11,7 @@
  */
 
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
+import { TransferSourceType } from '../models/TransferSourceType';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { HttpFile } from '../http/http';
 
@@ -18,10 +19,7 @@ import { HttpFile } from '../http/http';
 * The ID of the wallet from which the transfer will be made
 */
 export class CreateTransferRequestSource {
-    /**
-    * source type
-    */
-    'sourceType': string;
+    'sourceType': TransferSourceType;
     /**
     * Wallet ID
     */
@@ -37,7 +35,7 @@ export class CreateTransferRequestSource {
         {
             "name": "sourceType",
             "baseName": "source_type",
-            "type": "string",
+            "type": "TransferSourceType",
             "format": ""
         },
         {
@@ -60,4 +58,6 @@ export class CreateTransferRequestSource {
     public constructor() {
     }
 }
+
+
 

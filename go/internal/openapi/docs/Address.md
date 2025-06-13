@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | **string** | Blockchain address | 
-**Chain** | Pointer to **string** | Chain name | [optional] 
-**ChainId** | Pointer to **string** | Chain ID | [optional] 
+**Chain** | **string** | Chain name | 
+**ChainId** | **string** | Chain ID | 
 **CreatedAt** | Pointer to **string** | Created time | [optional] 
 **Memo** | Pointer to **string** | The memo | [optional] 
-**Path** | Pointer to **string** | Derivation path | [optional] 
-**Type** | Pointer to **[]string** | Address Type | [optional] 
+**Path** | **string** | Derivation path | 
+**Type** | **[]string** | Address Type | 
 **UpdatedAt** | Pointer to **string** | Updated time | [optional] 
-**WalletId** | Pointer to **string** | Chain ID | [optional] 
+**WalletId** | Pointer to **string** | Wallet ID | [optional] 
 
 ## Methods
 
 ### NewAddress
 
-`func NewAddress(address string, ) *Address`
+`func NewAddress(address string, chain string, chainId string, path string, type_ []string, ) *Address`
 
 NewAddress instantiates a new Address object
 This constructor will assign default values to properties that have it defined,
@@ -72,11 +72,6 @@ and a boolean to check if the value has been set.
 
 SetChain sets Chain field to given value.
 
-### HasChain
-
-`func (o *Address) HasChain() bool`
-
-HasChain returns a boolean if a field has been set.
 
 ### GetChainId
 
@@ -97,11 +92,6 @@ and a boolean to check if the value has been set.
 
 SetChainId sets ChainId field to given value.
 
-### HasChainId
-
-`func (o *Address) HasChainId() bool`
-
-HasChainId returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -172,11 +162,6 @@ and a boolean to check if the value has been set.
 
 SetPath sets Path field to given value.
 
-### HasPath
-
-`func (o *Address) HasPath() bool`
-
-HasPath returns a boolean if a field has been set.
 
 ### GetType
 
@@ -197,11 +182,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-### HasType
-
-`func (o *Address) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 

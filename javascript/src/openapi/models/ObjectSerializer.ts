@@ -23,6 +23,7 @@ export * from '../models/EstimateFeeRequest';
 export * from '../models/EstimateFeeResponse';
 export * from '../models/EventType';
 export * from '../models/Fee';
+export * from '../models/FeeType';
 export * from '../models/GasStation';
 export * from '../models/GetGasStationDepositAddressReply';
 export * from '../models/ModelError';
@@ -34,8 +35,11 @@ export * from '../models/SweepAddressResponse';
 export * from '../models/Token';
 export * from '../models/Transaction';
 export * from '../models/TransactionEndpoint';
+export * from '../models/TransactionType';
 export * from '../models/TransferDestinationAddress';
+export * from '../models/TransferDestinationType';
 export * from '../models/TransferSourceAsset';
+export * from '../models/TransferSourceType';
 export * from '../models/TransferSourceWeb3';
 export * from '../models/UpdateEndpoint';
 export * from '../models/UpdateGasStationRequest';
@@ -43,6 +47,8 @@ export * from '../models/UpdateTokenRequest';
 export * from '../models/UpdateWalletRequest';
 export * from '../models/ValidateAddressesReply';
 export * from '../models/Wallet';
+export * from '../models/WalletSubType';
+export * from '../models/WalletType';
 
 import { Address } from '../models/Address';
 import { AddressValidityItem } from '../models/AddressValidityItem';
@@ -52,10 +58,10 @@ import { CreateEndpoint } from '../models/CreateEndpoint';
 import { CreateGasStationRequest } from '../models/CreateGasStationRequest';
 import { CreateTokenRequest } from '../models/CreateTokenRequest';
 import { CreateTransferRequest } from '../models/CreateTransferRequest';
-import { CreateTransferRequestDestination } from '../models/CreateTransferRequestDestination';
-import { CreateTransferRequestSource } from '../models/CreateTransferRequestSource';
+import { CreateTransferRequestDestination   } from '../models/CreateTransferRequestDestination';
+import { CreateTransferRequestSource    } from '../models/CreateTransferRequestSource';
 import { CreateTransferResponse } from '../models/CreateTransferResponse';
-import { CreateWalletRequest } from '../models/CreateWalletRequest';
+import { CreateWalletRequest     } from '../models/CreateWalletRequest';
 import { CursorPageAddress } from '../models/CursorPageAddress';
 import { CursorPageChain } from '../models/CursorPageChain';
 import { CursorPageEndpoint } from '../models/CursorPageEndpoint';
@@ -68,27 +74,33 @@ import { Endpoint } from '../models/Endpoint';
 import { EstimateFeeRequest } from '../models/EstimateFeeRequest';
 import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
-import { Fee } from '../models/Fee';
+import { Fee    } from '../models/Fee';
+import { FeeType } from '../models/FeeType';
 import { GasStation } from '../models/GasStation';
 import { GetGasStationDepositAddressReply } from '../models/GetGasStationDepositAddressReply';
 import { ModelError } from '../models/ModelError';
 import { SignMessageRequest } from '../models/SignMessageRequest';
-import { SignMessageRequestSource } from '../models/SignMessageRequestSource';
+import { SignMessageRequestSource    } from '../models/SignMessageRequestSource';
 import { SignMessageResponse } from '../models/SignMessageResponse';
 import { SweepAddressRequest } from '../models/SweepAddressRequest';
 import { SweepAddressResponse } from '../models/SweepAddressResponse';
 import { Token } from '../models/Token';
-import { Transaction } from '../models/Transaction';
+import { Transaction              , TransactionStatusEnum        } from '../models/Transaction';
 import { TransactionEndpoint } from '../models/TransactionEndpoint';
-import { TransferDestinationAddress } from '../models/TransferDestinationAddress';
-import { TransferSourceAsset } from '../models/TransferSourceAsset';
-import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
+import { TransactionType } from '../models/TransactionType';
+import { TransferDestinationAddress   } from '../models/TransferDestinationAddress';
+import { TransferDestinationType } from '../models/TransferDestinationType';
+import { TransferSourceAsset   } from '../models/TransferSourceAsset';
+import { TransferSourceType } from '../models/TransferSourceType';
+import { TransferSourceWeb3    } from '../models/TransferSourceWeb3';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
 import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
 import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
-import { Wallet } from '../models/Wallet';
+import { Wallet        } from '../models/Wallet';
+import { WalletSubType } from '../models/WalletSubType';
+import { WalletType } from '../models/WalletType';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -103,6 +115,13 @@ let primitives = [
                  ];
 
 let enumsMap: Set<string> = new Set<string>([
+    "FeeType",
+    "TransactionStatusEnum",
+    "TransactionType",
+    "TransferDestinationType",
+    "TransferSourceType",
+    "WalletSubType",
+    "WalletType",
 ]);
 
 let typeMap: {[index: string]: any} = {

@@ -5,6 +5,7 @@ node_modules
 examples/
 __tests__
 
+.yarn
 .vscode
 .DS_Store
 

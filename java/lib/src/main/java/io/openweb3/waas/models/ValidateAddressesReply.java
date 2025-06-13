@@ -77,7 +77,7 @@ public class ValidateAddressesReply {
    * Address validity items
    * @return items
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public List<AddressValidityItem> getItems() {
     return items;
   }
@@ -136,6 +136,7 @@ public class ValidateAddressesReply {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("items");
   }
 
   /**
@@ -158,21 +159,24 @@ public class ValidateAddressesReply {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ValidateAddressesReply` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("items") != null && !jsonObj.get("items").isJsonNull()) {
-        JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
-        if (jsonArrayitems != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("items").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
-          }
 
-          // validate the optional field `items` (array)
-          for (int i = 0; i < jsonArrayitems.size(); i++) {
-            AddressValidityItem.validateJsonElement(jsonArrayitems.get(i));
-          };
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : ValidateAddressesReply.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the json data is an array
+      if (!jsonObj.get("items").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
+      }
+
+      JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+      // validate the required field `items` (array)
+      for (int i = 0; i < jsonArrayitems.size(); i++) {
+        AddressValidityItem.validateJsonElement(jsonArrayitems.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

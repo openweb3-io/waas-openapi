@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.openweb3.waas.models.Fee;
 import io.openweb3.waas.models.TransactionEndpoint;
+import io.openweb3.waas.models.TransactionType;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -110,9 +111,69 @@ public class Transaction {
   @SerializedName(SERIALIZED_NAME_SOURCE)
   private TransactionEndpoint source;
 
+  /**
+   * Transaction status
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    SUBMITTED("Submitted"),
+    
+    PENDING_SIGNATURE("PendingSignature"),
+    
+    FAILED("Failed"),
+    
+    BROADCASTING("Broadcasting"),
+    
+    CONFIRMING("Confirming"),
+    
+    COMPLETED("Completed");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      StatusEnum.fromValue(value);
+    }
+  }
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private String status;
+  private StatusEnum status;
 
   public static final String SERIALIZED_NAME_TOKEN_ID = "tokenId";
   @SerializedName(SERIALIZED_NAME_TOKEN_ID)
@@ -120,7 +181,7 @@ public class Transaction {
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  private TransactionType type;
 
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
@@ -146,7 +207,7 @@ public class Transaction {
    * Asset ID
    * @return assetId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getAssetId() {
     return assetId;
   }
@@ -165,7 +226,7 @@ public class Transaction {
    * Chain
    * @return chain
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getChain() {
     return chain;
   }
@@ -184,7 +245,7 @@ public class Transaction {
    * Chain ID
    * @return chainId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getChainId() {
     return chainId;
   }
@@ -203,7 +264,7 @@ public class Transaction {
    * Confirmed number
    * @return confirmedNum
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getConfirmedNum() {
     return confirmedNum;
   }
@@ -222,7 +283,7 @@ public class Transaction {
    * Created time
    * @return createdAt
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getCreatedAt() {
     return createdAt;
   }
@@ -241,7 +302,7 @@ public class Transaction {
    * Description
    * @return description
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getDescription() {
     return description;
   }
@@ -306,7 +367,7 @@ public class Transaction {
    * Failed reason
    * @return failedReason
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getFailedReason() {
     return failedReason;
   }
@@ -344,7 +405,7 @@ public class Transaction {
    * Transaction hash
    * @return hash
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getHash() {
     return hash;
   }
@@ -363,7 +424,7 @@ public class Transaction {
    * Transaction ID
    * @return id
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
@@ -382,7 +443,7 @@ public class Transaction {
    * Signature
    * @return signature
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getSignature() {
     return signature;
   }
@@ -411,7 +472,7 @@ public class Transaction {
   }
 
 
-  public Transaction status(String status) {
+  public Transaction status(StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -420,12 +481,12 @@ public class Transaction {
    * Transaction status
    * @return status
    */
-  @javax.annotation.Nullable
-  public String getStatus() {
+  @javax.annotation.Nonnull
+  public StatusEnum getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
@@ -439,7 +500,7 @@ public class Transaction {
    * Token ID
    * @return tokenId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getTokenId() {
     return tokenId;
   }
@@ -449,21 +510,21 @@ public class Transaction {
   }
 
 
-  public Transaction type(String type) {
+  public Transaction type(TransactionType type) {
     this.type = type;
     return this;
   }
 
   /**
-   * Transaction type
+   * Get type
    * @return type
    */
-  @javax.annotation.Nullable
-  public String getType() {
+  @javax.annotation.Nonnull
+  public TransactionType getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(TransactionType type) {
     this.type = type;
   }
 
@@ -496,7 +557,7 @@ public class Transaction {
    * Updated time
    * @return updatedAt
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getUpdatedAt() {
     return updatedAt;
   }
@@ -515,7 +576,7 @@ public class Transaction {
    * Wallet ID
    * @return walletId
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getWalletId() {
     return walletId;
   }
@@ -631,6 +692,21 @@ public class Transaction {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("assetId");
+    openapiRequiredFields.add("chain");
+    openapiRequiredFields.add("chainId");
+    openapiRequiredFields.add("confirmedNum");
+    openapiRequiredFields.add("createdAt");
+    openapiRequiredFields.add("description");
+    openapiRequiredFields.add("failedReason");
+    openapiRequiredFields.add("hash");
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("signature");
+    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("tokenId");
+    openapiRequiredFields.add("type");
+    openapiRequiredFields.add("updatedAt");
+    openapiRequiredFields.add("walletId");
   }
 
   /**
@@ -653,62 +729,70 @@ public class Transaction {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Transaction` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Transaction.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("assetId") != null && !jsonObj.get("assetId").isJsonNull()) && !jsonObj.get("assetId").isJsonPrimitive()) {
+      if (!jsonObj.get("assetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `assetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assetId").toString()));
       }
-      if ((jsonObj.get("chain") != null && !jsonObj.get("chain").isJsonNull()) && !jsonObj.get("chain").isJsonPrimitive()) {
+      if (!jsonObj.get("chain").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chain` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain").toString()));
       }
-      if ((jsonObj.get("chainId") != null && !jsonObj.get("chainId").isJsonNull()) && !jsonObj.get("chainId").isJsonPrimitive()) {
+      if (!jsonObj.get("chainId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chainId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chainId").toString()));
       }
-      if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
+      if (!jsonObj.get("createdAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
       }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+      if (!jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the optional field `destination`
       if (jsonObj.get("destination") != null && !jsonObj.get("destination").isJsonNull()) {
         TransactionEndpoint.validateJsonElement(jsonObj.get("destination"));
       }
-      if ((jsonObj.get("failedReason") != null && !jsonObj.get("failedReason").isJsonNull()) && !jsonObj.get("failedReason").isJsonPrimitive()) {
+      if (!jsonObj.get("failedReason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `failedReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("failedReason").toString()));
       }
       // validate the optional field `fee`
       if (jsonObj.get("fee") != null && !jsonObj.get("fee").isJsonNull()) {
         Fee.validateJsonElement(jsonObj.get("fee"));
       }
-      if ((jsonObj.get("hash") != null && !jsonObj.get("hash").isJsonNull()) && !jsonObj.get("hash").isJsonPrimitive()) {
+      if (!jsonObj.get("hash").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("signature") != null && !jsonObj.get("signature").isJsonNull()) && !jsonObj.get("signature").isJsonPrimitive()) {
+      if (!jsonObj.get("signature").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `signature` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signature").toString()));
       }
       // validate the optional field `source`
       if (jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) {
         TransactionEndpoint.validateJsonElement(jsonObj.get("source"));
       }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+      if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if ((jsonObj.get("tokenId") != null && !jsonObj.get("tokenId").isJsonNull()) && !jsonObj.get("tokenId").isJsonPrimitive()) {
+      // validate the required field `status`
+      StatusEnum.validateJsonElement(jsonObj.get("status"));
+      if (!jsonObj.get("tokenId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tokenId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tokenId").toString()));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
+      // validate the required field `type`
+      TransactionType.validateJsonElement(jsonObj.get("type"));
       if ((jsonObj.get("uid") != null && !jsonObj.get("uid").isJsonNull()) && !jsonObj.get("uid").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `uid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uid").toString()));
       }
-      if ((jsonObj.get("updatedAt") != null && !jsonObj.get("updatedAt").isJsonNull()) && !jsonObj.get("updatedAt").isJsonPrimitive()) {
+      if (!jsonObj.get("updatedAt").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updatedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updatedAt").toString()));
       }
-      if ((jsonObj.get("walletId") != null && !jsonObj.get("walletId").isJsonNull()) && !jsonObj.get("walletId").isJsonPrimitive()) {
+      if (!jsonObj.get("walletId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `walletId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("walletId").toString()));
       }
   }

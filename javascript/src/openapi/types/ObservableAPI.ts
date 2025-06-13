@@ -27,6 +27,7 @@ import { EstimateFeeRequest } from '../models/EstimateFeeRequest';
 import { EstimateFeeResponse } from '../models/EstimateFeeResponse';
 import { EventType } from '../models/EventType';
 import { Fee } from '../models/Fee';
+import { FeeType } from '../models/FeeType';
 import { GasStation } from '../models/GasStation';
 import { GetGasStationDepositAddressReply } from '../models/GetGasStationDepositAddressReply';
 import { ModelError } from '../models/ModelError';
@@ -38,8 +39,11 @@ import { SweepAddressResponse } from '../models/SweepAddressResponse';
 import { Token } from '../models/Token';
 import { Transaction } from '../models/Transaction';
 import { TransactionEndpoint } from '../models/TransactionEndpoint';
+import { TransactionType } from '../models/TransactionType';
 import { TransferDestinationAddress } from '../models/TransferDestinationAddress';
+import { TransferDestinationType } from '../models/TransferDestinationType';
 import { TransferSourceAsset } from '../models/TransferSourceAsset';
+import { TransferSourceType } from '../models/TransferSourceType';
 import { TransferSourceWeb3 } from '../models/TransferSourceWeb3';
 import { UpdateEndpoint } from '../models/UpdateEndpoint';
 import { UpdateGasStationRequest } from '../models/UpdateGasStationRequest';
@@ -47,6 +51,8 @@ import { UpdateTokenRequest } from '../models/UpdateTokenRequest';
 import { UpdateWalletRequest } from '../models/UpdateWalletRequest';
 import { ValidateAddressesReply } from '../models/ValidateAddressesReply';
 import { Wallet } from '../models/Wallet';
+import { WalletSubType } from '../models/WalletSubType';
+import { WalletType } from '../models/WalletType';
 
 import { AddressesApiRequestFactory, AddressesApiResponseProcessor} from "../apis/AddressesApi";
 export class ObservableAddressesApi {
@@ -106,11 +112,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidateWithHttpInfo(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
-        const requestContextPromise = this.requestFactory.v1AddressesValidate(chainId, addresses, _options);
+    public v1AddressesValidateWithHttpInfo(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<HttpInfo<ValidateAddressesReply>> {
+        const requestContextPromise = this.requestFactory.v1AddressesValidate(addresses, chainId, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -131,11 +137,11 @@ export class ObservableAddressesApi {
     /**
      * Validate addresses
      * Validate addresses
-     * @param chainId Chain ID
      * @param addresses Addresses
+     * @param chainId Chain ID
      */
-    public v1AddressesValidate(chainId: string, addresses: Array<string>, _options?: Configuration): Observable<ValidateAddressesReply> {
-        return this.v1AddressesValidateWithHttpInfo(chainId, addresses, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
+    public v1AddressesValidate(addresses: Array<string>, chainId: string, _options?: Configuration): Observable<ValidateAddressesReply> {
+        return this.v1AddressesValidateWithHttpInfo(addresses, chainId, _options).pipe(map((apiResponse: HttpInfo<ValidateAddressesReply>) => apiResponse.data));
     }
 
     /**
@@ -827,7 +833,7 @@ export class ObservableTransactionsApi {
      * @param cursor A cursor value for pagination purposes.
      * @param limit The number of records to return default: 20
      */
-    public v1TransactionsListWithHttpInfo(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: string, cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageTransaction>> {
+    public v1TransactionsListWithHttpInfo(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: 'Submitted' | 'PendingSignature' | 'Failed' | 'Broadcasting' | 'Confirming' | 'Completed', cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<CursorPageTransaction>> {
         const requestContextPromise = this.requestFactory.v1TransactionsList(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _options);
 
         // build promise chain
@@ -858,7 +864,7 @@ export class ObservableTransactionsApi {
      * @param cursor A cursor value for pagination purposes.
      * @param limit The number of records to return default: 20
      */
-    public v1TransactionsList(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: string, cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageTransaction> {
+    public v1TransactionsList(walletIds?: Array<string>, chainIds?: Array<string>, tokenIds?: Array<string>, assetIds?: Array<string>, hash?: string, status?: 'Submitted' | 'PendingSignature' | 'Failed' | 'Broadcasting' | 'Confirming' | 'Completed', cursor?: string, limit?: number, _options?: Configuration): Observable<CursorPageTransaction> {
         return this.v1TransactionsListWithHttpInfo(walletIds, chainIds, tokenIds, assetIds, hash, status, cursor, limit, _options).pipe(map((apiResponse: HttpInfo<CursorPageTransaction>) => apiResponse.data));
     }
 

@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MaxFeeAmount** | **string** | Max fee amount | 
 **TokenId** | **string** | Token ID | 
-**Type** | **int32** | Fee type | 
+**Type** | [**FeeType**](FeeType.md) |  | 
 
 ## Methods
 
 ### NewFee
 
-`func NewFee(maxFeeAmount string, tokenId string, type_ int32, ) *Fee`
+`func NewFee(maxFeeAmount string, tokenId string, type_ FeeType, ) *Fee`
 
 NewFee instantiates a new Fee object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetTokenId sets TokenId field to given value.
 
 ### GetType
 
-`func (o *Fee) GetType() int32`
+`func (o *Fee) GetType() FeeType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Fee) GetTypeOk() (*int32, bool)`
+`func (o *Fee) GetTypeOk() (*FeeType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Fee) SetType(v int32)`
+`func (o *Fee) SetType(v FeeType)`
 
 SetType sets Type field to given value.
 

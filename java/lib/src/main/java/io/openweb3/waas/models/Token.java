@@ -21,8 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,6 +50,10 @@ import io.openweb3.waas.internal.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.8.0")
 public class Token {
+  public static final String SERIALIZED_NAME_ASSET_ID = "asset_id";
+  @SerializedName(SERIALIZED_NAME_ASSET_ID)
+  private String assetId;
+
   public static final String SERIALIZED_NAME_CAN_DEPOSIT = "can_deposit";
   @SerializedName(SERIALIZED_NAME_CAN_DEPOSIT)
   private Boolean canDeposit;
@@ -59,6 +61,10 @@ public class Token {
   public static final String SERIALIZED_NAME_CAN_WITHDRAW = "can_withdraw";
   @SerializedName(SERIALIZED_NAME_CAN_WITHDRAW)
   private Boolean canWithdraw;
+
+  public static final String SERIALIZED_NAME_CHAIN_ID = "chain_id";
+  @SerializedName(SERIALIZED_NAME_CHAIN_ID)
+  private String chainId;
 
   public static final String SERIALIZED_NAME_CONTRACT_ADDRESS = "contract_address";
   @SerializedName(SERIALIZED_NAME_CONTRACT_ADDRESS)
@@ -72,6 +78,10 @@ public class Token {
   @SerializedName(SERIALIZED_NAME_DECIMALS)
   private Integer decimals;
 
+  public static final String SERIALIZED_NAME_FEE_TOKEN_ID = "fee_token_id";
+  @SerializedName(SERIALIZED_NAME_FEE_TOKEN_ID)
+  private String feeTokenId;
+
   public static final String SERIALIZED_NAME_ICON_URL = "icon_url";
   @SerializedName(SERIALIZED_NAME_ICON_URL)
   private String iconUrl;
@@ -83,10 +93,6 @@ public class Token {
   public static final String SERIALIZED_NAME_MAX_WITHDRAW_AMOUNT = "max_withdraw_amount";
   @SerializedName(SERIALIZED_NAME_MAX_WITHDRAW_AMOUNT)
   private String maxWithdrawAmount;
-
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private Map<String, String> metadata = new HashMap<>();
 
   public static final String SERIALIZED_NAME_MIN_DEPOSIT_AMOUNT = "min_deposit_amount";
   @SerializedName(SERIALIZED_NAME_MIN_DEPOSIT_AMOUNT)
@@ -100,10 +106,6 @@ public class Token {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
-  public static final String SERIALIZED_NAME_NEED_MEMO = "need_memo";
-  @SerializedName(SERIALIZED_NAME_NEED_MEMO)
-  private Boolean needMemo;
-
   public static final String SERIALIZED_NAME_PRECISION = "precision";
   @SerializedName(SERIALIZED_NAME_PRECISION)
   private Integer precision;
@@ -112,16 +114,31 @@ public class Token {
   @SerializedName(SERIALIZED_NAME_SYMBOL)
   private String symbol;
 
-  public static final String SERIALIZED_NAME_TOTAL_SUPPLY = "total_supply";
-  @SerializedName(SERIALIZED_NAME_TOTAL_SUPPLY)
-  private String totalSupply;
-
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   private String updatedAt;
 
   public Token() {
   }
+
+  public Token assetId(String assetId) {
+    this.assetId = assetId;
+    return this;
+  }
+
+  /**
+   * Asset ID
+   * @return assetId
+   */
+  @javax.annotation.Nonnull
+  public String getAssetId() {
+    return assetId;
+  }
+
+  public void setAssetId(String assetId) {
+    this.assetId = assetId;
+  }
+
 
   public Token canDeposit(Boolean canDeposit) {
     this.canDeposit = canDeposit;
@@ -132,7 +149,7 @@ public class Token {
    * Whether deposits are allowed
    * @return canDeposit
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Boolean getCanDeposit() {
     return canDeposit;
   }
@@ -151,13 +168,32 @@ public class Token {
    * Whether withdrawals are allowed
    * @return canWithdraw
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Boolean getCanWithdraw() {
     return canWithdraw;
   }
 
   public void setCanWithdraw(Boolean canWithdraw) {
     this.canWithdraw = canWithdraw;
+  }
+
+
+  public Token chainId(String chainId) {
+    this.chainId = chainId;
+    return this;
+  }
+
+  /**
+   * Chain ID
+   * @return chainId
+   */
+  @javax.annotation.Nonnull
+  public String getChainId() {
+    return chainId;
+  }
+
+  public void setChainId(String chainId) {
+    this.chainId = chainId;
   }
 
 
@@ -170,7 +206,7 @@ public class Token {
    * Contract address
    * @return contractAddress
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getContractAddress() {
     return contractAddress;
   }
@@ -189,7 +225,7 @@ public class Token {
    * Creation time
    * @return createdAt
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getCreatedAt() {
     return createdAt;
   }
@@ -208,13 +244,32 @@ public class Token {
    * Decimals
    * @return decimals
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getDecimals() {
     return decimals;
   }
 
   public void setDecimals(Integer decimals) {
     this.decimals = decimals;
+  }
+
+
+  public Token feeTokenId(String feeTokenId) {
+    this.feeTokenId = feeTokenId;
+    return this;
+  }
+
+  /**
+   * Fee token ID
+   * @return feeTokenId
+   */
+  @javax.annotation.Nonnull
+  public String getFeeTokenId() {
+    return feeTokenId;
+  }
+
+  public void setFeeTokenId(String feeTokenId) {
+    this.feeTokenId = feeTokenId;
   }
 
 
@@ -227,7 +282,7 @@ public class Token {
    * Icon
    * @return iconUrl
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getIconUrl() {
     return iconUrl;
   }
@@ -246,7 +301,7 @@ public class Token {
    * Token ID
    * @return id
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getId() {
     return id;
   }
@@ -265,40 +320,13 @@ public class Token {
    * Max withdraw amount
    * @return maxWithdrawAmount
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getMaxWithdrawAmount() {
     return maxWithdrawAmount;
   }
 
   public void setMaxWithdrawAmount(String maxWithdrawAmount) {
     this.maxWithdrawAmount = maxWithdrawAmount;
-  }
-
-
-  public Token metadata(Map<String, String> metadata) {
-    this.metadata = metadata;
-    return this;
-  }
-
-  public Token putMetadataItem(String key, String metadataItem) {
-    if (this.metadata == null) {
-      this.metadata = new HashMap<>();
-    }
-    this.metadata.put(key, metadataItem);
-    return this;
-  }
-
-  /**
-   * Extended metadata
-   * @return metadata
-   */
-  @javax.annotation.Nullable
-  public Map<String, String> getMetadata() {
-    return metadata;
-  }
-
-  public void setMetadata(Map<String, String> metadata) {
-    this.metadata = metadata;
   }
 
 
@@ -311,7 +339,7 @@ public class Token {
    * Min deposit amount
    * @return minDepositAmount
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getMinDepositAmount() {
     return minDepositAmount;
   }
@@ -330,7 +358,7 @@ public class Token {
    * Min withdraw amount
    * @return minWithdrawAmount
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getMinWithdrawAmount() {
     return minWithdrawAmount;
   }
@@ -349,32 +377,13 @@ public class Token {
    * Name
    * @return name
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getName() {
     return name;
   }
 
   public void setName(String name) {
     this.name = name;
-  }
-
-
-  public Token needMemo(Boolean needMemo) {
-    this.needMemo = needMemo;
-    return this;
-  }
-
-  /**
-   * Whether a memo is required
-   * @return needMemo
-   */
-  @javax.annotation.Nullable
-  public Boolean getNeedMemo() {
-    return needMemo;
-  }
-
-  public void setNeedMemo(Boolean needMemo) {
-    this.needMemo = needMemo;
   }
 
 
@@ -387,7 +396,7 @@ public class Token {
    * Precision
    * @return precision
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getPrecision() {
     return precision;
   }
@@ -406,32 +415,13 @@ public class Token {
    * Symbol . e.g.: BTC / ETH
    * @return symbol
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getSymbol() {
     return symbol;
   }
 
   public void setSymbol(String symbol) {
     this.symbol = symbol;
-  }
-
-
-  public Token totalSupply(String totalSupply) {
-    this.totalSupply = totalSupply;
-    return this;
-  }
-
-  /**
-   * Total supply
-   * @return totalSupply
-   */
-  @javax.annotation.Nullable
-  public String getTotalSupply() {
-    return totalSupply;
-  }
-
-  public void setTotalSupply(String totalSupply) {
-    this.totalSupply = totalSupply;
   }
 
 
@@ -444,7 +434,7 @@ public class Token {
    * Last updated time
    * @return updatedAt
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getUpdatedAt() {
     return updatedAt;
   }
@@ -464,50 +454,50 @@ public class Token {
       return false;
     }
     Token token = (Token) o;
-    return Objects.equals(this.canDeposit, token.canDeposit) &&
+    return Objects.equals(this.assetId, token.assetId) &&
+        Objects.equals(this.canDeposit, token.canDeposit) &&
         Objects.equals(this.canWithdraw, token.canWithdraw) &&
+        Objects.equals(this.chainId, token.chainId) &&
         Objects.equals(this.contractAddress, token.contractAddress) &&
         Objects.equals(this.createdAt, token.createdAt) &&
         Objects.equals(this.decimals, token.decimals) &&
+        Objects.equals(this.feeTokenId, token.feeTokenId) &&
         Objects.equals(this.iconUrl, token.iconUrl) &&
         Objects.equals(this.id, token.id) &&
         Objects.equals(this.maxWithdrawAmount, token.maxWithdrawAmount) &&
-        Objects.equals(this.metadata, token.metadata) &&
         Objects.equals(this.minDepositAmount, token.minDepositAmount) &&
         Objects.equals(this.minWithdrawAmount, token.minWithdrawAmount) &&
         Objects.equals(this.name, token.name) &&
-        Objects.equals(this.needMemo, token.needMemo) &&
         Objects.equals(this.precision, token.precision) &&
         Objects.equals(this.symbol, token.symbol) &&
-        Objects.equals(this.totalSupply, token.totalSupply) &&
         Objects.equals(this.updatedAt, token.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(canDeposit, canWithdraw, contractAddress, createdAt, decimals, iconUrl, id, maxWithdrawAmount, metadata, minDepositAmount, minWithdrawAmount, name, needMemo, precision, symbol, totalSupply, updatedAt);
+    return Objects.hash(assetId, canDeposit, canWithdraw, chainId, contractAddress, createdAt, decimals, feeTokenId, iconUrl, id, maxWithdrawAmount, minDepositAmount, minWithdrawAmount, name, precision, symbol, updatedAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Token {\n");
+    sb.append("    assetId: ").append(toIndentedString(assetId)).append("\n");
     sb.append("    canDeposit: ").append(toIndentedString(canDeposit)).append("\n");
     sb.append("    canWithdraw: ").append(toIndentedString(canWithdraw)).append("\n");
+    sb.append("    chainId: ").append(toIndentedString(chainId)).append("\n");
     sb.append("    contractAddress: ").append(toIndentedString(contractAddress)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    decimals: ").append(toIndentedString(decimals)).append("\n");
+    sb.append("    feeTokenId: ").append(toIndentedString(feeTokenId)).append("\n");
     sb.append("    iconUrl: ").append(toIndentedString(iconUrl)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    maxWithdrawAmount: ").append(toIndentedString(maxWithdrawAmount)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    minDepositAmount: ").append(toIndentedString(minDepositAmount)).append("\n");
     sb.append("    minWithdrawAmount: ").append(toIndentedString(minWithdrawAmount)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    needMemo: ").append(toIndentedString(needMemo)).append("\n");
     sb.append("    precision: ").append(toIndentedString(precision)).append("\n");
     sb.append("    symbol: ").append(toIndentedString(symbol)).append("\n");
-    sb.append("    totalSupply: ").append(toIndentedString(totalSupply)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -531,26 +521,43 @@ public class Token {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("asset_id");
     openapiFields.add("can_deposit");
     openapiFields.add("can_withdraw");
+    openapiFields.add("chain_id");
     openapiFields.add("contract_address");
     openapiFields.add("created_at");
     openapiFields.add("decimals");
+    openapiFields.add("fee_token_id");
     openapiFields.add("icon_url");
     openapiFields.add("id");
     openapiFields.add("max_withdraw_amount");
-    openapiFields.add("metadata");
     openapiFields.add("min_deposit_amount");
     openapiFields.add("min_withdraw_amount");
     openapiFields.add("name");
-    openapiFields.add("need_memo");
     openapiFields.add("precision");
     openapiFields.add("symbol");
-    openapiFields.add("total_supply");
     openapiFields.add("updated_at");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("asset_id");
+    openapiRequiredFields.add("can_deposit");
+    openapiRequiredFields.add("can_withdraw");
+    openapiRequiredFields.add("chain_id");
+    openapiRequiredFields.add("contract_address");
+    openapiRequiredFields.add("created_at");
+    openapiRequiredFields.add("decimals");
+    openapiRequiredFields.add("fee_token_id");
+    openapiRequiredFields.add("icon_url");
+    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("max_withdraw_amount");
+    openapiRequiredFields.add("min_deposit_amount");
+    openapiRequiredFields.add("min_withdraw_amount");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("precision");
+    openapiRequiredFields.add("symbol");
+    openapiRequiredFields.add("updated_at");
   }
 
   /**
@@ -573,38 +580,51 @@ public class Token {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Token` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : Token.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
+      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("contract_address") != null && !jsonObj.get("contract_address").isJsonNull()) && !jsonObj.get("contract_address").isJsonPrimitive()) {
+      if (!jsonObj.get("asset_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `asset_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asset_id").toString()));
+      }
+      if (!jsonObj.get("chain_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `chain_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chain_id").toString()));
+      }
+      if (!jsonObj.get("contract_address").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `contract_address` to be a primitive type in the JSON string but got `%s`", jsonObj.get("contract_address").toString()));
       }
-      if ((jsonObj.get("created_at") != null && !jsonObj.get("created_at").isJsonNull()) && !jsonObj.get("created_at").isJsonPrimitive()) {
+      if (!jsonObj.get("created_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `created_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created_at").toString()));
       }
-      if ((jsonObj.get("icon_url") != null && !jsonObj.get("icon_url").isJsonNull()) && !jsonObj.get("icon_url").isJsonPrimitive()) {
+      if (!jsonObj.get("fee_token_id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fee_token_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fee_token_id").toString()));
+      }
+      if (!jsonObj.get("icon_url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `icon_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("icon_url").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+      if (!jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if ((jsonObj.get("max_withdraw_amount") != null && !jsonObj.get("max_withdraw_amount").isJsonNull()) && !jsonObj.get("max_withdraw_amount").isJsonPrimitive()) {
+      if (!jsonObj.get("max_withdraw_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `max_withdraw_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("max_withdraw_amount").toString()));
       }
-      if ((jsonObj.get("min_deposit_amount") != null && !jsonObj.get("min_deposit_amount").isJsonNull()) && !jsonObj.get("min_deposit_amount").isJsonPrimitive()) {
+      if (!jsonObj.get("min_deposit_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `min_deposit_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("min_deposit_amount").toString()));
       }
-      if ((jsonObj.get("min_withdraw_amount") != null && !jsonObj.get("min_withdraw_amount").isJsonNull()) && !jsonObj.get("min_withdraw_amount").isJsonPrimitive()) {
+      if (!jsonObj.get("min_withdraw_amount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `min_withdraw_amount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("min_withdraw_amount").toString()));
       }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+      if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("symbol") != null && !jsonObj.get("symbol").isJsonNull()) && !jsonObj.get("symbol").isJsonPrimitive()) {
+      if (!jsonObj.get("symbol").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `symbol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("symbol").toString()));
       }
-      if ((jsonObj.get("total_supply") != null && !jsonObj.get("total_supply").isJsonNull()) && !jsonObj.get("total_supply").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `total_supply` to be a primitive type in the JSON string but got `%s`", jsonObj.get("total_supply").toString()));
-      }
-      if ((jsonObj.get("updated_at") != null && !jsonObj.get("updated_at").isJsonNull()) && !jsonObj.get("updated_at").isJsonPrimitive()) {
+      if (!jsonObj.get("updated_at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `updated_at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated_at").toString()));
       }
   }

@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	createWalletRequest := *openapiclient.NewCreateWalletRequest("Name_example", "SubType_example", "Type_example") // CreateWalletRequest | Request body
+	createWalletRequest := *openapiclient.NewCreateWalletRequest("Name_example", openapiclient.WalletSubType("Asset"), openapiclient.WalletType("Custodial")) // CreateWalletRequest | Request body
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

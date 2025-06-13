@@ -12,6 +12,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AddressValidityItem type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,21 @@ var _ MappedNullable = &AddressValidityItem{}
 // AddressValidityItem struct for AddressValidityItem
 type AddressValidityItem struct {
 	// Address
-	Address *string `json:"address,omitempty"`
+	Address string `json:"address"`
 	// Validity
-	Validity *bool `json:"validity,omitempty"`
+	Validity bool `json:"validity"`
 }
+
+type _AddressValidityItem AddressValidityItem
 
 // NewAddressValidityItem instantiates a new AddressValidityItem object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddressValidityItem() *AddressValidityItem {
+func NewAddressValidityItem(address string, validity bool) *AddressValidityItem {
 	this := AddressValidityItem{}
+	this.Address = address
+	this.Validity = validity
 	return &this
 }
 
@@ -42,68 +48,52 @@ func NewAddressValidityItemWithDefaults() *AddressValidityItem {
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
+// GetAddress returns the Address field value
 func (o *AddressValidityItem) GetAddress() string {
-	if o == nil || IsNil(o.Address) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Address
+
+	return o.Address
 }
 
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 func (o *AddressValidityItem) GetAddressOk() (*string, bool) {
-	if o == nil || IsNil(o.Address) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Address, true
+	return &o.Address, true
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *AddressValidityItem) HasAddress() bool {
-	if o != nil && !IsNil(o.Address) {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given string and assigns it to the Address field.
+// SetAddress sets field value
 func (o *AddressValidityItem) SetAddress(v string) {
-	o.Address = &v
+	o.Address = v
 }
 
-// GetValidity returns the Validity field value if set, zero value otherwise.
+// GetValidity returns the Validity field value
 func (o *AddressValidityItem) GetValidity() bool {
-	if o == nil || IsNil(o.Validity) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Validity
+
+	return o.Validity
 }
 
-// GetValidityOk returns a tuple with the Validity field value if set, nil otherwise
+// GetValidityOk returns a tuple with the Validity field value
 // and a boolean to check if the value has been set.
 func (o *AddressValidityItem) GetValidityOk() (*bool, bool) {
-	if o == nil || IsNil(o.Validity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Validity, true
+	return &o.Validity, true
 }
 
-// HasValidity returns a boolean if a field has been set.
-func (o *AddressValidityItem) HasValidity() bool {
-	if o != nil && !IsNil(o.Validity) {
-		return true
-	}
-
-	return false
-}
-
-// SetValidity gets a reference to the given bool and assigns it to the Validity field.
+// SetValidity sets field value
 func (o *AddressValidityItem) SetValidity(v bool) {
-	o.Validity = &v
+	o.Validity = v
 }
 
 func (o AddressValidityItem) MarshalJSON() ([]byte, error) {
@@ -116,13 +106,47 @@ func (o AddressValidityItem) MarshalJSON() ([]byte, error) {
 
 func (o AddressValidityItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
-		toSerialize["address"] = o.Address
-	}
-	if !IsNil(o.Validity) {
-		toSerialize["validity"] = o.Validity
-	}
+	toSerialize["address"] = o.Address
+	toSerialize["validity"] = o.Validity
 	return toSerialize, nil
+}
+
+func (o *AddressValidityItem) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"address",
+		"validity",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAddressValidityItem := _AddressValidityItem{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAddressValidityItem)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AddressValidityItem(varAddressValidityItem)
+
+	return err
 }
 
 type NullableAddressValidityItem struct {

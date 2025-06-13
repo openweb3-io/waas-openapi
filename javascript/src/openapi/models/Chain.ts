@@ -14,57 +14,57 @@ import { HttpFile } from '../http/http';
 
 export class Chain {
     /**
-    * Chain
+    * Chain protocol
     */
-    'chain'?: string;
+    'chain': string;
     /**
     * Confirmation number
     */
-    'confirmNum'?: number;
+    'confirmNum': number;
     /**
     * Created time
     */
-    'createdAt'?: string;
+    'createdAt': string;
     /**
     * Explorer address URL
     */
-    'explorerAddressUrl'?: string;
+    'explorerAddressUrl': string;
     /**
     * Explorer block URL
     */
-    'explorerBlockUrl'?: string;
+    'explorerBlockUrl': string;
     /**
     * Explorer transaction URL
     */
-    'explorerTxUrl'?: string;
+    'explorerTxUrl': string;
     /**
     * Icon URL
     */
-    'iconUrl'?: string;
+    'iconUrl': string;
     /**
     * Chain ID
     */
-    'id'?: string;
+    'id': string;
     /**
     * Chain name
     */
-    'name'?: string;
+    'name': string;
     /**
     * Need memo
     */
-    'needMemo'?: boolean;
+    'needMemo': boolean;
     /**
     * Chain network
     */
-    'network'?: string;
+    'network': string;
     /**
     * Chain symbol
     */
-    'symbol'?: string;
+    'symbol': string;
     /**
     * Updated time
     */
-    'updatedAt'?: string;
+    'updatedAt': string;
 
     static readonly discriminator: string | undefined = undefined;
 

@@ -102,15 +102,6 @@ paths:
       description: Validate addresses
       operationId: v1.addresses.validate
       parameters:
-      - description: Chain ID
-        explode: true
-        in: query
-        name: chain_id
-        required: true
-        schema:
-          description: Chain ID
-          type: string
-        style: form
       - description: Addresses
         explode: true
         in: query
@@ -122,6 +113,15 @@ paths:
             type: string
           type: array
           uniqueItems: false
+        style: form
+      - description: Chain ID
+        explode: true
+        in: query
+        name: chain_id
+        required: true
+        schema:
+          description: Chain ID
+          type: string
         style: form
       responses:
         "200":
@@ -924,6 +924,13 @@ paths:
         required: false
         schema:
           description: The status of the transaction.
+          enum:
+          - Submitted
+          - PendingSignature
+          - Failed
+          - Broadcasting
+          - Confirming
+          - Completed
           type: string
           x-order: "6"
         style: form
@@ -1921,10 +1928,14 @@ components:
           description: Updated time
           type: string
         wallet_id:
-          description: Chain ID
+          description: Wallet ID
           type: string
       required:
       - address
+      - chain
+      - chain_id
+      - path
+      - type
       type: object
     AddressValidityItem:
       example:
@@ -1937,6 +1948,9 @@ components:
         validity:
           description: Validity
           type: boolean
+      required:
+      - address
+      - validity
       type: object
     Chain:
       example:
@@ -1955,7 +1969,7 @@ components:
         explorer_address_url: explorer_address_url
       properties:
         chain:
-          description: Chain
+          description: Chain protocol
           type: string
         confirm_num:
           description: Confirmation number
@@ -1993,6 +2007,20 @@ components:
         updated_at:
           description: Updated time
           type: string
+      required:
+      - chain
+      - confirm_num
+      - created_at
+      - explorer_address_url
+      - explorer_block_url
+      - explorer_tx_url
+      - icon_url
+      - id
+      - name
+      - need_memo
+      - network
+      - symbol
+      - updated_at
       type: object
     CreateAddressRequest:
       example:
@@ -2089,12 +2117,12 @@ components:
           tokenId: tokenId
           type: 6
         destination:
-          destination_type: destination_type
+          destination_type: Address
           address: address
         memo: memo
         source:
           wallet_id: wallet_id
-          source_type: source_type
+          source_type: Asset
       properties:
         amount:
           description: The amount to be transferred
@@ -2141,24 +2169,17 @@ components:
     CreateWalletRequest:
       example:
         uid: uid
-        sub_type: sub_type
+        sub_type: Asset
         name: name
-        type: type
+        type: Custodial
       properties:
         name:
           description: Wallet name
           type: string
         sub_type:
-          description: Wallet sub type
-          type: string
-          x-enum-varnames:
-          - WalletSubType_Custodial_Asset
-          - WalletSubType_Custodial_Web3
+          $ref: '#/components/schemas/WalletSubType'
         type:
-          description: Wallet type
-          type: string
-          x-enum-varnames:
-          - WalletType_Custodial
+          $ref: '#/components/schemas/WalletType'
         uid:
           description: Custom ID
           type: string
@@ -2419,14 +2440,13 @@ components:
         items:
         - icon_url: icon_url
           symbol: symbol
-          metadata:
-            key: metadata
-          need_memo: true
-          total_supply: total_supply
+          chain_id: chain_id
           precision: 6
           created_at: created_at
+          asset_id: asset_id
           can_deposit: true
           contract_address: contract_address
+          fee_token_id: fee_token_id
           min_withdraw_amount: min_withdraw_amount
           max_withdraw_amount: max_withdraw_amount
           updated_at: updated_at
@@ -2437,14 +2457,13 @@ components:
           min_deposit_amount: min_deposit_amount
         - icon_url: icon_url
           symbol: symbol
-          metadata:
-            key: metadata
-          need_memo: true
-          total_supply: total_supply
+          chain_id: chain_id
           precision: 6
           created_at: created_at
+          asset_id: asset_id
           can_deposit: true
           contract_address: contract_address
+          fee_token_id: fee_token_id
           min_withdraw_amount: min_withdraw_amount
           max_withdraw_amount: max_withdraw_amount
           updated_at: updated_at
@@ -2503,7 +2522,7 @@ components:
             address: address
             memo: memo
             type: type
-          type: type
+          type: Unknown
           createdAt: createdAt
           uid: uid
           chainId: chainId
@@ -2513,7 +2532,7 @@ components:
           id: id
           hash: hash
           failedReason: failedReason
-          status: status
+          status: Submitted
           updatedAt: updatedAt
         - walletId: walletId
           chain: chain
@@ -2535,7 +2554,7 @@ components:
             address: address
             memo: memo
             type: type
-          type: type
+          type: Unknown
           createdAt: createdAt
           uid: uid
           chainId: chainId
@@ -2545,7 +2564,7 @@ components:
           id: id
           hash: hash
           failedReason: failedReason
-          status: status
+          status: Submitted
           updatedAt: updatedAt
       properties:
         has_next:
@@ -2578,18 +2597,18 @@ components:
         has_prev: true
         items:
         - uid: uid
-          sub_type: sub_type
+          sub_type: Asset
           name: name
           created_at: created_at
           id: id
-          type: type
+          type: Custodial
           updatedAt: updatedAt
         - uid: uid
-          sub_type: sub_type
+          sub_type: Asset
           name: name
           created_at: created_at
           id: id
-          type: type
+          type: Custodial
           updatedAt: updatedAt
       properties:
         has_next:
@@ -2675,12 +2694,12 @@ components:
         token_id: token_id
         extra: extra
         destination:
-          destination_type: destination_type
+          destination_type: Address
           address: address
         memo: memo
         source:
           wallet_id: wallet_id
-          source_type: source_type
+          source_type: Asset
       properties:
         amount:
           description: Amount
@@ -2743,10 +2762,7 @@ components:
           description: Token ID
           type: string
         type:
-          description: Fee type
-          type: integer
-          x-enum-varnames:
-          - Fixed
+          $ref: '#/components/schemas/FeeType'
       required:
       - maxFeeAmount
       - tokenId
@@ -2754,9 +2770,11 @@ components:
       type: object
     FeeType:
       description: Fee type
+      enum:
+      - 1
       type: integer
       x-enum-varnames:
-      - Fixed
+      - FeeType_Fixed
     GasStation:
       example:
         gas_threshold: gas_threshold
@@ -2829,7 +2847,7 @@ components:
         source:
           wallet_id: wallet_id
           address: address
-          source_type: source_type
+          source_type: Asset
         message: message
       properties:
         chain_id:
@@ -2896,14 +2914,13 @@ components:
       example:
         icon_url: icon_url
         symbol: symbol
-        metadata:
-          key: metadata
-        need_memo: true
-        total_supply: total_supply
+        chain_id: chain_id
         precision: 6
         created_at: created_at
+        asset_id: asset_id
         can_deposit: true
         contract_address: contract_address
+        fee_token_id: fee_token_id
         min_withdraw_amount: min_withdraw_amount
         max_withdraw_amount: max_withdraw_amount
         updated_at: updated_at
@@ -2913,12 +2930,18 @@ components:
         id: id
         min_deposit_amount: min_deposit_amount
       properties:
+        asset_id:
+          description: Asset ID
+          type: string
         can_deposit:
           description: Whether deposits are allowed
           type: boolean
         can_withdraw:
           description: Whether withdrawals are allowed
           type: boolean
+        chain_id:
+          description: Chain ID
+          type: string
         contract_address:
           description: Contract address
           type: string
@@ -2928,6 +2951,9 @@ components:
         decimals:
           description: Decimals
           type: integer
+        fee_token_id:
+          description: Fee token ID
+          type: string
         icon_url:
           description: Icon
           type: string
@@ -2937,11 +2963,6 @@ components:
         max_withdraw_amount:
           description: Max withdraw amount
           type: string
-        metadata:
-          additionalProperties:
-            type: string
-          description: Extended metadata
-          type: object
         min_deposit_amount:
           description: Min deposit amount
           type: string
@@ -2951,21 +2972,33 @@ components:
         name:
           description: Name
           type: string
-        need_memo:
-          description: Whether a memo is required
-          type: boolean
         precision:
           description: Precision
           type: integer
         symbol:
           description: "Symbol . e.g.: BTC / ETH"
           type: string
-        total_supply:
-          description: Total supply
-          type: string
         updated_at:
           description: Last updated time
           type: string
+      required:
+      - asset_id
+      - can_deposit
+      - can_withdraw
+      - chain_id
+      - contract_address
+      - created_at
+      - decimals
+      - fee_token_id
+      - icon_url
+      - id
+      - max_withdraw_amount
+      - min_deposit_amount
+      - min_withdraw_amount
+      - name
+      - precision
+      - symbol
+      - updated_at
       type: object
     Transaction:
       example:
@@ -2989,7 +3022,7 @@ components:
           address: address
           memo: memo
           type: type
-        type: type
+        type: Unknown
         createdAt: createdAt
         uid: uid
         chainId: chainId
@@ -2999,7 +3032,7 @@ components:
         id: id
         hash: hash
         failedReason: failedReason
-        status: status
+        status: Submitted
         updatedAt: updatedAt
       properties:
         assetId:
@@ -3044,17 +3077,19 @@ components:
           $ref: '#/components/schemas/TransactionEndpoint'
         status:
           description: Transaction status
+          enum:
+          - Submitted
+          - PendingSignature
+          - Failed
+          - Broadcasting
+          - Confirming
+          - Completed
           type: string
         tokenId:
           description: Token ID
           type: string
         type:
-          description: Transaction type
-          type: string
-          x-enum-varnames:
-          - TransactionType_Unknown
-          - TransactionType_Deposit
-          - TransactionType_Withdraw
+          $ref: '#/components/schemas/TransactionType'
         uid:
           description: The custom unique transaction identifier
           type: string
@@ -3064,6 +3099,22 @@ components:
         walletId:
           description: Wallet ID
           type: string
+      required:
+      - assetId
+      - chain
+      - chainId
+      - confirmedNum
+      - createdAt
+      - description
+      - failedReason
+      - hash
+      - id
+      - signature
+      - status
+      - tokenId
+      - type
+      - updatedAt
+      - walletId
       type: object
     TransactionEndpoint:
       description: Source
@@ -3088,6 +3139,10 @@ components:
       type: object
     TransactionType:
       description: Transaction type
+      enum:
+      - Unknown
+      - Deposit
+      - Withdraw
       type: string
       x-enum-varnames:
       - TransactionType_Unknown
@@ -3095,37 +3150,32 @@ components:
       - TransactionType_Withdraw
     TransferDestinationAddress:
       example:
-        destination_type: destination_type
+        destination_type: Address
         address: address
       properties:
         address:
           description: Address
           type: string
         destination_type:
-          description: destination type
-          type: string
-          x-enum-varnames:
-          - TransferDestinationType_Address
+          $ref: '#/components/schemas/TransferDestinationType'
       required:
       - address
       - destination_type
       type: object
     TransferDestinationType:
       description: destination type
+      enum:
+      - Address
       type: string
       x-enum-varnames:
       - TransferDestinationType_Address
     TransferSourceAsset:
       example:
         wallet_id: wallet_id
-        source_type: source_type
+        source_type: Asset
       properties:
         source_type:
-          description: source type
-          type: string
-          x-enum-varnames:
-          - TransferSourceType_Asset
-          - TransferSourceType_Web3
+          $ref: '#/components/schemas/TransferSourceType'
         wallet_id:
           description: Wallet ID
           type: string
@@ -3135,6 +3185,9 @@ components:
       type: object
     TransferSourceType:
       description: source type
+      enum:
+      - Asset
+      - Web3
       type: string
       x-enum-varnames:
       - TransferSourceType_Asset
@@ -3143,17 +3196,13 @@ components:
       example:
         wallet_id: wallet_id
         address: address
-        source_type: source_type
+        source_type: Asset
       properties:
         address:
           description: Address
           type: string
         source_type:
-          description: source type
-          type: string
-          x-enum-varnames:
-          - TransferSourceType_Asset
-          - TransferSourceType_Web3
+          $ref: '#/components/schemas/TransferSourceType'
         wallet_id:
           description: Wallet ID
           type: string
@@ -3221,6 +3270,8 @@ components:
         uid:
           description: Unique ID
           type: string
+      required:
+      - id
       type: object
     UpdateWalletRequest:
       example:
@@ -3248,15 +3299,17 @@ components:
             $ref: '#/components/schemas/AddressValidityItem'
           type: array
           uniqueItems: false
+      required:
+      - items
       type: object
     Wallet:
       example:
         uid: uid
-        sub_type: sub_type
+        sub_type: Asset
         name: name
         created_at: created_at
         id: id
-        type: type
+        type: Custodial
         updatedAt: updatedAt
       properties:
         created_at:
@@ -3269,16 +3322,9 @@ components:
           description: Wallet name
           type: string
         sub_type:
-          description: Wallet sub type
-          type: string
-          x-enum-varnames:
-          - WalletSubType_Custodial_Asset
-          - WalletSubType_Custodial_Web3
+          $ref: '#/components/schemas/WalletSubType'
         type:
-          description: Wallet type
-          type: string
-          x-enum-varnames:
-          - WalletType_Custodial
+          $ref: '#/components/schemas/WalletType'
         uid:
           description: External unique ID
           type: string
@@ -3286,20 +3332,27 @@ components:
           description: Updated time
           type: string
       required:
+      - created_at
       - id
       - name
       - sub_type
       - type
       - uid
+      - updatedAt
       type: object
     WalletSubType:
       description: Wallet sub type
+      enum:
+      - Asset
+      - Web3
       type: string
       x-enum-varnames:
       - WalletSubType_Custodial_Asset
       - WalletSubType_Custodial_Web3
     WalletType:
       description: Wallet type
+      enum:
+      - Custodial
       type: string
       x-enum-varnames:
       - WalletType_Custodial

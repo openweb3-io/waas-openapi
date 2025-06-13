@@ -4,29 +4,29 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CanDeposit** | Pointer to **bool** | Whether deposits are allowed | [optional] 
-**CanWithdraw** | Pointer to **bool** | Whether withdrawals are allowed | [optional] 
-**ContractAddress** | Pointer to **string** | Contract address | [optional] 
-**CreatedAt** | Pointer to **string** | Creation time | [optional] 
-**Decimals** | Pointer to **int32** | Decimals | [optional] 
-**IconUrl** | Pointer to **string** | Icon | [optional] 
-**Id** | Pointer to **string** | Token ID | [optional] 
-**MaxWithdrawAmount** | Pointer to **string** | Max withdraw amount | [optional] 
-**Metadata** | Pointer to **map[string]string** | Extended metadata | [optional] 
-**MinDepositAmount** | Pointer to **string** | Min deposit amount | [optional] 
-**MinWithdrawAmount** | Pointer to **string** | Min withdraw amount | [optional] 
-**Name** | Pointer to **string** | Name | [optional] 
-**NeedMemo** | Pointer to **bool** | Whether a memo is required | [optional] 
-**Precision** | Pointer to **int32** | Precision | [optional] 
-**Symbol** | Pointer to **string** | Symbol . e.g.: BTC / ETH | [optional] 
-**TotalSupply** | Pointer to **string** | Total supply | [optional] 
-**UpdatedAt** | Pointer to **string** | Last updated time | [optional] 
+**AssetId** | **string** | Asset ID | 
+**CanDeposit** | **bool** | Whether deposits are allowed | 
+**CanWithdraw** | **bool** | Whether withdrawals are allowed | 
+**ChainId** | **string** | Chain ID | 
+**ContractAddress** | **string** | Contract address | 
+**CreatedAt** | **string** | Creation time | 
+**Decimals** | **int32** | Decimals | 
+**FeeTokenId** | **string** | Fee token ID | 
+**IconUrl** | **string** | Icon | 
+**Id** | **string** | Token ID | 
+**MaxWithdrawAmount** | **string** | Max withdraw amount | 
+**MinDepositAmount** | **string** | Min deposit amount | 
+**MinWithdrawAmount** | **string** | Min withdraw amount | 
+**Name** | **string** | Name | 
+**Precision** | **int32** | Precision | 
+**Symbol** | **string** | Symbol . e.g.: BTC / ETH | 
+**UpdatedAt** | **string** | Last updated time | 
 
 ## Methods
 
 ### NewToken
 
-`func NewToken() *Token`
+`func NewToken(assetId string, canDeposit bool, canWithdraw bool, chainId string, contractAddress string, createdAt string, decimals int32, feeTokenId string, iconUrl string, id string, maxWithdrawAmount string, minDepositAmount string, minWithdrawAmount string, name string, precision int32, symbol string, updatedAt string, ) *Token`
 
 NewToken instantiates a new Token object
 This constructor will assign default values to properties that have it defined,
@@ -40,6 +40,26 @@ will change when the set of required properties is changed
 NewTokenWithDefaults instantiates a new Token object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAssetId
+
+`func (o *Token) GetAssetId() string`
+
+GetAssetId returns the AssetId field if non-nil, zero value otherwise.
+
+### GetAssetIdOk
+
+`func (o *Token) GetAssetIdOk() (*string, bool)`
+
+GetAssetIdOk returns a tuple with the AssetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssetId
+
+`func (o *Token) SetAssetId(v string)`
+
+SetAssetId sets AssetId field to given value.
+
 
 ### GetCanDeposit
 
@@ -60,11 +80,6 @@ and a boolean to check if the value has been set.
 
 SetCanDeposit sets CanDeposit field to given value.
 
-### HasCanDeposit
-
-`func (o *Token) HasCanDeposit() bool`
-
-HasCanDeposit returns a boolean if a field has been set.
 
 ### GetCanWithdraw
 
@@ -85,11 +100,26 @@ and a boolean to check if the value has been set.
 
 SetCanWithdraw sets CanWithdraw field to given value.
 
-### HasCanWithdraw
 
-`func (o *Token) HasCanWithdraw() bool`
+### GetChainId
 
-HasCanWithdraw returns a boolean if a field has been set.
+`func (o *Token) GetChainId() string`
+
+GetChainId returns the ChainId field if non-nil, zero value otherwise.
+
+### GetChainIdOk
+
+`func (o *Token) GetChainIdOk() (*string, bool)`
+
+GetChainIdOk returns a tuple with the ChainId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChainId
+
+`func (o *Token) SetChainId(v string)`
+
+SetChainId sets ChainId field to given value.
+
 
 ### GetContractAddress
 
@@ -110,11 +140,6 @@ and a boolean to check if the value has been set.
 
 SetContractAddress sets ContractAddress field to given value.
 
-### HasContractAddress
-
-`func (o *Token) HasContractAddress() bool`
-
-HasContractAddress returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -135,11 +160,6 @@ and a boolean to check if the value has been set.
 
 SetCreatedAt sets CreatedAt field to given value.
 
-### HasCreatedAt
-
-`func (o *Token) HasCreatedAt() bool`
-
-HasCreatedAt returns a boolean if a field has been set.
 
 ### GetDecimals
 
@@ -160,11 +180,26 @@ and a boolean to check if the value has been set.
 
 SetDecimals sets Decimals field to given value.
 
-### HasDecimals
 
-`func (o *Token) HasDecimals() bool`
+### GetFeeTokenId
 
-HasDecimals returns a boolean if a field has been set.
+`func (o *Token) GetFeeTokenId() string`
+
+GetFeeTokenId returns the FeeTokenId field if non-nil, zero value otherwise.
+
+### GetFeeTokenIdOk
+
+`func (o *Token) GetFeeTokenIdOk() (*string, bool)`
+
+GetFeeTokenIdOk returns a tuple with the FeeTokenId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeeTokenId
+
+`func (o *Token) SetFeeTokenId(v string)`
+
+SetFeeTokenId sets FeeTokenId field to given value.
+
 
 ### GetIconUrl
 
@@ -185,11 +220,6 @@ and a boolean to check if the value has been set.
 
 SetIconUrl sets IconUrl field to given value.
 
-### HasIconUrl
-
-`func (o *Token) HasIconUrl() bool`
-
-HasIconUrl returns a boolean if a field has been set.
 
 ### GetId
 
@@ -210,11 +240,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *Token) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetMaxWithdrawAmount
 
@@ -235,36 +260,6 @@ and a boolean to check if the value has been set.
 
 SetMaxWithdrawAmount sets MaxWithdrawAmount field to given value.
 
-### HasMaxWithdrawAmount
-
-`func (o *Token) HasMaxWithdrawAmount() bool`
-
-HasMaxWithdrawAmount returns a boolean if a field has been set.
-
-### GetMetadata
-
-`func (o *Token) GetMetadata() map[string]string`
-
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
-
-### GetMetadataOk
-
-`func (o *Token) GetMetadataOk() (*map[string]string, bool)`
-
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMetadata
-
-`func (o *Token) SetMetadata(v map[string]string)`
-
-SetMetadata sets Metadata field to given value.
-
-### HasMetadata
-
-`func (o *Token) HasMetadata() bool`
-
-HasMetadata returns a boolean if a field has been set.
 
 ### GetMinDepositAmount
 
@@ -285,11 +280,6 @@ and a boolean to check if the value has been set.
 
 SetMinDepositAmount sets MinDepositAmount field to given value.
 
-### HasMinDepositAmount
-
-`func (o *Token) HasMinDepositAmount() bool`
-
-HasMinDepositAmount returns a boolean if a field has been set.
 
 ### GetMinWithdrawAmount
 
@@ -310,11 +300,6 @@ and a boolean to check if the value has been set.
 
 SetMinWithdrawAmount sets MinWithdrawAmount field to given value.
 
-### HasMinWithdrawAmount
-
-`func (o *Token) HasMinWithdrawAmount() bool`
-
-HasMinWithdrawAmount returns a boolean if a field has been set.
 
 ### GetName
 
@@ -335,36 +320,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *Token) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### GetNeedMemo
-
-`func (o *Token) GetNeedMemo() bool`
-
-GetNeedMemo returns the NeedMemo field if non-nil, zero value otherwise.
-
-### GetNeedMemoOk
-
-`func (o *Token) GetNeedMemoOk() (*bool, bool)`
-
-GetNeedMemoOk returns a tuple with the NeedMemo field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNeedMemo
-
-`func (o *Token) SetNeedMemo(v bool)`
-
-SetNeedMemo sets NeedMemo field to given value.
-
-### HasNeedMemo
-
-`func (o *Token) HasNeedMemo() bool`
-
-HasNeedMemo returns a boolean if a field has been set.
 
 ### GetPrecision
 
@@ -385,11 +340,6 @@ and a boolean to check if the value has been set.
 
 SetPrecision sets Precision field to given value.
 
-### HasPrecision
-
-`func (o *Token) HasPrecision() bool`
-
-HasPrecision returns a boolean if a field has been set.
 
 ### GetSymbol
 
@@ -410,36 +360,6 @@ and a boolean to check if the value has been set.
 
 SetSymbol sets Symbol field to given value.
 
-### HasSymbol
-
-`func (o *Token) HasSymbol() bool`
-
-HasSymbol returns a boolean if a field has been set.
-
-### GetTotalSupply
-
-`func (o *Token) GetTotalSupply() string`
-
-GetTotalSupply returns the TotalSupply field if non-nil, zero value otherwise.
-
-### GetTotalSupplyOk
-
-`func (o *Token) GetTotalSupplyOk() (*string, bool)`
-
-GetTotalSupplyOk returns a tuple with the TotalSupply field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTotalSupply
-
-`func (o *Token) SetTotalSupply(v string)`
-
-SetTotalSupply sets TotalSupply field to given value.
-
-### HasTotalSupply
-
-`func (o *Token) HasTotalSupply() bool`
-
-HasTotalSupply returns a boolean if a field has been set.
 
 ### GetUpdatedAt
 
@@ -460,11 +380,6 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
-### HasUpdatedAt
-
-`func (o *Token) HasUpdatedAt() bool`
-
-HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

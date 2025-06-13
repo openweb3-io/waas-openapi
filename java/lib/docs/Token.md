@@ -7,23 +7,23 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**canDeposit** | **Boolean** | Whether deposits are allowed |  [optional] |
-|**canWithdraw** | **Boolean** | Whether withdrawals are allowed |  [optional] |
-|**contractAddress** | **String** | Contract address |  [optional] |
-|**createdAt** | **String** | Creation time |  [optional] |
-|**decimals** | **Integer** | Decimals |  [optional] |
-|**iconUrl** | **String** | Icon |  [optional] |
-|**id** | **String** | Token ID |  [optional] |
-|**maxWithdrawAmount** | **String** | Max withdraw amount |  [optional] |
-|**metadata** | **Map&lt;String, String&gt;** | Extended metadata |  [optional] |
-|**minDepositAmount** | **String** | Min deposit amount |  [optional] |
-|**minWithdrawAmount** | **String** | Min withdraw amount |  [optional] |
-|**name** | **String** | Name |  [optional] |
-|**needMemo** | **Boolean** | Whether a memo is required |  [optional] |
-|**precision** | **Integer** | Precision |  [optional] |
-|**symbol** | **String** | Symbol . e.g.: BTC / ETH |  [optional] |
-|**totalSupply** | **String** | Total supply |  [optional] |
-|**updatedAt** | **String** | Last updated time |  [optional] |
+|**assetId** | **String** | Asset ID |  |
+|**canDeposit** | **Boolean** | Whether deposits are allowed |  |
+|**canWithdraw** | **Boolean** | Whether withdrawals are allowed |  |
+|**chainId** | **String** | Chain ID |  |
+|**contractAddress** | **String** | Contract address |  |
+|**createdAt** | **String** | Creation time |  |
+|**decimals** | **Integer** | Decimals |  |
+|**feeTokenId** | **String** | Fee token ID |  |
+|**iconUrl** | **String** | Icon |  |
+|**id** | **String** | Token ID |  |
+|**maxWithdrawAmount** | **String** | Max withdraw amount |  |
+|**minDepositAmount** | **String** | Min deposit amount |  |
+|**minWithdrawAmount** | **String** | Min withdraw amount |  |
+|**name** | **String** | Name |  |
+|**precision** | **Integer** | Precision |  |
+|**symbol** | **String** | Symbol . e.g.: BTC / ETH |  |
+|**updatedAt** | **String** | Last updated time |  |
 
 
 

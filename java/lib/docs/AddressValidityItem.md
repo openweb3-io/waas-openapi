@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**address** | **String** | Address |  [optional] |
-|**validity** | **Boolean** | Validity |  [optional] |
+|**address** | **String** | Address |  |
+|**validity** | **Boolean** | Validity |  |
 
 
 

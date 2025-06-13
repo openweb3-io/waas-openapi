@@ -16,7 +16,7 @@ export class UpdateTokenRequest {
     /**
     * Token ID
     */
-    'id'?: string;
+    'id': string;
     /**
     * Token name
     */
